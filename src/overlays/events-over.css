@@ -1,0 +1,74 @@
+.event-over-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+.event-over-head-title {
+	font-size: 2rem;
+	font-weight: 500;
+}
+.event-over-main textarea:focus {
+	outline: none;
+}
+.event-over-main textarea {
+	width: 92%;
+	resize: none;
+	padding: 0.5rem 1rem;
+	color: #fff;
+	border: none;
+	background: rgba(255, 255, 255, 0.12);
+	border-left: 2px solid #acebf6;
+}
+.event-over-main .title {
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+	margin-top: 2rem;
+}
+
+.event-over-submit-p {
+	margin-top: 2rem;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.event-over-submit {
+	padding: 0.5rem 1.5rem;
+	font-size: 1.2rem;
+	color: #000;
+	font-weight: 500;
+	background-color: #acebf6;
+}
+
+.event-over-timeinputs {
+	display: flex;
+	justify-content: space-between;
+}
+.event-over-timeinputs input {
+	width: 350px;
+}
+.event-over-contact .title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.event-over-contact-btn {
+	background-color: #acebf6;
+	color: #000;
+	font-weight: 700;
+	margin-left: 20px;
+	width: 40px;
+	height: 40px;
+	border-radius: 5px;
+	text-align: center;
+}
+.event-over-contact-inputs {
+	display: flex;
+	justify-content: space-evenly;
+}
+.event-over-contact-inputs input {
+	margin-bottom: 1rem;
+}
+.event-over-contact-input {
+	width: 40%;
+}

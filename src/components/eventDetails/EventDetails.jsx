@@ -99,56 +99,67 @@ const EventDetails = () => {
   return (
     <div className='event-details'>
       <form>
-        <div className="input">
-          <h2>Add Image:</h2>
-          <input type="file" onChange={handleImageChange} />
-          {file && <img src={file} alt="Event" />}
+        <div className="event-details-row-1">
+          <div className="upload-picture">
+            <h3>ADD EVENT POSTER HERE</h3>
+            <input className='upload-pic-btn' type="file" onChange={handleImageChange} />
+            {file && <img src={file} alt="Event" />}
+          </div>
+
+          <div className="event-name">
+            <label className="label">EVENT TITLE*</label><br />
+            <input
+              onChange={handleTitle}
+              className="input event-title"
+              value={eventTitle}
+              type="text"
+            />
+          </div>
+
+          <div className="event-description">
+            <label className="label">EVENT DESCRIPTION*</label><br />
+            <input
+              onChange={handleDescription}
+              className="input event-description"
+              value={eventDescription}
+              type="text"
+            />
+          </div>
         </div>
 
-        {/* ... (your other form fields) */}
-        <label className="label">EVENT TITLE*</label>
-        <input
-          onChange={handleTitle}
-          className="input"
-          value={eventTitle}
-          type="text"
-        />
 
-        <label className="label">EVENT DESCRIPTION*</label>
-        <input
-          onChange={handleDescription}
-          className="input"
-          value={eventDescription}
-          type="text"
-        />
+        <div className="event-details-row-2">
+          <div className="events-flex-column">
+            <label className="label">EVENT DATE*</label><br />
+            <input
+              onChange={handleDate}
+              className="input"
+              value={eventDate}
+              type="date"
+            />
+          </div>
 
-        <label className="label">EVENT DATE*</label>
-        <input
-          onChange={handleDate}
-          className="input"
-          value={eventDate}
-          type="date"
-        />
+          <div className="events-flex-column">
+            <label className="label">EVENT TIMING*</label><br />
+            <input
+              onChange={handleTiming}
+              className="input"
+              value={eventTime}
+              type="time"
+            />
+          </div>
 
-        <label className="label">EVENT TIMING*</label>
-        <input
-          onChange={handleTiming}
-          className="input"
-          value={eventTime}
-          type="time"
-        />
+          <div className="events-flex-column">
+            <label className="label">EVENT VENUE*</label><br />
+            <input
+              onChange={handleVenue}
+              className="input event-venue"
+              value={eventLocation}
+              type="text"
+            />
+          </div>
+        </div>
 
-        <label className="label">EVENT VENUE*</label>
-        <input
-          onChange={handleVenue}
-          className="input"
-          value={eventLocation}
-          type="text"
-        />
-
-        <button onClick={handleSubmit} className="btn" type="submit">
-          Submit
-        </button>
       </form>
       {successMessage()}
       {errorMessage()}

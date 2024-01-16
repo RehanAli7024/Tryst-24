@@ -1,0 +1,28 @@
+.title-with-bg {
+	width: 100vw;
+	position: relative;
+	height: 40vh;
+	min-height: fit-content;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: Brolink2;
+	font-size: 4rem;
+	color: rgba(172, 235, 246, 1);
+	z-index: 0;
+	padding-top: 100px;
+}
+@media screen and (max-width: 700px) {
+	.title-with-bg {
+		font-size: 3rem;
+	}
+}
+@media screen and (max-width:480px) {
+    .title-with-bg{
+        font-size: 2.5rem;
+
+	height: 35vh;
+    }
+}

@@ -3,6 +3,8 @@ import React from 'react'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import EventDetails from './components/eventDetails/EventDetails.jsx'
+import Events from './pages/Events/Events.jsx'
+import CompetitionsOverlay from './overlays/overlay-1.jsx'
 
 
 const App = () => {
@@ -13,6 +15,8 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/eventDetails" element={<EventDetails />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/overlay1" element={<CompetitionsOverlay />} />
         </Routes>
       </Router>
     </main>
