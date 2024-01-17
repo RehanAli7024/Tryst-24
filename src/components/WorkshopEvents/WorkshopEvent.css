@@ -1,0 +1,106 @@
+* {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .event-details-boss-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;}
+  
+  .event-details {
+    background-color: #041429;
+    color: #fff;
+    height: 70vh;
+    width: 50vw;
+    padding: 2rem;
+    overflow: auto;
+  }
+  
+  .event-details input {
+    background-color: #293749;
+    border: none;
+    border-left: 1px solid #acebf6;
+    color: #fff;
+    padding: 0.5rem;
+    outline: none;
+    margin-top: 10px;
+  }
+  
+  .event-details textarea {
+    background-color: #293749;
+    border: none;
+    border-left: 1px solid #acebf6;
+    color: #fff;
+    padding: 0.5rem;
+    outline: none;
+    margin-top: 10px;
+  }
+  
+  .date-time-venue-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  
+  .date-time-venue-container input {
+    border-left: 1px solid #93ffd8;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .events-flex-column {
+    width: 33%;
+  }
+  
+  .date-time-venue-container input.event-venue {
+    padding: 10px;
+  }
+  
+  ::-webkit-calendar-picker-indicator {
+    background-color: #93ffd8;
+    padding: 10px;
+  }
+  
+  .No-of-contact-person-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .registration-date-time-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 40px;
+    width: 55%;
+  }
+
+  .registration-date-time-column{
+    width: 80%;
+  }
+
+  .registration-date-time-input input{
+    border-left: 1px solid #93ffd8;
+    padding: 0;
+    width: 100%;
+  }
+  
+.rulebook-container{
+    display: flex;
+    gap: 20px;
+}
+
+.rulebook-container .rule{
+    width: 90%;
+}
+
+.rulebook-container .rule input{
+    border-left: 1px solid #93ffd8;
+    padding: 8px;
+    width: 100%;
+}
