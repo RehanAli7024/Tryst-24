@@ -4,7 +4,8 @@ import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import EventDetails from './components/eventDetails/EventDetails.jsx'
 import Events from './pages/Events/Events.jsx'
-import CompetitionsOverlay from './overlays/overlay-1.jsx'
+import CompetitionsOverlay from './overlays/event-details/EventDetails.jsx'
+import AddNewField from './overlays/add-new-field/AddNewField.jsx'
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/eventDetails" element={<EventDetails />} />
           <Route path="/events" element={<Events />} />
           <Route path="/overlay1" element={<CompetitionsOverlay />} />
+          <Route path="/addnewfield" element={<AddNewField />} />
         </Routes>
       </Router>
     </main>

@@ -15,31 +15,31 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 		['', ''],
 	]);
 	const [poster, setPoster] = React.useState({});
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({
-		accept: 'image/*',
-		onDrop: (file) => {
-			setPoster(
-				Object.assign(file[0], {
-					preview: URL.createObjectURL(file[0]),
-				})
-			);
-		},
-	});
+	// const { getRootProps, getInputProps, isDragActive } = useDropzone({
+	// 	accept: 'image/*',
+	// 	// onDrop: (file) => {
+	// 	// 	setPoster(
+	// 	// 		Object.assign(file[0], {
+	// 	// 			preview: URL.createObjectURL(file[0]),
+	// 	// 		})
+	// 	// 	);
+	// 	// },
+	// });
 
-	const handleContactname1 = (val) => {
-		setContact((prev) => [[val, prev[0][1]], prev[1]]);
-	};
-	const handleContactnum1 = (val) => {
-		setContact((prev) => [[prev[0][0], val], prev[1]]);
-	};
-	const handleContactname2 = (val) => {
-		setContact((prev) => [prev[0], [val, prev[1][1]]]);
-	};
-	const handleContactnum2 = (val) => {
-		setContact((prev) => [prev[0], [prev[1][0], val]]);
-	};
+	// const handleContactname1 = (val) => {
+	// 	setContact((prev) => [[val, prev[0][1]], prev[1]]);
+	// };
+	// const handleContactnum1 = (val) => {
+	// 	setContact((prev) => [[prev[0][0], val], prev[1]]);
+	// };
+	// const handleContactname2 = (val) => {
+	// 	setContact((prev) => [prev[0], [val, prev[1][1]]]);
+	// };
+	// const handleContactnum2 = (val) => {
+	// 	setContact((prev) => [prev[0], [prev[1][0], val]]);
+	// };
 	const data = {
-		category: overlay[1],
+		// category: overlay[1],
 		end: '',
 		formLink: '',
 		info: '',
@@ -54,8 +54,8 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 		onSubmit: (values) => {
 			const formdata = new FormData();
 			const contacts = {
-				[contact[0][0]]: Number(contact[0][1]),
-				[contact[1][0]]: Number(contact[1][1]),
+				// [contact[0][0]]: Number(contact[0][1]),
+				// [contact[1][0]]: Number(contact[1][1]),
 			};
 			formdata.append('contact', JSON.stringify(contacts));
 			formdata.append('poster', poster);
@@ -83,11 +83,13 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 		},
 	});
 	return (
-		<div className={`overlay-main ${overlay[0] ? 'block-disp' : 'none-disp'}`}>
+		// <div className={`overlay-main ${overlay[0] ? 'block-disp' : 'none-disp'}`}>
+        <div className={`overlay-main ? 'block-disp' : 'none-disp'}`}>
 			<form onSubmit={handleSubmit}>
 				<div className='event-over'>
 					<div className='event-over-head'>
-						<div className='event-over-head-title'>New {overlay[1]}</div>
+						<div className='event-over-head-title'>New </div>
+                        {/* {overlay[1]} */}
 						<div className='sub-over-head-22' onClick={() => setOverlay((prev) => [!prev, ''])}>
 							<i className='fa-solid fa-xmark'></i>
 						</div>
@@ -96,9 +98,10 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 						<div className='drag-drop-parent'>
 							<div className='drag-drop-1'>
 								<div className='title'>Poster :</div>
-								<div className='drag-input dashed-border' {...getRootProps()}>
-									<input {...getInputProps()} />
-									{isDragActive ? <div className='either'>drop poster here</div> : <div>select poster</div>}
+								{/* <div className='drag-input dashed-border' {...getRootProps()}> */}
+                                <div className='drag-input dashed-border'>
+									{/* <input {...getInputProps()} /> */}
+									{true ? <div className='either'>drop poster here</div> : <div>select poster</div>}
 									<div className='image-preview-parent either'>
 										{' '}
 										<img src={poster.preview} className='image-preview' alt='image-preview' />
@@ -114,7 +117,8 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 									value={values.name}
 									onChange={handleChange}
 									onBlur={handleBlur}
-									placeholder={`${overlay[1]} name`}
+                                    placeholder='Enter description here'
+									// placeholder={`${overlay[1]} name`}
 								></input>
 
 								<div className='title'>Description :</div>
@@ -125,7 +129,8 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 									onChange={handleChange}
 									onBlur={handleBlur}
 									rows='10'
-									placeholder={`${overlay[1]} description`}
+                                    placeholder='Enter description here'
+									// placeholder={`${overlay[1]} description`}
 								></textarea>
 							</div>
 						</div>
@@ -194,9 +199,9 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 								<div className='event-over-contact-input'>
 									<input
 										type='text'
-										name={contact[0][0]}
+										// name={contact[0][0]}
 										autoComplete='off'
-										value={contact[0][0]}
+										// value={contact[0][0]}
 										onChange={(e) => handleContactname1(e.target.value)}
 										placeholder='Name of Contact person'
 									></input>
@@ -204,9 +209,9 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 								<div className='event-over-contact-input'>
 									<input
 										type='tel'
-										name={contact[0][1]}
+										// name={contact[0][1]}
 										autoComplete='off'
-										value={contact[0][1]}
+										// value={contact[0][1]}
 										onChange={(e) => handleContactnum1(e.target.value)}
 										placeholder='Mobile number'
 									></input>
@@ -216,9 +221,9 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 								<div className='event-over-contact-input'>
 									<input
 										type='text'
-										name={contact[1][0]}
+										// name={contact[1][0]}
 										autoComplete='off'
-										value={contact[1][0]}
+										// value={contact[1][0]}
 										onChange={(e) => handleContactname2(e.target.value)}
 										placeholder='Name of Contact person'
 									></input>
@@ -226,9 +231,9 @@ function CompetitionsOverlay({ overlay, setOverlay, setCount }) {
 								<div className='event-over-contact-input'>
 									<input
 										type='tel'
-										name={contact[1][1]}
+										// name={contact[1][1]}
 										autoComplete='off'
-										value={contact[1][1]}
+										// value={contact[1][1]}
 										onChange={(e) => handleContactnum2(e.target.value)}
 										placeholder='Mobile number'
 									></input>
