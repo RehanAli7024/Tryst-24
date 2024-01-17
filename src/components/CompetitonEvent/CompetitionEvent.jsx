@@ -1,19 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import RulebookEntry from "../common/RulebookEntry";
+import "./CompetitionEvent.css";
 
-import "./WorkshopEvent.css";
+export default function CompetitionEvent() {
+  const [formData, setFormData] = useState({
+    eventTitle: "",
+    eventDescription: "",
+    eventDate: "",
+    eventTime: "",
+    eventLocation: "",
+    file: null,
+    contactPersons: 1,
+    Rulebook: 1,
+    TeamMembers: 1,
+    isTeamEvent: false,
+    
+  });
 
-export default function WorkshopEvent() {
-  const [eventTitle, setEventTitle] = useState("");
-  const [eventDescription, setEventDescription] = useState("");
-  const [eventDate, setEventDate] = useState("");
-  const [eventTime, setEventTime] = useState("");
-  const [eventLocation, setEventLocation] = useState("");
-  const [file, setFile] = useState(null); // Initialize file state to null
-  const [contactPersons, setcontactPerosns] = useState(1);
-  const [Rulebook, setRulebook] = useState(1);
+  const {
+    eventTitle,
+    eventDescription,
+    eventDate,
+    eventTime,
+    eventLocation,
+    file,
+    contactPersons,
+    Rulebook,
+    TeamMembers,
+    isTeamEvent,
+  } = formData;
+
+  const setEventTitle = (value) =>
+    setFormData({ ...formData, eventTitle: value });
+  const setEventDescription = (value) =>
+    setFormData({ ...formData, eventDescription: value });
+  const setEventDate = (value) =>
+    setFormData({ ...formData, eventDate: value });
+  const setEventTime = (value) =>
+    setFormData({ ...formData, eventTime: value });
+  const setEventLocation = (value) =>
+    setFormData({ ...formData, eventLocation: value });
+  const setFile = (value) => setFormData({ ...formData, file: value });
+  const setcontactPerosns = (value) =>
+    setFormData({ ...formData, contactPersons: value });
+  const setRulebook = (value) => setFormData({ ...formData, Rulebook: value });
+  const setTeamMembers = (value) =>
+    setFormData({ ...formData, TeamMembers: value });
+  const setIsTeamEvent = (value) =>
+    setFormData({ ...formData, isTeamEvent: value });
+
+  const handleTeamMembersChange = (e) => {
+    setTeamMembers(Number(e.target.value));
+  };
 
   const handlecontactPersonsChange = (e) => {
     setcontactPerosns(Number(e.target.value));
@@ -21,6 +61,11 @@ export default function WorkshopEvent() {
 
   const handleRulebookChange = (e) => {
     setRulebook(Number(e.target.value));
+  };
+
+  // Function to handle radio button change
+  const handleTeamEventChange = (e) => {
+    setIsTeamEvent(e.target.value === "yes");
   };
 
   // States for checking errors
@@ -78,6 +123,7 @@ export default function WorkshopEvent() {
     } else {
       setSubmitted(true);
       setError(false);
+      console.log("Form Data:", formData); // Console log the form data
     }
   };
 
@@ -108,6 +154,10 @@ export default function WorkshopEvent() {
       </div>
     );
   };
+
+  useEffect(() => {
+    console.log("Form Data:", formData);
+  }, [formData]);
 
   return (
     <div className="event-details-boss-container">
@@ -179,6 +229,41 @@ export default function WorkshopEvent() {
                 />
               </div>
             </div>
+            <div className="team-component-container">
+              <div className="team-component-details">
+                <span>Team based Event? :</span>
+                <input
+                  type="radio"
+                  name="team"
+                  value="yes"
+                  onChange={handleTeamEventChange}
+                />
+                <label htmlFor="yes">Yes</label>
+                <input
+                  type="radio"
+                  name="team"
+                  value="no"
+                  onChange={handleTeamEventChange}
+                />
+                <label htmlFor="no">No</label>
+              </div>
+              {/* Conditionally render the team-member-container */}
+              {isTeamEvent && (
+                <div className="team-member-container">
+                  <p>No of Team Members*</p>
+                  <select
+                    onChange={handleTeamMembersChange}
+                    value={TeamMembers}
+                  >
+                    {[1, 2, 3, 4, 5, 6].map((num) => (
+                      <option key={num} value={num}>
+                        {num}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="No-of-contact-person-container">
@@ -224,6 +309,9 @@ export default function WorkshopEvent() {
             <RulebookEntry key={index} serialNo={index + 1} />
           ))}
         </form>
+        <button onClick={handleSubmit} className="submit-button">
+          SUBMIT
+        </button>
         {successMessage()}
         {errorMessage()}
       </div>

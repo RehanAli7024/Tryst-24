@@ -77,11 +77,11 @@
     justify-content: space-between;
     gap: 10px;
     margin-top: 40px;
-    width: 55%;
+    width: 100%;
   }
 
   .registration-date-time-column{
-    width: 80%;
+    width: 50%;
   }
 
   .registration-date-time-input{
@@ -108,4 +108,28 @@
     border-left: 1px solid #93ffd8;
     padding: 8px;
     width: 100%;
+}
+
+.team-component-container select{
+    border: none;
+    border-left: 1px solid #acebf6;
+    background-color: #293749;
+    color: #fff;
+    height: 1.5rem;
+    width: 20%;
+    outline: none;
+}
+
+.team-member-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 24px;
+    justify-content: flex-end;
+}
+
+.team-member-container p{
+    font-size: small;
+    font-weight: 100;
 }

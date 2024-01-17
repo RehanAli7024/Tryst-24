@@ -1,4 +1,4 @@
-// EventDetailsRow1.jsx
+// UploadEvent.jsx
 import React from "react";
 import "./UploadEvent.css";
 

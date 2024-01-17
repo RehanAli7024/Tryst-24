@@ -179,6 +179,7 @@ export default function WorkshopEvent() {
                 />
               </div>
             </div>
+            
           </div>
 
           <div className="No-of-contact-person-container">
