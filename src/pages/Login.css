@@ -1,6 +1,6 @@
 .login{
         display: block;
-       
+        background-color: #041429;
 }
 .header{
     height: 18vh;
@@ -63,7 +63,7 @@ input{
     font-family: sans-serif;
     color: rgba(255, 255, 255, 0.60);
 }
-.loginbutton{
+.loginbutton {
     display: flex;
     align-items: center;
     height: 9vh;
@@ -71,8 +71,14 @@ input{
     border-radius: 2vh;
     border: 1.5px solid #98F9FF;
     background: #ACEBF6;
-
-}
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  }
+  
+  .loginbutton:hover {
+    background-color: #98F9FF;
+    border-color: #ACEBF6;
+  }
+  
 .loginelement{
     width: 5vh;
     height: 5vh;
