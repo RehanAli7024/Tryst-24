@@ -9,6 +9,8 @@ export default function WorkshopEvent() {
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
+  const [RegistrationDate, setRegistrationDate] = useState("");
+  const [RegistrationTime, setRegistrationTime] = useState("");
   const [eventTime, setEventTime] = useState("");
   const [eventLocation, setEventLocation] = useState("");
   const [file, setFile] = useState(null); // Initialize file state to null
@@ -40,8 +42,18 @@ export default function WorkshopEvent() {
   };
 
   // Handling the event date change
-  const handleDate = (e) => {
+  const handleEventDate = (e) => {
     setEventDate(e.target.value);
+    setSubmitted(false);
+  };
+
+  const handleRegistrationDate = (e) => {
+    setRegistrationDate(e.target.value);
+    setSubmitted(false);
+  };
+
+  const handleRegistationTiming = (e) => {
+    setRegistrationTime(e.target.value);
     setSubmitted(false);
   };
 
@@ -130,7 +142,7 @@ export default function WorkshopEvent() {
               <label className="label">EVENT DATE*</label>
               <br />
               <input
-                onChange={handleDate}
+                onChange={handleEventDate}
                 className="input"
                 value={eventDate}
                 type="date"
@@ -166,15 +178,15 @@ export default function WorkshopEvent() {
               <br />
               <div className="registration-date-time-input">
                 <input
-                  onChange={handleDate}
+                  onChange={handleRegistrationDate}
                   className="input"
-                  value={eventDate}
+                  value={RegistrationDate}
                   type="date"
                 />
                 <input
-                  onChange={handleTiming}
+                  onChange={handleRegistationTiming}
                   className="input"
-                  value={eventTime}
+                  value={RegistrationTime}
                   type="time"
                 />
               </div>

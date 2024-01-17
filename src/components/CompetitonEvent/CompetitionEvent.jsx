@@ -16,6 +16,8 @@ export default function CompetitionEvent() {
     Rulebook: 1,
     TeamMembers: 1,
     isTeamEvent: false,
+    RegistrationDate: "",
+    RegistrationTime: "",
     
   });
 
@@ -30,6 +32,8 @@ export default function CompetitionEvent() {
     Rulebook,
     TeamMembers,
     isTeamEvent,
+    RegistrationDate,
+    RegistrationTime,
   } = formData;
 
   const setEventTitle = (value) =>
@@ -50,6 +54,22 @@ export default function CompetitionEvent() {
     setFormData({ ...formData, TeamMembers: value });
   const setIsTeamEvent = (value) =>
     setFormData({ ...formData, isTeamEvent: value });
+
+    const setRegistrationDate = (value) =>
+  setFormData({ ...formData, RegistrationDate: value });
+
+const setRegistrationTime = (value) =>
+  setFormData({ ...formData, RegistrationTime: value });
+
+  const handleRegistrationDate = (e) => {
+    setRegistrationDate(e.target.value);
+    setSubmitted(false);
+  };
+
+  const handleRegistationTiming = (e) => {
+    setRegistrationTime(e.target.value);
+    setSubmitted(false);
+  };
 
   const handleTeamMembersChange = (e) => {
     setTeamMembers(Number(e.target.value));
@@ -214,15 +234,15 @@ export default function CompetitionEvent() {
               <br />
               <div className="registration-date-time-input">
                 <input
-                  onChange={handleDate}
+                  onChange={handleRegistrationDate}
                   className="input"
-                  value={eventDate}
+                  value={RegistrationDate}
                   type="date"
                 />
                 <input
-                  onChange={handleTiming}
+                  onChange={handleRegistationTiming}
                   className="input"
-                  value={eventTime}
+                  value={RegistrationTime}
                   type="time"
                 />
               </div>
