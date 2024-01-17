@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import RulebookEntry from "../common/RulebookEntry";
@@ -117,17 +117,16 @@ export default function CompetitionEvent() {
       eventDate === "" ||
       eventTime === "" ||
       eventLocation === "" ||
-      file === null // Check if an image is selected
+      file === null 
     ) {
       setError(true);
     } else {
       setSubmitted(true);
       setError(false);
-      console.log("Form Data:", formData); // Console log the form data
+      console.log("Form Data:", formData); 
     }
   };
 
-  // Showing success message
   const successMessage = () => {
     return (
       <div
@@ -136,12 +135,11 @@ export default function CompetitionEvent() {
           display: submitted ? "" : "none",
         }}
       >
-        <h1>Event "{eventTitle}" successfully submitted!!</h1>
+        <h1>Event `{eventTitle}` successfully submitted!!</h1>
       </div>
     );
   };
 
-  // Showing error message if error is true
   const errorMessage = () => {
     return (
       <div

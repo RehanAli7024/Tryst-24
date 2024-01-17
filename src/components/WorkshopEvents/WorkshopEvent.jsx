@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import RulebookEntry from "../common/RulebookEntry";
@@ -90,7 +90,7 @@ export default function WorkshopEvent() {
           display: submitted ? "" : "none",
         }}
       >
-        <h1>Event "{eventTitle}" successfully submitted!!</h1>
+        <h1>Event `{eventTitle}` successfully submitted!!</h1>
       </div>
     );
   };
@@ -225,6 +225,9 @@ export default function WorkshopEvent() {
             <RulebookEntry key={index} serialNo={index + 1} />
           ))}
         </form>
+        <button onClick={handleSubmit} className="submit-button">
+          SUBMIT
+        </button>
         {successMessage()}
         {errorMessage()}
       </div>

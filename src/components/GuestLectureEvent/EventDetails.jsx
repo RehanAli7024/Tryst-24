@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./EventDetails.css";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
@@ -89,7 +89,7 @@ const EventDetails = () => {
           display: submitted ? "" : "none",
         }}
       >
-        <h1>Event "{eventTitle}" successfully submitted!!</h1>
+        <h1>Event `{eventTitle}` successfully submitted!!</h1>
       </div>
     );
   };
@@ -215,6 +215,9 @@ const EventDetails = () => {
             />
           ))}
         </form>
+        <button onClick={handleSubmit} className="submit-button">
+          SUBMIT
+        </button>
         {successMessage()}
         {errorMessage()}
       </div>

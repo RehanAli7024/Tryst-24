@@ -1,7 +1,5 @@
 // RulebookEntry.js
 
-import React from "react";
-
 const RulebookEntry = ({ serialNo }) => {
   return (
     <div className="rulebook-container">

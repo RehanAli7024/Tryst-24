@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./Memberdetail.css";
 
 export default function Memberdetail({ serialNo }) {
