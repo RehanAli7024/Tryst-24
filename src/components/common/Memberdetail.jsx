@@ -1,7 +1,7 @@
 
 import "./Memberdetail.css";
 
-export default function Memberdetail({ serialNo }) {
+export default function Memberdetail({ serialNo, id }) {
   return (
     <div>
       <div className="contact-details-container">
@@ -10,6 +10,7 @@ export default function Memberdetail({ serialNo }) {
         </div>
         <div className="name-of-contact-person">
           <input
+            id={`contactPersonName_${id}`}  // Added unique ID
             className="input"
             type="text"
             placeholder="Name of Contact Person"
@@ -17,6 +18,7 @@ export default function Memberdetail({ serialNo }) {
         </div>
         <div className="contact-number">
           <input
+            id={`contactPersonNumber_${id}`}  // Added unique ID
             className="input"
             type="text"
             placeholder="Contact Number"

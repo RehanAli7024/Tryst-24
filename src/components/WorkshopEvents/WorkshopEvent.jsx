@@ -83,16 +83,52 @@ export default function WorkshopEvent() {
       eventDescription === "" ||
       eventDate === "" ||
       eventTime === "" ||
-      eventLocation === "" ||
-      file === null // Check if an image is selected
+      eventLocation === ""
+      // file === null
     ) {
       setError(true);
     } else {
       setSubmitted(true);
       setError(false);
+
+      // Gather input values
+      const formData = {
+        eventTitle,
+        eventDescription,
+        eventDate,
+        eventTime,
+        eventLocation,
+        RegistrationDate,
+        RegistrationTime,
+        file,
+        contactPersons: [],
+        rulebookEntries: [],
+      };
+
+      // Gather data from Memberdetail component
+      for (let i = 0; i < contactPersons; i++) {
+        const contactPersonName = document.getElementById(
+          `contactPersonName_${i}`
+        ).value;
+        const contactPersonNumber = document.getElementById(
+          `contactPersonNumber_${i}`
+        ).value;
+        formData.contactPersons.push({
+          contactPersonName,
+          contactPersonNumber,
+        });
+      }
+
+      // Gather data from RulebookEntry component
+      for (let i = 0; i < Rulebook; i++) {
+        const rule = document.getElementById(`rule_${i}`).value;
+        formData.rulebookEntries.push({ rule });
+      }
+
+      // Console log the gathered data
+      console.log(formData);
     }
   };
-
   // Showing success message
   const successMessage = () => {
     return (
@@ -101,9 +137,7 @@ export default function WorkshopEvent() {
         style={{
           display: submitted ? "" : "none",
         }}
-      >
-        <h1>Event `{eventTitle}` successfully submitted!!</h1>
-      </div>
+      ></div>
     );
   };
 
@@ -191,7 +225,6 @@ export default function WorkshopEvent() {
                 />
               </div>
             </div>
-            
           </div>
 
           <div className="No-of-contact-person-container">
@@ -214,7 +247,7 @@ export default function WorkshopEvent() {
           </div>
 
           {Array.from({ length: contactPersons }).map((_, index) => (
-            <Memberdetail key={index} serialNo={index + 1} />
+            <Memberdetail key={index} serialNo={index + 1} id={index} />
           ))}
 
           <div className="No-of-contact-person-container">
@@ -234,7 +267,7 @@ export default function WorkshopEvent() {
           </div>
 
           {Array.from({ length: Rulebook }).map((_, index) => (
-            <RulebookEntry key={index} serialNo={index + 1} />
+            <RulebookEntry key={index} serialNo={index + 1} id={index} />
           ))}
         </form>
         <button onClick={handleSubmit} className="submit-button">
