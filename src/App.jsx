@@ -3,11 +3,12 @@ import React from 'react'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import EventDetails from './components/eventDetails/EventDetails.jsx'
-
+import Registeration from './components/Registeration/Registeration.jsx'
 
 const App = () => {
   return (
     <main className='bg-slate-300/20 h-full'>
+    <Registeration></Registeration>
       <Router>
         <Navbar />
         <Routes>
