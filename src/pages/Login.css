@@ -1,0 +1,100 @@
+.login{
+        display: block;
+        background-color: #041429;
+}
+.header{
+    height: 18vh;
+    display: flex;
+}
+.trystlogo{
+    width: 17vh;
+    height: 14vh;
+    margin-top: 2vh;
+    margin-left: 15vh;
+}
+.inputs{
+    width: 84vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7vh;
+    margin-left: 5vh;
+ 
+    
+}
+.heading{
+    color: #ACEBF6;
+    font-size: 9vh;
+    font-family: monospace;
+    font-weight: 800;
+}
+.containor{
+    display: flex;
+    margin-top: 5vh;
+    gap: 2vh;
+}
+.eventimg{
+    width: 87vh;
+}
+.eventimg img{
+    max-width: 100%;
+}
+.inputfields{
+    border-left: 3px solid #ACEBF6;
+    background-color: rgba(255, 255, 255, 0.12);
+    height: 9vh;
+    width: 49vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.inputfield{
+    background-color: transparent;
+    border-color: transparent;
+    height: 70%;
+    width: 100%;
+    padding: 4vh;
+    outline: none;
+}
+input{
+    font-size: 3vh;
+    font-family: sans-serif;
+    color: rgba(255, 255, 255, 0.60);
+}
+.loginbutton {
+    display: flex;
+    align-items: center;
+    height: 9vh;
+    width: 25vh;
+    border-radius: 2vh;
+    border: 1.5px solid #98F9FF;
+    background: #ACEBF6;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  }
+  
+  .loginbutton:hover {
+    background-color: #98F9FF;
+    border-color: #ACEBF6;
+  }
+  
+.loginelement{
+    width: 5vh;
+    height: 5vh;
+    padding-left: 3vh;
+    background: transparent;
+    border: transparent;
+    font-size: 4vh;
+}
+.footer{
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-top: 9vh;
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 2vh;
+}
+   
