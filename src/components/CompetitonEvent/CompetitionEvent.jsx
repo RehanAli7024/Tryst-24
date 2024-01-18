@@ -33,6 +33,10 @@ export default function CompetitionEvent() {
 
   const handleTeamEventChange = (e) => {
     setIsTeamEvent(e.target.value === "yes");
+    setIsTeamEvent((e.target.value === "no" ?true:false));
+  
+    // Conditionally set TeamMembers value
+    setTeamMembers(isTeamEvent ? TeamMembers : 1);
   };
 
   const handlecontactPersonsChange = (e) => {
@@ -83,11 +87,51 @@ export default function CompetitionEvent() {
       eventDate === "" ||
       eventTime === "" ||
       eventLocation === ""
+      // file === null
     ) {
       setError(true);
     } else {
       setSubmitted(true);
       setError(false);
+
+      // Gather input values
+      const formData = {
+        eventTitle,
+        eventDescription,
+        eventDate,
+        eventTime,
+        eventLocation,
+        RegistrationDate,
+        RegistrationTime,
+        file,
+        contactPersons: [],
+        rulebookEntries: [],
+        isTeamEvent,
+        TeamMembers,
+      };
+
+      // Gather data from Memberdetail component
+      for (let i = 0; i < contactPersons; i++) {
+        const contactPersonName = document.getElementById(
+          `contactPersonName_${i}`
+        ).value;
+        const contactPersonNumber = document.getElementById(
+          `contactPersonNumber_${i}`
+        ).value;
+        formData.contactPersons.push({
+          contactPersonName,
+          contactPersonNumber,
+        });
+      }
+
+      // Gather data from RulebookEntry component
+      for (let i = 0; i < Rulebook; i++) {
+        const rule = document.getElementById(`rule_${i}`).value;
+        formData.rulebookEntries.push({ rule });
+      }
+
+      // Console log the gathered data
+      console.log(formData);
     }
   };
 
@@ -236,7 +280,7 @@ export default function CompetitionEvent() {
             </div>
           </div>
           {Array.from({ length: contactPersons }).map((_, index) => (
-            <Memberdetail key={index} serialNo={index + 1} />
+            <Memberdetail key={index} serialNo={index + 1} id={index} />
           ))}
           <div className="No-of-contact-person-container">
             <div className="contact-person-details">
@@ -254,7 +298,7 @@ export default function CompetitionEvent() {
             </div>
           </div>
           {Array.from({ length: Rulebook }).map((_, index) => (
-            <RulebookEntry key={index} serialNo={index + 1} />
+            <RulebookEntry key={index} serialNo={index + 1} id={index} />
           ))}
         </form>
         <button onClick={handleSubmit} className="submit-button">
