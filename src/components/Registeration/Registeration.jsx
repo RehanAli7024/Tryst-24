@@ -5,17 +5,18 @@ import deleteicon from "../../assets/delete.png";
 import "./Registeration.css";
 
 function Registeration() {
-  const [formData, setFormData] = useState({
-    acceptingResponses: '',
-    yourName: '',
-    phoneNumber: '',
-    email: '',
-    collegeState: '',
-    collegeCity: '',
-    collegeName: '',
-    referralId: '',
-    speakerQuestions: '',
-  });
+    const [formData, setFormData] = useState({
+        acceptingResponses: '',
+        yourName: '',
+        phoneNumber: '',
+        email: '',
+        collegeState: '',
+        collegeCity: '',
+        collegeName: '',
+        referralId: '',
+        speakerQuestions: '',
+        additionalField: '', // Added for the new field
+      });
 
   const handleChange = (field, value) => {
     setFormData(prevData => ({ ...prevData, [field]: value }));
@@ -28,6 +29,11 @@ function Registeration() {
   const handleSave = () => {
     console.log('Form Data:', formData);
     // You can perform additional actions with the form data here
+  };
+  const handleAddNewField = () => {
+    // You can add logic here to handle the addition of a new field
+    // For now, let's just console log a message
+    console.log('Adding new field');
   };
 
   return (
@@ -123,6 +129,13 @@ function Registeration() {
             type="text"
             onChange={(e) => handleChange('referralId', e.target.value)}
           />
+        </div>
+        
+          <div className="addnewfield">
+            <button className="fieldbutton" onClick={handleAddNewField}>
+              Add New Field
+            </button>
+          
         </div>
         <div className="inputfieldcontainor">
           <div className="inputfield speakerquestions">
