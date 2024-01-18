@@ -1,65 +1,25 @@
-import  { useState, useEffect } from "react";
+import { useState } from "react";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import RulebookEntry from "../common/RulebookEntry";
 import "./CompetitionEvent.css";
-
 export default function CompetitionEvent() {
-  const [formData, setFormData] = useState({
-    eventTitle: "",
-    eventDescription: "",
-    eventDate: "",
-    eventTime: "",
-    eventLocation: "",
-    file: null,
-    contactPersons: 1,
-    Rulebook: 1,
-    TeamMembers: 1,
-    isTeamEvent: false,
-    RegistrationDate: "",
-    RegistrationTime: "",
-    
-  });
+  const [eventTitle, setEventTitle] = useState("");
+  const [eventDescription, setEventDescription] = useState("");
+  const [eventDate, setEventDate] = useState("");
+  const [eventTime, setEventTime] = useState("");
+  const [eventLocation, setEventLocation] = useState("");
+  const [file, setFile] = useState(null);
+  const [contactPersons, setcontactPerosns] = useState(1);
+  const [Rulebook, setRulebook] = useState(1);
+  const [TeamMembers, setTeamMembers] = useState(1);
+  const [RegistrationDate, setRegistrationDate] = useState("");
+  const [RegistrationTime, setRegistrationTime] = useState("");
+  const [isTeamEvent, setIsTeamEvent] = useState(false);
 
-  const {
-    eventTitle,
-    eventDescription,
-    eventDate,
-    eventTime,
-    eventLocation,
-    file,
-    contactPersons,
-    Rulebook,
-    TeamMembers,
-    isTeamEvent,
-    RegistrationDate,
-    RegistrationTime,
-  } = formData;
-
-  const setEventTitle = (value) =>
-    setFormData({ ...formData, eventTitle: value });
-  const setEventDescription = (value) =>
-    setFormData({ ...formData, eventDescription: value });
-  const setEventDate = (value) =>
-    setFormData({ ...formData, eventDate: value });
-  const setEventTime = (value) =>
-    setFormData({ ...formData, eventTime: value });
-  const setEventLocation = (value) =>
-    setFormData({ ...formData, eventLocation: value });
-  const setFile = (value) => setFormData({ ...formData, file: value });
-  const setcontactPerosns = (value) =>
-    setFormData({ ...formData, contactPersons: value });
-  const setRulebook = (value) => setFormData({ ...formData, Rulebook: value });
-  const setTeamMembers = (value) =>
-    setFormData({ ...formData, TeamMembers: value });
-  const setIsTeamEvent = (value) =>
-    setFormData({ ...formData, isTeamEvent: value });
-
-    const setRegistrationDate = (value) =>
-  setFormData({ ...formData, RegistrationDate: value });
-
-const setRegistrationTime = (value) =>
-  setFormData({ ...formData, RegistrationTime: value });
+  const handleTeamMembersChange = (e) => {
+    setTeamMembers(e.target.value);
+  };
 
   const handleRegistrationDate = (e) => {
     setRegistrationDate(e.target.value);
@@ -71,63 +31,49 @@ const setRegistrationTime = (value) =>
     setSubmitted(false);
   };
 
-  const handleTeamMembersChange = (e) => {
-    setTeamMembers(Number(e.target.value));
+  const handleTeamEventChange = (e) => {
+    setIsTeamEvent(e.target.value === "yes");
   };
 
   const handlecontactPersonsChange = (e) => {
     setcontactPerosns(Number(e.target.value));
   };
-
   const handleRulebookChange = (e) => {
     setRulebook(Number(e.target.value));
   };
 
-  // Function to handle radio button change
-  const handleTeamEventChange = (e) => {
-    setIsTeamEvent(e.target.value === "yes");
-  };
-
-  // States for checking errors
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
-
   // Handling the event title change
   const handleTitle = (e) => {
     setEventTitle(e.target.value);
     setSubmitted(false);
   };
-
   // Handling the event description change
   const handleDescription = (e) => {
     setEventDescription(e.target.value);
     setSubmitted(false);
   };
-
   // Handling the event date change
   const handleDate = (e) => {
     setEventDate(e.target.value);
     setSubmitted(false);
   };
-
   // Handling the event timing change
   const handleTiming = (e) => {
     setEventTime(e.target.value);
     setSubmitted(false);
   };
-
   // Handling the event venue change
   const handleVenue = (e) => {
     setEventLocation(e.target.value);
     setSubmitted(false);
   };
-
   // Handling the image change
   const handleImageChange = (e) => {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   };
-
   // Handling the form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -136,14 +82,12 @@ const setRegistrationTime = (value) =>
       eventDescription === "" ||
       eventDate === "" ||
       eventTime === "" ||
-      eventLocation === "" ||
-      file === null 
+      eventLocation === ""
     ) {
       setError(true);
     } else {
       setSubmitted(true);
       setError(false);
-      console.log("Form Data:", formData); 
     }
   };
 
@@ -159,7 +103,6 @@ const setRegistrationTime = (value) =>
       </div>
     );
   };
-
   const errorMessage = () => {
     return (
       <div
@@ -167,15 +110,9 @@ const setRegistrationTime = (value) =>
         style={{
           display: error ? "" : "none",
         }}
-      >
-        <h1>Please enter all the fields</h1>
-      </div>
+      ></div>
     );
   };
-
-  useEffect(() => {
-    console.log("Form Data:", formData);
-  }, [formData]);
 
   return (
     <div className="event-details-boss-container">
@@ -192,7 +129,6 @@ const setRegistrationTime = (value) =>
             eventDescription={eventDescription}
             file={file}
           />
-
           <div className="date-time-venue-container">
             <div className="events-flex-column">
               <label className="label">EVENT DATE*</label>
@@ -204,7 +140,6 @@ const setRegistrationTime = (value) =>
                 type="date"
               />
             </div>
-
             <div className="events-flex-column">
               <label className="label">EVENT TIMING*</label>
               <br />
@@ -215,7 +150,6 @@ const setRegistrationTime = (value) =>
                 type="time"
               />
             </div>
-
             <div className="events-flex-column">
               <label className="label">EVENT VENUE*</label>
               <br />
@@ -227,7 +161,6 @@ const setRegistrationTime = (value) =>
               />
             </div>
           </div>
-
           <div className="registration-date-time-container">
             <div className="registration-date-time-column">
               <label className="label">REGISTRATION DEADLINE*</label>
@@ -272,6 +205,7 @@ const setRegistrationTime = (value) =>
                   <select
                     onChange={handleTeamMembersChange}
                     value={TeamMembers}
+                    id="teamMembers" // Ensure that the ID is set here
                   >
                     {[1, 2, 3, 4, 5, 6].map((num) => (
                       <option key={num} value={num}>
@@ -283,7 +217,6 @@ const setRegistrationTime = (value) =>
               )}
             </div>
           </div>
-
           <div className="No-of-contact-person-container">
             <div className="contact-person-details">
               <p>Contact Person(s) Details*</p>
@@ -302,11 +235,9 @@ const setRegistrationTime = (value) =>
               </select>
             </div>
           </div>
-
           {Array.from({ length: contactPersons }).map((_, index) => (
             <Memberdetail key={index} serialNo={index + 1} />
           ))}
-
           <div className="No-of-contact-person-container">
             <div className="contact-person-details">
               <p>RuleBook*</p>
@@ -322,7 +253,6 @@ const setRegistrationTime = (value) =>
               </select>
             </div>
           </div>
-
           {Array.from({ length: Rulebook }).map((_, index) => (
             <RulebookEntry key={index} serialNo={index + 1} />
           ))}
