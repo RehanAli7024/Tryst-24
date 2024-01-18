@@ -1,0 +1,91 @@
+.PopUP {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .containor {
+    background-color: #041429;
+    color: white;
+    width: 70%;
+    border: 2px solid #a6d3fd;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+  }
+  
+  .responses {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .inputfieldcontainor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8%;
+  }
+  
+  .inputfield {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    gap: 1vh;
+  }
+  
+  .titleoffield {
+    color: #ACEBF6;
+  }
+  
+  .box {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-left: 2px solid #acebf6;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.25);
+    height: 5vh;
+    color: white; 
+    font-size: 14px; 
+  }
+  
+  .addnewfield {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .fieldbutton {
+    border-radius: 16px;
+    background: #a6d3fd;
+    height: 8vh;
+    width: 20%;
+    font-size: medium;
+    color: #041429; 
+  }
+  .referral{
+    width: 41%;
+    margin-left: 5%;
+}
+.speakerquestions{
+    width: 60%;
+    
+}  
+.edit , .delete{
+    width: 10%;
+    height: 8vh;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+.save{
+    background: #ACEBF6;
+    width: 13%;
+    height: 8vh;
+    font-size: 3vh;
+    border: none;
+}
+.savebutton{
+    height: 12vh;
+}
