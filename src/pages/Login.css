@@ -58,7 +58,7 @@
     padding: 4vh;
     outline: none;
 }
-input{
+.containor .inputs input{
     font-size: 3vh;
     font-family: sans-serif;
     color: rgba(255, 255, 255, 0.60);

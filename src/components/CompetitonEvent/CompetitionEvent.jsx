@@ -33,11 +33,11 @@ export default function CompetitionEvent() {
 
   const handleTeamEventChange = (e) => {
     setIsTeamEvent(e.target.value === "yes");
-    setIsTeamEvent((e.target.value === "no" ?true:false));
   
     // Conditionally set TeamMembers value
-    setTeamMembers(isTeamEvent ? TeamMembers : 1);
+    setTeamMembers(e.target.value === "yes" ? TeamMembers : 1);
   };
+  
 
   const handlecontactPersonsChange = (e) => {
     setcontactPerosns(Number(e.target.value));
