@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import EventDetails from './components/GuestLectureEvent/EventDetails.jsx'
+import GuestLectureEvent from './components/GuestLectureEvent/GuestLectureEvent.jsx'
 import WorkshopEvent from './components/WorkshopEvents/WorkshopEvent.jsx'
 import CompetitionEvent from './components/CompetitonEvent/CompetitionEvent.jsx'
 import AddNewField from './overlays/overlays/add-new-field/AddNewField.jsx'
@@ -14,7 +14,7 @@ const App = () => {
       <Router> 
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/eventDetails" element={<EventDetails />} />
+          <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/workshopevent" element={<WorkshopEvent />} />
           <Route path="/competitionevent" element={<CompetitionEvent />} />
           <Route path="/addnewfield" element={< AddNewField/>} />

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import "./EventDetails.css";
+import { Link } from "react-router-dom";
+import "./GuestLectureEvent.css";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import UploadSpeaker from "../common/UploadSpeaker";
 
-const EventDetails = () => {
+const GuestLectureEvent = () => {
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -243,7 +244,7 @@ const EventDetails = () => {
           ))}
         </form>
         <button onClick={handleSubmit} className="submit-button">
-          SUBMIT
+        <Link to="/registration">SUBMIT</Link>
         </button>
         {successMessage()}
         {errorMessage()}
@@ -252,4 +253,4 @@ const EventDetails = () => {
   );
 };
 
-export default EventDetails;
+export default GuestLectureEvent;
