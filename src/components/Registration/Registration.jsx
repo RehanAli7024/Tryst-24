@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
 import "./Registration.css";
 
 function Registeration() {
+ const location = useLocation();
     const [formData, setFormData] = useState({
         acceptingResponses: '',
         yourName: '',
@@ -34,6 +37,14 @@ function Registeration() {
     // For now, let's just console log a message
     console.log('Adding new field');
   };
+
+  useEffect(() => {
+    // Access eventData from location state
+    const eventData = location.state?.eventData;
+    console.log("EventDetails data in Registration:", eventData);
+  }, [location.state]);
+
+
 
   return (
     <div className="PopUP">

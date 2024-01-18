@@ -20,8 +20,9 @@ export default function Memberdetail({ serialNo, id }) {
           <input
             id={`contactPersonNumber_${id}`}  
             className="input"
-            type="text"
+            type="tel"
             placeholder="Contact Number"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
           />
         </div>
       </div>

@@ -135,18 +135,7 @@ export default function CompetitionEvent() {
     }
   };
 
-  const successMessage = () => {
-    return (
-      <div
-        className="success"
-        style={{
-          display: submitted ? "" : "none",
-        }}
-      >
-        <h1>Event `{eventTitle}` successfully submitted!!</h1>
-      </div>
-    );
-  };
+  
   const errorMessage = () => {
     return (
       <div
@@ -304,7 +293,6 @@ export default function CompetitionEvent() {
         <button onClick={handleSubmit} className="submit-button">
           SUBMIT
         </button>
-        {successMessage()}
         {errorMessage()}
       </div>
     </div>

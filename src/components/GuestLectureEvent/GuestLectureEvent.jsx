@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import "./GuestLectureEvent.css";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import UploadSpeaker from "../common/UploadSpeaker";
 
 const GuestLectureEvent = () => {
+  const navigate = useNavigate();
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -71,7 +72,7 @@ const GuestLectureEvent = () => {
       setError(false);
   
       // Gather input values
-      const formData = {
+      const EventData = {
         eventTitle,
         eventDescription,
         eventDate,
@@ -90,7 +91,7 @@ const GuestLectureEvent = () => {
         const contactPersonNumber = document.getElementById(
           `contactPersonNumber_${i}`
         ).value;
-        formData.contactPersons.push({
+        EventData.contactPersons.push({
           contactPersonName,
           contactPersonNumber,
         });
@@ -103,7 +104,7 @@ const GuestLectureEvent = () => {
           ?.value ?? "";
         const speakerFile = document.getElementById(`speakerImage-${i}`)?.src ?? "";
   
-        formData.speakers.push({
+        EventData.speakers.push({
           speakerName,
           speakerDescription,
           speakerFile,
@@ -111,7 +112,8 @@ const GuestLectureEvent = () => {
       }
   
       // Console log the gathered data
-      console.log("EventDetails data:", formData);
+      console.log("EventDetails data:", EventData);
+      navigate("/registration", { state: { eventData: EventData } });
     }
   };
   
