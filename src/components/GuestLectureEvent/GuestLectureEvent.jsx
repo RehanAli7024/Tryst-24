@@ -75,15 +75,15 @@ const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      eventTitle === "" ||
-      eventDescription === "" ||
-      eventDate === "" ||
-      eventTime === "" ||
-      eventLocation === ""
-    ) {
-      setError(true);
-    } else {
+    // if (
+    //   eventTitle === "" ||
+    //   eventDescription === "" ||
+    //   eventDate === "" ||
+    //   eventTime === "" ||
+    //   eventLocation === ""
+    // ) {
+    //   setError(true);
+    // } else {
       setSubmitted(true);
       setError(false);
   
@@ -129,8 +129,9 @@ const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
   
       // Console log the gathered data
       console.log("EventDetails data:", EventData);
-      navigate("/registration", { state: { eventData: EventData } });    }
-  };
+      // navigate("/registration", { state: { eventData: EventData } });    
+    }
+  // };
   
 
   const successMessage = () => {
@@ -162,10 +163,7 @@ const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
   
 
   return (
-    <>
-    {registrationOpen && (
-      <Registeration handleClose={() => setRegistrationOpen(false)} setIsOpen={setIsOpen} />
-    )}
+
     <div className={`event-details-popup-container ${isSubmitted ? "removed-dark-gb" : ""}`}>
     <div className="event-details-boss-container">
 
@@ -269,14 +267,14 @@ const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
           ))}
         </form>
         <button onClick={handleSubmit} className="submit-button">
-        <Link to="/registration">SUBMIT</Link>
+        submit
         </button>
         {successMessage()}
         {errorMessage()}
         </div>
     </div>
     </div>
-    </>
+   
   );
 };
 

@@ -7,6 +7,7 @@ import CompetitionEvent from '../../components/CompetitonEvent/CompetitionEvent'
 import GuestLectureEvent from '../../components/GuestLectureEvent/GuestLectureEvent';
 import WorkshopEvent from '../../components/WorkshopEvents/WorkshopEvent';
 import "./EventOptions.css";
+import Registeration from '../../components/Registration/Registration';
 
 const eventCardImages = {
   competitions: [competitions, competitions, competitions],
@@ -17,6 +18,7 @@ const eventCardImages = {
 export default function EventOptions() {
   const [selectedEventType, setSelectedEventType] = useState('competitions');
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState();
 
   const handleEventTypeClick = (eventType) => {
     setSelectedEventType(eventType);
@@ -24,6 +26,7 @@ export default function EventOptions() {
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
+    setSubmitted(false);
 };
 
   const selectedImages = eventCardImages[selectedEventType] || [];
@@ -58,9 +61,21 @@ export default function EventOptions() {
           <span className='plus-icon'>+</span>
           <span>add new</span>
         </button>
-        {isOpen && selectedEventType === 'competitions' && <CompetitionEvent handleClose={togglePopup} setIsOpen={setIsOpen} />}
+        {isOpen && 
+        selectedEventType === 'competitions' && 
+        <CompetitionEvent handleClose={togglePopup} setIsOpen={setIsOpen} 
+       />}
+       {submitted && 
+        selectedEventType === 'competitions' && 
+        <Registeration handleClose={togglePopup} setIsOpen={setIsOpen} 
+       />}
+
         {isOpen && selectedEventType === 'workshops' && <WorkshopEvent handleClose={togglePopup} setIsOpen={setIsOpen} />}
         {isOpen && selectedEventType === 'guestlectures' && <GuestLectureEvent handleClose={togglePopup} setIsOpen={setIsOpen} />}
+        {submitted && 
+        selectedEventType === 'guestlectures' && 
+        <Registeration handleClose={togglePopup} setIsOpen={setIsOpen} 
+       />}
       </div>
 
       {/* Published container starts here */}

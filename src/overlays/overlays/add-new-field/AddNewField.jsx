@@ -6,11 +6,16 @@ import Upload from './field-types/Upload';
 import TeamMember from './field-types/TeamMember';
 import "./addNewField.css"
 
-export default function AddNewField({ handleClose }) {
+
+export default function AddNewField({ onClose }) {
     const [fieldType, setFieldType] = useState('text');
     const [isMandatory, setIsMandatory] = useState(true);
     const [fieldTitle, setFieldTitle] = useState('');
-    const [fetchedData, setFetchedData] = useState([]);   
+    const [fetchedData, setFetchedData] = useState([]);
+    
+    const handleAddFieldPopupClose = () => {
+        onClose();
+    };
 
     const handleGetOptionsData = (data) => {
         setFetchedData(data);
@@ -28,7 +33,7 @@ export default function AddNewField({ handleClose }) {
         setFieldTitle(e.target.value);
     };
 
-    const handleDoneButtonClick = () => {
+    const handleAddNewField = () => {
         console.log("Input:", {
           fieldType,
           isMandatory,
@@ -37,13 +42,15 @@ export default function AddNewField({ handleClose }) {
         //   TeamMembers: teamMembers,
             fetchedData: fetchedData,
         });
+
+        onClose();
       };
     
 
     return (
         <div className='popup-container'>
         <Container>
-            <button className='btn-close' onClick={handleClose}>X</button>
+            <button className='btn-close' onClick={handleAddFieldPopupClose}>X</button>
             <h3>ADD NEW FIELD</h3>
             <div className='new-field-container'>
                 <form>
@@ -117,7 +124,7 @@ export default function AddNewField({ handleClose }) {
                 </form>
             </div>
             <div className='add-field-btn'>
-                <button type="button" onClick={handleDoneButtonClick}>Done</button>
+                <button type="button" onClick={handleAddNewField}>Done</button>
             </div>
         </Container>
         </div>
@@ -187,6 +194,7 @@ const Container = styled.div`
                 margin-bottom: 1rem;
                 height: 2rem;
                 width: 80%;
+                outline: none;
             }
         }
     }
@@ -194,6 +202,7 @@ const Container = styled.div`
         display: flex;
         justify-content: center;
         padding: 2rem 0 1rem 0;
+        outline: none;
         button {
             display: flex;
             justify-content: center;

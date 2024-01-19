@@ -34,6 +34,10 @@
     width: 90%;
   }
   
+  .inputfield.referral {
+    width: 90%;
+  }
+
   .titleoffield {
     color: #ACEBF6;
   }
@@ -47,6 +51,14 @@
     height: 5vh;
     color: white; 
     font-size: 14px; 
+  }
+
+  .containor .addnewfield button{
+    border: none;
+    &:hover{
+      cursor: pointer;
+      
+    }
   }
   
   .addnewfield {
@@ -63,7 +75,7 @@
     color: #041429; 
   }
   .inputfield.referral .box{
-    width: 90%;
+    width: 100%;
 }
 .speakerquestions{
     width: 60%;
