@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import  { useState } from 'react';
 import styled from 'styled-components';
 import competitions from '../../assets/event cards/comps-pic.png';
 import workshops from '../../assets/event cards/ws-pic.png';
 import guestLectures from '../../assets/event cards/guest-lec-pic.png';
-import CompetitionEvent from '../../components/CompetitonEvent/CompetitionEvent';
-import GuestLectureEvent from '../../components/GuestLectureEvent/GuestLectureEvent';
-import WorkshopEvent from '../../components/WorkshopEvents/WorkshopEvent';
+// import CompetitionEvent from '../../components/CompetitonEvent/CompetitionEvent';
+// import GuestLectureEvent from '../../components/GuestLectureEvent/GuestLectureEvent';
+// import WorkshopEvent from '../../components/WorkshopEvents/WorkshopEvent';
 import "./EventOptions.css";
 import PopupContainer from '../../overlays/popups/PopupContainer';
 

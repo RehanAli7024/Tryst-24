@@ -1,4 +1,3 @@
-import React from 'react'
 import EventOptions from './EventOptions';
 import styled from 'styled-components';
 
