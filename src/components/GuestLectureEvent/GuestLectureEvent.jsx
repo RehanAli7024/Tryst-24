@@ -4,7 +4,6 @@ import "./GuestLectureEvent.css";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import UploadSpeaker from "../common/UploadSpeaker";
-
 const GuestLectureEvent = () => {
   const navigate = useNavigate();
   const [eventTitle, setEventTitle] = useState("");
@@ -113,8 +112,7 @@ const GuestLectureEvent = () => {
   
       // Console log the gathered data
       console.log("EventDetails data:", EventData);
-      navigate("/registration", { state: { eventData: EventData } });
-    }
+      navigate("/registration", { state: { eventData: EventData } });    }
   };
   
 

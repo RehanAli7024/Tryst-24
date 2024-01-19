@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import RulebookEntry from "../common/RulebookEntry";
 
 import "./WorkshopEvent.css";
 
-export default function WorkshopEvent() {
+export default function WorkshopEvent({ handleClose, setIsOpen}) {
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -16,6 +16,22 @@ export default function WorkshopEvent() {
   const [file, setFile] = useState(null); // Initialize file state to null
   const [contactPersons, setcontactPerosns] = useState(1);
   const [Rulebook, setRulebook] = useState(1);
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!eventsRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  }, [setIsOpen]);
+
+  let eventsRef = useRef();
 
   const handlecontactPersonsChange = (e) => {
     setcontactPerosns(Number(e.target.value));
@@ -156,8 +172,9 @@ export default function WorkshopEvent() {
   };
 
   return (
+    <div className="event-details-popup-container">
     <div className="event-details-boss-container">
-      <div className="event-details">
+      <div className="event-details" ref={eventsRef}>
         <form>
           <UploadEvent
             uploadTitle="ADD EVENT POSTER HERE"
@@ -276,6 +293,7 @@ export default function WorkshopEvent() {
         {successMessage()}
         {errorMessage()}
       </div>
+    </div>
     </div>
   );
 }
