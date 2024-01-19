@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState , useEffect , useRef} from "react";
 import { Link , useNavigate } from "react-router-dom";
 import "./GuestLectureEvent.css";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import UploadSpeaker from "../common/UploadSpeaker";
-const GuestLectureEvent = () => {
+import Registeration from "../Registration/Registration";
+const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
   const navigate = useNavigate();
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
@@ -12,12 +13,28 @@ const GuestLectureEvent = () => {
   const [eventTime, setEventTime] = useState("");
   const [eventLocation, setEventLocation] = useState("");
   const [file, setFile] = useState(null);
-
+  const [registrationOpen, setRegistrationOpen] = useState(false);
   const [contactPersons, setcontactPerosns] = useState(1);
   const [Speakers, setSpeakers] = useState(1);
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!eventsRef.current.contains(e.target) && registrationOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  }, [setIsOpen]);
+
+  let eventsRef = useRef();
 
   const handleTitle = (e) => {
     setEventTitle(e.target.value);
@@ -142,9 +159,17 @@ const GuestLectureEvent = () => {
     );
   };
 
+  
+
   return (
+    <>
+    {registrationOpen && (
+      <Registeration handleClose={() => setRegistrationOpen(false)} setIsOpen={setIsOpen} />
+    )}
+    <div className={`event-details-popup-container ${isSubmitted ? "removed-dark-gb" : ""}`}>
     <div className="event-details-boss-container">
-      <div className="event-details">
+
+    <div className={`event-details ${isSubmitted ? "popup-hidden" : ""}`} ref={eventsRef}>
         <form>
           <UploadEvent
             uploadTitle="ADD EVENT POSTER HERE"
@@ -248,8 +273,10 @@ const GuestLectureEvent = () => {
         </button>
         {successMessage()}
         {errorMessage()}
-      </div>
+        </div>
     </div>
+    </div>
+    </>
   );
 };
 

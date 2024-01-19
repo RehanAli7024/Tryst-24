@@ -4,7 +4,7 @@ import competitions from '../../assets/event cards/comps-pic.png';
 import workshops from '../../assets/event cards/ws-pic.png';
 import guestLectures from '../../assets/event cards/guest-lec-pic.png';
 import CompetitionEvent from '../../components/CompetitonEvent/CompetitionEvent';
-import EventDetails from '../../components/GuestLectureEvent/EventDetails';
+import GuestLectureEvent from '../../components/GuestLectureEvent/GuestLectureEvent';
 import WorkshopEvent from '../../components/WorkshopEvents/WorkshopEvent';
 import "./EventOptions.css";
 
@@ -60,7 +60,7 @@ export default function EventOptions() {
         </button>
         {isOpen && selectedEventType === 'competitions' && <CompetitionEvent handleClose={togglePopup} setIsOpen={setIsOpen} />}
         {isOpen && selectedEventType === 'workshops' && <WorkshopEvent handleClose={togglePopup} setIsOpen={setIsOpen} />}
-        {isOpen && selectedEventType === 'guestlectures' && <EventDetails handleClose={togglePopup} setIsOpen={setIsOpen} />}
+        {isOpen && selectedEventType === 'guestlectures' && <GuestLectureEvent handleClose={togglePopup} setIsOpen={setIsOpen} />}
       </div>
 
       {/* Published container starts here */}

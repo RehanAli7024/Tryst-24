@@ -12,7 +12,7 @@
     flex-direction: column;
     gap: 3vh;
     height: 80vh;
-    overflow: scroll;
+    overflow-y: scroll;
   }
   
   .responses {
@@ -31,6 +31,7 @@
   .inputfield {
     display: flex;
     flex-direction: column;
+    width: 90%;
   }
   
   .titleoffield {
