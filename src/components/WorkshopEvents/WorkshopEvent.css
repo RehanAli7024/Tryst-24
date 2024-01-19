@@ -1,23 +1,20 @@
 * {
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  .event-details-boss-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 85px;}
-  
-  .event-details {
-    background-color: #041429;
-    color: #fff;
-    height: 70vh;
-    width: 50vw;
-    padding: 2rem;
-    overflow: auto;
-  }
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+
+.event-details {
+  height: 86%;
+  width: 93%;
+  padding: 2rem;
+  overflow-y: auto;
+  color: #fff;
+}
+
+.event-details form{
+  height: 100%;
+  width: 100%;
+}  
   
   .event-details input {
     background-color: #293749;

@@ -164,9 +164,7 @@ export default function CompetitionEvent({ handleClose, setIsOpen}) {
   };
 
   return (
-    <div className="event-details-popup-container">
-    <div className="event-details-boss-container">
-      <div className="event-details" ref={eventsRef}>
+      <div className="event-details">
         <form>
           <UploadEvent
             uploadTitle="ADD EVENT POSTER HERE"
@@ -306,13 +304,12 @@ export default function CompetitionEvent({ handleClose, setIsOpen}) {
           {Array.from({ length: Rulebook }).map((_, index) => (
             <RulebookEntry key={index} serialNo={index + 1} id={index} />
           ))}
-        </form>
-        <button onClick={handleSubmit} className="submit-button">
+          <button onClick={handleSubmit} className="submit-button">
           SUBMIT
         </button>
-        {errorMessage()}
+        </form>
+        
       </div>
-    </div>
-    </div>
+
   );
 }

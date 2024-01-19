@@ -8,6 +8,7 @@ import GuestLectureEvent from '../../components/GuestLectureEvent/GuestLectureEv
 import WorkshopEvent from '../../components/WorkshopEvents/WorkshopEvent';
 import "./EventOptions.css";
 import Registeration from '../../components/Registration/Registration';
+import PopupContainer from '../../overlays/popups/PopupContainer';
 
 const eventCardImages = {
   competitions: [competitions, competitions, competitions],
@@ -61,7 +62,10 @@ export default function EventOptions() {
           <span className='plus-icon'>+</span>
           <span>add new</span>
         </button>
-        {isOpen && 
+
+          {isOpen && <PopupContainer selectedEventType={selectedEventType} />}
+
+        {/* {isOpen && 
         selectedEventType === 'competitions' && 
         <CompetitionEvent handleClose={togglePopup} setIsOpen={setIsOpen} 
        />}
@@ -75,7 +79,7 @@ export default function EventOptions() {
         {submitted && 
         selectedEventType === 'guestlectures' && 
         <Registeration handleClose={togglePopup} setIsOpen={setIsOpen} 
-       />}
+       />} */}
       </div>
 
       {/* Published container starts here */}

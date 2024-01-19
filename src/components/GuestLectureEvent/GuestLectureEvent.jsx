@@ -146,27 +146,9 @@ const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
       </div>
     );
   };
-
-  const errorMessage = () => {
-    return (
-      <div
-        className="error"
-        style={{
-          display: error ? "" : "none",
-        }}
-      >
-        <h1>Please enter all the fields</h1>
-      </div>
-    );
-  };
-
   
 
   return (
-
-    <div className={`event-details-popup-container ${isSubmitted ? "removed-dark-gb" : ""}`}>
-    <div className="event-details-boss-container">
-
     <div className={`event-details ${isSubmitted ? "popup-hidden" : ""}`} ref={eventsRef}>
         <form>
           <UploadEvent
@@ -265,15 +247,12 @@ const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
               handleDescription={handleDescription}
             />
           ))}
-        </form>
-        <button onClick={handleSubmit} className="submit-button">
+          <button onClick={handleSubmit} className="submit-button">
         submit
         </button>
-        {successMessage()}
-        {errorMessage()}
+        </form>
+        
         </div>
-    </div>
-    </div>
    
   );
 };

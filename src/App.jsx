@@ -7,6 +7,7 @@ import Event from './overlays/overlays/add-new-field/OverlayTest.jsx'
 import Login from './pages/Login';
 import Registeration from './components/Registration/Registration.jsx'
 import MainPage from './pages/main page/MainPage.jsx';
+import PopupContainer from './overlays/popups/PopupContainer.jsx'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/addnewfield" element={<AddNewField/>} />
           <Route path="/overlaytest" element={<Event/>} />
           <Route path="/registration" element={<Registeration/>} />
+          <Route path="/popup" element={<PopupContainer />} />
         </Routes>
       </Router>
     </main>

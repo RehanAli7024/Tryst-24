@@ -43,7 +43,6 @@ export default function WorkshopEvent({ handleClose, setIsOpen}) {
 
   // States for checking errors
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
 
   // Handling the event title change
   const handleTitle = (e) => {
@@ -102,10 +101,8 @@ export default function WorkshopEvent({ handleClose, setIsOpen}) {
       eventLocation === ""
       // file === null
     ) {
-      setError(true);
     } else {
       setSubmitted(true);
-      setError(false);
 
       // Gather input values
       const formData = {
@@ -145,35 +142,9 @@ export default function WorkshopEvent({ handleClose, setIsOpen}) {
       console.log(formData);
     }
   };
-  // Showing success message
-  const successMessage = () => {
-    return (
-      <div
-        className="success"
-        style={{
-          display: submitted ? "" : "none",
-        }}
-      ></div>
-    );
-  };
 
-  // Showing error message if error is true
-  const errorMessage = () => {
-    return (
-      <div
-        className="error"
-        style={{
-          display: error ? "" : "none",
-        }}
-      >
-        <h1>Please enter all the fields</h1>
-      </div>
-    );
-  };
 
   return (
-    <div className="event-details-popup-container">
-    <div className="event-details-boss-container">
       <div className="event-details" ref={eventsRef}>
         <form>
           <UploadEvent
@@ -286,14 +257,11 @@ export default function WorkshopEvent({ handleClose, setIsOpen}) {
           {Array.from({ length: Rulebook }).map((_, index) => (
             <RulebookEntry key={index} serialNo={index + 1} id={index} />
           ))}
-        </form>
-        <button onClick={handleSubmit} className="submit-button">
+          <button onClick={handleSubmit} className="submit-button">
           SUBMIT
         </button>
-        {successMessage()}
-        {errorMessage()}
+        </form>
+        
       </div>
-    </div>
-    </div>
   );
 }

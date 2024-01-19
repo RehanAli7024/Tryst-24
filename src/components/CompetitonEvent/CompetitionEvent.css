@@ -2,26 +2,20 @@
     font-weight: 600;
     font-family: "Poppins", sans-serif;
   }
-  
-  .event-details-boss-container{
-    position: relative;
-    top: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin-top: 85px;}
-  
+
   .event-details {
-    background-color: #041429;
-    color: #fff;
-    height: 70vh;
-    width: 50vw;
+    height: 86%;
+    width: 93%;
     padding: 2rem;
-    overflow: auto;
-    border: #ACEBF6 solid 1px;
+    overflow-y: auto;
+    color: #fff;
   }
-  
+
+  .event-details form{
+    height: 100%;
+    width: 100%;
+
+  }   
   .event-details input {
     background-color: #293749;
     border: none;
