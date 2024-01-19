@@ -27,7 +27,7 @@ export default function PopupContainer({selectedEventType}) {
 
             <div className="event-form-inputs">
                 {eventTitle === 'eventDetails' && selectedEventType === 'competitions' && <CompetitionEvent />}
-                {eventTitle === 'eventDetails' && selectedEventType === 'workshop' && <WorkshopEvent />}
+                {eventTitle === 'eventDetails' && selectedEventType === 'workshops' && <WorkshopEvent />}
                 {eventTitle === 'eventDetails' && selectedEventType === 'guestlectures' && <GuestLectureEvent />}
 
                 {eventTitle === 'registrationForm' && <h1>Registration Form</h1>}
