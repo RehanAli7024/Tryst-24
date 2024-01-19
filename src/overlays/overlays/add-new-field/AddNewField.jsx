@@ -7,7 +7,7 @@ import TeamMember from './field-types/TeamMember';
 import "./addNewField.css"
 
 
-export default function AddNewField({ onClose }) {
+export default function AddNewField({ onClose, onAddNewField}) {
     const [fieldType, setFieldType] = useState('text');
     const [isMandatory, setIsMandatory] = useState(true);
     const [fieldTitle, setFieldTitle] = useState('');
@@ -34,17 +34,22 @@ export default function AddNewField({ onClose }) {
     };
 
     const handleAddNewField = () => {
-        console.log("Input:", {
-          fieldType,
-          isMandatory,
-          fieldTitle,
-        //   radioTextValues: currentRadioTextValues,
-        //   TeamMembers: teamMembers,
-            fetchedData: fetchedData,
-        });
+    const newFieldData = {
+      fieldType,
+      isMandatory,
+      fieldTitle,
+      fetchedData,
+    };
+    console.log('New Field Data:', newFieldData);
 
-        onClose();
-      };
+    if (typeof onAddNewField === 'function') {
+      onAddNewField(newFieldData);
+    } else {
+      console.error('onAddNewField is not a function');
+    }
+
+    onClose();
+  };
     
 
     return (
