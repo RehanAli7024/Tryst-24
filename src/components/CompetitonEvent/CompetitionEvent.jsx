@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import RulebookEntry from "../common/RulebookEntry";
 import "./CompetitionEvent.css";
-export default function CompetitionEvent() {
+export default function CompetitionEvent({ handleClose, setIsOpen}) {
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -16,6 +16,22 @@ export default function CompetitionEvent() {
   const [RegistrationDate, setRegistrationDate] = useState("");
   const [RegistrationTime, setRegistrationTime] = useState("");
   const [isTeamEvent, setIsTeamEvent] = useState(false);
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!eventsRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  }, [setIsOpen]);
+
+  let eventsRef = useRef();
 
   const handleTeamMembersChange = (e) => {
     setTeamMembers(e.target.value);
@@ -159,8 +175,9 @@ export default function CompetitionEvent() {
   };
 
   return (
+    <div className="event-details-popup-container">
     <div className="event-details-boss-container">
-      <div className="event-details">
+      <div className="event-details" ref={eventsRef}>
         <form>
           <UploadEvent
             uploadTitle="ADD EVENT POSTER HERE"
@@ -307,6 +324,7 @@ export default function CompetitionEvent() {
         {successMessage()}
         {errorMessage()}
       </div>
+    </div>
     </div>
   );
 }

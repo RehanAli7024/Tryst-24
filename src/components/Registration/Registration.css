@@ -7,11 +7,12 @@
   .containor {
     background-color: #041429;
     color: white;
-    width: 70%;
     border: 2px solid #a6d3fd;
     display: flex;
     flex-direction: column;
     gap: 3vh;
+    height: 80vh;
+    overflow: scroll;
   }
   
   .responses {
@@ -24,15 +25,12 @@
   .inputfieldcontainor {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 8%;
+    justify-content: space-between;
   }
   
   .inputfield {
     display: flex;
     flex-direction: column;
-    width: 25%;
-    gap: 1vh;
   }
   
   .titleoffield {
@@ -45,7 +43,6 @@
     border: none;
     border-left: 2px solid #acebf6;
     background: rgba(255, 255, 255, 0.12);
-    box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.25);
     height: 5vh;
     color: white; 
     font-size: 14px; 
@@ -64,9 +61,8 @@
     font-size: medium;
     color: #041429; 
   }
-  .referral{
-    width: 41%;
-    margin-left: 5%;
+  .inputfield.referral .box{
+    width: 90%;
 }
 .speakerquestions{
     width: 60%;

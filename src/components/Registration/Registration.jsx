@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
 import "./Registration.css";
 
-function Registeration() {
+function Registeration({ handleClose, setRegistrationOpen}) {
     const [formData, setFormData] = useState({
         acceptingResponses: '',
         yourName: '',
@@ -16,6 +16,22 @@ function Registeration() {
         speakerQuestions: '',
         additionalField: '', // Added for the new field
       });
+
+      useEffect(() => {
+        let handlerr = (e) => {
+          if (!registrationRef.current.contains(e.target)) {
+            setRegistrationOpen(false);
+          }
+        };
+    
+        document.addEventListener("mousedown", handlerr);
+    
+        return () => {
+          document.removeEventListener("mousedown", handlerr);
+        }
+      }, [setRegistrationOpen]);
+    
+      let registrationRef = useRef();
 
   const handleChange = (field, value) => {
     setFormData(prevData => ({ ...prevData, [field]: value }));
@@ -36,8 +52,9 @@ function Registeration() {
   };
 
   return (
-    <div className="PopUP">
-      <div className="containor">
+    <div className='event-details-popup-container'> 
+    <div className="PopUP" >
+      <div className="containor" ref={registrationRef}>
         
         <div className="responses">
           <p className="question">Accepting Responses?:</p>
@@ -160,6 +177,7 @@ function Registeration() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

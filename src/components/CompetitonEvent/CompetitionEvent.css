@@ -4,6 +4,8 @@
   }
   
   .event-details-boss-container{
+    position: relative;
+    top: 100px;
       display: flex;
       justify-content: center;
       align-items: center;}
@@ -15,6 +17,7 @@
     width: 50vw;
     padding: 2rem;
     overflow: auto;
+    border: #ACEBF6 solid 1px;
   }
   
   .event-details input {

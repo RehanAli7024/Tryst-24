@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./EventDetails.css";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import UploadSpeaker from "../common/UploadSpeaker";
+import Registeration from "../Registration/Registration";
 
-const EventDetails = () => {
+const EventDetails = ({ handleClose, setIsOpen}) => {
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -17,6 +18,25 @@ const EventDetails = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!eventsRef.current.contains(e.target) && registrationOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  }, [setIsOpen]);
+
+  let eventsRef = useRef();
 
   const handleTitle = (e) => {
     setEventTitle(e.target.value);
@@ -55,17 +75,18 @@ const EventDetails = () => {
     setSpeakers(Number(e.target.value));
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      eventTitle === "" ||
-      eventDescription === "" ||
-      eventDate === "" ||
-      eventTime === "" ||
-      eventLocation === ""
-    ) {
-      setError(true);
-    } else {
+    // if (
+    //   eventTitle === "" ||
+    //   eventDescription === "" ||
+    //   eventDate === "" ||
+    //   eventTime === "" ||
+    //   eventLocation === ""
+    // ) {
+    //   setError(true);
+    // } else {
       setSubmitted(true);
       setError(false);
   
@@ -111,22 +132,25 @@ const EventDetails = () => {
   
       // Console log the gathered data
       console.log("EventDetails data:", formData);
-    }
+
+      setRegistrationOpen(true);
+      setIsSubmitted(true);
+    // }
   };
   
 
-  const successMessage = () => {
-    return (
-      <div
-        className="success"
-        style={{
-          display: submitted ? "" : "none",
-        }}
-      >
-        <h1>Event `{eventTitle}` successfully submitted!!</h1>
-      </div>
-    );
-  };
+  // const successMessage = () => {
+  //   return (
+  //     <div
+  //       className="success"
+  //       style={{
+  //         display: submitted ? "" : "none",
+  //       }}
+  //     >
+  //       <h1>Event `{eventTitle}` successfully submitted!!</h1>
+  //     </div>
+  //   );
+  // };
 
   const errorMessage = () => {
     return (
@@ -142,8 +166,14 @@ const EventDetails = () => {
   };
 
   return (
+    <>
+    {registrationOpen && (
+      <Registeration handleClose={() => setRegistrationOpen(false)} setIsOpen={setIsOpen} />
+    )}
+    <div className={`event-details-popup-container ${isSubmitted ? "removed-dark-gb" : ""}`}>
     <div className="event-details-boss-container">
-      <div className="event-details">
+
+    <div className={`event-details ${isSubmitted ? "popup-hidden" : ""}`} ref={eventsRef}>
         <form>
           <UploadEvent
             uploadTitle="ADD EVENT POSTER HERE"
@@ -245,10 +275,12 @@ const EventDetails = () => {
         <button onClick={handleSubmit} className="submit-button">
           SUBMIT
         </button>
-        {successMessage()}
+        {/* {successMessage()} */}
         {errorMessage()}
       </div>
     </div>
+    </div>
+    </>
   );
 };
 
