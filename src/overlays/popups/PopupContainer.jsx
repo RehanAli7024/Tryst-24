@@ -3,13 +3,17 @@ import styled from 'styled-components';
 import CompetitionEvent from '../../components/CompetitonEvent/CompetitionEvent.jsx';
 import GuestLectureEvent from '../../components/GuestLectureEvent/GuestLectureEvent.jsx';
 import WorkshopEvent from '../../components/WorkshopEvents/WorkshopEvent';
+import CompetitionRegistration from '../../components/Registration/CompetitionRegistration.jsx';
+import GuestRegisteration from '../../components/Registration/GuestRegistration.jsx';
+import WorkshopRegistration from '../../components/Registration/WorkshopRegistration.jsx';
 
 export default function PopupContainer({selectedEventType}) {
 
-    const [eventTitle, setEventTitle] = useState("eventDetails");
+    const [eventFormTitle, setEventFormTitle] = useState("eventDetails");
+    const [isEventSubmitted, setIsEventSubmitted] = useState(false);
 
     const handleTitleChange = (eventType) => {
-        setEventTitle(eventType);
+        setEventFormTitle(eventType);
     console.log(eventType);
   };
 
@@ -26,11 +30,27 @@ export default function PopupContainer({selectedEventType}) {
             </div>
 
             <div className="event-form-inputs">
-                {eventTitle === 'eventDetails' && selectedEventType === 'competitions' && <CompetitionEvent />}
-                {eventTitle === 'eventDetails' && selectedEventType === 'workshops' && <WorkshopEvent />}
-                {eventTitle === 'eventDetails' && selectedEventType === 'guestlectures' && <GuestLectureEvent />}
+                {eventFormTitle === 'eventDetails' && selectedEventType === 'competitions' && <CompetitionEvent setIsEventSubmitted={setIsEventSubmitted} setEventFormTitle={setEventFormTitle}/>}
+                {eventFormTitle === 'eventDetails' && selectedEventType === 'workshops' && <WorkshopEvent setIsEventSubmitted={setIsEventSubmitted} setEventFormTitle={setEventFormTitle} />}
+                {eventFormTitle === 'eventDetails' && selectedEventType === 'guestlectures' && <GuestLectureEvent setIsEventSubmitted={setIsEventSubmitted} setEventFormTitle={setEventFormTitle} />}
 
-                {eventTitle === 'registrationForm' && <h1>Registration Form</h1>}
+                {eventFormTitle === 'registrationForm' && 
+                selectedEventType === 'competitions' && 
+                isEventSubmitted === true &&
+                <CompetitionRegistration />}
+
+                {eventFormTitle === 'registrationForm' && 
+                selectedEventType === 'workshops' && 
+                isEventSubmitted === true &&
+                <WorkshopRegistration />}
+
+                {eventFormTitle === 'registrationForm' && 
+                selectedEventType === 'guestlectures' && 
+                isEventSubmitted === true &&
+                <GuestRegisteration />}
+
+                
+
             </div>            
         </div>
     </Container>

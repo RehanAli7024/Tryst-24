@@ -3,10 +3,10 @@ import { useLocation } from 'react-router-dom';
 
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
-import "./Registration.css";
+import "./registration.css";
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 
-function Registeration({ handleClose, setRegistrationOpen }) {
+function GuestRegisteration({ handleClose, setRegistrationOpen }) {
   const location = useLocation();
   const [formData, setFormData] = useState({
     acceptingResponses: '',
@@ -77,9 +77,7 @@ function Registeration({ handleClose, setRegistrationOpen }) {
 
 
   return (
-    <div className='event-details-popup-container'>
-      <div className="PopUP" >
-        <div className="containor" ref={registrationRef}>
+        <div className="registration-containor">
 
           <div className="responses">
             <p className="question">Accepting Responses?:</p>
@@ -206,9 +204,7 @@ function Registeration({ handleClose, setRegistrationOpen }) {
             </button>
           </div>
         </div>
-      </div>
-    </div>
   );
 }
 
-export default Registeration;
+export default GuestRegisteration;

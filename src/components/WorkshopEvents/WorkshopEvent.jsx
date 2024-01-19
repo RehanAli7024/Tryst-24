@@ -5,7 +5,7 @@ import RulebookEntry from "../common/RulebookEntry";
 
 import "./WorkshopEvent.css";
 
-export default function WorkshopEvent({ handleClose, setIsOpen}) {
+export default function WorkshopEvent({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle}) {
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -93,15 +93,15 @@ export default function WorkshopEvent({ handleClose, setIsOpen}) {
   // Handling the form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      eventTitle === "" ||
-      eventDescription === "" ||
-      eventDate === "" ||
-      eventTime === "" ||
-      eventLocation === ""
-      // file === null
-    ) {
-    } else {
+    // if (
+    //   eventTitle === "" ||
+    //   eventDescription === "" ||
+    //   eventDate === "" ||
+    //   eventTime === "" ||
+    //   eventLocation === ""
+    //   // file === null
+    // ) {
+    // } else {
       setSubmitted(true);
 
       // Gather input values
@@ -140,7 +140,11 @@ export default function WorkshopEvent({ handleClose, setIsOpen}) {
 
       // Console log the gathered data
       console.log(formData);
-    }
+
+      // to close the popup
+      setEventFormTitle("registrationForm");
+      setIsEventSubmitted(true);
+    // }
   };
 
 

@@ -4,8 +4,8 @@ import "./GuestLectureEvent.css";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import UploadSpeaker from "../common/UploadSpeaker";
-import Registeration from "../Registration/Registration";
-const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
+import Registeration from "../Registration/GuestRegistration";
+const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle}) => {
   const navigate = useNavigate();
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
@@ -130,6 +130,10 @@ const GuestLectureEvent = ({ handleClose, setIsOpen}) => {
       // Console log the gathered data
       console.log("EventDetails data:", EventData);
       // navigate("/registration", { state: { eventData: EventData } });    
+
+      // to close the popup
+      setEventFormTitle("registrationForm");
+      setIsEventSubmitted(true);
     }
   // };
   

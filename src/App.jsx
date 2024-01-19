@@ -5,7 +5,7 @@ import CompetitionEvent from './components/CompetitonEvent/CompetitionEvent.jsx'
 import AddNewField from './overlays/overlays/add-new-field/AddNewField.jsx'
 import Event from './overlays/overlays/add-new-field/OverlayTest.jsx'
 import Login from './pages/Login';
-import Registeration from './components/Registration/Registration.jsx'
+import GuestRegistration from './components/Registration/GuestRegistration.jsx'
 import MainPage from './pages/main page/MainPage.jsx';
 import PopupContainer from './overlays/popups/PopupContainer.jsx'
 
@@ -20,7 +20,7 @@ const App = () => {
           <Route path="/competitionevent" element={<CompetitionEvent />} />
           <Route path="/addnewfield" element={<AddNewField/>} />
           <Route path="/overlaytest" element={<Event/>} />
-          <Route path="/registration" element={<Registeration/>} />
+          <Route path="/registration" element={<GuestRegistration/>} />
           <Route path="/popup" element={<PopupContainer />} />
         </Routes>
       </Router>

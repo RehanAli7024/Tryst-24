@@ -3,7 +3,7 @@ import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import RulebookEntry from "../common/RulebookEntry";
 import "./CompetitionEvent.css";
-export default function CompetitionEvent({ handleClose, setIsOpen}) {
+export default function CompetitionEvent({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle}) {
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -97,16 +97,16 @@ export default function CompetitionEvent({ handleClose, setIsOpen}) {
   // Handling the form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      eventTitle === "" ||
-      eventDescription === "" ||
-      eventDate === "" ||
-      eventTime === "" ||
-      eventLocation === ""
-      // file === null
-    ) {
-      setError(true);
-    } else {
+    // if (
+    //   eventTitle === "" ||
+    //   eventDescription === "" ||
+    //   eventDate === "" ||
+    //   eventTime === "" ||
+    //   eventLocation === ""
+    //   // file === null
+    // ) {
+    //   setError(true);
+    // } else {
       setSubmitted(true);
       setError(false);
 
@@ -148,7 +148,11 @@ export default function CompetitionEvent({ handleClose, setIsOpen}) {
 
       // Console log the gathered data
       console.log(formData);
-    }
+
+      // to close the popup
+      setEventFormTitle("registrationForm");
+      setIsEventSubmitted(true);
+    // }
   };
 
   

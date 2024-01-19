@@ -7,7 +7,6 @@ import CompetitionEvent from '../../components/CompetitonEvent/CompetitionEvent'
 import GuestLectureEvent from '../../components/GuestLectureEvent/GuestLectureEvent';
 import WorkshopEvent from '../../components/WorkshopEvents/WorkshopEvent';
 import "./EventOptions.css";
-import Registeration from '../../components/Registration/Registration';
 import PopupContainer from '../../overlays/popups/PopupContainer';
 
 const eventCardImages = {
@@ -57,7 +56,7 @@ export default function EventOptions() {
 
       <div className='add-new-event-btn'>
         <button
-          className='open-popup' onClick={togglePopup}
+          className='open-popup-btn' onClick={togglePopup}
         >
           <span className='plus-icon'>+</span>
           <span>add new</span>
@@ -65,21 +64,6 @@ export default function EventOptions() {
 
           {isOpen && <PopupContainer selectedEventType={selectedEventType} />}
 
-        {/* {isOpen && 
-        selectedEventType === 'competitions' && 
-        <CompetitionEvent handleClose={togglePopup} setIsOpen={setIsOpen} 
-       />}
-       {submitted && 
-        selectedEventType === 'competitions' && 
-        <Registeration handleClose={togglePopup} setIsOpen={setIsOpen} 
-       />}
-
-        {isOpen && selectedEventType === 'workshops' && <WorkshopEvent handleClose={togglePopup} setIsOpen={setIsOpen} />}
-        {isOpen && selectedEventType === 'guestlectures' && <GuestLectureEvent handleClose={togglePopup} setIsOpen={setIsOpen} />}
-        {submitted && 
-        selectedEventType === 'guestlectures' && 
-        <Registeration handleClose={togglePopup} setIsOpen={setIsOpen} 
-       />} */}
       </div>
 
       {/* Published container starts here */}
@@ -135,7 +119,7 @@ const Container = styled.div`
   }
 
   .add-new-event-btn {
-    button {
+    .open-popup-btn {
       display: flex;
       flex-direction: row;
       align-items: center;
