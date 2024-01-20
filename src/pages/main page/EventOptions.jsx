@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import competitions from '../../assets/event cards/comps-pic.png';
 import workshops from '../../assets/event cards/ws-pic.png';
 import guestLectures from '../../assets/event cards/guest-lec-pic.png';
-// import CompetitionEvent from '../../components/CompetitonEvent/CompetitionEvent';
-// import GuestLectureEvent from '../../components/GuestLectureEvent/GuestLectureEvent';
-// import WorkshopEvent from '../../components/WorkshopEvents/WorkshopEvent';
 import "./EventOptions.css";
 import PopupContainer from '../../overlays/popups/PopupContainer';
 
@@ -17,7 +14,7 @@ const eventCardImages = {
 
 export default function EventOptions() {
   const [selectedEventType, setSelectedEventType] = useState('competitions');
-  const [isOpen, setIsOpen] = useState(false);
+  const [PopupIsOpen, setPopupIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState();
 
   const handleEventTypeClick = (eventType) => {
@@ -25,7 +22,7 @@ export default function EventOptions() {
   };
 
   const togglePopup = () => {
-    setIsOpen(!isOpen);
+    setPopupIsOpen(!PopupIsOpen);
     setSubmitted(false);
 };
 
@@ -62,7 +59,8 @@ export default function EventOptions() {
           <span>add new</span>
         </button>
 
-          {isOpen && <PopupContainer selectedEventType={selectedEventType} />}
+        {PopupIsOpen && <PopupContainer selectedEventType={selectedEventType} PopupIsOpen={PopupIsOpen} setPopupIsOpen={setPopupIsOpen} />}
+
 
       </div>
 

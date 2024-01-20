@@ -8,7 +8,11 @@ import GuestRegisteration from "../../components/Registration/GuestRegistration.
 import WorkshopRegistration from "../../components/Registration/WorkshopRegistration.jsx";
 import PopupNavbar from "./PopupNavbar.jsx";
 
-export default function PopupContainer({ selectedEventType }) {
+export default function PopupContainer({
+  selectedEventType,
+  PopupIsOpen,
+  setPopupIsOpen,
+}) {
   const [eventFormTitle, setEventFormTitle] = useState("eventDetails");
   const [isOpen, setIsOpen] = useState(false);
   const [isEventSubmitted, setIsEventSubmitted] = useState(false);
@@ -21,7 +25,7 @@ export default function PopupContainer({ selectedEventType }) {
   };
 
   const togglePopup = () => {
-    setIsOpen(!isOpen);
+    setPopupIsOpen(!PopupIsOpen);
     setEventFormTitle("eventDetails");
     setIsEventSubmitted(false);
     setActiveButton("eventDetails");
@@ -35,12 +39,16 @@ export default function PopupContainer({ selectedEventType }) {
   return (
     <Container>
       <div className="popup-main-container">
+        <div className="popup-close-btn">
+      <button className="close-button" onClick={togglePopup}>
+          X
+        </button>
+        </div>
         <PopupNavbar
           activeButton={activeButton}
           setActiveButton={handleTitleChange}
           isEventSubmitted={isEventSubmitted}
         />
-
         <div className="event-form-inputs">
           {eventFormTitle === "eventDetails" &&
             selectedEventType === "competitions" && (
@@ -138,5 +146,22 @@ const Container = styled.div`
   .active {
     color: #acebf6;
     border-bottom: 2px solid #acebf6;
+  }
+  
+  .close-button {
+    position: relative;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: red;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #ACEBF6;
+  }
+  .popup-close-btn{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
   }
 `;
