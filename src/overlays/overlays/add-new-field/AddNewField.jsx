@@ -7,7 +7,7 @@ import TeamMember from './field-types/TeamMember';
 import "./addNewField.css"
 
 
-export default function AddNewField({ onClose, onAddNewField, setAdditionalFieldData}) {
+export default function AddNewField({ onClose, setAdditionalFieldData, onAddNewField}) {
     const [fieldType, setFieldType] = useState('text');
     const [isMandatory, setIsMandatory] = useState(true);
     const [fieldTitle, setFieldTitle] = useState('');
@@ -42,6 +42,8 @@ export default function AddNewField({ onClose, onAddNewField, setAdditionalField
     };
     setAdditionalFieldData(newFieldData);
     console.log("State inside handleAddNewField:", newFieldData);
+
+    onAddNewField(newFieldData); 
 
     onClose();
   };
