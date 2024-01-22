@@ -458,10 +458,12 @@
     font-size: 1rem;
   }
   .image-container {
-    order: 1; /* Logo at the top */
+    order: 2; /* Logo at the top */
   }
   .horizontal-bar {
-	order: 2; /* Horizontal bar at the bottom */
+	order: 1;
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50.33%, rgba(255, 255, 255, 0.00) 100%);
+	width: 100%;
   }
 
   .flex-item.flex-item4 {
