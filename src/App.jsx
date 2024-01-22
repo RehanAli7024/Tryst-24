@@ -3,7 +3,7 @@ import React from 'react'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import EventDetails from './components/eventDetails/EventDetails.jsx'
-import Registeration from './components/Registeration/Registeration.jsx
+import Registeration from './components/Registeration/Registeration.jsx';
 
 const App = () => {
   return (
