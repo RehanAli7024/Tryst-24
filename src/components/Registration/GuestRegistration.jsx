@@ -5,6 +5,9 @@ import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
 import "./registration.css";
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
+import AddedFieldRadio from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
+import AddedFieldCheckbox from '../../overlays/overlays/add-new-field/field-types/AddedFieldCheckbox';
+import AddedFieldUpload from '../../overlays/overlays/add-new-field/field-types/AddedFieldUpload';
 
 function GuestRegisteration({ handleClose, setRegistrationOpen }) {
   const location = useLocation();
@@ -22,6 +25,7 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
   });
 
   const [showNewField, setShowNewField] = useState(false);
+  const [additionalFieldData, setAdditionalFieldData] = useState(undefined);
 
   const handleShowNewField = () => {
     setShowNewField(true);
@@ -170,14 +174,35 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
             />
           </div>
 
+          <div className="dynamic-new-field-container">
+        <div className="new-field-type-text">
+          {additionalFieldData && additionalFieldData.fieldType === "text" && <p>{additionalFieldData.fieldTitle}</p>}
+        </div>
+
+        <div className="new-field-type-radio">
+          {additionalFieldData && additionalFieldData.fieldType === "radio" && <AddedFieldRadio additionalFieldData={additionalFieldData} />}
+        </div>
+
+        <div className="new-field-type-checkbox">
+          {additionalFieldData && additionalFieldData.fieldType === "checkbox" && <AddedFieldCheckbox additionalFieldData={additionalFieldData} />}
+        </div>
+
+        <div className="new-field-type-checkbox">
+          {additionalFieldData && additionalFieldData.fieldType === "upload" && <AddedFieldUpload additionalFieldData={additionalFieldData} />}
+        </div>
+        
+      </div>
+
           <div className="addnewfield">
             <button className="fieldbutton" onClick={handleAddNewField}>
               Add New Field
             </button>
 
-            {showNewField && 
-              <AddNewField onClose={handleCloseNewField} 
-            />}
+            {showNewField &&
+          <AddNewField
+            onClose={handleCloseNewField}
+            setAdditionalFieldData={setAdditionalFieldData}
+          />}
 
           </div>
           <div className="inputfieldcontainor">

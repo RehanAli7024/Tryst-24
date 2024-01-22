@@ -49,7 +49,7 @@ export default function RadioButtons({ onGetOptionsData }) {
         {[...Array(radioCount)].map((_, index) => (
           <div className="checkbox" key={index}>
           <input
-              type="radio"
+              type="checkbox"
               name="radioGroup"
             />
             <input

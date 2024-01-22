@@ -66,6 +66,11 @@
     display: flex;
     justify-content: center;
   }
+
+  .new-field-type-text p {
+    padding: 0 4vh;
+    color: #ACEBF6;
+  }
   
   .fieldbutton {
     border-radius: 16px;
