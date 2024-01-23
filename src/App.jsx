@@ -26,8 +26,9 @@ const App = () => {
           <Route path="/registration" element={<GuestRegistration />} />
           <Route path="/popup" element={<PopupContainer />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
+          <Route path="/footer" element={<Footer />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </main>
   );
