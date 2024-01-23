@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 }
 
 .footer::before {
@@ -29,7 +30,7 @@
     #802392,
     #80239233
   );
-  z-index: -1;
+  z-index: -2;
   filter: blur(10px); /* Adjust the blur value as needed */
 }
 
@@ -39,7 +40,7 @@
 
 .horizontal-bar {
   position: absolute;
-  top: 0;
+  top: -8px;
   left: 0;
   width: 100%;
   height: 2px;
@@ -79,8 +80,8 @@
 
 .handles > .handle > a:hover,
 .mail > div > a:hover {
-  color: rgba(172, 235, 246, 1);
-  text-shadow: 0 0 3px rgba(172, 235, 246, 1);
+  color: lightsalmon;
+  text-shadow: 0 0 3px lightsalmon;
 }
 
 .handles > .handle > a {

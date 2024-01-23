@@ -1,10 +1,12 @@
 import "./footer.css";
 import logo from "../../assets/Footer/logo.png";
+import ParallaxStars from "./ParallaxStars";
+
 
 function Footer() {
   return (
     <footer className="footer">
-      
+      <ParallaxStars/>
       <div className="horizontal-bar"></div>
       <div className="contact-section">
         <div className="white-colour " id="query">

@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/comingsoon" element={<ComingSoon />} />
           <Route path="/footer" element={<Footer />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </main>
   );
