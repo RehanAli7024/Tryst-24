@@ -6,6 +6,9 @@ import deleteicon from "../../assets/delete.png";
 import "./registration.css";
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 import axios from 'axios';
+import AddedFieldRadio from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
+import AddedFieldCheckbox from '../../overlays/overlays/add-new-field/field-types/AddedFieldCheckbox';
+import AddedFieldUpload from '../../overlays/overlays/add-new-field/field-types/AddedFieldUpload';
 
 function GuestRegisteration({ handleClose, setRegistrationOpen }) {
   const event_id = localStorage.getItem('event_id');
@@ -25,6 +28,7 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
   });
 
   const [showNewField, setShowNewField] = useState(false);
+  const [additionalFieldData, setAdditionalFieldData] = useState(undefined);
 
   const handleShowNewField = () => {
     setShowNewField(true);
@@ -185,14 +189,125 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
           onChange={(e) => handleChange('referralId', e.target.value)}
         />
       </div>
+          <div className="responses">
+            <p className="question">Accepting Responses?:</p>
+            <div>
+              <input
+                type="radio"
+                name="acceptingResponses"
+                value="Yes"
+                onChange={() => handleRadioChange('Yes')}
+              />
+              <label>Yes</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="acceptingResponses"
+                value="No"
+                onChange={() => handleRadioChange('No')}
+              />
+              <label>No</label>
+            </div>
+          </div>
+          <div className="inputfieldcontainor">
+            <div className="inputfield">
+              <label className="titleoffield">Your Name*</label>
+              <input
+                className="box"
+                type="text"
+                onChange={(e) => handleChange('yourName', e.target.value)}
+              />
+            </div>
+            <div className="inputfield">
+              <label className="titleoffield">Phone Number*</label>
+              <input
+                className="box"
+                type="text"
+                onChange={(e) => handleChange('phoneNumber', e.target.value)}
+              />
+            </div>
+            <div className="inputfield">
+              <label className="titleoffield">E-Mail ID</label>
+              <input
+                className="box"
+                type="email"
+                onChange={(e) => handleChange('email', e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="inputfieldcontainor">
+            <div className="inputfield">
+              <label className="titleoffield">College State*</label>
+              <select
+                className="box"
+                onChange={(e) => handleChange('collegeState', e.target.value)}
+              >
+                <option value="" disabled selected>Select your option</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              </select>
+            </div>
+            <div className="inputfield">
+              <label className="titleoffield">College City*</label>
+              <select
+                className="box"
+                onChange={(e) => handleChange('collegeCity', e.target.value)}
+              >
+                <option value="" disabled selected>Select your option</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              </select>
+            </div>
+            <div className="inputfield">
+              <label className="titleoffield">College Name*</label>
+              <select
+                className="box"
+                onChange={(e) => handleChange('collegeName', e.target.value)}
+              >
+                <option value="" disabled selected>Select your option</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              </select>
+            </div>
+          </div>
+          <div className="inputfield referral">
+            <label className="titleoffield referral">CA Referral ID*</label>
+            <input
+              className="box"
+              type="text"
+              onChange={(e) => handleChange('referralId', e.target.value)}
+            />
+          </div>
+
+          <div className="dynamic-new-field-container">
+        <div className="new-field-type-text">
+          {additionalFieldData && additionalFieldData.fieldType === "text" && <p>{additionalFieldData.fieldTitle}</p>}
+        </div>
+
+        <div className="new-field-type-radio">
+          {additionalFieldData && additionalFieldData.fieldType === "radio" && <AddedFieldRadio additionalFieldData={additionalFieldData} />}
+        </div>
+
+        <div className="new-field-type-checkbox">
+          {additionalFieldData && additionalFieldData.fieldType === "checkbox" && <AddedFieldCheckbox additionalFieldData={additionalFieldData} />}
+        </div>
+
+        <div className="new-field-type-checkbox">
+          {additionalFieldData && additionalFieldData.fieldType === "upload" && <AddedFieldUpload additionalFieldData={additionalFieldData} />}
+        </div>
+        
+      </div>
 
       <div className="addnewfield">
         <button className="fieldbutton" onClick={handleAddNewField}>
           Add New Field
         </button>
 
-        {showNewField &&
-          <AddNewField onClose={handleCloseNewField}
+            {showNewField &&
+          <AddNewField
+            onClose={handleCloseNewField}
+            setAdditionalFieldData={setAdditionalFieldData}
           />}
 
       </div>
