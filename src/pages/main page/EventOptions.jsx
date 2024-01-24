@@ -1,19 +1,19 @@
-import  { useState } from 'react';
-import styled from 'styled-components';
-import competitions from '../../assets/event cards/comps-pic.png';
-import workshops from '../../assets/event cards/ws-pic.png';
-import guestLectures from '../../assets/event cards/guest-lec-pic.png';
+import { useState } from "react";
+import styled from "styled-components";
+import competitions from "../../assets/event cards/comps-pic.png";
+import workshops from "../../assets/event cards/ws-pic.png";
+import guestLectures from "../../assets/event cards/guest-lec-pic.png";
 import "./EventOptions.css";
-import PopupContainer from '../../overlays/popups/PopupContainer';
+import PopupContainer from "../../overlays/popups/PopupContainer";
 
 const eventCardImages = {
   competitions: [competitions, competitions, competitions],
   workshops: [workshops, workshops, workshops],
-  guestlectures: [guestLectures, guestLectures, guestLectures], // Corrected to guestLectures
+  guestlectures: [guestLectures, guestLectures, guestLectures],
 };
 
 export default function EventOptions() {
-  const [selectedEventType, setSelectedEventType] = useState('competitions');
+  const [selectedEventType, setSelectedEventType] = useState("competitions");
   const [PopupIsOpen, setPopupIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState();
 
@@ -24,44 +24,46 @@ export default function EventOptions() {
   const togglePopup = () => {
     setPopupIsOpen(!PopupIsOpen);
     setSubmitted(false);
-};
+  };
 
   const selectedImages = eventCardImages[selectedEventType] || [];
 
   return (
     <Container>
-      <div className='event-types'>
+      <div className="event-types">
         <button
-          className={selectedEventType === 'competitions' ? 'selected' : ''}
-          onClick={() => handleEventTypeClick('competitions')}
+          className={selectedEventType === "competitions" ? "selected" : ""}
+          onClick={() => handleEventTypeClick("competitions")}
         >
           competitions
         </button>
         <button
-          className={selectedEventType === 'workshops' ? 'selected' : ''}
-          onClick={() => handleEventTypeClick('workshops')}
+          className={selectedEventType === "workshops" ? "selected" : ""}
+          onClick={() => handleEventTypeClick("workshops")}
         >
           workshops
         </button>
         <button
-          className={selectedEventType === 'guestlectures' ? 'selected' : ''}
-          onClick={() => handleEventTypeClick('guestlectures')}
+          className={selectedEventType === "guestlectures" ? "selected" : ""}
+          onClick={() => handleEventTypeClick("guestlectures")}
         >
           guest lectures
         </button>
       </div>
 
-      <div className='add-new-event-btn'>
-        <button
-          className='open-popup-btn' onClick={togglePopup}
-        >
-          <span className='plus-icon'>+</span>
+      <div className="add-new-event-btn">
+        <button className="open-popup-btn" onClick={togglePopup}>
+          <span className="plus-icon">+</span>
           <span>add new</span>
         </button>
 
-        {PopupIsOpen && <PopupContainer selectedEventType={selectedEventType} PopupIsOpen={PopupIsOpen} setPopupIsOpen={setPopupIsOpen} />}
-
-
+        {PopupIsOpen && (
+          <PopupContainer
+            selectedEventType={selectedEventType}
+            PopupIsOpen={PopupIsOpen}
+            setPopupIsOpen={setPopupIsOpen}
+          />
+        )}
       </div>
 
       {/* Published container starts here */}
@@ -98,19 +100,19 @@ const Container = styled.div`
     button {
       background-color: #293749;
       color: #fff;
-      border: solid 1px #ACEBF6;
+      border: solid 1px #acebf6;
       padding: 1rem 3rem;
       font-size: 1rem;
       text-transform: uppercase;
 
       &:hover {
-        background-color: #ACEBF6;
+        background-color: #acebf6;
         color: #000;
         cursor: pointer;
       }
 
       &.selected {
-        background-color: #ACEBF6;
+        background-color: #acebf6;
         color: #000;
       }
     }
@@ -123,7 +125,7 @@ const Container = styled.div`
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      background-color: #ACEBF6;
+      background-color: #acebf6;
       color: #000;
       padding: 1rem 3rem;
       font-size: 1rem;
@@ -132,7 +134,7 @@ const Container = styled.div`
       border: none;
 
       &:hover {
-        background-color: #ACEBF6;
+        background-color: #acebf6;
         color: #000;
         cursor: pointer;
       }
@@ -146,7 +148,7 @@ const Container = styled.div`
   .published {
     h5 {
       font-size: 3rem;
-      color: #ACEBF6;
+      color: #acebf6;
       text-transform: uppercase;
       padding: 1rem 0;
       margin: 1rem 0;

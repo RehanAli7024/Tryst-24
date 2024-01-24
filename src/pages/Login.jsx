@@ -1,17 +1,28 @@
 import React, { useState } from "react";
-import './Login.css'
-import eventimage from '../assets/event 1.png' 
-import trystlogo from '../assets/trystlogo.png'
-import loginlogo from '../assets/login.png'
+import "./Login.css";
+import eventimage from "../assets/event 1.png";
+import trystlogo from "../assets/trystlogo.png";
+import loginlogo from "../assets/login.png";
+import axios from "axios";
+import { DOMAIN } from "../domain";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [userId, setUserId] = useState('');
-  const [password, setPassword] = useState('');
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    console.log('ID:', userId);
-    console.log('Password:', password);
-    // Add logic for handling login, e.g., making an API request
+    axios
+      .post(`${DOMAIN}login/`, { username: userId, password: password })
+      .then((res) => {
+        console.log(res.data.tokens);
+        localStorage.setItem("token", res.data.tokens.access);
+        navigate("/mainpage");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
