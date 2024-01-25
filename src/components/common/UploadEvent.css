@@ -1,0 +1,74 @@
+.upload-picture {
+    background-color: #293749;
+    border: 1px solid #acebf6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 290px;
+    /* padding: 18px; */
+}
+
+.custom-upload-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .image-guidelines-text {
+    margin: 0px;
+    color: rgba(255, 255, 255, 0.60);
+    font-family: Poppins;
+    font-weight: 300;
+    line-height: normal;
+  }
+  
+  .custom-upload-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #ACEBF6; /* Customize button color */
+    color: black; /* Customize text color */
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  .upload-pic-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 100px;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .upload-event-container {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 30px 
+  }
+  
+  .upload-event-container .event-title {
+    height: 1rem;
+    width: 100%;
+  }
+  
+  .upload-event-container .event-description {
+    width: 100%;
+  }
+  
+  .upload-picture {
+    grid-column: 1;
+    grid-row: 1 / span 7;
+  }
+  
+  .event-name {
+    grid-column: 2 / span 4;
+    grid-row: 1;
+  }
+  
+  .event-description {
+    grid-column: 2 / span 4;
+    grid-row: 2 / span 7;
+  }

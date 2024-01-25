@@ -1,0 +1,75 @@
+* {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+
+.event-details {
+  height: 86%;
+  width: 93%;
+  padding: 2rem;
+  overflow-y: auto;
+  color: #fff;
+}
+
+.event-details form{
+  height: 100%;
+  width: 100%;
+}  
+
+.event-details input {
+  background-color: #293749;
+  border: none;
+  border-left: 1px solid #acebf6;
+  color: #fff;
+  padding: 0.5rem;
+  outline: none;
+  margin-top: 10px;
+}
+
+.event-details textarea {
+  background-color: #293749;
+  border: none;
+  border-left: 1px solid #acebf6;
+  color: #fff;
+  padding: 0.5rem;
+  outline: none;
+  margin-top: 10px;
+}
+
+.date-time-venue-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.date-time-venue-container input {
+  border-left: 1px solid #93ffd8;
+  padding: 0;
+  width: 100%;
+}
+
+.events-flex-column {
+  width: 33%;
+}
+
+.date-time-venue-container input.event-venue {
+  padding: 10px;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: #93ffd8;
+  padding: 10px;
+}
+
+.No-of-contact-person-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+
+
