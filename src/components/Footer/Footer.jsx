@@ -5,6 +5,7 @@ import ParallaxStars from "./ParallaxStars";
 
 function Footer() {
   return (
+    <div className="footer-container">
     <footer className="footer">
       <ParallaxStars/>
       <div className="horizontal-bar"></div>
@@ -50,6 +51,7 @@ function Footer() {
         </div>
       </div>
     </footer>
+    </div>
   );
 }
 export default Footer;

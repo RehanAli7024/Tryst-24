@@ -3,6 +3,11 @@
 @import "@fortawesome/fontawesome-free/css/all.css";
 @import "@fortawesome/fontawesome-free/css/regular.css";
 
+.footer-container {
+  position: relative;
+  height: 100%;
+}
+
 .footer {
   background-color: transparent;
   position: relative;
@@ -40,7 +45,7 @@
 
 .horizontal-bar {
   position: absolute;
-  top: -8px;
+  top: -2px;
   left: 0;
   width: 100%;
   height: 2px;
@@ -108,6 +113,7 @@
   .horizontal-bar {
     position: relative;
     order: 1;
+    top: -18px;
   }
   .logo-section {
     order: 2;
