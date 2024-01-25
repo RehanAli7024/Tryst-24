@@ -1,3 +1,4 @@
+
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import GuestLectureEvent from "./components/GuestLectureEvent/GuestLectureEvent.jsx";
 import WorkshopEvent from "./components/WorkshopEvents/WorkshopEvent.jsx";
@@ -19,6 +20,13 @@ const App = () => {
     <Navbar></Navbar>
       <Router>
         {/* <ParallaxStars /> */}
+
+
+    
+        {window.location.pathname !== "/login" ? <Navbar /> : null}
+        
+
+
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
