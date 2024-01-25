@@ -17,7 +17,7 @@ import ComingSoon from "./components/ComingSoon/ComingSoon.jsx";
 const App = () => {
   return (
     <main className="bg-slate-300/20 h-full">
-    <Navbar></Navbar>
+    {/* <Navbar></Navbar> */}
       <Router>
         {/* <ParallaxStars /> */}
 
