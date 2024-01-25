@@ -19,25 +19,15 @@ body {
 #stars,
 #stars2,
 #stars3 {
-  position: fixed; /* Change from absolute to fixed */
-  /* ... (other styles) */
+  position: absolute;
+  bottom: 0; 
 }
 #stars {
   width: 1px;
   height: 1px;
   background: transparent;
   box-shadow: $shadows-small;
-  animation: animStar 50s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    box-shadow: $shadows-small;
-  }
+  animation: animStar 7s linear infinite;
 }
 
 #stars2 {
@@ -45,35 +35,14 @@ body {
   height: 2px;
   background: transparent;
   box-shadow: $shadows-medium;
-  animation: animStar 100s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: $shadows-medium;
-  }
-}
+  animation: animStar 7s linear infinite;}
 
 #stars3 {
   width: 3px;
   height: 3px;
   background: transparent;
   box-shadow: $shadows-big;
-  animation: animStar 150s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow: $shadows-big;
-  }
+  animation: animStar 7s linear infinite;
 }
 
 #title {
@@ -102,6 +71,17 @@ body {
     transform: translateY(0px);
   }
   to {
-    transform: translateY(-2000px);
+    transform: translateY(-330px);
+  }
+}
+
+@media (max-width: 650px) {
+  @keyframes animStar {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-523px);
+    }
   }
 }
