@@ -1,4 +1,4 @@
-import "./Footer.css";
+import "./FooterMain.css";
 import logo from "../../assets/Footer/logo.png";
 import ParallaxStars from "./ParallaxStars";
 
