@@ -10,10 +10,12 @@ import MainPage from "./pages/main page/MainPage.jsx";
 import PopupContainer from "./overlays/popups/PopupContainer.jsx";
 import ParallaxStars from "./components/Footer/ParallaxStars.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
 
 const App = () => {
   return (
     <main className="bg-slate-300/20 h-full">
+    <Navbar></Navbar>
       <Router>
       <ParallaxStars />
         <Routes>
