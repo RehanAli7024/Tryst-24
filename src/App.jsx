@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./fonts.css"
 import MainPage from "./pages/mainpage/MainPage.jsx";
 import GuestLectureEvent from "./components/GuestLectureEvent/GuestLectureEvent.jsx";
 import WorkshopEvent from "./components/WorkshopEvents/WorkshopEvent.jsx";
@@ -25,8 +26,7 @@ const App = () => {
 
 
         <Routes>
-          <Route path="/" element={<ComingSoon />} />
-          {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
+          {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} /> */}
           <Route path="/" element={<Login/>} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
@@ -36,7 +36,8 @@ const App = () => {
           <Route path="/overlaytest" element={<Event  />} />
           <Route path="/registration" element={<GuestRegistration  />} />
           <Route path="/popup" element={<PopupContainer />} />
-          <Route path="/comingsoon" element={<ComingSoon />} /> */}
+          <Route path="/sponsors" element={<Sponsors />} />
+          <Route path="/comingsoon" element={<ComingSoon />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
         </Routes>
