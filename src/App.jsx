@@ -28,15 +28,16 @@ const App = () => {
 
 
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
+          <Route path="/" element={<ComingSoon />} />
+          {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/workshopevent" element={<WorkshopEvent />} />
           <Route path="/competitionevent" element={<CompetitionEvent />} />
           <Route path="/addnewfield" element={<AddNewField />} />
           <Route path="/overlaytest" element={<Event />} />
           <Route path="/registration" element={<GuestRegistration />} />
           <Route path="/popup" element={<PopupContainer />} />
-          <Route path="/comingsoon" element={<ComingSoon />} />
+          <Route path="/comingsoon" element={<ComingSoon />} /> */}
+          <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
         </Routes>
         <Footer />
