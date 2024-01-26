@@ -27,7 +27,7 @@ const Container = styled.div`
   margin-bottom: 4vh;
   p {
     color: #ACEBF6;
-    margin: 0;
+    margin: 0 0 0.5rem 0;
   }
   .added-field-radio-btns{
     display: flex;
@@ -41,6 +41,8 @@ const Container = styled.div`
       gap: 1vh;
       input {
         margin-right: 1vh;
+        height: 1rem;
+        width: 1rem;
       }
       label {
         background-color: #293749;

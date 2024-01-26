@@ -24,6 +24,8 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
     additionalField: '', // Added for the new field
   });
 
+  const [additionalFields, setAdditionalFields] = useState([]); // Maintain a list of additional fields
+
   const [showNewField, setShowNewField] = useState(false);
   const [additionalFieldData, setAdditionalFieldData] = useState(undefined);
 
@@ -61,8 +63,8 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
     console.log('Form Data:', formData);
     // You can perform additional actions with the form data here
   };
-  const handleAddNewField = () => {
-    console.log('Adding new field');
+  const handleAddNewField = (newFieldData) => {
+    setAdditionalFields(prevFields => [...prevFields, newFieldData]);
 
     setShowNewField(true);
 
@@ -175,21 +177,14 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
           </div>
 
           <div className="dynamic-new-field-container">
-        <div className="new-field-type-text">
-          {additionalFieldData && additionalFieldData.fieldType === "text" && <p>{additionalFieldData.fieldTitle}</p>}
-        </div>
-
-        <div className="new-field-type-radio">
-          {additionalFieldData && additionalFieldData.fieldType === "radio" && <AddedFieldRadio additionalFieldData={additionalFieldData} />}
-        </div>
-
-        <div className="new-field-type-checkbox">
-          {additionalFieldData && additionalFieldData.fieldType === "checkbox" && <AddedFieldCheckbox additionalFieldData={additionalFieldData} />}
-        </div>
-
-        <div className="new-field-type-checkbox">
-          {additionalFieldData && additionalFieldData.fieldType === "upload" && <AddedFieldUpload additionalFieldData={additionalFieldData} />}
-        </div>
+          {additionalFields.map((field, index) => (
+          <div key={index} className={`new-field-type-${field.fieldType}`}>
+            {field.fieldType === "text" && <p>{field.fieldTitle}</p>}
+            {field.fieldType === "radio" && <AddedFieldRadio additionalFieldData={field} />}
+            {field.fieldType === "checkbox" && <AddedFieldCheckbox additionalFieldData={field} />}
+            {field.fieldType === "upload" && <AddedFieldUpload additionalFieldData={field} />}
+          </div>
+        ))}
         
       </div>
 
@@ -201,6 +196,7 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
             {showNewField &&
           <AddNewField
             onClose={handleCloseNewField}
+            onAddNewField={handleAddNewField}
             setAdditionalFieldData={setAdditionalFieldData}
           />}
 
