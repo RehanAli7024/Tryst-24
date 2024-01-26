@@ -3,7 +3,7 @@ import styled from "styled-components";
 import competitions from "../../assets/event cards/comps-pic.png";
 import workshops from "../../assets/event cards/ws-pic.png";
 import guestLectures from "../../assets/event cards/guest-lec-pic.png";
-import "./EventOptions.css";
+import "./eventOptions.css";
 import PopupContainer from "../../overlays/popups/PopupContainer";
 
 const eventCardImages = {

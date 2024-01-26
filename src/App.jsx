@@ -5,7 +5,6 @@ import WorkshopEvent from "./components/WorkshopEvents/WorkshopEvent.jsx";
 import CompetitionEvent from "./components/CompetitonEvent/CompetitionEvent.jsx";
 import AddNewField from "./overlays/overlays/add-new-field/AddNewField.jsx";
 import Event from "./overlays/overlays/add-new-field/OverlayTest.jsx";
-import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
 import PopupContainer from "./overlays/popups/PopupContainer.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
