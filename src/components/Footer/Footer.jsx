@@ -1,6 +1,8 @@
 import "./footer.css";
 import logo from "../../assets/Footer/logo.png";
 import ParallaxStars from "./ParallaxStars";
+import BgImage from "../../assets/Footer/bg.png";
+import BgImageMobile from "../../assets/Footer/bg-mobile.png";
 
 
 function Footer() {
@@ -8,6 +10,8 @@ function Footer() {
     <div className="footer-container">
     <footer className="footer">
       <ParallaxStars/>
+      <img src={BgImage} className="bg-color-footer-gradient-laptop" />
+      <img src={BgImageMobile} className="bg-color-footer-gradient-mobile" />
       <div className="horizontal-bar"></div>
       <div className="contact-section">
         <div className="white-colour " id="query">
