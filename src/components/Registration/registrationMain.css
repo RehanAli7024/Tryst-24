@@ -1,0 +1,106 @@
+  
+  .registration-containor {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+  }
+  
+  .responses {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .inputfieldcontainor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .inputfieldcontainor button.edit {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .inputfield {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  
+  .inputfield.referral {
+    width: 90%;
+  }
+
+  .titleoffield {
+    color: #ACEBF6;
+  }
+  
+  .box {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-left: 2px solid #acebf6;
+    background: rgba(255, 255, 255, 0.12);
+    height: 5vh;
+    color: white; 
+    font-size: 14px; 
+  }
+
+  .containor .addnewfield button{
+    border: none;
+    &:hover{
+      cursor: pointer;
+      
+    }
+  }
+  
+  .addnewfield {
+    display: flex;
+    justify-content: center;
+  }
+
+  .new-field-type-text p {
+    padding: 0 4vh;
+    color: #ACEBF6;
+  }
+  
+  .fieldbutton {
+    border-radius: 16px;
+    background: #a6d3fd;
+    height: 8vh;
+    width: 20%;
+    font-size: medium;
+    color: #041429; 
+  }
+  .inputfield.referral .box{
+    width: 100%;
+}
+.speakerquestions{
+    width: 60%;
+    
+}  
+.edit , .delete{
+    width: 10%;
+    height: 8vh;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+.save{
+    background: #ACEBF6;
+    width: 13%;
+    height: 8vh;
+    font-size: 3vh;
+    border: none;
+}
+.savebutton{
+    height: 12vh;
+}
