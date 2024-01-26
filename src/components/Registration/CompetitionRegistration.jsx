@@ -51,6 +51,7 @@ function CompetitionRegistration() {
           <div className="registration-containor">
             <div className="responses">
               <p className="question">Accepting Responses?:</p>
+              
               <div>
                 <input
                   type="radio"
