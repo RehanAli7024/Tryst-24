@@ -3,7 +3,18 @@ import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import RulebookEntry from "../common/RulebookEntry";
 import "./CompetitionEvent.css";
-export default function CompetitionEvent({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle}) {
+import axios from "axios";
+import { DOMAIN } from "../../domain";
+import { useNavigate } from "react-router-dom";
+
+
+export default function CompetitionEvent({
+  handleClose,
+  setIsOpen,
+  setIsEventSubmitted,
+  setEventFormTitle,
+}) {
+  const navigate = useNavigate();
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -28,7 +39,7 @@ export default function CompetitionEvent({ handleClose, setIsOpen, setIsEventSub
 
     return () => {
       document.removeEventListener("mousedown", handler);
-    }
+    };
   }, [setIsOpen]);
 
   let eventsRef = useRef();
@@ -49,11 +60,10 @@ export default function CompetitionEvent({ handleClose, setIsOpen, setIsEventSub
 
   const handleTeamEventChange = (e) => {
     setIsTeamEvent(e.target.value === "yes");
-  
+
     // Conditionally set TeamMembers value
     setTeamMembers(e.target.value === "yes" ? TeamMembers : 1);
   };
-  
 
   const handlecontactPersonsChange = (e) => {
     setcontactPerosns(Number(e.target.value));
@@ -107,55 +117,69 @@ export default function CompetitionEvent({ handleClose, setIsOpen, setIsEventSub
     // ) {
     //   setError(true);
     // } else {
-      setSubmitted(true);
-      setError(false);
+    setSubmitted(true);
+    setError(false);
 
-      // Gather input values
-      const formData = {
-        eventTitle,
-        eventDescription,
-        eventDate,
-        eventTime,
-        eventLocation,
-        RegistrationDate,
-        RegistrationTime,
-        file,
-        contactPersons: [],
-        rulebookEntries: [],
-        isTeamEvent,
-        TeamMembers,
-      };
+    // Gather input values
+    const formData = {
+      eventTitle,
+      eventDescription,
+      eventDate,
+      eventTime,
+      eventLocation,
+      RegistrationDate,
+      RegistrationTime,
+      file,
+      contactPersons: [],
+      rulebookEntries: [],
+      isTeamEvent,
+      TeamMembers,
+    };
 
-      // Gather data from Memberdetail component
-      for (let i = 0; i < contactPersons; i++) {
-        const contactPersonName = document.getElementById(
-          `contactPersonName_${i}`
-        ).value;
-        const contactPersonNumber = document.getElementById(
-          `contactPersonNumber_${i}`
-        ).value;
-        formData.contactPersons.push({
-          contactPersonName,
-          contactPersonNumber,
-        });
-      }
+    // Gather data from Memberdetail component
+    for (let i = 0; i < contactPersons; i++) {
+      const contactPersonName = document.getElementById(
+        `contactPersonName_${i}`
+      ).value;
+      const contactPersonNumber = document.getElementById(
+        `contactPersonNumber_${i}`
+      ).value;
+      formData.contactPersons.push({
+        contactPersonName,
+        contactPersonNumber,
+      });
+    }
+    // Gather data from RulebookEntry component
+    for (let i = 0; i < Rulebook; i++) {
+      const rule = document.getElementById(`rule_${i}`).value;
+      formData.rulebookEntries.push({ rule });
+    }
 
-      // Gather data from RulebookEntry component
-      for (let i = 0; i < Rulebook; i++) {
-        const rule = document.getElementById(`rule_${i}`).value;
-        formData.rulebookEntries.push({ rule });
-      }
+    // Console log the gathered data
+    console.log(formData);
+    const token = localStorage.getItem("token");
+    console.log(token);
+    // Send data to backend
+    axios
+      .post(`${DOMAIN}create_event/`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        localStorage.setItem("event_id", res.data.event_id);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
 
-      // Console log the gathered data
-      console.log(formData);
-
-      // to close the popup
-      setEventFormTitle("registrationForm");
-      setIsEventSubmitted(true);
+    // to close the popup
+    // setEventFormTitle("registrationForm");
+    // setIsEventSubmitted(true);
     // }
   };
 
-  
   const errorMessage = () => {
     return (
       <div
@@ -168,152 +192,150 @@ export default function CompetitionEvent({ handleClose, setIsOpen, setIsEventSub
   };
 
   return (
-      <div className="event-details">
-        <form>
-          <UploadEvent
-            uploadTitle="ADD EVENT POSTER HERE"
-            eventTitleLabel="EVENT TITLE*"
-            eventDescriptionLabel="EVENT DESCRIPTION*"
-            handleImageChange={handleImageChange}
-            handleTitle={handleTitle}
-            handleDescription={handleDescription}
-            eventTitle={eventTitle}
-            eventDescription={eventDescription}
-            file={file}
-          />
-          <div className="date-time-venue-container">
-            <div className="events-flex-column">
-              <label className="label">EVENT DATE*</label>
-              <br />
+    <div className="event-details">
+      <form>
+        <UploadEvent
+          uploadTitle="ADD EVENT POSTER HERE"
+          eventTitleLabel="EVENT TITLE*"
+          eventDescriptionLabel="EVENT DESCRIPTION*"
+          handleImageChange={handleImageChange}
+          handleTitle={handleTitle}
+          handleDescription={handleDescription}
+          eventTitle={eventTitle}
+          eventDescription={eventDescription}
+          file={file}
+        />
+        <div className="date-time-venue-container">
+          <div className="events-flex-column">
+            <label className="label">EVENT DATE*</label>
+            <br />
+            <input
+              onChange={handleDate}
+              className="input"
+              value={eventDate}
+              type="date"
+            />
+          </div>
+          <div className="events-flex-column">
+            <label className="label">EVENT TIMING*</label>
+            <br />
+            <input
+              onChange={handleTiming}
+              className="input"
+              value={eventTime}
+              type="time"
+            />
+          </div>
+          <div className="events-flex-column">
+            <label className="label">EVENT VENUE*</label>
+            <br />
+            <input
+              onChange={handleVenue}
+              className="input event-venue"
+              value={eventLocation}
+              type="text"
+            />
+          </div>
+        </div>
+        <div className="registration-date-time-container">
+          <div className="registration-date-time-column">
+            <label className="label">REGISTRATION DEADLINE*</label>
+            <br />
+            <div className="registration-date-time-input">
               <input
-                onChange={handleDate}
+                onChange={handleRegistrationDate}
                 className="input"
-                value={eventDate}
+                value={RegistrationDate}
                 type="date"
               />
-            </div>
-            <div className="events-flex-column">
-              <label className="label">EVENT TIMING*</label>
-              <br />
               <input
-                onChange={handleTiming}
+                onChange={handleRegistationTiming}
                 className="input"
-                value={eventTime}
+                value={RegistrationTime}
                 type="time"
               />
             </div>
-            <div className="events-flex-column">
-              <label className="label">EVENT VENUE*</label>
-              <br />
+          </div>
+          <div className="team-component-container">
+            <div className="team-component-details">
+              <span>Team based Event? :</span>
               <input
-                onChange={handleVenue}
-                className="input event-venue"
-                value={eventLocation}
-                type="text"
+                type="radio"
+                name="team"
+                value="yes"
+                onChange={handleTeamEventChange}
               />
+              <label htmlFor="yes">Yes</label>
+              <input
+                type="radio"
+                name="team"
+                value="no"
+                onChange={handleTeamEventChange}
+              />
+              <label htmlFor="no">No</label>
             </div>
-          </div>
-          <div className="registration-date-time-container">
-            <div className="registration-date-time-column">
-              <label className="label">REGISTRATION DEADLINE*</label>
-              <br />
-              <div className="registration-date-time-input">
-                <input
-                  onChange={handleRegistrationDate}
-                  className="input"
-                  value={RegistrationDate}
-                  type="date"
-                />
-                <input
-                  onChange={handleRegistationTiming}
-                  className="input"
-                  value={RegistrationTime}
-                  type="time"
-                />
+            {/* Conditionally render the team-member-container */}
+            {isTeamEvent && (
+              <div className="team-member-container">
+                <p>No of Team Members*</p>
+                <select
+                  onChange={handleTeamMembersChange}
+                  value={TeamMembers}
+                  id="teamMembers" // Ensure that the ID is set here
+                >
+                  {[1, 2, 3, 4, 5, 6].map((num) => (
+                    <option key={num} value={num}>
+                      {num}
+                    </option>
+                  ))}
+                </select>
               </div>
-            </div>
-            <div className="team-component-container">
-              <div className="team-component-details">
-                <span>Team based Event? :</span>
-                <input
-                  type="radio"
-                  name="team"
-                  value="yes"
-                  onChange={handleTeamEventChange}
-                />
-                <label htmlFor="yes">Yes</label>
-                <input
-                  type="radio"
-                  name="team"
-                  value="no"
-                  onChange={handleTeamEventChange}
-                />
-                <label htmlFor="no">No</label>
-              </div>
-              {/* Conditionally render the team-member-container */}
-              {isTeamEvent && (
-                <div className="team-member-container">
-                  <p>No of Team Members*</p>
-                  <select
-                    onChange={handleTeamMembersChange}
-                    value={TeamMembers}
-                    id="teamMembers" // Ensure that the ID is set here
-                  >
-                    {[1, 2, 3, 4, 5, 6].map((num) => (
-                      <option key={num} value={num}>
-                        {num}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              )}
-            </div>
+            )}
           </div>
-          <div className="No-of-contact-person-container">
-            <div className="contact-person-details">
-              <p>Contact Person(s) Details*</p>
-            </div>
-            <div className="contact-persons-container">
-              <p>Contact Persons*</p>
-              <select
-                onChange={handlecontactPersonsChange}
-                value={contactPersons}
-              >
-                {[1, 2, 3, 4, 5, 6].map((num) => (
-                  <option key={num} value={num}>
-                    {num}
-                  </option>
-                ))}
-              </select>
-            </div>
+        </div>
+        <div className="No-of-contact-person-container">
+          <div className="contact-person-details">
+            <p>Contact Person(s) Details*</p>
           </div>
-          {Array.from({ length: contactPersons }).map((_, index) => (
-            <Memberdetail key={index} serialNo={index + 1} id={index} />
-          ))}
-          <div className="No-of-contact-person-container">
-            <div className="contact-person-details">
-              <p>RuleBook*</p>
-            </div>
-            <div className="contact-persons-container">
-              <p>No. Of Points*</p>
-              <select onChange={handleRulebookChange} value={Rulebook}>
-                {[1, 2, 3, 4, 5, 6].map((num) => (
-                  <option key={num} value={num}>
-                    {num}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="contact-persons-container">
+            <p>Contact Persons*</p>
+            <select
+              onChange={handlecontactPersonsChange}
+              value={contactPersons}
+            >
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
           </div>
-          {Array.from({ length: Rulebook }).map((_, index) => (
-            <RulebookEntry key={index} serialNo={index + 1} id={index} />
-          ))}
-          <button onClick={handleSubmit} className="submit-button">
+        </div>
+        {Array.from({ length: contactPersons }).map((_, index) => (
+          <Memberdetail key={index} serialNo={index + 1} id={index} />
+        ))}
+        <div className="No-of-contact-person-container">
+          <div className="contact-person-details">
+            <p>RuleBook*</p>
+          </div>
+          <div className="contact-persons-container">
+            <p>No. Of Points*</p>
+            <select onChange={handleRulebookChange} value={Rulebook}>
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        {Array.from({ length: Rulebook }).map((_, index) => (
+          <RulebookEntry key={index} serialNo={index + 1} id={index} />
+        ))}
+        <button onClick={handleSubmit} className="submit-button">
           SUBMIT
         </button>
-        </form>
-        
-      </div>
-
+      </form>
+    </div>
   );
 }
