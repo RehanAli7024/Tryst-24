@@ -3,12 +3,12 @@ import { useLocation } from 'react-router-dom';
 import { DOMAIN } from '../../domain';
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
-import "./registration.css";
+import "./Registration.css";
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 import axios from 'axios';
 import AddedFieldRadio from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
 import AddedFieldCheckbox from '../../overlays/overlays/add-new-field/field-types/AddedFieldCheckbox';
-import AddedFieldUpload from '../../overlays/overlays/add-new-field/field-types/AddedFieldUpload';
+import AddedFieldUpload from '../../overlays/overlays/add-new-field/  field-types/AddedFieldUpload';
 
 function GuestRegisteration({ handleClose, setRegistrationOpen }) {
   const event_id = localStorage.getItem('event_id');
