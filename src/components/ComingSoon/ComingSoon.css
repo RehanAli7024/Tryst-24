@@ -13,7 +13,7 @@
   
   .overlay-image {
     position: absolute;
-    top: 10%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 80%; /* Adjust the maximum width of the overlay image */
@@ -26,13 +26,13 @@
     .overlay-image {
       max-width: 90%; /* Adjust the maximum width of the overlay image for smaller screens */
       width: 70%;
-      top: 5%;
+      top: 24%;
     }
   }
  @media screen and (min-width: 600px) and (max-width: 840px) {
     .overlay-image{
         max-width: 90%;
         width: 60%;
-        top: 8%;
+        top: 28%;
     }
  } 
