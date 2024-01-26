@@ -1,25 +1,12 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainPage from "./pages/mainpage/MainPage.jsx";
 import GuestLectureEvent from "./components/GuestLectureEvent/GuestLectureEvent.jsx";
 import WorkshopEvent from "./components/WorkshopEvents/WorkshopEvent.jsx";
 import CompetitionEvent from "./components/CompetitonEvent/CompetitionEvent.jsx";
 import AddNewField from "./overlays/overlays/add-new-field/AddNewField.jsx";
 import Event from "./overlays/overlays/add-new-field/OverlayTest.jsx";
 import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
-import MainPage from "./pages/main page/MainPage.jsx";
 import PopupContainer from "./overlays/popups/PopupContainer.jsx";
-import Login from "./pages/Login.jsx";
-import About from "./pages/aboutus/aboutus.jsx";
-
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import GuestLectureEvent from "./components/GuestLectureEvent/GuestLectureEvent.jsx";
-import WorkshopEvent from "./components/WorkshopEvents/WorkshopEvent.jsx";
-import CompetitionEvent from "./components/CompetitonEvent/CompetitionEvent.jsx";
-import AddNewField from "./overlays/overlays/add-new-field/AddNewField.jsx";
-import Event from "./overlays/overlays/add-new-field/OverlayTest.jsx";
-import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
-import MainPage from "./pages/main page/MainPage.jsx";
-import PopupContainer from "./overlays/popups/PopupContainer.jsx";
-import ParallaxStars from "./components/Footer/ParallaxStars.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import ComingSoon from "./components/ComingSoon/ComingSoon.jsx";
@@ -28,14 +15,14 @@ import ComingSoon from "./components/ComingSoon/ComingSoon.jsx";
 const App = () => {
   return (
     <main className="bg-slate-300/20 h-full">
-    {/* <Navbar></Navbar> */}
+      {/* <Navbar></Navbar> */}
       <Router>
         {/* <ParallaxStars /> */}
 
 
-    
+
         {window.location.pathname !== "/login" ? <Navbar /> : null}
-        
+
 
 
         <Routes>

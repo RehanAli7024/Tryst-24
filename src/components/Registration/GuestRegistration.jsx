@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { DOMAIN } from '../../domain';
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
-import "./Registration.css";
+import "./registrationMain.css";
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 import axios from 'axios';
 import AddedFieldRadio from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';

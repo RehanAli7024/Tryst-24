@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
-import "./Registration.css";
+import "./registrationMain.css";
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 import AddedFieldRadio from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
 import AddedFieldCheckbox from '../../overlays/overlays/add-new-field/field-types/AddedFieldCheckbox';
