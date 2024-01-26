@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
-import "./registration.css";
+import "./registrationMain.css";
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 
 function GuestRegisteration({ handleClose, setRegistrationOpen }) {

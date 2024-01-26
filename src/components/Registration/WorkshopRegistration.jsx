@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from "../Navbar";
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
-import "./registration.css";
+import "./registrationMain.css";
 
 function WorkshopRegistration() {
     const [formData, setFormData] = useState({
