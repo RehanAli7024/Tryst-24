@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function AddedFieldUpload({ additionalFieldData }) {
+export default function AddedFieldUpload({ additionalFieldData, onChange }) {
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    onChange(file);
+  };
+
   return (
     <Container>
       <p>{additionalFieldData.fieldTitle}</p>
@@ -9,7 +14,13 @@ export default function AddedFieldUpload({ additionalFieldData }) {
         <label htmlFor="file" className="custom-file-input-label">
           + Add File
         </label>
-        <input type="file" name="file" id="file" className="inputfile" />
+        <input
+          type="file"
+          name="file"
+          id="file"
+          className="inputfile"
+          onChange={handleFileChange}
+        />
       </div>
     </Container>
   );
@@ -40,4 +51,3 @@ const Container = styled.div`
     }
   }
 `;
-

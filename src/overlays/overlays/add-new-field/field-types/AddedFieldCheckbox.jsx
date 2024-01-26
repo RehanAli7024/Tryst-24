@@ -1,7 +1,15 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
-export default function AddedFieldCheckbox({additionalFieldData}) {
+export default function AddedFieldCheckbox({ additionalFieldData, onChange }) {
+  const handleCheckboxChange = (option, isChecked) => {
+    const updatedOptions = additionalFieldData.fetchedData.map((o) =>
+      o === option ? { option, isChecked } : o
+    );
+
+    onChange(updatedOptions);
+  };
+
   return (
     <Container>
       <p>{additionalFieldData.fieldTitle}</p>
@@ -11,25 +19,25 @@ export default function AddedFieldCheckbox({additionalFieldData}) {
             <input
               type="checkbox"
               name={additionalFieldData.fieldTitle}
-              value={option}
+              checked={option.isChecked || false}
+              onChange={(e) => handleCheckboxChange(option, e.target.checked)}
             />
-            <label>{option}</label>
+            <label>{option.option}</label>
           </div>
         ))}
       </div>
     </Container>
-  )
+  );
 }
-
 
 const Container = styled.div`
   padding: 0 4vh;
   margin-bottom: 4vh;
   p {
-    color: #ACEBF6;
+    color: #acebf6;
     margin: 0 0 0.5rem 0;
   }
-  .added-field-checkbox-btn{
+  .added-field-checkbox-btn {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -47,7 +55,7 @@ const Container = styled.div`
       label {
         background-color: #293749;
         border: none;
-        border-left: 1px solid #ACEBF6;
+        border-left: 1px solid #acebf6;
         padding: 1vh 1vh;
         width: 15rem;
       }

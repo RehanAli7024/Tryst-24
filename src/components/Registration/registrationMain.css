@@ -5,6 +5,7 @@
     flex-direction: column;
     overflow-y: scroll;
     height: 100%;
+    gap: 3vh;
   }
   
   .responses {

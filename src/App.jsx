@@ -12,8 +12,6 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import ComingSoon from "./components/ComingSoon/ComingSoon.jsx";
 import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
 import Sponsors from "./components/sponsors/sponsors.jsx";
-
-
 const App = () => {
   return (
     <main className="bg-slate-300/20 h-full">
