@@ -10,6 +10,8 @@ import PopupContainer from "./overlays/popups/PopupContainer.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import ComingSoon from "./components/ComingSoon/ComingSoon.jsx";
+import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
+import Sponsors from "./components/sponsors/sponsors.jsx";
 
 
 const App = () => {
@@ -27,14 +29,14 @@ const App = () => {
 
         <Routes>
           {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} /> */}
-          <Route path="/" element={<Login/>} />
+          <Route path="/" element={<ComingSoon />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/workshopevent" element={<WorkshopEvent />} />
           <Route path="/competitionevent" element={<CompetitionEvent />} />
-          <Route path="/addnewfield" element={<AddNewField  />} />
-          <Route path="/overlaytest" element={<Event  />} />
-          <Route path="/registration" element={<GuestRegistration  />} />
+          <Route path="/addnewfield" element={<AddNewField />} />
+          <Route path="/overlaytest" element={<Event />} />
+          <Route path="/registration" element={<GuestRegistration />} />
           <Route path="/popup" element={<PopupContainer />} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
