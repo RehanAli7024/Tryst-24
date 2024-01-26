@@ -15,7 +15,7 @@ const App = () => {
     <main className="bg-slate-300/20 h-full">
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login/>} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/workshopevent" element={<WorkshopEvent />} />
