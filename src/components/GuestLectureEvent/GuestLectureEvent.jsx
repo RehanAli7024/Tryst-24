@@ -1,11 +1,16 @@
-import { useState , useEffect , useRef} from "react";
-import { Link , useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./GuestLectureEvent.css";
 import Memberdetail from "../common/Memberdetail";
 import UploadEvent from "../common/UploadEvent";
 import UploadSpeaker from "../common/UploadSpeaker";
 import Registeration from "../Registration/GuestRegistration";
-const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle}) => {
+const GuestLectureEvent = ({
+  handleClose,
+  setIsOpen,
+  setIsEventSubmitted,
+  setEventFormTitle,
+}) => {
   const navigate = useNavigate();
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
@@ -31,7 +36,7 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
 
     return () => {
       document.removeEventListener("mousedown", handler);
-    }
+    };
   }, [setIsOpen]);
 
   let eventsRef = useRef();
@@ -75,68 +80,60 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (
-    //   eventTitle === "" ||
-    //   eventDescription === "" ||
-    //   eventDate === "" ||
-    //   eventTime === "" ||
-    //   eventLocation === ""
-    // ) {
-    //   setError(true);
-    // } else {
-      setSubmitted(true);
-      setError(false);
-  
-      // Gather input values
-      const EventData = {
-        eventTitle,
-        eventDescription,
-        eventDate,
-        eventTime,
-        eventLocation,
-        file,
-        contactPersons: [],
-        speakers: [],
-      };
-  
-      // Gather data from Memberdetail component
-      for (let i = 0; i < contactPersons; i++) {
-        const contactPersonName = document.getElementById(
-          `contactPersonName_${i}`
-        ).value;
-        const contactPersonNumber = document.getElementById(
-          `contactPersonNumber_${i}`
-        ).value;
-        EventData.contactPersons.push({
-          contactPersonName,
-          contactPersonNumber,
-        });
-      }
-  
-      // Gather data from UploadSpeaker component
-      for (let i = 0; i < Speakers; i++) {
-        const speakerName = document.getElementById(`speakerName_${i}`)?.value ?? "";
-        const speakerDescription = document.getElementById(`speakerDescription_${i}`)
-          ?.value ?? "";
-        const speakerFile = document.getElementById(`speakerImage-${i}`)?.src ?? "";
-  
-        EventData.speakers.push({
-          speakerName,
-          speakerDescription,
-          speakerFile,
-        });
-      }
-  
-      // Console log the gathered data
-      console.log("EventDetails data:", EventData);
-      // navigate("/registration", { state: { eventData: EventData } });    
+    setSubmitted(true);
+    setError(false);
 
-      // to close the popup
-      setEventFormTitle("registrationForm");
-      setIsEventSubmitted(true);
+    // Gather input values
+    const EventData = {
+      eventTitle,
+      eventDescription,
+      eventDate,
+      eventTime,
+      eventLocation,
+      file,
+      contactPersons: [],
+      speakers: [],
+    };
+
+    // Gather data from Memberdetail component
+    for (let i = 0; i < contactPersons; i++) {
+      const contactPersonName = document.getElementById(
+        `contactPersonName_${i}`
+      ).value;
+      const contactPersonNumber = document.getElementById(
+        `contactPersonNumber_${i}`
+      ).value;
+      EventData.contactPersons.push({
+        contactPersonName,
+        contactPersonNumber,
+      });
     }
+
+    // Gather data from UploadSpeaker component
+    for (let i = 0; i < Speakers; i++) {
+      const speakerName =
+        document.getElementById(`speakerName_${i}`)?.value ?? "";
+      const speakerDescription =
+        document.getElementById(`speakerDescription_${i}`)?.value ?? "";
+      const speakerFile =
+        document.getElementById(`speakerImage-${i}`)?.src ?? "";
+
+      EventData.speakers.push({
+        speakerName,
+        speakerDescription,
+        speakerFile,
+      });
+    }
+
+    // Console log the gathered data
+    console.log("EventDetails data:", EventData);
+    // navigate("/registration", { state: { eventData: EventData } });
+
+    // to close the popup
+    setEventFormTitle("registrationForm");
+    setIsEventSubmitted(true);
+  };
   // };
-  
 
   const successMessage = () => {
     return (
@@ -150,114 +147,114 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
       </div>
     );
   };
-  
 
   return (
-    <div className={`event-details ${isSubmitted ? "popup-hidden" : ""}`} ref={eventsRef}>
-        <form>
-          <UploadEvent
-            uploadTitle="ADD EVENT POSTER HERE"
-            eventTitleLabel="EVENT TITLE*"
-            eventDescriptionLabel="EVENT DESCRIPTION*"
+    <div
+      className={`event-details ${isSubmitted ? "popup-hidden" : ""}`}
+      ref={eventsRef}
+    >
+      <form>
+        <UploadEvent
+          uploadTitle="ADD EVENT POSTER HERE"
+          eventTitleLabel="EVENT TITLE*"
+          eventDescriptionLabel="EVENT DESCRIPTION*"
+          handleImageChange={handleImageChange}
+          handleTitle={handleTitle}
+          handleDescription={handleDescription}
+          eventTitle={eventTitle}
+          eventDescription={eventDescription}
+          file={file}
+        />
+
+        <div className="date-time-venue-container">
+          <div className="events-flex-column">
+            <label className="label">EVENT DATE*</label>
+            <br />
+            <input
+              onChange={handleDate}
+              className="input"
+              value={eventDate}
+              type="date"
+            />
+          </div>
+
+          <div className="events-flex-column">
+            <label className="label">EVENT TIMING*</label>
+            <br />
+            <input
+              onChange={handleTiming}
+              className="input"
+              value={eventTime}
+              type="time"
+            />
+          </div>
+
+          <div className="events-flex-column">
+            <label className="label">EVENT VENUE*</label>
+            <br />
+            <input
+              onChange={handleVenue}
+              className="input event-venue"
+              value={eventLocation}
+              type="text"
+            />
+          </div>
+        </div>
+
+        <div className="No-of-contact-person-container">
+          <div className="contact-person-details">
+            <p>Contact Person(s) Details*</p>
+          </div>
+          <div className="contact-persons-container">
+            <p>Contact Persons*</p>
+            <select
+              onChange={handlecontactPersonsChange}
+              value={contactPersons}
+            >
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {Array.from({ length: contactPersons }).map((_, index) => (
+          <Memberdetail key={index} serialNo={index + 1} id={index} />
+        ))}
+
+        <div className="No-of-contact-person-container">
+          <div className="contact-person-details">
+            <p>Speaker(s) Details*</p>
+          </div>
+
+          <div className="contact-persons-container">
+            <p>No. of Speakers*</p>
+            <select onChange={handleSpeakerChange} value={Speakers}>
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {Array.from({ length: Speakers }).map((_, index) => (
+          <UploadSpeaker
+            key={index}
+            id={index}
             handleImageChange={handleImageChange}
             handleTitle={handleTitle}
             handleDescription={handleDescription}
-            eventTitle={eventTitle}
-            eventDescription={eventDescription}
-            file={file}
           />
-
-          <div className="date-time-venue-container">
-            <div className="events-flex-column">
-              <label className="label">EVENT DATE*</label>
-              <br />
-              <input
-                onChange={handleDate}
-                className="input"
-                value={eventDate}
-                type="date"
-              />
-            </div>
-
-            <div className="events-flex-column">
-              <label className="label">EVENT TIMING*</label>
-              <br />
-              <input
-                onChange={handleTiming}
-                className="input"
-                value={eventTime}
-                type="time"
-              />
-            </div>
-
-            <div className="events-flex-column">
-              <label className="label">EVENT VENUE*</label>
-              <br />
-              <input
-                onChange={handleVenue}
-                className="input event-venue"
-                value={eventLocation}
-                type="text"
-              />
-            </div>
-          </div>
-
-          <div className="No-of-contact-person-container">
-            <div className="contact-person-details">
-              <p>Contact Person(s) Details*</p>
-            </div>
-            <div className="contact-persons-container">
-              <p>Contact Persons*</p>
-              <select
-                onChange={handlecontactPersonsChange}
-                value={contactPersons}
-              >
-                {[1, 2, 3, 4, 5, 6].map((num) => (
-                  <option key={num} value={num}>
-                    {num}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {Array.from({ length: contactPersons }).map((_, index) => (
-            <Memberdetail key={index} serialNo={index + 1} id={index} />
-          ))}
-
-          <div className="No-of-contact-person-container">
-            <div className="contact-person-details">
-              <p>Speaker(s) Details*</p>
-            </div>
-
-            <div className="contact-persons-container">
-              <p>No. of Speakers*</p>
-              <select onChange={handleSpeakerChange} value={Speakers}>
-                {[1, 2, 3, 4, 5, 6].map((num) => (
-                  <option key={num} value={num}>
-                    {num}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {Array.from({ length: Speakers }).map((_, index) => (
-            <UploadSpeaker
-              key={index}
-              id={index}
-              handleImageChange={handleImageChange}
-              handleTitle={handleTitle}
-              handleDescription={handleDescription}
-            />
-          ))}
-          <button onClick={handleSubmit} className="submit-button">
-        submit
+        ))}
+        <button onClick={handleSubmit} className="submit-button">
+          submit
         </button>
-        </form>
-        
-        </div>
-   
+      </form>
+    </div>
   );
 };
 

@@ -29,7 +29,7 @@ const Container = styled.div`
     color: #ACEBF6;
     margin: 0 0 0.5rem 0;
   }
-  .added-field-checkbox-btns{
+  .added-field-checkbox-btn{
     display: flex;
     flex-direction: column;
     justify-content: space-between;

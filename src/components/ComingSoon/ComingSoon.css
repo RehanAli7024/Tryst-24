@@ -1,0 +1,38 @@
+.coming-soon-container {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+  
+  .fullscreen-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .overlay-image {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%; /* Adjust the maximum width of the overlay image */
+    width: 50%;
+    height: auto;
+    z-index: 2; /* Ensure the overlay image appears above the video */
+  }
+  
+  @media screen and (max-width: 600px) {
+    .overlay-image {
+      max-width: 90%; /* Adjust the maximum width of the overlay image for smaller screens */
+      width: 70%;
+      top: 24%;
+    }
+  }
+ @media screen and (min-width: 600px) and (max-width: 840px) {
+    .overlay-image{
+        max-width: 90%;
+        width: 60%;
+        top: 28%;
+    }
+ } 
