@@ -1,5 +1,5 @@
 import './sponsors.css';
-import Navbar from '../Navbar';
+import Navbar from '../../components/Navbar';
 import Adobe from "../../assets/sponsors/adobe.webp";
 import TechMaghi from "../../assets/sponsors/tm.webp";
 import RemarkSkill from "../../assets/sponsors/remarkskill.webp";
@@ -19,7 +19,7 @@ const sponsors = [
         index: 1,
         name: "TechMaghi",
         image: TechMaghi,
-        header: "WORKSHOP PARTNER",
+        // header: "WORKSHOP PARTNER",
     },
     {
         index: 2,
@@ -31,7 +31,7 @@ const sponsors = [
         index: 3,
         name: "Robocap League",
         image: Robocap,
-        header: "ROBOWARS PARTNER",
+        // header: "ROBOWARS PARTNER",
     },
     {
         index: 4,
@@ -82,27 +82,30 @@ function Sponsors() {
             <div className="sponsors">
                 <div className="sponsors-head">SPONSORS</div>
                 <div className="sponsors-body">
-                    <div className="sponsors-major-sponsor sponsors-shape">
-                        <div className="sponsors-major-sponsor-img-div">
-                            <img src={Adobe} alt="Adobe Inc." className='sponsors-major-sponsor-img' />
-                        </div>
-                        <div className="sponsors-major-sponsor-text">Adobe Inc.</div>
+                    <div className="sponsors-major-sponsor sponsors-shape-title">
+                        <div className="sponsors-major-sponsor-subcontainer sponsors-shape-title">
+                            <div className="sponsors-major-sponsor-img-div">
+                                <img src={Adobe} alt="Adobe Inc." className='sponsors-major-sponsor-img' />
+                            </div>
+                            <div className="sponsors-major-sponsor-text">Adobe Inc.</div></div>
                     </div>
                     <div className='sponsors-other-sponsors'>
                         {sponsors.map(sponsor => (
                             <div key={sponsor.index} className="sponsors-other-sponsors-container">
                                 <div className="sponsors-other-sponsors-head">{sponsor.header}</div>
-                                <div className="sponsors-other-sponsors-box sponsors-shape">
-                                    <div className="sponsors-other-sponsors-box-img-div">
-                                        <img src={sponsor.image} alt={sponsor.name} className="sponsors-other-sponsors-box-img" />
+                                <div className="sponsors-other-sponsors-box-container sponsors-shape">
+                                    <div className="sponsors-other-sponsors-box sponsors-shape">
+                                        <div className="sponsors-other-sponsors-box-img-div">
+                                            <img src={sponsor.image} alt={sponsor.name} className="sponsors-other-sponsors-box-img" />
+                                        </div>
+                                        <div className="sponsors-other-sponsors-box-text">{sponsor.name}</div>
                                     </div>
-                                    <div className="sponsors-other-sponsors-box-text">{sponsor.name}</div>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

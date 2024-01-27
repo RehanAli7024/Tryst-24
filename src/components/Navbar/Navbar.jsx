@@ -8,11 +8,10 @@ import navbarmenu from "../../assets/Navbar/navbarmenu.png";
 import crossmenu from '../../assets/Navbar/crossmenu.png';
 import { useState } from "react";
 function Navbar() {
-
-    const [showNavOptions,setShowNavOPtions] = useState(false);
-    const handleshownavbar =  ()=>{
-        setShowNavOPtions(!showNavOptions)
-    }
+  const [showNavOptions, setShowNavOPtions] = useState(false);
+  const handleshownavbar = () => {
+    setShowNavOPtions(!showNavOptions)
+  }
   return (
     <div className="navbarcontainor">
       <div className="navbarheader">
