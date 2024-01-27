@@ -14,21 +14,14 @@ import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
 import Sponsors from "./pages/sponsors/sponsors.jsx";
 import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
-
+import EventPage from "./pages/Events/eventpage.jsx";
 
 const App = () => {
   return (
     <main className="bg-slate-300/20 h-full">
       {/* <Navbar></Navbar> */}
       <Router>
-        {/* <ParallaxStars /> */}
-
-
-
         {window.location.pathname !== "/login" ? <Navbar /> : null}
-
-
-
         <Routes>
           {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} /> */}
           <Route path="/" element={<ComingSoon />} />
@@ -46,6 +39,7 @@ const App = () => {
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/about" element={<About />} />
+          <Route path="/events" element={<EventPage />} />
         </Routes>
         <Footer />
       </Router>

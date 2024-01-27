@@ -7,12 +7,11 @@ import BgImageMobile from "../../assets/Footer/bg-mobile.png";
 function Footer() {
   return (
     <div className="footer-container">
-
       <footer className="footer">
         <ParallaxStars />
         <img src={BgImage} className="bg-color-footer-gradient-laptop" />
-      <img src={BgImageMobile} className="bg-color-footer-gradient-mobile" />
-      <div className="horizontal-bar"></div>
+        <img src={BgImageMobile} className="bg-color-footer-gradient-mobile" />
+        <div className="horizontal-bar"></div>
         <div className="contact-section">
           <div className="white-colour " id="query">
             For any queries contact us at :
