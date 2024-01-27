@@ -7,7 +7,7 @@
 }
 
 $shadows-small: multiple-box-shadow(1200);
-$shadows-medium: multiple-box-shadow(500);
+$shadows-medium: multiple-box-shadow(1000);
 $shadows-big: multiple-box-shadow(200);
 
 body {
@@ -23,11 +23,11 @@ body {
   bottom: 0;
 }
 #stars {
-  width: 1px;
-  height: 1px;
+  width: 2px;
+  height: 2px;
   background: transparent;
   box-shadow: $shadows-small;
-  animation: animStar 1s  infinite;
+  animation: animStar 1s infinite;
   opacity: 1;
 }
 
@@ -36,7 +36,8 @@ body {
   height: 2px;
   background: transparent;
   box-shadow: $shadows-medium;
-  animation: animStar 20s linear infinite;
+  animation: animStar 2s linear infinite;
+  opacity: 1;
 }
 
 #stars3 {
@@ -46,26 +47,35 @@ body {
   box-shadow: $shadows-big;
   animation: animStar 1s linear infinite;
   border-radius: 1px;
+  opacity: 1;
 }
 
 @keyframes animStar {
   0% {
-    transform: translateY(0px);
+    transform: translateY(-200px);
+    opacity: 1;
+  }
+  80% {
     opacity: 1;
   }
   100% {
-    transform: translateY(-360px);
-    // opacity: 0.5;
+    transform: translateY(-320px);
+    opacity: 0.5;
   }
 }
 
 @media (max-width: 650px) {
   @keyframes animStar {
     0% {
-      transform: translateY(0px);
+      transform: translateY(-100px);
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
     }
     100% {
-      transform: translateY(-510px);
+      transform: translateY(-230px);
+      opacity: 0.5;
     }
   }
 }

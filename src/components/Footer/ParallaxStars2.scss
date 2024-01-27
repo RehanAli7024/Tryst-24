@@ -37,7 +37,7 @@ body {
   height: 2px;
   background: transparent;
   box-shadow: $shadows-medium;
-  animation: animStar 40s linear infinite;
+  animation: animStar 10s linear infinite;
 }
 
 #stars3 {
@@ -45,26 +45,49 @@ body {
   height: 3px;
   background: transparent;
   box-shadow: $shadows-big;
-  animation: animStar 60s linear infinite;
+  animation: animStar 10s linear infinite;
 }
 
 @keyframes animStar {
   0% {
-    transform: translateY(-200px);
+    transform: translateY(100%);
+    opacity: 0.2; /* Start with opacity 0 to smoothly fade in */
   }
+  10%{
+    opacity: 1;
+  }
+  80% {
+    opacity: 1; /* Gradually fade in */
+  }
+  90% {
+    opacity: 1; /* Gradually fade out */
+  }
+
   100% {
-    transform: translateY(-320px);
-    opacity: 0;
+    transform: translateY(-300px);
+    opacity: 0.1;
   }
 }
 
 @media (max-width: 650px) {
   @keyframes animStar {
     0% {
-      transform: translateY(0px);
+      transform: translateY(100%);
+      opacity: 0.2; /* Start with opacity 0 to smoothly fade in */
     }
+    10%{
+      opacity: 1;
+    }
+    80% {
+      opacity: 1; /* Gradually fade in */
+    }
+    90% {
+      opacity: 1; /* Gradually fade out */
+    }
+  
     100% {
-      transform: translateY(-510px);
+      transform: translateY(-280px);
+      opacity: 0.1;
     }
   }
 }

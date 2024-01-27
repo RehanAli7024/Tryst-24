@@ -129,6 +129,11 @@ height: 99.5%;
   height: 30px;
 }
 
+.logo-section img{
+  max-height: 210px;
+  width: auto;
+}
+
 @media (max-width: 650px) {
   .footer {
     flex-direction: column;
@@ -143,13 +148,31 @@ height: 99.5%;
   .logo-section {
     order: 2;
   }
+  .logo-section img{
+    height: 110px;
+    width: auto;
+  }
   .contact-section {
     order: 3;
+    font-size: 0.7rem;
+  }
+  #query {
+    margin-bottom: 0%;
   }
   .social-section {
     order: 4;
+    font-size: 0.7rem;
+  }
+  .social-section p{
+    margin-bottom: 0;
   }
   .handle {
     margin-inline: 10px;
+  }
+  .handles {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content: center;
   }
 }
