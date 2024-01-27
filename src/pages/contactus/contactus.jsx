@@ -9,12 +9,10 @@ import oc2 from '../../assets/oc2.png';
 const ContactUs = () => {
 
     return (
-        <div className="contactus">
-            <div className="contactus-head">
-                <Placeholder name='Harshit Mawandia' por='Overall Coordinator' image={oc1} />
-                <Placeholder name='Shwinder Singh' por='Overall Coordinator' image={oc2} />
-            </div>
+        <div className="text-3xl">
+            qwaed
         </div>
+        // {/* <Placeholder name='Harshit Mawandia' por='Overall Coordinator' image={oc1} /> */}
     )
 }
 
