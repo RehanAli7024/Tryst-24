@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import './fonts.css';
 import MainPage from "./pages/mainpage/MainPage.jsx";
 import GuestLectureEvent from "./components/GuestLectureEvent/GuestLectureEvent.jsx";
 import WorkshopEvent from "./components/WorkshopEvents/WorkshopEvent.jsx";
@@ -21,14 +22,7 @@ const App = () => {
     <main className="main-bg">
       {/* <Navbar></Navbar> */}
       <Router>
-        {/* <ParallaxStars /> */}
-
-
-
         {window.location.pathname !== "/login" ? <Navbar /> : null}
-
-
-
         <Routes>
           {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} /> */}
           <Route path="/" element={<ComingSoon />} />
