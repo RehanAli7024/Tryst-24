@@ -1,49 +1,90 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 import trystlogo from "../../assets/Navbar/TrystLogo.png";
 import Tryst24 from "../../assets/Navbar/TRYST.png";
 import profileicon from "../../assets/Navbar/IconButton.png";
 import navbarmenu from "../../assets/Navbar/navbarmenu.png";
 import crossmenu from '../../assets/Navbar/crossmenu.png';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 function Navbar() {
-  const [showNavOptions, setShowNavOPtions] = useState(false);
-  const handleshownavbar = () => {
-    setShowNavOPtions(!showNavOptions)
-  }
+const navigate= useNavigate();
+  const [showNavOptions, setShowNavOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("About"); // Default selected option
+  const [selectedMobileOption, setSelectedMobileOption] = useState(selectedOption); // Mobile view selected option
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+  const handleShowNavbar = () => {
+    setShowNavOptions(!showNavOptions);
+  };
+
+  const handleNavbarOptionClick = (option) => {
+    setSelectedOption(option);
+    navigate(`/${option}`);
+    if (showNavOptions) {
+      setSelectedMobileOption(option);
+      handleShowNavbar();
+    }
+    // You can add any other logic here if needed
+  };
+
+  const handleScroll = () => {
+    setIsNavbarVisible(window.scrollY < 200);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="navbarcontainor">
+    <Container className={`navbar ${isNavbarVisible ? "navbar-visible" : "navbar-hidden"}`} >
       <div className="navbarheader">
-        <div className="navbartrystlogo">
+        <Link to='/' className="navbartrystlogo">
           <img className="trystlogoimg" src={trystlogo}></img>
           <img className="tryst2024img" src={Tryst24}></img>
-        </div>
+        </Link>
         <div className="navbaricons">
-          <Link to='/about'><div className="navbaroption">About</div></Link>
-          <Link to= '/'><div className="navbaroption">Guests</div></Link>
-         <Link to= '/' ><div className="navbaroption">Pronites</div></Link>
-         <Link to= '/events'> <div className="navbaroption">Events</div></Link>
-          <Link to="/sponsors" className="navbaroption">Sponsors</Link>
-          <Link to= '/contact'><div className="navbaroption">Contact Us</div></Link>
-        </div>
+        {["About", "Guests", "Pronites", "Events", "Sponsors", "Contact Us"].map((option) => (
+          <div
+            key={option}
+            className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""}`}
+            onClick={() => handleNavbarOptionClick(option)}
+          >
+            {option}
+          </div>
+        ))}
+      </div>
         <div className="navbarprofile">
           <img src={profileicon}></img>
         </div>
-        <button className="navbarmenu" onClick={handleshownavbar}>
+        <button className="navbarmenu" onClick={handleShowNavbar}>
 
           <img src={showNavOptions ? crossmenu : navbarmenu}></img>
         </button>
       </div>
       <div className={showNavOptions ? 'navbariconsmobile' : 'hiddenmobiletoggle'}>
-        <div className="navbaroption">Home</div>
-        <div className="navbaroption">About</div>
-        <div className="navbaroption">Guests</div>
-        <div className="navbaroption">Pronites</div>
-        <div className="navbaroption">Events</div>
-        <Link to="/sponsors" className="navbaroption">Sponsors</Link>
-        <div className="navbaroption">Contact Us</div>
+        {["About", "Guests", "Pronites", "Events", "Sponsors", "Contact Us"].map((option) => (
+          <div
+            key={option}
+            className={`navbaroption ${selectedMobileOption === option ? "navbaroption-selected-mobile" : ""}`}
+            onClick={() => handleNavbarOptionClick(option)}
+          >
+            {option}
+          </div>
+        ))}
       </div>
-    </div>
+    </Container>
   );
 }
 export default Navbar;
+
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

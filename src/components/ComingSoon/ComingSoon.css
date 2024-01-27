@@ -40,23 +40,6 @@
   z-index: 2;
 }
 
-h1 {
-  font-family: 'Audiowide', sans-serif;
-  font-size: 4rem;
-  font-weight: 400;
-  letter-spacing: 3px;
-  width: 100%;
-  color: #fff;
-  margin: 0;
-  padding: 20px;
-  background: transparent;
-  background-image: url('../../assets/coming-soon-bg.png');
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: ComingSoonBgAnimation 5s linear infinite;
-  color: transparent;
-}
-
 /* .coming-soon-bg {
   position: absolute;
   top: 0;
@@ -73,17 +56,46 @@ h1 {
   position: absolute;
   left: 50%;
   top: 15%;
-  transform: translate(-50%, -50%); /* Adjust this if needed */
+  transform: translate(-50%, -50%);
+  /* Adjust this if needed */
+
+  font-family: 'Audiowide', sans-serif;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  width: 100%;
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+  background: transparent;
+  background-image: url('../../assets/coming-soon-bg.png');
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: ComingSoonBgAnimation 5s linear infinite;
+  color: transparent;
 }
 
 @keyframes ComingSoonBgAnimation {
   0% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
+
   50% {
-      background-position: 100% 50%;
+    background-position: 100% 50%;
   }
+
   100% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fullscreen-video-container {
+    height: 67.5vh;
+  }
+
+  .coming-soon-text-overlay {
+    font-size: 2rem;
+    top: 30%;
   }
 }
