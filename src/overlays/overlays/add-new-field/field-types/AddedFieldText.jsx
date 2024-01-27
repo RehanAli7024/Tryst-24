@@ -1,20 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function AddedFieldText({ additionalFieldData, onChange }) {
-  const handleInputChange = (e) => {
-    onChange(e.target.value);
-  };
-
+export default function AddedFieldText({ additionalFieldData, onChange, onDelete }) {
   return (
     <Container>
       <p>{additionalFieldData.fieldTitle}</p>
-      <input
-        type="text"
-        name={additionalFieldData.fieldTitle}
-        placeholder={`Enter ${additionalFieldData.fieldTitle}`}
-        onChange={handleInputChange}
-      />
+      <div className="added-field-text-input">
+        <input
+          type="text"
+          name={additionalFieldData.fieldTitle}
+          value={additionalFieldData.fetchedData}
+          onChange={(e) => onChange(e.target.value)}
+        />
+        <button className="delete" onClick={onDelete}>
+          Delete
+        </button>
+      </div>
     </Container>
   );
 }
@@ -26,17 +27,21 @@ const Container = styled.div`
     color: #acebf6;
     margin: 0 0 0.5rem 0;
   }
-  input {
-    width: 100%;
-    padding: 1vh;
-    color: #acebf6;
-    outline: none;
-    border: none;
-    border-left: 2px solid #acebf6;
-    background: rgba(255, 255, 255, 0.12);
-    height: 5vh;
-    color: white;
-    font-size: 14px;
+  .added-field-text-input {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    input {
+      flex: 1;
+      margin-right: 1vh;
+      padding: 0.5vh;
+    }
+    button {
+      background-color: #ff5c5c; /* Set the desired background color */
+      color: #fff;
+      border: none;
+      padding: 0.5vh 1vh;
+      cursor: pointer;
+    }
   }
 `;
-
