@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease-in-out;
+  margin-bottom: 30px;
 }
 
 .navbar-hidden {
@@ -10,9 +11,10 @@
 }
 
 .navbarheader {
-  position: fixed;
+  position: relative;
   top: 2rem;
   left: auto;
+  margin-bottom: 20px;
   height: 3.5rem;
   border-radius: 2.5rem;
   border: 2px solid rgba(255, 251, 255, 0.20);
@@ -101,9 +103,9 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -10px;
+    bottom: -5px;
     width: 100%;
-    height: 5px; 
+    height: 3.5px; 
     background: transparent; 
     transform: skewX(-20deg);
   transform-origin: 0% 100%;
