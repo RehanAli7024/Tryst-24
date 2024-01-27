@@ -16,16 +16,18 @@ import Sponsors from "./pages/sponsors/sponsors.jsx";
 import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
+import Login from "./pages/login/login.jsx";
 
 const App = () => {
   return (
     <main className="main-bg">
       {/* <Navbar></Navbar> */}
       <Router>
-        {window.location.pathname !== "/login" ? <Navbar /> : null}
+        {window.location.pathname !== "/none" ? <Navbar /> : null}
         <Routes>
-          {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} /> */}
+          <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/" element={<ComingSoon />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/contact us" element={<ContactUs />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/sponsors" element={<Sponsors />} />

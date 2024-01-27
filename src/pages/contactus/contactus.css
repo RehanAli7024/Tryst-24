@@ -34,8 +34,13 @@ body {
   text-transform: uppercase;
   writing-mode: vertical-rl;
 }
-.overall{
-  width: 75%;
+.overall {
+  width: 50%;
+}
+@media screen and (max-width: 768px) {
+  .overall {
+    width: 100%;
+  }
 }
 .hovered-svg {
   fill: #39281c;
@@ -120,7 +125,7 @@ body {
   position: absolute;
   width: 50%;
   height: 20%;
-  bottom:3%;
+  bottom: 3%;
   left: 17%;
 }
 

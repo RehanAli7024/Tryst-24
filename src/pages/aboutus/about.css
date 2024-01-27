@@ -1,4 +1,3 @@
-
 /* animation 2 */
 .about-us-animation2-svg1 {
   position: relative;
@@ -10,7 +9,7 @@
   height: max-content;
   fill: #2c153e;
   stroke-width: 2px;
-  transition: all 1.85s ease-in-out;
+  transition: all 3s ease-in;
   stroke: var(--Color-Base-Violet, #e086d3);
 }
 .svg1-hovered {
@@ -18,7 +17,7 @@
   height: max-content;
   stroke-width: 2px;
   stroke: rgba(224, 134, 211, 0);
-  transition: all 1s ease-in-out;
+  transition: all 2s ease-in-out;
   fill: #151025;
 }
 .about-us-animation2-h1 {
@@ -144,7 +143,7 @@
   z-index: 9999;
   -webkit-mask-size: 500%;
   mask-size: 500%;
-  transition: all 2s ease-in-out;
+  transition: all 3.5s ease-in-out;
 }
 .abou .about-us-svg {
   width: 17.5rem;
@@ -153,15 +152,6 @@
   top: 0;
   left: 0;
   z-index: -1;
-}
-
-@keyframes hoveranimate {
-  0% {
-    fill: none;
-  }
-  100% {
-    fill: white;
-  }
 }
 .about-us-head {
   width: 100%;

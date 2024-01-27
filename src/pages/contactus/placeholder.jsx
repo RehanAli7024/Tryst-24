@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import linkedin from "../../assets/linkedin.svg";
 import mail from "../../assets/mail.svg";
-const Placeholder = ({data}) => {
+const Placeholder = ({ data }) => {
     const [hovered, setHovered] = useState(false);
     return (
         <div className="placeholder">

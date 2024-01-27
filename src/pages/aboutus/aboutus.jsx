@@ -2,11 +2,18 @@ import React from "react";
 import "./about.css";
 import { useState } from "react";
 import trystlogo from "../../assets/white (1) 2.svg";
+import { useEffect } from "react";
 const About = () => {
   // const [hovered, setHovered] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  // const xTranslate = hovered ? 34 : 0;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsHovered(prevState => !prevState);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
 
   return (
     <div className="about">
@@ -22,8 +29,7 @@ const About = () => {
           Come aboard and have an experience of a lifetime!
         </div>
       </div>
-      <div className="about-us-parent-container" onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}>
+      <div className="about-us-parent-container">
         <img src={trystlogo} alt="trystlogo" className={isHovered ? `about-us-tryst-logo-hovered` : `about-us-tryst-logo`} />
         <div className="about-us-vector-container">
           <svg className={isHovered ? 'about-us-vector-hovered' : 'about-us-vector'} xmlns="http://www.w3.org/2000/svg" width="385" height="289" viewBox="0 0 385 289" fill="none">

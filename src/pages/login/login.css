@@ -1,0 +1,30 @@
+.login-head {
+  color: var(--Color-Base-Snow, #fffbff);
+  text-align: center;
+  font-family: Audiowide;
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2rem;
+}
+.login-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-iit-body {
+  position: relative;
+  background: url("../../assets/bg.svg") no-repeat center center fixed;
+}
+.login-iit-body-text {
+  /* position: absolute; */
+}
+.iitlogo {
+  /* position: absolute;
+  top: 0;
+  left: 5%;
+  transform: translate(0, 45%); */
+}

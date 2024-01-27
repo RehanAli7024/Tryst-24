@@ -14,7 +14,7 @@ const ContactUs = () => {
       <div className="text-3xl md:text-5xl flex justify-center items-center pb-12 pt-8">
         Contact US
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 w-6/12 m-auto mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 m-auto mb-10 overall">
         <Placeholder data={data.ocs[0]} />
         <Placeholder data={data.ocs[1]} />
       </div>
