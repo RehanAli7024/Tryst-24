@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./fonts.css"
+import "./App.css";
 import MainPage from "./pages/mainpage/MainPage.jsx";
 import GuestLectureEvent from "./components/GuestLectureEvent/GuestLectureEvent.jsx";
 import WorkshopEvent from "./components/WorkshopEvents/WorkshopEvent.jsx";
@@ -18,7 +18,7 @@ import EventPage from "./pages/Events/eventpage.jsx";
 
 const App = () => {
   return (
-    <main className="bg-slate-300/20 h-full">
+    <main className="main-bg">
       {/* <Navbar></Navbar> */}
       <Router>
         {/* <ParallaxStars /> */}
