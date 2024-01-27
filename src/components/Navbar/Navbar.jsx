@@ -19,12 +19,12 @@ function Navbar() {
           <img className="tryst2024img" src={Tryst24}></img>
         </div>
         <div className="navbaricons">
-          <div className="navbaroption">About</div>
-          <div className="navbaroption">Guests</div>
-          <div className="navbaroption">Pronites</div>
-          <div className="navbaroption">Events</div>
+          <Link to='/about'><div className="navbaroption">About</div></Link>
+          <Link to= '/'><div className="navbaroption">Guests</div></Link>
+         <Link to= '/' ><div className="navbaroption">Pronites</div></Link>
+         <Link to= '/events'> <div className="navbaroption">Events</div></Link>
           <Link to="/sponsors" className="navbaroption">Sponsors</Link>
-          <div className="navbaroption">Contact Us</div>
+          <Link to= '/contact'><div className="navbaroption">Contact Us</div></Link>
         </div>
         <div className="navbarprofile">
           <img src={profileicon}></img>

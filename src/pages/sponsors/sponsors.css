@@ -5,8 +5,6 @@
   flex-direction: column;
   background-color: black;
   color: white;
-  margin-bottom: 8vh;
-
   background-image: url(../../assets/sponsors/stars.webp);
 }
 
@@ -26,6 +24,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 8vh;
 }
 
 .sponsors-shape-title {
@@ -51,6 +50,7 @@
 .sponsors-title-sponsor:hover {
   background-color: #f0b537;
 }
+
 .sponsors-title-sponsor-subcontainer {
   width: calc(100% - 3px);
   height: calc(100% - 3px);
@@ -72,7 +72,7 @@
   color: #00e0ff;
   text-align: center;
   font-family: "Bender", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 3.36px;
   text-transform: uppercase;
@@ -117,7 +117,7 @@
 
 .sponsors-other-sponsors-container {
   width: 21vw;
-  height: 30vh;
+  height: 15vw;
   margin: 3vh 1.2vw;
 }
 
@@ -135,7 +135,8 @@
 }
 
 .sponsors-other-sponsors-box {
-  height: calc(100% - 3px); /* 4px = 2px + 2px (margin) */
+  height: calc(100% - 3px);
+  /* 4px = 2px + 2px (margin) */
   width: calc(100% - 3px);
   background-color: rgba(3, 10, 23, 0.8);
   margin: 1.5px;
