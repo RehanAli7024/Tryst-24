@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import './fonts.css';
 import MainPage from "./pages/mainpage/MainPage.jsx";
 import GuestLectureEvent from "./components/GuestLectureEvent/GuestLectureEvent.jsx";
 import WorkshopEvent from "./components/WorkshopEvents/WorkshopEvent.jsx";
