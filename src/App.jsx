@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import ComingSoon from "./components/ComingSoon/ComingSoon.jsx";
 import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
 import Sponsors from "./components/sponsors/sponsors.jsx";
+import EventPage from "./pages/Events/eventpage.jsx";
 
 
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/comingsoon" element={<ComingSoon />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
+          <Route path="/eventpage" element={<EventPage />} />
         </Routes>
         <Footer />
       </Router>
