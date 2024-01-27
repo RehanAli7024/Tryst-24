@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from "../Navbar";
 import editicon from "../../assets/edit.png";
 import deleteicon from "../../assets/delete.png";
 import "./registrationMain.css";

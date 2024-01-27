@@ -8,7 +8,6 @@ const ParallaxStars = () => {
         <div id="stars2" className='parallax-star'></div>
         <div id="stars3" className='parallax-star'></div>
         <div id="title" className='parallax-title'>
-          {/* Add your title content here */}
         </div>
       </div>
     );

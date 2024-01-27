@@ -1,5 +1,4 @@
-
-
+import { Link } from 'react-router-dom';
 import "./Navbar.css";
 import trystlogo from "../../assets/Navbar/TrystLogo.png";
 import Tryst24 from "../../assets/Navbar/TRYST.png";

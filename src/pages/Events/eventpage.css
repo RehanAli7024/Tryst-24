@@ -1,0 +1,174 @@
+.event_title h1{
+    display: flex;
+    color: aliceblue;
+    align-items: center;
+    justify-content: center;
+    color: var(--Color-Base-Snow, #FFFBFF);
+    text-align: center;
+    font-family: "Audiowide" !important;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.6rem;
+}
+.event_container{
+    color: aliceblue;
+    display: flex;
+}
+.event_poster{
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    flex-shrink: 0; */ 
+    align-items: center;
+}
+.event_description{
+    flex: 1;
+    text-align: center;
+    /* background-color: #FFFBFF; */
+    color: black;
+}
+.poster{
+    background-color: #FFFBFF;
+    height: 20rem;
+    width: 25%;
+    align-items: center;
+    display: flex;
+    padding: 0rem 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    
+}
+.rulebook{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+    width: 10rem;
+    clip-path: polygon(0 0 , 30% 0, 33% 10%, 100% 10%, 100% 100%, 5% 100%, 0 85%);
+    background-color: rgba(0, 224, 255, 0.30);
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    fill: linear-gradient(0deg, rgba(0, 224, 255, 0.30) 0%, rgba(0, 224, 255, 0.30) 100%), rgba(3, 10, 23, 0.80);
+    stroke-width: 2px;
+    /* stroke: var(--Color-Base-Vivid-Sky-Blue, #00E0FF);    */
+    border: 3px solid #00E0FF;
+    font-family: "Rajdhani";
+    font-size: 1.2rem;
+}
+.event_title  {
+    color: var(--Color-Base-Gold-Yellow, #F0B537);
+    font-family: Bender;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.08rem;
+    text-align: left;
+}
+.event_para_1{
+    color: var(--Color-Base-Snow, #FFFBFF);
+    font-family: Rajdhani;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    margin-top: 1.5rem;
+    /* margin-bottom: 2rem; */
+    width: 95%;
+}
+.event_details{
+    color: white;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 80%
+}
+.event_time,.event_date, .event_location{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;    
+    font-family: Rajdhani;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.event_time p,.event_date p, .event_location p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;    
+    font-family: Rajdhani;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-left: 0.8rem;
+}
+.contact_information{
+    display: flex;
+    color: #FFF;
+    margin-top: 4rem;
+}
+.register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;    
+    font-family: Rajdhani;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.register p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;    
+    font-family: Rajdhani;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 0.5rem;
+}
+.contact_text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Color-Base-Violet, #E086D3);
+    font-family: Bender;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-left: 7vw;
+}
+.POC{
+    display: table-column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5vw;
+    color: #FFF;
+    text-align: left;
+    font-family: Rajdhani;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.poc_name{
+    font-family: Rajdhani;
+}
+.poc_contact{
+    font-weight: 200;
+    font-family: Rajdhani;
+}
