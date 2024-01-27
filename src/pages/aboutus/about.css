@@ -62,6 +62,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  letter-spacing: 0.1rem;
 }
 .about-us-animation2-container1 {
   position: relative;
@@ -164,7 +165,7 @@
 }
 .about-us-head {
   width: 100%;
-  margin: 5rem auto 0 auto;
+  margin: 0 auto 0 auto;
   color: var(--Color-Base-Snow, #fffbff);
   text-align: center;
   font-family: Audiowide;
