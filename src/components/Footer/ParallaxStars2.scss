@@ -6,9 +6,9 @@
   @return unquote($value);
 }
 
-$shadows-small: multiple-box-shadow(1200);
-$shadows-medium: multiple-box-shadow(500);
-$shadows-big: multiple-box-shadow(200);
+$shadows-small: multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big: multiple-box-shadow(100);
 
 body {
   height: 100%;
@@ -21,14 +21,15 @@ body {
 #stars3 {
   position: absolute;
   bottom: 0;
+  border-radius: 35px;
+  z-index: -2;
 }
 #stars {
   width: 1px;
   height: 1px;
   background: transparent;
   box-shadow: $shadows-small;
-  animation: animStar 1s  infinite;
-  opacity: 1;
+  animation: animStar 10s linear infinite;
 }
 
 #stars2 {
@@ -36,7 +37,7 @@ body {
   height: 2px;
   background: transparent;
   box-shadow: $shadows-medium;
-  animation: animStar 20s linear infinite;
+  animation: animStar 40s linear infinite;
 }
 
 #stars3 {
@@ -44,18 +45,16 @@ body {
   height: 3px;
   background: transparent;
   box-shadow: $shadows-big;
-  animation: animStar 1s linear infinite;
-  border-radius: 1px;
+  animation: animStar 60s linear infinite;
 }
 
 @keyframes animStar {
   0% {
-    transform: translateY(0px);
-    opacity: 1;
+    transform: translateY(-200px);
   }
   100% {
-    transform: translateY(-360px);
-    // opacity: 0.5;
+    transform: translateY(-320px);
+    opacity: 0;
   }
 }
 

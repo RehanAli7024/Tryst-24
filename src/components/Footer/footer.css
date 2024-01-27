@@ -85,8 +85,7 @@
 
 .handles > .handle > a:hover,
 .mail > div > a:hover {
-  color: lightsalmon;
-  text-shadow: 0 0 3px lightsalmon;
+  text-shadow: 0 0 3px #fff;
 }
 
 .handles > .handle > a {
