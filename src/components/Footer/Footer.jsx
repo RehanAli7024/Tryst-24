@@ -11,7 +11,8 @@ function Footer() {
     <footer className="footer">
       <ParallaxStars/>
       <img src={BgImage} className="bg-color-footer-gradient-laptop" />
-      <img src={BgImageMobile} className="bg-color-footer-gradient-mobile" />
+      {/* <img src={BgImageMobile} className="bg-color-footer-gradient-mobile" /> */}
+      <div className="footer-gradient"></div>
       <div className="horizontal-bar"></div>
       <div className="contact-section">
         <div className="white-colour " id="query">

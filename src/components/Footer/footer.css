@@ -52,7 +52,7 @@ height: 99.5%;
   }
 }
 
-.bg-color-footer-gradient-mobile {
+/* .bg-color-footer-gradient-mobile {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -62,8 +62,17 @@ height: 99.5%;
   @media screen and (min-width: 650px) {
     display: none
   }
-}
+} */
 
+.footer-gradient{ 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 99.5%;
+  z-index: -100;
+  
+}
 
 #query {
   margin-bottom: 5%;
