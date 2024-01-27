@@ -6,13 +6,16 @@ import comingsoonimg from '../../assets/comingsoon.png'
 export default function ComingSoon() {
     return (
         <div className="fullscreen-video-container">
-            
+              <div className="coming-soon-text-overlay">
+                  <h1>COMING SOON...</h1>
+              </div>
+              <div className="coming-soon-bg"></div>
+
           <video autoPlay loop muted className="fullscreen-video">
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <img src={comingsoonimg} alt="coming soon" className="overlay-image"/>
-        
+          
         </div>
       );
 }
