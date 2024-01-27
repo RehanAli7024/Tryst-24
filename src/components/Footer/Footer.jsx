@@ -17,7 +17,7 @@ function Footer() {
             For any queries contact us at :
           </div>
           <div className="mail">
-            <div>
+            <div className="footer-mail">
               <i className="fa-regular fa-envelope"></i>
               <a href="mailto:admin@tryst-iitd.org"> admin@tryst-iitd.org</a>
             </div>

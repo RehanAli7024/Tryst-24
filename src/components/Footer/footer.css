@@ -54,12 +54,18 @@
   @media screen and (min-width: 650px) {
     display: none;
   }
-} */
-
+}
 #query {
   margin-bottom: 5%;
+  font-family: Rajdhani;
+  font-size: 1.25rem;
 }
-
+.footer-mail {
+  width: 100%;
+  height: 2vw;
+  font-size: 1.25rem;
+  letter-spacing: 0.1rem;
+}
 .horizontal-bar {
   position: absolute;
   top: 1px;
@@ -80,7 +86,12 @@
   text-align: center;
   margin-bottom: 10px;
 }
-.logo-section{
+.social-section p {
+  font-family: Rajdhani;
+  font-size: 1.25rem;
+  letter-spacing: 0.1rem;
+}
+.logo-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,6 +103,7 @@
 .mail > div > a {
   color: #fff;
   text-decoration: none;
+  font-family: Rajdhani;
 }
 .handles {
   margin-top: 1rem;
@@ -103,6 +115,7 @@
 .handles > .handle > a:hover,
 .mail > div > a:hover {
   text-shadow: 0 0 3px #fff;
+  font-family: Rajdhani;
 }
 .handles > .handle > a {
   font-size: 28px;
@@ -144,6 +157,7 @@
   }
   #query {
     margin-bottom: 0%;
+    font-family: Rajdhani;
   }
   .social-section {
     order: 4;
@@ -162,13 +176,9 @@
     justify-content: center;
   }
   .footer::before {
-    background: linear-gradient(
-      #030a17cc,
-      #030a17fb,
-      #802392fd,
-      #802392
-    );}
-    .horizontal-bar{
-      top: -20px;
-    }
+    background: linear-gradient(#030a17cc, #030a17fb, #802392fd, #802392);
+  }
+  .horizontal-bar {
+    top: -20px;
+  }
 }

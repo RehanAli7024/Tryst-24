@@ -20,14 +20,14 @@
   }
 }
 @media screen and (min-width: 600px) and (max-width: 840px) {
-    .overlay-image{
-        max-width: 90%;
-        width: 60%;
-        top: 28%;
-    }
+  .overlay-image {
+    max-width: 90%;
+    width: 60%;
+    top: 28%;
+  }
 }
-.coming-soon-text-h1{
-  
+.coming-soon-text-h1 {
+  font-family: Audiowide;
 }
 .coming-soon-text-overlay {
   text-align: center;
@@ -59,7 +59,7 @@
   transform: translate(-50%, -50%);
   /* Adjust this if needed */
 
-  font-family: 'Audiowide', sans-serif;
+  font-family: "Audiowide", sans-serif;
   font-size: 4rem;
   font-weight: 400;
   letter-spacing: 3px;
@@ -68,7 +68,7 @@
   margin: 0;
   padding: 20px;
   background: transparent;
-  background-image: url('../../assets/coming-soon-bg.png');
+  background-image: url("../../assets/coming-soon-bg.png");
   -webkit-background-clip: text;
   background-clip: text;
   animation: ComingSoonBgAnimation 5s linear infinite;
