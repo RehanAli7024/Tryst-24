@@ -30,6 +30,7 @@
   align-items: center;
   color: white;
   gap: 10%;
+}
 .navbaricons {
   display: flex;
   flex-direction: row;
