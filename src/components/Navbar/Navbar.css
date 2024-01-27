@@ -30,6 +30,13 @@
   align-items: center;
   color: white;
   gap: 10%;
+.navbaricons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 10%;
 }
 .navbaroption {
   white-space: nowrap;
@@ -48,6 +55,7 @@
   margin-right: 3%;
   cursor: pointer;
 }
+
 .navbaroption {
   position: relative;
 }
@@ -133,6 +141,7 @@
       #00e0ff
     );
   }
+
   .navbaroption:hover::after {
     background: transparent;
   }
