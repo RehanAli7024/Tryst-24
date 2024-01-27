@@ -12,6 +12,7 @@ export default function ComingSoon() {
             Your browser does not support the video tag.
           </video>
           <img src={comingsoonimg} alt="coming soon" className="overlay-image"/>
+        
         </div>
       );
 }

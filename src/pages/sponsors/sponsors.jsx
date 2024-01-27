@@ -1,5 +1,4 @@
 import './sponsors.css';
-import Navbar from '../../components/Navbar';
 import Adobe from "../../assets/sponsors/adobe.webp";
 import TechMaghi from "../../assets/sponsors/tm.webp";
 import RemarkSkill from "../../assets/sponsors/remarkskill.webp";
@@ -82,12 +81,12 @@ function Sponsors() {
             <div className="sponsors">
                 <div className="sponsors-head">SPONSORS</div>
                 <div className="sponsors-body">
-                    <div className="sponsors-major-sponsor sponsors-shape-title">
-                        <div className="sponsors-major-sponsor-subcontainer sponsors-shape-title">
-                            <div className="sponsors-major-sponsor-img-div">
-                                <img src={Adobe} alt="Adobe Inc." className='sponsors-major-sponsor-img' />
+                    <div className="sponsors-title-sponsor sponsors-shape-title">
+                        <div className="sponsors-title-sponsor-subcontainer sponsors-shape-title">
+                            <div className="sponsors-title-sponsor-img-div">
+                                <img src={Adobe} alt="Adobe Inc." className='sponsors-title-sponsor-img' />
                             </div>
-                            <div className="sponsors-major-sponsor-text">Adobe Inc.</div></div>
+                            <div className="sponsors-title-sponsor-text">Adobe Inc.</div></div>
                     </div>
                     <div className='sponsors-other-sponsors'>
                         {sponsors.map(sponsor => (

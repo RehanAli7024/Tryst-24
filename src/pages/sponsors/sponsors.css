@@ -5,12 +5,15 @@
   flex-direction: column;
   background-color: black;
   color: white;
+  margin-bottom: 8vh;
+
+  background-image: url(../../assets/sponsors/stars.webp);
 }
 
 .sponsors-head {
   text-align: center;
   font-family: "Audiowide", sans-serif;
-  font-size: 64px;
+  font-size: calc(2vh + 4vw);
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -33,22 +36,22 @@
   clip-path: polygon(0% 0%, 90% 0%, 100% 15%, 100% 100%, 10% 100%, 0% 85%);
 }
 
-.sponsors-major-sponsor {
+.sponsors-title-sponsor {
   background-color: #f0b53798;
   width: 45vw;
-  height: 15vw;
+  height: 30vh;
   display: flex;
   /* justify-content: center; */
   align-items: center;
   flex-direction: column;
-  margin: 7vh auto;
+  margin: 9vh auto 3vh auto;
   transition: background-color 0.5s ease-in-out;
 }
 
-.sponsors-major-sponsor:hover {
+.sponsors-title-sponsor:hover {
   background-color: #f0b537;
 }
-.sponsors-major-sponsor-subcontainer {
+.sponsors-title-sponsor-subcontainer {
   width: calc(100% - 3px);
   height: calc(100% - 3px);
   background-color: rgba(3, 10, 23, 0.9);
@@ -75,7 +78,7 @@
   text-transform: uppercase;
 }
 
-.sponsors-major-sponsor-img-div {
+.sponsors-title-sponsor-img-div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,12 +87,12 @@
   background-color: white;
 }
 
-.sponsors-major-sponsor-img {
+.sponsors-title-sponsor-img {
   max-width: 80%;
   max-height: 80%;
 }
 
-.sponsors-major-sponsor-text {
+.sponsors-title-sponsor-text {
   height: 35%;
   width: 100%;
   background-color: rgba(3, 10, 23, 0.8);
@@ -115,7 +118,7 @@
 .sponsors-other-sponsors-container {
   width: 21vw;
   height: 30vh;
-  margin: 25px 5px;
+  margin: 3vh 1.2vw;
 }
 
 .sponsors-other-sponsors-box-container {
@@ -168,4 +171,49 @@
   font-size: 1.1rem;
   color: white;
   font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .sponsors {
+    margin-bottom: 4vh;
+  }
+
+  .sponsors-title-sponsor {
+    width: 80vw;
+    height: 17vh;
+    margin: 3vh auto 2vh auto;
+  }
+
+  .sponsors-title-sponsor-img-div {
+    height: 70%;
+  }
+
+  .sponsors-title-sponsor-text {
+    height: 30%;
+    font-size: 1.2rem;
+  }
+
+  .sponsors-other-sponsors-container {
+    width: 40vw;
+    height: 13vh;
+    margin: 1.7vh 2.5vw;
+  }
+
+  .sponsors-other-sponsors-box-img {
+    max-width: 85%;
+    max-height: 85%;
+  }
+
+  .sponsors-other-sponsors-box-text {
+    font-size: 0.9rem;
+    height: 25%;
+  }
+
+  .sponsors-other-sponsors-box-img-div {
+    height: 75%;
+  }
+
+  .sponsors-other-sponsors-head {
+    font-size: 1rem;
+  }
 }
