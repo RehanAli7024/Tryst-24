@@ -1,144 +1,151 @@
+.navbarcontainor {
+  background-color: transparent;
 
-.navbarcontainor{
-   background-color: transparent;
-  
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: sticky;
-   top: 0;
-   width: 100%;
-   flex-direction: column;
-   margin-top: 1vh;
-   gap: 3rem;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 1vh;
+  gap: 3rem;
 }
-.navbarheader{
-    height: 5rem;
-    border-radius: 1000px;
-    border: 1.5px solid rgba(255, 251, 255, 0.20);
-    display: flex;
-    flex-direction: row;
-    margin-top: 2rem;
-    gap: 10%;
-    width: 90%;
-    align-items: center;
-    
+.navbarheader {
+  height: 5rem;
+  border-radius: 1000px;
+  border: 1.5px solid rgba(255, 251, 255, 0.2);
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  gap: 10%;
+  width: 90%;
+  align-items: center;
 }
 
-.navbaricons{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    gap: 10%;
+.navbaricons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 10%;
 }
-.navbaroption{
-    white-space: nowrap;
-    cursor: pointer;
-}
-.navbartrystlogo{
-    padding-left: 4%;
-    display: flex;
-    align-items: center;
-    width: 40%;
-
-}
-.navbarprofile{
-    width: 12%;
-    display: flex;
-    flex-direction: row-reverse;
-    margin-right: 3%;
-    cursor: pointer;
+.navbaricons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 10%;
 }
 .navbaroption {
-    position: relative;
-  }
-  .navbaroption::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 5px; /* Thickness of the underline, adjust as needed */
-    background: transparent; /* Initially transparent */
-    transform: skewX(-20deg); /* Adjust the skew angle for a parallelogram shape */
-  transform-origin: 0% 100%;
-    transition: background 0.3s ease-in-out;
-  }
-  .navbaroption:hover::after {
-    background: linear-gradient(to right , #ACEBF6, transparent);
- 
-  }
-  .navbarmenu{
-    display: none;
-  }
-  .navbariconsmobile{
-    display: none;
-  }
-  .hiddenmobiletoggle{
-    display: none;
-  }
-  @media only screen and (max-width: 1100px){
-    
-    .navbaricons{
-       display: none;
-    }
-    .navbarmenu{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #041429;
-            border: none;
-            height: 3rem;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+.navbartrystlogo {
+  padding-left: 4%;
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+.navbarprofile {
+  width: 12%;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 3%;
+  cursor: pointer;
+}
 
-    }
-    .navbarmenu img{
-            height: 100%;
-            width: 100%;
-    }
-    .navbarprofile{
-        margin: 0;
-        padding-left: 7%;
-    }
-   .navbarheader{
+.navbaroption {
+  position: relative;
+}
+.navbaroption::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 5px; /* Thickness of the underline, adjust as needed */
+  background: transparent; /* Initially transparent */
+  transform: skewX(
+    -20deg
+  ); /* Adjust the skew angle for a parallelogram shape */
+  transform-origin: 0% 100%;
+  transition: background 0.3s ease-in-out;
+}
+.navbaroption:hover::after {
+  background: url("../../assets/after.svg");
+  background-repeat: no-repeat;
+}
+.navbarmenu {
+  display: none;
+}
+.navbariconsmobile {
+  display: none;
+}
+.hiddenmobiletoggle {
+  display: none;
+}
+@media only screen and (max-width: 1100px) {
+  .navbaricons {
+    display: none;
+  }
+  .navbarmenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #041429;
+    border: none;
+    height: 3rem;
+  }
+  .navbarmenu img {
+    height: 100%;
+    width: 100%;
+  }
+  .navbarprofile {
+    margin: 0;
+    padding-left: 7%;
+  }
+  .navbarheader {
     gap: 3%;
-   }
-   .navbartrystlogo{
-        width: 55%;
-   }
-   .trystlogoimg{
+  }
+  .navbartrystlogo {
+    width: 55%;
+  }
+  .trystlogoimg {
     width: 25%;
-}
-.tryst2024img{
+  }
+  .tryst2024img {
     width: 70%;
-}
-.navbaroption{
+  }
+  .navbaroption {
     color: white;
-    
-}
-.navbariconsmobile{
+  }
+  .navbariconsmobile {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     font-size: 2rem;
     width: 80%;
   }
-  .navbaroption{
+  .navbaroption {
     padding-left: 15%;
   }
 
   .navbaroption:hover {
-
-    background: linear-gradient(to right, #00e0ff, transparent 5%, transparent 95%, #00e0ff);
-    
+    background: linear-gradient(
+      to right,
+      #00e0ff,
+      transparent 5%,
+      transparent 95%,
+      #00e0ff
+    );
   }
+
   .navbaroption:hover::after {
     background: transparent;
   }
-
- 
-  }
-
-  
+}

@@ -11,9 +11,10 @@ import Footer from "./components/Footer/Footer.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import ComingSoon from "./components/ComingSoon/ComingSoon.jsx";
 import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
-import Sponsors from "./components/sponsors/sponsors.jsx";
+import Sponsors from "./pages/sponsors/sponsors.jsx";
+import About from "./pages/aboutus/aboutus.jsx";
+import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
-
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Routes>
           {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} /> */}
           <Route path="/" element={<ComingSoon />} />
+          <Route path="/contact" element={<ContactUs />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/workshopevent" element={<WorkshopEvent />} />
@@ -43,7 +45,8 @@ const App = () => {
           <Route path="/comingsoon" element={<ComingSoon />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
-          <Route path="/eventpage" element={<EventPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/events" element={<EventPage />} />
         </Routes>
         <Footer />
       </Router>

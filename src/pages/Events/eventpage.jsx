@@ -1,6 +1,5 @@
-import Navbar from "../../components/Navbar";
 import "./eventpage.css";
-import poster from "./poster.webp";
+// import poster from "./poster.webp";
 const EventPage = () => {
   const myStyle = {
     "mask-type": "alpha",
