@@ -1,12 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function AddedFieldUpload({ additionalFieldData, onChange }) {
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    onChange(file);
-  };
-
+export default function AddedFieldUpload({ additionalFieldData, onChange, onDelete }) {
   return (
     <Container>
       <p>{additionalFieldData.fieldTitle}</p>
@@ -14,13 +9,10 @@ export default function AddedFieldUpload({ additionalFieldData, onChange }) {
         <label htmlFor="file" className="custom-file-input-label">
           + Add File
         </label>
-        <input
-          type="file"
-          name="file"
-          id="file"
-          className="inputfile"
-          onChange={handleFileChange}
-        />
+        <input type="file" name="file" id="file" className="inputfile" />
+        <button className="delete" onClick={onDelete}>
+          Delete
+        </button>
       </div>
     </Container>
   );
@@ -35,11 +27,10 @@ const Container = styled.div`
   }
   .added-field-upload-btns {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 1vh;
     label {
+      flex: 1;
       background-color: #a6d3fd; /* Set the desired background color */
       color: #293749;
       border: none;
@@ -48,6 +39,13 @@ const Container = styled.div`
     }
     input {
       display: none; /* Hide the default file input */
+    }
+    button {
+      background-color: #ff5c5c; /* Set the desired background color */
+      color: #fff;
+      border: none;
+      padding: 0.5vh 1vh;
+      cursor: pointer;
     }
   }
 `;

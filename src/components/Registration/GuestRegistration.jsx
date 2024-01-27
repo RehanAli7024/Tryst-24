@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { DOMAIN } from '../../domain';
-import editicon from "../../assets/edit.png";
-import deleteicon from "../../assets/delete.png";
-import "./registrationMain.css";
+import editicon from '../../assets/edit.png';
+import deleteicon from '../../assets/delete.png';
+import './registrationMain.css';
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 import axios from 'axios';
 import AddedFieldRadio from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
@@ -64,6 +64,61 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
     if (index === undefined) {
       setFormData((prevData) => ({ ...prevData, [field]: value }));
     } else {
+function GuestRegistration({ handleClose, setRegistrationOpen }) {
+  const event_id = localStorage.getItem('event_id');
+  const location = useLocation();
+
+  const [formData, setFormData] = useState({
+    acceptingResponses: '',
+    yourName: '',
+    phoneNumber: '',
+    email: '',
+    collegeState: '',
+    collegeCity: '',
+    collegeName: '',
+    referralId: '',
+    speakerQuestions: '',
+    additionalField: '', // Added for the new field
+    event_id: event_id,
+  });
+
+  const [additionalFields, setAdditionalFields] = useState([]); // Maintain a list of additional fields
+  const [showNewField, setShowNewField] = useState(false);
+  const [newFieldTitle, setNewFieldTitle] = useState('');
+  const [newFieldType, setNewFieldType] = useState('');
+  const [additionalFieldData, setAdditionalFieldData] = useState(undefined);
+  const [additionalFieldResponses, setAdditionalFieldResponses] = useState({}); // New state for additional field responses
+
+  const handleShowNewField = () => {
+    setShowNewField(true);
+  };
+
+  const handleCloseNewField = () => {
+    setShowNewField(false);
+  };
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!registrationRef.current.contains(e.target)) {
+        setRegistrationOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handler);
+
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  }, [setRegistrationOpen]);
+
+  let registrationRef = useRef();
+
+  const handleChange = (field, value, index) => {
+    if (index === undefined) {
+      // Handle changes for the standard fields
+      setFormData((prevData) => ({ ...prevData, [field]: value }));
+    } else {
+      // Handle changes for additional fields
       setAdditionalFields((prevFields) => {
         const updatedFields = [...prevFields];
         updatedFields[index] = { ...updatedFields[index], response: value };
@@ -77,6 +132,20 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
         return updatedResponses;
       });
     }
+  };
+
+  const handleDeleteField = (index) => {
+    setAdditionalFields((prevFields) => {
+      const updatedFields = [...prevFields];
+      updatedFields.splice(index, 1);
+      return updatedFields;
+    });
+
+    setAdditionalFieldResponses((prevResponses) => {
+      const updatedResponses = { ...prevResponses };
+      delete updatedResponses[additionalFields[index].fieldName];
+      return updatedResponses;
+    });
   };
 
   const handleSave = () => {
@@ -103,15 +172,19 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
 
     const token = localStorage.getItem('token');
     axios
-      .post(`${DOMAIN}registration/`, {
-        ...formData,
-        additionalFields: additionalFields,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
+      .post(
+        `${DOMAIN}registration/`,
+        {
+          ...formData,
+          additionalFields: additionalFields,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
         }
-      })
+      )
       .then((res) => {
         console.log(res);
       })
@@ -124,8 +197,8 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
     const newFieldName = newFieldData.fieldTitle.toLowerCase().replace(/\s+/g, '_');
 
     // Check if the field name already exists
-    if (additionalFields.some(field => field.fieldName === newFieldName)) {
-      alert("Field name already exists. Please choose a different name.");
+    if (additionalFields.some((field) => field.fieldName === newFieldName)) {
+      alert('Field name already exists. Please choose a different name.');
       return;
     }
 
@@ -139,22 +212,22 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
     // Initialize response for the new field
     setAdditionalFieldResponses((prevResponses) => ({
       ...prevResponses,
-      [newFieldName]: "",
+      [newFieldName]: '',
     }));
 
-    setNewFieldTitle(""); // Clear newFieldTitle state
-    setNewFieldType(""); // Clear newFieldType state
+    setNewFieldTitle(''); // Clear newFieldTitle state
+    setNewFieldType(''); // Clear newFieldType state
     setShowNewField(false); // Set to false to close the overlay after adding a new field
   };
 
   useEffect(() => {
     // Access eventData from location state
     const eventData = location.state?.eventData;
-    console.log("EventDetails data in Registration:", eventData);
+    console.log('EventDetails data in Registration:', eventData);
   }, [location.state]);
 
   return (
-    <div className="registration-containor">
+    <div className="registration-containor" ref={registrationRef}>
       <div className="responses">
         <p className="question">Accepting Responses?:</p>
         <div>
@@ -162,7 +235,7 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
             type="radio"
             name="acceptingResponses"
             value="Yes"
-            onChange={() => handleRadioChange('Yes')}
+            onChange={() => handleChange('acceptingResponses', 'Yes')}
           />
           <label>Yes</label>
         </div>
@@ -171,7 +244,7 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
             type="radio"
             name="acceptingResponses"
             value="No"
-            onChange={() => handleRadioChange('No')}
+            onChange={() => handleChange('acceptingResponses', 'No')}
           />
           <label>No</label>
         </div>
@@ -209,7 +282,9 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
             className="box"
             onChange={(e) => handleChange('collegeState', e.target.value)}
           >
-            <option value="" disabled selected>Select your option</option>
+            <option value="" disabled selected>
+              Select your option
+            </option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
           </select>
@@ -220,7 +295,9 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
             className="box"
             onChange={(e) => handleChange('collegeCity', e.target.value)}
           >
-            <option value="" disabled selected>Select your option</option>
+            <option value="" disabled selected>
+              Select your option
+            </option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
           </select>
@@ -231,7 +308,9 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
             className="box"
             onChange={(e) => handleChange('collegeName', e.target.value)}
           >
-            <option value="" disabled selected>Select your option</option>
+            <option value="" disabled selected>
+              Select your option
+            </option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
           </select>
@@ -252,26 +331,32 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
               <AddedFieldText
                 additionalFieldData={field}
                 onChange={(value) => handleChange('additionalField', value, index)}
+                onDelete={() => handleDeleteField(index)}
               />
             )}
             {field.fieldType === 'radio' && (
               <AddedFieldRadio
                 additionalFieldData={field}
                 onChange={(value) => handleChange('additionalField', value, index)}
+                onDelete={() => handleDeleteField(index)}
               />
             )}
             {field.fieldType === 'checkbox' && (
               <AddedFieldCheckbox
                 additionalFieldData={field}
                 onChange={(value) => handleChange('additionalField', value, index)}
+                onDelete={() => handleDeleteField(index)}
               />
             )}
             {field.fieldType === 'upload' && (
               <AddedFieldUpload
                 additionalFieldData={field}
                 onChange={(value) => handleChange('additionalField', value, index)}
+                onDelete={() => handleDeleteField(index)}
               />
+              
             )}
+           
           </div>
         ))}
       </div>
@@ -318,260 +403,4 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
   );
 }
 
-export default GuestRegisteration;
-
-
-
-
-
-/*original code
-import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { DOMAIN } from '../../domain';
-import editicon from "../../assets/edit.png";
-import deleteicon from "../../assets/delete.png";
-import "./registrationMain.css";
-import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
-import axios from 'axios';
-import AddedFieldRadio from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
-import AddedFieldCheckbox from '../../overlays/overlays/add-new-field/field-types/AddedFieldCheckbox';
-import AddedFieldUpload from '../../overlays/overlays/add-new-field/field-types/AddedFieldUpload';
-import AddedFieldText from '../../overlays/overlays/add-new-field/field-types/AddedFieldText';
-
-
-function GuestRegisteration({ handleClose, setRegistrationOpen }) {
-  const event_id = localStorage.getItem('event_id');
-  const location = useLocation();
-  const [formData, setFormData] = useState({
-    acceptingResponses: '',
-    yourName: '',
-    phoneNumber: '',
-    email: '',
-    collegeState: '',
-    collegeCity: '',
-    collegeName: '',
-    referralId: '',
-    speakerQuestions: '',
-    additionalField: '', // Added for the new field
-    event_id: event_id,
-  });
-
-  const [additionalFields, setAdditionalFields] = useState([]); // Maintain a list of additional fields
-
-  const [showNewField, setShowNewField] = useState(false);
-  const [additionalFieldData, setAdditionalFieldData] = useState(undefined);
-
-  const handleShowNewField = () => {
-    setShowNewField(true);
-  };
-
-
-
-  useEffect(() => {
-    let handler = (e) => {
-      if (!registrationRef.current.contains(e.target)) {
-        setRegistrationOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    }
-  }, [setRegistrationOpen]);
-
-  let registrationRef = useRef();
-
-  const handleChange = (field, value) => {
-    setFormData(prevData => ({ ...prevData, [field]: value }));
-  };
-
-  const handleRadioChange = (value) => {
-    setFormData(prevData => ({ ...prevData, acceptingResponses: value }));
-  };
-
-  const handleSave = () => {
-    console.log('Form Data:', formData);
-    const token = localStorage.getItem('token');
-    axios
-      .post(`${DOMAIN}registration/`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then((res) => {
-        console.log(res);
-        // handleClose();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const handleAddNewField = (newFieldData) => {
-    setAdditionalFields(prevFields => [...prevFields, newFieldData]);
-
-    setShowNewField(true);
-
-  };
-
-  const handleCloseNewField = () => {
-    setShowNewField(false);
-  }
-
-  useEffect(() => {
-    // Access eventData from location state
-    const eventData = location.state?.eventData;
-    console.log("EventDetails data in Registration:", eventData);
-  }, [location.state]);
-
-
-
-  return (
-    <div className="registration-containor">
-
-      <div className="responses">
-        <p className="question">Accepting Responses?:</p>
-        <div>
-          <input
-            type="radio"
-            name="acceptingResponses"
-            value="Yes"
-            onChange={() => handleRadioChange('Yes')}
-          />
-          <label>Yes</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="acceptingResponses"
-            value="No"
-            onChange={() => handleRadioChange('No')}
-          />
-          <label>No</label>
-        </div>
-      </div>
-      <div className="inputfieldcontainor">
-        <div className="inputfield">
-          <label className="titleoffield">Your Name*</label>
-          <input
-            className="box"
-            type="text"
-            onChange={(e) => handleChange('yourName', e.target.value)}
-          />
-        </div>
-        <div className="inputfield">
-          <label className="titleoffield">Phone Number*</label>
-          <input
-            className="box"
-            type="text"
-            onChange={(e) => handleChange('phoneNumber', e.target.value)}
-          />
-        </div>
-        <div className="inputfield">
-          <label className="titleoffield">E-Mail ID</label>
-          <input
-            className="box"
-            type="email"
-            onChange={(e) => handleChange('email', e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="inputfieldcontainor">
-        <div className="inputfield">
-          <label className="titleoffield">College State*</label>
-          <select
-            className="box"
-            onChange={(e) => handleChange('collegeState', e.target.value)}
-          >
-            <option value="" disabled selected>Select your option</option>
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-          </select>
-        </div>
-        <div className="inputfield">
-          <label className="titleoffield">College City*</label>
-          <select
-            className="box"
-            onChange={(e) => handleChange('collegeCity', e.target.value)}
-          >
-            <option value="" disabled selected>Select your option</option>
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-          </select>
-        </div>
-        <div className="inputfield">
-          <label className="titleoffield">College Name*</label>
-          <select
-            className="box"
-            onChange={(e) => handleChange('collegeName', e.target.value)}
-          >
-            <option value="" disabled selected>Select your option</option>
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-          </select>
-        </div>
-      </div>
-      <div className="inputfield referral">
-        <label className="titleoffield referral">CA Referral ID*</label>
-        <input
-          className="box"
-          type="text"
-          onChange={(e) => handleChange('referralId', e.target.value)}
-        />
-      </div>
-      <div className="dynamic-new-field-container">
-        {additionalFields.map((field, index) => (
-          <div key={index} className={`new-field-type-${field.fieldType}`}>
-            {field.fieldType === "text" && <AddedFieldText additionalFieldData={field}/>}
-            {field.fieldType === "radio" && <AddedFieldRadio additionalFieldData={field} />}
-            {field.fieldType === "checkbox" && <AddedFieldCheckbox additionalFieldData={field} />}
-            {field.fieldType === "upload" && <AddedFieldUpload additionalFieldData={field} />}
-          </div>
-        ))}
-
-      </div>
-
-      <div className="addnewfield">
-        <button className="fieldbutton" onClick={handleAddNewField}>
-          Add New Field
-        </button>
-
-        {showNewField &&
-          <AddNewField
-            onClose={handleCloseNewField}
-            onAddNewField={handleAddNewField}
-            setAdditionalFieldData={setAdditionalFieldData}
-          />}
-
-      </div>
-      <div className="inputfieldcontainor">
-        <div className="inputfield speakerquestions">
-          <label className="titleoffield">
-            Any questions you have for the Speaker(s)?
-          </label>
-          <input
-            className="box"
-            type="text"
-            onChange={(e) => handleChange('speakerQuestions', e.target.value)}
-          />
-        </div>
-        <button className="edit">
-          <img src={editicon} alt="edit icon" />
-        </button>
-        <button className="delete">
-          <img src={deleteicon} alt="delete icon" />
-        </button>
-      </div>
-      <div className="addnewfield savebutton">
-        <button className="save" onClick={handleSave}>
-          Save
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export default GuestRegisteration;
-*/
+export default GuestRegistration;

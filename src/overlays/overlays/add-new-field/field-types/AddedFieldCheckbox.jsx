@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function AddedFieldCheckbox({ additionalFieldData, onChange }) {
+export default function AddedFieldCheckbox({ additionalFieldData, onChange, onDelete }) {
   const handleCheckboxChange = (option, isChecked) => {
     const updatedOptions = additionalFieldData.fetchedData.map((o) =>
-      o === option ? { option, isChecked } : o
+      o === option ? { ...o, isChecked } : o
     );
 
     onChange(updatedOptions);
@@ -22,9 +22,12 @@ export default function AddedFieldCheckbox({ additionalFieldData, onChange }) {
               checked={option.isChecked || false}
               onChange={(e) => handleCheckboxChange(option, e.target.checked)}
             />
-            <label>{option.option}</label>
+            <label>{option}</label>
           </div>
         ))}
+        <button className="delete" onClick={onDelete}>
+          Delete
+        </button>
       </div>
     </Container>
   );
@@ -51,6 +54,11 @@ const Container = styled.div`
         margin-right: 1vh;
         height: 1rem;
         width: 1rem;
+        /* Add the following styles to change the checkbox color when checked */
+        &:checked {
+          background-color: #acebf6;
+          /* Set the desired background color */
+        }
       }
       label {
         background-color: #293749;
@@ -60,5 +68,13 @@ const Container = styled.div`
         width: 15rem;
       }
     }
+  }
+  .delete {
+    background-color: #ff6961; /* Red color for delete button */
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-top: 1vh;
   }
 `;
