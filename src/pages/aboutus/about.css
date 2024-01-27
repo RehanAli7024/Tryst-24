@@ -1,22 +1,50 @@
 .about-us-head {
   margin: 0;
 }
+body{
+  background: black;
+}
+.about {
+  background: black;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 .about-us-img-container {
   margin: 5rem;
   position: relative;
 }
-/* .about-us-img-container:hover {
-  background: rgba(240, 181, 55, 1);
-} */
 .about-us-svg1 {
   width: fit-content;
 }
-.about-us-animation2-container-hover {
-  position: absolute;
-  color: none;
+.about-us-head-container {
+  width: 75%;
+  margin: 3rem auto;
+  color: rgba(255, 251, 255, 0.8);
+  font-family: Rajdhani;
+  font-size: 1.35rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  line-height: 145%; /* 2.9rem */
+  text-align: left;
 }
-.about-us-animation2-container-hover:hover {
-  transform: scale(7);
+.about-us-head-container2 {
+  width: 75%;
+  margin: 3rem auto 5rem auto;
+  color: var(--Color-Base-Gold-Yellow, #f0b537);
+  text-align: center;
+  font-family: Rajdhani;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  font-style: normal;
+  font-weight: 500;
+}
+.about-us-head-container span {
+  color: rgba(255, 255, 255, 1);
+  font-family: Rajdhani;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
 }
 .about-us-svg2 {
   position: absolute;
@@ -80,59 +108,174 @@
 .about-us-animation2-svg1 {
   position: relative;
   width: max-content;
+  height: max-content;
+}
+.svg1 {
+  width: 16rem;
+  height: max-content;
+  fill: #2c153e;
+  stroke-width: 2px;
+  transition: all 1.85s ease-in-out;
+  stroke: var(--Color-Base-Violet, #e086d3);
+}
+.svg1-hovered {
+  width: 16rem;
+  height: max-content;
+  stroke-width: 2px;
+  stroke: rgba(224, 134, 211, 0);
+  transition: all 1s ease-in-out;
+  fill: #151025;
 }
 .about-us-animation2-h1 {
   height: auto;
   width: fit-content;
   position: absolute;
-  top: 3rem;
+  top: 2.25rem;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
+  color: var(--Color-Base-Snow, #fffbff);
+  text-align: center;
+  font-family: Bender;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.07rem;
+  text-transform: uppercase;
 }
 .about-us-animation2-subsvg {
   position: absolute;
-  top: 7.5rem;
+  top: 5.25rem;
+  /* width: 3rem; */
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.sub-svg {
+  width: 2.5rem;
+  height: max-content;
 }
 .about-us-animation2-h2 {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1.5rem;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: var(--Color-Base-Gold-Yellow, #f0b537);
+  text-align: center;
+  font-family: Bender;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 .about-us-animation2-container1 {
+  position: relative;
+  top: -2.5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15rem;
+  gap: 12rem;
+}
+.about-us-tryst-logo-hovered {
+  position: absolute;
+  width: 8.25rem;
+  height: 5rem;
+  fill: aliceblue;
+  background-size: cover;
+  z-index: 9999;
+  transition: all 1s ease-in-out;
 }
 .about-us-parent-container {
-  width: 100%;
-  margin: auto;
+  position: relative;
+  color: white;
+  width: max-content;
+  margin: 0 auto 5rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 .about-us-animation2-container2 {
+  position: relative;
+  top: -1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 5rem;
+  gap: 2rem;
 }
 .about-us-tryst-logo {
   position: absolute;
+  width: 8.25rem;
+  height: 5rem;
+  background-size: cover;
+  z-index: 9999;
+  transition: all 1s ease-in-out;
 }
 .about-us-vector {
   position: absolute;
-  width: 20rem;
-  height: 20rem;
-  background: white;
-  -webkit-mask-image: url("../../assets/maskedsvg.svg"); /* Mask image */
-  mask-image: url("../../assets/maskedsvg.svg"); /* Mask image */
-  background-size: cover;
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  stroke-width: 10px;
-  stroke: black;
+  top: calc(50% - 9rem);
+  left: calc(50% - 8.75rem);
+  width: 17.5rem;
+  height: 17.5rem;
+  -webkit-mask-image: url("../../assets/maskedsvg.svg");
+  mask-image: url("../../assets/maskedsvg.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 1%;
+  mask-size: 1%;
+  transition: all 1s ease-in-out;
+  z-index: 9999;
+}
+.about-us-vector:hover {
+  -webkit-mask-size: 500%;
+  mask-size: 500%;
+  transition: -webkit-mask-size 2s ease-in-out;
+}
+.about-us-vector-hovered {
+  position: absolute;
+  top: calc(50% - 9rem);
+  left: calc(50% - 8.75rem);
+  width: 17.5rem;
+  height: 17.5rem;
+  -webkit-mask-image: url("../../assets/maskedsvg.svg");
+  mask-image: url("../../assets/maskedsvg.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  /* -webkit-mask-size: 1%;
+  mask-size: 1%; */
+  z-index: 9999;
+  -webkit-mask-size: 500%;
+  mask-size: 500%;
+  transition: all 2s ease-in-out;
+}
+.abou .about-us-svg {
+  width: 17.5rem;
+  height: 17.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+@keyframes hoveranimate {
+  0% {
+    fill: none;
+  }
+  100% {
+    fill: white;
+  }
+}
+.about-us-head {
+  width: 100%;
+  margin: 5rem auto 0 auto;
+  color: var(--Color-Base-Snow, #fffbff);
+  text-align: center;
+  font-family: Audiowide;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.6rem;
 }
