@@ -6,12 +6,14 @@ import Tryst24 from "../../assets/Navbar/TRYST.png";
 import profileicon from "../../assets/Navbar/IconButton.png";
 import navbarmenu from "../../assets/Navbar/navbarmenu.png";
 import crossmenu from '../../assets/Navbar/crossmenu.png';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 function Navbar() {
 
   const [showNavOptions, setShowNavOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState("About"); // Default selected option
+  const [selectedMobileOption, setSelectedMobileOption] = useState(selectedOption); // Mobile view selected option
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
   const handleShowNavbar = () => {
     setShowNavOptions(!showNavOptions);
@@ -19,10 +21,28 @@ function Navbar() {
 
   const handleNavbarOptionClick = (option) => {
     setSelectedOption(option);
+
+    if (showNavOptions) {
+      setSelectedMobileOption(option);
+      handleShowNavbar();
+    }
     // You can add any other logic here if needed
   };
+
+  const handleScroll = () => {
+    setIsNavbarVisible(window.scrollY < 200);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Container>
+    <Container className={`navbar ${isNavbarVisible ? "navbar-visible" : "navbar-hidden"}`} >
       <div className="navbarheader">
         <div className="navbartrystlogo">
           <img className="trystlogoimg" src={trystlogo}></img>
@@ -51,11 +71,8 @@ function Navbar() {
         {["About", "Guests", "Pronites", "Events", "Sponsors", "Contact Us"].map((option) => (
           <div
             key={option}
-            className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""}`}
-            onClick={() => {
-              handleNavbarOptionClick(option);
-              handleShowNavbar(); 
-            }}
+            className={`navbaroption ${selectedMobileOption === option ? "navbaroption-selected-mobile" : ""}`}
+            onClick={() => handleNavbarOptionClick(option)}
           >
             {option}
           </div>
