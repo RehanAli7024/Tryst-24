@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import RadioButtons from './field-types/RadioButtons';
 import Checkbox from './field-types/Checkbox';
@@ -7,19 +7,19 @@ import TeamMember from './field-types/TeamMember';
 import "./addNewField.css"
 
 
-export default function AddNewField({ onClose, setAdditionalFieldData, onAddNewField}) {
+export default function AddNewField({ onClose, setAdditionalFieldData, onAddNewField }) {
     const [fieldType, setFieldType] = useState('text');
     const [isMandatory, setIsMandatory] = useState(true);
     const [fieldTitle, setFieldTitle] = useState('');
     const [fetchedData, setFetchedData] = useState([]);
-    
+
     const handleAddFieldPopupClose = () => {
         onClose();
     };
 
     const handleGetOptionsData = (data) => {
         setFetchedData(data);
-      };
+    };
 
     const editFileType = (value) => {
         setFieldType(value);
@@ -34,101 +34,101 @@ export default function AddNewField({ onClose, setAdditionalFieldData, onAddNewF
     };
 
     const handleAddNewField = () => {
-    const newFieldData = {
-      fieldType,
-      isMandatory,
-      fieldTitle,
-      fetchedData,
+        const newFieldData = {
+            fieldType,
+            isMandatory,
+            fieldTitle,
+            fetchedData,
+        };
+        setAdditionalFieldData(newFieldData);
+        console.log("State inside handleAddNewField:", newFieldData);
+
+        onAddNewField(newFieldData);
+
+        onClose();
     };
-    setAdditionalFieldData(newFieldData);
-    console.log("State inside handleAddNewField:", newFieldData);
 
-    onAddNewField(newFieldData); 
-
-    onClose();
-  };
-    
 
     return (
         <div className='popup-container'>
-        <Container>
-            <button className='btn-close' onClick={handleAddFieldPopupClose}>X</button>
-            <h3>ADD NEW FIELD</h3>
-            <div className='new-field-container'>
-                <form>
-                    <div className='mandatory-field'>
-                        <p>MANDATORY: </p>
-                        <div className='mandatory'>
-                            <input 
-                                type="radio" 
-                                id="yes" 
-                                name="mandatory" 
-                                value="yes"
-                                checked={isMandatory}
-                                onChange={() => handleMandatoryChange('yes')}
-                                required
-                            />
-                            <label htmlFor="yes">Yes</label><br />
+            <Container>
+                <button className='btn-close' onClick={handleAddFieldPopupClose}>X</button>
+                <h3>ADD NEW FIELD</h3>
+                <div className='new-field-container'>
+                    <form>
+                        <div className='mandatory-field'>
+                            <p>MANDATORY: </p>
+                            <div className='mandatory'>
+                                <input
+                                    type="radio"
+                                    id="yes"
+                                    name="mandatory"
+                                    value="yes"
+                                    checked={isMandatory}
+                                    onChange={() => handleMandatoryChange('yes')}
+                                    required
+                                />
+                                <label htmlFor="yes">Yes</label><br />
+                            </div>
+                            <div className='mandatory'>
+                                <input
+                                    type="radio"
+                                    id="no"
+                                    name="mandatory"
+                                    value="no"
+                                    checked={!isMandatory}
+                                    onChange={() => handleMandatoryChange('no')}
+                                    required
+                                />
+                                <label htmlFor="no">No</label><br />
+                            </div>
                         </div>
-                        <div className='mandatory'>
-                            <input 
-                                type="radio" 
-                                id="no" 
-                                name="mandatory" 
-                                value="no"
-                                checked={!isMandatory}
-                                onChange={() => handleMandatoryChange('no')}
-                                required
-                            />
-                            <label htmlFor="no">No</label><br />
+
+                        <div className="input-field-type">
+                            <p>FIELD TYPE: </p>
+                            <select onChange={(e) => editFileType(e.target.value)}>
+                                <option value="text">Text</option>
+                                <option value="radio">Radio Button</option>
+                                <option value="checkbox">Checkbox</option>
+                                <option value="upload">File Upload</option>
+                                <option value="team">Team Member</option>
+                            </select>
                         </div>
-                    </div>
 
-                    <div className="input-field-type">
-                        <p>FIELD TYPE: </p>
-                        <select onChange={(e) => editFileType(e.target.value)}>
-                            <option value="text">Text</option>
-                            <option value="radio">Radio Button</option>
-                            <option value="checkbox">Checkbox</option>
-                            <option value="upload">File Upload</option>
-                            <option value="team">Team Member</option>
-                        </select>
-                    </div>
+                        <div>
+                            {
+                                fieldType === "team" && <TeamMember onGetOptionsData={handleGetOptionsData} />
+                            }
+                        </div>
 
-                    <div>
-                        {
-                            fieldType === "team" && <TeamMember onGetOptionsData={handleGetOptionsData} />
-                        }
-                    </div>
+                        <div className="field-title">
+                            <p>FIELD TITLE: </p>
+                            <input
+                                type="text"
+                                placeholder='Text'
+                                value={fieldTitle}
+                                onChange={handleFieldTitleChange}
+                            />
+                        </div>
 
-                    <div className="field-title">
-                        <p>FIELD TITLE: </p>
-                        <input
-                            type="text"
-                            placeholder='Text'
-                            value={fieldTitle}
-                            onChange={handleFieldTitleChange}
-                        />
-                    </div>
+                        <div>
+                            {
+                                fieldType === "radio" && <RadioButtons onGetOptionsData={handleGetOptionsData} />
+                            }
+                            {
+                                fieldType === "checkbox" && <Checkbox onGetOptionsData={handleGetOptionsData} />
+                            }
+                            {
+                                fieldType === "upload" && <Upload onGetOptionsData={handleGetOptionsData} />
+                            }
+                        </div>
 
-                    <div>
-                        {
-                            fieldType === "radio" && <RadioButtons onGetOptionsData={handleGetOptionsData} />
-                        }
-                        {
-                            fieldType === "checkbox" && <Checkbox onGetOptionsData={handleGetOptionsData} />
-                        }
-                        {
-                            fieldType === "upload" && <Upload onGetOptionsData={handleGetOptionsData} />
-                        }
-                    </div>
-
-                </form>
-            </div>
-            <div className='add-field-btn'>
-                <button type="button" onClick={handleAddNewField}>Done</button>
-            </div>
-        </Container>
+                    </form>
+                </div>
+                <div className='add-field-btn'>
+                    <button type="button" onClick={handleAddNewField}>Done</button>
+                </div>
+            </Container>
         </div>
     );
 }
