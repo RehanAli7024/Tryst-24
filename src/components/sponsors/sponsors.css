@@ -93,8 +93,8 @@
     flex-wrap: wrap;
     flex-direction: row;
     /* align-items: center; */
-    justify-content: center;
-    margin-bottom: 5vh;
+    /* justify-content: center; */
+    margin: 3vh 0 5vh 4vw;
 }
 
 .sponsors-other-sponsors-container {
