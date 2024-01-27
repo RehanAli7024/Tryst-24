@@ -2,12 +2,12 @@ import "./footer.css";
 import logo from "../../assets/Footer/logo.png";
 import ParallaxStars from "./ParallaxStars";
 import BgImage from "../../assets/Footer/bg1.png";
-import BgImageMobile from "../../assets/Footer/bg-mobile.svg";
+import BgImageMobile from "../../assets/Footer/bg-mobile.png";
 
 function Footer() {
   return (
     <div className="footer-container">
-      
+
       <footer className="footer">
         <ParallaxStars />
         <img src={BgImage} className="bg-color-footer-gradient-laptop" />

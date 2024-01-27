@@ -1,13 +1,9 @@
-/* Footer.css */
-
 @import "@fortawesome/fontawesome-free/css/all.css";
 @import "@fortawesome/fontawesome-free/css/regular.css";
-
 .footer-container {
   position: relative;
   height: 100%;
 }
-
 .footer {
   background-color: transparent;
   position: relative;
@@ -30,6 +26,8 @@
   height: 100%;
   background-size: cover;
   z-index: -2;
+  background-color: #030a17cc;
+  z-index: -200;
   filter: blur(5px); /* Adjust the blur value as needed */
 }
 
@@ -38,21 +36,20 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 99.5%;
-  z-index: -100;
-  opacity: 0.8;
+  height: 99%;
+  z-index: -2;
+  opacity: 2;
   @media screen and (max-width: 650px) {
     display: none;
   }
 }
-
 .bg-color-footer-gradient-mobile {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100vw;
   height: 99.5%;
-  z-index: -100;
+  z-index: -2;
   display: none;
   @media screen and (min-width: 650px) {
     display: none;
@@ -65,7 +62,7 @@
 
 .horizontal-bar {
   position: absolute;
-  top: 1px;
+  top: 4px;
   left: 0;
   width: 100%;
   height: 2px;
@@ -76,7 +73,6 @@
     rgba(255, 251, 255, 0) 100%
   );
 }
-
 .social-section,
 .contact-section,
 .logo-section {
@@ -84,17 +80,19 @@
   text-align: center;
   margin-bottom: 10px;
 }
-
+.logo-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .contact-section p {
   margin: 0;
 }
-
 .handles > .handle > a,
 .mail > div > a {
   color: #fff;
   text-decoration: none;
 }
-
 .handles {
   margin-top: 1rem;
   margin-bottom: 8px;
@@ -102,22 +100,18 @@
   justify-content: space-evenly;
   display: flex;
 }
-
 .handles > .handle > a:hover,
 .mail > div > a:hover {
   text-shadow: 0 0 3px #fff;
 }
-
 .handles > .handle > a {
   font-size: 28px;
 }
-
 .social-icons {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
-
 .social-icons img {
   width: 30px;
   height: 30px;
@@ -127,13 +121,11 @@
   max-height: 210px;
   width: auto;
 }
-
 @media (max-width: 650px) {
   .footer {
     flex-direction: column;
     align-items: stretch;
   }
-
   .horizontal-bar {
     position: relative;
     order: 1;
@@ -177,7 +169,8 @@
       #802392fd,
       #802392,
       #80239233
-    );
-  
-  }
+    );}
+    .horizontal-bar{
+      top: -8px;
+    }
 }
