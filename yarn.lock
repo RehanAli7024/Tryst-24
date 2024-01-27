@@ -2364,6 +2364,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+reacct@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/reacct/-/reacct-0.0.1-security.tgz#8e866365f42df76107c6291831e94b80789e5078"
+  integrity sha512-V8sFgF8n6vqalK1vaMmQvbMgHSfmU0sgTs6Hr2Zj9pLiEXCEqt9cVcm0V4fBeSpvjK6tT5Q7P6995Dbna68EQg==
+
 react-client-session@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/react-client-session/-/react-client-session-0.0.8.tgz#b5b5b5824b4d70490999adceb405dcba88de2b72"

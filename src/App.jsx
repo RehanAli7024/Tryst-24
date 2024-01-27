@@ -22,14 +22,7 @@ const App = () => {
     <main className="main-bg">
       {/* <Navbar></Navbar> */}
       <Router>
-        {/* <ParallaxStars /> */}
-
-
-
         {window.location.pathname !== "/login" ? <Navbar /> : null}
-
-
-
         <Routes>
           {/* <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} /> */}
           <Route path="/" element={<ComingSoon />} />
