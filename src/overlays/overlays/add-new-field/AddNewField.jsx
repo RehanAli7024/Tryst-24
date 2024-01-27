@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import RadioButtons from './field-types/RadioButtons';
 import Checkbox from './field-types/Checkbox';
@@ -7,7 +7,7 @@ import TeamMember from './field-types/TeamMember';
 import "./addNewField.css"
 
 
-export default function AddNewField({ onClose, onAddNewField}) {
+export default function AddNewField({ onClose, setAdditionalFieldData, onAddNewField}) {
     const [fieldType, setFieldType] = useState('text');
     const [isMandatory, setIsMandatory] = useState(true);
     const [fieldTitle, setFieldTitle] = useState('');
@@ -40,13 +40,10 @@ export default function AddNewField({ onClose, onAddNewField}) {
       fieldTitle,
       fetchedData,
     };
-    console.log('New Field Data:', newFieldData);
+    setAdditionalFieldData(newFieldData);
+    console.log("State inside handleAddNewField:", newFieldData);
 
-    if (typeof onAddNewField === 'function') {
-      onAddNewField(newFieldData);
-    } else {
-      console.error('onAddNewField is not a function');
-    }
+    onAddNewField(newFieldData); 
 
     onClose();
   };
