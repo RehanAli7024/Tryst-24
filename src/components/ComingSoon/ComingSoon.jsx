@@ -7,7 +7,7 @@ export default function ComingSoon() {
     return (
         <div className="fullscreen-video-container">
               <div className="coming-soon-text-overlay">
-                  <h1>COMING SOON...</h1>
+                  COMING SOON...
               </div>
               <div className="coming-soon-bg"></div>
 
