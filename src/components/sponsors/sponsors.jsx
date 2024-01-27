@@ -90,7 +90,7 @@ function Sponsors() {
                     </div>
                     <div className='sponsors-other-sponsors'>
                         {sponsors.map(sponsor => (
-                            <div key={sponsor.index} className="sponsors-other-sponsors-container">
+                            <div key={sponsor.index} className="sponsors-other-sponsors-container" id={`sponsor${sponsor.index}`}>
                                 <div className="sponsors-other-sponsors-head">{sponsor.header}</div>
                                 <div className="sponsors-other-sponsors-box sponsors-shape">
                                     <div className="sponsors-other-sponsors-box-img-div">
