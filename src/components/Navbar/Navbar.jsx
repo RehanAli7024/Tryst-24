@@ -8,9 +8,9 @@ import crossmenu from '../../assets/Navbar/crossmenu.png';
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 function Navbar() {
-const navigate= useNavigate();
+  const navigate = useNavigate();
   const [showNavOptions, setShowNavOptions] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("About"); // Default selected option
+  const [selectedOption, setSelectedOption] = useState(""); // Default selected option
   const [selectedMobileOption, setSelectedMobileOption] = useState(selectedOption); // Mobile view selected option
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
@@ -42,22 +42,28 @@ const navigate= useNavigate();
 
   return (
     <Container className={`navbar ${isNavbarVisible ? "navbar-visible" : "navbar-hidden"}`} >
-      <div className="navbarheader">
-        <Link to='/' className="navbartrystlogo">
+      <div className="navbarheader" >
+        <div  className="navbartrystlogo" onClick={() => handleNavbarOptionClick("")} >
           <img className="trystlogoimg" src={trystlogo}></img>
           <img className="tryst2024img" src={Tryst24}></img>
-        </Link>
+        </div>
         <div className="navbaricons">
-        {["About", "Guests", "Pronites", "Events", "Sponsors", "Contact Us"].map((option) => (
-          <div
-            key={option}
-            className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""}`}
-            onClick={() => handleNavbarOptionClick(option)}
+          <a
+            className={`navbaroption ${selectedOption === 'CAP' ? "navbaroption-selected" : ""}`}
+            href="https://cap.tryst-iitd.org/" target="_blank" rel="noreferrer"
           >
-            {option}
-          </div>
-        ))}
-      </div>
+            CAP
+          </a>
+          {["About", "Guests", "Pronites", "Events", "Sponsors", "Contact Us"].map((option) => (
+            <div
+              key={option}
+              className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""}`}
+              onClick={() => handleNavbarOptionClick(option)}
+            >
+              {option}
+            </div>
+          ))}
+        </div>
         <div className="navbarprofile">
           <img src={profileicon}></img>
         </div>
