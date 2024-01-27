@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 import trystlogo from "../../assets/Navbar/TrystLogo.png";
 import Tryst24 from "../../assets/Navbar/TRYST.png";
@@ -8,7 +8,7 @@ import crossmenu from '../../assets/Navbar/crossmenu.png';
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 function Navbar() {
-
+const navigate= useNavigate();
   const [showNavOptions, setShowNavOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState("About"); // Default selected option
   const [selectedMobileOption, setSelectedMobileOption] = useState(selectedOption); // Mobile view selected option
@@ -20,7 +20,7 @@ function Navbar() {
 
   const handleNavbarOptionClick = (option) => {
     setSelectedOption(option);
-
+    navigate(`/${option}`);
     if (showNavOptions) {
       setSelectedMobileOption(option);
       handleShowNavbar();
@@ -43,10 +43,10 @@ function Navbar() {
   return (
     <Container className={`navbar ${isNavbarVisible ? "navbar-visible" : "navbar-hidden"}`} >
       <div className="navbarheader">
-        <div className="navbartrystlogo">
+        <Link to='/' className="navbartrystlogo">
           <img className="trystlogoimg" src={trystlogo}></img>
           <img className="tryst2024img" src={Tryst24}></img>
-        </div>
+        </Link>
         <div className="navbaricons">
         {["About", "Guests", "Pronites", "Events", "Sponsors", "Contact Us"].map((option) => (
           <div
