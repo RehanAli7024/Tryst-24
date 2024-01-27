@@ -14,7 +14,7 @@ import GuestRegistration from "./components/Registration/GuestRegistration.jsx";
 import Sponsors from "./pages/sponsors/sponsors.jsx";
 import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
-
+import EventPage from "./pages/Events/eventpage.jsx";
 
 const App = () => {
   return (
@@ -46,6 +46,7 @@ const App = () => {
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/about" element={<About />} />
+          <Route path="/events" element={<EventPage />} />
         </Routes>
         <Footer />
       </Router>

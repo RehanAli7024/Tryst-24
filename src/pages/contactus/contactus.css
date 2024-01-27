@@ -19,12 +19,12 @@ body {
 .about-us-container {
   position: absolute;
   top: 42.5%;
-  left: -8.5rem;
+  left: -7.5rem;
   width: max-content;
   color: var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
   text-align: center;
   font-family: Bender;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -48,7 +48,7 @@ body {
   line-height: normal;
 }
 .about-us-img-container {
-  margin: 5rem;
+  /* margin: 5rem; */
   width: fit-content;
   position: relative;
 }
@@ -97,8 +97,8 @@ body {
 }
 .about-us-svg2 {
   position: absolute;
-  top: 0;
-  left: 4rem;
+  top: 1rem;
+  left: 3rem;
 }
 .about-us-svg3 {
   position: relative;
@@ -124,7 +124,8 @@ body {
 .about-us-svg4 {
   position: absolute;
   top: 4.5rem;
-  right: 0.15rem;
+  right: 0.20rem;
+  height: 200px;
 }
 
 .about-us-svg5 rect {
