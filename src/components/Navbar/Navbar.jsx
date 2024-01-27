@@ -1,5 +1,4 @@
-
-
+import { Link } from 'react-router-dom';
 import "./Navbar.css";
 import trystlogo from "../../assets/Navbar/TrystLogo.png";
 import Tryst24 from "../../assets/Navbar/TRYST.png";
@@ -24,7 +23,7 @@ function Navbar() {
           <div className="navbaroption">Guests</div>
           <div className="navbaroption">Pronites</div>
           <div className="navbaroption">Events</div>
-          <div className="navbaroption">Sponsors</div>
+          <Link to="/sponsors" className="navbaroption">Sponsors</Link>
           <div className="navbaroption">Contact Us</div>
         </div>
         <div className="navbarprofile">
@@ -38,11 +37,10 @@ function Navbar() {
       <div className={showNavOptions ? 'navbariconsmobile' : 'hiddenmobiletoggle'}>
         <div className="navbaroption">Home</div>
         <div className="navbaroption">About</div>
-        <div className="navbaroption">About</div>
         <div className="navbaroption">Guests</div>
         <div className="navbaroption">Pronites</div>
         <div className="navbaroption">Events</div>
-        <div className="navbaroption">Sponsors</div>
+        <Link to="/sponsors" className="navbaroption">Sponsors</Link>
         <div className="navbaroption">Contact Us</div>
       </div>
     </div>
