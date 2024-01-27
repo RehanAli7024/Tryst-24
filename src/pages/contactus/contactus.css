@@ -1,0 +1,155 @@
+body {
+  color: white;
+}
+.about-us-head {
+  margin: 0;
+}
+.about {
+  background: black;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.movable-reactangle {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(1px);
+}
+.moved {
+  transform: translateX(33px);
+}
+.about-us-container {
+  position: absolute;
+  top: 42.5%;
+  left: -7.5rem;
+  width: max-content;
+  color: var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
+  text-align: center;
+  font-family: Bender;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  transform: rotate(90deg);
+}
+.hovered-svg {
+  fill: #39281c;
+  transform: all 0.5s ease-in-out;
+}
+.about-us-container2 {
+  position: absolute;
+  top: 1.5rem;
+  left: 6rem;
+  color: var(--Color-Base-Gold-Yellow, #f0b537);
+  font-family: Rajdhani;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.about-us-img-container {
+  /* margin: 5rem; */
+  width: fit-content;
+  position: relative;
+}
+.placeholder {
+  width: 100%;
+  margin: auto;
+}
+.contactus-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-us-svg1 {
+  width: fit-content;
+  fill: #1b1615;
+}
+.about-us-head-container {
+  width: 75%;
+  margin: 3rem auto;
+  color: rgba(255, 251, 255, 0.8);
+  font-family: Rajdhani;
+  font-size: 1.35rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  line-height: 145%; /* 2.9rem */
+  text-align: left;
+}
+.about-us-head-container2 {
+  width: 75%;
+  margin: 3rem auto 5rem auto;
+  color: var(--Color-Base-Gold-Yellow, #f0b537);
+  text-align: center;
+  font-family: Rajdhani;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  font-style: normal;
+  font-weight: 500;
+}
+.about-us-head-container span {
+  color: rgba(255, 255, 255, 1);
+  font-family: Rajdhani;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+}
+.about-us-svg2 {
+  position: absolute;
+  top: 1rem;
+  left: 3rem;
+}
+.about-us-svg3 {
+  position: relative;
+}
+
+.about-us-svg3 svg {
+  position: absolute;
+  transition: opacity 0.5s ease-in-out, visibility 1s ease-in-out;
+  bottom: 1rem;
+  left: 4.25rem;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.faded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.about-us-svg4 {
+  position: absolute;
+  top: 4.5rem;
+  right: 0.20rem;
+  height: 200px;
+}
+
+.about-us-svg5 rect {
+  transition: transform 0.3s ease;
+}
+
+.about-us-svg4 img {
+  width: 16.5rem;
+  z-index: -1;
+}
+.about-us-svg5 {
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
+}
+.about-us-svg6 {
+  position: absolute;
+  top: 4.75rem;
+  right: 0.35rem;
+  z-index: 1;
+}
+.about-us-svg7 {
+  position: absolute;
+  bottom: 7.25rem;
+  left: 4.75rem;
+  z-index: 1;
+}

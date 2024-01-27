@@ -7,8 +7,8 @@
 }
 
 $shadows-small: multiple-box-shadow(700);
-$shadows-medium: multiple-box-shadow(200);
-$shadows-big: multiple-box-shadow(100);
+$shadows-medium: multiple-box-shadow(500);
+$shadows-big: multiple-box-shadow(60);
 
 body {
   height: 100%;
@@ -20,14 +20,15 @@ body {
 #stars2,
 #stars3 {
   position: absolute;
-  bottom: 0; 
+  bottom: 0;
 }
 #stars {
   width: 1px;
   height: 1px;
   background: transparent;
   box-shadow: $shadows-small;
-  animation: animStar 7s linear infinite;
+  animation: animStar 60s infinite;
+  opacity: 1;
 }
 
 #stars2 {
@@ -35,53 +36,49 @@ body {
   height: 2px;
   background: transparent;
   box-shadow: $shadows-medium;
-  animation: animStar 7s linear infinite;}
+  animation: animStar 100s linear infinite;
+  opacity: 1;
+}
 
 #stars3 {
   width: 3px;
   height: 3px;
   background: transparent;
   box-shadow: $shadows-big;
-  animation: animStar 7s linear infinite;
-}
-
-#title {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  color: #fff;
-  text-align: center;
-  font-family: "lato", sans-serif;
-  font-weight: 300;
-  font-size: 50px;
-  letter-spacing: 10px;
-  margin-top: -60px;
-  padding-left: 10px;
-
-  span {
-    background: -webkit-linear-gradient(white, #38495a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  animation: animStar 150s linear infinite;
+  border-radius: 1px;
+  opacity: 1;
 }
 
 @keyframes animStar {
-  from {
-    transform: translateY(0px);
+  0% {
+    transform: translateY(-230px);
+    opacity: 1;
   }
-  to {
-    transform: translateY(-330px);
+  20%{
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-2000px);
+    opacity: 0;
   }
 }
 
-@media (max-width: 650px) {
-  @keyframes animStar {
-    from {
-      transform: translateY(0px);
-    }
-    to {
-      transform: translateY(-523px);
-    }
-  }
-}
+// @media (max-width: 650px) {
+//   @keyframes animStar {
+//     0% {
+//       transform: translateY(-100px);
+//       opacity: 1;
+//     }
+//     80% {
+//       opacity: 1;
+//     }
+//     100% {
+//       transform: translateY(-230px);
+//       opacity: 0.5;
+//     }
+//   }
+// }
