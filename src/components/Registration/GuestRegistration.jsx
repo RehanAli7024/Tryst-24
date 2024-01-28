@@ -11,7 +11,7 @@ import AddedFieldCheckbox from '../../overlays/overlays/add-new-field/field-type
 import AddedFieldUpload from '../../overlays/overlays/add-new-field/field-types/AddedFieldUpload';
 import AddedFieldText from '../../overlays/overlays/add-new-field/field-types/AddedFieldText';
 
-function GuestRegisteration({ handleClose, setRegistrationOpen }) {
+export default function GuestRegisteration({ setRegistrationOpen }) {
   const event_id = localStorage.getItem('event_id');
   const location = useLocation();
 
@@ -25,16 +25,16 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
     collegeName: '',
     referralId: '',
     speakerQuestions: '',
-    additionalField: '', // Added for the new field
+    additionalField: '',
     event_id: event_id,
   });
 
-  const [additionalFields, setAdditionalFields] = useState([]); // Maintain a list of additional fields
+  const [additionalFields, setAdditionalFields] = useState([]);
   const [showNewField, setShowNewField] = useState(false);
   const [newFieldTitle, setNewFieldTitle] = useState('');
   const [newFieldType, setNewFieldType] = useState('');
   const [additionalFieldData, setAdditionalFieldData] = useState(undefined);
-  const [additionalFieldResponses, setAdditionalFieldResponses] = useState({}); // New state for additional field responses
+  const [additionalFieldResponses, setAdditionalFieldResponses] = useState({});
 
   const handleShowNewField = () => {
     setShowNewField(true);
@@ -62,60 +62,6 @@ function GuestRegisteration({ handleClose, setRegistrationOpen }) {
 
   const handleChange = (field, value, index) => {
     if (index === undefined) {
-      setFormData((prevData) => ({ ...prevData, [field]: value }));
-    } else {
-function GuestRegistration({ handleClose, setRegistrationOpen }) {
-  const event_id = localStorage.getItem('event_id');
-  const location = useLocation();
-
-  const [formData, setFormData] = useState({
-    acceptingResponses: '',
-    yourName: '',
-    phoneNumber: '',
-    email: '',
-    collegeState: '',
-    collegeCity: '',
-    collegeName: '',
-    referralId: '',
-    speakerQuestions: '',
-    additionalField: '', // Added for the new field
-    event_id: event_id,
-  });
-
-  const [additionalFields, setAdditionalFields] = useState([]); // Maintain a list of additional fields
-  const [showNewField, setShowNewField] = useState(false);
-  const [newFieldTitle, setNewFieldTitle] = useState('');
-  const [newFieldType, setNewFieldType] = useState('');
-  const [additionalFieldData, setAdditionalFieldData] = useState(undefined);
-  const [additionalFieldResponses, setAdditionalFieldResponses] = useState({}); // New state for additional field responses
-
-  const handleShowNewField = () => {
-    setShowNewField(true);
-  };
-
-  const handleCloseNewField = () => {
-    setShowNewField(false);
-  };
-
-  useEffect(() => {
-    let handler = (e) => {
-      if (!registrationRef.current.contains(e.target)) {
-        setRegistrationOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handler);
-
-    return () => {
-      document.removeEventListener('mousedown', handler);
-    };
-  }, [setRegistrationOpen]);
-
-  let registrationRef = useRef();
-
-  const handleChange = (field, value, index) => {
-    if (index === undefined) {
-      // Handle changes for the standard fields
       setFormData((prevData) => ({ ...prevData, [field]: value }));
     } else {
       // Handle changes for additional fields
@@ -354,9 +300,9 @@ function GuestRegistration({ handleClose, setRegistrationOpen }) {
                 onChange={(value) => handleChange('additionalField', value, index)}
                 onDelete={() => handleDeleteField(index)}
               />
-              
+
             )}
-           
+
           </div>
         ))}
       </div>
@@ -402,5 +348,3 @@ function GuestRegistration({ handleClose, setRegistrationOpen }) {
     </div>
   );
 }
-
-export default GuestRegistration;

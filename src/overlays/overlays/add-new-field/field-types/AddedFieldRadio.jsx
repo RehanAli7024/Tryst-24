@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 export default function AddedFieldRadio({ additionalFieldData, onChange, onDelete }) {
-  const [selectedOption, setSelectedOption] = useState(null);
-
   const handleRadioChange = (option) => {
     onChange(option);
-    setSelectedOption(option);
   };
 
   return (
@@ -19,10 +16,10 @@ export default function AddedFieldRadio({ additionalFieldData, onChange, onDelet
               type="radio"
               name={additionalFieldData.fieldTitle}
               value={option}
-              checked={selectedOption === option}
+              checked={option.isChecked || false}
               onChange={() => handleRadioChange(option)}
             />
-            <label>{option.option}</label>
+            <label className={option.isChecked ? 'selected' : ''}>{option}</label>
           </div>
         ))}
         <button className="delete" onClick={onDelete}>
@@ -61,7 +58,10 @@ const Container = styled.div`
         border-left: 1px solid #acebf6;
         padding: 1vh 1vh;
         width: 15rem;
-        color: ${props => (selectedOption === option ? '#acebf6' : '#fff')};
+
+        &.selected {
+          background-color: #acebf6; /* Set the desired background color for the selected label */
+        }
       }
     }
   }
@@ -72,6 +72,6 @@ const Container = styled.div`
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    margin-top: 1vh;
-  }
+    margin-top:1vh;
+}
 `;

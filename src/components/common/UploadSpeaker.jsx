@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import "./UploadEvent.css";
 
 const UploadSpeaker = ({
@@ -26,8 +26,8 @@ const UploadSpeaker = ({
     handleImageChange(e);
   };
 
-  
-  
+
+
 
   return (
     <div className="upload-event-container">

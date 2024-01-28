@@ -10,7 +10,7 @@ export default function Memberdetail({ serialNo, id }) {
         </div>
         <div className="name-of-contact-person">
           <input
-            id={`contactPersonName_${id}`}  
+            id={`contactPersonName_${id}`}
             className="input"
             type="text"
             placeholder="Name of Contact Person"
@@ -18,7 +18,7 @@ export default function Memberdetail({ serialNo, id }) {
         </div>
         <div className="contact-number">
           <input
-            id={`contactPersonNumber_${id}`}  
+            id={`contactPersonNumber_${id}`}
             className="input"
             type="tel"
             placeholder="Contact Number"
