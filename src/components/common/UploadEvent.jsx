@@ -46,7 +46,6 @@ const UploadEvent = ({
           type="text"
         />
       </div>
-
       <div className="event-description">
         <label className="label">{eventDescriptionLabel}</label>
         <br />

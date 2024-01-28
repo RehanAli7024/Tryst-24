@@ -121,11 +121,6 @@
   transition: all 1s ease-in-out;
   z-index: 9999;
 }
-.about-us-vector:hover {
-  -webkit-mask-size: 500%;
-  mask-size: 500%;
-  transition: -webkit-mask-size 2s ease-in-out;
-}
 .about-us-vector-hovered {
   position: absolute;
   top: calc(50% - 9rem);
