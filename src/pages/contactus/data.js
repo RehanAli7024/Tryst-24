@@ -33,7 +33,7 @@ const data = {
     image: marketing,
     email: "sarthak.chauhan@tryst-iitd.org",
     linkedin: "https://www.linkedin.com/in/sarthak-singh-chauhan-a1942b209/",
-    number: '9977077550'
+    number: '6266138056'
   },
   {
     name: 'Rahul Ranveer Shah',
