@@ -1,8 +1,19 @@
 import "./eventpage.css";
-// import poster from "./poster.webp";
+import React, { useState } from 'react';
+import poster from "./poster.webp";
+import { transform } from "framer-motion";
 const EventPage = () => {
   const myStyle = {
+    
+  };
+  const [isVisible, setIsVisible] = useState(false);
+  const toggleDiv = () => {
+    setIsVisible(!isVisible);
+    svgStyles[transform] = "rotate(90deg)";
+  };
+  const svgStyles = {
     "mask-type": "alpha",
+    transform: ""
   };
   return (
     <>
@@ -13,7 +24,7 @@ const EventPage = () => {
         <div className="event_container">
           <div className="event_poster">
             <div className="poster">
-              {/* <img src={poster} alt="" className="eventphoto"/> */}
+              <img src={poster} alt="" className="eventphoto"/>
             </div>
             <div className="rulebook">
               <div className="book_icon">
@@ -136,7 +147,7 @@ const EventPage = () => {
             </div>
             <div className="contact_information">
               <div className="register">
-                <div className="rulebook">
+                <button className="rulebook" onClick={toggleDiv}>
                     <p>Register</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +158,7 @@ const EventPage = () => {
                   >
                     <mask
                       id="mask0_2475_330"
-                      style={myStyle}
+                      style={svgStyles}
                       maskUnits="userSpaceOnUse"
                       x="0"
                       y="0"
@@ -163,7 +174,7 @@ const EventPage = () => {
                       />
                     </g>
                   </svg>
-                </div>
+                </button>
               </div>
               <div className="contact_text">
                 CONTACT
@@ -187,6 +198,41 @@ const EventPage = () => {
             </div>
           </div>
         </div>
+        {isVisible && (
+          <div className="formbox">
+          <div className="reg_form_heading">
+            Registration Form 
+          </div>
+          <div >
+            <form action="" className="form_container">
+              <div className="input_field">
+                <div className="form_heading">Your Name*</div>
+                <input type="text" placeholder="Name" className="inputbox" required/>
+              </div>
+              <div className="input_field">
+                <div className="form_heading">Email-ID*</div>
+                <input type="text" placeholder="Name" className="inputbox" required/>
+              </div>
+              <div className="input_field">
+                <div className="form_heading">College*</div>
+                <input type="text" placeholder="Name" className="inputbox" required/>
+              </div>
+              <div className="input_field">
+                <div className="form_heading">Team Member 2 UID*</div>
+                <input type="text" placeholder="Name" className="inputbox" required/>
+              </div>
+            </form>
+            <div className="form_submit">
+            <div className="register">
+                  <div className="rulebook">
+                      <p>Register</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+          </div>
+        )}
+        
       </div>
     </>
   );

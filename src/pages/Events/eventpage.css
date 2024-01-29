@@ -34,13 +34,17 @@
 .poster{
     background-color: #FFFBFF;
     height: 20rem;
-    width: 25%;
+    width: 30%;
     align-items: center;
     display: flex;
     padding: 0rem 2rem;
     justify-content: center;
     margin-bottom: 2rem;
     
+}
+.eventphoto{
+    height: 100%;
+    /* width: 100rem; */
 }
 .rulebook{
     align-items: center;
@@ -171,4 +175,64 @@
 .poc_contact{
     font-weight: 200;
     font-family: Rajdhani;
+}
+.reg_form_heading{
+    color: var(--Color-Base-Dark-Orange, #FB932E);
+    text-align: center;
+    font-family: Bender;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.07rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.form_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:1rem;
+    flex-direction: row;
+    width: 90%;
+    margin-left: 2%;
+    margin-right: 5%;
+    flex-wrap: wrap;
+}
+.input_field{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+
+}
+.form_heading{
+    color: #FFF;
+    font-family: Rajdhani;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 0.5rem;
+}
+.inputbox{
+    display: flex;
+    width: 150%;
+    height: 3rem;
+    padding-left: 0.8rem;
+    align-items: center;
+    border-left: 3px solid var(--Color-Base-Vivid-Sky-Blue, #00E0FF);
+    background: linear-gradient(0deg, rgba(0, 224, 255, 0.10) 0%, rgba(0, 224, 255, 0.10) 100%), rgba(3, 10, 23, 0.80);
+    color: var(--Color-Base-Snow, #FFFBFF);
+    font-family: Rajdhani;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.rulebook svg:hover{
+    transform: rotate(90deg);
+    transition: transform 0.3s ease-in-out;
 }
