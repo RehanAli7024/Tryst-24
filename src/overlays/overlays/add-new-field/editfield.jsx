@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import RadioButtons from './field-types/RadioButtons';
-import TextField from './field-types/TextField';
+import TextField from './field-types/Textfield';
 import "./addNewField.css"
 
 export default function EditField({ onClose, callbackFormData, dataToEdit, indexToEdit, formData }) {
