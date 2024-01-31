@@ -32,9 +32,9 @@
     color: black;
 }
 .poster{
-    background-color: #FFFBFF;
-    height: 20rem;
-    width: 30%;
+    /* background-color: #FFFBFF; */
+    /* height: 20rem;
+    width: 30%; */
     align-items: center;
     display: flex;
     padding: 0rem 2rem;
@@ -219,7 +219,7 @@
 }
 .inputbox{
     display: flex;
-    width: 150%;
+    width: 120%;
     height: 3rem;
     padding-left: 0.8rem;
     align-items: center;

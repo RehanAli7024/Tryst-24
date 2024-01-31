@@ -22,14 +22,11 @@ function Registeration({ handleClose, setRegistrationOpen }) {
 
   const [showNewField, setShowNewField] = useState(false);
 
-  const handleShowNewField = () => {
-    setShowNewField(true);
-  };
 
   useEffect(() => {
     let handler = (e) => {
       if (!registrationRef.current.contains(e.target)) {
-        setRegistrationOpen(false);
+        setRegistrationOpen(true);
       }
     };
 
@@ -55,8 +52,6 @@ function Registeration({ handleClose, setRegistrationOpen }) {
     // You can perform additional actions with the form data here
   };
   const handleAddNewField = () => {
-    console.log("Adding new field");
-
     setShowNewField(true);
   };
 
