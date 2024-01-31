@@ -1,0 +1,171 @@
+body {
+    background-color: black;
+}
+
+.pronites-heading {
+    color: white;
+    font-family: Audiowide;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+
+.pronite-container {
+    display: flex;
+    /* flex-direction: column; */
+    /* flex-direction: row; */
+    margin-top: 10vh;
+    margin-bottom: 3rem;
+}
+
+.pronite-card {
+    /* float: left; */
+    width: 35%;
+    margin-left: 10vw;
+    margin-bottom: 5vh;
+}
+
+.pronite-name {
+    font-family: Audiowide;
+    font-weight: 400;
+    font-size: 3rem;
+    margin-left: 20%;
+    margin-top: 1rem;
+}
+
+.pronite-details {
+    width: 60%;
+}
+
+.pronite-number {
+    font-family: Audiowide;
+    font-size: 2rem;
+    font-weight: 400;
+}
+.pronite-date {
+    font-family: Audiowide;
+    font-size: 3.5rem;
+    font-weight: 400;
+}
+.pronite-event-details {
+    font-family: Rajdhani;
+    font-size: 1.05rem;
+    width: 65%;
+}
+.pronite-register-button {
+    margin-top: 1.5rem;
+}
+
+/* @media screen {
+    .pronite-container {
+        display: flex;
+        flex-direction: column;
+    }
+} */
+
+@media screen and (max-width: 1024px) {
+    .pronite-date {
+        font-size: 2rem;
+    }
+
+    .pronite-number {
+        font-size: 1.5rem;
+    }
+
+    .pronite-name {
+        font-size: 2rem;
+    }
+
+    .pronite-details {
+        width: 80%;
+        margin-left: 4rem;
+    }
+
+    .pronite-event-details {
+        font-size: 1rem;
+        width: 80%;
+    }
+
+    .pronite-register-button {
+        width: 12rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .pronite-event-details {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .pronite-date {
+        font-size: 1.5rem;
+    }
+
+    .pronite-number {
+        font-size: 1.2rem;
+    }
+
+    .pronite-name {
+        font-size: 1.5rem;
+    }
+
+    .pronite-details {
+        width: 80%;
+        margin-left: 4rem;
+    }
+
+    .pronite-event-details {
+        font-size: 0.8rem;
+        width: 80%;
+    }
+
+    .pronite-register-button {
+        width: 9rem;
+    }
+}
+
+@media screen and (max-width: 480px){
+
+    .pronite-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pronite-card {
+        width: 80%;
+        margin-left: auto;
+    }
+
+    .pronite1-image {
+        width: 15rem;
+    }
+    .pronite-date {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .pronite-number {
+        font-size: 1rem;
+    }
+
+    .pronite-name {
+        font-size: 1.2rem;
+    }
+
+    .pronite-details {
+        width: 80%;
+        margin-left: 4rem;
+    }
+
+    .pronite-event-details {
+        font-size: 0.7rem;
+        width: 90%;
+    }
+
+    .pronite-register-button {
+        margin-left: 22vw;
+        width: 8rem;
+    }
+}

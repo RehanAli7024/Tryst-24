@@ -17,6 +17,7 @@ import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
 import Login from "./pages/login/login.jsx";
+import Pronites from "./pages/pronites/pronites.jsx";
 
 const App = () => {
   return (
@@ -37,7 +38,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/events" element={<ComingSoon />} />
           <Route path="/guests" element={<ComingSoon />} />
-          <Route path="/pronites" element={<ComingSoon />} />
+          <Route path="/pronites" element={<Pronites />} />
         </Routes>
         <Footer />
       </Router>
