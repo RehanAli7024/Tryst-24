@@ -17,7 +17,7 @@ import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
 import Login from "./pages/login/login.jsx";
-
+import UserProfile from "./components/UserProfile/UserProfile.jsx";
 const App = () => {
   return (
     <main className="main-bg">
@@ -38,6 +38,7 @@ const App = () => {
           <Route path="/events" element={<ComingSoon />} />
           <Route path="/guests" element={<ComingSoon />} />
           <Route path="/pronites" element={<ComingSoon />} />
+          <Route path="/dashboard" element={<UserProfile/>}/>
         </Routes>
         <Footer />
       </Router>
