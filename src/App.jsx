@@ -17,6 +17,7 @@ import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
 import Login from "./pages/login/login.jsx";
+import UserCard from "./components/userCard/UserCard.jsx";
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/events" element={<ComingSoon />} />
           <Route path="/guests" element={<ComingSoon />} />
           <Route path="/pronites" element={<ComingSoon />} />
+          <Route path="/usercard" element={<UserCard />} />
         </Routes>
         <Footer />
       </Router>
