@@ -11,7 +11,7 @@ import shwinder from "../../assets/contact/shwinder.webp";
 
 
 const data = {
-  'ocs': [,
+  'ocs': [
   {
     name: 'Shwinder Singh',
     por: 'Overall Coordinator',
