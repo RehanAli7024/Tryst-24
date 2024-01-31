@@ -17,13 +17,14 @@ import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
 import Login from "./pages/login/login.jsx";
+import Signup from "./pages/signup/signup.jsx";
 
 const App = () => {
   return (
     <main className="main-bg">
       {/* <Navbar></Navbar> */}
       <Router>
-        {window.location.pathname !== "/none" ? <Navbar /> : null}
+        {window.location.pathname !== "/mainpage" ? <Navbar /> : null}
         <Routes>
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/" element={<ComingSoon />} />
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/events" element={<ComingSoon />} />
           <Route path="/guests" element={<ComingSoon />} />
           <Route path="/pronites" element={<ComingSoon />} />
+          <Route path="/singup" element={<Signup />} />
         </Routes>
         <Footer />
       </Router>

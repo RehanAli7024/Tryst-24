@@ -1,104 +1,83 @@
-import  { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { BiPlus } from 'react-icons/bi';
+import '../addNewField.css';
 
-export default function RadioButtons({ onGetOptionsData }) {
-  const [radioCount, setRadioCount] = useState(2);
-  const [radioTextValues, setRadioTextValues] = useState(Array(2).fill(''));
-
-  useEffect(() => {
-    // Initialize radioTextValues when radioCount changes
-    setRadioTextValues((prevValues) => [
-      ...prevValues,
-      ...Array(radioCount - prevValues.length).fill(''),
-    ]);
-  }, [radioCount]);
+export default function RadioButtons({ callback, onClose, fieldtype, dataToEdit = null }) {
+  const [radioCount, setRadioCount] = useState(dataToEdit && dataToEdit.options ? dataToEdit.options.length : 2);
+  const [title, setTitle] = useState(dataToEdit ? dataToEdit.title : '');
+  const [options, setOptions] = useState(dataToEdit && dataToEdit.options ? dataToEdit.options : ['', '']);
 
   const addNewRadioButton = (event) => {
     event.preventDefault();
-    setRadioCount((prevCount) => prevCount + 1);
+    setRadioCount(prevCount => prevCount + 1);
   };
 
-  const handleTextChange = (index, value) => {
-    setRadioTextValues((prevValues) => {
-      const newValues = [...prevValues];
-      newValues[index] = value;
-      return newValues;
+  const deleteRadioButton = (index) => {
+    setOptions(prevOptions => {
+      const newOptions = [...prevOptions];
+      newOptions.splice(index, 1);
+      return newOptions;
     });
   };
 
   useEffect(() => {
-    // Send data to parent when radioTextValues changes
-    onGetOptionsData(radioTextValues);
-  }, [onGetOptionsData, radioTextValues]);
+    // prevent Default behaviour
+    event.preventDefault();
+    console.log(options);
+    setRadioCount(options.length);
+  }, [options]);
+
+  const handleTextChange = (index, value) => {
+    setOptions(prevOptions => {
+      const newOptions = [...prevOptions];
+      newOptions[index] = value;
+      return newOptions;
+    });
+  };
+
+  const handleCallback = () => {
+    const newRadioData = {
+      title: title,
+      options: options.filter(option => option.trim() !== ''), // Filter out empty options
+      type: fieldtype
+    };
+    callback(newRadioData);
+    if (onClose) onClose();
+  };
 
   return (
-    <Container>
+    <div className='radio-container'>
+      <div className="field-title">
+        <p>FIELD TITLE: </p>
+        <input
+          type="text"
+          placeholder='Text'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+
       <div className="add-radio-btns">
         {[...Array(radioCount)].map((_, index) => (
           <div className="radio-btns" key={index}>
-            <input
-              type="radio"
-              name="radioGroup"
-            />
+            <input type="radio" name="radioGroup" />
             <input
               type="text"
               placeholder={`Option ${index + 1}`}
-              value={radioTextValues[index]}
+              value={options[index]}
               onChange={(e) => handleTextChange(index, e.target.value)}
             />
+            <button className="delete" onClick={() => deleteRadioButton(index)}> <i className="fa fa-trash"></i> </button>
             <br />
           </div>
         ))}
-      </div>
-      <div className="add-new-btn">
         <button onClick={addNewRadioButton}>
           <BiPlus /> Add New
         </button>
       </div>
-    </Container>
+      <div className='add-field-btn'>
+        <button type="button" onClick={handleCallback}>Done</button>
+      </div>
+    </div>
   );
 }
-
-const Container = styled.div`
-  .add-radio-btns {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    .radio-btns {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      input[type=radio] {
-        height: 0.9rem;
-        width: 0.9rem;
-        margin-right: 0.5rem;
-      }
-      input[type=text] {
-        display: flex;
-        align-items: center;
-        border: none;
-        border-left: 1px solid #ACEBF6;
-        background-color: #293749;
-        color: #fff;
-        padding: 0 1rem;
-        height: 2rem;
-        width: 50%;
-      }
-    }
-  }
-  .add-new-btn {
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      background-color: #ACEBF6;
-      border: none;
-      cursor: pointer;
-      width: 25%;
-      margin-top: 1rem;
-    }
-  }
-`;
