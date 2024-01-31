@@ -17,12 +17,10 @@ import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
 import Login from "./pages/login/login.jsx";
-<<<<<<< HEAD
 import UserCard from "./components/userCard/UserCard.jsx";
-=======
 import Pronites from "./pages/pronites/pronites.jsx";
 import Signup from "./pages/signup/signup.jsx";
->>>>>>> 541382a1eeb96b02a2b5f5f3d7a669fafb34eb5a
+import UserCard_Registration from "./components/userCard/UserCard_Registration.jsx";
 
 const App = () => {
   return (
@@ -43,13 +41,11 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/events" element={<EventPage />} />
           <Route path="/guests" element={<ComingSoon />} />
-<<<<<<< HEAD
           <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/usercard" element={<UserCard />} />
-=======
           <Route path="/pronites" element={<Pronites />} />
           <Route path="/signup" element={<Signup />} />
->>>>>>> 541382a1eeb96b02a2b5f5f3d7a669fafb34eb5a
+          <Route path="/xyz" element={<UserCard_Registration />} />
         </Routes>
         <Footer />
       </Router>
