@@ -29,7 +29,7 @@ const About = () => {
           Come aboard and have an experience of a lifetime!
         </div>
       </div>
-      <div className="about-us-parent-container hidden md:block">
+      <div className="about-us-parent-container hidden md:flex">
         <img src={trystlogo} alt="trystlogo" className={isHovered ? `about-us-tryst-logo-hovered` : `about-us-tryst-logo`} />
         <div className="about-us-vector-container">
           <svg className={isHovered ? 'about-us-vector-hovered' : 'about-us-vector'} xmlns="http://www.w3.org/2000/svg" width="385" height="289" viewBox="0 0 385 289" fill="none">
