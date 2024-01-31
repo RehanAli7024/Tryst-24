@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import Memberdetail from "../common/Memberdetail";
-import UploadEvent from "../common/UploadEvent";
-import RulebookEntry from "../common/RulebookEntry";
 import "./CompetitionEvent.css";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
-import { useNavigate } from "react-router-dom";
 
 
 export default function CompetitionEvent({
@@ -13,24 +9,14 @@ export default function CompetitionEvent({
   setIsOpen,
   setIsEventSubmitted,
   setEventFormTitle,
+  eventid
 }) {
-  const navigate = useNavigate();
-  const [eventTitle, setEventTitle] = useState("");
-  const [eventDescription, setEventDescription] = useState("");
-  const [eventDate, setEventDate] = useState("");
-  const [eventTime, setEventTime] = useState("");
-  const [eventLocation, setEventLocation] = useState("");
-  const [file, setFile] = useState(null);
   const [contactPersons, setcontactPerosns] = useState(1);
-  const [Rulebook, setRulebook] = useState(1);
-  const [TeamMembers, setTeamMembers] = useState(1);
-  const [RegistrationDate, setRegistrationDate] = useState("");
-  const [RegistrationTime, setRegistrationTime] = useState("");
-  const [isTeamEvent, setIsTeamEvent] = useState(false);
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
   useEffect(() => {
     let handler = (e) => {
-      if (!eventsRef.current.contains(e.target)) {
+      if (!eventsRef.current.contains(e.target) && registrationOpen) {
         setIsOpen(false);
       }
     };
@@ -40,179 +26,168 @@ export default function CompetitionEvent({
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  }, [setIsOpen]);
+  }, [setIsOpen, registrationOpen]);
 
   let eventsRef = useRef();
-
-  const handleTeamMembersChange = (e) => {
-    setTeamMembers(e.target.value);
-  };
-
-  const handleRegistrationDate = (e) => {
-    setRegistrationDate(e.target.value);
-    setSubmitted(false);
-  };
-
-  const handleRegistationTiming = (e) => {
-    setRegistrationTime(e.target.value);
-    setSubmitted(false);
-  };
-
-  const handleTeamEventChange = (e) => {
-    setIsTeamEvent(e.target.value === "yes");
-
-    // Conditionally set TeamMembers value
-    setTeamMembers(e.target.value === "yes" ? TeamMembers : 1);
-  };
 
   const handlecontactPersonsChange = (e) => {
     setcontactPerosns(Number(e.target.value));
   };
-  const handleRulebookChange = (e) => {
-    setRulebook(Number(e.target.value));
-  };
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
-  // Handling the event title change
-  const handleTitle = (e) => {
-    setEventTitle(e.target.value);
-    setSubmitted(false);
-  };
-  // Handling the event description change
-  const handleDescription = (e) => {
-    setEventDescription(e.target.value);
-    setSubmitted(false);
-  };
-  // Handling the event date change
-  const handleDate = (e) => {
-    setEventDate(e.target.value);
-    setSubmitted(false);
-  };
-  // Handling the event timing change
-  const handleTiming = (e) => {
-    setEventTime(e.target.value);
-    setSubmitted(false);
-  };
-  // Handling the event venue change
-  const handleVenue = (e) => {
-    setEventLocation(e.target.value);
-    setSubmitted(false);
-  };
-  // Handling the image change
-  const handleImageChange = (e) => {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
-  };
-  // Handling the form submission
   const handleSubmit = (e) => {
+    setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
     e.preventDefault();
-    // if (
-    //   eventTitle === "" ||
-    //   eventDescription === "" ||
-    //   eventDate === "" ||
-    //   eventTime === "" ||
-    //   eventLocation === ""
-    //   // file === null
-    // ) {
-    //   setError(true);
-    // } else {
-    setSubmitted(true);
-    setError(false);
-
-    // Gather input values
-    const formData = {
-      eventTitle,
-      eventDescription,
-      eventDate,
-      eventTime,
-      eventLocation,
-      RegistrationDate,
-      RegistrationTime,
-      file,
-      contactPersons: [],
-      rulebookEntries: [],
-      isTeamEvent,
-      TeamMembers,
-    };
-
-    // Gather data from Memberdetail component
-    for (let i = 0; i < contactPersons; i++) {
-      const contactPersonName = document.getElementById(
-        `contactPersonName_${i}`
-      ).value;
-      const contactPersonNumber = document.getElementById(
-        `contactPersonNumber_${i}`
-      ).value;
-      formData.contactPersons.push({
-        contactPersonName,
-        contactPersonNumber,
-      });
-    }
-    // Gather data from RulebookEntry component
-    for (let i = 0; i < Rulebook; i++) {
-      const rule = document.getElementById(`rule_${i}`).value;
-      formData.rulebookEntries.push({ rule });
-    }
-
-    // Console log the gathered data
-    console.log(formData);
     const token = localStorage.getItem("token");
-    console.log(token);
-    // Send data to backend
-    axios
-      .post(`${DOMAIN}create_event/`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      })
+    axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        localStorage.setItem("event_id", res.data.event_id);
+        console.log(res);
+        alert("Event submitted successfully");
+        eventid(res.data.id);
+        setEventFormTitle("registrationForm");
+        setIsEventSubmitted(true);
+        setIsSubmitted(true);
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
       });
+  };
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    event_date: "",
+    event_time: "",
+    venue: "",
+    file: null,
+    contactPersons: [],
+    speakers: [],
+    ruleBoook: [],
+  });
 
-    // to close the popup
-    // setEventFormTitle("registrationForm");
-    // setIsEventSubmitted(true);
-    // }
+  const [image, setImage] = useState(null);
+  const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
+  const [speakerimg, setSpeakerImg] = useState(null);
+  const [Speakers, setSpeakers] = useState(1);
+  const [speakerDetails, setSpeakerDetails] = useState([{ name: '', description: '', file: null }]);
+
+
+  const handleChange = (e) => {
+    if (e.target.name === "file") {
+      setImage(URL.createObjectURL(e.target.files[0]));
+      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+      return;
+    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const errorMessage = () => {
-    return (
-      <div
-        className="error"
-        style={{
-          display: error ? "" : "none",
-        }}
-      ></div>
-    );
+
+  const handleInputChange = (index, type, value) => {
+    setcontactPerosnDetails((prevDetails) => {
+      const updatedDetails = [...prevDetails];
+      if (!updatedDetails[index]) {
+        updatedDetails[index] = { name: '', phone: '' };
+      }
+      if (type === 'name') {
+        updatedDetails[index].name = value;
+      } else {
+        updatedDetails[index].phone = value;
+      }
+      return updatedDetails;
+    });
+  };
+
+  useEffect(() => {
+    setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
+  }, [constactPersonDetails, speakerDetails]);
+
+  const handleSpeakersChange = (e) => {
+    const numberOfSpeakers = parseInt(e.target.value, 10);
+    setSpeakers(numberOfSpeakers);
+    setSpeakerDetails(currentDetails => {
+      const newDetails = currentDetails.slice(0, numberOfSpeakers);
+      while (newDetails.length < numberOfSpeakers) {
+        newDetails.push({ name: '', description: '', file: null });
+      }
+      return newDetails;
+    });
+  };
+
+
+  const handleSpeakerDetailsChange = (index, type, e) => {
+    setSpeakerDetails(currentDetails => {
+      const updatedDetails = [...currentDetails];
+      if (type === 'file') {
+        const file = e.target.files[0];
+        setSpeakerImg(URL.createObjectURL(file));
+        updatedDetails[index].file = file ? URL.createObjectURL(file) : null;
+      } else {
+        updatedDetails[index][type] = e.target.value;
+      }
+      return updatedDetails;
+    });
   };
 
   return (
-    <div className="event-details">
+    <div
+      className={`event-details ${isSubmitted ? "popup-hidden" : ""}`}
+      ref={eventsRef}
+    >
       <form>
-        <UploadEvent
-          uploadTitle="ADD EVENT POSTER HERE"
-          eventTitleLabel="EVENT TITLE*"
-          eventDescriptionLabel="EVENT DESCRIPTION*"
-          handleImageChange={handleImageChange}
-          handleTitle={handleTitle}
-          handleDescription={handleDescription}
-          eventTitle={eventTitle}
-          eventDescription={eventDescription}
-          file={file}
-        />
+        <div className="upload-picture">
+          <div className="custom-upload-container">
+            <label htmlFor="uploadInput" className="custom-upload-btn">
+              Upload
+            </label>
+            <input
+              id="uploadInput"
+              className="upload-pic-btn"
+              type="file"
+              onChange={handleChange}
+              name="file"
+            />
+          </div>
+          <div className="image-shown">
+            {image && <img src={image} alt="Event" />}
+          </div>
+          <div className="image-guidelines">
+            <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
+            <p className="image-guidelines-text">Format: .jpg/ .jpeg/ .png</p>
+            <p className="image-guidelines-text">Size Limit: &lt;10MB</p>
+          </div>
+        </div>
+
+        <div className="event-name">
+          <label className="label">EVENT TITLE*</label>
+          <br />
+          <input
+            onChange={handleChange}
+            className="input event-title"
+            value={formData.title}
+            type="text"
+            name="title"
+          />
+        </div>
+
+        <div className="event-description">
+          <label className="label">EVENT DESCRIPTION*</label>
+          <br />
+          <textarea
+            onChange={handleChange}
+            className="textarea event-description"
+            value={formData.description}
+            type="text"
+            name="description"
+            rows={7}
+          />
+        </div>
         <div className="date-time-venue-container">
           <div className="events-flex-column">
             <label className="label">EVENT DATE*</label>
             <br />
             <input
-              onChange={handleDate}
+              onChange={handleChange}
               className="input"
-              value={eventDate}
+              value={formData.event_date}
+              name="event_date"
               type="date"
             />
           </div>
@@ -220,79 +195,27 @@ export default function CompetitionEvent({
             <label className="label">EVENT TIMING*</label>
             <br />
             <input
-              onChange={handleTiming}
+              onChange={handleChange}
               className="input"
-              value={eventTime}
+              value={formData.event_time}
+              name="event_time"
               type="time"
             />
           </div>
+
           <div className="events-flex-column">
             <label className="label">EVENT VENUE*</label>
             <br />
             <input
-              onChange={handleVenue}
+              onChange={handleChange}
               className="input event-venue"
-              value={eventLocation}
+              value={formData.venue}
+              name="venue"
               type="text"
             />
           </div>
         </div>
-        <div className="registration-date-time-container">
-          <div className="registration-date-time-column">
-            <label className="label">REGISTRATION DEADLINE*</label>
-            <br />
-            <div className="registration-date-time-input">
-              <input
-                onChange={handleRegistrationDate}
-                className="input"
-                value={RegistrationDate}
-                type="date"
-              />
-              <input
-                onChange={handleRegistationTiming}
-                className="input"
-                value={RegistrationTime}
-                type="time"
-              />
-            </div>
-          </div>
-          <div className="team-component-container">
-            <div className="team-component-details">
-              <span>Team based Event? :</span>
-              <input
-                type="radio"
-                name="team"
-                value="yes"
-                onChange={handleTeamEventChange}
-              />
-              <label htmlFor="yes">Yes</label>
-              <input
-                type="radio"
-                name="team"
-                value="no"
-                onChange={handleTeamEventChange}
-              />
-              <label htmlFor="no">No</label>
-            </div>
-            {/* Conditionally render the team-member-container */}
-            {isTeamEvent && (
-              <div className="team-member-container">
-                <p>No of Team Members*</p>
-                <select
-                  onChange={handleTeamMembersChange}
-                  value={TeamMembers}
-                  id="teamMembers" // Ensure that the ID is set here
-                >
-                  {[1, 2, 3, 4, 5, 6].map((num) => (
-                    <option key={num} value={num}>
-                      {num}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
-          </div>
-        </div>
+
         <div className="No-of-contact-person-container">
           <div className="contact-person-details">
             <p>Contact Person(s) Details*</p>
@@ -311,29 +234,50 @@ export default function CompetitionEvent({
             </select>
           </div>
         </div>
+
         {Array.from({ length: contactPersons }).map((_, index) => (
-          <Memberdetail key={index} serialNo={index + 1} id={index} />
+          <>
+            <div className="contact-details-container">
+              <div className="serial-no">
+                <p>{index + 1}.</p>
+              </div>
+              <div className="name-of-contact-person">
+                <input
+                  id={`contactPersonName_${index}`}
+                  className="input"
+                  type="text"
+                  onChange={(e) => handleInputChange(index, 'name', e.target.value)}
+                  placeholder="Name of Contact Person"
+                />
+              </div>
+              <div className="contact-number">
+                <input
+                  id={`contactPersonNumber_${index}`}
+                  className="input"
+                  type="tel"
+                  onChange={(e) => handleInputChange(index, 'phone', e.target.value)}
+                  placeholder="Contact Number"
+                  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                />
+              </div>
+            </div>
+          </>
         ))}
         <div className="No-of-contact-person-container">
           <div className="contact-person-details">
             <p>RuleBook*</p>
           </div>
           <div className="contact-persons-container">
-            <p>No. Of Points*</p>
-            <select onChange={handleRulebookChange} value={Rulebook}>
-              {[1, 2, 3, 4, 5, 6].map((num) => (
-                <option key={num} value={num}>
-                  {num}
-                </option>
-              ))}
-            </select>
+            <input
+              name="ruleBoook"
+              className="input"
+              type="text"
+              onChange={handleChange}
+              value={formData.ruleBoook} />
           </div>
         </div>
-        {Array.from({ length: Rulebook }).map((_, index) => (
-          <RulebookEntry key={index} serialNo={index + 1} id={index} />
-        ))}
         <button onClick={handleSubmit} className="submit-button">
-          SUBMIT
+          submit
         </button>
       </form>
     </div>

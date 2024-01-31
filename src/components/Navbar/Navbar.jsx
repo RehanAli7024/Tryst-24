@@ -43,9 +43,8 @@ function Navbar() {
 
   return (
     <Container
-      className={`navbar ${
-        isNavbarVisible ? "navbar-visible" : "navbar-hidden"
-      }`}
+      className={`navbar ${isNavbarVisible ? "navbar-visible" : "navbar-hidden"
+        }`}
     >
       <div className="navbarheader">
         <div
@@ -58,9 +57,8 @@ function Navbar() {
         <div className="navbaroptions-container">
           <div className="navbaricons">
             <a
-              className={`navbaroption ${
-                selectedOption === "CAP" ? "navbaroption-selected" : ""
-              }`}
+              className={`navbaroption ${selectedOption === "CAP" ? "navbaroption-selected" : ""
+                }`}
               href="https://cap.tryst-iitd.org/"
               target="_blank"
               rel="noreferrer"
@@ -77,9 +75,8 @@ function Navbar() {
             ].map((option) => (
               <div
                 key={option}
-                className={`navbaroption ${
-                  selectedOption === option ? "navbaroption-selected" : ""
-                }`}
+                className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""
+                  }`}
                 onClick={() => handleNavbarOptionClick(option)}
               >
                 {option}
@@ -87,7 +84,9 @@ function Navbar() {
             ))}
           </div>
           <div className="navbarprofile">
-            <img src={profileicon}></img>
+            <Link to="/login">
+              <img src={profileicon}></img>
+            </Link>
           </div>
           <button className="navbarmenu" onClick={handleShowNavbar}>
             <img src={showNavOptions ? crossmenu : navbarmenu}></img>
@@ -107,11 +106,10 @@ function Navbar() {
         ].map((option) => (
           <div
             key={option}
-            className={`navbaroption ${
-              selectedMobileOption === option
+            className={`navbaroption ${selectedMobileOption === option
                 ? "navbaroption-selected-mobile"
                 : ""
-            }`}
+              }`}
             onClick={() => handleNavbarOptionClick(option)}
           >
             {option}

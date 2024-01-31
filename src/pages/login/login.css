@@ -2,11 +2,13 @@
   color: var(--Color-Base-Snow, #fffbff);
   text-align: center;
   font-family: Audiowide;
-  font-size: 4rem;
+  font-size: 3rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.2rem;
+  margin-bottom: 5rem;
+  margin-top: 3.5rem;
 }
 .login-container {
   width: 100%;
@@ -14,17 +16,45 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 5rem;
 }
 .login-iit-body {
+  margin-top: 1.5rem;
+  width: 20vw;
+  height: 4.45vw;
   position: relative;
-  background: url("../../assets/bg.svg") no-repeat center center fixed;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
+  background: url("../../assets/bg.svg") no-repeat center center;
+  background-size: contain;
+  background-position-y: top;
 }
 .login-iit-body-text {
-  /* position: absolute; */
+  color: #fff;
+  font-family: Rajdhani;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.06rem;
 }
 .iitlogo {
-  /* position: absolute;
-  top: 0;
-  left: 5%;
-  transform: translate(0, 45%); */
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 60%;
+}
+.login-iit-head {
+  color: var(--Color-Base-Dark-Orange, #fb932e);
+  text-align: center;
+  font-family: Bender;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.07rem;
+}
+.margin{
+  height: 5vw;
 }

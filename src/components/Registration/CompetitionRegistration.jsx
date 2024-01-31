@@ -1,300 +1,199 @@
-import React, { useState } from 'react';
-import editicon from "../../assets/edit.png";
-import deleteicon from "../../assets/delete.png";
-import "./registrationMain.css";
+import React, { useState, useEffect } from 'react';
+import { DOMAIN } from '../../domain';
+import './registrationMain.css';
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
-import AddedFieldRadio from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
-import AddedFieldCheckbox from '../../overlays/overlays/add-new-field/field-types/AddedFieldCheckbox';
-import AddedFieldUpload from '../../overlays/overlays/add-new-field/field-types/AddedFieldUpload';
+import EditField from '../../overlays/overlays/add-new-field/editfield';
+import axios from 'axios';
+import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
+import { useRef } from 'react';
 
-function CompetitionRegistration() {
+function CompetitionRegistration({ setRegistrationOpen, eventid }) {
+  const [payload, setPayload] = useState({});
+  const [editpayload, setEditPayload] = useState({});
   const [formData, setFormData] = useState({
-    acceptingResponses: '',
-    yourName: '',
-    phoneNumber: '',
-    email: '',
-    collegeState: '',
-    collegeCity: '',
-    collegeName: '',
-    referralId: '',
-    speakerQuestions: '',
-    additionalField: '', // Added for the new field
+    acceptingResponses: true,
+    event_id: eventid,
+    formFields: [],
   });
 
-  const [additionalFields, setAdditionalFields] = useState([]); // Maintain a list of additional fields
+  const [showNewField, setShowNewField] = useState(false);
+  const [showEditField, setShowEditField] = useState([false, null, null]);
 
-  const [showNewField, setShowNewField] = useState(false); // Assuming you have a state to control the visibility of AddNewField
-  const [additionalFieldData, setAdditionalFieldData] = useState(undefined);
-
-  const handleChange = (field, value) => {
-    setFormData(prevData => ({ ...prevData, [field]: value }));
-  };
-
-  const handleRadioChange = (value) => {
-    setFormData(prevData => ({ ...prevData, acceptingResponses: value }));
-  };
-
-  const handleAddNewField = (newFieldData) => {
-    setAdditionalFields(prevFields => [...prevFields, newFieldData]); // Append new field to the list
-    setShowNewField(true); // Show the AddNewField component
+  const handleShowNewField = () => {
+    setShowNewField(true);
   };
 
   const handleCloseNewField = () => {
-    setShowNewField(false); // Hide the AddNewField component
+    setShowNewField(false);
+  }
+
+  const handleCloseEditField = () => {
+    setShowEditField(false);
+  }
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!registrationRef.current.contains(e.target)) {
+        setRegistrationOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  }, [setRegistrationOpen]);
+
+  let registrationRef = useRef();
+
+
+  const handleDeleteFormField = (indexToDelete) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      formFields: prevFormData.formFields.filter((_, index) => index !== indexToDelete)
+    }));
   };
 
+
+
+  const handleSave = () => {
+
+    const token = localStorage.getItem('token');
+    console.log(formData);
+    axios
+      .post(
+        `${DOMAIN}registration/`,
+        {
+          ...formData,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // DO NOT TOUCH THIS CODE
+  const handleresponseChange = (name, value) => {
+    // Check if the field is 'acceptingResponses' to handle boolean conversion
+    if (name === 'acceptingResponses') {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value === 'Yes' // Convert 'Yes'/'No' to true/false
+      }));
+    } else {
+      // For other fields, use the value directly
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
+  };
+  const handleEditFormField = (indexToEdit) => {
+    console.log(indexToEdit);
+    const fieldToEdit = formData.formFields[indexToEdit];
+    console.log(fieldToEdit);
+    setShowEditField([true, indexToEdit, fieldToEdit]);
+  };
+
+  useEffect(() => {
+    if (Object.keys(payload).length === 0) return;
+    setFormData(prevData => ({
+      ...prevData,
+      formFields: [...prevData.formFields, payload]
+    }));
+  }, [payload]);
+
+  useEffect(() => {
+    if (Object.keys(editpayload).length === 0) return;
+    setFormData(editpayload);
+  }, [editpayload]);
+
+  useEffect(() => {
+    console.log(formData);
+  }
+    , [formData]);
   return (
-    <div className="registration-containor">
+    <div className="registration-containor" ref={registrationRef}>
       <div className="responses">
         <p className="question">Accepting Responses?:</p>
         <div>
-          <div className="registration-containor">
-            <div className="responses">
-              <p className="question">Accepting Responses?:</p>
-
-              <div>
-                <input
-                  type="radio"
-                  name="acceptingResponses"
-                  value="Yes"
-                  onChange={() => handleRadioChange('Yes')}
-                />
-                <label>Yes</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="acceptingResponses"
-                  value="Yes"
-                  onChange={() => handleRadioChange('Yes')}
-                />
-                <label>Yes</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="acceptingResponses"
-                  value="No"
-                  onChange={() => handleRadioChange('No')}
-                />
-                <label>No</label>
-              </div>
-            </div>
-            <div className="inputfieldcontainor">
-              <div className="inputfield">
-                <label className="titleoffield">Your Name*</label>
-                <input
-                  className="box"
-                  type="text"
-                  onChange={(e) => handleChange('yourName', e.target.value)}
-                />
-              </div>
-              <div className="inputfield">
-                <label className="titleoffield">Phone Number*</label>
-                <input
-                  className="box"
-                  type="text"
-                  onChange={(e) => handleChange('phoneNumber', e.target.value)}
-                />
-              </div>
-              <div className="inputfield">
-                <label className="titleoffield">E-Mail ID</label>
-                <input
-                  className="box"
-                  type="email"
-                  onChange={(e) => handleChange('email', e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="inputfieldcontainor">
-              <div className="inputfield">
-                <label className="titleoffield">College State*</label>
-                <select
-                  className="box"
-                  onChange={(e) => handleChange('collegeState', e.target.value)}
-                >
-                  <option value="" disabled selected>Select your option</option>
-                  <option value="Andhra Pradesh">Andhra Pradesh</option>
-                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                </select>
-              </div>
-              <div className="inputfield">
-                <label className="titleoffield">College City*</label>
-                <select
-                  className="box"
-                  onChange={(e) => handleChange('collegeCity', e.target.value)}
-                >
-                  <option value="" disabled selected>Select your option</option>
-                  <option value="Andhra Pradesh">Andhra Pradesh</option>
-                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                </select>
-              </div>
-              <div className="inputfield">
-                <label className="titleoffield">College Name*</label>
-                <select
-                  className="box"
-                  onChange={(e) => handleChange('collegeName', e.target.value)}
-                >
-                  <option value="" disabled selected>Select your option</option>
-                  <option value="Andhra Pradesh">Andhra Pradesh</option>
-                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                </select>
-              </div>
-            </div>
-            <div className="inputfield referral">
-              <label className="titleoffield referral">CA Referral ID*</label>
-              <input
-                className="box"
-                type="text"
-                onChange={(e) => handleChange('referralId', e.target.value)}
-              />
-            </div><input
-              type="radio"
-              name="acceptingResponses"
-              value="No"
-              onChange={() => handleRadioChange('No')}
-            />
-            <label>No</label>
-          </div>
-        </div>
-        <div className="inputfieldcontainor">
-          <div className="inputfield">
-            <label className="titleoffield">Your Name*</label>
-            <input
-              className="box"
-              type="text"
-              onChange={(e) => handleChange('yourName', e.target.value)}
-            />
-          </div>
-          <div className="inputfield">
-            <label className="titleoffield">Phone Number*</label>
-            <input
-              className="box"
-              type="text"
-              onChange={(e) => handleChange('phoneNumber', e.target.value)}
-            />
-          </div>
-          <div className="inputfield">
-            <label className="titleoffield">E-Mail ID</label>
-            <input
-              className="box"
-              type="email"
-              onChange={(e) => handleChange('email', e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="inputfieldcontainor">
-          <div className="inputfield">
-            <label className="titleoffield">College State*</label>
-            <select
-              className="box"
-              onChange={(e) => handleChange('collegeState', e.target.value)}
-            >
-              <option value="" disabled selected>Select your option</option>
-              <option value="Andhra Pradesh">Andhra Pradesh</option>
-              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            </select>
-          </div>
-          <div className="inputfield">
-            <label className="titleoffield">College City*</label>
-            <select
-              className="box"
-              onChange={(e) => handleChange('collegeCity', e.target.value)}
-            >
-              <option value="" disabled selected>Select your option</option>
-              <option value="Andhra Pradesh">Andhra Pradesh</option>
-              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            </select>
-          </div>
-          <div className="inputfield">
-            <label className="titleoffield">College Name*</label>
-            <select
-              className="box"
-              onChange={(e) => handleChange('collegeName', e.target.value)}
-            >
-              <option value="" disabled selected>Select your option</option>
-              <option value="Andhra Pradesh">Andhra Pradesh</option>
-              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            </select>
-          </div>
-        </div>
-        <div className="inputfield referral">
-          <label className="titleoffield referral">CA Referral ID*</label>
           <input
-            className="box"
-            type="text"
-            onChange={(e) => handleChange('referralId', e.target.value)}
+            type="radio"
+            name="acceptingResponses"
+            value="Yes"
+            checked={formData.acceptingResponses === true}
+            onChange={e => handleresponseChange('acceptingResponses', e.target.value)}
           />
+          <label>Yes</label>
         </div>
-
-        <div className="dynamic-new-field-container">
-          {additionalFields.map((field, index) => (
-            <div key={index} className={`new-field-type-${field.fieldType}`}>
-              {field.fieldType === "text" && <p>{field.fieldTitle}</p>}
-              {field.fieldType === "radio" && <AddedFieldRadio additionalFieldData={field} />}
-              {field.fieldType === "checkbox" && <AddedFieldCheckbox additionalFieldData={field} />}
-              {field.fieldType === "upload" && <AddedFieldUpload additionalFieldData={field} />}
-            </div>
-          ))}
-
-        </div>
-
-        <div className="addnewfield">
-          <button className="fieldbutton" onClick={handleAddNewField}>
-            Add New Field
-          </button>
-
-          {showNewField &&
-            <AddNewField
-              onClose={handleCloseNewField}
-              onAddNewField={handleAddNewField}
-              setAdditionalFieldData={setAdditionalFieldData}
-            />}
-
-        </div>
-
-
-
-        <div className="inputfieldcontainor">
-          <div className="inputfield speakerquestions">
-            <label className="titleoffield">
-              Name of 2nd Team Member*
-            </label>
-            <input
-              className="box"
-              type="text"
-              onChange={(e) => handleChange('speakerQuestions', e.target.value)}
-            />
-          </div>
-          <button className="edit">
-            <img src={editicon} alt="edit icon" />
-          </button>
-          <button className="delete">
-            <img src={deleteicon} alt="delete icon" />
-          </button>
+        <div>
+          <input
+            type="radio"
+            name="acceptingResponses"
+            value="No"
+            checked={formData.acceptingResponses === false}
+            onChange={e => handleresponseChange('acceptingResponses', e.target.value)}
+          />
+          <label>No</label>
         </div>
       </div>
-      <div className="inputfieldcontainor">
-        <div className="inputfield speakerquestions">
-          <label className="titleoffield">
-            Name of 2nd Team Member*
-          </label>
-          <input
-            className="box"
-            type="text"
-            onChange={(e) => handleChange('speakerQuestions', e.target.value)}
-          />
-        </div>
-        <button className="edit">
-          <img src={editicon} alt="edit icon" />
+
+      <div className="dynamic-new-field-container">
+        {formData.formFields.map((field, index) => (
+
+          <div key={index} className={`new-field-type-${field}`}>
+            <AddedField
+              key={index}
+              index={index}
+              field={field}
+              onDelete={() => handleDeleteFormField(index)}
+              onEdit={() => handleEditFormField(index)}
+            />
+          </div>
+        ))}
+
+
+      </div>
+      <div className="addnewfield">
+        <button className="fieldbutton" onClick={handleShowNewField}>
+          Add New Field
         </button>
-        <button className="delete">
-          <img src={deleteicon} alt="delete icon" />
+
+        {showNewField && (
+          <AddNewField
+            onClose={handleCloseNewField}
+            callbackpayload={setPayload}
+          />
+        )}
+
+        {showEditField[0] && (
+          <EditField
+            onClose={handleCloseEditField}
+            callbackFormData={setEditPayload}
+            dataToEdit={showEditField[2]}
+            indexToEdit={showEditField[1]}
+            formData={formData}
+          />
+        )}
+      </div>
+
+      <div className="addnewfield savebutton">
+        <button className="save" onClick={handleSave}>
+          Save
         </button>
       </div>
-    </div>
+    </div >
   );
 }
 
 export default CompetitionRegistration;
-
