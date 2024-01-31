@@ -11,14 +11,7 @@ import shwinder from "../../assets/contact/shwinder.webp";
 
 
 const data = {
-  'ocs': [{
-    name: 'Harshit Mawandia',
-    por: 'Overall Coordinator',
-    image: harshit,
-    email: "admin@tryst-iitd.org",
-    linkedin: "https://www.linkedin.com/in/harshit-mawandia/",
-    number: '9031193301'
-  },
+  'ocs': [,
   {
     name: 'Shwinder Singh',
     por: 'Overall Coordinator',
@@ -26,6 +19,14 @@ const data = {
     email: "caicgsec@iitd.ac.in",
     linkedin: "https://www.linkedin.com/in/shwinder-singh-0581b71b9/",
     number: '9711780406'
+  },
+{
+    name: 'Harshit Mawandia',
+    por: 'Co-Overall Coordinator',
+    image: harshit,
+    email: "admin@tryst-iitd.org",
+    linkedin: "https://www.linkedin.com/in/harshit-mawandia/",
+    number: '9031193301'
   }],
   'ctms': [{
     name: 'Sarthak Chauhan',
