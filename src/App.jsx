@@ -17,14 +17,19 @@ import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
 import Login from "./pages/login/login.jsx";
+<<<<<<< HEAD
 import UserCard from "./components/userCard/UserCard.jsx";
+=======
+import Pronites from "./pages/pronites/pronites.jsx";
+import Signup from "./pages/signup/signup.jsx";
+>>>>>>> 541382a1eeb96b02a2b5f5f3d7a669fafb34eb5a
 
 const App = () => {
   return (
     <main className="main-bg">
       {/* <Navbar></Navbar> */}
       <Router>
-        {window.location.pathname !== "/none" ? <Navbar /> : null}
+        {window.location.pathname !== "/mainpage" ? <Navbar /> : null}
         <Routes>
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/" element={<ComingSoon />} />
@@ -36,10 +41,15 @@ const App = () => {
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/about" element={<About />} />
-          <Route path="/events" element={<ComingSoon />} />
+          <Route path="/events" element={<EventPage />} />
           <Route path="/guests" element={<ComingSoon />} />
+<<<<<<< HEAD
           <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/usercard" element={<UserCard />} />
+=======
+          <Route path="/pronites" element={<Pronites />} />
+          <Route path="/signup" element={<Signup />} />
+>>>>>>> 541382a1eeb96b02a2b5f5f3d7a669fafb34eb5a
         </Routes>
         <Footer />
       </Router>

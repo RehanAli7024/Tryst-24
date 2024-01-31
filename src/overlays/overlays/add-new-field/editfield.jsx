@@ -3,14 +3,12 @@ import RadioButtons from './field-types/RadioButtons';
 import TextField from './field-types/TextField';
 import "./addNewField.css"
 
-export default function AddNewField({ onClose, callbackpayload, dataToEdit }) {
+export default function EditField({ onClose, callbackFormData, dataToEdit, indexToEdit, formData }) {
 
-    const [fieldType, setFieldType] = useState('text');
-    const [isMandatory, setIsMandatory] = useState(true);
-    if (dataToEdit) {
-        setIsMandatory(dataToEdit.isMandatory);
-    }
-    const handleAddFieldPopupClose = () => {
+    const [fieldType, setFieldType] = useState(dataToEdit.type);
+    const [isMandatory, setIsMandatory] = useState(dataToEdit.isMandatory);
+
+    const handleEditFieldPopupClose = () => {
         onClose();
     };
     const editFileType = (value) => {
@@ -20,14 +18,21 @@ export default function AddNewField({ onClose, callbackpayload, dataToEdit }) {
         setIsMandatory(value === 'yes');
     };
     const callback = (payload) => {
-        callbackpayload({ ...payload, isMandatory: isMandatory });
+        callbackFormData({
+            ...formData, formFields: formData.formFields.map((field, index) => {
+                if (index === indexToEdit) {
+                    return { ...payload, isMandatory: isMandatory };
+                }
+                return field;
+            })
+        });
     };
 
     return (
         <div className='popup-container'>
             <div className='addfield-container'>
-                <button className='btn-close' onClick={handleAddFieldPopupClose}>X</button>
-                <h3>ADD NEW FIELD</h3>
+                <button className='btn-close' onClick={handleEditFieldPopupClose}>X</button>
+                <h3>EDIT FIELD</h3>
                 <div className='new-field-container'>
                     <form>
                         <div className='mandatory-field'>
@@ -60,7 +65,8 @@ export default function AddNewField({ onClose, callbackpayload, dataToEdit }) {
 
                         <div className="input-field-type">
                             <p>FIELD TYPE: </p>
-                            <select onChange={(e) => editFileType(e.target.value)}>
+                            <select onChange={(e) => editFileType(e.target.value)}
+                                defaultValue={dataToEdit.type}>
                                 <option value="text">Text</option>
                                 <option value="radio">Radio Button</option>
                                 <option value="checkbox">Checkbox</option>
@@ -69,8 +75,8 @@ export default function AddNewField({ onClose, callbackpayload, dataToEdit }) {
                             </select>
                         </div>
                         <div>
-                            {(fieldType === "radio" || fieldType === "checkbox") && <RadioButtons callback={callback} onClose={onClose} fieldtype={fieldType} />}
-                            {(fieldType === "upload" || fieldType === "text" || fieldType === "team") && <TextField callback={callback} onClose={onClose} fieldtype={fieldType} />}
+                            {(fieldType === "radio" || fieldType === "checkbox") && <RadioButtons callback={callback} onClose={onClose} dataToEdit={dataToEdit} fieldtype={fieldType} />}
+                            {(fieldType === "upload" || fieldType === "text" || fieldType === "team") && <TextField callback={callback} onClose={onClose} dataToEdit={dataToEdit} fieldtype={fieldType} />}
                         </div>
                     </form>
                 </div>

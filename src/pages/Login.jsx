@@ -6,6 +6,7 @@ import loginlogo from "../assets/login.png";
 import axios from "axios";
 import { DOMAIN } from "../domain";
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "react-google-login";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -24,7 +25,30 @@ const Login = () => {
         console.log(err);
       });
   };
-
+  const login = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      axios
+        .post(`${DOMAIN}api/users/google/`, {
+          token: tokenResponse.access_token,
+        })
+        .then((response) => {
+          if (response.data.error) {
+            alert("Google login is unsuccessful.");
+            return;
+          } else if (response.data.message === "Logged in") {
+            localStorage.setItem("access_token", response.data.tokens.access);
+            localStorage.setItem("refresh_token", response.data.tokens.refresh);
+            navigate("/user/dashboard");
+          } else if (response.data.message === "New User Created") {
+            localStorage.setItem("response", JSON.stringify(response));
+            navigate("/signup");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  });
   return (
     <div className="login">
       <div className="header">
