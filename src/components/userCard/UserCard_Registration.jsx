@@ -6,7 +6,7 @@ import "./userCard.css";
 
 export default function UserCard_Registration() {
   return (
-    <div className="user-card-container">
+    <div className="user-card-container md:w-1/3 w-full">
       <img src={userCardSvg} alt="comps-pic" className="usercard-img" />
 
       <div className="user-card-content">

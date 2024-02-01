@@ -2,30 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-		'Droid Sans', 'Helvetica Neue', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	overflow-x: hidden;
-	background-color: #030A17;
-	background-image: url("assets/sponsors/stars.webp");
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: #030a17;
+  background-image: url("assets/sponsors/stars.webp");
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
-
 ::-webkit-scrollbar {
-	width: 10px;
-	background-color: #041429;
-  }
+  width: 10px;
+  background-color: #041429;
+}
 
-  ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.4); 
-    border-radius: 10px;
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
 
-  }
+.action-btn {
+  background-image: url("assets/action-button.svg");
+  background-size: cover;
+  width: 14.12rem;
+  height: 3.57rem;
+  padding-top: 6px;
+  color: #acecf6;
+
+  font-family: Rajdhani;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.06rem;
+}

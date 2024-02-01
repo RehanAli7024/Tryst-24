@@ -28,7 +28,7 @@ const Pronites = () => {
                 Get your passes now and immerse yourself in the excitement of seeing your favourite star up close and personal. It's the perfect chance to soak up the energy of the crowd and create indelible memories. See you there!
                 </div>
                 <div className="pronite-register-button">
-                    <img src={RegisterButton} alt="register" />
+                    <button className="action-btn" ><i className="fas fa-download mr-2 fa-xs"></i>Register</button>
                 </div>
             </div>
         </div>

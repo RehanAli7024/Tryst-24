@@ -15,8 +15,8 @@
   }
   
   .user-card-container {
-    position: relative;
-    width: 40%;
+    /* position: rela tive; */
+    /* width: 40%; */
   }
   
   .user-card-text {
@@ -55,9 +55,9 @@
   
   @media screen and (max-width: 450px) {
     .user-card-container {
-      position: relative;
-      width: 70%;
-      margin-inline: auto;
+      /* position: relative; */
+      /* width: 70%; */
+      /* margin-inline: auto; */
     }
   }
   
