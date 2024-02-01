@@ -12,7 +12,7 @@ const Pronites = () => {
             <div className="pronite-card">
                 <img className="pronite1-image" src = {Meetup1} alt="pronite card"/> 
                 <div className="pronite-name">
-                    Prateek
+                    {/* Prateek */}
                 </div>
             </div>
             <div className="pronite-details">
@@ -20,7 +20,7 @@ const Pronites = () => {
                     Pronite 1
                 </div>
                 <div className="pronite-date">
-                    5th March 2024
+                    1st February 2024
                 </div>
                 <div className="pronite-event-details">
                 Get ready for an unforgettable evening as Bollywood stars Shahid Kapoor and Kriti Sanon grace the stage at Tryst'24, IIT Delhi! This is your chance to witness the magic of their performances and make memories that will last a lifetime. Don't miss out on this star-studded event – register for passes now and secure your spot for a fun-filled night of entertainment and glamour at IIT Delhi's Tryst!</div>
