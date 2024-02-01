@@ -23,10 +23,7 @@ const Pronites = () => {
                     5th March 2024
                 </div>
                 <div className="pronite-event-details">
-                Are you ready for a night of endless laughter and entertainment? Tryst has in store renowned comedians Mr. Manik Mahna and Mr. Aashish Solanki, who are all set to take the stage and leave you in splits with their hilarious jokes and quick wit. <br/>
-                To make this night unforgettable we have the ultimate star of ‘Tu Jhoothi, Main Makkaar’, Ms. Shraddha Kapoor! This night of glamour, entertainment, and excitement promises to be a once-in-a-lifetime experience that you don't want to miss.<br/>
-                Get your passes now and immerse yourself in the excitement of seeing your favourite star up close and personal. It's the perfect chance to soak up the energy of the crowd and create indelible memories. See you there!
-                </div>
+                Get ready for an unforgettable evening as Bollywood stars Shahid Kapoor and Kriti Sanon grace the stage at Tryst'24, IIT Delhi! This is your chance to witness the magic of their performances and make memories that will last a lifetime. Don't miss out on this star-studded event – register for passes now and secure your spot for a fun-filled night of entertainment and glamour at IIT Delhi's Tryst!</div>
                 <div className="pronite-register-button">
                     <button className="action-btn" ><i className="fas fa-download mr-2 fa-xs"></i>Register</button>
                 </div>
