@@ -35,16 +35,11 @@
 }
 .namedb{
     color: #FB932E;
-    font-size: 4vh;
 }
 .dblogout:hover{
         background-color: var(--Color-Base-Vivid-Sky-Blue, #00E0FF);
 }
 .Dashboardname{
-    display: flex;
-    flex-direction: row;
-   justify-content: space-between;
-   margin-right: 24%;
 }
 .dbans{
     font-size: 80%;

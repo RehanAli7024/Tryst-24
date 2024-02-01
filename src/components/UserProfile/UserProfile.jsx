@@ -12,39 +12,40 @@ function UserProfile() {
                     <img className="userimagedb" src={UserImage}></img>
                 </div>
                 <div className="col-span-6 md:col-span-4  Dashboarduserinfo">
-                    <div className="Dashboardname">
-                        <div className="namedb">Walter White</div>
+                    <div className="Dashboardname flex flex-col md:flex-row justify-center items-center md:justify-around my-6">
+                        <div className="namedb text-[1.5rem] md:text-[2rem]">Walter White</div>
                         <button className="action-btn" ><i className="fas fa-sign-out mr-2 fa-xs"></i>Log Out</button>
                     </div>
-                    <div className="Dashboarduserrow">
-                        <div className="dbques"> E-MAIL:</div>
-                        <div className="dbans"> abcc@gmail.com</div>
-                        <div className="dbques"> PHONE:</div>
-                        <div className="dbans"> 1234567890</div>
-                    </div>
-                    <div className="Dashboarduserrow">
-                        <div className="dbques"> UID:</div>
-                        <div className="dbans"> abcdsed</div>
-                    </div>
-                    <div className="Dashboarduserrow">
-                        <div className="dbques">
-                            COLLEGE DETAILS:
+                    <div className="mx-10">
+                        <div className="Dashboarduserrow">
+                            <div className="dbques"> E-MAIL:</div>
+                            <div className="dbans"> abcc@gmail.com</div>
+                            <div className="dbques hidden md:block"> PHONE:</div>
+                            <div className="dbans hidden md:block"> 1234567890</div>
                         </div>
-                        <div className="Dashboardcollegedetails">
-                            <div className="dbclgrow">
-                                <div className="dbques">Name:</div>
-                                <div className="dbans">Rehan Ali</div>
-                            </div>
-                            <div className="dbclgrow">
-                                <div className="dbques">State:</div>
-                                <div className="dbans">New Delhi</div>
-                            </div>
-                            <div className="dbclgrow">
-                                <div className="dbques">City:</div>
-                                <div className="dbans">New Delhi</div>
-                            </div>
+                        <div className="Dashboarduserrow">
+                            <div className="dbques"> UID:</div>
+                            <div className="dbans"> abcdsed</div>
                         </div>
-                    </div>
+                        <div className="Dashboarduserrow flex flex-col md:flex-row">
+                            <div className="dbques">
+                                COLLEGE DETAILS:
+                            </div>
+                            <div className="Dashboardcollegedetails">
+                                <div className="dbclgrow">
+                                    <div className="dbques">Name:</div>
+                                    <div className="dbans">Rehan Ali</div>
+                                </div>
+                                <div className="dbclgrow">
+                                    <div className="dbques">State:</div>
+                                    <div className="dbans">New Delhi</div>
+                                </div>
+                                <div className="dbclgrow">
+                                    <div className="dbques">City:</div>
+                                    <div className="dbans">New Delhi</div>
+                                </div>
+                            </div>
+                        </div></div >
                 </div>
             </div>
         </div>
