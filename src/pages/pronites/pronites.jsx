@@ -1,6 +1,6 @@
 import "./pronites.css";
 import Meetup1 from "../../assets/meetup1.webp";
-import {  useState } from "react";
+import { useState } from "react";
 import { DOMAIN } from "../../domain";
 import axios from "axios";
 
@@ -13,7 +13,7 @@ const Pronites = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("access_token"),
     };
-
+    
     const proniteIDs = [1]
     const checkSlots = async () => {
         axios.get(`${DOMAIN}slot/`, { headers })
