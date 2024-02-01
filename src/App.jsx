@@ -21,7 +21,6 @@ import UserProfile from "./components/UserProfile/UserProfile.jsx";
 import UserCard from "./components/userCard/UserCard.jsx";
 import Pronites from "./pages/pronites/pronites.jsx";
 import Signup from "./pages/signup/signup.jsx";
-import UserCard_Registration from "./components/userCard/UserCard_Registration.jsx";
 const App = () => {
   return (
     <main className="main-bg">

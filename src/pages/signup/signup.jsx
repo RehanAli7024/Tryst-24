@@ -63,9 +63,11 @@ const Signup = () => {
         axios
             .post(`${DOMAIN}profile/`, formData)
             .then((response) => {
+                console.log(response);
                 if (response.status === 201) {
-                    access_token = response.data.tokens.access;
-                    refresh_token = response.data.tokens.refresh;
+                    console.log(response);
+                    const access_token = response.data.tokens.access;
+                    const refresh_token = response.data.tokens.refresh;
                     localStorage.setItem("access_token", access_token);
                     localStorage.setItem("refresh_token", refresh_token);
                     localStorage.removeItem("response");
@@ -73,8 +75,7 @@ const Signup = () => {
                 }
             })
             .catch((err) => {
-                console.log(err.response.data.error);
-                alert(err.response.data.error);
+                alert(err);
             });
         e.preventDefault();
     };
@@ -369,7 +370,7 @@ const Signup = () => {
                                     value={formData.instagram_ID}
                                     onChange={handleChange}
                                     placeholder="Instagram Username"
-                                    
+
                                 />
                             </div>
                             <div className="signup-input-container">
@@ -381,7 +382,7 @@ const Signup = () => {
                                     value={formData.linkedIn_Link}
                                     onChange={handleChange}
                                     placeholder="https://www.linkedin.com/in/"
-                                    
+
                                 />
                             </div>
                         </div>
