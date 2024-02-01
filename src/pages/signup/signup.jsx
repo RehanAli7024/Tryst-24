@@ -66,10 +66,8 @@ const Signup = () => {
                 console.log(response);
                 if (response.status === 201) {
                     console.log(response);
-                    const access_token = response.data.tokens.access;
-                    const refresh_token = response.data.tokens.refresh;
-                    localStorage.setItem("access_token", access_token);
-                    localStorage.setItem("refresh_token", refresh_token);
+                    localStorage.setItem("access_token", response.data.tokens.access);
+                    localStorage.setItem("refresh_token", response.data.tokens.refresh);
                     localStorage.removeItem("response");
                     navigate("/dashboard");
                 }
