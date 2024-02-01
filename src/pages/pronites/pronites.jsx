@@ -1,10 +1,9 @@
 import "./pronites.css";
 import Meetup1 from "../../assets/meetup1.webp";
-import RegisterButton from "../../assets/register.png";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { DOMAIN } from "../../domain";
 import axios from "axios";
-import { header } from "request/lib/hawk";
+
 const Pronites = () => {
     const [available, setAvailable] = useState(false);
     const [slots, setSlots] = useState([]);
