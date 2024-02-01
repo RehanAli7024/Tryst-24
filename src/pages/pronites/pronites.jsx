@@ -1,8 +1,53 @@
 import "./pronites.css";
 import Meetup1 from "../../assets/meetup1.webp";
 import RegisterButton from "../../assets/register.png";
+import { useEffect, useState } from "react";
 
 const Pronites = () => {
+  const [available, setAvailable] = useState(false);
+  const [slots, setSlots] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const checkSlots = async () => {
+    const res = await fetch("http://127.0.0.1:8000/api/slot/");
+    const data = await res.json();
+    console.log(data);
+    setSlots(data);
+  };
+
+  const checkToken = async () => {
+    const token = await localStorage.getItem("token");
+    if (token) {
+      setLoggedIn(true);
+    }
+  };
+
+  const bookSlot = async (slot) => {
+    const res = await fetch(
+      "http://" + process.env.REACT_APP_SERVER_IP + "/slot/book",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ slot: slot }),
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+
+    if (data.status === "success") {
+      alert("Slot booked successfully");
+    } else {
+      alert("Slot booking failed, try again later!");
+    }
+  };
+
+  useEffect(() => {
+    checkToken();
+    checkSlots();
+  }, []);
   return (
     <div>
         <div className="pronites-heading">

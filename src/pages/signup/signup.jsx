@@ -59,13 +59,17 @@ const Signup = () => {
         }
     }, []);
     const handlesubmit = (e) => {
+        console.log(formData);
         axios
-            .post(`${DOMAIN}api/profile/`, formData)
+            .post(`${DOMAIN}profile/`, formData)
             .then((response) => {
                 if (response.status === 201) {
-                    localStorage.setItem("capid", JSON.stringify(response.data));
+                    access_token = response.data.tokens.access;
+                    refresh_token = response.data.tokens.refresh;
+                    localStorage.setItem("access_token", access_token);
+                    localStorage.setItem("refresh_token", refresh_token);
                     localStorage.removeItem("response");
-                    navigate("/registered");
+                    navigate("/dashboard");
                 }
             })
             .catch((err) => {
@@ -98,14 +102,14 @@ const Signup = () => {
     const [loading2, setLoading2] = useState(false);
     const handleCityChange = (city) => {
         if (city !== "") {
-            axios.get(`${DOMAIN}api/college/?city=${city}`).then((response) => {
+            axios.get(`${DOMAIN}college/?city=${city}`).then((response) => {
                 setColleges(response.data);
             });
         }
     };
     const handleStateChange = (state) => {
         if (state !== "") {
-            axios.get(`${DOMAIN}api/city/?state=${state}`).then((response) => {
+            axios.get(`${DOMAIN}city/?state=${state}`).then((response) => {
                 setCities(response.data);
             });
         }
@@ -357,7 +361,7 @@ const Signup = () => {
                                 : <></>
                             }
                             <div className="signup-input-container">
-                                <div className="signup-input-head">Instagram Handle*</div>
+                                <div className="signup-input-head">Instagram Handle</div>
                                 <input
                                     className="signup-input-field"
                                     type="text"
@@ -365,11 +369,11 @@ const Signup = () => {
                                     value={formData.instagram_ID}
                                     onChange={handleChange}
                                     placeholder="Instagram Username"
-                                    required
+                                    
                                 />
                             </div>
                             <div className="signup-input-container">
-                                <div className="signup-input-head">LinkedIn Handle*</div>
+                                <div className="signup-input-head">LinkedIn Handle</div>
                                 <input
                                     className="signup-input-field"
                                     type="url"
@@ -377,7 +381,7 @@ const Signup = () => {
                                     value={formData.linkedIn_Link}
                                     onChange={handleChange}
                                     placeholder="https://www.linkedin.com/in/"
-                                    required
+                                    
                                 />
                             </div>
                         </div>
