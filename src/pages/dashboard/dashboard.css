@@ -17,4 +17,40 @@
     line-height: normal;
     letter-spacing: 0.6rem;
     margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.profile_box{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.profile_photo{
+    /* display: flex; */
+    width: 20vw;
+    height: 20vw;
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-right: 2rem;
+    position: relative;
+}
+.userPhoto{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 3px;
+    /* border-radius: 50%; */
+    object-fit: fill;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%,0 100%, 0 0);
+}
+
+.edit_photo{
+    width: 4vw;
+    height: 4vw;
+    position: absolute;
+    top: 80%;
+    left: 80%;
 }
