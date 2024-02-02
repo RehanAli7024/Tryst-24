@@ -16,9 +16,19 @@
     align-items: center;
     margin-top: 3rem;
 }
-
-.filter {
+.fil_con{
     margin-left: 4rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 3.1rem;
+    width: 10.1rem;
+    background-color: #00E0FF;
+    border-radius: 5px;
+    clip-path: polygon(0 0, 30% 0, 33% 9%, 100% 9%, 100% 100%, 5% 100%, 0 85%);
+}
+.filter_btn {
+    
     align-items: center;
     display: flex;
     justify-content: center;
@@ -30,7 +40,7 @@
     border-radius: 5px;
     stroke-width: 2px;
     /* stroke: var(--Color-Base-Vivid-Sky-Blue, #00E0FF);    */
-    border: 3px solid #00E0FF;
+    /* border: 3px solid #00E0FF; */
     font-family: "Rajdhani";
     font-size: 1.2rem;
     fill: linear-gradient(0deg, rgba(0, 224, 255, 0.10) 0%, rgba(0, 224, 255, 0.10) 100%), rgba(3, 10, 23, 0.80);
@@ -86,7 +96,17 @@
     flex-direction: row;
     margin-bottom: 1rem;;
 }
-
+.sel_fil_container {
+    width: 10rem;
+    height: 2rem;
+    background-color: #E086D3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    clip-path: polygon(0 0, 97% 0, 100% 10%, 100% 100%, 3% 100%, 0 90%);
+    border-radius: 5px;
+}
 .selected_filter {
     display: flex;
     align-items: center;
@@ -109,5 +129,42 @@
     line-height: normal;
     letter-spacing: 0.045rem;
     background: linear-gradient(0deg, rgba(0, 224, 255, 0.10) 0%, rgba(0, 224, 255, 0.10) 100%), rgba(3, 10, 23, 0.80);
-    margin-right: 1rem;
+    
+}
+.event_container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+.event_sidebar{
+    width: 30%;
+    /* height:40rem; */
+    /* background-color: #00E0FF; */
+}
+.events{
+    width: 60%;
+    margin-left: 8%;
+    margin-right: 2%;
+    /* height: 40rem; */
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: row; */
+    /* background-color: aquamarine; */
+}
+
+.event_card img{
+    height: 23rem;
+    width: 17rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+}
+.sidebar_body{
+    margin-left: 4rem;
+    height: 40rem;
+    width: 80%;
+    border-radius: 0.25rem;
+    border: 2px solid var(--Color-Base-Violet-Dark, #802392);
+    background: linear-gradient(0deg, rgba(128, 35, 146, 0.10) 0%, rgba(128, 35, 146, 0.10) 100%), rgba(3, 10, 23, 0.80);
 }
