@@ -232,7 +232,7 @@
     font-weight: 400;
     line-height: normal;
 }
-.rulebook svg:hover{
+.rulebook:hover svg{
     transform: rotate(90deg);
     transition: transform 0.3s ease-in-out;
 }
