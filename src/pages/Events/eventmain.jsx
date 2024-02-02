@@ -41,7 +41,6 @@ const EventMain = () => {
               Filters
             </div>
           </div>
-
           <button className="clear_option">Clear All</button>
           <div className="search_box">
             <input
@@ -89,7 +88,6 @@ const EventMain = () => {
         <div className="event_container">
           <div className="event_sidebar">
             <div className="sidebar_body">
-                
             </div>
           </div>
           <div className="events">
