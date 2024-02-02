@@ -1,10 +1,11 @@
-.dashboard{
+.dashboard {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.profile_heading{
+
+.profile_heading {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,4 +54,23 @@
     position: absolute;
     top: 80%;
     left: 80%;
+}
+
+.dashboard-nav-button {
+    width: 13vw;
+    margin: 1px 4vw;
+    padding: 5px;
+    border-bottom: 10px solid blue;
+}
+
+.dashboard-nav-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 76vw;
+}
+
+.dashboard-nav-details-card {
+    width: 25vw;
+    height: 20vh;
 }
