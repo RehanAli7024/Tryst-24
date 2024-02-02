@@ -1,0 +1,20 @@
+.dashboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.profile_heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Color-Base-Snow, #FFFBFF);
+    text-align: center;
+    font-family: Audiowide;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.6rem;
+    margin-top: 2rem;
+}
