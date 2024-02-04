@@ -1,0 +1,31 @@
+.event-card-component-container {
+  display: flex;
+}
+
+.event-card-component {
+  position: relative;
+  width: 27%;
+}
+
+.event-card-img {
+  position: absolute;
+  top: 5%;
+  left: 4.5%;
+  height: 90%;
+}
+
+.event-card-img img {
+  height: 100%;
+}
+
+.event-card-top-vector {
+  position: absolute;
+  top: 0px;
+  left: 1%;
+}
+
+.event-card-bottom-vector {
+  position: absolute;
+  bottom: 0px;
+  left: 1%;
+}
