@@ -1,57 +1,31 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { useState } from 'react';
 import RadioButtons from './field-types/RadioButtons';
-import Checkbox from './field-types/Checkbox';
-import Upload from './field-types/Upload';
-import TeamMember from './field-types/TeamMember';
+import TextField from './field-types/Textfield';
 import "./addNewField.css"
 
+export default function AddNewField({ onClose, callbackpayload, dataToEdit }) {
 
-export default function AddNewField({ onClose, setAdditionalFieldData, onAddNewField }) {
     const [fieldType, setFieldType] = useState('text');
     const [isMandatory, setIsMandatory] = useState(true);
-    const [fieldTitle, setFieldTitle] = useState('');
-    const [fetchedData, setFetchedData] = useState([]);
-
+    if (dataToEdit) {
+        setIsMandatory(dataToEdit.isMandatory);
+    }
     const handleAddFieldPopupClose = () => {
         onClose();
     };
-
-    const handleGetOptionsData = (data) => {
-        setFetchedData(data);
-    };
-
     const editFileType = (value) => {
         setFieldType(value);
     };
-
     const handleMandatoryChange = (value) => {
         setIsMandatory(value === 'yes');
     };
-
-    const handleFieldTitleChange = (e) => {
-        setFieldTitle(e.target.value);
+    const callback = (payload) => {
+        callbackpayload({ ...payload, isMandatory: isMandatory });
     };
-
-    const handleAddNewField = () => {
-        const newFieldData = {
-            fieldType,
-            isMandatory,
-            fieldTitle,
-            fetchedData,
-        };
-        setAdditionalFieldData(newFieldData);
-        console.log("State inside handleAddNewField:", newFieldData);
-
-        onAddNewField(newFieldData);
-
-        onClose();
-    };
-
 
     return (
         <div className='popup-container'>
-            <Container>
+            <div className='addfield-container'>
                 <button className='btn-close' onClick={handleAddFieldPopupClose}>X</button>
                 <h3>ADD NEW FIELD</h3>
                 <div className='new-field-container'>
@@ -94,127 +68,13 @@ export default function AddNewField({ onClose, setAdditionalFieldData, onAddNewF
                                 <option value="team">Team Member</option>
                             </select>
                         </div>
-
                         <div>
-                            {
-                                fieldType === "team" && <TeamMember onGetOptionsData={handleGetOptionsData} />
-                            }
+                            {(fieldType === "radio" || fieldType === "checkbox") && <RadioButtons callback={callback} onClose={onClose} fieldtype={fieldType} />}
+                            {(fieldType === "upload" || fieldType === "text" || fieldType === "team") && <TextField callback={callback} onClose={onClose} fieldtype={fieldType} />}
                         </div>
-
-                        <div className="field-title">
-                            <p>FIELD TITLE: </p>
-                            <input
-                                type="text"
-                                placeholder='Text'
-                                value={fieldTitle}
-                                onChange={handleFieldTitleChange}
-                            />
-                        </div>
-
-                        <div>
-                            {
-                                fieldType === "radio" && <RadioButtons onGetOptionsData={handleGetOptionsData} />
-                            }
-                            {
-                                fieldType === "checkbox" && <Checkbox onGetOptionsData={handleGetOptionsData} />
-                            }
-                            {
-                                fieldType === "upload" && <Upload onGetOptionsData={handleGetOptionsData} />
-                            }
-                        </div>
-
                     </form>
                 </div>
-                <div className='add-field-btn'>
-                    <button type="button" onClick={handleAddNewField}>Done</button>
-                </div>
-            </Container>
+            </div>
         </div>
     );
 }
-
-const Container = styled.div`
-    position: relative;
-    margin: 100px auto;
-    background-color: #041429;
-    color: #fff;
-    padding: 1rem;
-    border: #ACEBF6 solid 1px;
-    width: 30%;
-    .btn-close {
-        color: #ACEBF6;
-        cursor: pointer;
-        position: fixed;
-        right: calc(50% - 240px);
-        top: 110px;
-        border: none;
-        outline: none;
-        background-color: transparent;
-    }
-    h3 {
-        color: #ACEBF6;
-    }
-    .new-field-container {
-        display: flex;
-        flex-direction: column;
-        .mandatory-field {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-            .mandatory {
-                display: flex;
-                flex-direction: row;
-                label {
-                display: flex;
-                align-items: center;
-            }
-            }
-        }
-        .input-field-type {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-            align-items: center;
-            select {
-                border: none;
-                border-left: 1px solid #ACEBF6;
-                background-color: #293749;
-                color: #fff;
-                padding: 0 1rem;
-                height: 2rem;
-                width: 50%;
-                outline: none;
-            }
-        }
-        .field-title {
-            input {
-                border: none;
-                border-left: 1px solid #ACEBF6;
-                background-color: #293749;
-                color: #fff;
-                padding: 0 1rem;
-                margin-bottom: 1rem;
-                height: 2rem;
-                width: 80%;
-                outline: none;
-            }
-        }
-    }
-    .add-field-btn {
-        display: flex;
-        justify-content: center;
-        padding: 2rem 0 1rem 0;
-        outline: none;
-        button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            background-color: #ACEBF6;
-            border: none;
-            cursor: pointer;
-            width: 25%;
-        }
-    }
-`;

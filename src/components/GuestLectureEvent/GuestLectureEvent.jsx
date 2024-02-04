@@ -5,13 +5,10 @@ import axios from "axios";
 import { DOMAIN } from "../../domain";
 
 
-const GuestLectureEvent = ({
-  setIsOpen,
-}) => {
-  const [registrationOpen, setRegistrationOpen] = useState(false);
+const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle, guestid }) => {
   const [contactPersons, setcontactPerosns] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const [registrationOpen, setRegistrationOpen] = useState(false);
   useEffect(() => {
     let handler = (e) => {
       if (!eventsRef.current.contains(e.target) && registrationOpen) {
@@ -35,20 +32,20 @@ const GuestLectureEvent = ({
   const handleSubmit = (e) => {
     setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
     e.preventDefault();
-    console.log(formData);
     const token = localStorage.getItem("token");
     axios.post(`${DOMAIN}create_guest/`, formData, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         console.log(res);
         alert("Event submitted successfully");
+        guestid(res.data.id);
+        setEventFormTitle("registrationForm");
+        setIsEventSubmitted(true);
         setIsSubmitted(true);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -91,9 +88,11 @@ const GuestLectureEvent = ({
       return updatedDetails;
     });
   };
+
   useEffect(() => {
     setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
   }, [constactPersonDetails, speakerDetails]);
+
   const handleSpeakersChange = (e) => {
     const numberOfSpeakers = parseInt(e.target.value, 10);
     setSpeakers(numberOfSpeakers);

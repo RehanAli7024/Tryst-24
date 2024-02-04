@@ -1,11 +1,9 @@
 import "./eventpage.css";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import poster from "./poster.webp";
 import { transform } from "framer-motion";
 const EventPage = () => {
-  const myStyle = {
-    
-  };
+  const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
   const toggleDiv = () => {
     setIsVisible(!isVisible);
@@ -13,18 +11,18 @@ const EventPage = () => {
   };
   const svgStyles = {
     "mask-type": "alpha",
-    transform: ""
+    transform: "",
   };
   return (
     <>
-      <div className="event_body">
-        <div className="event_title">
-          <h1>EVENTS</h1>
+      <div className="event_body ">
+        <div className="event_title ">
+          <h1 className="">EVENTS</h1>
         </div>
-        <div className="event_container">
-          <div className="event_poster">
+        <div className="event_container grid grid-cols-2 gap-4">
+          <div className="col-span-2 md:col-span-1 event_poster">
             <div className="poster">
-              <img src={poster} alt="" className="eventphoto"/>
+              <img src={poster} alt="" className="h-[20rem] my-2 object-contain" />
             </div>
             <div className="rulebook">
               <div className="book_icon">
@@ -57,7 +55,7 @@ const EventPage = () => {
               Rulebook
             </div>
           </div>
-          <div className="event_description">
+          <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
             <div className="event_title">Stratmart</div>
             <div className="event_para_1">
               Thought you are the most strategic amongst your friends? Now is
@@ -145,10 +143,10 @@ const EventPage = () => {
                 <p>LH111</p>
               </div>
             </div>
-            <div className="contact_information">
-              <div className="register">
+            <div className="contact_information grid grid-cols-2">
+              <div className="col-span-2 md:col-span-1 register ">
                 <button className="rulebook" onClick={toggleDiv}>
-                    <p>Register</p>
+                  <p>Register</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -176,23 +174,15 @@ const EventPage = () => {
                   </svg>
                 </button>
               </div>
-              <div className="contact_text">
-                CONTACT
-              </div>
-              <div className="POC">
-                <div className="poc_name">
-                    Sarthak
+              <div className="col-span-2 md:col-span-1 flex flex-col justify-center items-center">
+                <div className="contact_text">CONTACT</div>
+                <div className="POC">
+                  <div className="poc_name">Sarthak</div>
+                  <div className="poc_contact">8789371873</div>
                 </div>
-                <div className="poc_contact">
-                    8789371873
-                </div>
-              </div>
-              <div className="POC">
-                <div className="poc_name">
-                    Not Sarthak
-                </div>
-                <div className="poc_contact">
-                    8789371873
+                <div className="POC">
+                  <div className="poc_name">Not Sarthak</div>
+                  <div className="poc_contact">8789371873</div>
                 </div>
               </div>
             </div>
@@ -200,39 +190,56 @@ const EventPage = () => {
         </div>
         {isVisible && (
           <div className="formbox">
-          <div className="reg_form_heading">
-            Registration Form 
-          </div>
-          <div >
-            <form action="" className="form_container">
-              <div className="input_field">
-                <div className="form_heading">Your Name*</div>
-                <input type="text" placeholder="Name" className="inputbox" required/>
-              </div>
-              <div className="input_field">
-                <div className="form_heading">Email-ID*</div>
-                <input type="text" placeholder="Name" className="inputbox" required/>
-              </div>
-              <div className="input_field">
-                <div className="form_heading">College*</div>
-                <input type="text" placeholder="Name" className="inputbox" required/>
-              </div>
-              <div className="input_field">
-                <div className="form_heading">Team Member 2 UID*</div>
-                <input type="text" placeholder="Name" className="inputbox" required/>
-              </div>
-            </form>
-            <div className="form_submit">
-            <div className="register">
+            <div className="reg_form_heading">Registration Form</div>
+            <div>
+              <form action="" className="form_container">
+                <div className="input_field">
+                  <div className="form_heading">Your Name*</div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="inputbox"
+                    required
+                  />
+                </div>
+                <div className="input_field">
+                  <div className="form_heading">Email-ID*</div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="inputbox"
+                    required
+                  />
+                </div>
+                <div className="input_field">
+                  <div className="form_heading">College*</div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="inputbox"
+                    required
+                  />
+                </div>
+                <div className="input_field">
+                  <div className="form_heading">Team Member 2 UID*</div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="inputbox"
+                    required
+                  />
+                </div>
+              </form>
+              <div className="form_submit">
+                <div className="register">
                   <div className="rulebook">
-                      <p>Register</p>
+                    <p>Register</p>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
-          </div>
         )}
-        
       </div>
     </>
   );

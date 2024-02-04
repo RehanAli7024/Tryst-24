@@ -16,14 +16,20 @@ import Sponsors from "./pages/sponsors/sponsors.jsx";
 import About from "./pages/aboutus/aboutus.jsx";
 import ContactUs from "./pages/contactus/contactus.jsx";
 import EventPage from "./pages/Events/eventpage.jsx";
+import EventMain from "./pages/Events/eventmain.jsx";
 import Login from "./pages/login/login.jsx";
+import UserProfile from "./components/UserProfile/UserProfile.jsx";
+import UserCard from "./components/userCard/UserCard.jsx";
+import Pronites from "./pages/pronites/pronites.jsx";
+import Signup from "./pages/signup/signup.jsx";
+import Dashboard from "./pages/dashboard/dashboard.jsx";
 
 const App = () => {
   return (
     <main className="main-bg">
       {/* <Navbar></Navbar> */}
       <Router>
-        {window.location.pathname !== "/none" ? <Navbar /> : null}
+        {window.location.pathname !== "/mainpage" ? <Navbar /> : null}
         <Routes>
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/" element={<ComingSoon />} />
@@ -35,9 +41,12 @@ const App = () => {
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/about" element={<About />} />
-          <Route path="/events" element={<ComingSoon />} />
+          <Route path="/events" element={<ComingSoon/>} />
           <Route path="/guests" element={<ComingSoon />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/usercard" element={<UserCard />} />
           <Route path="/pronites" element={<ComingSoon />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
       </Router>

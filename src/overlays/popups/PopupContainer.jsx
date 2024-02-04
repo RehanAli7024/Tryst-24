@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import CompetitionEvent from "../../components/CompetitonEvent/CompetitionEvent.jsx";
 import GuestLectureEvent from "../../components/GuestLectureEvent/GuestLectureEvent.jsx";
@@ -35,14 +35,15 @@ export default function PopupContainer({
     setIsEventSubmitted(true);
     setActiveButton("registrationForm");
   };
-
+  const [guestid, setGuestid] = useState();
+  console.log(guestid);
   return (
     <Container>
       <div className="popup-main-container">
         <div className="popup-close-btn">
-      <button className="close-button" onClick={togglePopup}>
-          X
-        </button>
+          <button className="close-button" onClick={togglePopup}>
+            X
+          </button>
         </div>
         <PopupNavbar
           activeButton={activeButton}
@@ -75,6 +76,7 @@ export default function PopupContainer({
                 setIsOpen={setIsOpen}
                 setIsEventSubmitted={handleEventFormSubmit}
                 setEventFormTitle={setEventFormTitle}
+                guestid={setGuestid}
               />
             )}
 
@@ -88,7 +90,7 @@ export default function PopupContainer({
 
           {eventFormTitle === "registrationForm" &&
             selectedEventType === "guestlectures" &&
-            isEventSubmitted === true && <GuestRegisteration />}
+            isEventSubmitted === true && <GuestRegisteration guestid={guestid} />}
         </div>
       </div>
     </Container>

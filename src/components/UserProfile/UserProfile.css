@@ -1,0 +1,58 @@
+.dashboardheading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9vh;
+}
+.dashboarduserdata{
+    display: flex;
+    flex-direction: row;
+    gap: 8%;
+}
+.Dashboarduserinfo{
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    /* width: 75%; */
+}
+.Dashboarduserrow{
+    display: flex;
+    flex-direction: row;
+    gap: 6%;
+}
+.Dashboardcollegedetails{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+.dbclgrow{
+    display: flex;
+    flex-direction: row;
+}
+.userimagedb{
+    /* margin-left: 28%; */
+    height: 72%;
+}
+.namedb{
+    color: #FB932E;
+}
+.dblogout:hover{
+        background-color: var(--Color-Base-Vivid-Sky-Blue, #00E0FF);
+}
+.Dashboardname{
+}
+.dbans{
+    font-size: 80%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.dbclgrow{
+    display: flex;
+    flex-direction: row;
+    gap: 17%;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+}
