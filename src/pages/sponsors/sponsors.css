@@ -10,12 +10,12 @@
 .sponsors-head {
   text-align: center;
   font-family: "Audiowide", sans-serif;
-  font-size: calc(2vh + 4vw);
+  font-size: 3rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
-  letter-spacing: 9.6px;
-  margin-top: 3vh;
+  letter-spacing: 8px;
+  margin-top: 8vh;
 }
 
 .sponsors-body {
@@ -177,6 +177,9 @@
   .sponsors {
     margin-bottom: 4vh;
   }
+  .sponsors-head {
+    font-size: 2.7rem;
+  }
 
   .sponsors-title-sponsor {
     width: 80vw;
@@ -215,5 +218,18 @@
 
   .sponsors-other-sponsors-head {
     font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sponsors-head {
+    font-size: 2rem;
+    letter-spacing: 6px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .sponsors-head {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
   }
 }
