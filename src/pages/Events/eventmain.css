@@ -177,7 +177,7 @@
 
 .sidebar_body {
     margin-left: 4rem;
-    height: 40rem;
+    /* height: 40rem; */
     width: 80%;
     border-radius: 0.25rem;
     border: 2px solid var(--Color-Base-Violet-Dark, #802392);
@@ -229,7 +229,7 @@
     margin-right: 1.5rem;
 }
 
-.sidebar_button{
+.sidebar_button {
     display: inline-flex;
     flex-direction: row;
     justify-content: center;
@@ -237,13 +237,16 @@
     margin-left: 5%;
     height: 2rem;
 }
-.arrow_sdbar{
+
+.arrow_sdbar {
     height: 2rem;
 }
-.arrow_sdbar img{
+
+.arrow_sdbar img {
     rotate: 270deg;
 }
-.sidebar_text{
+
+.sidebar_text {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -254,8 +257,6 @@
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.05rem;
-    width: 10rem;
-    height: 2rem;
 }
 
 @media (max-width: 700px) {
