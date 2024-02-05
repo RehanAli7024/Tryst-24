@@ -24,6 +24,8 @@ import Pronites from "./pages/pronites/pronites.jsx";
 import Signup from "./pages/signup/signup.jsx";
 import Dashboard from "./pages/dashboard/dashboard.jsx";
 import EventCard from "./components/EventCard/EventCard.jsx";
+import Speakers from "./pages/speakers/Speakers.jsx";
+
 const App = () => {
   return (
     <main className="main-bg">
@@ -47,6 +49,7 @@ const App = () => {
           <Route path="/usercard" element={<UserCard />} />
           <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/speakers" element={<Speakers />} />
         </Routes>
         <Footer />
       </Router>
