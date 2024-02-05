@@ -197,31 +197,28 @@
 .sidebar_options {
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
-    margin-bottom: 4vh;
+    margin-top: 1vh;
 }
 
 .sidebar_options_hr {
+    padding-bottom: 2.5vh;
     border-bottom: 3px solid #802392;
+    margin-bottom: 4vh;
 }
 
 .sidebar_option {
-    margin: 1vh 0;
+    margin: 2vh 0;
     font-family: "Rajdhani", sans-serif;
     font-size: 1.15rem;
     font-weight: 600;
     cursor: pointer;
     width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-    input[type="checkbox"] {
-        appearance: none;
-        -webkit-appearance: none;
-        font-size: 2rem;
-        padding: 0.1rem;
-        width: 1.1rem;
-        height: 1.1rem;
-        border: 2px solid white;
-        cursor: pointer;
+    img {
+        margin-right: 1.3rem;
     }
 }
 
@@ -240,10 +237,6 @@
 
 .arrow_sdbar {
     height: 2rem;
-}
-
-.arrow_sdbar img {
-    rotate: 270deg;
 }
 
 .sidebar_text {
