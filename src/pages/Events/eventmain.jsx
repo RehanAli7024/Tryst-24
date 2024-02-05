@@ -2,10 +2,13 @@ import "./eventmain.css";
 import eventposter from "./eventposter.png";
 import React, { useState } from "react";
 import search_icon from "./search.svg";
+import arrowRight from "./arrow_right.svg";
 const EventMain = () => {
   const myStyle = {
     "mask-type": "alpha",
   };
+  const [rotate, setRotate] = useState(false);
+
   return (
     <>
       <div className="event_body">
@@ -88,6 +91,12 @@ const EventMain = () => {
         <div className="event_container">
           <div className="event_sidebar">
             <div className="sidebar_body">
+              <button className="sidebar_button">
+                <div className="arrow_sdbar">
+                  <img src={arrowRight} alt="" />
+                </div>
+                <div className="sidebar_text">By Type</div>
+              </button>
             </div>
           </div>
           <div className="events">
