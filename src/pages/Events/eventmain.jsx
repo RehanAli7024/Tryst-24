@@ -7,7 +7,7 @@ import close from "./close.svg";
 import tune from "./tune.svg";
 import unticked from "../../assets/Events/checkbox.webp";
 import ticked from "../../assets/Events/checkbox_ticked.webp";
-// import EventCard from "../../components/EventCard/EventCard";
+import EventCard from "../../components/EventCard/EventCard";
 
 const Types = [
   { index: 1, name: "Competitions", },
@@ -80,20 +80,24 @@ const EventMain = () => {
       <div className="event_body">
         <div className="event_title">EVENTS</div>
         <div className="filter_search">
-          <div className="fil_con">
-            <div className="filter_btn">
-              <img src={tune} alt="" />
-              Filters
+          <div className="filter_search_left">
+            <div className="fil_con">
+              <div className="filter_btn">
+                <img src={tune} alt="" />
+                Filters
+              </div>
             </div>
+            <button className="clear_option">Clear All</button>
           </div>
-          <button className="clear_option">Clear All</button>
-          <div className="search_box">
-            <input
-              type="text"
-              className="input_field"
-              placeholder="Event Name Here"
-            />
-            <img src={search_icon} alt="" className="searchbtn" />
+          <div className="filter_search_right">
+            <div className="search_box">
+              <input
+                type="text"
+                className="input_field"
+                placeholder="Event Name Here"
+              />
+              <img src={search_icon} alt="" className="searchbtn" />
+            </div>
           </div>
         </div>
         <div className="filters">
@@ -142,7 +146,7 @@ const EventMain = () => {
             </div>
           </div>
           <div className="events">
-            <div className="event_card">
+            {/* <div className="event_card">
               <img src={eventposter} alt="" />
             </div>
             <div className="event_card">
@@ -153,11 +157,14 @@ const EventMain = () => {
             </div>
             <div className="event_card">
               <img src={eventposter} alt="" />
-            </div>
-            {/* <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard /> */}
+            </div> */}
+            <div className="events_card"><EventCard /></div>
+            <div className="events_card"><EventCard /></div>
+            <div className="events_card"><EventCard /></div>
+            <div className="events_card"><EventCard /></div>
+            <div className="events_card"><EventCard /></div>
+            <div className="events_card"><EventCard /></div>
+            <div className="events_card"><EventCard /></div>
           </div>
         </div>
       </div>
