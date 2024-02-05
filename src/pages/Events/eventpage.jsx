@@ -2,16 +2,15 @@ import "./eventpage.css";
 import React, { useState } from "react";
 import poster from "./poster.webp";
 import { transform } from "framer-motion";
+import description from "./description.svg";
+import arrow_forward from "./arrow_forward.svg";
+import arrow_downward from "./arrow_downward.svg";
+import EventCard from "../../components/EventCard/EventCard";
 const EventPage = () => {
   const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
   const toggleDiv = () => {
     setIsVisible(!isVisible);
-    svgStyles[transform] = "rotate(90deg)";
-  };
-  const svgStyles = {
-    "mask-type": "alpha",
-    transform: "",
   };
   return (
     <>
@@ -21,38 +20,19 @@ const EventPage = () => {
         </div>
         <div className="event_container grid grid-cols-2 gap-4">
           <div className="col-span-2 md:col-span-1 event_poster">
-            <div className="poster">
-              <img src={poster} alt="" className="h-[20rem] my-2 object-contain" />
+            <div className="ev_poster">
+              <img
+                src={poster}
+                alt=""
+                className="h-[20rem] my-2 object-contain"
+              />
+              {/* <EventCard /> */}
             </div>
-            <div className="rulebook">
-              <div className="book_icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                  fill="none"
-                >
-                  <mask
-                    id="mask0_2329_963"
-                    style={myStyle}
-                    maskUnits="userSpaceOnUse"
-                    x="0"
-                    y="0"
-                    width="24"
-                    height="25"
-                  >
-                    <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
-                  </mask>
-                  <g mask="url(#mask0_2329_963)">
-                    <path
-                      d="M8 18.5H16V16.5H8V18.5ZM8 14.5H16V12.5H8V14.5ZM6 22.5C5.45 22.5 4.97933 22.3043 4.588 21.913C4.196 21.521 4 21.05 4 20.5V4.5C4 3.95 4.196 3.479 4.588 3.087C4.97933 2.69567 5.45 2.5 6 2.5H14L20 8.5V20.5C20 21.05 19.8043 21.521 19.413 21.913C19.021 22.3043 18.55 22.5 18 22.5H6ZM13 9.5V4.5H6V20.5H18V9.5H13Z"
-                      fill="#FFFBFF"
-                    />
-                  </g>
-                </svg>
+            <div className="fil_con" id="ev_page_fil_con">
+              <div className="filter_btn">
+                <img src={description} alt="" />
+                Rulebook
               </div>
-              Rulebook
             </div>
           </div>
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
@@ -143,98 +123,74 @@ const EventPage = () => {
                 <p>LH111</p>
               </div>
             </div>
-            <div className="contact_information grid grid-cols-2">
-              <div className="col-span-2 md:col-span-1 register ">
-                <button className="rulebook" onClick={toggleDiv}>
-                  <p>Register</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                  >
-                    <mask
-                      id="mask0_2475_330"
-                      style={svgStyles}
-                      maskUnits="userSpaceOnUse"
-                      x="0"
-                      y="0"
-                      width="24"
-                      height="25"
-                    >
-                      <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
-                    </mask>
-                    <g mask="url(#mask0_2475_330)">
-                      <path
-                        d="M16.6269 13.25H5.25C5.03718 13.25 4.85898 13.1782 4.7154 13.0347C4.5718 12.8911 4.5 12.7129 4.5 12.5001C4.5 12.2872 4.5718 12.109 4.7154 11.9655C4.85898 11.8219 5.03718 11.7501 5.25 11.7501H16.6269L11.4577 6.58083C11.309 6.43211 11.2356 6.25808 11.2375 6.05873C11.2394 5.85936 11.3179 5.68212 11.4731 5.527C11.6282 5.38214 11.8038 5.30714 12 5.302C12.1961 5.29687 12.3718 5.37187 12.5269 5.527L18.8672 11.8674C18.9608 11.961 19.0269 12.0597 19.0653 12.1635C19.1038 12.2674 19.123 12.3795 19.123 12.5001C19.123 12.6206 19.1038 12.7327 19.0653 12.8366C19.0269 12.9404 18.9608 13.0391 18.8672 13.1327L12.5269 19.4731C12.3884 19.6116 12.217 19.6824 12.0125 19.6856C11.808 19.6888 11.6282 19.618 11.4731 19.4731C11.3179 19.318 11.2404 19.1398 11.2404 18.9385C11.2404 18.7372 11.3179 18.559 11.4731 18.4039L16.6269 13.25Z"
-                        fill="white"
-                      />
-                    </g>
-                  </svg>
-                </button>
-              </div>
-              <div className="col-span-2 md:col-span-1 flex flex-col justify-center items-center">
-                <div className="contact_text">CONTACT</div>
-                <div className="POC">
-                  <div className="poc_name">Sarthak</div>
-                  <div className="poc_contact">8789371873</div>
+            <div className="ev_contact_information grid grid-cols-2">
+              <div className="col-span-2 md:col-span-1 ev_register ">
+                <div className="fil_con" id="ev_page_fil_con_2">
+                  <div className="filter_btn" id="ev_btn_1" onClick={toggleDiv}>
+                    Register
+                    {isVisible?(<img src={arrow_downward} className="rotating_button" alt="" />):(<img src={arrow_forward} className="rotating_button" alt="" />)}
+                  </div>
                 </div>
-                <div className="POC">
-                  <div className="poc_name">Not Sarthak</div>
-                  <div className="poc_contact">8789371873</div>
+              </div>
+              <div className="POC_box">
+                <div className="ev_contact_text">CONTACT</div>
+                <div className="ev_POC">
+                  <div className="ev_poc_name">Sarthak</div>
+                  <div className="ev_poc_contact">8789371873</div>
+                </div>
+                <div className="ev_POC">
+                  <div className="ev_poc_name">Not Sarthak</div>
+                  <div className="ev_poc_contact">8789371873</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         {isVisible && (
-          <div className="formbox">
-            <div className="reg_form_heading">Registration Form</div>
-            <div>
-              <form action="" className="form_container">
-                <div className="input_field">
-                  <div className="form_heading">Your Name*</div>
+          <div className="ev_formbox">
+            <div className="ev_reg_form_heading">Registration Form</div>
+            <div className="formParent">
+              <form action="" className="ev_form_container">
+                <div className="ev_input_field">
+                  <div className="ev_form_heading">Your Name*</div>
                   <input
                     type="text"
                     placeholder="Name"
-                    className="inputbox"
+                    className="ev_inputbox"
                     required
                   />
                 </div>
-                <div className="input_field">
-                  <div className="form_heading">Email-ID*</div>
+                <div className="ev_input_field">
+                  <div className="ev_form_heading">Email-ID*</div>
                   <input
                     type="text"
-                    placeholder="Name"
-                    className="inputbox"
+                    placeholder="Email-ID"
+                    className="ev_inputbox"
                     required
                   />
                 </div>
-                <div className="input_field">
-                  <div className="form_heading">College*</div>
+                <div className="ev_input_field">
+                  <div className="ev_form_heading">College*</div>
                   <input
                     type="text"
-                    placeholder="Name"
-                    className="inputbox"
+                    placeholder="College"
+                    className="ev_inputbox"
                     required
                   />
                 </div>
-                <div className="input_field">
-                  <div className="form_heading">Team Member 2 UID*</div>
+                <div className="ev_input_field">
+                  <div className="ev_form_heading">Team Member 2 UID*</div>
                   <input
                     type="text"
                     placeholder="Name"
-                    className="inputbox"
+                    className="ev_inputbox"
                     required
                   />
                 </div>
               </form>
-              <div className="form_submit">
-                <div className="register">
-                  <div className="rulebook">
-                    <p>Register</p>
-                  </div>
+              <div className="ev_form_submit">
+                <div className="fil_con" id="ev_page_fil_con_3">
+                  <div className="filter_btn">Register</div>
                 </div>
               </div>
             </div>
