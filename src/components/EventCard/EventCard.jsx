@@ -6,23 +6,10 @@ import "./EventCard.css";
 
 export default function EventCard() {
   return (
-    <div className="event-card-component-container">
-      <div className="event-card-component">
-        <img
-          src={Eventcardbg}
-          alt="event card background"
-          className="event-card-bg"
-        />
-        <div className="event-card-img">
-          <img src={demo} alt="event card background" />
-        </div>
-        <div className="event-card-top-vector">
-            <img src={topvector} alt="event card background" />
-        </div>
-        <div className="event-card-bottom-vector">
-            <img src={bottomvector} alt="event card background" />
-        </div>
-      </div>
+    <div className="event-card-container">
+      <div className="event-card-top"></div>
+      <div className="event-card"></div>
+      <div className="event-card-bottom"></div>
     </div>
   );
 }
