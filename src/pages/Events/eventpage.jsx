@@ -24,8 +24,8 @@ const EventPage = () => {
             <div className="poster">
               <img src={poster} alt="" className="h-[20rem] my-2 object-contain" />
             </div>
-            <div className="rulebook">
-              <div className="book_icon">
+            <div className="ev_rulebook">
+              <div className="ev_book_icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -143,7 +143,7 @@ const EventPage = () => {
                 <p>LH111</p>
               </div>
             </div>
-            <div className="contact_information grid grid-cols-2">
+            <div className="ev_contact_information grid grid-cols-2">
               <div className="col-span-2 md:col-span-1 register ">
                 <button className="rulebook" onClick={toggleDiv}>
                   <p>Register</p>
@@ -175,20 +175,20 @@ const EventPage = () => {
                 </button>
               </div>
               <div className="col-span-2 md:col-span-1 flex flex-col justify-center items-center">
-                <div className="contact_text">CONTACT</div>
-                <div className="POC">
-                  <div className="poc_name">Sarthak</div>
-                  <div className="poc_contact">8789371873</div>
+                <div className="ev_contact_text">CONTACT</div>
+                <div className="ev_POC">
+                  <div className="ev_poc_name">Sarthak</div>
+                  <div className="ev_poc_contact">8789371873</div>
                 </div>
-                <div className="POC">
-                  <div className="poc_name">Not Sarthak</div>
-                  <div className="poc_contact">8789371873</div>
+                <div className="ev_POC">
+                  <div className="ev_poc_name">Not Sarthak</div>
+                  <div className="ev_poc_contact">8789371873</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {isVisible && (
+        {/* {isVisible && (
           <div className="formbox">
             <div className="reg_form_heading">Registration Form</div>
             <div>
@@ -239,7 +239,57 @@ const EventPage = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
+        <div className="ev_formbox">
+            <div className="ev_reg_form_heading">Registration Form</div>
+            <div>
+              <form action="" className="ev_form_container">
+                <div className="ev_input_field">
+                  <div className="ev_form_heading">Your Name*</div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="ev_inputbox"
+                    required
+                  />
+                </div>
+                <div className="ev_input_field">
+                  <div className="ev_form_heading">Email-ID*</div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="ev_inputbox"
+                    required
+                  />
+                </div>
+                <div className="ev_input_field">
+                  <div className="ev_form_heading">College*</div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="ev_inputbox"
+                    required
+                  />
+                </div>
+                <div className="ev_input_field">
+                  <div className="ev_form_heading">Team Member 2 UID*</div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    className="ev_inputbox"
+                    required
+                  />
+                </div>
+              </form>
+              <div className="ev_form_submit">
+                <div className="ev_register">
+                  <div className="ev_rulebook">
+                    <p>Register</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </>
   );
