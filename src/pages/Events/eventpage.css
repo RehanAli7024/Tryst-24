@@ -264,37 +264,3 @@
     transform: rotate(90deg);
     transition: transform 0.3s ease-in-out;
 }
-
-.sidebar_body {
-    display: flex;
-}
-
-.sidebar_button {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 8%;
-    margin-left: 5%;
-    height: 2rem;
-}
-
-.arrow_sdbar {
-    height: 2rem;
-}
-
-.arrow_sdbar img {
-    rotate: 270deg;
-}
-
-.sidebar_text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--Color-Base-Dark-Orange, #FB932E);
-    font-family: Bender;
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: 0.05rem;
-}

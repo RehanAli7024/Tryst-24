@@ -23,7 +23,7 @@ import UserCard from "./components/userCard/UserCard.jsx";
 import Pronites from "./pages/pronites/pronites.jsx";
 import Signup from "./pages/signup/signup.jsx";
 import Dashboard from "./pages/dashboard/dashboard.jsx";
-
+import EventCard from "./components/EventCard/EventCard.jsx";
 const App = () => {
   return (
     <main className="main-bg">
