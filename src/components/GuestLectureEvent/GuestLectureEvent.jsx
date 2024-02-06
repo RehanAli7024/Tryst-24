@@ -32,8 +32,8 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
   const handleSubmit = (e) => {
     setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    axios.post(`${DOMAIN}create_guest/`, formData, { headers: { Authorization: `Bearer ${token}` } })
+    // const token = localStorage.getItem("access_token");
+    axios.post(`${DOMAIN}create_guest/`, formData)
       .then((res) => {
         console.log(res);
         alert("Event submitted successfully");

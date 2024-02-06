@@ -37,7 +37,8 @@ export default function CompetitionEvent({
   const handleSubmit = (e) => {
     setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("access_token");
+    console.log(token);
     axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         console.log(res);
@@ -59,8 +60,7 @@ export default function CompetitionEvent({
     venue: "",
     file: null,
     contactPersons: [],
-    speakers: [],
-    ruleBoook: [],
+    ruleBoook: 'no rulebook provided',
   });
 
   const [image, setImage] = useState(null);
