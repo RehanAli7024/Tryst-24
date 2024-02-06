@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import competitions from "../../assets/event cards/comps-pic.png";
-import workshops from "../../assets/event cards/ws-pic.png";
-import guestLectures from "../../assets/event cards/guest-lec-pic.png";
+import competitions from "../../assets/event_cards/comps-pic.png";
+import workshops from "../../assets/event_cards/ws-pic.png";
+import guestLectures from "../../assets/event_cards/guest-lec-pic.png";
 import "./eventOptions.css";
 import PopupContainer from "../../overlays/popups/PopupContainer";
 

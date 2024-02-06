@@ -1,6 +1,6 @@
 import React from "react";
 import userCardSvg from "../../assets/user-card.svg"; // Replace './user-card.svg' with the actual path to your SVG file
-import compsPic from "../../assets/event cards/comps-pic.png";
+import compsPic from "../../assets/event_cards/comps-pic.png";
 import bookPassBtn from "../../assets/book-pass.png";
 import "./userCard.css";
 
