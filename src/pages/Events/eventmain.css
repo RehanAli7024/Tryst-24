@@ -171,15 +171,16 @@
 
 .events {
     margin-left: 1%;
-    margin-right: 2%;
+    /* margin-right: 0%; */
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .events_card {
-    width: 19.8vw;
-    height: 55vh;
-    margin: 0 1.3rem 2.6rem 1.3rem;
+    width: 18.8vw;
+    height: 32%;
+    margin: 0 0.3rem 1.6rem 1.3rem;
 }
 
 .sidebar_body {
@@ -287,5 +288,11 @@
         width: 90vw;
         margin-left: 5vw;
         margin-right: 5vw;
+        height: fit-content;
+    }
+    .events_card {
+        width: 36.8vw;
+        height: 32%;
+        margin: 0 0.3rem 1.6rem 1.3rem;
     }
 }
