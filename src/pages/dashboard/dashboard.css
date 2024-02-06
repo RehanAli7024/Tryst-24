@@ -255,4 +255,7 @@
         align-items: center;
         gap: 3vh;
     }
+    .dashboard-nav-button{
+        width: 50%;
+    }
 }
