@@ -67,17 +67,15 @@ const Dashboard = () => {
           <button className="dashboard-nav-button">YOUR ORDERS</button>
           <button className="dashboard-nav-button">ACCOMODATION</button>
         </div>
-        {<div className="dashboard-nav-details">
-          <div className="dashboardcardrow">
-          <UserCard className="dashboard-nav-details-card" />
-          <UserCard className="dashboard-nav-details-card" />
+        {
+          <div className="dashboard-nav-details">
+            <UserCard className="dashboard-nav-details-card" />
+            <UserCard className="dashboard-nav-details-card" />
+
+            <UserCard className="dashboard-nav-details-card" />
+            <UserCard className="dashboard-nav-details-card" />
           </div>
-          <div className="dashboardcardrow">
-          <UserCard className="dashboard-nav-details-card" />
-          <UserCard className="dashboard-nav-details-card" />
-          </div>
-          
-        </div> }
+        }
       </div>
     </>
   );

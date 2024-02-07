@@ -4,7 +4,7 @@
 
 .user-card-content {
   position: absolute;
-  top: 3px;
+  top: 2px;
   left: 0;
   width: 94%;
   margin-left: 5.9%;
@@ -15,17 +15,19 @@
 }
 
 .user-card-container {
-  /* position: rela tive; */
-  /* width: 40%; */
+  position: relative;
+  width: 40%;
+  height: 100%;
 }
 
 .user-card-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 5%;
   align-items: flex-start;
   width: 35%;
+  font-size: 1.2vw;
 }
 
 .user-card-btn {
@@ -41,9 +43,9 @@
 
 @media screen and (max-width: 768px) {
   .user-card-text {
-    font-size: x-small;
+    font-size: 1.5vw;
     gap: 2%;
-  }
+}
 
   .user-card-text h2 {
     font-size: 1rem;
@@ -54,10 +56,14 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .user-card-container {
-    /* position: relative; */
-    /* width: 70%; */
-    /* margin-inline: auto; */
+    position: relative;
+    width: 85%;
+    height: 100%;
   }
+  .user-card-text {
+    font-size: 3vw;
+    gap: 2%;
+}
 }

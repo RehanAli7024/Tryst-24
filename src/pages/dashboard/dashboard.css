@@ -29,6 +29,7 @@
   /* justify-content: center; */
   /* align-items: center; */
 }
+
 .profile_photo {
   /* display: flex; */
   width: 20vw;
@@ -38,6 +39,7 @@
   margin-right: 2rem;
   position: relative;
 }
+
 .userPhoto {
   display: flex;
   justify-content: center;
@@ -76,18 +78,21 @@
 }
 
 .dashboard-nav-details {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 20vh;
-    margin-bottom: 20vh 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 15vh;
+  /* margin-bottom: 20vh; */
+  justify-content: space-evenly;
+  margin-block: 3vh;
 }
 
 .dashboard-nav-details-card {
   width: 25vw;
   height: 20vh;
 }
+
 .dashboard-nav {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -105,6 +110,7 @@
   margin-left: 10rem;
   /* justify-content: center; */
 }
+
 .user_name {
   color: var(--Color-Base-Dark-Orange, #fb932e);
   font-family: Bender;
@@ -113,26 +119,31 @@
   font-weight: 700;
   line-height: normal;
 }
+
 .user_name_logout {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .logout_btn img {
   margin-left: 30vw;
   cursor: pointer;
   height: 3rem;
-  
+
 }
+
 .dashboard {
   margin-bottom: 1rem;
 }
+
 .email_phone {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   margin-top: 2rem;
 }
+
 .email_label {
   color: var(--Color-Base-Snow, #fffbff);
   font-family: Rajdhani;
@@ -145,6 +156,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .user_email {
   margin-left: 4rem;
   display: flex;
@@ -158,6 +170,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .phone_label {
   color: var(--Color-Base-Snow, #fffbff);
   font-family: Rajdhani;
@@ -168,6 +181,7 @@
   text-transform: uppercase;
   margin-left: 4rem;
 }
+
 .user_ID {
   display: flex;
   flex-direction: row;
@@ -180,6 +194,7 @@
   flex-wrap: wrap;
   margin-top: 2rem;
 }
+
 .actual_details {
   display: flex;
   flex-direction: column;
@@ -189,12 +204,14 @@
 
   margin-left: 6rem;
 }
+
 .detail_info {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   /* justify-content: end; */
 }
+
 .info_label {
   color: var(--Color-Base-Snow, #fffbff);
   font-family: Rajdhani;
@@ -208,6 +225,7 @@
   /* justify-content: center; */
   align-items: center;
 }
+
 .info_data {
   color: var(--Color-Base-Snow, #fffbff);
   font-family: Rajdhani;
@@ -220,12 +238,14 @@
   align-items: center;
   margin-left: 4rem;
 }
-.dashboardcardrow{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 18%
+
+.dashboardcardrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 18%
 }
+
 @media screen and (max-width: 1060px) {
   .profile_box {
     flex-direction: column;
@@ -233,42 +253,50 @@
     align-items: center;
     gap: 5vh;
   }
-  .profile_details{
+
+  .profile_details {
     justify-content: center;
     margin-left: 0;
   }
-  .dashboard-nav-details{
-    gap: 3vh;
+
+  .dashboard-nav-details {
+    gap: 10vh;
   }
 }
 
 
-@media screen and (max-width: 768px){
-   .user_name_logout{
+@media screen and (max-width: 768px) {
+  .user_name_logout {
     flex-direction: column;
     align-items: center;
     gap: 2vh;
-   }
-   .logout_btn img{
+  }
+
+  .logout_btn img {
     margin-left: 0px;
-   }
-   .email_phone{
+  }
+
+  .email_phone {
     display: flex;
     align-items: center;
-   }
-    .email_label{
-        margin-left: 10%;
-    }
-    .phone_label{
-        margin-left: 10%;
-    }
-    .dashboard-nav{
-        flex-direction: column;
-        align-items: center;
-        gap: 3vh;
-    }
-    .dashboard-nav-button{
-        width: 50%;
-    }
+  }
+
+  .email_label {
+    margin-left: 10%;
+  }
+
+  .phone_label {
+    margin-left: 10%;
+  }
+
+  .dashboard-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 3vh;
+  }
+
+  .dashboard-nav-button {
+    width: 50%;
+  }
 
 }
