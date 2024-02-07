@@ -21,6 +21,7 @@ body {
 #stars3 {
   position: absolute;
   bottom: 0;
+  
 }
 #stars {
   width: 1px;
@@ -29,6 +30,7 @@ body {
   box-shadow: $shadows-small;
   animation: animStar 60s infinite;
   opacity: 1;
+  border-radius: 10px;
 }
 
 #stars2 {
@@ -38,6 +40,7 @@ body {
   box-shadow: $shadows-medium;
   animation: animStar 100s linear infinite;
   opacity: 1;
+  border-radius: 10px;
 }
 
 #stars3 {
@@ -48,6 +51,7 @@ body {
   animation: animStar 150s linear infinite;
   border-radius: 1px;
   opacity: 1;
+  border-radius: 10px;
 }
 
 @keyframes animStar {
@@ -55,17 +59,19 @@ body {
     transform: translateY(-230px);
     opacity: 1;
   }
-  20%{
+  5% {
     opacity: 1;
   }
+  
   80% {
     opacity: 1;
   }
   100% {
     transform: translateY(-2000px);
-    opacity: 0;
+    opacity: 1;
   }
 }
+
 
 // @media (max-width: 650px) {
 //   @keyframes animStar {
