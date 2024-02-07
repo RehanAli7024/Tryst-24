@@ -123,7 +123,19 @@ const EventPage = () => {
                 <div className="fil_con" id="ev_page_fil_con_2">
                   <div className="filter_btn" id="ev_btn_1" onClick={toggleDiv}>
                     Register
-                    {isVisible?(<img src={arrow_downward} className="rotating_button" alt="" />):(<img src={arrow_forward} className="rotating_button" alt="" />)}
+                    {isVisible ? (
+                      <img
+                        src={arrow_downward}
+                        className="rotating_button"
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        src={arrow_forward}
+                        className="rotating_button"
+                        alt=""
+                      />
+                    )}
                   </div>
                 </div>
               </div>
