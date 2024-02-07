@@ -76,10 +76,12 @@
 }
 
 .dashboard-nav-details {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 76vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20vh;
+    margin-bottom: 20vh 
 }
 
 .dashboard-nav-details-card {
@@ -218,7 +220,12 @@
   align-items: center;
   margin-left: 4rem;
 }
-
+.dashboardcardrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 18%
+}
 @media screen and (max-width: 1060px) {
   .profile_box {
     flex-direction: column;
@@ -230,8 +237,13 @@
     justify-content: center;
     margin-left: 0;
   }
+  .dashboard-nav-details{
+    gap: 3vh;
+  }
 }
-@media screen and (max-width: 786px){
+
+
+@media screen and (max-width: 768px){
    .user_name_logout{
     flex-direction: column;
     align-items: center;
@@ -258,4 +270,5 @@
     .dashboard-nav-button{
         width: 50%;
     }
+
 }
