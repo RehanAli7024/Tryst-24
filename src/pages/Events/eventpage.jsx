@@ -21,12 +21,7 @@ const EventPage = () => {
         <div className="event_container grid grid-cols-2 gap-4">
           <div className="col-span-2 md:col-span-1 event_poster">
             <div className="ev_poster">
-              <img
-                src={poster}
-                alt=""
-                className="h-[20rem] my-2 object-contain"
-              />
-              {/* <EventCard /> */}
+              <EventCard />
             </div>
             <div className="fil_con" id="ev_page_fil_con">
               <div className="filter_btn">
