@@ -49,7 +49,7 @@ const Signup = () => {
     useEffect(() => {
         const code = new URLSearchParams(window.location.search).get("code");
         console.log(code);
-        const csrfToken = Cookies.getItem("csrftoken");
+        const csrfToken = Cookies.get("csrftoken");
         if (code) {
             axios.post(
                 `${DOMAIN}iitdlogin/`,
