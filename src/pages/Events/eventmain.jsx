@@ -73,21 +73,84 @@ const EventMain = () => {
     );
   };
 
+  const handleTypeDeselect = (index) => {
+    setTypeSelected(prevState => prevState.filter(item => item !== index));
+  };
 
+  const handleClubDeselect = (index) => {
+    setClubSelected(prevState => prevState.filter(item => item !== index));
+  };
+
+  const clearAll = () => {
+    setTypeSelected([]);
+    setClubSelected([]);
+  };
+
+  const [overlay, setOverlay] = useState(true);
+
+  const handleOverlay = () => {
+    if (window.innerWidth <= 768) {
+      if (overlay) {
+        document.body.style.overflow = 'hidden';
+      }
+      else {
+        document.body.style.overflow = 'auto';
+      }
+      setOverlay(!overlay);
+    }
+  };
 
   return (
     <>
       <div className="event_body">
+        {(window.innerWidth <= 768 && overlay === false) ?
+          <div className="event_sidebar_overlay">
+            <div className="sidebar_body">
+              <img src={close} alt="" onClick={handleOverlay} className="event_sidebar_overlay_close" />
+              <button className="sidebar_btn" onClick={handleTypeChange}>
+                <img src={arrowRight} alt="" style={{ transform: rotate1 ? 'rotate(-90deg)' : 'rotate(0deg)' }} />
+                <div className="sidebar_text">By Type</div>
+              </button>
+              <div className="sidebar_options sidebar_options_hr" id="sidebar_options_type">
+
+                {Types.map((type) => (
+                  <div key={type.index} className="sidebar_option" onClick={() => handleTypeSelect(type.index)}>
+                    <img src={typeSelected.includes(type.index) ? ticked : unticked} alt="" />
+                    {type.name}
+                  </div>
+                ))}
+
+              </div>
+              <button className="sidebar_btn" onClick={handleClubChange}>
+                <div className="arrow_sdbar">
+                  <img src={arrowRight} alt="" style={{ transform: rotate2 ? 'rotate(-90deg)' : 'rotate(0deg)' }} />
+                </div>
+                <div className="sidebar_text">By Clubs/Society</div>
+              </button>
+              <div className="sidebar_options" id="sidebar_options_club">
+
+                {Clubs.map((club) => (
+                  <div key={club.index} className="sidebar_option" onClick={() => handleClubSelect(club.index)}>
+                    <img src={clubSelected.includes(club.index) ? ticked : unticked} alt="" />
+                    {club.name}
+                  </div>
+                ))}
+
+              </div>
+            </div>
+          </div> : <> </>}
         <div className="event_title">EVENTS</div>
         <div className="filter_search">
           <div className="filter_search_left">
             <div className="fil_con">
-              <div className="filter_btn">
+              <div className="filter_btn" onClick={handleOverlay}>
                 <img src={tune} alt="" />
-                Filters
+                Filters{" (" + (typeSelected.length + clubSelected.length) + ")"}
               </div>
             </div>
-            <button className="clear_option">Clear All</button>
+            {(typeSelected.length + clubSelected.length > 0) ? <button className="clear_option" onClick={clearAll}>Clear All</button> : <></>
+            }
+
           </div>
           <div className="filter_search_right">
             <div className="search_box">
@@ -101,14 +164,32 @@ const EventMain = () => {
           </div>
         </div>
         <div className="filters">
-          <div className="sel_fil_container">
-            <div className="checkboxed_filter">
-              Competitions
-              <button>
-                <img src={close} alt="" />
-              </button>
-            </div>
-          </div>
+          {typeSelected.map(index => {
+            const type = Types.find(item => item.index === index);
+            return (
+              <div className="sel_fil_container" key={index}>
+                <div className="checkboxed_filter">
+                  {type.name}
+                  <button onClick={() => handleTypeDeselect(index)}>
+                    <img src={close} alt="" className="sel_fil_close_btn" />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+          {clubSelected.map(index => {
+            const club = Clubs.find(item => item.index === index);
+            return (
+              <div className="sel_fil_container" key={index}>
+                <div className="checkboxed_filter">
+                  {club.name}
+                  <button onClick={() => handleClubDeselect(index)}>
+                    <img src={close} alt="" className="sel_fil_close_btn" />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div className="event_container">
           <div className="event_sidebar">
@@ -146,18 +227,6 @@ const EventMain = () => {
             </div>
           </div>
           <div className="events">
-            {/* <div className="event_card">
-              <img src={eventposter} alt="" />
-            </div>
-            <div className="event_card">
-              <img src={eventposter} alt="" />
-            </div>
-            <div className="event_card">
-              <img src={eventposter} alt="" />
-            </div>
-            <div className="event_card">
-              <img src={eventposter} alt="" />
-            </div> */}
             <div className="events_card"><EventCard /></div>
             <div className="events_card"><EventCard /></div>
             <div className="events_card"><EventCard /></div>

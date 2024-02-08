@@ -1,6 +1,10 @@
 .event_body {
     /* display: flex; */
     flex-wrap: wrap;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
 }
 
 .event_title {
@@ -82,11 +86,12 @@
     line-height: normal;
     text-decoration-line: underline;
     margin-left: 3rem;
+    text-wrap: nowrap;
 }
 
 .search_box {
     display: flex;
-    width: 70%;
+    width: 75%;
     /* margin-left: 31%; */
     margin-bottom: 1rem;
     padding: 0.5rem 1rem 0.5rem 2rem;
@@ -101,7 +106,7 @@
     display: flex;
     width: 100%;
     height: 3rem;
-    background: linear-gradient(0deg, rgba(0, 224, 255, 0.10) 0%, rgba(0, 224, 255, 0.10) 100%), rgba(3, 10, 23, 0.80);
+    background-color: #03202F;
     color: rgba(255, 251, 255, 0.50);
     font-family: Rajdhani;
     font-size: 1.25rem;
@@ -120,40 +125,43 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 1rem;
-    ;
+    flex-wrap: wrap;
 }
 
 .sel_fil_container {
-    width: 10rem;
     height: 2rem;
     background-color: #E086D3;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-right: 1rem;
     clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 5% 100%, 0 80%);
     border-radius: 5px;
+    margin-bottom: 0.7rem;
 }
 
-.selected_filter {
+.sel_fil_close_btn {
+    margin: 0;
+}
+
+.checkboxed_filter {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 10rem;
-    height: 2rem;
-    border-width: 2px;
-    border-color: #E086D3;
-    border-radius: 5px;
-    clip-path: polygon(0 0, 93% 0, 100% 26%, 100% 100%, 7% 100%, 0 74%);
-    color: var(--Color-Base-Snow, #FFFBFF);
+    width: 98%;
+    height: 87%;
+    background-color: #023545;
+    clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 5% 100%, 0 80%);
     font-family: Rajdhani;
     font-size: 1.125rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     letter-spacing: 0.045rem;
-
+    padding: 0 1rem;
+    white-space: nowrap;
 }
 
 .event_container {
@@ -164,28 +172,28 @@
 }
 
 .event_sidebar {
-    width: 30%;
+    width: 55%;
     /* height:40rem; */
     /* background-color: #00E0FF; */
 }
 
 .events {
     margin-left: 1%;
-    margin-right: 2%;
+    /* margin-right: 0%; */
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .events_card {
-    width: 19.8vw;
-    height: 55vh;
-    margin: 0 1.3rem 2.6rem 1.3rem;
+    width: 20rem;
+    height: 24rem;
+    margin: 0 0.3rem 1.6rem 1.3rem;
 }
 
 .sidebar_body {
     margin-left: 4rem;
     /* height: 40rem; */
-    width: 80%;
     border-radius: 0.25rem;
     border: 2px solid var(--Color-Base-Violet-Dark, #802392);
     background: linear-gradient(0deg, rgba(128, 35, 146, 0.10) 0%, rgba(128, 35, 146, 0.10) 100%), rgba(3, 10, 23, 0.80);
@@ -219,7 +227,7 @@
     font-size: 1.15rem;
     font-weight: 600;
     cursor: pointer;
-    width: max-content;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -259,33 +267,91 @@
     letter-spacing: 0.05rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .event_sidebar {
         display: none;
+    }
+
+    .filter_search {
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    .filter_search_left {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 1rem;
+        margin-left: -5vw;
+        padding-left: 0;
     }
 
     .search_box {
         margin-top: 1rem;
         margin-left: 12vw;
-        width: 60vw;
+        width: 80vw;
     }
 
-    .event_card {
-        margin-left: 10vw;
-        margin-right: 10vw;
+    .searchbtn {
+        width: 2rem;
     }
 
-    .event_card img {
-        width: 100vw;
-    }
-
-    .filters {
-        display: none;
+    .input_field {
+        font-size: 1.5rem;
     }
 
     .events {
         width: 90vw;
         margin-left: 5vw;
         margin-right: 5vw;
+        height: fit-content;
+    }
+
+    .events_card {
+        width: 70vw;
+        height: 32%;
+        margin: 0 0.3rem 2.5rem 1.8rem;
+    }
+
+    .event_sidebar_overlay {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 1;
+        backdrop-filter: blur(5px);
+    }
+
+    .event_sidebar_overlay_close {
+        position: absolute;
+        top: 3%;
+        right: 6%;
+        width: 2rem;
+    }
+
+    .sidebar_body {
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #100C24;
+        padding-left: 6vw;
+        position: relative;
+    }
+
+    .sidebar_option {
+        width: 100%;
+        margin-bottom: calc(0.5vh + 0.5vw);
+    }
+
+    .filters {
+        margin-top: 1rem;
+        margin-left: 10vw;
+    }
+
+    .checkboxed_filter {
+        padding: 0 0.9rem;
+    }
+
+    .sel_fil_close_btn {
+        margin-left: 0.5rem;
+        margin-right: 0;
+        width: 1.5rem;
     }
 }

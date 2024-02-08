@@ -2,11 +2,11 @@ import React from "react";
 import userCardSvg from "../../assets/user-card.svg"; // Replace './user-card.svg' with the actual path to your SVG file
 import compsPic from "../../assets/event_cards/comps-pic.png";
 import bookPassBtn from "../../assets/book-pass.png";
-import "./userCard.css";
+import "./UserCard_Registration.css";
 
 export default function UserCard_Registration() {
   return (
-    <div className="user-card-container md:w-1/3 w-full">
+    <div className="user-card-container ">
       <img src={userCardSvg} alt="comps-pic" className="usercard-img" />
 
       <div className="user-card-content">
