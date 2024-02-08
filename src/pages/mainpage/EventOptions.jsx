@@ -1,21 +1,19 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import competitions from "../../assets/event_cards/comps-pic.png";
-import workshops from "../../assets/event_cards/ws-pic.png";
-import guestLectures from "../../assets/event_cards/guest-lec-pic.png";
 import "./eventOptions.css";
 import PopupContainer from "../../overlays/popups/PopupContainer";
+import axios from "axios";
+import { DOMAIN } from "../../domain";
+import { ReactSession } from "react-client-session";
+import PopupContainertoedit from "../../components/editcontainer/editcontainer";
 
-const eventCardImages = {
-  competitions: [competitions, competitions, competitions],
-  workshops: [workshops, workshops, workshops],
-  guestlectures: [guestLectures, guestLectures, guestLectures],
-};
 
 export default function EventOptions() {
   const [selectedEventType, setSelectedEventType] = useState("competitions");
   const [PopupIsOpen, setPopupIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState();
+  const [eventDetails, setEventDetails] = useState({});
+  const [editPopupIsOpen, setEditPopupIsOpen] = useState(false);
 
   const handleEventTypeClick = (eventType) => {
     setSelectedEventType(eventType);
@@ -26,7 +24,26 @@ export default function EventOptions() {
     setSubmitted(false);
   };
 
-  const selectedImages = eventCardImages[selectedEventType] || [];
+  const selectedEventDetails = eventDetails[selectedEventType] || [];
+
+  useEffect(() => {
+    const token = localStorage.getItem("admin_access_token");
+    console.log(token);
+    axios.get(`${DOMAIN}allevents/`, { headers: { Authorization: `Bearer ${token}` } })
+      .then((response) => {
+        // console.log(response);
+        setEventDetails(response.data);
+        console.log(eventDetails);
+      }).catch((error) => {
+        console.log(error);
+      }
+      )
+  }, [submitted]);
+
+  useEffect(() => {
+    console.log(eventDetails);
+  }
+    , [eventDetails]);
 
   return (
     <Container>
@@ -74,8 +91,36 @@ export default function EventOptions() {
         </div>
       </div>
       <div className="event-cards">
-        {selectedImages.map((imageSrc, index) => (
+        {/* {selectedImages.map((imageSrc, index) => (
           <img key={index} src={imageSrc} alt={`event-${index + 1}`} />
+        ))} */}
+        {selectedEventDetails.map((prop, index) => (
+          <div key={index}>
+            <div className="event-card">
+              <div className="event-card-image">
+                <img src={prop.event_image} alt={`event-${index + 1}`} />
+              </div>
+              <div className="event-card-details">
+                <h3>{prop.title}</h3>
+                <p>{prop.description}</p>
+                <button
+                  onClick={() => {
+                    setEditPopupIsOpen(true);
+                  }}
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+            {editPopupIsOpen && (
+              <PopupContainertoedit
+                editPopupIsOpen={editPopupIsOpen}
+                setEditPopupIsOpen={setEditPopupIsOpen}
+                eventDetails={prop}
+                selectedEventType={selectedEventType}
+              />
+            )}
+          </div>
         ))}
       </div>
     </Container>

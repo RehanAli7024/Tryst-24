@@ -35,8 +35,7 @@ export default function PopupContainer({
     setIsEventSubmitted(true);
     setActiveButton("registrationForm");
   };
-  const [guestid, setGuestid] = useState();
-  console.log(guestid);
+
   return (
     <Container>
       <div className="popup-main-container">
@@ -49,6 +48,7 @@ export default function PopupContainer({
           activeButton={activeButton}
           setActiveButton={handleTitleChange}
           isEventSubmitted={isEventSubmitted}
+          task=""
         />
         <div className="event-form-inputs">
           {eventFormTitle === "eventDetails" &&
@@ -76,7 +76,6 @@ export default function PopupContainer({
                 setIsOpen={setIsOpen}
                 setIsEventSubmitted={handleEventFormSubmit}
                 setEventFormTitle={setEventFormTitle}
-                guestid={setGuestid}
               />
             )}
 
@@ -90,7 +89,7 @@ export default function PopupContainer({
 
           {eventFormTitle === "registrationForm" &&
             selectedEventType === "guestlectures" &&
-            isEventSubmitted === true && <GuestRegisteration guestid={guestid} />}
+            isEventSubmitted === true && <GuestRegisteration />}
         </div>
       </div>
     </Container>

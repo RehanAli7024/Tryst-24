@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { ReactSession } from "react-client-session";
 import "./CompetitionEvent.css";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
@@ -9,11 +10,11 @@ export default function CompetitionEvent({
   setIsOpen,
   setIsEventSubmitted,
   setEventFormTitle,
-  eventid
 }) {
   const [contactPersons, setcontactPerosns] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
+  ReactSession.setStoreType("localStorage");
   useEffect(() => {
     let handler = (e) => {
       if (!eventsRef.current.contains(e.target) && registrationOpen) {
@@ -35,15 +36,16 @@ export default function CompetitionEvent({
   };
 
   const handleSubmit = (e) => {
-    setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
+    setFormData({ ...formData, contactPersons: constactPersonDetails });
     e.preventDefault();
-    const token = localStorage.getItem("access_token");
+    const token = ReactSession.get("admin_access_token");
     console.log(token);
-    axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}` } })
+    console.log(formData);
+    axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
       .then((res) => {
         console.log(res);
         alert("Event submitted successfully");
-        eventid(res.data.id);
+        localStorage.setItem("id", res.data.event_id);
         setEventFormTitle("registrationForm");
         setIsEventSubmitted(true);
         setIsSubmitted(true);
@@ -60,19 +62,13 @@ export default function CompetitionEvent({
     venue: "",
     file: null,
     contactPersons: [],
-    ruleBoook: 'no rulebook provided',
+    ruleBook: '',
   });
 
-  const [image, setImage] = useState(null);
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
-  const [speakerimg, setSpeakerImg] = useState(null);
-  const [Speakers, setSpeakers] = useState(1);
-  const [speakerDetails, setSpeakerDetails] = useState([{ name: '', description: '', file: null }]);
-
 
   const handleChange = (e) => {
     if (e.target.name === "file") {
-      setImage(URL.createObjectURL(e.target.files[0]));
       setFormData({ ...formData, [e.target.name]: e.target.files[0] });
       return;
     }
@@ -96,35 +92,9 @@ export default function CompetitionEvent({
   };
 
   useEffect(() => {
-    setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
-  }, [constactPersonDetails, speakerDetails]);
+    setFormData({ ...formData, contactPersons: constactPersonDetails });
+  }, [constactPersonDetails]);
 
-  const handleSpeakersChange = (e) => {
-    const numberOfSpeakers = parseInt(e.target.value, 10);
-    setSpeakers(numberOfSpeakers);
-    setSpeakerDetails(currentDetails => {
-      const newDetails = currentDetails.slice(0, numberOfSpeakers);
-      while (newDetails.length < numberOfSpeakers) {
-        newDetails.push({ name: '', description: '', file: null });
-      }
-      return newDetails;
-    });
-  };
-
-
-  const handleSpeakerDetailsChange = (index, type, e) => {
-    setSpeakerDetails(currentDetails => {
-      const updatedDetails = [...currentDetails];
-      if (type === 'file') {
-        const file = e.target.files[0];
-        setSpeakerImg(URL.createObjectURL(file));
-        updatedDetails[index].file = file ? URL.createObjectURL(file) : null;
-      } else {
-        updatedDetails[index][type] = e.target.value;
-      }
-      return updatedDetails;
-    });
-  };
 
   return (
     <div
@@ -146,7 +116,7 @@ export default function CompetitionEvent({
             />
           </div>
           <div className="image-shown">
-            {image && <img src={image} alt="Event" />}
+            {/* {file && <img src={image} alt="Event" />} */}
           </div>
           <div className="image-guidelines">
             <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
@@ -236,32 +206,30 @@ export default function CompetitionEvent({
         </div>
 
         {Array.from({ length: contactPersons }).map((_, index) => (
-          <>
-            <div className="contact-details-container">
-              <div className="serial-no">
-                <p>{index + 1}.</p>
-              </div>
-              <div className="name-of-contact-person">
-                <input
-                  id={`contactPersonName_${index}`}
-                  className="input"
-                  type="text"
-                  onChange={(e) => handleInputChange(index, 'name', e.target.value)}
-                  placeholder="Name of Contact Person"
-                />
-              </div>
-              <div className="contact-number">
-                <input
-                  id={`contactPersonNumber_${index}`}
-                  className="input"
-                  type="tel"
-                  onChange={(e) => handleInputChange(index, 'phone', e.target.value)}
-                  placeholder="Contact Number"
-                  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                />
-              </div>
+          <div key={index} className="contact-details-container">
+            <div className="serial-no">
+              <p>{index + 1}.</p>
             </div>
-          </>
+            <div className="name-of-contact-person">
+              <input
+                id={`contactPersonName_${index}`}
+                className="input"
+                type="text"
+                onChange={(e) => handleInputChange(index, 'name', e.target.value)}
+                placeholder="Name of Contact Person"
+              />
+            </div>
+            <div className="contact-number">
+              <input
+                id={`contactPersonNumber_${index}`}
+                className="input"
+                type="tel"
+                onChange={(e) => handleInputChange(index, 'phone', e.target.value)}
+                placeholder="Contact Number"
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              />
+            </div>
+          </div>
         ))}
         <div className="No-of-contact-person-container">
           <div className="contact-person-details">
@@ -269,11 +237,11 @@ export default function CompetitionEvent({
           </div>
           <div className="contact-persons-container">
             <input
-              name="ruleBoook"
+              name="ruleBook"
               className="input"
               type="text"
               onChange={handleChange}
-              value={formData.ruleBoook} />
+              value={formData.ruleBook} />
           </div>
         </div>
         <button onClick={handleSubmit} className="submit-button">

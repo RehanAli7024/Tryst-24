@@ -24,6 +24,7 @@ import Pronites from "./pages/pronites/pronites.jsx";
 import Signup from "./pages/signup/signup.jsx";
 import Dashboard from "./pages/dashboard/dashboard.jsx";
 import EventCard from "./components/EventCard/EventCard.jsx";
+import AdminLogin from "./pages/admin-login/admin-login.jsx";
 const App = () => {
   return (
     <main className="main-bg">
@@ -41,12 +42,13 @@ const App = () => {
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/about" element={<About />} />
-          <Route path="/events" element={<ComingSoon />} />
+          <Route path="/events" element={<EventMain />} />
           <Route path="/guests" element={<ComingSoon />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/usercard" element={<UserCard />} />
           <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/admin" element={<AdminLogin />} />
         </Routes>
         <Footer />
       </Router>

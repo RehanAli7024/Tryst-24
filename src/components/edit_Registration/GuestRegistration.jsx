@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { DOMAIN } from '../../domain';
 import './registrationMain.css';
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 import EditField from '../../overlays/overlays/add-new-field/editfield';
 import axios from 'axios';
 import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
-import { useRef } from 'react';
 
-function CompetitionRegistration({ setRegistrationOpen, eventid }) {
+export default function GuestRegisteration({ setRegistrationOpen, guestid }) {
   const [payload, setPayload] = useState({});
   const [editpayload, setEditPayload] = useState({});
   const [formData, setFormData] = useState({
     acceptingResponses: true,
-    event_id: '2',
+    event_id: guestid,
     formFields: [],
   });
+  console.log(guestid);
 
   const [showNewField, setShowNewField] = useState(false);
   const [showEditField, setShowEditField] = useState([false, null, null]);
@@ -59,7 +59,7 @@ function CompetitionRegistration({ setRegistrationOpen, eventid }) {
 
   const handleSave = () => {
 
-    const token = localStorage.getItem('admin_access_token');
+    const token = localStorage.getItem('token');
     console.log(formData);
     axios
       .post(
@@ -82,6 +82,7 @@ function CompetitionRegistration({ setRegistrationOpen, eventid }) {
       });
   };
 
+  // DO NOT TOUCH THIS CODE
   const handleresponseChange = (name, value) => {
     // Check if the field is 'acceptingResponses' to handle boolean conversion
     if (name === 'acceptingResponses') {
@@ -194,5 +195,3 @@ function CompetitionRegistration({ setRegistrationOpen, eventid }) {
     </div >
   );
 }
-
-export default CompetitionRegistration;
