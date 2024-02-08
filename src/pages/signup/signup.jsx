@@ -9,6 +9,7 @@ import { DOMAIN } from "../../domain";
 import { useNavigate } from "react-router-dom";
 // import userLoggedOutNavigator from "../../routes/userLoggedOutNavigator";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 const states = [
     "Andhra Pradesh",
@@ -45,6 +46,48 @@ const states = [
 const Signup = () => {
     const navigate = useNavigate();
     // React.useEffect(userLoggedOutNavigator(useNavigate()));
+    useEffect(() => {
+        const code = new URLSearchParams(window.location.search).get("code");
+        console.log(code);
+        const csrfToken = Cookies.getItem("csrftoken");
+        if (code) {
+            axios.post(
+                `${DOMAIN}iitdlogin/`,
+                {
+                    "code": code
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    }
+                }
+            )
+                .then((response) => {
+                    console.log(response.data);
+                    // const access_token = response.data.tokens.access;
+                    // const refresh_token = response.data.tokens.refresh;
+                    // const category = response.data.category;
+                    // const name = response.data.name;
+                    // localStorage.setItem("name", name);
+                    // if (category === "faculty") {
+                    //     localStorage.setItem("faculty_access_token", access_token);
+                    //     localStorage.setItem("faculty_refresh_token", refresh_token);
+                    //     navigate("/profhome", { replace: true });
+                    // } else if (category === "student") {
+                    //     localStorage.setItem("student_access_token", access_token);
+                    //     localStorage.setItem("student_refresh_token", refresh_token);
+                    //     navigate("/student", { replace: true });
+                    // }
+                }).catch((error) => {
+                    console.log(error);
+                    // navigate("/", { replace: true });
+                });
+        } else {
+            navigate("/", { replace: true });
+        }
+    }, [navigate]);
+
     useEffect(() => {
         const loginData = JSON.parse(localStorage.getItem("response"));
         const referral_id = localStorage.getItem("referral_id");
