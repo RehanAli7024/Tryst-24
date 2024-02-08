@@ -65,7 +65,7 @@
   width: 13vw;
   margin: 1px 4vw;
   padding: 5px;
-  border-bottom: 10px solid #00e0ff;
+  border-bottom: 10px solid rgba(0, 224, 255, 0.30);
   color: var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
   text-align: center;
   font-family: Bender;
@@ -75,6 +75,9 @@
   line-height: normal;
   letter-spacing: 0.06rem;
   text-transform: uppercase;
+}
+.dashboard-nav-button.active {
+  border-bottom: 10px solid var(--Color-Base-Vivid-Sky-Blue, #00E0FF);
 }
 
 .dashboard-nav-details {
@@ -294,7 +297,6 @@
     align-items: center;
     gap: 3vh;
   }
-
   .dashboard-nav-button {
     width: 50%;
   }
