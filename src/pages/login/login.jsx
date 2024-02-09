@@ -43,7 +43,7 @@ const Login = () => {
   });
 
   const oauthlogin = () => {
-    window.location.href = "https://oauth2.iitd.ac.in/authorize.php?response_type=code&client_id=j9McPoLgRB0kOA2W8TOsQjwePLYMdhpP&state=xyz";
+    window.location.href = "http://oauth2.iitd.ac.in/authorize.php?response_type=code&client_id=j9McPoLgRB0kOA2W8TOsQjwePLYMdhpP&state=xyz";
   };
 
   return (
