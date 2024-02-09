@@ -46,6 +46,7 @@ const states = [
 const Signup = () => {
     const navigate = useNavigate();
     // React.useEffect(userLoggedOutNavigator(useNavigate()));
+    
     const [formData, setFormData] = useState({
         name: "",
         email: "",
