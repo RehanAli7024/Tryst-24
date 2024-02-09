@@ -98,7 +98,7 @@ const Signup = () => {
             name: name,
             email: email,
             category: category,
-            college: '4570',
+            // college: '4570',
         }));
         console.log(formData);
     }, [name, email, category]);
