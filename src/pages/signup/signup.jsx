@@ -80,6 +80,10 @@ const Signup = () => {
             )
                 .then((response) => {
                     const data = response.data.userdetails;
+                    setFormData((prevFormData) => ({
+                        ...prevFormData,
+                        college: '4570',
+                    }));
                     setCategory(data['category']);
                     setEmail(data['email']);
                     setName(data['name']);
@@ -98,7 +102,6 @@ const Signup = () => {
             name: name,
             email: email,
             category: category,
-            // college: '4570',
         }));
         console.log(formData);
     }, [name, email, category]);
