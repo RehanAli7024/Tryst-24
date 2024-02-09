@@ -49,7 +49,6 @@ const Signup = () => {
     const [usercollege, setUserCollege] = useState("IIT Delhi");
     useEffect(() => {
         const code = new URLSearchParams(window.location.search).get("code");
-        console.log(code);
         const csrfToken = Cookies.get("csrftoken");
         if (code) {
             axios.post(
@@ -68,10 +67,10 @@ const Signup = () => {
                     console.log(response.data);
                     setFormData((prevFormData) => ({
                         ...prevFormData,
-                        name: response.data.name,
-                        email: response.data.email,
+                        name: response.data.userdetails.name,
+                        email: response.data.userdetails.email,
                         college: '4570',
-                        category:''
+                        category: response.data.userdetails.category,
                     }));
                     console.log(formData);
                     setUserCollege('IIT Delhi');
