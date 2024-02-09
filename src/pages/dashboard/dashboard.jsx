@@ -195,7 +195,7 @@ const Dashboard = () => {
         </div>
 
 
-        {activeButton === "REGISTERED EVENTS" && (
+        {/* {activeButton === "REGISTERED EVENTS" && (
           <div className="dashboard-nav-details">
             <UserCard className="dashboard-nav-details-card" />
             <UserCard className="dashboard-nav-details-card" />
@@ -225,7 +225,7 @@ const Dashboard = () => {
           <div className="dashboard-nav-details">
             <UserCard className="dashboard-nav-details-card" />
           </div>
-        )}
+        )} */}
 
       </div>
     </>
