@@ -42,10 +42,6 @@ const Login = () => {
     },
   });
 
-  const oauthlogin = () => {
-    window.location.href = "https://oauth2.iitd.ac.in/authorize.php?response_type=code&client_id=j9McPoLgRB0kOA2W8TOsQjwePLYMdhpP&state=xyz";
-  };
-
 
   return (
     <>
@@ -53,13 +49,13 @@ const Login = () => {
       <div className="login-container">
         <div className="login-iit">
           <div className="login-iit-head mb-2">For IITD Students</div>
-          <button
+          <a
             className="action-btn flex items-center justify-center"
-            onClick={() => oauthlogin()}
+            href="https://oauth2.iitd.ac.in/authorize.php?response_type=code&client_id=j9McPoLgRB0kOA2W8TOsQjwePLYMdhpP&state=xyz"
           >
             <img className="iitlogo mr-6" src={IITDLogo} alt="iitd logo" />
             <div className="login-iit-body-text">Kerberos login</div>
-          </button>
+          </a>
         </div>
         <div className="margin"></div>
         <div className="login-iit">

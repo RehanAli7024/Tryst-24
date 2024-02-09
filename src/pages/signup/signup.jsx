@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./signup.css";
 // import Navbar from "../../components/navbar/navbar";
-import axios from "axios";
+import axios, { formToJSON } from "axios";
 import { BeatLoader } from "react-spinners";
 import Select from "react-select";
 // import Footer from "../../components/footer/ca-footer";
@@ -46,6 +46,7 @@ const states = [
 const Signup = () => {
     const navigate = useNavigate();
     // React.useEffect(userLoggedOutNavigator(useNavigate()));
+    const [usercollege, setUserCollege] = useState("IIT Delhi");
     useEffect(() => {
         const code = new URLSearchParams(window.location.search).get("code");
         console.log(code);
@@ -65,23 +66,17 @@ const Signup = () => {
             )
                 .then((response) => {
                     console.log(response.data);
-                    // const access_token = response.data.tokens.access;
-                    // const refresh_token = response.data.tokens.refresh;
-                    // const category = response.data.category;
-                    // const name = response.data.name;
-                    // localStorage.setItem("name", name);
-                    // if (category === "faculty") {
-                    //     localStorage.setItem("faculty_access_token", access_token);
-                    //     localStorage.setItem("faculty_refresh_token", refresh_token);
-                    //     navigate("/profhome", { replace: true });
-                    // } else if (category === "student") {
-                    //     localStorage.setItem("student_access_token", access_token);
-                    //     localStorage.setItem("student_refresh_token", refresh_token);
-                    //     navigate("/student", { replace: true });
-                    // }
+                    setFormData((prevFormData) => ({
+                        ...prevFormData,
+                        name: response.data.name,
+                        email: response.data.email,
+                        college: '4570',
+                        category:''
+                    }));
+                    console.log(formData);
+                    setUserCollege('IIT Delhi');
                 }).catch((error) => {
                     console.log(error);
-                    // navigate("/", { replace: true });
                 });
         } else {
             alert("Invalid Login");
@@ -131,14 +126,13 @@ const Signup = () => {
         linkedIn_Link: "",
         photo: "",
         referral_id: "",
+        category: "",
     });
     const handleChange = (e) => {
         setFormData((prevFormData) => ({
             ...prevFormData,
             [e.target.name]: e.target.value,
         }));
-        console.log(formData);
-        console.log(colleges);
     };
     const [loading, setLoading] = useState(false);
     const [loading2, setLoading2] = useState(false);
@@ -234,7 +228,6 @@ const Signup = () => {
     return (
         <>
             <div>
-                {/* <Navbar /> */}
                 <div className="signup-container">
                     <form className="signup-form" onSubmit={handlesubmit}>
                         <div className="signup-head">USER SIGNUP</div>
@@ -274,78 +267,81 @@ const Signup = () => {
                                     readOnly={formData.email ? true : false}
                                 />
                             </div>
-                            <div className="signup-input-container">
-                                <div className="signup-input-head">College State*</div>
-                                <Select
-                                    className="signup-input-field"
-                                    name="state"
-                                    id="state"
-                                    placeholder="Choose State"
-                                    onChange={(selectedOption) => {
-                                        setLoading(true);
-                                        handleStateChange(selectedOption.value);
-                                        handleChange({
-                                            target: { name: "state", value: selectedOption.value },
-                                        });
-                                    }}
-                                    required
-                                    options={states.map((state) => ({
-                                        value: state,
-                                        label: state,
-                                    }))}
-                                    styles={styles}
-                                />
-                            </div>
-                            <div className="signup-input-container">
-                                <div className="signup-input-head">
-                                    College City*{" "}
-                                    {cities.length !== 0 ? (
-                                        ""
-                                    ) : (
-                                        <div className="looader">
-                                            <BeatLoader
-                                                color={"#93ffd8"}
-                                                loading={loading}
-                                                size={12}
-                                                aria-label="Loading Spinner"
-                                                data-testid="loader"
-                                            />
+                            {!usercollege ? (
+                                <>
+                                    <div className="signup-input-container">
+                                        <div className="signup-input-head">College State*</div>
+                                        <Select
+                                            className="signup-input-field"
+                                            name="state"
+                                            id="state"
+                                            placeholder="Choose State"
+                                            onChange={(selectedOption) => {
+                                                setLoading(true);
+                                                handleStateChange(selectedOption.value);
+                                                handleChange({
+                                                    target: { name: "state", value: selectedOption.value },
+                                                });
+                                            }}
+                                            required
+                                            options={states.map((state) => ({
+                                                value: state,
+                                                label: state,
+                                            }))}
+                                            styles={styles}
+                                        />
+                                    </div>
+                                    <div className="signup-input-container">
+                                        <div className="signup-input-head">
+                                            College City*{" "}
+                                            {cities.length !== 0 ? (
+                                                ""
+                                            ) : (
+                                                <div className="looader">
+                                                    <BeatLoader
+                                                        color={"#93ffd8"}
+                                                        loading={loading}
+                                                        size={12}
+                                                        aria-label="Loading Spinner"
+                                                        data-testid="loader"
+                                                    />
+                                                </div>
+                                            )}
                                         </div>
-                                    )}
-                                </div>
-                                <Select
-                                    className="signup-input-field"
-                                    name="city"
-                                    id="city"
-                                    // required
-                                    styles={styles}
-                                    onChange={(e) => {
-                                        setLoading2(true);
-                                        handleCityChange(e.value);
-                                        handleChange({
-                                            target: { name: "city", value: e.value },
-                                        });
-                                    }}
-                                    required
-                                    options={cities.map((state) => ({
-                                        value: state,
-                                        label: state,
-                                    }))}
-                                >
-                                    <option value="">Choose City </option>
-                                    {cities.length !== 0 ? (
-                                        cities.map((city, inx) => {
-                                            return (
-                                                <option key={inx} value={city}>
-                                                    {city}{" "}
-                                                </option>
-                                            );
-                                        })
-                                    ) : (
-                                        <option value="">Select state first</option>
-                                    )}
-                                </Select>
-                            </div>
+                                        <Select
+                                            className="signup-input-field"
+                                            name="city"
+                                            id="city"
+                                            // required
+                                            styles={styles}
+                                            onChange={(e) => {
+                                                setLoading2(true);
+                                                handleCityChange(e.value);
+                                                handleChange({
+                                                    target: { name: "city", value: e.value },
+                                                });
+                                            }}
+                                            required
+                                            options={cities.map((state) => ({
+                                                value: state,
+                                                label: state,
+                                            }))}
+                                        >
+                                            <option value="">Choose City </option>
+                                            {cities.length !== 0 ? (
+                                                cities.map((city, inx) => {
+                                                    return (
+                                                        <option key={inx} value={city}>
+                                                            {city}{" "}
+                                                        </option>
+                                                    );
+                                                })
+                                            ) : (
+                                                <option value="">Select state first</option>
+                                            )}
+                                        </Select>
+                                    </div>
+                                </>) : (<></>)}
                             <div className="signup-input-container">
                                 <div className="signup-input-head">
                                     College Name*{" "}
@@ -368,7 +364,7 @@ const Signup = () => {
                                     classNamePrefix="college"
                                     name="college"
                                     id="college"
-                                    value={formData.college_ID}
+                                    value={usercollege ? { label: usercollege, value: usercollege } : colleges.find(item => item.college_ID === formData.college)}
                                     placeholder="Choose College"
                                     onChange={(e) => {
                                         handleChange({
@@ -428,12 +424,9 @@ const Signup = () => {
                             </div>
                         </div>
                         <div className="signup-submit">
-                            <button type="submit">Sign up</button>
+                            <button type="submit" onClick={() => handlesubmit()} >Sign up</button>
                         </div>
                     </form>
-                </div>
-                <div className="signup-footer">
-                    {/* <Footer /> */}
                 </div>
             </div>
         </>
