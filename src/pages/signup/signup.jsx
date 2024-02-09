@@ -58,6 +58,9 @@ const Signup = () => {
         referral_id: "",
         category: "",
     });
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [category, setCategory] = useState("");
     const [usercollege, setUserCollege] = useState("IIT Delhi");
     useEffect(() => {
         const code = new URLSearchParams(window.location.search).get("code");
@@ -77,14 +80,10 @@ const Signup = () => {
             )
                 .then((response) => {
                     const data = response.data.userdetails;
-                    setFormData((prevFormData) => ({
-                        ...prevFormData,
-                        name: data['name'],
-                        email: data['email'],
-                        category: data['category'],
-                        college: '4570',
-                    }));
-                    console.log(formData);
+                    setCategory(data['category']);
+                    setEmail(data['email']);
+                    setName(data['name']);
+                    console.log(name, email, category);
                     setUserCollege('IIT Delhi');
                 }).catch((error) => {
                     console.log(error);
