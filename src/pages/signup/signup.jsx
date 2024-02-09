@@ -83,8 +83,6 @@ const Signup = () => {
                     setCategory(data['category']);
                     setEmail(data['email']);
                     setName(data['name']);
-                    console.log(name, email, category);
-                    console.log(data);
                     setUserCollege('IIT Delhi');
                 }).catch((error) => {
                     console.log(error);
@@ -93,13 +91,14 @@ const Signup = () => {
             alert("Invalid Login");
         }
     }, [navigate]);
+
     useEffect(() => {
         setFormData((prevFormData) => ({
             ...prevFormData,
             name: name,
             email: email,
             category: category,
-            college: '4570'
+            college: '4570',
         }));
         console.log(formData);
     }, [name, email, category]);
