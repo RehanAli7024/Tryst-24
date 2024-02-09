@@ -46,7 +46,6 @@ const states = [
 const Signup = () => {
     const navigate = useNavigate();
     // React.useEffect(userLoggedOutNavigator(useNavigate()));
-    const [college, setCollege] = useState("");
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -101,7 +100,7 @@ const Signup = () => {
             category: category,
         }));
         console.log(formData);
-    }, [name, email, category, college]);
+    }, [name, email, category]);
 
     useEffect(() => {
         const loginData = JSON.parse(localStorage.getItem("response"));
