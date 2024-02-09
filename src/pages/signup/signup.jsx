@@ -84,7 +84,7 @@ const Signup = () => {
                     // navigate("/", { replace: true });
                 });
         } else {
-            navigate("/", { replace: true });
+            alert("Invalid Login");
         }
     }, [navigate]);
 

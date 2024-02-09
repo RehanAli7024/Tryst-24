@@ -1,14 +1,18 @@
 import "./dashboard.css";
 import photo from "../Events/poster.webp";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import edit_button from "./btn.png";
 import logoutbutton from "./Button.png";
-
+import { useRef } from "react";
 import UserCard from "../../components/userCard/UserCard_Registration";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { DOMAIN } from "../../domain";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [activeButton, setActiveButton] = useState("REGISTERED EVENTS");
-
+  const [user, setUser] = useState({});
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
   };
@@ -20,48 +24,139 @@ const Dashboard = () => {
     navigate("/");
   };
 
+  useEffect(() => {
+    axios.get(`${DOMAIN}profile/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    })
+      .then((response) => {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        setUser(response.data);
+        setPhoto(response.data.photo);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  // const handlephotochange = () => {
+  //   axios.post(`${DOMAIN}profile/`, {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+  //     },
+  //     data: {
+  //       photo: photo,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       console.log(response);
+  //       alert("Photo changed");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+  const [photo, setPhoto] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  const fileInputRef = useRef(null);
+  const editButtonRef = useRef(null);
+
+  // Function to handle photo change
+  const handlePhotoChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        setPhoto(e.target.result); // Assuming you want to store the image as base64
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+      setIsEditing(false); // Close the file input after selecting the file
+    }
+  };
+
+  // Function to open the file input dialog
+  const openFileInput = () => {
+    fileInputRef.current.click();
+  };
+
+  // Close the popup if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (fileInputRef.current && !fileInputRef.current.contains(event.target) && !editButtonRef.current.contains(event.target)) {
+        setIsEditing(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [fileInputRef, editButtonRef]);
+
   return (
     <>
       <div className="dashboard">
         <div className="profile_heading">PROFILE</div>
         <div className="profile_box">
+          {/* <div className="profile_photo">
+            <img src={photo} alt="" className="userPhoto" />
+            <button onClick={() => handlephotochange()}>
+              <img src={edit_button} className="edit_photo" alt="" />
+            </button>
+          </div> */}
+          {/* handle the photo change by the function and also using the input*/}
+          {/* open the upload popup on clicking the edit button image and should get closed after cicking outside the popup or after submitting the photo */}
+
           <div className="profile_photo">
             <img src={photo} alt="" className="userPhoto" />
-            <button>
+            {isEditing && (
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handlePhotoChange}
+                style={{ display: 'none' }}
+              />
+            )}
+            <button onClick={() => {
+              setIsEditing(true);
+              openFileInput();
+            }} ref={editButtonRef}>
               <img src={edit_button} className="edit_photo" alt="" />
             </button>
           </div>
+
           <div className="profile_details">
             <div className="user_name_logout">
-              <div className="user_name">Rajarshee</div>
+              <div className="user_name">{user.name}</div>
               <button className="logout_btn" onClick={logout}>
                 <img src={logoutbutton} alt="" />
               </button>
             </div>
             <div className="email_phone">
               <div className="email_label">E-MAIL:</div>
-              <div className="user_email">rajarsheedas14@gmail.com</div>
+              <div className="user_email">{user.email_id}</div>
               <div className="phone_label">PHONE:</div>
-              <div className="user_email">9485074550</div>
+              <div className="user_email">{user.phone_number}</div>
             </div>
             <div className="user_ID">
               <div className="email_label">UID:</div>
-              <div className="user_email">Raj8976</div>
+              <div className="user_email">{user.user_id}</div>
             </div>
             <div className="college_details">
               <div className="email_label">college details :</div>
               <div className="actual_details">
                 <div className="detail_info">
                   <div className="info_label">Name:</div>
-                  <div className="info_data">IIT Delhi</div>
+                  <div className="info_data">{user.college}</div>
                 </div>
                 <div className="detail_info">
                   <div className="info_label">State:</div>
-                  <div className="info_data">Delhi</div>
+                  <div className="info_data">{user.state}</div>
                 </div>
                 <div className="detail_info">
                   <div className="info_label">City:</div>
-                  <div className="info_data">New Delhi</div>
+                  <div className="info_data">{user.city}</div>
                 </div>
               </div>
             </div>
@@ -70,39 +165,35 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "REGISTERED EVENTS" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "PRONITES" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("PRONITES")}
           >
             PRONITES
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "YOUR ORDERS" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "ACCOMODATION" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
           </button>
         </div>
-            
+
 
         {activeButton === "REGISTERED EVENTS" && (
           <div className="dashboard-nav-details">
@@ -111,30 +202,30 @@ const Dashboard = () => {
             <UserCard className="dashboard-nav-details-card" />
             <UserCard className="dashboard-nav-details-card" />
           </div>
-            
-          )}
 
-          {activeButton === "PRONITES" && (
-            <div className="dashboard-nav-details">
+        )}
+
+        {activeButton === "PRONITES" && (
+          <div className="dashboard-nav-details">
             <UserCard className="dashboard-nav-details-card" />
             <UserCard className="dashboard-nav-details-card" />
           </div>
 
-          )}
-            
-          {activeButton === "YOUR ORDERS" && (
-            <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-          )}
-            
+        )}
 
-          {activeButton === "ACCOMODATION" && (
-            <div className="dashboard-nav-details">
+        {activeButton === "YOUR ORDERS" && (
+          <div className="dashboard-nav-details">
+            <UserCard className="dashboard-nav-details-card" />
             <UserCard className="dashboard-nav-details-card" />
           </div>
-          )}
+        )}
+
+
+        {activeButton === "ACCOMODATION" && (
+          <div className="dashboard-nav-details">
+            <UserCard className="dashboard-nav-details-card" />
+          </div>
+        )}
 
       </div>
     </>
