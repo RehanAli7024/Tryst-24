@@ -84,7 +84,6 @@ const Signup = () => {
                     setCategory(data['category']);
                     setEmail(data['email']);
                     setName(data['name']);
-                    setCollege('4570');
                     setUserCollege('IIT Delhi');
                 }).catch((error) => {
                     console.log(error);
@@ -100,7 +99,6 @@ const Signup = () => {
             name: name,
             email: email,
             category: category,
-            college: college,
         }));
         console.log(formData);
     }, [name, email, category, college]);
