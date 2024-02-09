@@ -46,6 +46,18 @@ const states = [
 const Signup = () => {
     const navigate = useNavigate();
     // React.useEffect(userLoggedOutNavigator(useNavigate()));
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        college: "",
+        college_name: "",
+        instagram_ID: "",
+        linkedIn_Link: "",
+        photo: "",
+        referral_id: "",
+        category: "",
+    });
     const [usercollege, setUserCollege] = useState("IIT Delhi");
     useEffect(() => {
         const code = new URLSearchParams(window.location.search).get("code");
@@ -115,18 +127,6 @@ const Signup = () => {
         e.preventDefault();
     };
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        college: "",
-        college_name: "",
-        instagram_ID: "",
-        linkedIn_Link: "",
-        photo: "",
-        referral_id: "",
-        category: "",
-    });
     const handleChange = (e) => {
         setFormData((prevFormData) => ({
             ...prevFormData,
