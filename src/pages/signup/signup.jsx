@@ -116,7 +116,6 @@ const Signup = () => {
         }
     }, []);
     const handlesubmit = (e) => {
-        console.log(formData);
         axios
             .post(`${DOMAIN}profile/`, formData)
             .then((response) => {
@@ -431,7 +430,7 @@ const Signup = () => {
                             </div>
                         </div>
                         <div className="signup-submit">
-                            <button type="submit" onClick={() => handlesubmit()} >Sign up</button>
+                            <button type="submit" >Sign up</button>
                         </div>
                     </form>
                 </div>
