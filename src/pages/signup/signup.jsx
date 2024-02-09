@@ -84,6 +84,7 @@ const Signup = () => {
                     setEmail(data['email']);
                     setName(data['name']);
                     console.log(name, email, category);
+                    console.log(data);
                     setUserCollege('IIT Delhi');
                 }).catch((error) => {
                     console.log(error);
