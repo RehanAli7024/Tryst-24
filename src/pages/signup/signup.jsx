@@ -64,7 +64,7 @@ const Signup = () => {
                 }
             )
                 .then((response) => {
-                    console.log(response.data);
+                    console.log(response.data.userdetails);
                     setFormData((prevFormData) => ({
                         ...prevFormData,
                         name: response.data.userdetails.name,
