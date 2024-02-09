@@ -65,13 +65,12 @@ const Signup = () => {
             )
                 .then((response) => {
                     const data = response.data.userdetails;
-                    console.log(data['name'], data['email'], data['category']);
                     setFormData((prevFormData) => ({
                         ...prevFormData,
-                        name: response.data.userdetails['name'],
-                        email: response.data.userdetails['email'],
+                        name: data['name'],
+                        email: data['email'],
+                        category: data['category'],
                         college: '4570',
-                        category: response.data.userdetails['category'],
                     }));
                     console.log(formData);
                     setUserCollege('IIT Delhi');
