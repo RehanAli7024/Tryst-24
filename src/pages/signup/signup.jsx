@@ -46,7 +46,7 @@ const states = [
 const Signup = () => {
     const navigate = useNavigate();
     // React.useEffect(userLoggedOutNavigator(useNavigate()));
-    
+    const [college, setCollege] = useState("");
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -81,13 +81,10 @@ const Signup = () => {
             )
                 .then((response) => {
                     const data = response.data.userdetails;
-                    setFormData((prevFormData) => ({
-                        ...prevFormData,
-                        college: '4570',
-                    }));
                     setCategory(data['category']);
                     setEmail(data['email']);
                     setName(data['name']);
+                    setCollege('4570');
                     setUserCollege('IIT Delhi');
                 }).catch((error) => {
                     console.log(error);
@@ -103,9 +100,10 @@ const Signup = () => {
             name: name,
             email: email,
             category: category,
+            college: college,
         }));
         console.log(formData);
-    }, [name, email, category]);
+    }, [name, email, category, college]);
 
     useEffect(() => {
         const loginData = JSON.parse(localStorage.getItem("response"));
