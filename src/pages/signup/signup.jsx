@@ -93,6 +93,15 @@ const Signup = () => {
             alert("Invalid Login");
         }
     }, [navigate]);
+    useEffect(() => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            name: name,
+            email: email,
+            category: category,
+        }));
+        console.log(formData);
+    }, [name, email, category]);
 
     useEffect(() => {
         const loginData = JSON.parse(localStorage.getItem("response"));
