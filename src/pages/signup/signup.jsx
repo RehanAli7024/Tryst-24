@@ -117,6 +117,10 @@ const Signup = () => {
     }, []);
     const handlesubmit = (e) => {
         console.log(formData);
+        if (formData.college === "") {
+            alert("Please select college");
+            return;
+        }
         axios
             .post(`${DOMAIN}profile/`, formData)
             .then((response) => {
