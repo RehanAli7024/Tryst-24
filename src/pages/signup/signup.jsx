@@ -159,15 +159,25 @@ const Signup = () => {
     const [cities, setCities] = useState([]);
     const [colleges, setColleges] = useState([]);
     const styles = {
+        // FontFamily: "Rajdhani",
+        // placeholder: (provided, state) => ({
+        //     ...provided,
+        //     FontFamily: "Rajdhani",
+        //     color: "white",
+        //     backgroundColor: "#00E0FF1A",
+        //     borderRadius: "0px",
+        // }),
         option: (provided, state) => ({
             ...provided,
+            FontFamily: "Rajdhani",
             fontWeight: "normal",
             color: "white",
-            backgroundColor: "#232731",
+            backgroundColor: "#00E0FF1A",
             borderRadius: "0px",
         }),
         singleValue: (provided, state) => ({
             ...provided,
+            FontFamily: "Rajdhani",
             color: "white",
             borderRadius: "0px",
         }),
@@ -175,18 +185,21 @@ const Signup = () => {
             window.innerWidth > 768
                 ? {
                     ...provided,
-                    backgroundColor: "#232731",
-                    borderLeft: "5px solid #A6D3FD",
+                    FontFamily: "Rajdhani",
+                    fontWeight: "normal",
+                    backgroundColor: "#00E0FF1A",
+                    borderLeft: "2px solid skyblue",
                     borderRadius: "0px",
-                    width: "80%",
+                    width: "90%",
                     paddingLeft: "4px",
                     paddingTop: "5px",
                     paddingBottom: "5px",
                 }
                 : {
                     ...provided,
-                    backgroundColor: "#232731",
-                    borderLeft: "5px solid #A6D3FD",
+                    FontFamily: "Rajdhani",
+                    backgroundColor: "#00E0FF1A",
+                    borderLeft: "2px solid skyblue",
                     borderRadius: "0px",
                     width: "100%",
                     paddingLeft: "4px",
@@ -195,21 +208,25 @@ const Signup = () => {
                 },
         control: (provided, state) => ({
             ...provided,
-            backgroundColor: "#232731",
+            FontFamily: "Rajdhani",
+            backgroundColor: "rgba(0, 224, 255, 0)",
             border: "none",
-            color: "white",
+            color: "red",
             borderRadius: "0px",
         }),
         placeholder: (provided, state) => ({
             ...provided,
+            FontFamily: "Rajdhani",
             border: "none",
             color: "white",
             borderRadius: "0px",
+            backgroundColor: "skyblue",
         }),
         menu: (provided, state) => ({
             ...provided,
             border: "none",
-            backgroundColor: "#232731",
+            FontFamily: "Rajdhani",
+            backgroundColor: "rgba(0, 224, 255, 0)",
             borderRadius: "0px",
         }),
         input: (provided, state) => ({
@@ -243,6 +260,7 @@ const Signup = () => {
                                 <input
                                     className="signup-input-field"
                                     type="text"
+                                    id = "name"
                                     name="name"
                                     value={formData.name}
                                     readOnly={formData.name ? true : false}
@@ -407,25 +425,35 @@ const Signup = () => {
                             <div className="signup-input-container">
                                 <div className="signup-input-head">Instagram Handle</div>
                                 <input
-                                    className="signup-input-field"
+                                    className={`signup-input-field signup-input-field-instagram ${formData.instagram_ID !== '' ? 'signup-input-field-non-empty' : ''}`}
                                     type="text"
                                     name="instagram_ID"
                                     value={formData.instagram_ID}
                                     onChange={handleChange}
-                                    placeholder="Instagram Username"
-
+                                    placeholder=""
                                 />
                             </div>
                             <div className="signup-input-container">
                                 <div className="signup-input-head">LinkedIn Handle</div>
                                 <input
-                                    className="signup-input-field"
+                                    className={`signup-input-field signup-input-field-linkedin ${formData.linkedIn_Link !== '' ? 'signup-input-field-non-empty' : ''}`}
                                     type="url"
                                     name="linkedIn_Link"
                                     value={formData.linkedIn_Link}
                                     onChange={handleChange}
-                                    placeholder="https://www.linkedin.com/in/"
+                                    placeholder=""
 
+                                />
+                            </div>
+                            <div className="signup-input-container">
+                                <div className="signup-input-head signup-input-head-referral">CA Referral ID</div>
+                                <input
+                                    className="signup-input-field signup-input-field-referral"
+                                    type="url"
+                                    name="referral_id"
+                                    value={formData.referral_id}
+                                    onChange={handleChange}
+                                    placeholder="TRCXXXXX"
                                 />
                             </div>
                         </div>
