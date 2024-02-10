@@ -194,6 +194,7 @@ const Dashboard = () => {
           </button>
         </div>
 
+        
 
         {/* {activeButton === "REGISTERED EVENTS" && (
           <div className="dashboard-nav-details">
