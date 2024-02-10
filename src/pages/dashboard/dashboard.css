@@ -292,9 +292,18 @@
   }
 
   .dashboard-nav {
-    flex-direction: column;
+    display: flex; /* Make the buttons flex items */
+   overflow-x: auto; /* Enable horizontal scrolling */
+   -webkit-overflow-scrolling: touch;
+   -ms-overflow-style: none;
     align-items: center;
-    gap: 3vh;
+    padding-left: 43%;
+    justify-content: center;
+    padding-left: 40%;
+    width: 100%;
+  }
+  .dashboard-nav::-webkit-scrollbar{
+    display: none;
   }
   .dashboard-nav-button {
     width: 50%;
