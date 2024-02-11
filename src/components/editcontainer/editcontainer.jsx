@@ -16,7 +16,7 @@ export default function PopupContainertoedit({
 }) {
     const [eventFormTitle, setEventFormTitle] = useState("eventDetails");
     const [isOpen, setIsOpen] = useState(false);
-    const [isEventSubmitted, setIsEventSubmitted] = useState(false);
+    const [isEventSubmitted, setIsEventSubmitted] = useState(true);
     const [activeButton, setActiveButton] = useState("eventDetails");
 
     const handleTitleChange = (eventType) => {
@@ -82,8 +82,7 @@ export default function PopupContainertoedit({
                         )}
 
                     {eventFormTitle === "editregistrationForm" &&
-                        selectedEventType === "competitions" &&
-                        isEventSubmitted === true && <EditCompetitionRegistration />}
+                        selectedEventType === "competitions" && <EditCompetitionRegistration />}
 
                     {eventFormTitle === "registrationForm" &&
                         selectedEventType === "workshops" &&

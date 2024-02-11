@@ -45,7 +45,7 @@ export default function EditCompetitionEvent({
                 alert("Event edited successfully");
                 setEventFormTitle("editregistrationForm");
                 setIsEventSubmitted(true);
-                setIsSubmitted(true);
+                setIsSubmitted(true);    
             })
             .catch((err) => {
                 console.log(err);

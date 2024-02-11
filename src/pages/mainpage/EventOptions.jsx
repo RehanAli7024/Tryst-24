@@ -4,7 +4,6 @@ import "./eventOptions.css";
 import PopupContainer from "../../overlays/popups/PopupContainer";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
-import { ReactSession } from "react-client-session";
 import PopupContainertoedit from "../../components/editcontainer/editcontainer";
 
 
@@ -91,9 +90,6 @@ export default function EventOptions() {
         </div>
       </div>
       <div className="event-cards">
-        {/* {selectedImages.map((imageSrc, index) => (
-          <img key={index} src={imageSrc} alt={`event-${index + 1}`} />
-        ))} */}
         {selectedEventDetails.map((prop, index) => (
           <div key={index}>
             <div className="event-card">
@@ -102,7 +98,6 @@ export default function EventOptions() {
               </div>
               <div className="event-card-details">
                 <h3>{prop.title}</h3>
-                <p>{prop.description}</p>
                 <button
                   onClick={() => {
                     setEditPopupIsOpen(true);
