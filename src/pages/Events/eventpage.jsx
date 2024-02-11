@@ -6,7 +6,8 @@ import description from "./description.svg";
 import arrow_forward from "./arrow_forward.svg";
 import arrow_downward from "./arrow_downward.svg";
 import EventCard from "../../components/EventCard/EventCard";
-const EventPage = () => {
+
+const EventPage = ({ event }) => {
   const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
   const toggleDiv = () => {
@@ -21,7 +22,7 @@ const EventPage = () => {
         <div className="event_container grid grid-cols-2 gap-4">
           <div className="col-span-2 md:col-span-1 event_poster">
             <div className="ev_poster">
-              <EventCard />
+              <EventCard image={event.event_image} />
             </div>
             <div className="fil_con" id="ev_page_fil_con">
               <div className="filter_btn">
@@ -31,20 +32,8 @@ const EventPage = () => {
             </div>
           </div>
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
-            <div className="event_title">Stratmart</div>
-            <div className="event_para_1">
-              Thought you are the most strategic amongst your friends? Now is
-              the chance to prove your mettle.
-            </div>
-            <div className="event_para_1">
-              Tryst, IIT Delhi in partnership with Graphite GTC, presents you
-              team based strategy game where you plan out your business strategy
-              that is unfathomable by your competitors. Juice out the maximum
-              profit and make the competition "bite the dust".
-            </div>
-            <div className="event_para_1">
-              Huge prizes of worth ₹25,000 await you. Register Now!!
-            </div>
+            <div className="event_title">{event.title}</div>
+            <div className="event_para_1">{event.description}</div>
             <div className="event_details">
               <div className="event_date">
                 <svg
@@ -72,7 +61,7 @@ const EventPage = () => {
                     />
                   </g>
                 </svg>
-                <p>15-02-2023</p>
+                <p>{event.event_date}</p>
               </div>
               <div className="event_time">
                 <svg
@@ -100,7 +89,7 @@ const EventPage = () => {
                     />
                   </g>
                 </svg>
-                <p>3:00PM</p>
+                <p>{event.event_time}</p>
               </div>
               <div className="event_location">
                 <svg
@@ -115,7 +104,7 @@ const EventPage = () => {
                     fill="#E086D3"
                   />
                 </svg>
-                <p>LH111</p>
+                <p>{event.venue}</p>
               </div>
             </div>
             <div className="ev_contact_information grid grid-cols-2">
@@ -141,14 +130,12 @@ const EventPage = () => {
               </div>
               <div className="POC_box">
                 <div className="ev_contact_text">CONTACT</div>
-                <div className="ev_POC">
-                  <div className="ev_poc_name">Sarthak</div>
-                  <div className="ev_poc_contact">8789371873</div>
-                </div>
-                <div className="ev_POC">
-                  <div className="ev_poc_name">Not Sarthak</div>
-                  <div className="ev_poc_contact">8789371873</div>
-                </div>
+                {event.contact.map((poc, index) => (
+                  <div className="ev_POC" key={index}>
+                    <div className="ev_poc_name">{poc.name}</div>
+                    <div className="ev_poc_contact">{poc.phone}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -158,33 +145,6 @@ const EventPage = () => {
             <div className="ev_reg_form_heading">Registration Form</div>
             <div className="formParent">
               <form action="" className="ev_form_container">
-                <div className="ev_input_field">
-                  <div className="ev_form_heading">Your Name*</div>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    className="ev_inputbox"
-                    required
-                  />
-                </div>
-                <div className="ev_input_field">
-                  <div className="ev_form_heading">Email-ID*</div>
-                  <input
-                    type="text"
-                    placeholder="Email-ID"
-                    className="ev_inputbox"
-                    required
-                  />
-                </div>
-                <div className="ev_input_field">
-                  <div className="ev_form_heading">College*</div>
-                  <input
-                    type="text"
-                    placeholder="College"
-                    className="ev_inputbox"
-                    required
-                  />
-                </div>
                 <div className="ev_input_field">
                   <div className="ev_form_heading">Team Member 2 UID*</div>
                   <input

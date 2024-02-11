@@ -7,13 +7,14 @@ import axios from 'axios';
 import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
 import { useRef } from 'react';
 
-function CompetitionRegistration({ setRegistrationOpen, eventid }) {
+function CompetitionRegistration({ setRegistrationOpen }) {
   const [payload, setPayload] = useState({});
   const [editpayload, setEditPayload] = useState({});
   const [formData, setFormData] = useState({
     acceptingResponses: true,
-    event_id: '2',
+    event_id: localStorage.getItem('id'),
     formFields: [],
+    type: 'competition'
   });
 
   const [showNewField, setShowNewField] = useState(false);
@@ -58,7 +59,7 @@ function CompetitionRegistration({ setRegistrationOpen, eventid }) {
 
 
   const handleSave = () => {
-
+    localStorage.removeItem('id');
     const token = localStorage.getItem('admin_access_token');
     console.log(formData);
     axios

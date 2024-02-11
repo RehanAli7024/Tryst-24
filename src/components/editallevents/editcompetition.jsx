@@ -12,7 +12,8 @@ export default function EditCompetitionEvent({
     setEventFormTitle,
     eventDetails
 }) {
-    // contactPersons length is set from the eventdetails prop passed from the parent component 
+    // contactPersons length is set from the eventdetails prop passed from the parent component
+    localStorage.setItem("id", eventDetails.event_id);
     const [contactPersons, setcontactPerosns] = useState(eventDetails.contact.length);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [registrationOpen, setRegistrationOpen] = useState(false);
@@ -37,14 +38,11 @@ export default function EditCompetitionEvent({
         console.log(formData);
         setFormData({ ...formData, contactPersons: constactPersonDetails });
         e.preventDefault();
-        const token = ReactSession.get("admin_access_token");
-        console.log(token);
-        console.log(formData);
+        const token = localStorage.getItem("admin_access_token");
         axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
             .then((res) => {
                 console.log(res);
-                alert("Event submitted successfully");
-                localStorage.setItem("id", res.data.event_id);
+                alert("Event edited successfully");
                 setEventFormTitle("editregistrationForm");
                 setIsEventSubmitted(true);
                 setIsSubmitted(true);
@@ -62,6 +60,8 @@ export default function EditCompetitionEvent({
         contactPersons: [],
         ruleBook: eventDetails.rulebook,
         file: eventDetails.event_image,
+        editedform: true,
+        event_id: eventDetails.event_id
     });
 
     const [constactPersonDetails, setcontactPerosnDetails] = useState(eventDetails.contact);

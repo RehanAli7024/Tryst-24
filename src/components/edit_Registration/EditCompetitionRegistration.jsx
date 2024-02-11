@@ -7,12 +7,13 @@ import axios from 'axios';
 import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
 import { useRef } from 'react';
 
-function EditCompetitionRegistration({ setRegistrationOpen}) {
+function EditCompetitionRegistration({ setRegistrationOpen }) {
+  console.log('Editing the competition registration form');
   const [payload, setPayload] = useState({});
   const [editpayload, setEditPayload] = useState({});
   const [formData, setFormData] = useState({
     acceptingResponses: true,
-    event_id: '2',
+    event_id: localStorage.getItem('id'),
     formFields: [],
   });
   console.log(setRegistrationOpen);

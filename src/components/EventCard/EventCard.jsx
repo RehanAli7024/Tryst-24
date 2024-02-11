@@ -8,10 +8,9 @@ import EventcardbgHover from "../../assets/event_cards/Event_Card_bg_hover.svg";
 import bottomvectorHover from "../../assets/event_cards/Event_Card_bottom_vector_hover.svg";
 import { useState } from "react";
 
-export default function EventCard() {
+export default function EventCard({ image }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -44,7 +43,8 @@ export default function EventCard() {
         className="event-card-bg"
       />
       <div className="event-card-img" style={{ left: leftStyle }}>
-        <img src={demo} alt="event card background" />
+        {/* put condition if event_image is there then only render it */}
+        <img src={image} alt="event" />
       </div>
       <div className="event-card-top-vector">
         <img

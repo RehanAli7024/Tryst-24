@@ -29,6 +29,7 @@ export default function PopupContainer({
     setEventFormTitle("eventDetails");
     setIsEventSubmitted(false);
     setActiveButton("eventDetails");
+    localStorage.removeItem("id");
   };
 
   const handleEventFormSubmit = () => {

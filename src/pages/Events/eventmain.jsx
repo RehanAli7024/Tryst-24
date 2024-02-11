@@ -1,6 +1,5 @@
 import "./eventmain.css";
-import eventposter from "./eventposter.png";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import search_icon from "./search.svg";
 import arrowRight from "./arrow_right.svg";
 import close from "./close.svg";
@@ -8,6 +7,9 @@ import tune from "./tune.svg";
 import unticked from "../../assets/Events/checkbox.webp";
 import ticked from "../../assets/Events/checkbox_ticked.webp";
 import EventCard from "../../components/EventCard/EventCard";
+import axios from "axios";
+import { DOMAIN } from "../../domain";
+import { Link, useNavigate } from "react-router-dom";
 
 const Types = [
   { index: 1, name: "Competitions", },
@@ -25,9 +27,10 @@ const Clubs = [
 ];
 
 const EventMain = () => {
+  const navigate = useNavigate();
   const [type, setType] = useState(true);
   const [club, setClub] = useState(true);
-
+  const [eventarray, setEventarray] = useState([]);
   const [typeSelected, setTypeSelected] = useState([]);
   const [clubSelected, setClubSelected] = useState([]);
   const myStyle = {
@@ -35,6 +38,21 @@ const EventMain = () => {
   };
   const [rotate1, setRotate1] = useState(false);
   const [rotate2, setRotate2] = useState(false);
+
+
+  useEffect(() => {
+    axios.get(`${DOMAIN}allevents/`)
+      .then((response) => {
+        setEventarray(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log(eventarray.competitions);
+  }, [eventarray]);
 
   const handleTypeChange = () => {
     setType(!type);
@@ -226,17 +244,16 @@ const EventMain = () => {
               </div>
             </div>
           </div>
-          <div className="events">
-            <div className="events_card"><EventCard /></div>
-            <div className="events_card"><EventCard /></div>
-            <div className="events_card"><EventCard /></div>
-            <div className="events_card"><EventCard /></div>
-            <div className="events_card"><EventCard /></div>
-            <div className="events_card"><EventCard /></div>
-            <div className="events_card"><EventCard /></div>
+          <div className="event_cards">
+            {/* when this card is clicked the page navigates to that route */}
+            {eventarray.competitions && eventarray.competitions.map((event, index) => (
+                <Link to={`/events/${event.title}`} key={index}>
+                  <EventCard image={event.event_image} />
+                </Link>
+            ))}
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };

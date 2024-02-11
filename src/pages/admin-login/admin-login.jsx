@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
 import "./adminlogin.css";
-// import logo from "../../../assets/Frame 78.png";
-// import doodle from "../../../assets/illustration.png";
-import { ReactSession } from "react-client-session";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -20,7 +17,6 @@ function AdminLogin() {
     // adminLoggedOutNavigator(navigate);
   }, [navigate]);
 
-  ReactSession.setStoreType("localStorage");
   const loginSchema = Yup.object().shape({
     username: Yup.string()
       .required("username is a required field"),
@@ -34,15 +30,13 @@ function AdminLogin() {
       initialValues,
       validationSchema: loginSchema,
 
-      onSubmit: (values) => {
+      onSubmit: (values) => { 
         axios
           .post(`${DOMAIN}adminlogin/`, values)
           .then((response) => {
-            ReactSession.set("admin_access_token", response.data.tokens.access);
-            ReactSession.set(
-              "admin_refresh_token",
-              response.data.tokens.refresh
-            );
+            console.log(response.data);
+            localStorage.setItem("admin_access_token", response.data.tokens.access);
+            localStorage.setItem("admin_refresh_token", response.data.tokens.refresh);
             navigate("/mainpage", { replace: true });
           })
           .catch((err) => {

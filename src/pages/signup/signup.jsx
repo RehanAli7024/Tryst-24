@@ -58,6 +58,7 @@ const Signup = () => {
         referral_id: "",
         category: "",
     });
+    const [formissubmitted, setFormissubmitted] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [category, setCategory] = useState("");
@@ -88,19 +89,21 @@ const Signup = () => {
                     console.log(error);
                 });
         } else {
-            alert("Invalid Login");
+            setUserCollege('');
         }
     }, [navigate]);
 
     useEffect(() => {
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            name: name,
-            email: email,
-            category: category,
-        }));
-        console.log(formData);
-    }, [name, email, category]);
+        if (usercollege) {
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                name: name,
+                email: email,
+                category: category,
+            }));
+            console.log(formData);
+        }
+    }, [name, email, category, usercollege]);
 
     useEffect(() => {
         const loginData = JSON.parse(localStorage.getItem("response"));
@@ -116,12 +119,11 @@ const Signup = () => {
         }
     }, []);
     const handlesubmit = (e) => {
+        setFormissubmitted(true);
         axios
             .post(`${DOMAIN}profile/`, formData)
             .then((response) => {
-                console.log(response);
                 if (response.status === 201) {
-                    console.log(response);
                     localStorage.setItem("access_token", response.data.tokens.access);
                     localStorage.setItem("refresh_token", response.data.tokens.refresh);
                     localStorage.removeItem("response");
@@ -129,6 +131,7 @@ const Signup = () => {
                 }
             })
             .catch((err) => {
+                setFormissubmitted(false);
                 alert(err);
             });
         e.preventDefault();
@@ -159,14 +162,6 @@ const Signup = () => {
     const [cities, setCities] = useState([]);
     const [colleges, setColleges] = useState([]);
     const styles = {
-        // FontFamily: "Rajdhani",
-        // placeholder: (provided, state) => ({
-        //     ...provided,
-        //     FontFamily: "Rajdhani",
-        //     color: "white",
-        //     backgroundColor: "#00E0FF1A",
-        //     borderRadius: "0px",
-        // }),
         option: (provided, state) => ({
             ...provided,
             FontFamily: "Rajdhani",
@@ -260,7 +255,7 @@ const Signup = () => {
                                 <input
                                     className="signup-input-field"
                                     type="text"
-                                    id = "name"
+                                    id="name"
                                     name="name"
                                     value={formData.name}
                                     readOnly={formData.name ? true : false}
@@ -336,7 +331,6 @@ const Signup = () => {
                                             className="signup-input-field"
                                             name="city"
                                             id="city"
-                                            // required
                                             styles={styles}
                                             onChange={(e) => {
                                                 setLoading2(true);
@@ -388,6 +382,7 @@ const Signup = () => {
                                     classNamePrefix="college"
                                     name="college"
                                     id="college"
+                                    // the usercollege is changed but the value is not changed on changing the usercollege
                                     value={usercollege ? { label: usercollege, value: usercollege } : colleges.find(item => item.college_ID === formData.college)}
                                     placeholder="Choose College"
                                     onChange={(e) => {
@@ -458,7 +453,9 @@ const Signup = () => {
                             </div>
                         </div>
                         <div className="signup-submit">
-                            <button type="submit" >Sign up</button>
+                            <button type="submit" disabled={formissubmitted}>
+                                {formissubmitted ? "Please Wait" : "Sign Up"}
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -14,6 +14,7 @@ export default function CompetitionEvent({
   const [contactPersons, setcontactPerosns] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [formisSubmitted, setFormIsSubmitted] = useState(false);
   ReactSession.setStoreType("localStorage");
   useEffect(() => {
     let handler = (e) => {
@@ -38,9 +39,8 @@ export default function CompetitionEvent({
   const handleSubmit = (e) => {
     setFormData({ ...formData, contactPersons: constactPersonDetails });
     e.preventDefault();
-    const token = ReactSession.get("admin_access_token");
-    console.log(token);
-    console.log(formData);
+    const token = localStorage.getItem("admin_access_token");
+    setFormIsSubmitted(true);
     axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
       .then((res) => {
         console.log(res);
@@ -101,153 +101,158 @@ export default function CompetitionEvent({
       className={`event-details ${isSubmitted ? "popup-hidden" : ""}`}
       ref={eventsRef}
     >
-      <form>
-        <div className="upload-picture">
-          <div className="custom-upload-container">
-            <label htmlFor="uploadInput" className="custom-upload-btn">
-              Upload
-            </label>
-            <input
-              id="uploadInput"
-              className="upload-pic-btn"
-              type="file"
-              onChange={handleChange}
-              name="file"
-            />
-          </div>
-          <div className="image-shown">
-            {/* {file && <img src={image} alt="Event" />} */}
-          </div>
-          <div className="image-guidelines">
-            <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
-            <p className="image-guidelines-text">Format: .jpg/ .jpeg/ .png</p>
-            <p className="image-guidelines-text">Size Limit: &lt;10MB</p>
-          </div>
+      {formisSubmitted ? (
+        <div className="loader-container">
+          <div className="loader"> Submitting the form and creating a spreadsheet for it</div>
         </div>
-
-        <div className="event-name">
-          <label className="label">EVENT TITLE*</label>
-          <br />
-          <input
-            onChange={handleChange}
-            className="input event-title"
-            value={formData.title}
-            type="text"
-            name="title"
-          />
-        </div>
-
-        <div className="event-description">
-          <label className="label">EVENT DESCRIPTION*</label>
-          <br />
-          <textarea
-            onChange={handleChange}
-            className="textarea event-description"
-            value={formData.description}
-            type="text"
-            name="description"
-            rows={7}
-          />
-        </div>
-        <div className="date-time-venue-container">
-          <div className="events-flex-column">
-            <label className="label">EVENT DATE*</label>
-            <br />
-            <input
-              onChange={handleChange}
-              className="input"
-              value={formData.event_date}
-              name="event_date"
-              type="date"
-            />
-          </div>
-          <div className="events-flex-column">
-            <label className="label">EVENT TIMING*</label>
-            <br />
-            <input
-              onChange={handleChange}
-              className="input"
-              value={formData.event_time}
-              name="event_time"
-              type="time"
-            />
-          </div>
-
-          <div className="events-flex-column">
-            <label className="label">EVENT VENUE*</label>
-            <br />
-            <input
-              onChange={handleChange}
-              className="input event-venue"
-              value={formData.venue}
-              name="venue"
-              type="text"
-            />
-          </div>
-        </div>
-
-        <div className="No-of-contact-person-container">
-          <div className="contact-person-details">
-            <p>Contact Person(s) Details*</p>
-          </div>
-          <div className="contact-persons-container">
-            <p>Contact Persons*</p>
-            <select
-              onChange={handlecontactPersonsChange}
-              value={contactPersons}
-            >
-              {[1, 2, 3, 4, 5, 6].map((num) => (
-                <option key={num} value={num}>
-                  {num}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {Array.from({ length: contactPersons }).map((_, index) => (
-          <div key={index} className="contact-details-container">
-            <div className="serial-no">
-              <p>{index + 1}.</p>
-            </div>
-            <div className="name-of-contact-person">
+      ) : (
+        <form>
+          <div className="upload-picture">
+            <div className="custom-upload-container">
+              <label htmlFor="uploadInput" className="custom-upload-btn">
+                Upload
+              </label>
               <input
-                id={`contactPersonName_${index}`}
+                id="uploadInput"
+                className="upload-pic-btn"
+                type="file"
+                onChange={handleChange}
+                name="file"
+              />
+            </div>
+            <div className="image-shown">
+              {/* {file && <img src={image} alt="Event" />} */}
+            </div>
+            <div className="image-guidelines">
+              <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
+              <p className="image-guidelines-text">Format: .jpg/ .jpeg/ .png</p>
+              <p className="image-guidelines-text">Size Limit: &lt;10MB</p>
+            </div>
+          </div>
+
+          <div className="event-name">
+            <label className="label">EVENT TITLE*</label>
+            <br />
+            <input
+              onChange={handleChange}
+              className="input event-title"
+              value={formData.title}
+              type="text"
+              name="title"
+            />
+          </div>
+
+          <div className="event-description">
+            <label className="label">EVENT DESCRIPTION*</label>
+            <br />
+            <textarea
+              onChange={handleChange}
+              className="textarea event-description"
+              value={formData.description}
+              type="text"
+              name="description"
+              rows={7}
+            />
+          </div>
+          <div className="date-time-venue-container">
+            <div className="events-flex-column">
+              <label className="label">EVENT DATE*</label>
+              <br />
+              <input
+                onChange={handleChange}
+                className="input"
+                value={formData.event_date}
+                name="event_date"
+                type="date"
+              />
+            </div>
+            <div className="events-flex-column">
+              <label className="label">EVENT TIMING*</label>
+              <br />
+              <input
+                onChange={handleChange}
+                className="input"
+                value={formData.event_time}
+                name="event_time"
+                type="time"
+              />
+            </div>
+
+            <div className="events-flex-column">
+              <label className="label">EVENT VENUE*</label>
+              <br />
+              <input
+                onChange={handleChange}
+                className="input event-venue"
+                value={formData.venue}
+                name="venue"
+                type="text"
+              />
+            </div>
+          </div>
+
+          <div className="No-of-contact-person-container">
+            <div className="contact-person-details">
+              <p>Contact Person(s) Details*</p>
+            </div>
+            <div className="contact-persons-container">
+              <p>Contact Persons*</p>
+              <select
+                onChange={handlecontactPersonsChange}
+                value={contactPersons}
+              >
+                {[1, 2, 3, 4, 5, 6].map((num) => (
+                  <option key={num} value={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {Array.from({ length: contactPersons }).map((_, index) => (
+            <div key={index} className="contact-details-container">
+              <div className="serial-no">
+                <p>{index + 1}.</p>
+              </div>
+              <div className="name-of-contact-person">
+                <input
+                  id={`contactPersonName_${index}`}
+                  className="input"
+                  type="text"
+                  onChange={(e) => handleInputChange(index, 'name', e.target.value)}
+                  placeholder="Name of Contact Person"
+                />
+              </div>
+              <div className="contact-number">
+                <input
+                  id={`contactPersonNumber_${index}`}
+                  className="input"
+                  type="tel"
+                  onChange={(e) => handleInputChange(index, 'phone', e.target.value)}
+                  placeholder="Contact Number"
+                  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                />
+              </div>
+            </div>
+          ))}
+          <div className="No-of-contact-person-container">
+            <div className="contact-person-details">
+              <p>RuleBook*</p>
+            </div>
+            <div className="contact-persons-container">
+              <input
+                name="ruleBook"
                 className="input"
                 type="text"
-                onChange={(e) => handleInputChange(index, 'name', e.target.value)}
-                placeholder="Name of Contact Person"
-              />
-            </div>
-            <div className="contact-number">
-              <input
-                id={`contactPersonNumber_${index}`}
-                className="input"
-                type="tel"
-                onChange={(e) => handleInputChange(index, 'phone', e.target.value)}
-                placeholder="Contact Number"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              />
+                onChange={handleChange}
+                value={formData.ruleBook} />
             </div>
           </div>
-        ))}
-        <div className="No-of-contact-person-container">
-          <div className="contact-person-details">
-            <p>RuleBook*</p>
-          </div>
-          <div className="contact-persons-container">
-            <input
-              name="ruleBook"
-              className="input"
-              type="text"
-              onChange={handleChange}
-              value={formData.ruleBook} />
-          </div>
-        </div>
-        <button onClick={handleSubmit} className="submit-button">
-          submit
-        </button>
-      </form>
+          <button onClick={handleSubmit} className="submit-button">
+            submit
+          </button>
+        </form>)}
     </div>
   );
 }
