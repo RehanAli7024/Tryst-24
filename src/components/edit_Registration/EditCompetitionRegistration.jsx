@@ -8,15 +8,38 @@ import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedF
 import { useRef } from 'react';
 
 function EditCompetitionRegistration({ setRegistrationOpen }) {
-  console.log('Editing the competition registration form');
+  useEffect(() => {
+    const token = localStorage.getItem('admin_access_token');
+    const eventId = localStorage.getItem('id');
+    const eventType = 'competition';
+    axios
+      .get(`${DOMAIN}registration/?event_id=${eventId}&event_type=${eventType}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      .then((res) => {
+        console.log(res.data);
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          formFields: res.data.formFields,
+        }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
   const [payload, setPayload] = useState({});
   const [editpayload, setEditPayload] = useState({});
   const [formData, setFormData] = useState({
     acceptingResponses: true,
     event_id: localStorage.getItem('id'),
+    event_type: 'competition',
     formFields: [],
+    editedresponse: true,
   });
-  console.log(setRegistrationOpen);
   const [showNewField, setShowNewField] = useState(false);
   const [showEditField, setShowEditField] = useState([false, null, null]);
 
@@ -58,24 +81,19 @@ function EditCompetitionRegistration({ setRegistrationOpen }) {
 
 
   const handleSave = () => {
-
     const token = localStorage.getItem('admin_access_token');
     console.log(formData);
+    console.log(token);
     axios
       .post(
-        `${DOMAIN}registration/`,
-        {
-          ...formData,
+        `${DOMAIN}registration/`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }
+      }
       )
       .then((res) => {
-        console.log(res);
+        console.log('All ok')
       })
       .catch((err) => {
         console.log(err);
@@ -83,6 +101,11 @@ function EditCompetitionRegistration({ setRegistrationOpen }) {
   };
 
   // DO NOT TOUCH THIS CODE
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
   const handleresponseChange = (name, value) => {
     // Check if the field is 'acceptingResponses' to handle boolean conversion
     if (name === 'acceptingResponses') {
@@ -91,7 +114,6 @@ function EditCompetitionRegistration({ setRegistrationOpen }) {
         [name]: value === 'Yes' // Convert 'Yes'/'No' to true/false
       }));
     } else {
-      // For other fields, use the value directly
       setFormData(prevState => ({
         ...prevState,
         [name]: value

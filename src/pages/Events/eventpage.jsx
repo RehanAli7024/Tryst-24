@@ -1,18 +1,69 @@
 import "./eventpage.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import poster from "./poster.webp";
 import { transform } from "framer-motion";
 import description from "./description.svg";
 import arrow_forward from "./arrow_forward.svg";
 import arrow_downward from "./arrow_downward.svg";
 import EventCard from "../../components/EventCard/EventCard";
+import axios from "axios";
+import { DOMAIN } from "../../domain";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const EventPage = ({ event }) => {
   const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
+  const token = localStorage.getItem("access_token");
+  const eventId = event.event_id;
+  const eventType = 'competition';
+  const [formFields, setFormFields] = useState([]);
+  const [formData, setFormData] = useState({
+    event_id: eventId,
+    event_type: eventType,
+    form: [],
+  });
   const toggleDiv = () => {
+    axios.get(`${DOMAIN}register/?event_id=${eventId}&event_type=${eventType}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+      .then((res) => {
+        console.log(res.data);
+        setFormFields(res.data.formFields);
+        const fields = {};
+        res.data.formFields.forEach((field) => {
+          fields[field.title] = "";
+        });
+        setFormData({ ...formData, form: fields });
+        setIsVisible(!isVisible);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setIsVisible(!isVisible);
   };
+
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    axios.post(`${DOMAIN}register/`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+      .then((res) => {
+        console.log(res.data);
+        navigate('/events');
+      })
+      .catch((err) => {
+        console.log(err);
+        setSubmitted(false);
+      });
+  }
+
   return (
     <>
       <div className="event_body ">
@@ -144,26 +195,102 @@ const EventPage = ({ event }) => {
           <div className="ev_formbox">
             <div className="ev_reg_form_heading">Registration Form</div>
             <div className="formParent">
-              <form action="" className="ev_form_container">
-                <div className="ev_input_field">
-                  <div className="ev_form_heading">Team Member 2 UID*</div>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    className="ev_inputbox"
-                    required
-                  />
+              <form action="" className="ev_form_container"
+              >
+                {formFields.map((field, index) => {
+                  return (
+                    <div key={index} className="ev_form_input">
+                      {field.type === "text" ? (
+                        <>
+                          {/* adjust the display of the fields and render it accordingly  */}
+                          <label>{field.title}</label>
+                          <input
+                            type="text"
+                            name={formData.form[field.title]}
+                            value={formData.form[field.title]}
+                            // on change the values of the input should be updated in the formData.form state of that key only
+                            onChange={(e) => {
+                              setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                            }}
+                          />
+                        </>
+                      ) : field.type === "radio" ? (
+                        <>
+                          <label>{field.title}</label>
+                          {/* the changes in the option should be updated in the formData state */}
+                          {field.options.map((option, index) => {
+                            return (
+                              <div key={index}>
+                                <input
+                                  type="radio"
+                                  name={formData.form[field.title]}
+                                  value={option}
+                                  onChange={(e) => {
+                                    setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                                  }}
+                                />
+                                <label>{option}</label>
+                              </div>
+                            );
+                          })}
+                        </>
+                      ) : field.type === "checkbox" ? (
+                        field.options.map((option, index) => {
+                          return (
+                            <div key={index}>
+                              <input
+                                type="checkbox"
+                                name={formData.form[field.title]}
+                                value={option}
+                                onChange={(e) => {
+                                  setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                                }}
+                              />
+                              <label>{option}</label>
+                            </div>
+                          );
+                        })
+                      ) : field.type === "team" ? (
+                        <>
+                          <label>{field.title}</label>
+                          <input type="text" />
+                        </>
+                      ) : (
+                        <>
+                          <label>{field.title}</label>
+                          <input
+                            type="file"
+                            name={formData.form[field.title]}
+                            value={formData.form[field.title]}
+                            onChange={(e) => {
+                              setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                            }}
+                          />
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
+                <div className="ev_form_submit">
+                  <div className="fil_con" id="ev_page_fil_con_3">
+                    {/* check with the state submitted to disable the button when it is true */}
+                    {submitted ? (
+                      <button className="filter_btn submited" disabled>
+                        Please Wait....
+                      </button>
+                    ) : (
+                      <button className="filter_btn" onClick={handleSubmit}>
+                        Register
+                      </button>
+                    )
+                    }
+                  </div>
                 </div>
               </form>
-              <div className="ev_form_submit">
-                <div className="fil_con" id="ev_page_fil_con_3">
-                  <div className="filter_btn">Register</div>
-                </div>
-              </div>
             </div>
-          </div>
+          </div >
         )}
-      </div>
+      </div >
     </>
   );
 };

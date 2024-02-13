@@ -12,6 +12,9 @@
     line-height: normal;
     letter-spacing: 0.6rem;
 }
+.submitted{
+    background: grey;
+}
 
 .event_container {
     color: aliceblue;

@@ -30,7 +30,6 @@ export default function EventOptions() {
     console.log(token);
     axios.get(`${DOMAIN}allevents/`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
-        // console.log(response);
         setEventDetails(response.data);
         console.log(eventDetails);
       }).catch((error) => {

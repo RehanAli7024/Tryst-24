@@ -41,7 +41,8 @@ const EventMain = () => {
 
 
   useEffect(() => {
-    axios.get(`${DOMAIN}allevents/`)
+    const token = localStorage.getItem("access_token");
+    axios.get(`${DOMAIN}allevents/`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
         setEventarray(response.data);
       })
@@ -117,6 +118,7 @@ const EventMain = () => {
       setOverlay(!overlay);
     }
   };
+
 
   return (
     <>
@@ -247,9 +249,9 @@ const EventMain = () => {
           <div className="event_cards">
             {/* when this card is clicked the page navigates to that route */}
             {eventarray.competitions && eventarray.competitions.map((event, index) => (
-                <Link to={`/events/${event.title}`} key={index}>
-                  <EventCard image={event.event_image} />
-                </Link>
+              <Link to={`/events/${event.title}`} key={index}>
+                <EventCard image={event.event_image} />
+              </Link>
             ))}
           </div>
         </div>
