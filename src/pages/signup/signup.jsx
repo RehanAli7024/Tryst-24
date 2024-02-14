@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 // import userLoggedOutNavigator from "../../routes/userLoggedOutNavigator";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+import userLoggedOutNavigator from "../../pages/routes/userLoggedOutNavigator";
 
 const states = [
     "Andhra Pradesh",
@@ -45,7 +46,7 @@ const states = [
 
 const Signup = () => {
     const navigate = useNavigate();
-    // React.useEffect(userLoggedOutNavigator(useNavigate()));
+    React.useEffect(userLoggedOutNavigator(useNavigate()));
     const [formData, setFormData] = useState({
         name: "",
         email: "",

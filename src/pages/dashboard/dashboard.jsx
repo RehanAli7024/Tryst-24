@@ -1,16 +1,16 @@
 import "./dashboard.css";
-import photo from "../Events/poster.webp";
 import React, { useEffect, useState } from "react";
 import edit_button from "./btn.png";
 import logoutbutton from "./Button.png";
 import { useRef } from "react";
-import UserCard from "../../components/userCard/UserCard_Registration";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
+import userLoggedInNavigator from "../../pages/routes/userLoggedInNavigator";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  React.useEffect(userLoggedInNavigator(useNavigate()));
   const [activeButton, setActiveButton] = useState("REGISTERED EVENTS");
   const [user, setUser] = useState({});
   const handleButtonClick = (buttonName) => {
@@ -194,39 +194,8 @@ const Dashboard = () => {
           </button>
         </div>
 
-        
-
-        {/* {activeButton === "REGISTERED EVENTS" && (
-          <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-
-        )}
-
-        {activeButton === "PRONITES" && (
-          <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-
-        )}
-
-        {activeButton === "YOUR ORDERS" && (
-          <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-        )}
 
 
-        {activeButton === "ACCOMODATION" && (
-          <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-        )} */}
 
       </div>
     </>

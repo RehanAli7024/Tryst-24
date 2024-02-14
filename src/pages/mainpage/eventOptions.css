@@ -1,16 +1,14 @@
-.event-details-popup-container{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-  }
-
-.removed-dark-gb{
-    background-color: transparent;
+.event-details-popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
 }
-
+.removed-dark-gb {
+  background-color: transparent;
+}
 .event-details.popup-hidden {
-    display: none;
+  display: none;
 }

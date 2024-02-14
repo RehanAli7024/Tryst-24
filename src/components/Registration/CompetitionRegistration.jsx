@@ -6,15 +6,17 @@ import EditField from '../../overlays/overlays/add-new-field/editfield';
 import axios from 'axios';
 import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
 import { useRef } from 'react';
+import { Navigate } from 'react-router-dom';
 
 function CompetitionRegistration({ setRegistrationOpen }) {
+  const navigate = useNavigate();
   const [payload, setPayload] = useState({});
   const [editpayload, setEditPayload] = useState({});
   const [formData, setFormData] = useState({
     acceptingResponses: true,
     event_id: localStorage.getItem('id'),
     formFields: [],
-    type: 'competition'
+    event_type: 'competition'
   });
 
   const [showNewField, setShowNewField] = useState(false);
@@ -77,6 +79,9 @@ function CompetitionRegistration({ setRegistrationOpen }) {
       )
       .then((res) => {
         console.log(res);
+        localStorage.removeItem('id');
+        navigate('/eventadmin');
+        setRegistrationOpen(false);
       })
       .catch((err) => {
         console.log(err);
@@ -84,14 +89,12 @@ function CompetitionRegistration({ setRegistrationOpen }) {
   };
 
   const handleresponseChange = (name, value) => {
-    // Check if the field is 'acceptingResponses' to handle boolean conversion
     if (name === 'acceptingResponses') {
       setFormData(prevState => ({
         ...prevState,
-        [name]: value === 'Yes' // Convert 'Yes'/'No' to true/false
+        [name]: value === 'Yes'
       }));
     } else {
-      // For other fields, use the value directly
       setFormData(prevState => ({
         ...prevState,
         [name]: value

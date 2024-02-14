@@ -45,7 +45,7 @@ export default function EditCompetitionEvent({
                 alert("Event edited successfully");
                 setEventFormTitle("editregistrationForm");
                 setIsEventSubmitted(true);
-                setIsSubmitted(true);    
+                setIsSubmitted(true);
             })
             .catch((err) => {
                 console.log(err);
@@ -122,7 +122,11 @@ export default function EditCompetitionEvent({
                         />
                     </div>
                     <div className="image-shown">
-                        {/* {file && <img src={image} alt="Event" />} */}
+                        <img
+                            src={formData.file}
+                            alt="event"
+                            className="image-preview"
+                        />
                     </div>
                     <div className="image-guidelines">
                         <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
@@ -196,21 +200,7 @@ export default function EditCompetitionEvent({
                     <div className="contact-person-details">
                         <p>Contact Person(s) Details*</p>
                     </div>
-                    {/* <div className="contact-persons-container">
-                        <p>Contact Persons*</p>
-                        <select
-                            onChange={handlecontactPersonsChange}
-                            value={contactPersons}
-                        >
-                            {[1, 2, 3, 4, 5, 6].map((num) => (
-                                <option key={num} value={num}>
-                                    {num}
-                                </option>
-                            ))}
-                        </select>
-                    </div> */}
                 </div>
-                {/* also handle the addition of the rows for the contact person details */}
                 {constactPersonDetails.map((contact, index) => (
                     <div key={index} className="contact-details-container">
                         <div className="serial-no">
