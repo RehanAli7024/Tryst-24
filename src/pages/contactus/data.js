@@ -21,7 +21,7 @@ const data = {
     },
     {
       name: "Harshit Mawandia",
-      por: "Co-overall Coordinator",
+      por: "Overall Coordinator",
       image: harshit,
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/harshit-mawandia/",
