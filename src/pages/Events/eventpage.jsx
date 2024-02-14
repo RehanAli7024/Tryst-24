@@ -8,7 +8,7 @@ import arrow_downward from "./arrow_downward.svg";
 import EventCard from "../../components/EventCard/EventCard";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const EventPage = ({ event }) => {
   const myStyle = {};
@@ -22,7 +22,38 @@ const EventPage = ({ event }) => {
     event_type: eventType,
     form: [],
   });
+  const [registered, setRegistered] = useState(false);
+  const [displaytext, setDisplaytext] = useState("Register");
+
+  useEffect(() => {
+    if (localStorage.getItem("access_token") === null) {
+      setDisplaytext("Login to Register");
+      setRegistered(true);
+      return;
+    }
+    const token = localStorage.getItem("access_token");
+    axios.get(`${DOMAIN}check_registration/?event_id=${eventId}&event_type=${eventType}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+      .then((res) => {
+        console.log(res.data);
+        setRegistered(false);
+      }
+      )
+      .catch((err) => {
+        setRegistered(true);
+        setDisplaytext("Already Registered");
+        console.log(err);
+      });
+  }, []);
   const toggleDiv = () => {
+    console.log(localStorage.getItem("access_token"));
+    if (localStorage.getItem("access_token") === null) {
+      alert("Please login to register for the event");
+      return;
+    }
     axios.get(`${DOMAIN}register/?event_id=${eventId}&event_type=${eventType}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -49,6 +80,7 @@ const EventPage = ({ event }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    console.log(formData);
     axios.post(`${DOMAIN}register/`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -56,6 +88,7 @@ const EventPage = ({ event }) => {
     })
       .then((res) => {
         console.log(res.data);
+        alert("Registered Successfully");
         navigate('/events');
       })
       .catch((err) => {
@@ -112,7 +145,7 @@ const EventPage = ({ event }) => {
                     />
                   </g>
                 </svg>
-                <p>{event.event_date}</p>
+                <p>Date: {event.event_date}</p>
               </div>
               <div className="event_time">
                 <svg
@@ -140,7 +173,7 @@ const EventPage = ({ event }) => {
                     />
                   </g>
                 </svg>
-                <p>{event.event_time}</p>
+                <p>Time: {event.event_time.slice(0, 5)}</p>
               </div>
               <div className="event_location">
                 <svg
@@ -155,27 +188,31 @@ const EventPage = ({ event }) => {
                     fill="#E086D3"
                   />
                 </svg>
-                <p>{event.venue}</p>
+                <p>Venue: {event.venue}</p>
               </div>
             </div>
             <div className="ev_contact_information grid grid-cols-2">
               <div className="col-span-2 md:col-span-1 ev_register ">
                 <div className="fil_con" id="ev_page_fil_con_2">
-                  <div className="filter_btn" id="ev_btn_1" onClick={toggleDiv}>
-                    Register
-                    {isVisible ? (
-                      <img
-                        src={arrow_downward}
-                        className="rotating_button"
-                        alt=""
-                      />
-                    ) : (
-                      <img
-                        src={arrow_forward}
-                        className="rotating_button"
-                        alt=""
-                      />
-                    )}
+                  <div className="filter_btn" id="ev_btn_1">
+                    {registered ? (<>
+                      {displaytext}
+                    </>) : (<button onClick={toggleDiv} className="filter_btn" id="ev_btn_1">
+                      Register
+                      {isVisible ? (
+                        <img
+                          src={arrow_downward}
+                          className="rotating_button"
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          src={arrow_forward}
+                          className="rotating_button"
+                          alt=""
+                        />
+                      )}
+                    </button>)}
                   </div>
                 </div>
               </div>
@@ -195,20 +232,19 @@ const EventPage = ({ event }) => {
           <div className="ev_formbox">
             <div className="ev_reg_form_heading">Registration Form</div>
             <div className="formParent">
-              <form action="" className="ev_form_container"
-              >
+              <form action="" className="ev_form_container">
                 {formFields.map((field, index) => {
                   return (
-                    <div key={index} className="ev_form_input">
+                    <div key={index} className="ev_input_field">
                       {field.type === "text" ? (
                         <>
                           {/* adjust the display of the fields and render it accordingly  */}
-                          <label>{field.title}</label>
+                          <label className="ev_form_heading">{field.title}</label>
                           <input
                             type="text"
                             name={formData.form[field.title]}
                             value={formData.form[field.title]}
-                            // on change the values of the input should be updated in the formData.form state of that key only
+                            className="ev_inputbox"
                             onChange={(e) => {
                               setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
                             }}
@@ -216,7 +252,7 @@ const EventPage = ({ event }) => {
                         </>
                       ) : field.type === "radio" ? (
                         <>
-                          <label>{field.title}</label>
+                          <label className="ev_form_heading">{field.title}</label>
                           {/* the changes in the option should be updated in the formData state */}
                           {field.options.map((option, index) => {
                             return (
@@ -229,45 +265,51 @@ const EventPage = ({ event }) => {
                                     setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
                                   }}
                                 />
-                                <label>{option}</label>
+                                <label className="ev_form_heading">{option}</label>
                               </div>
                             );
                           })}
                         </>
                       ) : field.type === "checkbox" ? (
-                        field.options.map((option, index) => {
-                          return (
-                            <div key={index}>
-                              <input
-                                type="checkbox"
-                                name={formData.form[field.title]}
-                                value={option}
-                                onChange={(e) => {
-                                  setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
-                                }}
-                              />
-                              <label>{option}</label>
-                            </div>
-                          );
-                        })
-                      ) : field.type === "team" ? (
                         <>
-                          <label>{field.title}</label>
-                          <input type="text" />
+                          <label className="ev_form_heading">{field.title}</label>
+
+                          {field.options.map((option, index) => {
+                            return (
+                              <div key={index}>
+                                <input
+                                  type="checkbox"
+                                  name={formData.form[field.title]}
+                                  value={option}
+                                  onChange={(e) => {
+                                    setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                                  }}
+                                />
+                                <label className="ev_form_heading">{option}</label>
+                              </div>
+                            );
+                          })}
                         </>
-                      ) : (
-                        <>
-                          <label>{field.title}</label>
-                          <input
-                            type="file"
-                            name={formData.form[field.title]}
-                            value={formData.form[field.title]}
-                            onChange={(e) => {
-                              setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
-                            }}
-                          />
-                        </>
-                      )}
+                      )
+                        : field.type === "team" ? (
+                          <>
+                            <label className="ev_form_heading">{field.title}</label>
+                            <input type="text" className="ev_inputbox" />
+                          </>
+                        ) : (
+                          <>
+                            <label className="ev_form_heading">{field.title}</label>
+                            <input
+                              type="file"
+                              className="ev_form_heading"
+                              name={formData.form[field.title]}
+                              value={formData.form[field.title]}
+                              onChange={(e) => {
+                                setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                              }}
+                            />
+                          </>
+                        )}
                     </div>
                   );
                 })}

@@ -1,19 +1,31 @@
 import "./dashboard.css";
-import photo from "../Events/poster.webp";
 import React, { useEffect, useState } from "react";
 import edit_button from "./btn.png";
 import logoutbutton from "./Button.png";
 import { useRef } from "react";
-import UserCard from "../../components/userCard/UserCard_Registration";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
-import defaultdp from './Assets_dashboard/defaultimage.jpg'
+import userLoggedInNavigator from "../../pages/routes/userLoggedInNavigator";
+import defaultdp from "./Assets_dashboard/defaultimage.jpg";
+import logouthov from "../../assets/Dashboard/logouthover.svg";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  React.useEffect(userLoggedInNavigator(useNavigate()));
   const [activeButton, setActiveButton] = useState("REGISTERED EVENTS");
   const [user, setUser] = useState({});
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
   };
@@ -22,15 +34,17 @@ const Dashboard = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("user");
+    setIsClicked(!isClicked);
     navigate("/");
   };
 
   useEffect(() => {
-    axios.get(`${DOMAIN}profile/`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-      },
-    })
+    axios
+      .get(`${DOMAIN}profile/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
       .then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data));
         setUser(response.data);
@@ -43,6 +57,7 @@ const Dashboard = () => {
         navigate("/login");
       });
   }, []);
+
   // const handlephotochange = () => {
   //   axios.post(`${DOMAIN}profile/`, {
   //     headers: {
@@ -60,11 +75,11 @@ const Dashboard = () => {
   //       console.log(error);
   //     });
   // }
-  const [photo, setPhoto] = useState('');
+  const [photo, setPhoto] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const fileInputRef = useRef(null);
   const editButtonRef = useRef(null);
-  const photoexists = photo !== '';
+  const photoexists = photo !== "";
 
   // Function to handle photo change
   const handlePhotoChange = (e) => {
@@ -88,7 +103,11 @@ const Dashboard = () => {
   // Close the popup if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (fileInputRef.current && !fileInputRef.current.contains(event.target) && !editButtonRef.current.contains(event.target)) {
+      if (
+        fileInputRef.current &&
+        !fileInputRef.current.contains(event.target) &&
+        !editButtonRef.current.contains(event.target)
+      ) {
         setIsEditing(false);
       }
     };
@@ -114,19 +133,26 @@ const Dashboard = () => {
           {/* open the upload popup on clicking the edit button image and should get closed after cicking outside the popup or after submitting the photo */}
 
           <div className="profile_photo">
-            <img src={photoexists ? photo : defaultdp} alt="" className="userPhoto" />
+            <img
+              src={photoexists ? photo : defaultdp}
+              alt=""
+              className="userPhoto"
+            />
             {isEditing && (
               <input
                 type="file"
                 ref={fileInputRef}
                 onChange={handlePhotoChange}
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
               />
             )}
-            <button onClick={() => {
-              setIsEditing(true);
-              openFileInput();
-            }} ref={editButtonRef}>
+            <button
+              onClick={() => {
+                setIsEditing(true);
+                openFileInput();
+              }}
+              ref={editButtonRef}
+            >
               <img src={edit_button} className="edit_photo" alt="" />
             </button>
           </div>
@@ -134,8 +160,18 @@ const Dashboard = () => {
           <div className="profile_details">
             <div className="user_name_logout">
               <div className="user_name">{user.name}</div>
-              <button className="logout_btn" onClick={logout}>
-                <img src={logoutbutton} alt="" />
+              <button
+                className="logout_btn"
+                onClick={logout}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  transform: isHovered ? "scale(1.1)" : "scale(1)",
+                  transformStyle: isHovered ? "preserve-3d" : "preserve-3d",
+                  transition: isHovered ? "all 0.3s ease" : "all 0.3s ease",
+                }}
+              >
+                <img src={isHovered ? logouthov : logoutbutton} alt="" />
               </button>
             </div>
             <div className="email_phone">
@@ -170,68 +206,41 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "REGISTERED EVENTS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "PRONITES" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("PRONITES")}
           >
             PRONITES
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "YOUR ORDERS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "ACCOMODATION" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
           </button>
         </div>
 
-        
-
-        {/* {activeButton === "REGISTERED EVENTS" && (
-          <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-
-        )}
-
-        {activeButton === "PRONITES" && (
-          <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-
-        )}
-
-        {activeButton === "YOUR ORDERS" && (
-          <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-        )}
 
 
-        {activeButton === "ACCOMODATION" && (
-          <div className="dashboard-nav-details">
-            <UserCard className="dashboard-nav-details-card" />
-          </div>
-        )} */}
 
       </div>
     </>

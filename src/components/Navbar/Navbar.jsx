@@ -8,6 +8,8 @@ import crossmenu from "../../assets/Navbar/crossmenu.png";
 import NavEffect from "../../assets/Navbar/nav-mobile-effect.png";
 import NavSelector from "../../assets/Navbar/selector.png";
 import NavMobileBg from "../../assets/Navbar/Mobile Version_Nav Expanded.png";
+import profilehov from "../../assets/Navbar/profilehov.svg";
+import profileclicked from "../../assets/Navbar/profileClick.svg";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 function Navbar() {
@@ -17,6 +19,24 @@ function Navbar() {
   const [selectedMobileOption, setSelectedMobileOption] =
     useState(selectedOption); // Mobile view selected option
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const handleClick = () => {
+    setIsClicked(true); // Apply styles immediately on click
+    setIsHovered(false); // Remove hover styles on click
+    setTimeout(() => {
+      setIsClicked(false); // Remove styles after 10 seconds
+    }, 1000); // Use 10000 for 10 seconds
+  };
 
   const handleShowNavbar = () => {
     setShowNavOptions(!showNavOptions);
@@ -45,16 +65,16 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
-  if (showNavOptions) {
-    document.body.classList.add('no-scroll'); // Add class to disable scrolling
-  } else {
-    document.body.classList.remove('no-scroll'); // Remove class to enable scrolling
-  }
+    if (showNavOptions) {
+      document.body.classList.add("no-scroll"); // Add class to disable scrolling
+    } else {
+      document.body.classList.remove("no-scroll"); // Remove class to enable scrolling
+    }
 
-  return () => {
-    document.body.classList.remove('no-scroll'); // Clean up by removing the class when component unmounts
-  };
-}, [showNavOptions]);
+    return () => {
+      document.body.classList.remove("no-scroll"); // Clean up by removing the class when component unmounts
+    };
+  }, [showNavOptions]);
 
   return (
     <Container
@@ -62,7 +82,9 @@ function Navbar() {
         isNavbarVisible ? "navbar-visible" : "navbar-hidden"
       }`}
     >
-        <div className={showNavOptions ? "nav-mobile-bg" : "hidden-nav-mobile-bg"}>
+      <div
+        className={showNavOptions ? "nav-mobile-bg" : "hidden-nav-mobile-bg"}
+      >
         <img src={NavMobileBg} alt="" className="nav-effect-back" />
       </div>
 
@@ -105,9 +127,29 @@ function Navbar() {
               </div>
             ))}
           </div>
-          <div className="navbarprofile">
+          <div
+            className="navbarprofile"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleClick}
+            style={{
+              transform: isHovered || isClicked ? "scale(1.1)" : "scale(1)",
+              transformStyle:
+                isHovered || isClicked ? "preserve-3d" : "preserve-3d",
+              transition:
+                isHovered || isClicked ? "all 0.3s ease" : "all 0.3s ease",
+            }}
+          >
             <Link to="/login">
-              <img src={profileicon}></img>
+              <img
+                src={
+                  isHovered
+                    ? profilehov
+                    : isClicked
+                    ? profileclicked
+                    : profileicon
+                }
+              ></img>
             </Link>
           </div>
           <button className="navbarmenu" onClick={handleShowNavbar}>
@@ -118,7 +160,6 @@ function Navbar() {
       <div
         className={showNavOptions ? "navbariconsmobile" : "hiddenmobiletoggle"}
       >
-
         {[
           "About",
           "Guests",

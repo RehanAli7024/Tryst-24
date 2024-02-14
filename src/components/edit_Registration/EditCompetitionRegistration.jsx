@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DOMAIN } from '../../domain';
 import './registrationMain.css';
+import { useNavigate } from 'react-router-dom';
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 import EditField from '../../overlays/overlays/add-new-field/editfield';
 import axios from 'axios';
@@ -8,6 +9,7 @@ import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedF
 import { useRef } from 'react';
 
 function EditCompetitionRegistration({ setRegistrationOpen }) {
+  const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem('admin_access_token');
     const eventId = localStorage.getItem('id');
@@ -93,7 +95,7 @@ function EditCompetitionRegistration({ setRegistrationOpen }) {
       }
       )
       .then((res) => {
-        console.log('All ok')
+        alert('Registration form updated successfully');
       })
       .catch((err) => {
         console.log(err);

@@ -37,21 +37,30 @@ export default function CompetitionEvent({
   };
 
   const handleSubmit = (e) => {
+    if (formData.has_form && !formData.registration_link) {
+      alert("Please provide registration link for the form.");
+      return;
+    }
     setFormData({ ...formData, contactPersons: constactPersonDetails });
     e.preventDefault();
     const token = localStorage.getItem("admin_access_token");
+    console.log(token);
     setFormIsSubmitted(true);
     axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
       .then((res) => {
         console.log(res);
         alert("Event submitted successfully");
         localStorage.setItem("id", res.data.event_id);
+        if (formData.has_form && formData.registration_link) {
+          handleClose();
+        }
         setEventFormTitle("registrationForm");
         setIsEventSubmitted(true);
         setIsSubmitted(true);
       })
       .catch((err) => {
         console.log(err);
+        setFormIsSubmitted(false);
       });
   };
   const [formData, setFormData] = useState({
@@ -59,12 +68,16 @@ export default function CompetitionEvent({
     description: "",
     event_date: "",
     event_time: "",
+    reg_date: "",
+    reg_time: "",
     venue: "",
     file: null,
     contactPersons: [],
+    has_form: false,
+    registration_link: '',
     ruleBook: '',
   });
-
+  const [isChecked, setIsChecked] = useState(false);
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
 
   const handleChange = (e) => {
@@ -95,6 +108,9 @@ export default function CompetitionEvent({
     setFormData({ ...formData, contactPersons: constactPersonDetails });
   }, [constactPersonDetails]);
 
+  useEffect(() => {
+    console.log(formData.has_form, formData.registration_link);
+  }, [formData.has_form, formData.registration_link]);
 
   return (
     <div
@@ -121,7 +137,10 @@ export default function CompetitionEvent({
               />
             </div>
             <div className="image-shown">
-              {/* {file && <img src={image} alt="Event" />} */}
+              <img
+                src={formData.file ? URL.createObjectURL(formData.file) : ""}
+                className="image"
+              />
             </div>
             <div className="image-guidelines">
               <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
@@ -190,6 +209,27 @@ export default function CompetitionEvent({
               />
             </div>
           </div>
+          <div className="date-time-venue-container">
+            <div className="events-flex-column">
+              <label className="label">DEADLINE DATE*</label>
+              <br />
+              <input
+                onChange={handleChange}
+                className="input"
+                value={formData.reg_date}
+                name="reg_date"
+                type="date"
+              />
+              <input
+                onChange={handleChange}
+                className="input"
+                value={formData.reg_time}
+                name="reg_time"
+                type="time"
+              />
+            </div>
+          </div>
+
 
           <div className="No-of-contact-person-container">
             <div className="contact-person-details">
@@ -248,6 +288,33 @@ export default function CompetitionEvent({
                 onChange={handleChange}
                 value={formData.ruleBook} />
             </div>
+          </div>
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                value={formData.has_form}
+                onChange={(e) => {
+                  setIsChecked(e.target.checked);
+                  setFormData({ ...formData, has_form: e.target.checked });
+                }}
+              />
+              For external registration form
+            </label>
+            {isChecked && (
+              <div>
+                <label>
+                  Registration Link
+                  <input
+                    type="text"
+                    name='registration_link'
+                    value={formData.registration_link}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+            )}
           </div>
           <button onClick={handleSubmit} className="submit-button">
             submit

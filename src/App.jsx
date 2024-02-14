@@ -44,13 +44,14 @@ const App = () => {
   return (
     <main className="main-bg">
       <Router>
-        {window.location.pathname !== "/mainpage" ? <Navbar /> : null}
+        <Navbar />
+        {/* {window.location.pathname !== "/mainpage" ? <Navbar /> : null}   */}
         <Routes>
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
           <Route path="/" element={<ComingSoon />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact us" element={<ContactUs />} />
-          <Route path="/mainpage" element={<MainPage />} />
+          <Route path="/admin/events" element={<MainPage />} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
           <Route path="/footer" element={<Footer />} />

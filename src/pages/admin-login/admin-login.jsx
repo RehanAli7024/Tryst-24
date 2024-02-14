@@ -3,9 +3,9 @@ import "./adminlogin.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
-// import adminLoggedOutNavigator from "../../../routes/adminLoggedOutNavigator";
 import * as Yup from "yup";
 import { DOMAIN } from "../../domain";
+import adminLoggedOutNavigator from "../routes/adminLoggedOutNavigator";
 
 const initialValues = {
   username: "",
@@ -13,9 +13,7 @@ const initialValues = {
 };
 function AdminLogin() {
   const navigate = useNavigate();
-  useEffect(() => {
-    // adminLoggedOutNavigator(navigate);
-  }, [navigate]);
+  React.useEffect(adminLoggedOutNavigator(useNavigate()));
 
   const loginSchema = Yup.object().shape({
     username: Yup.string()
@@ -30,14 +28,14 @@ function AdminLogin() {
       initialValues,
       validationSchema: loginSchema,
 
-      onSubmit: (values) => { 
+      onSubmit: (values) => {
         axios
           .post(`${DOMAIN}adminlogin/`, values)
           .then((response) => {
             console.log(response.data);
             localStorage.setItem("admin_access_token", response.data.tokens.access);
             localStorage.setItem("admin_refresh_token", response.data.tokens.refresh);
-            navigate("/mainpage", { replace: true });
+            navigate("/admin/events", { replace: true });
           })
           .catch((err) => {
             console.log(err);

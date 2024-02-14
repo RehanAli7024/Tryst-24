@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "./eventOptions.css";
 import PopupContainer from "../../overlays/popups/PopupContainer";
@@ -24,7 +25,6 @@ export default function EventOptions() {
   };
 
   const selectedEventDetails = eventDetails[selectedEventType] || [];
-
   useEffect(() => {
     const token = localStorage.getItem("admin_access_token");
     console.log(token);
@@ -81,7 +81,6 @@ export default function EventOptions() {
         )}
       </div>
 
-      {/* Published container starts here */}
 
       <div className="published-container">
         <div className="published">
@@ -96,14 +95,22 @@ export default function EventOptions() {
                 <img src={prop.event_image} alt={`event-${index + 1}`} />
               </div>
               <div className="event-card-details">
-                <h3>{prop.title}</h3>
-                <button
-                  onClick={() => {
-                    setEditPopupIsOpen(true);
-                  }}
-                >
-                  Edit
-                </button>
+                <h3>Title: {prop.title}</h3>
+                <div className="event-card-editing">
+                  <button
+                    onClick={() => {
+                      setEditPopupIsOpen(true);
+                    }}
+                    className="edit-btn"
+                  >
+                    Edit
+                  </button>
+                  {prop.spreadsheet_id && (
+                    <a href={`https://docs.google.com/spreadsheets/d/${prop.spreadsheet_id}/`} target="_blank" className='spreadsheet-link' rel="noreferrer">
+                      <button className='spreadsheet'>Spreadsheet</button>
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
             {editPopupIsOpen && (
@@ -126,8 +133,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   padding: 3rem 0;
+  font-family: Rajdhani;
 
   .event-types {
     display: flex;
@@ -195,14 +203,44 @@ const Container = styled.div`
   }
 
   .event-cards {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     flex-wrap: wrap;
+    gap: 2rem;
+    height: 100%;
     justify-content: space-between;
-
+    margin:  1rem 4rem;
     img {
-      width: 30%;
-      margin: 2rem 0;
+      width: 70%;
+      margin: 2rem 0 1rem 0;
     }
+  }
+  .event-card-image{
+    width: 100%;
+    img{
+      width: 100%;
+    }
+  }
+  .event-card-image img{
+    height: 10rem
+  }
+  .event-card{
+    height: max-content;
+  }
+  .spreadsheet{
+    display: flex;
+    text-align: right;
+  }
+  .edit-btn{
+    display: flex;
+  }
+  .spreadsheet-link{
+    display: flex;
+    width: max-content;
+  }
+  .event-card-editing{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
   }
 `;

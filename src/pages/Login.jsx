@@ -9,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "react-google-login";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleLoginClick = () => {
     axios
@@ -19,7 +19,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.data.tokens);
         localStorage.setItem("token", res.data.tokens.access);
-        navigate("/mainpage");
+        navigate("/admin/events");
       })
       .catch((err) => {
         console.log(err);

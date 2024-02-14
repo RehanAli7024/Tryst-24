@@ -1,15 +1,22 @@
 import EventOptions from "./EventOptions";
 import styled from "styled-components";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import adminLoggedInNavigator from "../routes/adminLoggedInNavigator";
+
+
 
 export default function MainPage() {
+  React.useEffect(adminLoggedInNavigator(useNavigate()));
   return (
-    <Container>
-      <EventOptions />
-    </Container>
+    <div className="events-admin">
+      <Container>
+        <EventOptions />
+      </Container>
+    </div>
   );
 }
 
 const Container = styled.div`
-  background-color: #041429;
-  padding: 0 10rem;
+  padding: 0 auto;
 `;

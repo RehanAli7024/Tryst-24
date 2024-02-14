@@ -41,10 +41,7 @@ const EventMain = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-    axios
-      .get(`${DOMAIN}allevents/`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    axios.get(`${DOMAIN}allevents/`)
       .then((response) => {
         setEventarray(response.data);
       })

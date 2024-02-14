@@ -29,7 +29,7 @@
 
 .navbarheader:hover {
   border: 2px solid rgba(0, 224, 255, 0.5);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .navbaricons,
