@@ -13,7 +13,7 @@
   color: var(--Color-Base-Snow, #fffbff);
   text-align: center;
   font-family: Audiowide;
-  font-size: 3rem;
+  font-size: 4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -38,6 +38,7 @@
   /* align-items: center; */
   margin-right: 2rem;
   position: relative;
+  border: none;
 }
 
 .userPhoto {
@@ -50,6 +51,7 @@
   /* border-radius: 50%; */
   object-fit: fill;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0 100%, 0 0);
+  border: 2px solid var(--Color-Base-Dark-Orange, #FB932E);
 }
 
 .edit_photo {
@@ -220,7 +222,7 @@
   font-family: Rajdhani;
   font-size: 1.5rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: lighter;
   line-height: normal;
   letter-spacing: 0.06rem;
   text-transform: capitalize;
@@ -296,7 +298,7 @@
    overflow-x: auto; /* Enable horizontal scrolling */
    -webkit-overflow-scrolling: touch;
    -ms-overflow-style: none;
-    align-items: center;
+    
     padding-left: 43%;
     justify-content: center;
     padding-left: 40%;
@@ -308,4 +310,20 @@
   .dashboard-nav-button {
     width: 50%;
   }
+  .userPhoto{
+    width: 50vw;
+  height: 50vw;
+  }
+  .profile_photo{
+    width: 50vw;
+  height: 50vw;
+  }
+  .edit_photo{
+    top: 84%;
+    left: 84%;
+    height: 8vw;
+    width: 8vw;
+  }
+
+  
 }

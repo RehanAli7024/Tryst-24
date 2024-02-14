@@ -8,6 +8,7 @@ import UserCard from "../../components/userCard/UserCard_Registration";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
+import defaultdp from './Assets_dashboard/defaultimage.jpg'
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ const Dashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
   const fileInputRef = useRef(null);
   const editButtonRef = useRef(null);
+  const photoexists = photo !== '';
 
   // Function to handle photo change
   const handlePhotoChange = (e) => {
@@ -112,7 +114,7 @@ const Dashboard = () => {
           {/* open the upload popup on clicking the edit button image and should get closed after cicking outside the popup or after submitting the photo */}
 
           <div className="profile_photo">
-            <img src={photo} alt="" className="userPhoto" />
+            <img src={photoexists ? photo : defaultdp} alt="" className="userPhoto" />
             {isEditing && (
               <input
                 type="file"
