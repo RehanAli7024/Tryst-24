@@ -37,6 +37,9 @@ const Dashboard = () => {
       })
       .catch((error) => {
         console.log(error);
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
+        navigate("/login");
       });
   }, []);
   // const handlephotochange = () => {

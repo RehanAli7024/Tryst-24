@@ -11,6 +11,12 @@ const Login = () => {
   const [user, setUser] = React.useState(null);
   const [picture, setPicture] = React.useState(null);
 
+  React.useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       console.log(tokenResponse);
