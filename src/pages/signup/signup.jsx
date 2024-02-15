@@ -82,10 +82,18 @@ const Signup = () => {
             )
                 .then((response) => {
                     const data = response.data.userdetails;
-                    setCategory(data['category']);
-                    setEmail(data['email']);
-                    setName(data['name']);
-                    setUserCollege('IIT Delhi');
+                    if (data) {
+                        setCategory(data['category']);
+                        setEmail(data['email']);
+                        setName(data['name']);
+                        setUserCollege('IIT Delhi');
+                    }
+                    if (response.data.tokens) {
+                        localStorage.setItem("access_token", response.data.tokens.access);
+                        localStorage.setItem("refresh_token", response.data.tokens.refresh);
+                        localStorage.removeItem("response");
+                        navigate("/dashboard");
+                    }
                 }).catch((error) => {
                     console.log(error);
                 });
