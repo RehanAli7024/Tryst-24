@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import eventimage from "../assets/event 1.png";
 import trystlogo from "../assets/trystlogo.png";
@@ -7,9 +7,15 @@ import axios from "axios";
 import { DOMAIN } from "../domain";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "react-google-login";
+import userLoggedInNavigator from "./routes/userLoggedInNavigator";
 
 const Login = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      navigate("/dashboard");
+    }
+  }), [navigate];
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
