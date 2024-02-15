@@ -8,8 +8,6 @@ import { DOMAIN } from "../../domain";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [user, setUser] = React.useState(null);
-  const [picture, setPicture] = React.useState(null);
 
   React.useEffect(() => {
     if (localStorage.getItem("access_token")) {
@@ -34,11 +32,9 @@ const Login = () => {
             localStorage.setItem("access_token", response.data.tokens.access);
             localStorage.setItem("refresh_token", response.data.tokens.refresh);
             localStorage.setItem("user", JSON.stringify(response.data.details));
-            setPicture(response.data.details.photo);
             navigate("/dashboard");
           } else if (response.data.message === "New User Created") {
             localStorage.setItem("response", JSON.stringify(response));
-            setUser(response.data.details);
             navigate("/signup");
           }
         })

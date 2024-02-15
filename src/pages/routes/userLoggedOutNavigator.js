@@ -6,9 +6,6 @@ function userLoggedOutNavigator(navigate) {
 		if (token) {
 			navigate('/dashboard');
 		}
-		if (!token) {
-			navigate('/login');
-		}
 	}
 	return navigator;
 }
