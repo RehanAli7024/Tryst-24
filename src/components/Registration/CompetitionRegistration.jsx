@@ -6,7 +6,7 @@ import EditField from '../../overlays/overlays/add-new-field/editfield';
 import axios from 'axios';
 import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
 import { useRef } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function CompetitionRegistration({ setRegistrationOpen }) {
   const navigate = useNavigate();
