@@ -64,7 +64,7 @@ const Signup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [category, setCategory] = useState("");
-    const [usercollege, setUserCollege] = useState("IIT Delhi");
+    const [usercollege, setUserCollege] = useState("");
     useEffect(() => {
         const code = new URLSearchParams(window.location.search).get("code");
         const csrfToken = Cookies.get("csrftoken");
@@ -97,6 +97,8 @@ const Signup = () => {
                     }
                 }).catch((error) => {
                     console.log(error);
+                    alert('Invalid Credentials! Please try again.');
+                    navigate("/login");
                 });
         } else {
             setUserCollege('');
@@ -169,6 +171,10 @@ const Signup = () => {
             });
         }
     };
+    useEffect(() => {
+        console.log(formData);
+    }, [formData]);
+
     const [cities, setCities] = useState([]);
     const [colleges, setColleges] = useState([]);
     const styles = {
@@ -392,7 +398,6 @@ const Signup = () => {
                                     classNamePrefix="college"
                                     name="college"
                                     id="college"
-                                    // the usercollege is changed but the value is not changed on changing the usercollege
                                     value={usercollege ? { label: usercollege, value: usercollege } : colleges.find(item => item.college_ID === formData.college)}
                                     placeholder="Choose College"
                                     onChange={(e) => {
@@ -454,7 +459,7 @@ const Signup = () => {
                                 <div className="signup-input-head signup-input-head-referral">CA Referral ID</div>
                                 <input
                                     className="signup-input-field signup-input-field-referral"
-                                    type="url"
+                                    type="text"
                                     name="referral_id"
                                     value={formData.referral_id}
                                     onChange={handleChange}
