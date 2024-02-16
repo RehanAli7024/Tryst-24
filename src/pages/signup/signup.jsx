@@ -47,7 +47,7 @@ const states = [
 const Signup = () => {
     const navigate = useNavigate();
     React.useEffect(userLoggedOutNavigator(useNavigate()));
-
+    const [collegechosen, setCollegeChosen] = useState('');
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -398,9 +398,11 @@ const Signup = () => {
                                     classNamePrefix="college"
                                     name="college"
                                     id="college"
-                                    value={usercollege ? { label: usercollege, value: usercollege } : colleges.find(item => item.college_ID === formData.college)}
+                                    value={usercollege ? { label: usercollege, value: usercollege } : (formData.college_ID)}
                                     placeholder="Choose College"
                                     onChange={(e) => {
+                                        console.log(e);
+                                        setCollegeChosen(e.label);
                                         handleChange({
                                             target: { name: "college", value: e.value },
                                         });
@@ -473,8 +475,8 @@ const Signup = () => {
                             </button>
                         </div>
                     </form>
-                </div>
-            </div>
+                </div >
+            </div >
         </>
     );
 };
