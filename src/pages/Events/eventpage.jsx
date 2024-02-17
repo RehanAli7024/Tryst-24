@@ -116,7 +116,7 @@ const EventPage = ({ event }) => {
             </div>
           </div>
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
-            <div className="event_title">{event.title}</div>
+            <div className="event_title"> <h1>{event.title}</h1></div>
             <div className="event_para_1">{event.description}</div>
             <div className="event_details">
               <div className="event_date">
@@ -193,7 +193,7 @@ const EventPage = ({ event }) => {
             </div>
             <div className="ev_contact_information grid grid-cols-2">
               <div className="col-span-2 md:col-span-1 ev_register ">
-                <div className="fil_con" id="ev_page_fil_con_2">
+                <div className="fil_con" id="ev_page_fil_con_2" >
                   <div className="filter_btn" id="ev_btn_1">
                     {registered ? (<>
                       {displaytext}
@@ -321,7 +321,7 @@ const EventPage = ({ event }) => {
                         Please Wait....
                       </button>
                     ) : (
-                      <button className="filter_btn" onClick={handleSubmit}>
+                      <button className="filter_btn" id = "ev_page_fil_con_3" onClick={handleSubmit}>
                         Register
                       </button>
                     )
