@@ -23,8 +23,6 @@ export default function EventCard({ image }) {
     setIsClicked(!isClicked);
   };
 
-  const leftStyle = isHovered || isClicked ? "5.5%" : "4.5%";
-
   return (
     <div
       className={`event-card-component-container ${isClicked ? "clicked" : ""}`}
@@ -32,9 +30,9 @@ export default function EventCard({ image }) {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
       style={{
-        transform: isHovered || isClicked ? "scale(1.1)" : "scale(1)",
+        transform: isHovered || isClicked ? "scale(0.99)" : "scale(1)",
         transformStyle: isHovered || isClicked ? "preserve-3d" : "preserve-3d",
-        transition: isHovered || isClicked ? "all 0.3s ease" : "all 0.3s ease",
+        transition: isHovered || isClicked ? "all 1s ease" : "all 1s ease",
       }}
     >
       <img
@@ -42,8 +40,7 @@ export default function EventCard({ image }) {
         alt="event card background"
         className="event-card-bg"
       />
-      <div className="event-card-img" style={{ left: leftStyle }}>
-        {/* put condition if event_image is there then only render it */}
+      <div className="event-card-img">
         <img src={image} alt="event" />
       </div>
       <div className="event-card-top-vector">

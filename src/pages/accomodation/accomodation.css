@@ -32,3 +32,33 @@
 #ac_nav{
     margin-bottom: 3.5rem;
 }
+
+.ac_reaching{
+    margin-bottom: 20%;
+    margin-top: -2%;
+}
+
+.ac_reaching_points{
+    display: flex;
+    flex-direction: row;
+}
+
+.ac_reaching_points_num{
+    margin-left: 8%;
+    margin-right: -7%;
+    margin-top: 1.5%;
+    font-family: Rajdhani;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.ac_reaching_points_text{
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 1.5%;
+    font-family: Rajdhani;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
