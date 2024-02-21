@@ -1,0 +1,34 @@
+.acc_main{
+    display: flex;
+    flex-direction: column;
+}
+.acc_heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Color-Base-Snow, #FFFBFF);
+    text-align: center;
+    font-family: Audiowide;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.6rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.ac_pages{
+    display: flex;
+    flex-direction: column;
+}
+.ac_contact{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+#ac_place{
+    margin-right: 0;
+    margin-left: 0;
+}
