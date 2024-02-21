@@ -29,6 +29,7 @@ import AdminLogin from "./pages/admin-login/admin-login.jsx";
 import { useEffect } from "react";
 import axios from "axios";
 import { DOMAIN } from "./domain.js";
+import Accomodation from "./pages/accomodation/accomodation.jsx";
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
   useEffect(() => {
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/accomodation" element={<Accomodation/>} />
           {eventarray.competitions && eventarray.competitions.map((event, index) => {
             return <Route path={`/events/${event.title}`} key={index} element={<EventPage event={event} />} />
           })}
