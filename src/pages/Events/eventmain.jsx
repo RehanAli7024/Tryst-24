@@ -319,7 +319,6 @@ const EventMain = () => {
             </div>
           </div>
           <div className="event_cards">
-            {/* when this card is clicked the page navigates to that route */}
             {eventarray.competitions &&
               eventarray.competitions.map((event, index) => (
                 <Link to={`/events/${event.title}`} key={index}>

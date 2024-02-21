@@ -80,7 +80,7 @@ function CompetitionRegistration({ setRegistrationOpen }) {
       .then((res) => {
         console.log(res);
         localStorage.removeItem('id');
-        navigate('/eventadmin');
+        navigate('/admin');
         setRegistrationOpen(false);
       })
       .catch((err) => {
