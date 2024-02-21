@@ -12,7 +12,6 @@ export default function EditCompetitionEvent({
     setEventFormTitle,
     eventDetails
 }) {
-    // contactPersons length is set from the eventdetails prop passed from the parent component
     localStorage.setItem("id", eventDetails.event_id);
     const [contactPersons, setcontactPerosns] = useState(eventDetails.contact.length);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -61,7 +60,9 @@ export default function EditCompetitionEvent({
         ruleBook: eventDetails.rulebook,
         file: eventDetails.event_image,
         editedform: true,
-        event_id: eventDetails.event_id
+        event_id: eventDetails.event_id,
+        reg_date: eventDetails.reg_date,
+        reg_time: eventDetails.reg_time,
     });
 
     const [constactPersonDetails, setcontactPerosnDetails] = useState(eventDetails.contact);
@@ -93,12 +94,10 @@ export default function EditCompetitionEvent({
         setFormData({ ...formData, contactPersons: constactPersonDetails });
     }, [constactPersonDetails]);
 
-    // set the contact person details in the contactPersons state from the eventdetails prop passed from the parent component
     useEffect(() => {
         setcontactPerosnDetails(eventDetails.contact);
     }, [eventDetails.contact]);
 
-    // also handle the deletion of the contact person details from the contactPersons state and the contactPersons array
     useEffect(() => {
         setcontactPerosns(constactPersonDetails.length);
     }, [constactPersonDetails]);
@@ -195,7 +194,26 @@ export default function EditCompetitionEvent({
                         />
                     </div>
                 </div>
-
+                <div className="date-time-venue-container">
+                    <div className="events-flex-column">
+                        <label className="label">DEADLINE DATE*</label>
+                        <br />
+                        <input
+                            onChange={handleChange}
+                            className="input"
+                            value={formData.reg_date}
+                            name="reg_date"
+                            type="date"
+                        />
+                        <input
+                            onChange={handleChange}
+                            className="input"
+                            value={formData.reg_time}
+                            name="reg_time"
+                            type="time"
+                        />
+                    </div>
+                </div>
                 <div className="No-of-contact-person-container">
                     <div className="contact-person-details">
                         <p>Contact Person(s) Details*</p>
