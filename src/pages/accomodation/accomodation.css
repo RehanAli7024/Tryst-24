@@ -111,4 +111,10 @@ width: 80%;
     .acc_heading{
         font-size: 1.5rem;
     }
+    .ac_reaching_points_num{
+        font-size: 1rem;
+    }
+    .ac_reaching_points_text{
+        font-size: 1rem;
+    }
 }
