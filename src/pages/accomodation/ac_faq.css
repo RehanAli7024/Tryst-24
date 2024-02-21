@@ -1,128 +1,97 @@
-/* FAQs */
-
-.home-faqs-acco-boss {
-    margin: 0 12vw 0 15vw;
-}
-
-.home-faqs-acco-subboss {
-    position: relative;
-    border-radius: 1.4vw;
-    border: 1.4px solid #98f9ff;
-    background-blend-mode: overlay, normal;
-    backdrop-filter: blur(40px);
-    margin-bottom: 3.5vh;
-    padding: 3.2vh;
-}
-
-.home-faqs-acco-box {
-    width: 72vw;
-    padding: 0;
-    overflow: visible;
-}
-
-.home-faqs-acco-btn {
+.faq_row_main{
     display: flex;
-    color: white;
-    background-color: rgba(240, 248, 255, 0);
-    border: none;
-    text-align: left;
-    padding: 0;
-    margin: 0;
-    width: 70vw;
-}
-
-.home-faqs-acco-btn:hover {
-    cursor: pointer;
-    background: transparent;
-    color: white;
-}
-
-.home-faqs-acco-ques-box {
-    position: relative;
-    font-family: "Exo 2", sans-serif;
-    font-size: calc(1.2vh + 1.2vw);
-    font-weight: 400;
-    width: 100%;
-    display: flex;
-    justify-content: left;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
-.home-faqs-acco-ques {
-    width: 89%;
+.faq_row{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
 }
 
-.home-faqs-acco-icon-svg {
-    position: absolute;
-    height: 200%;
-    right: 1.9vw;
-}
-
-.home-faqs-acco-btn .home-faqs-acco-icon-arrow {
-    transition: transform 0.3s ease;
-}
-
-.home-faqs-acco-btn.up .home-faqs-acco-icon-arrow {
-    transform: rotate(180deg);
-}
-
-.home-faqs-acco-icon-arrow {
-    position: absolute;
-    right: 3.6vw;
-    top: 1.5vh;
-}
-
-.home-faqs-acco-arrow {
-    margin-left: auto;
-    transition: transform 0.6s ease;
-    transform: rotate(0deg);
-    width: 1.5vw;
+.row_num{
+    margin-top: 0.1rem;
+    display: flex;
+    width: 5rem;
+    height: 5rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--Color-Base-Dark-Orange, #FB932E);
+    text-align: center;
+    font-family: Bender;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.1rem;
+    background-image: url('./Vector44.svg');
+    background-size: contain;
     background-repeat: no-repeat;
-    background-size: cover;
-    aspect-ratio: 1;
+    /* background-color: aqua; */
+}
+.row_ques{
+    margin-left: 1%;
+    width: 99%;
+    height: 4.8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #FFF;
+    font-family: Rajdhani;
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    gap: 1rem;
+    position: relative;
+    /* background-color: yellow; */
 }
 
-.home-faqs-acco-content {
-    font-family: "Rajdhani", sans-serif;
-    font-size: calc(0.9vh + 0.9vw);
-    font-weight: 400;
-    line-height: 125%;
-    margin-top: 3.5vh;
-    padding-right: 5.5vw;
-    color: white;
+.row_ques_ans{
+    display: fixed;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 1rem;
+    width: 95%;
+    height: auto;
+    background-color: rgba(128, 35, 146,0.10);
+    border-width: 2px;
+    border-color: rgba(224, 134, 211, 0.30);
+    border-radius: 3px;
+    position: relative;
+    /* background-image: url('./question.svg');
+    background-size: contain;
+    background-repeat: no-repeat; */
+}
+.row_ans{
+    margin-left: 1%;
+    margin-top: 0.8rem;
+    color: #FFF;
+    font-family: Rajdhani;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 95%;
+    margin-bottom: 1%;
 }
 
-.home-faqs-acco-input {
-    display: none;
+.ques_plus{
+    position: absolute;
+    right: 0%;
+    /* top: 1rem; */
+    cursor: pointer;
 }
 
-.home-faqs-acco-content-a{
-    color: white;
-}
-
-@media screen and (max-width: 768px) {
-    .home-faqs-acco-boss {
-        margin: 0 10vw;
+@media (max-width: 768px){
+    .row_num{
+        height: 3.9rem;
     }
-
-    .home-faqs-acco-subboss {
-        padding: 2vh 2vw;
+    .row_ques_ans{
         width: 100%;
-    }
-
-    .home-faqs-acco-icon-svg {
-        width: 8.5vw;
-        right: -10vw;
-        margin-bottom: 0;
-    }
-
-    .home-faqs-acco-icon-arrow {
-        width: 4vw;
-        right: -7.3vw;
-        top: 1.4vh;
-    }
-
-    .home-faqs-acco-content {
-        margin-top: 1vh;
     }
 }
