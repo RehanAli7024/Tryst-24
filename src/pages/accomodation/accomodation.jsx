@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./accomodation.css";
 import Placeholder from "../contactus/placeholder";
+import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
 const Accomodation = () => {
@@ -50,10 +51,10 @@ const Accomodation = () => {
       </div>
       <div className="ac_pages">
         {activeButton === "Contact Us" && (
-          <div className="ac_contact grid grid-cols-1 md:grid-cols-3 gap-20 m-auto mb-10 overall">
+          <div className="ac_contact grid grid-cols-1 md:grid-cols-3 m-auto gap-20 mb-20 overall">
             <Placeholder data={data1.ctms[0]} id="ac_place" />
-            <Placeholder data={data1.coordi[0]} id="ac_place" />
-            <Placeholder data={data1.coordi[1]} id="ac_place" />
+            <Placeholder1 data={data1.coordi[0]} id="ac_place" />
+            <Placeholder1 data={data1.coordi[1]} id="ac_place" />
           </div>
         )}
         {activeButton === "FAQs" && (
