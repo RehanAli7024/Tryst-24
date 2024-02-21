@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./accomodation.css";
 import Placeholder from "../contactus/placeholder";
-import data1 from "./data";
+import data1 from "./data1";
+import FAQ_main from "./ac_faq_main";
 const Accomodation = () => {
   const [activeButton, setActiveButton] = useState("Registration Form");
   const [isClicked, setIsClicked] = useState(false);
@@ -52,6 +53,9 @@ const Accomodation = () => {
             <Placeholder data={data1.ctms[0]} id="ac_place"/>
             <Placeholder data={data1.coordi[0]} id="ac_place"/>
             <Placeholder data={data1.coordi[1]} id="ac_place"/>
+        </div>
+        <div className="ac_faq">
+          <FAQ_main />
         </div>
       </div>
     </>
