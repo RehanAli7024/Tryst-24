@@ -61,8 +61,9 @@ export default function EditCompetitionEvent({
         file: eventDetails.event_image,
         editedform: true,
         event_id: eventDetails.event_id,
-        reg_date: eventDetails.reg_date,
-        reg_time: eventDetails.reg_time,
+        reg_date: eventDetails.deadline_date,
+        reg_time: eventDetails.deadline_time,
+        has_form: eventDetails.has_form,
     });
 
     const [constactPersonDetails, setcontactPerosnDetails] = useState(eventDetails.contact);

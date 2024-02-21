@@ -245,7 +245,110 @@ const EventPage = ({ event }) => {
             </div>
           </div>
         </div>
-        {/* check if event.registration_link is not empty then display a heading otherwise display the link the registration_link in it  */}
+        {isVisible && (
+          <div className="ev_formbox">
+            <div className="ev_reg_form_heading">Registration Form</div>
+            <div className="formParent">
+              <form action="" className="ev_form_container">
+                {formFields.map((field, index) => {
+                  return (
+                    <div key={index} className="ev_input_field">
+                      {field.type === "text" ? (
+                        <>
+                          {/* adjust the display of the fields and render it accordingly  */}
+                          <label className="ev_form_heading">{field.title}</label>
+                          <input
+                            type="text"
+                            name={formData.form[field.title]}
+                            value={formData.form[field.title]}
+                            className="ev_inputbox"
+                            onChange={(e) => {
+                              setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                            }}
+                          />
+                        </>
+                      ) : field.type === "radio" ? (
+                        <>
+                          <label className="ev_form_heading">{field.title}</label>
+                          {/* the changes in the option should be updated in the formData state */}
+                          {field.options.map((option, index) => {
+                            return (
+                              <div key={index}>
+                                <input
+                                  type="radio"
+                                  name={formData.form[field.title]}
+                                  value={option}
+                                  onChange={(e) => {
+                                    setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                                  }}
+                                />
+                                <label className="ev_form_heading">{option}</label>
+                              </div>
+                            );
+                          })}
+                        </>
+                      ) : field.type === "checkbox" ? (
+                        <>
+                          <label className="ev_form_heading">{field.title}</label>
+
+                          {field.options.map((option, index) => {
+                            return (
+                              <div key={index}>
+                                <input
+                                  type="checkbox"
+                                  name={formData.form[field.title]}
+                                  value={option}
+                                  onChange={(e) => {
+                                    setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                                  }}
+                                />
+                                <label className="ev_form_heading">{option}</label>
+                              </div>
+                            );
+                          })}
+                        </>
+                      )
+                        : field.type === "team" ? (
+                          <>
+                            <label className="ev_form_heading">{field.title}</label>
+                            <input type="text" className="ev_inputbox" />
+                          </>
+                        ) : (
+                          <>
+                            <label className="ev_form_heading">{field.title}</label>
+                            <input
+                              type="file"
+                              className="ev_form_heading"
+                              name={formData.form[field.title]}
+                              value={formData.form[field.title]}
+                              onChange={(e) => {
+                                setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                              }}
+                            />
+                          </>
+                        )}
+                    </div>
+                  );
+                })}
+                <div className="ev_form_submit">
+                  <div className="fil_con" id="ev_page_fil_con_3">
+                    {/* check with the state submitted to disable the button when it is true */}
+                    {submitted ? (
+                      <button className="filter_btn submited" disabled>
+                        Please Wait....
+                      </button>
+                    ) : (
+                      <button className="filter_btn" onClick={handleSubmit}>
+                        Register
+                      </button>
+                    )
+                    }
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div >
+        )}
       </div >
     </>
   );

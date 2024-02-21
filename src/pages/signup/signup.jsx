@@ -231,7 +231,6 @@ const Signup = () => {
             border: "none",
             color: "white",
             borderRadius: "0px",
-            backgroundColor: "skyblue",
         }),
         menu: (provided, state) => ({
             ...provided,
