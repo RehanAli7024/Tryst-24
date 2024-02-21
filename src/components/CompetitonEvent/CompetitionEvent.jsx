@@ -230,7 +230,6 @@ export default function CompetitionEvent({
             </div>
           </div>
 
-
           <div className="No-of-contact-person-container">
             <div className="contact-person-details">
               <p>Contact Person(s) Details*</p>
