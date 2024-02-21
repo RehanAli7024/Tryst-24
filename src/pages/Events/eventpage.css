@@ -140,7 +140,7 @@
 .ev_contact_information {
   display: flex;
   color: #fff;
-  margin-top: 6.5rem;
+  margin-top: 4.5rem;
 }
 
 .ev_register {
@@ -322,7 +322,37 @@
 .rotatable-button.rotated img {
   transform: rotate(90deg);
 }
-
+.event_deadline{
+  margin-top: 2rem;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.ev_dead_text{
+  color: var(--Color-Base-Dark-Orange, #fb932e);
+  text-align: left;
+  font-family: Bender;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+}
+.ev_deadline_main{
+  color: var(--Color-Base-Snow, #fffbff);
+  text-align: left;
+  font-family: Bender;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+}
 @media (max-width: 768px) {
   .event_description {
     display: flex;
@@ -350,9 +380,49 @@
     margin-top: 2rem;
   }
 
+  .ev_dead_text{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-left: 4%;
+    text-align: center;
+  }
+  .ev_deadline_main{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1.25rem;
+    /* margin-left: 22%; */
+    margin-top: 0.5rem;
+  }
   .ev_POC {
     gap: 5vw;
   }
+
+  .event_time p,
+.event_date p,
+.event_location p{
+  font-size: 1rem;
+  margin-left: 0.2rem;
+}
+.event_details{
+  width: 95vw;
+  margin-left: 3%;
+  /* background-color: #00e0ff; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.event_description{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 }
 
 @media (max-width: 500px) {
@@ -368,6 +438,6 @@
   }
 
   .POC_box {
-    margin-left: 18vw;
+    margin-left: 19.6vw;
   }
 }

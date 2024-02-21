@@ -25,7 +25,19 @@ const EventPage = ({ event }) => {
   });
   const [registered, setRegistered] = useState(false);
   const [displaytext, setDisplaytext] = useState("Register");
+  function convertTimeToAMPM(time24) {
+    var splitTime = time24.split(":");
+    var hours = parseInt(splitTime[0]);
+    var minutes = parseInt(splitTime[1]);
+    var period = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var time12 = hours + ':' + minutes + ' ' + period;
 
+    return time12;
+}
   useEffect(() => {
     if (localStorage.getItem("access_token") === null) {
       setDisplaytext("Login to Register");
@@ -181,7 +193,7 @@ const EventPage = ({ event }) => {
                     />
                   </g>
                 </svg>
-                <p>Time: {event.event_time.slice(0, 5)}</p>
+                <p>Time: {convertTimeToAMPM(event.event_time.slice(0, 5))}</p>
               </div>
               <div className="event_location">
                 <svg
@@ -197,6 +209,14 @@ const EventPage = ({ event }) => {
                   />
                 </svg>
                 <p>Venue: {event.venue}</p>
+              </div>
+            </div>
+            <div className="event_deadline">
+              <div className="ev_dead_text">
+                Registration Deadline :
+              </div>
+              <div className="ev_deadline_main">
+              {convertTimeToAMPM(event.deadline_time.slice(0, 5))}, {event.deadline_date}
               </div>
             </div>
             <div className="ev_contact_information grid grid-cols-2">
