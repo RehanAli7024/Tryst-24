@@ -23,12 +23,12 @@
     flex-direction: column;
 }
 .ac_contact{
+    /* margin-top: 3rem; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     
 }
-#ac_place{
-    margin-right: 0;
-    margin-left: 0;
+#ac_nav{
+    margin-bottom: 3.5rem;
 }

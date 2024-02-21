@@ -14,7 +14,7 @@ const Accomodation = () => {
       <div className="acc_main">
         <div className="acc_heading">ACCOMODATION</div>
       </div>
-      <div className="dashboard-nav">
+      <div className="dashboard-nav" id="ac_nav">
         <button
           className={`dashboard-nav-button ${
             activeButton === "Registration Form" ? "active" : ""
