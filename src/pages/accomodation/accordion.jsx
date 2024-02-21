@@ -21,9 +21,6 @@ function Accordion(props) {
           <div className="row_ques_ans">
             <div className="row_ques">
               {props.value}
-              <div className="ques_plus">
-                <img src={add} alt="" />
-              </div>
             </div>
             <div
               className="row_ans"
@@ -31,6 +28,9 @@ function Accordion(props) {
             >
               {props.ans}
             </div>
+            <div className="ques_plus">
+                <img src={add} alt="" />
+              </div>
           </div>
         </div>
       </div>

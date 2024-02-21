@@ -56,15 +56,15 @@
     justify-content: center;
     flex-direction: column;
     margin-left: 1rem;
-    width: 95%;
-    height: auto;
+    width: 100%;
+    height: max-content;
     background-color: rgba(128, 35, 146,0.10);
     border-width: 2px;
     border-color: rgba(224, 134, 211, 0.30);
     border-radius: 3px;
     position: relative;
     /* background-image: url('./question.svg');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat; */
 }
 .row_ans{
@@ -82,8 +82,8 @@
 
 .ques_plus{
     position: absolute;
-    right: 0%;
-    /* top: 1rem; */
+    right: 1%;
+    top: 1rem;
     cursor: pointer;
 }
 
@@ -93,5 +93,13 @@
     }
     .row_ques_ans{
         width: 100%;
+    }
+    .row_ques{
+        font-size: 1.1rem;
+        margin-left: 0.4rem;
+        width: 80%;
+    }
+    .row_ans{
+        margin-left: 0.4rem;
     }
 }
