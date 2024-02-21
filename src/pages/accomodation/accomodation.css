@@ -32,3 +32,48 @@
 #ac_nav{
     margin-bottom: 3.5rem;
 }
+
+.Registration_form_containor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+}
+
+.initial_details{
+    width: 80%;
+    
+}
+
+.Form_details_accomodation{
+ color: var(--Color-Base-Snow, #FFFBFF);
+font-family: Rajdhani;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+width: 80%;
+}
+
+.dates_accomodation{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+}
+.members_details_accomodation{
+    display: flex;
+    flex-direction: column;
+}
+.selection_members{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+.men_number_selector{
+    display: flex;
+    flex-direction: row;
+}
