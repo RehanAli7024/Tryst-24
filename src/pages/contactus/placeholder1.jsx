@@ -1,5 +1,5 @@
 import './contactus.css';
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import { useState } from "react";
 import linkedin from "../../assets/linkedin.svg";
 import mail from "../../assets/mail.svg";
@@ -62,7 +62,7 @@ const Placeholder1 = ({ data }) => {
                 <div className="about-us-container">
                     {data.por}
                 </div>
-                <div className="about-us-container2">
+                <div className="about-us-container2" style={{color: 'white'}}>
                     {data.name}
                 </div>
                 <div className="about-us-container3">
