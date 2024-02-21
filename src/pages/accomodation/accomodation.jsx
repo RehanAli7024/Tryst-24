@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./accomodation.css";
 import Placeholder from "../contactus/placeholder";
-import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
 import Registrationform from "./Registration_form";
@@ -119,10 +118,10 @@ const Accomodation = () => {
       </div>
       <div className="ac_pages">
         {activeButton === "Contact Us" && (
-          <div className="ac_contact grid grid-cols-1 md:grid-cols-3 m-auto gap-20 mb-20 overall">
+          <div className="ac_contact grid grid-cols-1 md:grid-cols-3 gap-20 m-auto mb-10 overall">
             <Placeholder data={data1.ctms[0]} id="ac_place" />
-            <Placeholder1 data={data1.coordi[0]} id="ac_place" />
-            <Placeholder1 data={data1.coordi[1]} id="ac_place" />
+            <Placeholder data={data1.coordi[0]} id="ac_place" />
+            <Placeholder data={data1.coordi[1]} id="ac_place" />
           </div>
         )}
         {activeButton === "FAQs" && (
@@ -130,53 +129,193 @@ const Accomodation = () => {
             <FAQ_main />
           </div>
         )}
-        {activeButton === "Reaching IITD" && (
-          <div className="ac_reaching">
-            <div className="ac_reaching_points">
-              <div className="ac_reaching_points_num">1. </div>
-              <div className="ac_reaching_points_text">
-                Travelling in Mumbai is very easy and systematic. The modes of travelling in Mumbai are taxis, auto rickshaws, local train and BEST Buses. IIT Bombay is located at Powai, which is an eastern suburb in the North-Eastern part (Central Railway Line) of Mumbai. The following link may provide you a rough estimate of the auto fares between two stations Taxi Auto fare Mumbai is in the form of a long narrow island, almost a peninsula, thrusting southwards into the Arabian Sea. In Mumbai, local trains run through the following routes. Western Railway: Church gate to Borivali/Virar and return. Central Railway: Mumbai CST to Karjat/Kasara and return. Harbour Route: Mumbai CST to Andheri and return New Bombay Route: Mumbai CST to Vashi/ Panvel and return. Kanjur Marg, a Local Train Station is the closest local train stop to IIT Bombay. It is located on Central Railway line. Kanjur Marg Local Train Station is the closest local train stop to IIT Bombay.
+        {activeButton === "Reaching IITD" && null}
+        {activeButton === "Registration Form" && (
+          <div className="Registration_form_containor">
+            {!isClicked && (
+              <div className="initial_details">
+                <p className="Form_details_accomodation">
+                  At TRYST, we are committed to providing unparalleled
+                  satisfaction to all our participants. Our utmost priority is
+                  to ensure that you have a secure and comfortable home away
+                  from home. We go above and beyond to meet all your
+                  accommodation needs, providing exceptional service every step
+                  of the way. In addition to top-notch accommodation facilities,
+                  we take pride in offering a diverse range of cuisine options
+                  at our food outlets, catering to every palate. Our team is
+                  dedicated to making your experience with us truly memorable.
+                  We place a strong emphasis on hospitality management and take
+                  great care in ensuring that your stay is nothing short of
+                  exceptional. At TRYST, we are passionate about providing
+                  exceptional service and hospitality to all of our guests, and
+                  we look forward to welcoming you to our community.
+                </p>
+
+                <div className="dates_accomodation">
+                  <div className="checkin_accomodation">
+                    <div className="label_date_accomodation">Check-In</div>
+                    <div className="date_options">
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckInSelect("27")}
+                      >
+                        27
+                      </button>
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckInSelect("28")}
+                      >
+                        28
+                      </button>
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckInSelect("29")}
+                      >
+                        29
+                      </button>
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckInSelect("30")}
+                      >
+                        30
+                      </button>
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckInSelect("31")}
+                      >
+                        31
+                      </button>
+                    </div>
+                  </div>
+                  <div className="checkout_accomodation">
+                    <div className="label_date_accomodation">Check-Out</div>
+                    <div className="date_options">
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckOutSelect("27")}
+                      >
+                        27
+                      </button>
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckOutSelect("28")}
+                      >
+                        28
+                      </button>
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckOutSelect("29")}
+                      >
+                        29
+                      </button>
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckOutSelect("30")}
+                      >
+                        30
+                      </button>
+                      <button
+                        className="datepicker_btn"
+                        onClick={() => handleCheckOutSelect("31")}
+                      >
+                        31
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="members_details_accomodation">
+                  <div className="title_members_details">No. of People</div>
+                  <div className="selection_members">
+                    <div className="selector_men_number">
+                      <div className="men_accomodation">Men</div>
+                      <div className="men_number_selector">
+                        <button
+                          className="minus_btn_members"
+                          onClick={handleMenDecrement}
+                        >
+                          -
+                        </button>
+                        <div className="no_of_people">{menCount}</div>
+                        <button
+                          className="plus_btn_members"
+                          onClick={handleMenIncrement}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="selector_men_number">
+                      <div className="men_accomodation">Women</div>
+                      <div className="men_number_selector">
+                        <button
+                          className="minus_btn_members"
+                          onClick={handleWomenDecrement}
+                        >
+                          -
+                        </button>
+                        <div className="no_of_people">{womenCount}</div>
+                        <button
+                          className="plus_btn_members"
+                          onClick={handleWomenIncrement}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="next_btn_accomodation"
+                    onClick={handleFormSubmit}
+                  >
+                    Next
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="ac_reaching_points">
-              <div className="ac_reaching_points_num">2. </div>
-              <div className="ac_reaching_points_text">
-                Every team has to register online on the official Techfest website for the competition.
+            )}
+            {isClicked && (
+              <div className="members_details">
+                {formDataArray.map((formData, index) => (
+                  <div key={index} className="members_personal_data">
+                    <h2>Member {index + 1} Details</h2>
+                    <form onSubmit={handleSubmit}>
+                      <div>
+                        <label htmlFor={`trystUID-${index}`}>Tryst UID:</label>
+                        <input
+                          type="text"
+                          id={`trystUID-${index}`}
+                          name="trystUID"
+                          value={formData.trystUID}
+                          onChange={(e) => handleChange(e, index)}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor={`fullName-${index}`}>Full Name:</label>
+                        <input
+                          type="text"
+                          id={`fullName-${index}`}
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={(e) => handleChange(e, index)}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor={`aadhar-${index}`}>Aadhar:</label>
+                        <input
+                          type="text"
+                          id={`aadhar-${index}`}
+                          name="aadhar"
+                          value={formData.aadhar}
+                          onChange={(e) => handleChange(e, index)}
+                        />
+                      </div>
+                    </form>
+                  </div>
+                ))}
+                <button className="submit_details_members" onClick={handleSubmit}>Submit</button>
               </div>
-            </div>
-            <div className="ac_reaching_points">
-              <div className="ac_reaching_points_num">3. </div>
-              <div className="ac_reaching_points_text">
-                A Team ID will be allocated to the team on registration which shall be used for future references.
-              </div>
-            </div>
-            <div className="ac_reaching_points">
-              <div className="ac_reaching_points_num">4. </div>
-              <div className="ac_reaching_points_text">
-                The decision of the organizers or judges shall be treated as final and binding on all.
-              </div>
-            </div>
-            <div className="ac_reaching_points">
-              <div className="ac_reaching_points_num">5. </div>
-              <div className="ac_reaching_points_text">
-                No responsibility will be held by Techfest, IIT Bombay for any late, lost or misdirected entries.
-              </div>
-            </div>
-            <div className="ac_reaching_points">
-              <div className="ac_reaching_points_num">6. </div>
-              <div className="ac_reaching_points_text">
-                Note that at any point of time the latest information will be that which is on the website. However, registered participants will be informed through mail about any changes.
-              </div>
-            </div>
-            <div className="ac_reaching_points">
-              <div className="ac_reaching_points_num">7. </div>
-              <div className="ac_reaching_points_text">
-                All modes of official communication will be through the Techfest e-mail. Participants are advised to keep track of all folders in their e-mail accounts.
-              </div>
-            </div>
+            )}
           </div>
         )}
-        {activeButton === "Registration Form" && (null)}
       </div>
     </>
   );
