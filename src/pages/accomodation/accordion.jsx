@@ -1,6 +1,6 @@
 import "./ac_faq.css";
-import circle from "./../../assets/accomodation/Card.svg";
-import faqs_arrow from "./../../assets/accomodation/faqs-arrow.svg";
+// import circle from "./../../assets/accomodation/Card.svg";
+// import faqs_arrow from "./../../assets/accomodation/faqs-arrow.svg";
 import React, { useState } from "react";
 
 function Accordion({ items }) {
