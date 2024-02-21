@@ -1,12 +1,12 @@
 .event-card-component-container {
-  background: url("../../assets/event_cards/Event_Card_bg_color.svg") no-repeat;
-  background-size: 100% 100%;
   display: flex;
+  width: 90%;
   height: auto;
   cursor: pointer;
   position: relative;
   flex-wrap: wrap;
 }
+
 .event-card-img {
   position: absolute;
   top: 5%;

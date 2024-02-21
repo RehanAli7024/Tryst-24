@@ -5,21 +5,21 @@ const faqs = [
   {
     ques: "What does it mean to be Tryst Campus Ambassador?",
     ans: "The Tryst Campus Ambassador Program is a volunteer opportunity for students passionate about technology and innovation to help promote and enhance the Tryst Tech Fest experience. Ambassadors will play a crucial role in spreading excitement and engaging the college community with the festival.",
-    index: 1,
+    index: "01",
   },
   {
-    ques: "Am I eligible to be a Campus Ambassador?",
-    ans: "Students currently enrolled in any college, who demonstrate a strong interest in technology and innovation, possess excellent communication and interpersonal skills and can commit to attending mandatory meetings and training sessions are eligible and ideal candidates.",
-    index: 2,
+    ques: "What does it mean to be Tryst Campus Ambassador? lamba kheech sakta hai",
+    ans: "The Tryst Campus Ambassador Program is a volunteer opportunity for students passionate about technology and innovation to help promote and enhance the Tryst Tech Fest experience. Ambassadors will play a crucial role in spreading excitement and engaging the college community with the festival.",
+    index: "02",
   },
 ];
 const FAQ_main = () => {
   return (
-    <div className="home-faqs">
-      <div className="home-faqs-question">
-        {/* <Accordion itmes={faqs} /> */}
-      </div>
-    </div>
+    <div id='faqs' className='col-12 red_bor'>
+						{faqs.map((data) => {
+							return <Accordion value={data.ques} ans={data.ans} index = {data.index}/>;
+						})}
+		</div>
   );
 };
 

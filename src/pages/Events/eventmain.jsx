@@ -10,6 +10,8 @@ import EventCard from "../../components/EventCard/EventCard";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
 import { Link, useNavigate } from "react-router-dom";
+import { set } from "immutable";
+import demo from "../../assets/event_cards/demo.png";
 
 const Types = [
   { index: 1, name: "Competitions" },
@@ -33,6 +35,8 @@ const EventMain = () => {
   const [eventarray, setEventarray] = useState([]);
   const [typeSelected, setTypeSelected] = useState([]);
   const [clubSelected, setClubSelected] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
   const myStyle = {
     "mask-type": "alpha",
   };
@@ -41,7 +45,9 @@ const EventMain = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-    axios.get(`${DOMAIN}allevents/`)
+    axios
+      
+      .get(`${DOMAIN}allevents/`)
       .then((response) => {
         setEventarray(response.data);
       })
@@ -50,9 +56,17 @@ const EventMain = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(eventarray.competitions);
-  }, [eventarray]);
+  // useEffect(() => {
+  //   console.log(eventarray.competitions);
+  //   console.log(eventarray.guestlectures);
+  //   console.log(eventarray.workshops);
+  // }, [eventarray]);
+
+  // const handleSearch = () => {
+  //   const searchInput = document.getElementsByName("search_input")[0].value;
+  //   setSearchTerm(searchInput);
+  //   console.log(searchTerm);
+  // };
 
   const handleTypeChange = () => {
     setType(!type);
@@ -220,8 +234,13 @@ const EventMain = () => {
                 type="text"
                 className="input_field"
                 placeholder="Event Name Here"
+                name="search_input"
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <img src={search_icon} alt="" className="searchbtn" />
+              {/* <img src={search_icon} alt="" className="searchbtn" /> */}
+              {/* <button className="searchbtn" onClick={handleSearch}>
+                <img src={search_icon} alt="" />
+              </button> */}
             </div>
           </div>
         </div>
@@ -318,14 +337,77 @@ const EventMain = () => {
               </div>
             </div>
           </div>
-          <div className="event_cards">
-            {/* when this card is clicked the page navigates to that route */}
-            {eventarray.competitions &&
-              eventarray.competitions.map((event, index) => (
-                <Link to={`/events/${event.title}`} key={index}>
-                  <EventCard image={event.event_image} />
-                </Link>
-              ))}
+
+          <div className="events">
+          {eventarray.competitions &&
+              eventarray.competitions.map((event, index) => {
+                if (
+                  !searchTerm ||
+                  event.title.toLowerCase().includes(searchTerm)
+                ) {
+                  if (typeSelected.length === 0) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                       <div className="events_card"><EventCard image={event.event_image} /></div> 
+                      </Link>
+                    );
+                  } else {
+                    if (typeSelected.includes(1)) {
+                      return (
+                        <Link to={`/events/${event.title}`} key={index}>
+                          <div className="events_card"><EventCard image={event.event_image} /></div> 
+                        </Link>
+                      );
+                    }
+                  }
+                }
+              })}
+            {eventarray.guestlectures &&
+              eventarray.guestlectures.map((event, index) => {
+                if (
+                  !searchTerm ||
+                  event.title.toLowerCase().includes(searchTerm)
+                ) {
+                  if (typeSelected.length === 0) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card"><EventCard image={event.event_image} /></div> 
+                      </Link>
+                    );
+                  } else {
+                    if (typeSelected.includes(2)) {
+                      return (
+                        <Link to={`/events/${event.title}`} key={index}>
+                          <div className="events_card"><EventCard image={event.event_image} /></div> 
+                        </Link>
+                      );
+                    }
+                  }
+                }
+              })}
+            {eventarray.workshops &&
+              eventarray.workshops.map((event, index) => {
+                if (
+                  !searchTerm ||
+                  event.title.toLowerCase().includes(searchTerm)
+                ) {
+                  if (typeSelected.length === 0) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card"><EventCard image={event.event_image} /></div> 
+                      </Link>
+                    );
+                  } else {
+                    if (typeSelected.includes(3)) {
+                      return (
+                        <Link to={`/events/${event.title}`} key={index}>
+                          <div className="events_card"><EventCard image={event.event_image} /></div> 
+                        </Link>
+                      );
+                    }
+                  }
+                }
+              })}
           </div>
         </div>
       </div>
