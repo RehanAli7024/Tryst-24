@@ -20,7 +20,7 @@ const Accomodation = () => {
             activeButton === "Registration Form" ? "active" : ""
           }`}
           onClick={() => handleButtonClick("Registration Form")}
-        >   
+        >
           Registration Form
         </button>
         <button
@@ -49,14 +49,20 @@ const Accomodation = () => {
         </button>
       </div>
       <div className="ac_pages">
-        <div className="ac_contact grid grid-cols-1 md:grid-cols-3 gap-20 m-auto mb-10 overall">
-            <Placeholder data={data1.ctms[0]} id="ac_place"/>
-            <Placeholder data={data1.coordi[0]} id="ac_place"/>
-            <Placeholder data={data1.coordi[1]} id="ac_place"/>
-        </div>
-        <div className="ac_faq">
-          <FAQ_main />
-        </div>
+        {activeButton === "Contact Us" && (
+          <div className="ac_contact grid grid-cols-1 md:grid-cols-3 gap-20 m-auto mb-10 overall">
+            <Placeholder data={data1.ctms[0]} id="ac_place" />
+            <Placeholder data={data1.coordi[0]} id="ac_place" />
+            <Placeholder data={data1.coordi[1]} id="ac_place" />
+          </div>
+        )}
+        {activeButton === "FAQs" && (
+          <div className="ac_faq">
+            <FAQ_main />
+          </div>
+        )}
+        {activeButton === "Reaching IITD" && (null)}
+        {activeButton === "Registration Form" && (null)}
       </div>
     </>
   );
