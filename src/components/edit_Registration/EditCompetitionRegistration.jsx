@@ -95,6 +95,8 @@ function EditCompetitionRegistration({ setRegistrationOpen }) {
       }
       )
       .then((res) => {
+        localStorage.removeItem('id');
+        navigate('/admin');
         alert('Registration form updated successfully');
       })
       .catch((err) => {
@@ -103,11 +105,6 @@ function EditCompetitionRegistration({ setRegistrationOpen }) {
   };
 
   // DO NOT TOUCH THIS CODE
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
-
   const handleresponseChange = (name, value) => {
     // Check if the field is 'acceptingResponses' to handle boolean conversion
     if (name === 'acceptingResponses') {
