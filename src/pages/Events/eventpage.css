@@ -342,3 +342,15 @@
     margin-top: 2rem;
   }
 }
+
+@media (max-width: 500px){
+  .event_title h1 {
+    font-size: 1.4rem;
+    margin-left: 5%;
+  }
+  .ev_contact_information {
+    display: flex;
+    color: #fff;
+    margin-top: 2.5rem;
+}
+}

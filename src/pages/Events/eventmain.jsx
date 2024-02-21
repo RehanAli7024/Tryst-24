@@ -10,6 +10,7 @@ import EventCard from "../../components/EventCard/EventCard";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
 import { Link, useNavigate } from "react-router-dom";
+import demo from "../../assets/event_cards/demo.png";
 
 const Types = [
   { index: 1, name: "Competitions" },
@@ -41,7 +42,8 @@ const EventMain = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-    axios.get(`${DOMAIN}allevents/`)
+    axios
+      .get(`${DOMAIN}allevents/`)
       .then((response) => {
         setEventarray(response.data);
       })
@@ -318,12 +320,15 @@ const EventMain = () => {
               </div>
             </div>
           </div>
-          <div className="event_cards">
+
+          <div className="events">
             {/* when this card is clicked the page navigates to that route */}
             {eventarray.competitions &&
               eventarray.competitions.map((event, index) => (
                 <Link to={`/events/${event.title}`} key={index}>
-                  <EventCard image={event.event_image} />
+                  <div className="events_card">
+                    <EventCard image={event.event_image} />
+                  </div>
                 </Link>
               ))}
           </div>
