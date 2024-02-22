@@ -11,6 +11,7 @@ import { useState } from "react";
 export default function EventCard({ image }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const leftStyle = isHovered || isClicked ? "5%" : "4.5%";
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -30,9 +31,8 @@ export default function EventCard({ image }) {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
       style={{
-        transform: isHovered || isClicked ? "scale(0.99)" : "scale(1)",
         transformStyle: isHovered || isClicked ? "preserve-3d" : "preserve-3d",
-        transition: isHovered || isClicked ? "all 1s ease" : "all 1s ease",
+        transition: isHovered || isClicked ? "all 2s ease" : "all 2s ease",
       }}
     >
       <img
@@ -40,7 +40,7 @@ export default function EventCard({ image }) {
         alt="event card background"
         className="event-card-bg"
       />
-      <div className="event-card-img">
+      <div className="event-card-img" style={{ left: leftStyle }}>
         <img src={image} alt="event" />
       </div>
       <div className="event-card-top-vector">
