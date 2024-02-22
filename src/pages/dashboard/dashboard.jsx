@@ -174,30 +174,36 @@ const Dashboard = () => {
                 <img src={isHovered ? logouthov : logoutbutton} alt="" />
               </button>
             </div>
-            <div className="email_phone">
-              <div className="email_label">E-MAIL:</div>
-              <div className="user_email">{user.email_id}</div>
-              <div className="phone_label">PHONE:</div>
-              <div className="user_email">{user.phone_number}</div>
-            </div>
-            <div className="user_ID">
-              <div className="email_label">UID:</div>
-              <div className="user_email">{user.user_id}</div>
-            </div>
-            <div className="college_details">
-              <div className="email_label">college details :</div>
-              <div className="actual_details">
-                <div className="detail_info">
-                  <div className="info_label">Name:</div>
-                  <div className="info_data">{user.college}</div>
+            <div className="dashboard_details">
+              <div className="dashboard_detail_group">
+                <div className="dashboard_detail dashboard_detail_email">
+                  <div className="user_label">E-MAIL:</div>
+                  <div className="user_detail">{user.email_id}</div>
                 </div>
-                <div className="detail_info">
-                  <div className="info_label">State:</div>
-                  <div className="info_data">{user.state}</div>
+                <div className="dashboard_detail dashboard_detail_email">
+                  <div className="user_label">PHONE:</div>
+                  <div className="user_detail">{user.phone_number}</div>
                 </div>
-                <div className="detail_info">
-                  <div className="info_label">City:</div>
-                  <div className="info_data">{user.city}</div>
+              </div>
+              <div className="dashboard_detail dashboard_detail_email">
+                <div className="user_label">UID:</div>
+                <div className="user_detail">{user.user_id}</div>
+              </div>
+            </div>
+            <div className="dashboard_college_details">
+              <div className="dashboard_college_details_heading">COLLEGE DETAILS :</div>
+              <div className="dashboard_details">
+                <div className="dashboard_detail">
+                  <div className="user_label">Name:</div>
+                  <div className="user_detail">{user.college}</div>
+                </div>
+                <div className="dashboard_detail">
+                  <div className="user_label">State:</div>
+                  <div className="user_detail">{user.state}</div>
+                </div>
+                <div className="dashboard_detail">
+                  <div className="user_label">City:</div>
+                  <div className="user_detail">{user.city}</div>
                 </div>
               </div>
             </div>
