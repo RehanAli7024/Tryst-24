@@ -65,9 +65,11 @@
   background-color: rgba(0, 224, 255, 0.3);
   margin-bottom: 1rem;
   border-radius: 5px;
-  fill: linear-gradient(0deg,
+  fill: linear-gradient(
+      0deg,
       rgba(0, 224, 255, 0.3) 0%,
-      rgba(0, 224, 255, 0.3) 100%),
+      rgba(0, 224, 255, 0.3) 100%
+    ),
     rgba(3, 10, 23, 0.8);
   stroke-width: 2px;
   /* stroke: var(--Color-Base-Vivid-Sky-Blue, #00E0FF);    */
@@ -272,9 +274,11 @@
   padding-left: 0.8rem;
   align-items: center;
   border-left: 3px solid var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
-  background: linear-gradient(0deg,
+  background: linear-gradient(
+      0deg,
       rgba(0, 224, 255, 0.1) 0%,
-      rgba(0, 224, 255, 0.1) 100%),
+      rgba(0, 224, 255, 0.1) 100%
+    ),
     rgba(3, 10, 23, 0.8);
   color: var(--Color-Base-Snow, #fffbff);
   font-family: Rajdhani;
@@ -322,14 +326,14 @@
 .rotatable-button.rotated img {
   transform: rotate(90deg);
 }
-.event_deadline{
+.event_deadline {
   margin-top: 2rem;
   align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.ev_dead_text{
+.ev_dead_text {
   color: var(--Color-Base-Dark-Orange, #fb932e);
   text-align: left;
   font-family: Bender;
@@ -340,7 +344,7 @@
   display: flex;
   align-items: center;
 }
-.ev_deadline_main{
+.ev_deadline_main {
   color: var(--Color-Base-Snow, #fffbff);
   text-align: left;
   font-family: Bender;
@@ -380,7 +384,7 @@
     margin-top: 2rem;
   }
 
-  .ev_dead_text{
+  .ev_dead_text {
     width: 100%;
     align-items: center;
     display: flex;
@@ -389,7 +393,7 @@
     margin-left: 4%;
     text-align: center;
   }
-  .ev_deadline_main{
+  .ev_deadline_main {
     width: 100%;
     align-items: center;
     display: flex;
@@ -401,28 +405,30 @@
   .ev_POC {
     gap: 5vw;
   }
-
+  .event_details{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75vw;
+  }
   .event_time p,
-.event_date p,
-.event_location p{
-  font-size: 1rem;
-  margin-left: 0.2rem;
-}
-.event_details{
-  width: 95vw;
-  margin-left: 3%;
-  /* background-color: #00e0ff; */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.event_description{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  .event_date p,
+  .event_location p {
+    font-size: 4.3vw;
+    margin-left: 0.2rem;
+  }
+  .event_time ,
+  .event_date ,
+  .event_location  {
+    margin-left: 0.2rem;
+    margin-bottom: 1rem;
+  }
+  .event_description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 500px) {
@@ -438,6 +444,6 @@
   }
 
   .POC_box {
-    margin-left: 19.6vw;
+    margin-left: 18.8vw;
   }
 }
