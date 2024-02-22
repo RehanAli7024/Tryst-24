@@ -56,6 +56,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  text-wrap: nowrap;
 }
 
 .date_options {
@@ -67,18 +68,17 @@
 }
 
 .datepicker_btn {
-  
-  background-image: url('./assets/plusbtn.svg');
+  background-image: url("./assets/plusbtn.svg");
   background-size: cover; /* or contain, depending on how you want the image to fit */
   background-position: center; /* or any other desired position */
-  
+
   padding: 6px 12px; /* Adjust padding as needed */
-  
+
   border: none; /* Remove border if needed */
   cursor: pointer; /* Add pointer cursor */
 }
-.datepicker_btn.selecteddate{
-    background-image: url('./assets/plusbtnselected.svg');
+.datepicker_btn.selecteddate {
+  background-image: url("./assets/plusbtnselected.svg");
 }
 .checkin_accomodation {
   display: flex;
@@ -107,21 +107,20 @@
 }
 
 .minus_btn_members {
-    display: flex;
-    
-    width: 15%;
-    font-size: 24px;
-  
-      background-image: url('./assets/decreasetest.jpg');
-      background-size: cover; /* or contain, depending on how you want the image to fit */
-      background-position: center; /* or any other desired position */
-      
-      padding: 6px 8px; /* Adjust padding as needed */
-      
-      border: none; /* Remove border if needed */
-      cursor: pointer; /* Add pointer cursor */
-      height: 40px;
-      
+  display: flex;
+
+  width: 48px;
+  font-size: 24px;
+
+  background-image: url("./assets/decreasetest.jpg");
+  background-size: cover; /* or contain, depending on how you want the image to fit */
+  background-position: center; /* or any other desired position */
+
+  padding: 6px 8px; /* Adjust padding as needed */
+
+  border: none; /* Remove border if needed */
+  cursor: pointer; /* Add pointer cursor */
+  height: 40px;
 }
 .no_of_people {
   width: 45%;
@@ -135,19 +134,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15%;
+  width: 48px;
   font-size: 24px;
 
-    background-image: url('./assets/increase.png');
-    background-size: cover; /* or contain, depending on how you want the image to fit */
-    background-position: center; /* or any other desired position */
-    
-    padding: 6px 8px; /* Adjust padding as needed */
-    
-    border: none; /* Remove border if needed */
-    cursor: pointer; /* Add pointer cursor */
-    height: 40px;
-  
+  background-image: url("./assets/increase.png");
+  background-size: cover; /* or contain, depending on how you want the image to fit */
+  background-position: center; /* or any other desired position */
+
+  padding: 6px 8px; /* Adjust padding as needed */
+
+  border: none; /* Remove border if needed */
+  cursor: pointer; /* Add pointer cursor */
+  height: 40px;
 }
 
 .Form_details_accomodation {
@@ -168,11 +166,10 @@
   align-items: center;
   gap: 20%;
 }
-.label_date_accomodation{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
+.label_date_accomodation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .members_details_accomodation {
   display: flex;
@@ -194,7 +191,7 @@
 }
 
 .selector_men_number {
-  width:20%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -207,27 +204,25 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
-  
 }
 
 .next_btn_accomodation {
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  width: 13%;
+
+  width: 200px;
   height: 50px;
   margin-top: 30px;
   margin-bottom: 20px;
-  background-image: url('./assets/nextbtn.svg');
-    background-size: cover; /* or contain, depending on how you want the image to fit */
-    background-position: center; /* or any other desired position */
-    
-    padding: 12px 8px; /* Adjust padding as needed */
-    
-    border: none; /* Remove border if needed */
-    cursor: pointer; /* Add pointer cursor */
-  
+  background-image: url("./assets/nextbtn.svg");
+  background-size: cover; /* or contain, depending on how you want the image to fit */
+  background-position: center; /* or any other desired position */
+
+  padding: 12px 8px; /* Adjust padding as needed */
+
+  border: none; /* Remove border if needed */
+  cursor: pointer; /* Add pointer cursor */
 }
 
 .members_details {
@@ -322,22 +317,22 @@
 }
 
 .submit_details_members {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    width: 13%;
-    height: 50px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    background-image: url('./assets/nextbtn.svg');
-      background-size: cover; /* or contain, depending on how you want the image to fit */
-      background-position: center; /* or any other desired position */
-      
-      padding: 12px 8px; /* Adjust padding as needed */
-      
-      border: none; /* Remove border if needed */
-      cursor: pointer; /* Add pointer cursor */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 200px;
+  height: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background-image: url("./assets/nextbtn.svg");
+  background-size: cover; /* or contain, depending on how you want the image to fit */
+  background-position: center; /* or any other desired position */
+
+  padding: 12px 8px; /* Adjust padding as needed */
+
+  border: none; /* Remove border if needed */
+  cursor: pointer; /* Add pointer cursor */
 }
 
 .ac_reaching {
@@ -381,5 +376,44 @@
   }
   .ac_reaching_points_text {
     font-size: 1rem;
+  }
+
+  .members_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+  }
+  .members_personal_data {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .members_details_field input {
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .selection_members {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 820px) {
+  .selector_men_number {
+    width: 30%;
+  }
+}
+
+@media (max-width: 650px) {
+  .dates_accomodation {
+    flex-direction: column;
+    gap: 2vh;
+  }
+  .selector_men_number {
+    width: 50%;
   }
 }

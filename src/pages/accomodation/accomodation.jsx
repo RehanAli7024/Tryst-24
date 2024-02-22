@@ -4,7 +4,7 @@ import Placeholder from "../contactus/placeholder";
 import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
-import plus_button from './assets/plusbtn.svg';
+import plus_button from "./assets/plusbtn.svg";
 
 const Accomodation = () => {
   const [activeButton, setActiveButton] = useState("Registration Form");
@@ -51,7 +51,6 @@ const Accomodation = () => {
     }
   };
 
-  
   const handleCheckInSelect = (date) => {
     setCheckInDate(date);
   };
@@ -232,31 +231,51 @@ const Accomodation = () => {
                     <div className="label_date_accomodation">Check-In</div>
                     <div className="date_options">
                       <button
-                        className={checkInDate == "27" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkInDate == "27"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckInSelect("27")}
                       >
                         27
                       </button>
                       <button
-                        className={checkInDate == "28" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkInDate == "28"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckInSelect("28")}
                       >
                         28
                       </button>
                       <button
-                        className={checkInDate == "29" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkInDate == "29"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckInSelect("29")}
                       >
                         29
                       </button>
                       <button
-                        className={checkInDate == "30" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkInDate == "30"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckInSelect("30")}
                       >
                         30
                       </button>
                       <button
-                        className={checkInDate == "31" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkInDate == "31"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckInSelect("31")}
                       >
                         31
@@ -267,31 +286,51 @@ const Accomodation = () => {
                     <div className="label_date_accomodation">Check-Out</div>
                     <div className="date_options">
                       <button
-                         className={checkOutDate == "27" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkOutDate == "27"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckOutSelect("27")}
                       >
                         27
                       </button>
                       <button
-                        className={checkOutDate == "28" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkOutDate == "28"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckOutSelect("28")}
                       >
                         28
                       </button>
                       <button
-                        className={checkOutDate == "29" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkOutDate == "29"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckOutSelect("29")}
                       >
                         29
                       </button>
                       <button
-                        className={checkOutDate == "30" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkOutDate == "30"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckOutSelect("30")}
                       >
                         30
                       </button>
                       <button
-                       className={checkOutDate == "31" ? "datepicker_btn selecteddate" : "datepicker_btn"}
+                        className={
+                          checkOutDate == "31"
+                            ? "datepicker_btn selecteddate"
+                            : "datepicker_btn"
+                        }
                         onClick={() => handleCheckOutSelect("31")}
                       >
                         31
@@ -308,16 +347,12 @@ const Accomodation = () => {
                         <button
                           className="minus_btn_members"
                           onClick={handleMenDecrement}
-                        >
-                          
-                        </button>
+                        ></button>
                         <div className="no_of_people">{menCount}</div>
                         <button
                           className="plus_btn_members"
                           onClick={handleMenIncrement}
-                        >
-                          
-                        </button>
+                        ></button>
                       </div>
                     </div>
                     <div className="selector_men_number">
@@ -326,16 +361,12 @@ const Accomodation = () => {
                         <button
                           className="minus_btn_members"
                           onClick={handleWomenDecrement}
-                        >
-                          
-                        </button>
+                        ></button>
                         <div className="no_of_people">{womenCount}</div>
                         <button
                           className="plus_btn_members"
                           onClick={handleWomenIncrement}
-                        >
-                          
-                        </button>
+                        ></button>
                       </div>
                     </div>
                   </div>
