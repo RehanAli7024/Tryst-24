@@ -42,9 +42,73 @@
 }
 
 .initial_details{
-    width: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
     
 }
+.label_date_accomodation{
+    color: var(--Color-Base-Snow, #FFFBFF);
+text-align: center;
+font-family: Rajdhani;
+font-size: 28px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.date_options{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+
+.datepicker_btn{
+    width: 3vw;
+    border: 2px solid rgba(0, 224, 255, 0.30);
+}
+.checkin_accomodation{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+.checkout_accomodation{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+.title_members_details{
+    color: var(--Color-Base-Violet, #E086D3);
+text-align: center;
+font-family: Bender;
+font-size: 28px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.minus_btn_members{
+    width: 2vw;
+    border: 2px solid rgba(0, 224, 255, 0.30);
+}
+.no_of_people{
+    width: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(0, 224, 255, 0.30);
+}
+.plus_btn_members{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2vw;
+    border: 2px solid rgba(0, 224, 255, 0.30);
+}
+
 
 .Form_details_accomodation{
  color: var(--Color-Base-Snow, #FFFBFF);
@@ -66,13 +130,49 @@ width: 80%;
 }
 .members_details_accomodation{
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    gap: 2vh;
+    margin-bottom: 2vh;
 }
+.men_accomodation{
+    color: var(--Color-Base-Snow, #FFFBFF);
+text-align: center;
+font-family: Rajdhani;
+font-size: 28px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.selector_men_number{
+    width: 12vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .selection_members{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
+    width: 25vw;
     gap: 10%;
 }
+
+.next_btn_accomodation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2vw;
+    border: 2px solid rgba(0, 224, 255, 0.30);
+    width: 5vw;
+}
+
 .men_number_selector{
     display: flex;
     flex-direction: row;
