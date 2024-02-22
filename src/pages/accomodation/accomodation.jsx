@@ -4,6 +4,7 @@ import Placeholder from "../contactus/placeholder";
 import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
+import plus_button from './assets/plusbtn.svg';
 
 const Accomodation = () => {
   const [activeButton, setActiveButton] = useState("Registration Form");
@@ -50,6 +51,7 @@ const Accomodation = () => {
     }
   };
 
+  
   const handleCheckInSelect = (date) => {
     setCheckInDate(date);
   };
@@ -230,31 +232,31 @@ const Accomodation = () => {
                     <div className="label_date_accomodation">Check-In</div>
                     <div className="date_options">
                       <button
-                        className="datepicker_btn"
+                        className={checkInDate == "27" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckInSelect("27")}
                       >
                         27
                       </button>
                       <button
-                        className="datepicker_btn"
+                        className={checkInDate == "28" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckInSelect("28")}
                       >
                         28
                       </button>
                       <button
-                        className="datepicker_btn"
+                        className={checkInDate == "29" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckInSelect("29")}
                       >
                         29
                       </button>
                       <button
-                        className="datepicker_btn"
+                        className={checkInDate == "30" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckInSelect("30")}
                       >
                         30
                       </button>
                       <button
-                        className="datepicker_btn"
+                        className={checkInDate == "31" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckInSelect("31")}
                       >
                         31
@@ -265,31 +267,31 @@ const Accomodation = () => {
                     <div className="label_date_accomodation">Check-Out</div>
                     <div className="date_options">
                       <button
-                        className="datepicker_btn"
+                         className={checkOutDate == "27" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckOutSelect("27")}
                       >
                         27
                       </button>
                       <button
-                        className="datepicker_btn"
+                        className={checkOutDate == "28" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckOutSelect("28")}
                       >
                         28
                       </button>
                       <button
-                        className="datepicker_btn"
+                        className={checkOutDate == "29" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckOutSelect("29")}
                       >
                         29
                       </button>
                       <button
-                        className="datepicker_btn"
+                        className={checkOutDate == "30" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckOutSelect("30")}
                       >
                         30
                       </button>
                       <button
-                        className="datepicker_btn"
+                       className={checkOutDate == "31" ? "datepicker_btn selecteddate" : "datepicker_btn"}
                         onClick={() => handleCheckOutSelect("31")}
                       >
                         31
@@ -307,14 +309,14 @@ const Accomodation = () => {
                           className="minus_btn_members"
                           onClick={handleMenDecrement}
                         >
-                          -
+                          
                         </button>
                         <div className="no_of_people">{menCount}</div>
                         <button
                           className="plus_btn_members"
                           onClick={handleMenIncrement}
                         >
-                          +
+                          
                         </button>
                       </div>
                     </div>
@@ -325,24 +327,24 @@ const Accomodation = () => {
                           className="minus_btn_members"
                           onClick={handleWomenDecrement}
                         >
-                          -
+                          
                         </button>
                         <div className="no_of_people">{womenCount}</div>
                         <button
                           className="plus_btn_members"
                           onClick={handleWomenIncrement}
                         >
-                          +
+                          
                         </button>
                       </div>
                     </div>
                   </div>
-                  <div
+                  <button
                     className="next_btn_accomodation"
                     onClick={handleFormSubmit}
                   >
                     Next
-                  </div>
+                  </button>
                 </div>
               </div>
             )}
@@ -350,8 +352,13 @@ const Accomodation = () => {
               <div className="members_details">
                 {formDataArray.map((formData, index) => (
                   <div key={index} className="members_personal_data">
-                    <h2 className="members_headings">Member {index + 1} Details</h2>
-                    <form className="members_details_form" onSubmit={handleSubmit}>
+                    <h2 className="members_headings">
+                      Member {index + 1} Details
+                    </h2>
+                    <form
+                      className="members_details_form"
+                      onSubmit={handleSubmit}
+                    >
                       <div className="members_details_field">
                         <label htmlFor={`trystUID-${index}`}>Tryst UID :</label>
                         <input
@@ -363,7 +370,9 @@ const Accomodation = () => {
                         />
                       </div>
                       <div className="members_details_field">
-                        <label htmlFor={`fullName-${index}`}>Full Name (as on Aadhar Card) :</label>
+                        <label htmlFor={`fullName-${index}`}>
+                          Full Name (as on Aadhar Card) :
+                        </label>
                         <input
                           type="text"
                           id={`fullName-${index}`}
@@ -373,7 +382,9 @@ const Accomodation = () => {
                         />
                       </div>
                       <div className="members_details_field">
-                        <label htmlFor={`aadhar-${index}`}>Aadhar Card No :</label>
+                        <label htmlFor={`aadhar-${index}`}>
+                          Aadhar Card No :
+                        </label>
                         <input
                           type="text"
                           id={`aadhar-${index}`}
@@ -388,12 +399,16 @@ const Accomodation = () => {
                 <div className="terms_and_conditions_accomodation">
                   <label>
                     <input
-                    className="terms_and_conditions_box"
+                      className="terms_and_conditions_box"
                       type="checkbox"
                       checked={isChecked}
                       onChange={handleCheckboxChange}
                     />
-                    I certify that the above entered information is true to the best of my knowledge and belief and I understand that I subject myself to disciplinary action in the event that the above facts are found to be falsified which includes immediate dismissal from the accommodation facilities.
+                    I certify that the above entered information is true to the
+                    best of my knowledge and belief and I understand that I
+                    subject myself to disciplinary action in the event that the
+                    above facts are found to be falsified which includes
+                    immediate dismissal from the accommodation facilities.
                   </label>
                 </div>
                 {isChecked && (

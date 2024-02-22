@@ -46,7 +46,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3vh;
+  gap: 50px;
 }
 .label_date_accomodation {
   color: var(--Color-Base-Snow, #fffbff);
@@ -61,22 +61,36 @@
 .date_options {
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  gap: 5%;
+  justify-content: center;
+  align-items: center;
 }
 
 .datepicker_btn {
-  width: 3vw;
-  border: 2px solid rgba(0, 224, 255, 0.3);
+  
+  background-image: url('./assets/plusbtn.svg');
+  background-size: cover; /* or contain, depending on how you want the image to fit */
+  background-position: center; /* or any other desired position */
+  
+  padding: 6px 12px; /* Adjust padding as needed */
+  
+  border: none; /* Remove border if needed */
+  cursor: pointer; /* Add pointer cursor */
+}
+.datepicker_btn.selecteddate{
+    background-image: url('./assets/plusbtnselected.svg');
 }
 .checkin_accomodation {
   display: flex;
   flex-direction: column;
   gap: 2vh;
+  width: 30%;
 }
 .checkout_accomodation {
   display: flex;
   flex-direction: column;
   gap: 2vh;
+  width: 30%;
 }
 .title_members_details {
   color: var(--Color-Base-Violet, #e086d3);
@@ -86,14 +100,32 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .minus_btn_members {
-  width: 2vw;
-  border: 2px solid rgba(0, 224, 255, 0.3);
+    display: flex;
+    
+    width: 15%;
+    font-size: 24px;
+  
+      background-image: url('./assets/decreasetest.jpg');
+      background-size: cover; /* or contain, depending on how you want the image to fit */
+      background-position: center; /* or any other desired position */
+      
+      padding: 6px 8px; /* Adjust padding as needed */
+      
+      border: none; /* Remove border if needed */
+      cursor: pointer; /* Add pointer cursor */
+      height: 40px;
+      
 }
 .no_of_people {
-  width: 3vw;
+  width: 45%;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,8 +135,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2vw;
-  border: 2px solid rgba(0, 224, 255, 0.3);
+  width: 15%;
+  font-size: 24px;
+
+    background-image: url('./assets/increase.png');
+    background-size: cover; /* or contain, depending on how you want the image to fit */
+    background-position: center; /* or any other desired position */
+    
+    padding: 6px 8px; /* Adjust padding as needed */
+    
+    border: none; /* Remove border if needed */
+    cursor: pointer; /* Add pointer cursor */
+    height: 40px;
+  
 }
 
 .Form_details_accomodation {
@@ -123,7 +166,13 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 5vh;
+  gap: 20%;
+}
+.label_date_accomodation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
 }
 .members_details_accomodation {
   display: flex;
@@ -132,6 +181,7 @@
   flex-direction: column;
   gap: 2vh;
   margin-bottom: 2vh;
+  width: 100%;
 }
 .men_accomodation {
   color: var(--Color-Base-Snow, #fffbff);
@@ -144,7 +194,7 @@
 }
 
 .selector_men_number {
-  width: 12vw;
+  width:20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -156,31 +206,46 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 25vw;
-  gap: 10%;
+  width: 100%;
+  
 }
 
 .next_btn_accomodation {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2vw;
-  border: 2px solid rgba(0, 224, 255, 0.3);
-  width: 5vw;
+  
+  width: 13%;
+  height: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background-image: url('./assets/nextbtn.svg');
+    background-size: cover; /* or contain, depending on how you want the image to fit */
+    background-position: center; /* or any other desired position */
+    
+    padding: 12px 8px; /* Adjust padding as needed */
+    
+    border: none; /* Remove border if needed */
+    cursor: pointer; /* Add pointer cursor */
+  
 }
 
-.members_details{
-    display: flex;
+.members_details {
+  display: flex;
   flex-wrap: wrap;
   gap: 20%;
 
   justify-content: center;
-    align-items: center;
+  align-items: center;
 }
 
 .men_number_selector {
   display: flex;
   flex-direction: row;
+  gap: 5%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .members_personal_data {
@@ -226,42 +291,41 @@
       rgba(0, 224, 255, 0.1) 100%
     ),
     rgba(3, 10, 23, 0.8);
-    padding-left: 5%;
-    height: 50px;
-    width: 20vw ;
+  padding-left: 5%;
+  height: 50px;
+  width: 28vw;
 }
 
-.terms_and_conditions_accomodation{
-    margin-bottom: 1vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.terms_and_conditions_accomodation {
+  margin-bottom: 1vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.terms_and_conditions_accomodation label{
-    color: #FFF;
-font-family: Rajdhani;
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-width: 55%;
-display: flex;
-flex-direction: row;
-gap: 2vw;
-}
-
-.terms_and_conditions_box{
-   width: 30px;
-   height: 30px;
+.terms_and_conditions_accomodation label {
+  color: #fff;
+  font-family: Rajdhani;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
 }
 
-.submit_details_members{
-    border: 2px solid rgba(0, 224, 255, 0.3);
-    width: 5%;
-    margin-bottom: 1%;
-    margin-top: 1%;
+.terms_and_conditions_box {
+  width: 30px;
+  height: 30px;
+}
+
+.submit_details_members {
+  border: 2px solid rgba(0, 224, 255, 0.3);
+  width: 5%;
+  margin-bottom: 1%;
+  margin-top: 1%;
 }
 
 .ac_reaching {
