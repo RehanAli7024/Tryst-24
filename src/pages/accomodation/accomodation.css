@@ -1,223 +1,309 @@
-.acc_main{
-    display: flex;
-    flex-direction: column;
+.acc_main {
+  display: flex;
+  flex-direction: column;
 }
-.acc_heading{
+.acc_heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--Color-Base-Snow, #fffbff);
+  text-align: center;
+  font-family: Audiowide;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.6rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.ac_pages {
+  display: flex;
+  flex-direction: column;
+}
+.ac_contact {
+  /* margin-top: 3rem; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#ac_nav {
+  margin-bottom: 3.5rem;
+}
+
+.Registration_form_containor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+}
+
+.initial_details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3vh;
+}
+.label_date_accomodation {
+  color: var(--Color-Base-Snow, #fffbff);
+  text-align: center;
+  font-family: Rajdhani;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.date_options {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+}
+
+.datepicker_btn {
+  width: 3vw;
+  border: 2px solid rgba(0, 224, 255, 0.3);
+}
+.checkin_accomodation {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+.checkout_accomodation {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+.title_members_details {
+  color: var(--Color-Base-Violet, #e086d3);
+  text-align: center;
+  font-family: Bender;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.minus_btn_members {
+  width: 2vw;
+  border: 2px solid rgba(0, 224, 255, 0.3);
+}
+.no_of_people {
+  width: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(0, 224, 255, 0.3);
+}
+.plus_btn_members {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2vw;
+  border: 2px solid rgba(0, 224, 255, 0.3);
+}
+
+.Form_details_accomodation {
+  color: var(--Color-Base-Snow, #fffbff);
+  font-family: Rajdhani;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 80%;
+}
+
+.dates_accomodation {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+}
+.members_details_accomodation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2vh;
+  margin-bottom: 2vh;
+}
+.men_accomodation {
+  color: var(--Color-Base-Snow, #fffbff);
+  text-align: center;
+  font-family: Rajdhani;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.selector_men_number {
+  width: 12vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selection_members {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 25vw;
+  gap: 10%;
+}
+
+.next_btn_accomodation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2vw;
+  border: 2px solid rgba(0, 224, 255, 0.3);
+  width: 5vw;
+}
+
+.members_details{
     display: flex;
-    justify-content: center;
+  flex-wrap: wrap;
+  gap: 20%;
+
+  justify-content: center;
     align-items: center;
-    color: var(--Color-Base-Snow, #FFFBFF);
-    text-align: center;
-    font-family: Audiowide;
-    font-size: 3rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.6rem;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
 }
 
-.ac_pages{
-    display: flex;
-    flex-direction: column;
-}
-.ac_contact{
-    /* margin-top: 3rem; */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-}
-#ac_nav{
-    margin-bottom: 3.5rem;
+.men_number_selector {
+  display: flex;
+  flex-direction: row;
 }
 
-.Registration_form_containor{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1vh;
+.members_personal_data {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  width: 21%;
+  margin-bottom: 5%;
 }
 
-.initial_details{
+.members_headings {
+  color: var(--Color-Base-Violet, #e086d3);
+  font-family: Bender;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.96px;
+}
+
+.members_details_form {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+.members_details_field {
+  display: flex;
+  flex-direction: column;
+}
+.members_details_field label {
+  color: #fff;
+  font-family: Rajdhani;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.members_details_field input {
+  border-left: 2px solid var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
+  background: linear-gradient(
+      0deg,
+      rgba(0, 224, 255, 0.1) 0%,
+      rgba(0, 224, 255, 0.1) 100%
+    ),
+    rgba(3, 10, 23, 0.8);
+    padding-left: 5%;
+    height: 50px;
+    width: 20vw ;
+}
+
+.terms_and_conditions_accomodation{
+    margin-bottom: 1vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3vh;
     
 }
-.label_date_accomodation{
-    color: var(--Color-Base-Snow, #FFFBFF);
-text-align: center;
-font-family: Rajdhani;
-font-size: 28px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-}
-
-.date_options{
-    display: flex;
-    flex-direction: row;
-    gap: 10%;
-}
-
-.datepicker_btn{
-    width: 3vw;
-    border: 2px solid rgba(0, 224, 255, 0.30);
-}
-.checkin_accomodation{
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-}
-.checkout_accomodation{
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-}
-.title_members_details{
-    color: var(--Color-Base-Violet, #E086D3);
-text-align: center;
-font-family: Bender;
-font-size: 28px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
-
-.minus_btn_members{
-    width: 2vw;
-    border: 2px solid rgba(0, 224, 255, 0.30);
-}
-.no_of_people{
-    width: 3vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(0, 224, 255, 0.30);
-}
-.plus_btn_members{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2vw;
-    border: 2px solid rgba(0, 224, 255, 0.30);
-}
-
-
-.Form_details_accomodation{
- color: var(--Color-Base-Snow, #FFFBFF);
+.terms_and_conditions_accomodation label{
+    color: #FFF;
 font-family: Rajdhani;
 font-size: 24px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-width: 80%;
+width: 55%;
+display: flex;
+flex-direction: row;
+gap: 2vw;
 }
 
-.dates_accomodation{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5vh;
-}
-.members_details_accomodation{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 2vh;
-    margin-bottom: 2vh;
-}
-.men_accomodation{
-    color: var(--Color-Base-Snow, #FFFBFF);
-text-align: center;
-font-family: Rajdhani;
-font-size: 28px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+.terms_and_conditions_box{
+   width: 30px;
+   height: 30px;
 }
 
-.selector_men_number{
-    width: 12vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.submit_details_members{
+    border: 2px solid rgba(0, 224, 255, 0.3);
+    width: 5%;
+    margin-bottom: 1%;
+    margin-top: 1%;
 }
 
-
-.selection_members{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    width: 25vw;
-    gap: 10%;
+.ac_reaching {
+  margin-bottom: 20%;
+  margin-top: -2%;
 }
 
-.next_btn_accomodation{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2vw;
-    border: 2px solid rgba(0, 224, 255, 0.30);
-    width: 5vw;
+.ac_reaching_points {
+  display: flex;
+  flex-direction: row;
 }
 
-.men_number_selector{
-    display: flex;
-    flex-direction: row;
+.ac_reaching_points_num {
+  margin-left: 8%;
+  margin-right: -7%;
+  margin-top: 1.5%;
+  font-family: Rajdhani;
+  font-weight: 400;
+  font-size: 1.2rem;
 }
 
-.ac_reaching{
-    margin-bottom: 20%;
-    margin-top: -2%;
+.ac_reaching_points_text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 1.5%;
+  font-family: Rajdhani;
+  font-weight: 400;
+  font-size: 1.2rem;
 }
-
-.ac_reaching_points{
-    display: flex;
-    flex-direction: row;
-}
-
-.ac_reaching_points_num{
-    margin-left: 8%;
-    margin-right: -7%;
-    margin-top: 1.5%;
-    font-family: Rajdhani;
-    font-weight: 400;
-    font-size: 1.2rem;
-}
-
-.ac_reaching_points_text{
-    display: flex;
-    flex-direction: column;
-    margin-left: 8%;
-    margin-right: 8%;
-    margin-top: 1.5%;
-    font-family: Rajdhani;
-    font-weight: 400;
-    font-size: 1.2rem;
-}
-.ac_faq{
-    margin-bottom: 15%;
+.ac_faq {
+  margin-bottom: 15%;
 }
 @media (max-width: 768px) {
-    .acc_heading{
-        font-size: 1.5rem;
-    }
-    .ac_reaching_points_num{
-        font-size: 1rem;
-    }
-    .ac_reaching_points_text{
-        font-size: 1rem;
-    }
+  .acc_heading {
+    font-size: 1.5rem;
+  }
+  .ac_reaching_points_num {
+    font-size: 1rem;
+  }
+  .ac_reaching_points_text {
+    font-size: 1rem;
+  }
 }

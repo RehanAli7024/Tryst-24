@@ -350,10 +350,10 @@ const Accomodation = () => {
               <div className="members_details">
                 {formDataArray.map((formData, index) => (
                   <div key={index} className="members_personal_data">
-                    <h2>Member {index + 1} Details</h2>
-                    <form onSubmit={handleSubmit}>
-                      <div>
-                        <label htmlFor={`trystUID-${index}`}>Tryst UID:</label>
+                    <h2 className="members_headings">Member {index + 1} Details</h2>
+                    <form className="members_details_form" onSubmit={handleSubmit}>
+                      <div className="members_details_field">
+                        <label htmlFor={`trystUID-${index}`}>Tryst UID :</label>
                         <input
                           type="text"
                           id={`trystUID-${index}`}
@@ -362,8 +362,8 @@ const Accomodation = () => {
                           onChange={(e) => handleChange(e, index)}
                         />
                       </div>
-                      <div>
-                        <label htmlFor={`fullName-${index}`}>Full Name:</label>
+                      <div className="members_details_field">
+                        <label htmlFor={`fullName-${index}`}>Full Name (as on Aadhar Card) :</label>
                         <input
                           type="text"
                           id={`fullName-${index}`}
@@ -372,8 +372,8 @@ const Accomodation = () => {
                           onChange={(e) => handleChange(e, index)}
                         />
                       </div>
-                      <div>
-                        <label htmlFor={`aadhar-${index}`}>Aadhar:</label>
+                      <div className="members_details_field">
+                        <label htmlFor={`aadhar-${index}`}>Aadhar Card No :</label>
                         <input
                           type="text"
                           id={`aadhar-${index}`}
@@ -385,14 +385,15 @@ const Accomodation = () => {
                     </form>
                   </div>
                 ))}
-                <div>
+                <div className="terms_and_conditions_accomodation">
                   <label>
                     <input
+                    className="terms_and_conditions_box"
                       type="checkbox"
                       checked={isChecked}
                       onChange={handleCheckboxChange}
                     />
-                    I have read all terms and conditions
+                    I certify that the above entered information is true to the best of my knowledge and belief and I understand that I subject myself to disciplinary action in the event that the above facts are found to be falsified which includes immediate dismissal from the accommodation facilities.
                   </label>
                 </div>
                 {isChecked && (
