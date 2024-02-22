@@ -322,10 +322,22 @@
 }
 
 .submit_details_members {
-  border: 2px solid rgba(0, 224, 255, 0.3);
-  width: 5%;
-  margin-bottom: 1%;
-  margin-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 13%;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-image: url('./assets/nextbtn.svg');
+      background-size: cover; /* or contain, depending on how you want the image to fit */
+      background-position: center; /* or any other desired position */
+      
+      padding: 12px 8px; /* Adjust padding as needed */
+      
+      border: none; /* Remove border if needed */
+      cursor: pointer; /* Add pointer cursor */
 }
 
 .ac_reaching {
