@@ -2,6 +2,7 @@ import "./landing-speakers.css"
 import SpeakerCard from "../../../components/SpeakerCard/SpeakerCard.jsx"
 
 const Speakers = () => {
+    
     return (
         <div className="landing-comp">
             <div className="landing-heading">

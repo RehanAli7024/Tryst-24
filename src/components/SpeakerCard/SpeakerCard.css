@@ -1,5 +1,5 @@
 .speaker-shape {
-    clip-path: polygon(0% 6%, 6% 0%, 97.5% 0%, 97.5% 10%, 100% 12%, 100% 88%, 85% 100%, 15% 100%, 0% 88%);
+    clip-path: polygon(0% 4%, 6% 0%, 97.5% 0%, 97.5% 10%, 100% 12%, 100% 88%, 85% 100%, 15% 100%, 0% 88%);
 }
 
 .speaker-shape-2 {
@@ -21,13 +21,26 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.speaker-card-container:hover {
+    box-shadow: 10px 10px 10px 10px #ffb413 inset;
 }
 
 .speaker-card {
-    background-color: #35261B;
+    --bg-color: #35261B;
+    background-color: var(--bg-color);
     width: calc(100% - 4px);
     height: calc(100% - 4px);
     border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.speaker-card:hover {
+    --bg-color: #4D331E;
+    background-color: var(--bg-color);
+    box-shadow: 0.5px 0.2px 1px 1px #ffb413 inset;
 }
 
 .speaker-card-name {
@@ -54,6 +67,11 @@
     width: 100%;
     height: calc(100% - 4px);
     position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.speaker-card:hover .speaker-card-image {
+    box-shadow: 0.5px 0.2px 1px 1px #ffb413 outset;
 }
 
 .speaker-card-img {
@@ -70,7 +88,16 @@
     top: 7%;
     left: 5%;
     z-index: 2;
+    transition: all 0.3s ease-in-out;
 }
+
+.speaker-card:hover .speaker-card-border {
+    width: 85%;
+    height: 65%;
+    top: 9%;
+    left: 7.5%;
+}
+
 
 .speaker-card-position-container {
     width: 90%;
@@ -91,11 +118,12 @@
     color: #FFF;
     text-align: center;
     font-family: Bender;
-    background-color: #35251B;
+    background-color: var(--bg-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease-in-out;
 }
 
 .speaker-card-position-top {
