@@ -1,0 +1,112 @@
+.speaker-shape {
+    clip-path: polygon(0% 6%, 6% 0%, 97.5% 0%, 97.5% 10%, 100% 12%, 100% 88%, 85% 100%, 15% 100%, 0% 88%);
+}
+
+.speaker-shape-2 {
+    clip-path: polygon(0% 3%, 41% 3%, 44% 0%, 56% 0%, 59% 3%, 100% 3%, 100% 100%, 0% 100%);
+}
+
+.speaker-shape-3 {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 87% 100%, 13% 100%, 0% 45%);
+}
+
+.speaker-card-container {
+    width: 100%;
+    height: 100%;
+    /* margin-bottom: 8rem; */
+    overflow: auto;
+    background-color: #F0B537;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.speaker-card {
+    background-color: #35261B;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border-radius: 3px;
+}
+
+.speaker-card-name {
+    color: var(--Color-Base-Gold-Yellow, #F0B537);
+    font-family: Bender;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.speaker-card-image-container {
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F0B537;
+}
+
+.speaker-card-image {
+    width: 100%;
+    height: calc(100% - 4px);
+    position: relative;
+}
+
+.speaker-card-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+}
+
+.speaker-card-border {
+    width: 90%;
+    height: 70%;
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    z-index: 2;
+}
+
+.speaker-card-position-container {
+    width: 90%;
+    height: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F0B537;
+    position: absolute;
+    bottom: 3%;
+    left: 5%;
+    z-index: 2;
+}
+
+.speaker-card-position {
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    color: #FFF;
+    text-align: center;
+    font-family: Bender;
+    background-color: #35251B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.speaker-card-position-top {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    margin-bottom: -0.3rem;
+}
+
+.speaker-card-position-bottom {
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+}

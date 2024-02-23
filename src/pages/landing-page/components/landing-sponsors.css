@@ -1,0 +1,48 @@
+.landing-sponsors-container {
+    width: 100%;
+    margin-bottom: 6rem;
+    margin-top: -3rem;
+}
+
+.landing-sponsors-container-top,
+.landing-sponsors-container-bottom {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 15rem;
+    margin-left: 2%;
+}
+
+.landing-sponsors-container-bottom {
+    margin-left: auto;
+    margin-right: 2%;
+}
+
+
+.landing-sponsor-card {
+    width: 26%;
+    height: 80%;
+    margin: 1.5%;
+}
+
+@media screen and (max-width: 768px) {
+    .landing-sponsors-container {
+        margin-bottom: 2rem;
+        margin-top: -1.5rem;
+    }
+
+    .landing-sponsors-container-top,
+    .landing-sponsors-container-bottom {
+        flex-wrap: wrap;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+        height: max-content;
+    }
+
+    .landing-sponsor-card {
+        width: 45%;
+        height: 13vh;
+        margin: 4% 2.5%;
+    }
+}
