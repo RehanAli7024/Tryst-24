@@ -1,7 +1,14 @@
 .landing-page-spline {
-    margin-top: -15vh;
+    margin-top: -18vh;
     width: 100%;
     height: 102vh;
+}
+
+@media screen and (max-height: 810px) {
+    .landing-page-spline {
+        margin-top: -10vh;
+        height: 108vh;
+    }
 }
 
 .landing-comp {
