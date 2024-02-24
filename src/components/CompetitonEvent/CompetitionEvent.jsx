@@ -44,11 +44,9 @@ export default function CompetitionEvent({
     setFormData({ ...formData, contactPersons: constactPersonDetails });
     e.preventDefault();
     const token = localStorage.getItem("admin_access_token");
-    console.log(token);
     setFormIsSubmitted(true);
     axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
       .then((res) => {
-        console.log(res);
         alert("Event submitted successfully");
         localStorage.setItem("id", res.data.event_id);
         if (formData.has_form && formData.registration_link) {

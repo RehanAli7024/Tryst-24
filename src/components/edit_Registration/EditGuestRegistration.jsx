@@ -1,21 +1,49 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DOMAIN } from '../../domain';
 import './registrationMain.css';
+import { useNavigate } from 'react-router-dom';
 import AddNewField from '../../overlays/overlays/add-new-field/AddNewField';
 import EditField from '../../overlays/overlays/add-new-field/editfield';
 import axios from 'axios';
 import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
+import { useRef } from 'react';
 
-export default function GuestRegisteration({ setRegistrationOpen, guestid }) {
+function EditGuestRegistration({ setRegistrationOpen }) {
+  console.log('EditGuestRegistration');
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem('admin_access_token');
+    const eventId = localStorage.getItem('id');
+    const eventType = 'guestlecture';
+    console.log(eventId, eventType);
+    axios
+      .get(`${DOMAIN}registration/?event_id=${eventId}&event_type=${eventType}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      .then((res) => {
+        console.log(res.data);
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          formFields: res.data.formFields,
+        }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
   const [payload, setPayload] = useState({});
   const [editpayload, setEditPayload] = useState({});
   const [formData, setFormData] = useState({
     acceptingResponses: true,
-    event_id: guestid,
+    event_id: localStorage.getItem('id'),
+    event_type: 'guestlecture',
     formFields: [],
+    editedresponse: true,
   });
-  console.log(guestid);
-
   const [showNewField, setShowNewField] = useState(false);
   const [showEditField, setShowEditField] = useState([false, null, null]);
 
@@ -56,26 +84,22 @@ export default function GuestRegisteration({ setRegistrationOpen, guestid }) {
   };
 
 
-
   const handleSave = () => {
-
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('admin_access_token');
     console.log(formData);
+    console.log(token);
     axios
       .post(
-        `${DOMAIN}registration/`,
-        {
-          ...formData,
+        `${DOMAIN}registration/`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }
+      }
       )
       .then((res) => {
-        console.log(res);
+        localStorage.removeItem('id');
+        navigate('/admin');
+        alert('Registration form updated successfully');
       })
       .catch((err) => {
         console.log(err);
@@ -84,14 +108,12 @@ export default function GuestRegisteration({ setRegistrationOpen, guestid }) {
 
   // DO NOT TOUCH THIS CODE
   const handleresponseChange = (name, value) => {
-    // Check if the field is 'acceptingResponses' to handle boolean conversion
     if (name === 'acceptingResponses') {
       setFormData(prevState => ({
         ...prevState,
-        [name]: value === 'Yes' // Convert 'Yes'/'No' to true/false
+        [name]: value === 'Yes'
       }));
     } else {
-      // For other fields, use the value directly
       setFormData(prevState => ({
         ...prevState,
         [name]: value
@@ -120,8 +142,7 @@ export default function GuestRegisteration({ setRegistrationOpen, guestid }) {
 
   useEffect(() => {
     console.log(formData);
-  }
-    , [formData]);
+  }, [formData]);
   return (
     <div className="registration-containor" ref={registrationRef}>
       <div className="responses">
@@ -195,3 +216,5 @@ export default function GuestRegisteration({ setRegistrationOpen, guestid }) {
     </div >
   );
 }
+
+export default EditGuestRegistration;

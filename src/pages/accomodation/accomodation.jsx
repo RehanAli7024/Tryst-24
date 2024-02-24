@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./accomodation.css";
 import Placeholder from "../contactus/placeholder";
 import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
 import plus_button from "./assets/plusbtn.svg";
+import axios from "axios";
+import { DOMAIN } from "../../domain";
 
 const Accomodation = () => {
   const [activeButton, setActiveButton] = useState("Registration Form");
@@ -23,10 +25,10 @@ const Accomodation = () => {
     setIsClicked(true);
     const membersData = [];
     for (let i = 0; i < menCount; i++) {
-      membersData.push({ trystUID: "", fullName: "", aadhar: "" });
+      membersData.push({ trystUID: "", name: "", aadhar: "" });
     }
     for (let i = 0; i < womenCount; i++) {
-      membersData.push({ trystUID: "", fullName: "", aadhar: "" });
+      membersData.push({ trystUID: "", name: "", aadhar: "" });
     }
     setFormDataArray(membersData);
   };
@@ -73,15 +75,37 @@ const Accomodation = () => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
-
+  const [formData, setFormData] = useState({
+    memberDetails: [],
+    checkin: "",
+    checkout: "",
+    men: 1,
+    women: 1,
+  });
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      memberDetails: formDataArray,
+      checkin: '2024-' + '03-' + checkInDate,
+      checkout: '2024-' + '03-' + checkOutDate,
+      men: menCount,
+      women: womenCount,
+    }));
+  }, [formDataArray, checkInDate, checkOutDate, menCount, womenCount]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Number of Men:", menCount);
-    console.log("Number of Women:", womenCount);
-    console.log("Check-In Date:", checkInDate);
-    console.log("Check-Out Date:", checkOutDate);
-    console.log("Form submitted with data:", formDataArray);
-    // You can perform further actions like sending the data to a server here
+    const token = localStorage.getItem("access_token");
+    axios.post(`${DOMAIN}accomodation/`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+
+      }
+    }).then((res) => {
+      console.log(res);
+    })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -91,33 +115,29 @@ const Accomodation = () => {
       </div>
       <div className="dashboard-nav" id="ac_nav">
         <button
-          className={`dashboard-nav-button ${
-            activeButton === "Registration Form" ? "active" : ""
-          }`}
+          className={`dashboard-nav-button ${activeButton === "Registration Form" ? "active" : ""
+            }`}
           onClick={() => handleButtonClick("Registration Form")}
         >
           Registration Form
         </button>
         <button
-          className={`dashboard-nav-button ${
-            activeButton === "FAQs" ? "active" : ""
-          }`}
+          className={`dashboard-nav-button ${activeButton === "FAQs" ? "active" : ""
+            }`}
           onClick={() => handleButtonClick("FAQs")}
         >
           FAQs
         </button>
         <button
-          className={`dashboard-nav-button ${
-            activeButton === "Reaching IITD" ? "active" : ""
-          }`}
+          className={`dashboard-nav-button ${activeButton === "Reaching IITD" ? "active" : ""
+            }`}
           onClick={() => handleButtonClick("Reaching IITD")}
         >
           Reaching IITD
         </button>
         <button
-          className={`dashboard-nav-button ${
-            activeButton === "Contact Us" ? "active" : ""
-          }`}
+          className={`dashboard-nav-button ${activeButton === "Contact Us" ? "active" : ""
+            }`}
           onClick={() => handleButtonClick("Contact Us")}
         >
           Contact Us
@@ -401,14 +421,14 @@ const Accomodation = () => {
                         />
                       </div>
                       <div className="members_details_field">
-                        <label htmlFor={`fullName-${index}`}>
+                        <label htmlFor={`name-${index}`}>
                           Full Name (as on Aadhar Card) :
                         </label>
                         <input
                           type="text"
-                          id={`fullName-${index}`}
-                          name="fullName"
-                          value={formData.fullName}
+                          id={`name-${index}`}
+                          name="name"
+                          value={formData.name}
                           onChange={(e) => handleChange(e, index)}
                         />
                       </div>

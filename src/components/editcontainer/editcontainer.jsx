@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
-import GuestLectureEvent from "../../components/GuestLectureEvent/GuestLectureEvent.jsx";
-import WorkshopEvent from "../../components/WorkshopEvents/WorkshopEvent";
-import GuestRegisteration from "../../components/Registration/GuestRegistration.jsx";
-import WorkshopRegistration from "../../components/Registration/WorkshopRegistration.jsx";
 import PopupNavbar from "../../overlays/popups/PopupNavbar.jsx";
 import EditCompetitionEvent from "../editallevents/editcompetition.jsx";
 import EditCompetitionRegistration from "../edit_Registration/EditCompetitionRegistration.jsx";
+import EditWorkshopEvent from "../editallevents/editworkshop.jsx";
+import EditGuestEvent from "../editallevents/editguest.jsx";
+import EditWorkshopRegistration from "../edit_Registration/EditWorkshopRegistration.jsx";
+import EditGuestRegistration from "../edit_Registration/EditGuestRegistration.jsx";
 
 export default function PopupContainertoedit({
     selectedEventType,
@@ -14,6 +14,7 @@ export default function PopupContainertoedit({
     setEditPopupIsOpen,
     eventDetails,
 }) {
+    console.log("PopupContainertoedit");
     const [eventFormTitle, setEventFormTitle] = useState("eventDetails");
     const [isOpen, setIsOpen] = useState(false);
     const [isEventSubmitted, setIsEventSubmitted] = useState(true);
@@ -27,6 +28,7 @@ export default function PopupContainertoedit({
 
     const togglePopup = () => {
         setEditPopupIsOpen(!editPopupIsOpen);
+        localStorage.removeItem("id");
         setEventFormTitle("eventDetails");
         setIsEventSubmitted(true);
         setActiveButton("eventDetails");
@@ -64,33 +66,33 @@ export default function PopupContainertoedit({
                         )}
                     {eventFormTitle === "eventDetails" &&
                         selectedEventType === "workshops" && (
-                            <WorkshopEvent
+                            <EditWorkshopEvent
                                 handleClose={togglePopup}
                                 setIsOpen={setIsOpen}
                                 setIsEventSubmitted={handleEventFormSubmit}
                                 setEventFormTitle={setEventFormTitle}
+                                eventDetails={eventDetails}
                             />
                         )}
                     {eventFormTitle === "eventDetails" &&
                         selectedEventType === "guestlectures" && (
-                            <GuestLectureEvent
+                            <EditGuestEvent
                                 handleClose={togglePopup}
                                 setIsOpen={setIsOpen}
                                 setIsEventSubmitted={handleEventFormSubmit}
                                 setEventFormTitle={setEventFormTitle}
+                                eventDetails={eventDetails}
                             />
                         )}
 
                     {eventFormTitle === "editregistrationForm" &&
                         selectedEventType === "competitions" && <EditCompetitionRegistration />}
 
-                    {eventFormTitle === "registrationForm" &&
-                        selectedEventType === "workshops" &&
-                        isEventSubmitted === true && <WorkshopRegistration />}
+                    {eventFormTitle === "editregistrationForm" &&
+                        selectedEventType === "workshops" && <EditWorkshopRegistration />}
 
-                    {eventFormTitle === "registrationForm" &&
-                        selectedEventType === "guestlectures" &&
-                        isEventSubmitted === true && <GuestRegisteration />}
+                    {eventFormTitle === "editregistrationForm" &&
+                        selectedEventType === "guestlectures" && <EditGuestRegistration />}
                 </div>
             </div>
         </Container>

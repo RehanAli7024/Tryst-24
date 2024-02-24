@@ -5,10 +5,11 @@ import axios from "axios";
 import { DOMAIN } from "../../domain";
 
 
-const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle, guestid }) => {
+const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle }) => {
   const [contactPersons, setcontactPerosns] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [formisSubmitted, setFormIsSubmitted] = useState(false);
   useEffect(() => {
     let handler = (e) => {
       if (!eventsRef.current.contains(e.target) && registrationOpen) {
@@ -31,19 +32,26 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
 
   const handleSubmit = (e) => {
     setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
+    console.log(formData);
     e.preventDefault();
-    // const token = localStorage.getItem("access_token");
-    axios.post(`${DOMAIN}create_guest/`, formData)
+    setFormIsSubmitted(true);
+    axios.post(`${DOMAIN}create_guest/`, formData, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("admin_access_token")}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    })
       .then((res) => {
         console.log(res);
         alert("Event submitted successfully");
-        guestid(res.data.id);
+        localStorage.setItem("id", res.data.event_id);
         setEventFormTitle("registrationForm");
         setIsEventSubmitted(true);
         setIsSubmitted(true);
       })
       .catch((err) => {
         console.log(err);
+        setFormIsSubmitted(false);
       });
   };
   const [formData, setFormData] = useState({
@@ -55,6 +63,8 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
     file: null,
     contactPersons: [],
     speakers: [],
+    reg_date: "",
+    reg_time: "",
   });
 
   const [image, setImage] = useState(null);
@@ -229,6 +239,26 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
           </div>
         </div>
 
+        <div className="date-time-venue-container">
+          <div className="events-flex-column">
+            <label className="label">DEADLINE DATE*</label>
+            <br />
+            <input
+              onChange={handleChange}
+              className="input"
+              value={formData.reg_date}
+              name="reg_date"
+              type="date"
+            />
+            <input
+              onChange={handleChange}
+              className="input"
+              value={formData.reg_time}
+              name="reg_time"
+              type="time"
+            />
+          </div>
+        </div>
         {Array.from({ length: contactPersons }).map((_, index) => (
           <>
             <div className="contact-details-container">
@@ -291,8 +321,8 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
                   onChange={(e) => handleSpeakerDetailsChange(index, 'file', e)}
                 />
               </div>
-              {speakerimg && (
-                <img src={speakerimg} alt="Speaker" />
+              {speaker.file && (
+                <img src={speaker.file} alt="Speaker" />
               )}
               <div className="image-guidelines">
                 <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
@@ -300,7 +330,6 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
                 <p className="image-guidelines-text">Size Limit: &lt;10MB</p>
               </div>
             </div>
-
             <div className="event-name">
               <label className="label">SPEAKER NAME*</label>
               <br />
