@@ -9,7 +9,9 @@ const LandingPage = () => {
 
     return (
         <>
-            <SplineDesign />
+            <div className="landing-page-spline">
+                <SplineDesign />
+            </div>
             <Events />
             <Speakers />
             <Sponsors />
