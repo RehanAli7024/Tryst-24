@@ -337,7 +337,7 @@ const EventMain = () => {
                 ) {
                   if (typeSelected.length === 0) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} id="event_link">
                         <div className="events_card"><EventCard image={event.event_image} /></div>
                       </Link>
                     );

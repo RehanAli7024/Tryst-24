@@ -276,7 +276,9 @@
   line-height: normal;
   letter-spacing: 0.05rem;
 }
-
+#event_link{
+  height: 20vh;
+}
 @media (max-width: 768px) {
   .event_sidebar {
     display: none;
