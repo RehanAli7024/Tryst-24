@@ -46,9 +46,9 @@
 .speaker-card-name {
     color: var(--Color-Base-Gold-Yellow, #F0B537);
     font-family: Bender;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.15rem;
     height: 10%;
     display: flex;
     align-items: center;
@@ -127,14 +127,14 @@
 }
 
 .speaker-card-position-top {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.1rem;
     margin-bottom: -0.3rem;
 }
 
 .speaker-card-position-bottom {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 400;
     letter-spacing: 0.1rem;
 }
