@@ -330,7 +330,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100vw;
-    min-height: 25vh;
+    min-height: 45vh;
   }
 
   .events_card {
@@ -373,7 +373,7 @@
     position: relative;
     overflow-y: auto;
     /* max-height: 34vh; */
-    height: 50vh;
+    height: 55vh;
   }
 
   .sidebar_option {
