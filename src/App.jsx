@@ -50,7 +50,7 @@ const App = () => {
         {/* {window.location.pathname !== "/mainpage" ? <Navbar /> : null}   */}
         <Routes>
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
-          <Route path="/" element={<ComingSoon />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact us" element={<ContactUs />} />
           <Route path="/admin/events" element={<MainPage />} />
