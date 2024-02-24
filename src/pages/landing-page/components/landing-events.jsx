@@ -5,7 +5,7 @@ import TestImage from "../../../assets/event_cards/demo.png";
 const Events = () => {
     return (
         <div className="landing-comp">
-            <div className="landing-heading">
+            <div className="landing-heading landing-heading-events">
                 EVENTS
             </div>
             <div className="landing-events-container">
