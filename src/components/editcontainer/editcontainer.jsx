@@ -14,7 +14,6 @@ export default function PopupContainertoedit({
     setEditPopupIsOpen,
     eventDetails,
 }) {
-    console.log("PopupContainertoedit");
     const [eventFormTitle, setEventFormTitle] = useState("eventDetails");
     const [isOpen, setIsOpen] = useState(false);
     const [isEventSubmitted, setIsEventSubmitted] = useState(true);
