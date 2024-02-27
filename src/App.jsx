@@ -31,6 +31,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { DOMAIN } from "./domain.js";
 import Accomodation from "./pages/accomodation/accomodation.jsx";
+
+
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
   useEffect(() => {
