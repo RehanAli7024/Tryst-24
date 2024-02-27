@@ -1,49 +1,55 @@
 import "./landing-speakers.css"
 import SpeakerCard from "../../../components/SpeakerCard/SpeakerCard.jsx"
 import TestImage from "../../../assets/event_cards/ashneer.png"
+import BillGates from "../../../assets/speakers/BillGates.webp"
+import CarlPei from "../../../assets/speakers/CarlPei.webp"
+import SamarSingla from "../../../assets/speakers/SamarSingla.webp"
+import NityaSharma from "../../../assets/speakers/NityaSharma.webp"
+import DrTanuJain from "../../../assets/speakers/DrTanuJain.webp"
+import AbhiNiyu from "../../../assets/speakers/AbhiAndNiyu.webp"
 
 const speakers = [
     {
         index: 1,
-        name: "Ashneer Grover",
+        name: "Bill Gates",
         position: "Founder",
-        company: "BharatPe",
-        image: TestImage,
+        company: "Microsoft",
+        image: BillGates,
     },
     {
         index: 2,
-        name: "Ashneer Grover",
-        position: "Founder",
-        company: "BharatPe",
-        image: TestImage,
+        name: "Carl Pei",
+        position: "Co-Founder",
+        company: "OnePlus and Nothing",
+        image: CarlPei,
     },
     {
         index: 3,
-        name: "Ashneer Grover",
-        position: "Founder",
-        company: "BharatPe",
-        image: TestImage,
+        name: "Samar Singla",
+        position: "Co-Founder",
+        company: "Jugnoo",
+        image: SamarSingla,
     },
     {
         index: 4,
-        name: "Ashneer Grover",
+        name: "Nitya Sharma",
         position: "Founder",
-        company: "BharatPe",
-        image: TestImage,
+        company: "Simpl",
+        image: NityaSharma,
     },
     {
         index: 5,
-        name: "Ashneer Grover",
-        position: "Founder",
-        company: "BharatPe",
-        image: TestImage,
+        name: "Dr. Tanu Jain",
+        position: "Former",
+        company: "IAS Officer",
+        image: DrTanuJain,
     },
     {
         index: 6,
-        name: "Ashneer Grover",
-        position: "Founder",
-        company: "BharatPe",
-        image: TestImage,
+        name: "Abhi and Niyu",
+        position: "Content",
+        company: "Creators",
+        image: AbhiNiyu,
     },
 ]
 

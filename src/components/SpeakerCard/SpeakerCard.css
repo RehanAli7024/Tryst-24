@@ -79,6 +79,7 @@
     height: 100%;
     position: absolute;
     top: 0%;
+    object-fit: cover;
 }
 
 .speaker-card-border {
