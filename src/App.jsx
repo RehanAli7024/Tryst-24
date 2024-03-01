@@ -21,10 +21,8 @@ import EventMain from "./pages/Events/eventmain.jsx";
 import Login from "./pages/login/login.jsx";
 import UserProfile from "./components/UserProfile/UserProfile.jsx";
 import UserCard from "./components/userCard/UserCard.jsx";
-import Pronites from "./pages/pronites/pronites.jsx";
 import Signup from "./pages/signup/signup.jsx";
 import Dashboard from "./pages/dashboard/dashboard.jsx";
-import SponsorCard from "./components/SpeakerCard/SpeakerCard.jsx";
 import AdminLogin from "./pages/admin-login/admin-login.jsx";
 import LandingPage from "./pages/landing-page/landing-page.jsx";
 import { useEffect } from "react";
@@ -52,7 +50,7 @@ const App = () => {
         {/* {window.location.pathname !== "/mainpage" ? <Navbar /> : null}   */}
         <Routes>
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
-{/*           <Route path="/" element={<LandingPage />} /> */}
+          {/*           <Route path="/" element={<LandingPage />} /> */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact us" element={<ContactUs />} />
