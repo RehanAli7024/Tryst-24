@@ -1,0 +1,76 @@
+.usercard-img {
+    width: 100%;
+  }
+  
+  .user-card-container {
+    position: relative;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .speaker-name {
+    position: absolute;
+    width: 90%;
+    top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+  }
+
+  .speaker-name h3 {
+    font-family: Bender;
+    font-weight: 700;
+    color: #F0B537;
+  }
+
+  .speaker-img {
+    position: absolute;
+    bottom: -2%;
+    left: -1%;
+    z-index: -1;
+    width: 102%;
+  }
+
+  .focus-elements {
+    position: absolute;
+    width: 90%;
+    top: 16%;
+
+  }
+
+  .name-container {
+    position: absolute;
+    bottom: 4%;
+    width: 90%;
+  }
+
+  .postion-container {
+    position: absolute;
+    bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+  }
+
+  .postion-container h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: Bender;
+  }
+
+  .postion-container p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-family: Bender;
+  }
+
+
+
+
+
+  
+  
