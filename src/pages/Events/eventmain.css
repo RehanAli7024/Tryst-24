@@ -190,14 +190,14 @@
   /* margin-right: 0%; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   width: 75%;
   height: -moz-fit-content;
   height: fit-content;
 }
 
 .events_card {
-  width: 30.8vw;
+  width: 20.1vw;
   height: -moz-fit-content;
   height: fit-content;
   margin: 0 0.3rem 5vh 1.3rem;
@@ -277,11 +277,15 @@
   letter-spacing: 0.05rem;
 }
 #event_link{
-  height: 20vh;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media (max-width: 768px) {
   .event_sidebar {
     display: none;
+  }
+  #event_link{
+    height: 30vh;
   }
 
   .filter_search {
