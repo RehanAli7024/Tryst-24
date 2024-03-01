@@ -1,0 +1,105 @@
+.faq_row_main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.faq_row{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+}
+
+.row_num{
+    margin-top: 0.1rem;
+    display: flex;
+    width: 5rem;
+    height: 5rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--Color-Base-Dark-Orange, #FB932E);
+    text-align: center;
+    font-family: Bender;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.1rem;
+    background-image: url('./Vector44.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: aqua; */
+}
+.row_ques{
+    margin-left: 1%;
+    width: 99%;
+    height: 4.8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #FFF;
+    font-family: Rajdhani;
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    gap: 1rem;
+    position: relative;
+    /* background-color: yellow; */
+}
+
+.row_ques_ans{
+    display: fixed;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 1rem;
+    width: 100%;
+    height: max-content;
+    background-color: rgba(128, 35, 146,0.10);
+    border-width: 2px;
+    border-color: rgba(224, 134, 211, 0.30);
+    border-radius: 3px;
+    position: relative;
+    /* background-image: url('./question.svg');
+    background-size: cover;
+    background-repeat: no-repeat; */
+}
+.row_ans{
+    margin-left: 1%;
+    margin-top: 0.8rem;
+    color: #FFF;
+    font-family: Rajdhani;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 95%;
+    margin-bottom: 1%;
+}
+
+.ques_plus{
+    position: absolute;
+    right: 1%;
+    top: 1rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px){
+    .row_num{
+        height: 3.9rem;
+    }
+    .row_ques_ans{
+        width: 100%;
+    }
+    .row_ques{
+        font-size: 1.1rem;
+        margin-left: 0.4rem;
+        width: 80%;
+    }
+    .row_ans{
+        margin-left: 0.4rem;
+    }
+}

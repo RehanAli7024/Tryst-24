@@ -2,11 +2,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const PopupNavbar = ({ activeButton, setActiveButton, isEventSubmitted }) => {
+const PopupNavbar = ({ activeButton, setActiveButton, isEventSubmitted, task }) => {
   const handleRegistrationFormClick = () => {
-    // Only set the active button if isEventSubmitted is true
-    if (isEventSubmitted) {
-      setActiveButton("registrationForm");
+    if (task === "edit") {
+      setActiveButton("editregistrationForm");
+    }
+    else if (isEventSubmitted) {
+      setActiveButton("editregistrationForm");
     }
   };
 
@@ -20,7 +22,7 @@ const PopupNavbar = ({ activeButton, setActiveButton, isEventSubmitted }) => {
       </NavItem>
       <NavItem
         onClick={handleRegistrationFormClick}
-        className={activeButton === "registrationForm" ? "active" : ""}
+        className={(activeButton === "editregistrationForm" || activeButton === "registrationForm") ? "active" : ""}
       >
         Registration Form
       </NavItem>

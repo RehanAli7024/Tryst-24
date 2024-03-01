@@ -29,7 +29,7 @@
 
 .navbarheader:hover {
   border: 2px solid rgba(0, 224, 255, 0.5);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .navbaricons,
@@ -57,8 +57,9 @@
   justify-content: center;
   align-items: center;
   color: white;
-  gap: 3%;
-  margin-right: 50px;
+  gap: 10%;
+  font-weight: 600;
+    margin-right: 140px;
 }
 
 .navbaroption {
@@ -66,6 +67,7 @@
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease-in-out;
+  font-family: rajdhani;
 }
 .navbartrystlogo {
   padding-left: 4%;
@@ -189,33 +191,49 @@
   .navbaroption {
     color: white;
   }
+
+  .nav-mobile-bg {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+  }
+
+  .nav-effect-back {
+    position: absolute;
+    top: 0;
+  }
+
   .navbariconsmobile {
     position: fixed;
-    top: 0rem;
+    top: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     font-size: 2rem;
-    width: 80%;
+    width: 100%;
     margin-top: 100px;
-    background-color: #020a16;
     z-index: 100;
   }
+
   .navbaroption {
     padding-left: 15%;
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+  }
+
+  .nav-effect-front {
+    position: absolute;
+    left: 5%;
   }
 
   .navbaroption:hover {
-    background: linear-gradient(
-      to right,
-      #00e0ff,
-      transparent 5%,
-      transparent 95%,
-      #00e0ff
-    );
-  }
-
-  .navbaroption-selected-mobile {
     background: linear-gradient(
       to right,
       #00e0ff,
@@ -255,4 +273,8 @@
   .tryst2024img {
     margin-left: 5%;
   }
+}
+
+.hidden-nav-mobile-bg {
+  display: none;
 }

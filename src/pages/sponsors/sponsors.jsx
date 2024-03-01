@@ -12,6 +12,8 @@ import Jagran from "../../assets/sponsors/jagran.webp";
 import UnStop from "../../assets/sponsors/unstop.webp";
 import SiliconIndia from "../../assets/sponsors/siliconindia.webp";
 
+import SponsorCard from '../../components/SponsorCard/SponsorCard';
+
 
 const sponsors = [
     {
@@ -101,6 +103,7 @@ function Sponsors() {
                                     </div>
                                 </div>
                             </div>
+                            // <SponsorCard sponsor={sponsor} />
                         ))}
                     </div>
                 </div>

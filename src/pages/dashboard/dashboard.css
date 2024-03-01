@@ -1,214 +1,533 @@
 .dashboard {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3vh;
 }
 
 .profile_heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--Color-Base-Snow, #FFFBFF);
-    text-align: center;
-    font-family: Audiowide;
-    font-size: 3rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.6rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--Color-Base-Snow, #fffbff);
+  text-align: center;
+  font-family: Audiowide;
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-.profile_box{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /* justify-content: center; */
-    /* align-items: center; */
-}
-.profile_photo{
-    /* display: flex; */
-    width: 20vw;
-    height: 20vw;
-    /* justify-content: center; */
-    /* align-items: center; */
-    margin-right: 2rem;
-    position: relative;
-}
-.userPhoto{
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    width: 20vw;
-    height: 20vw;
-    border-radius: 3px;
-    /* border-radius: 50%; */
-    object-fit: fill;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%,0 100%, 0 0);
+.profile_box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
-.edit_photo{
-    width: 4vw;
-    height: 4vw;
-    position: absolute;
-    top: 80%;
-    left: 80%;
+.profile_photo {
+  /* display: flex; */
+  width: 20vw;
+  height: 20vw;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-right: 2rem;
+  position: relative;
+  border: none;
+}
+
+.userPhoto {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 20vw;
+  height: 20vw;
+  border-radius: 3px;
+  /* border-radius: 50%; */
+  object-fit: fill;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0 100%, 0 0);
+  border: 2px solid var(--Color-Base-Dark-Orange, #FB932E);
+}
+
+.edit_photo {
+  width: 4vw;
+  height: 4vw;
+  position: absolute;
+  top: 80%;
+  left: 80%;
 }
 
 .dashboard-nav-button {
-    margin-top: 2rem;
-    width: 13vw;
-    margin: 1px 4vw;
-    padding: 5px;
-    border-bottom: 10px solid #00E0FF;
-    color: var(--Color-Base-Vivid-Sky-Blue, #00E0FF);
-    text-align: center;
-    font-family: Bender;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: 0.06rem;
-    text-transform: uppercase;
+  margin-top: 2rem;
+  width: 13vw;
+  margin: 1px 4vw;
+  padding: 5px;
+  border-bottom: 10px solid rgba(0, 224, 255, 0.3);
+  color: var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
+  text-align: center;
+  font-family: Bender;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+}
+.dashboard-nav-button.active {
+  border-bottom: 10px solid var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
 }
 
 .dashboard-nav-details {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 76vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 15vh;
+  /* margin-bottom: 20vh; */
+  justify-content: space-evenly;
+  margin-block: 3vh;
 }
 
 .dashboard-nav-details-card {
-    width: 25vw;
-    height: 20vh;
-}
-.dashboard-nav{
-    margin-top:1rem;
-    margin-bottom:1rem;
+  width: 25vw;
+  height: 20vh;
 }
 
-.profile_details{
+.dashboard-nav {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2.5%;
+}
+
+.profile_details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 10rem;
+  /* justify-content: center; */
+}
+
+.user_name {
+  color: var(--Color-Base-Dark-Orange, #fb932e);
+  font-family: Bender;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.user_name_logout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.logout_btn img {
+  cursor: pointer;
+  height: 3rem;
+}
+.logout_btn {
+  margin-left: 30vw;
+}
+.dashboard {
+  margin-bottom: 1rem;
+}
+
+/* .dashboard_email {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 2rem;
+} */
+
+.dashboard_college_details {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+
+.dashboard_college_details_heading {
+  color: var(--Color-Base-Snow, #fffbff);
+  font-family: Rajdhani;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.dashboard_detail_email{
+  width: 50%;
+}
+
+.dashboard_detail_group{
+  display: flex;
+  flex-direction: row;
+  width:  100%;
+  margin-top: 2%;
+
+}
+
+.dashboard_detail {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+}
+
+.user_label {
+  color: var(--Color-Base-Snow, #fffbff);
+  font-family: Rajdhani;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  /* margin-bottom: 2rem; */
+  align-items: center;
+  justify-content: center;
+  width: 19%;
+  margin-right: 2rem;
+}
+
+.user_detail {
+  display: flex;
+  align-items: center;
+  color: var(--Color-Base-Snow, #fffbff);
+  font-family: Rajdhani;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone_label {
+  color: var(--Color-Base-Snow, #fffbff);
+  font-family: Rajdhani;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-left: 4rem;
+}
+
+.user_ID {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+
+.actual_details {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  justify-content: end;
+
+  margin-left: 6rem;
+}
+
+.detail_info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: end; */
+}
+
+.info_label {
+  color: var(--Color-Base-Snow, #fffbff);
+  font-family: Rajdhani;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: lighter;
+  line-height: normal;
+  letter-spacing: 0.06rem;
+  text-transform: capitalize;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.info_data {
+  color: var(--Color-Base-Snow, #fffbff);
+  font-family: Rajdhani;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-left: 4rem;
+}
+
+.dashboardcardrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 18%;
+}
+
+@media screen and (max-width: 1200px) {
+  .profile_box {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    margin-left: 10rem ;
-    /* justify-content: center; */
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+  }
+
+  .profile_details {
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .dashboard-nav-details {
+    gap: 10vh;
+  }
+
+  .dashboard_college_details{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+  }
+
+  .dashboard_college_details_heading {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: Rajdhani;
+    margin-bottom: 1.5rem;
+  }
+
+  .user_label {
+    font-size: 1.5rem;
+    width: 30%;
+  }
+
+  .user_detail{
+    font-size: 1.2rem;
+  }
+
+  .dashboard_details{
+    margin-left: 5%;
+    width: 75vw;;
+  }
+
+  .dashboard_detail {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .dashboard_detail_group{
+    display: flex;
+    flex-direction: column;
+    width:  100%;
+    margin-top: 2%;
+  }
 }
-.user_name{
-    color: var(--Color-Base-Dark-Orange, #FB932E);
-    font-family: Bender;
+
+@media screen and (max-width: 768px) {
+  .profile_heading{
     font-size: 2rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-.user_name_logout{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.logout_btn img{
-    margin-left: 30vw;
-    cursor: pointer;
-    height: 3rem;
-    width: 12vw;
-}
-.dashboard{
-    margin-bottom: 1rem;
-}
-.email_phone{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin-top:2rem;
-}
-.email_label{
-    color: var(--Color-Base-Snow, #FFFBFF);
-    font-family: Rajdhani;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: uppercase;
-    /* margin-bottom: 2rem; */
-    align-items: center;
-    justify-content: center;
-}
-.user_email{
-    margin-left: 4rem;
-    display: flex;
-    align-items: center;
-    color: var(--Color-Base-Snow, #FFFBFF);
-    font-family: Rajdhani;
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    align-items: center;
-    justify-content: center;
-}
-.phone_label{
-    color: var(--Color-Base-Snow, #FFFBFF);
-    font-family: Rajdhani;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: uppercase;
-    margin-left: 4rem;
-}
-.user_ID{
-    display: flex;
-    flex-direction: row;
-    margin-top:2rem;
-}
-
-.college_details{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
-.actual_details{
+    margin-top: 3%;
+    margin-bottom: 1%;
+  }
+  .user_name_logout {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
-    justify-content: end;
-    
-    margin-left: 20rem;
-}
-.detail_info{
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    margin-top: -3%;
+  }
+
+  .logout_btn {
+    margin-left: 0;
+    width: 100%;
+    height: 20%;
+  }
+
+  .dashboard_details{
+    margin-left: 0%;
+    width: 75vw;
+  }
+
+  .dashboard_detail {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    /* justify-content: end; */
-}
-.info_label{
-    color: var(--Color-Base-Snow, #FFFBFF);
+    margin-top: 5%;
+    width: 100%;
+  }
+
+  .user_label {
+    font-size: 1.2rem;
+    width: 15vw;
+    text-wrap: nowrap;
+  }
+
+  .user_detail {
+    font-size: 1rem;
+    /* margin-left: 1%; */
+  }
+
+  /* .dashboard_phone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+  }
+
+  .phone_label {
+    font-size: 1.2rem;
+    margin-left: -67%;
+  }
+
+  .user_phone {
+    font-size: 1rem;
+    margin-right: 17%;
     font-family: Rajdhani;
+  }
+
+  .user_ID {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+  }
+
+  .ID_label {
+    font-size: 1.2rem;
+    margin-left: -95%;
+    font-family: Rajdhani;
+  }
+
+  .userID_data {
+    font-size: 1rem;
+    margin-right: 8%;
+    font-family: Rajdhani;
+  } */
+
+  .dashboard_college_details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+  }
+
+  .dashboard_college_details_heading {
+    width: 100%;
     font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 0.06rem;
-    text-transform: capitalize;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-}
-.info_data{
-    color: var(--Color-Base-Snow, #FFFBFF);
+    text-align: center;
     font-family: Rajdhani;
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  }
+/* 
+  .college_name_details {
     display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    margin-left: 4rem;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+  }
+
+  .user_college_label {
+    font-size: 1.2rem;
+    margin-left: 15%;
+    font-family: Rajdhani;
+  }
+
+  .user_college_name {
+    width: 60%;
+    font-size: 1rem;
+    margin-right: -30%;
+    font-family: Rajdhani;
+  }
+
+  .college_state_details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+  } */
+
+  .user_state_label {
+    font-size: 1.2rem;
+    margin-left: 15%;
+    font-family: Rajdhani;
+  }
+
+  .user_state_name {
+    font-size: 1rem;
+    margin-right: 12%;
+    /* align-items: center; */
+    font-family: Rajdhani;
+  }
+
+  .college_city_details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+  }
+
+  .user_city_label {
+    font-size: 1.2rem;
+    margin-left: 15%;
+    font-family: Rajdhani;
+  }
+
+  .user_city_name {
+    font-size: 1rem;
+    margin-right: 35%;
+    font-family: Rajdhani;
+  }
+
+  .dashboard-nav {
+    display: flex; /* Make the buttons flex items */
+   overflow-x: auto; /* Enable horizontal scrolling */
+   -webkit-overflow-scrolling: touch;
+   -ms-overflow-style: none;
+    
+    /* padding-left: 43%; */
+    justify-content: center;
+    padding-left: 39vw;
+    width: 100%;
+  }
+  .dashboard-nav::-webkit-scrollbar{
+    display: none;
+  }
+  .dashboard-nav-button {
+    width: 50%;
+  }
+  .userPhoto{
+    width: 50vw;
+  height: 50vw;
+  }
+  .profile_photo{
+    width: 50vw;
+  height: 50vw;
+  }
+  .edit_photo{
+    top: 84%;
+    left: 84%;
+    height: 8vw;
+    width: 8vw;
+  }
+
+  
 }

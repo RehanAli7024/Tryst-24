@@ -1,17 +1,121 @@
 import "./eventpage.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import poster from "./poster.webp";
 import { transform } from "framer-motion";
 import description from "./description.svg";
 import arrow_forward from "./arrow_forward.svg";
 import arrow_downward from "./arrow_downward.svg";
 import EventCard from "../../components/EventCard/EventCard";
-const EventPage = () => {
+import axios from "axios";
+import { DOMAIN } from "../../domain";
+import { useNavigate } from "react-router-dom";
+
+const EventPage = ({ event }) => {
+  console.log(event);
   const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
+  const token = localStorage.getItem("access_token");
+  const eventId = event.event_id;
+  const eventType = 'competition';
+  const [formFields, setFormFields] = useState([]);
+  const [formData, setFormData] = useState({
+    event_id: eventId,
+    event_type: eventType,
+    form: [],
+  });
+  const [registered, setRegistered] = useState(false);
+  const [displaytext, setDisplaytext] = useState("Register");
+  function convertTimeToAMPM(time24) {
+    var splitTime = time24.split(":");
+    var hours = parseInt(splitTime[0]);
+    var minutes = parseInt(splitTime[1]);
+    var period = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var time12 = hours + ':' + minutes + ' ' + period;
+
+    return time12;
+}
+  useEffect(() => {
+    if (localStorage.getItem("access_token") === null) {
+      setDisplaytext("Login to Register");
+      setRegistered(true);
+      return;
+    }
+    const token = localStorage.getItem("access_token");
+    axios.get(`${DOMAIN}check_registration/?event_id=${eventId}&event_type=${eventType}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+      .then((res) => {
+        console.log(res.data);
+        setRegistered(false);
+      }
+      )
+      .catch((err) => {
+        setRegistered(true);
+        setDisplaytext("Already Registered");
+        console.log(err);
+      });
+  }, []);
   const toggleDiv = () => {
+    console.log(localStorage.getItem("access_token"));
+    if (localStorage.getItem("access_token") === null) {
+      alert("Please login to register for the event");
+      return;
+    }
+    axios.get(`${DOMAIN}register/?event_id=${eventId}&event_type=${eventType}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+      .then((res) => {
+        console.log(res.data);
+        setFormFields(res.data.formFields);
+        const fields = {};
+        res.data.formFields.forEach((field) => {
+          fields[field.title] = "";
+        });
+        setFormData({ ...formData, form: fields });
+        if (res.data.has_form === true) {
+          window.location.href = res.data.registration_link;
+        }
+        setIsVisible(!isVisible);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setIsVisible(!isVisible);
   };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    console.log(formData);
+    axios.post(`${DOMAIN}register/`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+      .then((res) => {
+        console.log(res.data);
+        alert("Registered Successfully");
+        navigate('/events');
+      })
+      .catch((err) => {
+        console.log(err);
+        setSubmitted(false);
+      });
+  }
+
   return (
     <>
       <div className="event_body ">
@@ -21,35 +125,19 @@ const EventPage = () => {
         <div className="event_container grid grid-cols-2 gap-4">
           <div className="col-span-2 md:col-span-1 event_poster">
             <div className="ev_poster">
-              <img
-                src={poster}
-                alt=""
-                className="h-[20rem] my-2 object-contain"
-              />
-              {/* <EventCard /> */}
+              <EventCard image={event.event_image} />
             </div>
-            <div className="fil_con" id="ev_page_fil_con">
+            <a className="fil_con" id="ev_page_fil_con" href={event.rulebook} target="_blank" rel="noopener noreferrer">
               <div className="filter_btn">
                 <img src={description} alt="" />
                 Rulebook
               </div>
-            </div>
+            </a>
+
           </div>
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
-            <div className="event_title">Stratmart</div>
-            <div className="event_para_1">
-              Thought you are the most strategic amongst your friends? Now is
-              the chance to prove your mettle.
-            </div>
-            <div className="event_para_1">
-              Tryst, IIT Delhi in partnership with Graphite GTC, presents you
-              team based strategy game where you plan out your business strategy
-              that is unfathomable by your competitors. Juice out the maximum
-              profit and make the competition "bite the dust".
-            </div>
-            <div className="event_para_1">
-              Huge prizes of worth ₹25,000 await you. Register Now!!
-            </div>
+            <div className="event_title"> <h1>{event.title}</h1></div>
+            <div className="event_para_1">{event.description}</div>
             <div className="event_details">
               <div className="event_date">
                 <svg
@@ -77,7 +165,7 @@ const EventPage = () => {
                     />
                   </g>
                 </svg>
-                <p>15-02-2023</p>
+                <p>Date: {event.event_date}</p>
               </div>
               <div className="event_time">
                 <svg
@@ -105,7 +193,7 @@ const EventPage = () => {
                     />
                   </g>
                 </svg>
-                <p>3:00PM</p>
+                <p>Time: {convertTimeToAMPM(event.event_time.slice(0, 5))}</p>
               </div>
               <div className="event_location">
                 <svg
@@ -120,28 +208,59 @@ const EventPage = () => {
                     fill="#E086D3"
                   />
                 </svg>
-                <p>LH111</p>
+                <p>Venue: {event.venue}</p>
+              </div>
+            </div>
+            <div className="event_deadline">
+              <div className="ev_dead_text">
+                Registration Deadline :
+              </div>
+              <div className="ev_deadline_main">
+              {convertTimeToAMPM(event.deadline_time.slice(0, 5))}, {event.deadline_date}
               </div>
             </div>
             <div className="ev_contact_information grid grid-cols-2">
               <div className="col-span-2 md:col-span-1 ev_register ">
-                <div className="fil_con" id="ev_page_fil_con_2">
-                  <div className="filter_btn" id="ev_btn_1" onClick={toggleDiv}>
-                    Register
-                    {isVisible?(<img src={arrow_downward} className="rotating_button" alt="" />):(<img src={arrow_forward} className="rotating_button" alt="" />)}
+                <div className="fil_con" id="ev_page_fil_con_2" >
+                  <div className="filter_btn" id="ev_btn_1">
+                    {event.registration_link !== "" ? (
+                      <a href={event.registration_link} target="_blank" rel="noreferrer" className="filter_btn" id="ev_btn_1">
+                        Register <img
+                          src={arrow_forward}
+                          className="rotating_button"
+                          alt=""
+                        />
+                      </a>
+                    ) : registered ? (<>
+                      {displaytext}
+                    </>) : (<button onClick={toggleDiv} className="filter_btn" id="ev_btn_1">
+                      Register
+                      {isVisible ? (
+                        <img
+                          src={arrow_downward}
+                          className="rotating_button"
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          src={arrow_forward}
+                          className="rotating_button"
+                          alt=""
+                        />
+                      )}
+                    </button>)
+                    }
                   </div>
                 </div>
               </div>
               <div className="POC_box">
                 <div className="ev_contact_text">CONTACT</div>
-                <div className="ev_POC">
-                  <div className="ev_poc_name">Sarthak</div>
-                  <div className="ev_poc_contact">8789371873</div>
-                </div>
-                <div className="ev_POC">
-                  <div className="ev_poc_name">Not Sarthak</div>
-                  <div className="ev_poc_contact">8789371873</div>
-                </div>
+                {event.contact.map((poc, index) => (
+                  <div className="ev_POC" key={index}>
+                    <div className="ev_poc_name">{poc.name}</div>
+                    <div className="ev_poc_contact">{poc.phone}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -151,52 +270,106 @@ const EventPage = () => {
             <div className="ev_reg_form_heading">Registration Form</div>
             <div className="formParent">
               <form action="" className="ev_form_container">
-                <div className="ev_input_field">
-                  <div className="ev_form_heading">Your Name*</div>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    className="ev_inputbox"
-                    required
-                  />
-                </div>
-                <div className="ev_input_field">
-                  <div className="ev_form_heading">Email-ID*</div>
-                  <input
-                    type="text"
-                    placeholder="Email-ID"
-                    className="ev_inputbox"
-                    required
-                  />
-                </div>
-                <div className="ev_input_field">
-                  <div className="ev_form_heading">College*</div>
-                  <input
-                    type="text"
-                    placeholder="College"
-                    className="ev_inputbox"
-                    required
-                  />
-                </div>
-                <div className="ev_input_field">
-                  <div className="ev_form_heading">Team Member 2 UID*</div>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    className="ev_inputbox"
-                    required
-                  />
+                {formFields.map((field, index) => {
+                  return (
+                    <div key={index} className="ev_input_field">
+                      {field.type === "text" ? (
+                        <>
+                          {/* adjust the display of the fields and render it accordingly  */}
+                          <label className="ev_form_heading">{field.title}</label>
+                          <input
+                            type="text"
+                            name={formData.form[field.title]}
+                            value={formData.form[field.title]}
+                            className="ev_inputbox"
+                            onChange={(e) => {
+                              setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                            }}
+                          />
+                        </>
+                      ) : field.type === "radio" ? (
+                        <>
+                          <label className="ev_form_heading">{field.title}</label>
+                          {/* the changes in the option should be updated in the formData state */}
+                          {field.options.map((option, index) => {
+                            return (
+                              <div key={index}>
+                                <input
+                                  type="radio"
+                                  name={formData.form[field.title]}
+                                  value={option}
+                                  onChange={(e) => {
+                                    setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                                  }}
+                                />
+                                <label className="ev_form_heading">{option}</label>
+                              </div>
+                            );
+                          })}
+                        </>
+                      ) : field.type === "checkbox" ? (
+                        <>
+                          <label className="ev_form_heading">{field.title}</label>
+
+                          {field.options.map((option, index) => {
+                            return (
+                              <div key={index}>
+                                <input
+                                  type="checkbox"
+                                  name={formData.form[field.title]}
+                                  value={option}
+                                  onChange={(e) => {
+                                    setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                                  }}
+                                />
+                                <label className="ev_form_heading">{option}</label>
+                              </div>
+                            );
+                          })}
+                        </>
+                      )
+                        : field.type === "team" ? (
+                          <>
+                            <label className="ev_form_heading">{field.title}</label>
+                            <input type="text" className="ev_inputbox" />
+                          </>
+                        ) : (
+                          <>
+                            <label className="ev_form_heading">{field.title}</label>
+                            <input
+                              type="file"
+                              className="ev_form_heading"
+                              name={formData.form[field.title]}
+                              value={formData.form[field.title]}
+                              onChange={(e) => {
+                                setFormData({ ...formData, form: { ...formData.form, [field.title]: e.target.value } });
+                              }}
+                            />
+                          </>
+                        )}
+                    </div>
+                  );
+                })}
+                <div className="ev_form_submit">
+                  <div className="fil_con" id="ev_page_fil_con_3">
+                    {/* check with the state submitted to disable the button when it is true */}
+                    {submitted ? (
+                      <button className="filter_btn submited" disabled>
+                        Please Wait....
+                      </button>
+                    ) : (
+                      <button className="filter_btn" onClick={handleSubmit}>
+                        Register
+                      </button>
+                    )
+                    }
+                  </div>
                 </div>
               </form>
-              <div className="ev_form_submit">
-                <div className="fil_con" id="ev_page_fil_con_3">
-                  <div className="filter_btn">Register</div>
-                </div>
-              </div>
             </div>
-          </div>
+          </div >
         )}
-      </div>
+      </div >
     </>
   );
 };

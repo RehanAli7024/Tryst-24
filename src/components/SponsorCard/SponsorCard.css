@@ -1,0 +1,93 @@
+.sponsor-heading {
+    height: 20%;
+    width: 75%;
+    /* margin: 0px auto 20px auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00e0ff;
+    text-align: center;
+    font-family: "Bender", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 3.36px;
+    text-transform: uppercase;
+}
+
+.sponsor-shape {
+    clip-path: polygon(0% 0%, 90% 0%, 100% 15%, 100% 100%, 10% 100%, 0% 85%);
+}
+
+.sponsor-container {
+    width: 100%;
+    height: 100%;
+    /* margin: 3% 1.2%; */
+}
+
+.sponsor-box-container {
+    height: 100%;
+    background-color: rgba(128, 35, 146, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.sponsor-box-container:hover {
+    background-color: rgba(224, 134, 211, 0.75);
+}
+
+.sponsor-box {
+    height: calc(100% - 3px);
+    width: calc(100% - 3px);
+    background-color: rgba(3, 10, 23, 0.8);
+    /* margin: 1.5px; */
+}
+
+.sponsor-box-img-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65%;
+    width: 100%;
+    background-color: white;
+}
+
+.sponsor-box-img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.sponsor-box-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35%;
+    width: 100%;
+
+    text-align: center;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    .sponsor-heading {
+        font-size: 1rem;
+    }
+
+    .sponsor-box-img {
+        max-width: 85%;
+        max-height: 85%;
+    }
+
+    .sponsor-box-text {
+        font-size: 0.9rem;
+        height: 25%;
+    }
+
+    .sponsor-box-img-div {
+        height: 75%;
+    }
+}

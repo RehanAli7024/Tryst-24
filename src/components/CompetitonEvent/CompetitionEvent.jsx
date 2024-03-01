@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { ReactSession } from "react-client-session";
 import "./CompetitionEvent.css";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
@@ -9,11 +10,12 @@ export default function CompetitionEvent({
   setIsOpen,
   setIsEventSubmitted,
   setEventFormTitle,
-  eventid
 }) {
   const [contactPersons, setcontactPerosns] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [formisSubmitted, setFormIsSubmitted] = useState(false);
+  ReactSession.setStoreType("localStorage");
   useEffect(() => {
     let handler = (e) => {
       if (!eventsRef.current.contains(e.target) && registrationOpen) {
@@ -35,20 +37,28 @@ export default function CompetitionEvent({
   };
 
   const handleSubmit = (e) => {
-    setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
+    if (formData.has_form && !formData.registration_link) {
+      alert("Please provide registration link for the form.");
+      return;
+    }
+    setFormData({ ...formData, contactPersons: constactPersonDetails });
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}` } })
+    const token = localStorage.getItem("admin_access_token");
+    setFormIsSubmitted(true);
+    axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
       .then((res) => {
-        console.log(res);
         alert("Event submitted successfully");
-        eventid(res.data.id);
+        localStorage.setItem("id", res.data.event_id);
+        if (formData.has_form && formData.registration_link) {
+          handleClose();
+        }
         setEventFormTitle("registrationForm");
         setIsEventSubmitted(true);
         setIsSubmitted(true);
       })
       .catch((err) => {
         console.log(err);
+        setFormIsSubmitted(false);
       });
   };
   const [formData, setFormData] = useState({
@@ -56,23 +66,20 @@ export default function CompetitionEvent({
     description: "",
     event_date: "",
     event_time: "",
+    reg_date: "",
+    reg_time: "",
     venue: "",
     file: null,
     contactPersons: [],
-    speakers: [],
-    ruleBoook: [],
+    has_form: false,
+    registration_link: '',
+    ruleBook: '',
   });
-
-  const [image, setImage] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
-  const [speakerimg, setSpeakerImg] = useState(null);
-  const [Speakers, setSpeakers] = useState(1);
-  const [speakerDetails, setSpeakerDetails] = useState([{ name: '', description: '', file: null }]);
-
 
   const handleChange = (e) => {
     if (e.target.name === "file") {
-      setImage(URL.createObjectURL(e.target.files[0]));
       setFormData({ ...formData, [e.target.name]: e.target.files[0] });
       return;
     }
@@ -96,148 +103,152 @@ export default function CompetitionEvent({
   };
 
   useEffect(() => {
-    setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
-  }, [constactPersonDetails, speakerDetails]);
+    setFormData({ ...formData, contactPersons: constactPersonDetails });
+  }, [constactPersonDetails]);
 
-  const handleSpeakersChange = (e) => {
-    const numberOfSpeakers = parseInt(e.target.value, 10);
-    setSpeakers(numberOfSpeakers);
-    setSpeakerDetails(currentDetails => {
-      const newDetails = currentDetails.slice(0, numberOfSpeakers);
-      while (newDetails.length < numberOfSpeakers) {
-        newDetails.push({ name: '', description: '', file: null });
-      }
-      return newDetails;
-    });
-  };
-
-
-  const handleSpeakerDetailsChange = (index, type, e) => {
-    setSpeakerDetails(currentDetails => {
-      const updatedDetails = [...currentDetails];
-      if (type === 'file') {
-        const file = e.target.files[0];
-        setSpeakerImg(URL.createObjectURL(file));
-        updatedDetails[index].file = file ? URL.createObjectURL(file) : null;
-      } else {
-        updatedDetails[index][type] = e.target.value;
-      }
-      return updatedDetails;
-    });
-  };
+  useEffect(() => {
+    console.log(formData.has_form, formData.registration_link);
+  }, [formData.has_form, formData.registration_link]);
 
   return (
     <div
       className={`event-details ${isSubmitted ? "popup-hidden" : ""}`}
       ref={eventsRef}
     >
-      <form>
-        <div className="upload-picture">
-          <div className="custom-upload-container">
-            <label htmlFor="uploadInput" className="custom-upload-btn">
-              Upload
-            </label>
-            <input
-              id="uploadInput"
-              className="upload-pic-btn"
-              type="file"
-              onChange={handleChange}
-              name="file"
-            />
-          </div>
-          <div className="image-shown">
-            {image && <img src={image} alt="Event" />}
-          </div>
-          <div className="image-guidelines">
-            <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
-            <p className="image-guidelines-text">Format: .jpg/ .jpeg/ .png</p>
-            <p className="image-guidelines-text">Size Limit: &lt;10MB</p>
-          </div>
+      {formisSubmitted ? (
+        <div className="loader-container">
+          <div className="loader"> Submitting the form and creating a spreadsheet for it</div>
         </div>
+      ) : (
+        <form>
+          <div className="upload-picture">
+            <div className="custom-upload-container">
+              <label htmlFor="uploadInput" className="custom-upload-btn">
+                Upload
+              </label>
+              <input
+                id="uploadInput"
+                className="upload-pic-btn"
+                type="file"
+                onChange={handleChange}
+                name="file"
+              />
+            </div>
+            <div className="image-shown">
+              <img
+                src={formData.file ? URL.createObjectURL(formData.file) : ""}
+                className="image"
+              />
+            </div>
+            <div className="image-guidelines">
+              <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
+              <p className="image-guidelines-text">Format: .jpg/ .jpeg/ .png</p>
+              <p className="image-guidelines-text">Size Limit: &lt;10MB</p>
+            </div>
+          </div>
 
-        <div className="event-name">
-          <label className="label">EVENT TITLE*</label>
-          <br />
-          <input
-            onChange={handleChange}
-            className="input event-title"
-            value={formData.title}
-            type="text"
-            name="title"
-          />
-        </div>
-
-        <div className="event-description">
-          <label className="label">EVENT DESCRIPTION*</label>
-          <br />
-          <textarea
-            onChange={handleChange}
-            className="textarea event-description"
-            value={formData.description}
-            type="text"
-            name="description"
-            rows={7}
-          />
-        </div>
-        <div className="date-time-venue-container">
-          <div className="events-flex-column">
-            <label className="label">EVENT DATE*</label>
+          <div className="event-name">
+            <label className="label">EVENT TITLE*</label>
             <br />
             <input
               onChange={handleChange}
-              className="input"
-              value={formData.event_date}
-              name="event_date"
-              type="date"
-            />
-          </div>
-          <div className="events-flex-column">
-            <label className="label">EVENT TIMING*</label>
-            <br />
-            <input
-              onChange={handleChange}
-              className="input"
-              value={formData.event_time}
-              name="event_time"
-              type="time"
-            />
-          </div>
-
-          <div className="events-flex-column">
-            <label className="label">EVENT VENUE*</label>
-            <br />
-            <input
-              onChange={handleChange}
-              className="input event-venue"
-              value={formData.venue}
-              name="venue"
+              className="input event-title"
+              value={formData.title}
               type="text"
+              name="title"
             />
           </div>
-        </div>
 
-        <div className="No-of-contact-person-container">
-          <div className="contact-person-details">
-            <p>Contact Person(s) Details*</p>
+          <div className="event-description">
+            <label className="label">EVENT DESCRIPTION*</label>
+            <br />
+            <textarea
+              onChange={handleChange}
+              className="textarea event-description"
+              value={formData.description}
+              type="text"
+              name="description"
+              rows={7}
+            />
           </div>
-          <div className="contact-persons-container">
-            <p>Contact Persons*</p>
-            <select
-              onChange={handlecontactPersonsChange}
-              value={contactPersons}
-            >
-              {[1, 2, 3, 4, 5, 6].map((num) => (
-                <option key={num} value={num}>
-                  {num}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+          <div className="date-time-venue-container">
+            <div className="events-flex-column">
+              <label className="label">EVENT DATE*</label>
+              <br />
+              <input
+                onChange={handleChange}
+                className="input"
+                value={formData.event_date}
+                name="event_date"
+                type="date"
+              />
+            </div>
+            <div className="events-flex-column">
+              <label className="label">EVENT TIMING*</label>
+              <br />
+              <input
+                onChange={handleChange}
+                className="input"
+                value={formData.event_time}
+                name="event_time"
+                type="time"
+              />
+            </div>
 
-        {Array.from({ length: contactPersons }).map((_, index) => (
-          <>
-            <div className="contact-details-container">
+            <div className="events-flex-column">
+              <label className="label">EVENT VENUE*</label>
+              <br />
+              <input
+                onChange={handleChange}
+                className="input event-venue"
+                value={formData.venue}
+                name="venue"
+                type="text"
+              />
+            </div>
+          </div>
+          <div className="date-time-venue-container">
+            <div className="events-flex-column">
+              <label className="label">DEADLINE DATE*</label>
+              <br />
+              <input
+                onChange={handleChange}
+                className="input"
+                value={formData.reg_date}
+                name="reg_date"
+                type="date"
+              />
+              <input
+                onChange={handleChange}
+                className="input"
+                value={formData.reg_time}
+                name="reg_time"
+                type="time"
+              />
+            </div>
+          </div>
+
+          <div className="No-of-contact-person-container">
+            <div className="contact-person-details">
+              <p>Contact Person(s) Details*</p>
+            </div>
+            <div className="contact-persons-container">
+              <p>Contact Persons*</p>
+              <select
+                onChange={handlecontactPersonsChange}
+                value={contactPersons}
+              >
+                {[1, 2, 3, 4, 5, 6].map((num) => (
+                  <option key={num} value={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {Array.from({ length: contactPersons }).map((_, index) => (
+            <div key={index} className="contact-details-container">
               <div className="serial-no">
                 <p>{index + 1}.</p>
               </div>
@@ -261,25 +272,51 @@ export default function CompetitionEvent({
                 />
               </div>
             </div>
-          </>
-        ))}
-        <div className="No-of-contact-person-container">
-          <div className="contact-person-details">
-            <p>RuleBook*</p>
+          ))}
+          <div className="No-of-contact-person-container">
+            <div className="contact-person-details">
+              <p>RuleBook*</p>
+            </div>
+            <div className="contact-persons-container">
+              <input
+                name="ruleBook"
+                className="input"
+                type="text"
+                onChange={handleChange}
+                value={formData.ruleBook} />
+            </div>
           </div>
-          <div className="contact-persons-container">
-            <input
-              name="ruleBoook"
-              className="input"
-              type="text"
-              onChange={handleChange}
-              value={formData.ruleBoook} />
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                value={formData.has_form}
+                onChange={(e) => {
+                  setIsChecked(e.target.checked);
+                  setFormData({ ...formData, has_form: e.target.checked });
+                }}
+              />
+              For external registration form
+            </label>
+            {isChecked && (
+              <div>
+                <label>
+                  Registration Link
+                  <input
+                    type="text"
+                    name='registration_link'
+                    value={formData.registration_link}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+            )}
           </div>
-        </div>
-        <button onClick={handleSubmit} className="submit-button">
-          submit
-        </button>
-      </form>
+          <button onClick={handleSubmit} className="submit-button">
+            submit
+          </button>
+        </form>)}
     </div>
   );
 }

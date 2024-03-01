@@ -1,0 +1,145 @@
+.publicity-pages {
+	font-family: 'Poppins';
+	padding: 3vh 10vw;
+	/* bottom: ; */
+	color: #fff !important;
+	text-decoration: none !important;
+	background-color: #040914;
+    color: white;
+	height: 100vh;
+	overflow: hidden;
+}
+#home-link {
+	text-align: center;
+	height: 80px;
+	width: 80px;
+	padding: 10px 0 0 0;
+}
+
+#home-link img {
+	height: 100%;
+}
+
+.admin-id>input{
+	margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+	background-color: rgba(255, 255, 255, 0.12);
+    border: none;
+    padding: 12px 10px;
+    border-left: 3px solid #A6D3FD;
+	display: block;
+    width: 80%;
+	color: white;
+	display: block;
+    /* width: 96%; */
+}
+.admin-password>input{
+	margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+	background-color: rgba(255, 255, 255, 0.12);
+    border: none;
+    padding: 12px 10px;
+    border-left: 3px solid #A6D3FD;
+	display: block;
+    /* width: 96%; */
+	color: white;
+	display: block;
+    width: 80%;
+}
+
+.fixed-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: transparent;
+	padding: 15px;
+	/* padding-left: 10px; */
+	color: rgba(255, 255, 255, 0.60);
+	text-align: center;
+	/* Add any other styles you want for your fixed footer */
+  }
+.home54765 {
+	width: 200px;
+}
+
+.ad-login-head {
+	width: 100%;
+	justify-content: flex-start;
+	margin-bottom: 5vh;
+}
+
+.ad-log-main {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.ad-log-form,
+.ad-log-img {
+	width: 50%;
+}
+.ad-log-img {
+	display: flex;
+	align-items: center;
+}
+.ad-log-img div img {
+	text-align: right;
+	width: 80%;
+	object-fit: contain;
+}
+
+.ad-log-btn {
+	border: none;
+	cursor: pointer;
+	display: inline-flex;
+	height: 3rem;
+	padding: 20px 40px;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	flex-shrink: 0;
+	border-radius: 16px;
+	background: #A6D3FD;
+	text-align: center;
+	font-weight: 700;
+	font-size: 1.2rem;
+
+}
+/* .ad-log-btn>text{
+	color: #000;
+text-align: center;
+leading-trim: both;
+text-edge: cap;
+font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+} */
+
+.ad-log-title {
+	font-family: 'Poppins';
+	color: #A6D3FD;
+	font-size: 2.5rem;
+	font-weight: 1000;
+	margin-bottom: 1.5rem;
+}
+.ad-log-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-left: 4rem;
+}
+.admin-id,
+.admin-password {
+	height: 3rem;
+	width: 60%;
+	margin-bottom: 2rem;
+}
+.error {
+	color: rgb(237, 42, 42);
+	margin: 0% 0%;
+}

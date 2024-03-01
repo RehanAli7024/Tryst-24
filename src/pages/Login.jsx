@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import eventimage from "../assets/event 1.png";
 import trystlogo from "../assets/trystlogo.png";
@@ -9,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "react-google-login";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleLoginClick = () => {
     axios
@@ -19,36 +19,13 @@ const Login = () => {
       .then((res) => {
         console.log(res.data.tokens);
         localStorage.setItem("token", res.data.tokens.access);
-        navigate("/mainpage");
+        navigate("/admin/events");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => {
-      axios
-        .post(`${DOMAIN}api/users/google/`, {
-          token: tokenResponse.access_token,
-        })
-        .then((response) => {
-          if (response.data.error) {
-            alert("Google login is unsuccessful.");
-            return;
-          } else if (response.data.message === "Logged in") {
-            localStorage.setItem("access_token", response.data.tokens.access);
-            localStorage.setItem("refresh_token", response.data.tokens.refresh);
-            navigate("/user/dashboard");
-          } else if (response.data.message === "New User Created") {
-            localStorage.setItem("response", JSON.stringify(response));
-            navigate("/signup");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  });
+
   return (
     <div className="login">
       <div className="header">
