@@ -12,7 +12,7 @@ import logouthov from "../../assets/Dashboard/logouthover.svg";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  React.useEffect(userLoggedInNavigator(useNavigate()));
+ /* React.useEffect(userLoggedInNavigator(useNavigate()));*/
   const [activeButton, setActiveButton] = useState("REGISTERED EVENTS");
   const [user, setUser] = useState({});
   const [isHovered, setIsHovered] = useState(false);
@@ -38,7 +38,7 @@ const Dashboard = () => {
     navigate("/");
   };
 
-  useEffect(() => {
+ /* useEffect(() => {
     axios
       .get(`${DOMAIN}profile/`, {
         headers: {
@@ -56,7 +56,7 @@ const Dashboard = () => {
         localStorage.removeItem("refresh_token");
         navigate("/login");
       });
-  }, []);
+  }, []);*/
 
   // const handlephotochange = () => {
   //   axios.post(`${DOMAIN}profile/`, {
