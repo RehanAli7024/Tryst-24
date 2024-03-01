@@ -5,24 +5,28 @@ import bottomvector from "../../assets/event_cards/Event_Card_bottom_vector.svg"
 import "./EventCard.css";
 import topvectorHover from "../../assets/event_cards/Event_Card._top_vector_hover.svg";
 import EventcardbgHover from "../../assets/event_cards/Event_Card_bg_hover.svg";
+import EventcardbgClicked from "../../assets/event_cards/Event_Card_bg_click.svg";
 import bottomvectorHover from "../../assets/event_cards/Event_Card_bottom_vector_hover.svg";
 import { useState } from "react";
 
 export default function EventCard({ image }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const leftStyle = isHovered || isClicked ? "5%" : "4.5%";
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    setIsClicked(false);
   };
 
   const handleClick = () => {
     setIsClicked(!isClicked);
+    setIsHovered(false);
   };
+
+  
 
   return (
     <div
@@ -36,11 +40,17 @@ export default function EventCard({ image }) {
       }}
     >
       <img
-        src={isHovered || isClicked ? EventcardbgHover : Eventcardbg}
+        src={
+          isHovered
+            ? EventcardbgHover
+            : isClicked
+            ? EventcardbgClicked
+            : Eventcardbg
+        }
         alt="event card background"
         className="event-card-bg"
       />
-      <div className="event-card-img" style={{ left: leftStyle }}>
+      <div className="event-card-img">
         <img src={image} alt="event" />
       </div>
       <div className="event-card-top-vector">
