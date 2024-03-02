@@ -5,6 +5,9 @@ import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
 import plus_button from "./assets/plusbtn.svg";
+import axios from "axios";
+import { DOMAIN } from "../../domain";
+
 
 const Accomodation = () => {
   const [activeButton, setActiveButton] = useState("Registration Form");
@@ -81,6 +84,18 @@ const Accomodation = () => {
     console.log("Check-In Date:", checkInDate);
     console.log("Check-Out Date:", checkOutDate);
     console.log("Form submitted with data:", formDataArray);
+    axios.post(`${DOMAIN}accomodation/`, { formDataArray }, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // You can perform further actions like sending the data to a server here
   };
 
