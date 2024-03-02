@@ -25,6 +25,7 @@
   align-items: center;
   z-index: 100;
   overflow: hidden;
+  background: rgba(3, 10, 23, 1);
 }
 
 .navbarheader:hover {
@@ -49,6 +50,7 @@
   justify-content: flex-end;
   align-items: center;
   margin-right: 2%;
+  width: 70%;
 }
 
 .navbaricons {
@@ -59,7 +61,7 @@
   color: white;
   gap: 10%;
   font-weight: 600;
-    margin-right: 140px;
+    margin-right: 180px;
 }
 
 .navbaroption {
@@ -68,6 +70,8 @@
   position: relative;
   transition: all 0.2s ease-in-out;
   font-family: rajdhani;
+  font-size: 120%;
+  font-weight: 1000;
 }
 .navbartrystlogo {
   padding-left: 4%;

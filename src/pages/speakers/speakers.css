@@ -1,0 +1,57 @@
+.speakers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  background-image: url(../../assets/sponsors/stars.webp);
+}
+
+.speakers-head {
+  text-align: center;
+  font-family: "Audiowide", sans-serif;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 8px;
+  margin-top: 8vh;
+}
+
+.speakers-body {
+  margin-bottom: 8vh;
+  margin-top: 8vh;
+}
+
+.guest-card {
+  width: 22vw;
+  aspect-ratio: 3/4;
+}
+
+.speakers-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6vw;
+}
+
+@media screen and (max-width: 500px) {
+  .speakers-head {
+    font-size: 2rem;
+    letter-spacing: 6px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .speakers-head {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .speakers-body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .guest-card {
+    width: 40vw;
+  }
+}

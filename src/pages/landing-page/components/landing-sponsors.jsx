@@ -1,7 +1,7 @@
 import "./landing-sponsors.css"
 import SponsorCard from "../../../components/SponsorCard/SponsorCard";
 import TechMaghi from "../../../assets/sponsors/tm.webp";
-import Adobe from "../../../assets/sponsors/adobe.webp";
+import Samsung from "../../../assets/sponsors/samsung.webp";
 import Remarkskill from "../../../assets/sponsors/remarkskill.webp";
 import RobocapLeague from "../../../assets/sponsors/robocap.webp";
 import EdutechLife from "../../../assets/sponsors/edutech.webp";
@@ -17,8 +17,8 @@ import SilliconIndia from "../../../assets/sponsors/siliconindia.webp";
 const sponsorsUp1 = [
     {
         index: 1,
-        name: "Adobe",
-        image: Adobe,
+        name: "Samsung",
+        image: Samsung,
         // header: "WORKSHOP PARTNER",
     },
     {

@@ -98,6 +98,7 @@ export default function EditGuestEvent({
         setcontactPerosnDetails(eventDetails.contact);
     }, [eventDetails.contact]);
 
+    
     useEffect(() => {
         setcontactPerosns(constactPersonDetails.length);
     }, [constactPersonDetails]);
