@@ -313,6 +313,7 @@
 
 #ev_btn_1 {
   cursor: pointer;
+  background-color: rgba(3, 10, 23, 0.6);
 }
 
 #ev_page_fil_con3 {
@@ -347,7 +348,7 @@
 .ev_deadline_main {
   color: var(--Color-Base-Snow, #fffbff);
   text-align: left;
-  font-family: Bender;
+  font-family: rajdhani;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
@@ -358,6 +359,12 @@
   margin-left: 1rem;
 }
 @media (max-width: 768px) {
+  .event_deadline{
+    flex-wrap: nowrap;
+    width: 88vw;
+    align-items: center;
+    justify-content: center;
+  }
   .event_description {
     display: flex;
     flex-direction: column;
@@ -385,22 +392,23 @@
   }
 
   .ev_dead_text {
-    width: 100%;
+    width: 40%;
     align-items: center;
     display: flex;
     justify-content: center;
-    font-size: 1.5rem;
-    margin-left: 4%;
-    text-align: center;
+    font-size: 1.3rem;
+    /* margin-left: 4%; */
+    /* text-align: center; */
   }
   .ev_deadline_main {
-    width: 100%;
+    width: 50%;
     align-items: center;
     display: flex;
     justify-content: center;
-    font-size: 1.25rem;
+    font-size: 5.2vw;
+    margin-left: 0%;
     /* margin-left: 22%; */
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem;*/
   }
   .ev_POC {
     gap: 5vw;
