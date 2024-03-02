@@ -28,9 +28,17 @@
   background: rgba(3, 10, 23, 1);
 }
 
-.navbarheader:hover {
+/* .navbarheader:hover {
   border: 2px solid rgba(0, 224, 255, 0.5);
-  /* cursor: pointer; */
+  cursor: pointer;
+} */
+
+
+.navbarheader:hover {
+  background: linear-gradient(#030A17, #030A17) padding-box,
+              linear-gradient(to right, rgb(189, 115, 226), #030A17,#030A17,#030A17, rgb(109, 231, 239)) border-box;
+  border-radius: 50em;
+  border: 2px solid transparent;
 }
 
 .navbaricons,
