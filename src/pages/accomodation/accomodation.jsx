@@ -4,9 +4,9 @@ import Placeholder from "../contactus/placeholder";
 import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
-import plus_button from "./assets/plusbtn.svg";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
+import PaymentComponent from "./payment";
 
 const Accomodation = () => {
   const [activeButton, setActiveButton] = useState("Registration Form");
@@ -16,6 +16,8 @@ const Accomodation = () => {
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [formDataArray, setFormDataArray] = useState([]);
+  const [showPayment, setShowPayment] = useState(false);
+  const [paymentDetails, setPaymentDetails] = useState({});
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
@@ -101,7 +103,9 @@ const Accomodation = () => {
 
       }
     }).then((res) => {
-      console.log(res);
+      console.log(res.data.options);
+      setPaymentDetails(res.data.options);
+      setShowPayment(true);
     })
       .catch((err) => {
         console.log(err);
@@ -228,249 +232,257 @@ const Accomodation = () => {
         {activeButton === "Registration Form" && (
           <div className="Registration_form_containor">
             {!isClicked && (
-              <div className="initial_details">
-                <p className="Form_details_accomodation">
-                  At TRYST, we are committed to providing unparalleled
-                  satisfaction to all our participants. Our utmost priority is
-                  to ensure that you have a secure and comfortable home away
-                  from home. We go above and beyond to meet all your
-                  accommodation needs, providing exceptional service every step
-                  of the way. In addition to top-notch accommodation facilities,
-                  we take pride in offering a diverse range of cuisine options
-                  at our food outlets, catering to every palate. Our team is
-                  dedicated to making your experience with us truly memorable.
-                  We place a strong emphasis on hospitality management and take
-                  great care in ensuring that your stay is nothing short of
-                  exceptional. At TRYST, we are passionate about providing
-                  exceptional service and hospitality to all of our guests, and
-                  we look forward to welcoming you to our community.
-                </p>
+              <>
+                <div className="initial_details">
+                  <p className="Form_details_accomodation">
+                    At TRYST, we are committed to providing unparalleled
+                    satisfaction to all our participants. Our utmost priority is
+                    to ensure that you have a secure and comfortable home away
+                    from home. We go above and beyond to meet all your
+                    accommodation needs, providing exceptional service every step
+                    of the way. In addition to top-notch accommodation facilities,
+                    we take pride in offering a diverse range of cuisine options
+                    at our food outlets, catering to every palate. Our team is
+                    dedicated to making your experience with us truly memorable.
+                    We place a strong emphasis on hospitality management and take
+                    great care in ensuring that your stay is nothing short of
+                    exceptional. At TRYST, we are passionate about providing
+                    exceptional service and hospitality to all of our guests, and
+                    we look forward to welcoming you to our community.
+                  </p>
 
-                <div className="dates_accomodation">
-                  <div className="checkin_accomodation">
-                    <div className="label_date_accomodation">Check-In</div>
-                    <div className="date_options">
-                      <button
-                        className={
-                          checkInDate == "27"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckInSelect("27")}
-                      >
-                        27
-                      </button>
-                      <button
-                        className={
-                          checkInDate == "28"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckInSelect("28")}
-                      >
-                        28
-                      </button>
-                      <button
-                        className={
-                          checkInDate == "29"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckInSelect("29")}
-                      >
-                        29
-                      </button>
-                      <button
-                        className={
-                          checkInDate == "30"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckInSelect("30")}
-                      >
-                        30
-                      </button>
-                      <button
-                        className={
-                          checkInDate == "31"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckInSelect("31")}
-                      >
-                        31
-                      </button>
-                    </div>
-                  </div>
-                  <div className="checkout_accomodation">
-                    <div className="label_date_accomodation">Check-Out</div>
-                    <div className="date_options">
-                      <button
-                        className={
-                          checkOutDate == "27"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckOutSelect("27")}
-                      >
-                        27
-                      </button>
-                      <button
-                        className={
-                          checkOutDate == "28"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckOutSelect("28")}
-                      >
-                        28
-                      </button>
-                      <button
-                        className={
-                          checkOutDate == "29"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckOutSelect("29")}
-                      >
-                        29
-                      </button>
-                      <button
-                        className={
-                          checkOutDate == "30"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckOutSelect("30")}
-                      >
-                        30
-                      </button>
-                      <button
-                        className={
-                          checkOutDate == "31"
-                            ? "datepicker_btn selecteddate"
-                            : "datepicker_btn"
-                        }
-                        onClick={() => handleCheckOutSelect("31")}
-                      >
-                        31
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="members_details_accomodation">
-                  <div className="title_members_details">No. of People</div>
-                  <div className="selection_members">
-                    <div className="selector_men_number">
-                      <div className="men_accomodation">Men</div>
-                      <div className="men_number_selector">
+                  <div className="dates_accomodation">
+                    <div className="checkin_accomodation">
+                      <div className="label_date_accomodation">Check-In</div>
+                      <div className="date_options">
                         <button
-                          className="minus_btn_members"
-                          onClick={handleMenDecrement}
-                        ></button>
-                        <div className="no_of_people">{menCount}</div>
+                          className={
+                            checkInDate == "27"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckInSelect("27")}
+                        >
+                          27
+                        </button>
                         <button
-                          className="plus_btn_members"
-                          onClick={handleMenIncrement}
-                        ></button>
+                          className={
+                            checkInDate == "28"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckInSelect("28")}
+                        >
+                          28
+                        </button>
+                        <button
+                          className={
+                            checkInDate == "29"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckInSelect("29")}
+                        >
+                          29
+                        </button>
+                        <button
+                          className={
+                            checkInDate == "30"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckInSelect("30")}
+                        >
+                          30
+                        </button>
+                        <button
+                          className={
+                            checkInDate == "31"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckInSelect("31")}
+                        >
+                          31
+                        </button>
                       </div>
                     </div>
-                    <div className="selector_men_number">
-                      <div className="men_accomodation">Women</div>
-                      <div className="men_number_selector">
+                    <div className="checkout_accomodation">
+                      <div className="label_date_accomodation">Check-Out</div>
+                      <div className="date_options">
                         <button
-                          className="minus_btn_members"
-                          onClick={handleWomenDecrement}
-                        ></button>
-                        <div className="no_of_people">{womenCount}</div>
+                          className={
+                            checkOutDate == "27"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckOutSelect("27")}
+                        >
+                          27
+                        </button>
                         <button
-                          className="plus_btn_members"
-                          onClick={handleWomenIncrement}
-                        ></button>
+                          className={
+                            checkOutDate == "28"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckOutSelect("28")}
+                        >
+                          28
+                        </button>
+                        <button
+                          className={
+                            checkOutDate == "29"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckOutSelect("29")}
+                        >
+                          29
+                        </button>
+                        <button
+                          className={
+                            checkOutDate == "30"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckOutSelect("30")}
+                        >
+                          30
+                        </button>
+                        <button
+                          className={
+                            checkOutDate == "31"
+                              ? "datepicker_btn selecteddate"
+                              : "datepicker_btn"
+                          }
+                          onClick={() => handleCheckOutSelect("31")}
+                        >
+                          31
+                        </button>
                       </div>
                     </div>
                   </div>
-                  <button
-                    className="next_btn_accomodation"
-                    onClick={handleFormSubmit}
-                  >
-                    Next
-                  </button>
+                  <div className="members_details_accomodation">
+                    <div className="title_members_details">No. of People</div>
+                    <div className="selection_members">
+                      <div className="selector_men_number">
+                        <div className="men_accomodation">Men</div>
+                        <div className="men_number_selector">
+                          <button
+                            className="minus_btn_members"
+                            onClick={handleMenDecrement}
+                          ></button>
+                          <div className="no_of_people">{menCount}</div>
+                          <button
+                            className="plus_btn_members"
+                            onClick={handleMenIncrement}
+                          ></button>
+                        </div>
+                      </div>
+                      <div className="selector_men_number">
+                        <div className="men_accomodation">Women</div>
+                        <div className="men_number_selector">
+                          <button
+                            className="minus_btn_members"
+                            onClick={handleWomenDecrement}
+                          ></button>
+                          <div className="no_of_people">{womenCount}</div>
+                          <button
+                            className="plus_btn_members"
+                            onClick={handleWomenIncrement}
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      className="next_btn_accomodation"
+                      onClick={handleFormSubmit}
+                    >
+                      Next
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </>
             )}
             {isClicked && (
-              <div className="members_details">
-                {formDataArray.map((formData, index) => (
-                  <div key={index} className="members_personal_data">
-                    <h2 className="members_headings">
-                      Member {index + 1} Details
-                    </h2>
-                    <form
-                      className="members_details_form"
-                      onSubmit={handleSubmit}
-                    >
-                      <div className="members_details_field">
-                        <label htmlFor={`trystUID-${index}`}>Tryst UID :</label>
-                        <input
-                          type="text"
-                          id={`trystUID-${index}`}
-                          name="trystUID"
-                          value={formData.trystUID}
-                          onChange={(e) => handleChange(e, index)}
-                        />
-                      </div>
-                      <div className="members_details_field">
-                        <label htmlFor={`name-${index}`}>
-                          Full Name (as on Aadhar Card) :
-                        </label>
-                        <input
-                          type="text"
-                          id={`name-${index}`}
-                          name="name"
-                          value={formData.name}
-                          onChange={(e) => handleChange(e, index)}
-                        />
-                      </div>
-                      <div className="members_details_field">
-                        <label htmlFor={`aadhar-${index}`}>
-                          Aadhar Card No :
-                        </label>
-                        <input
-                          type="text"
-                          id={`aadhar-${index}`}
-                          name="aadhar"
-                          value={formData.aadhar}
-                          onChange={(e) => handleChange(e, index)}
-                        />
-                      </div>
-                    </form>
-                  </div>
-                ))}
-                <div className="terms_and_conditions_accomodation">
-                  <label>
-                    <input
-                      className="terms_and_conditions_box"
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={handleCheckboxChange}
-                    />
-                    I certify that the above entered information is true to the
-                    best of my knowledge and belief and I understand that I
-                    subject myself to disciplinary action in the event that the
-                    above facts are found to be falsified which includes
-                    immediate dismissal from the accommodation facilities.
-                  </label>
+              (showPayment ?
+                <div className="members_details">
+                  <PaymentComponent options={paymentDetails} />
                 </div>
-                {isChecked && (
-                  <button
-                    className="submit_details_members"
-                    onClick={handleSubmit}
-                  >
-                    Submit
-                  </button>
-                )}
-              </div>
+                :
+                (<div className="members_details">
+                  {formDataArray.map((formData, index) => (
+                    <div key={index} className="members_personal_data">
+                      <h2 className="members_headings">
+                        Member {index + 1} Details
+                      </h2>
+                      <form
+                        className="members_details_form"
+                        onSubmit={handleSubmit}
+                      >
+                        <div className="members_details_field">
+                          <label htmlFor={`trystUID-${index}`}>Tryst UID :</label>
+                          <input
+                            type="text"
+                            id={`trystUID-${index}`}
+                            name="trystUID"
+                            value={formData.trystUID}
+                            onChange={(e) => handleChange(e, index)}
+                          />
+                        </div>
+                        <div className="members_details_field">
+                          <label htmlFor={`name-${index}`}>
+                            Full Name (as on Aadhar Card) :
+                          </label>
+                          <input
+                            type="text"
+                            id={`name-${index}`}
+                            name="name"
+                            value={formData.name}
+                            onChange={(e) => handleChange(e, index)}
+                          />
+                        </div>
+                        <div className="members_details_field">
+                          <label htmlFor={`aadhar-${index}`}>
+                            Aadhar Card No :
+                          </label>
+                          <input
+                            type="text"
+                            id={`aadhar-${index}`}
+                            name="aadhar"
+                            value={formData.aadhar}
+                            onChange={(e) => handleChange(e, index)}
+                          />
+                        </div>
+                      </form>
+                    </div>
+                  ))}
+                  <div className="terms_and_conditions_accomodation">
+                    <label>
+                      <input
+                        className="terms_and_conditions_box"
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={handleCheckboxChange}
+                      />
+                      I certify that the above entered information is true to the
+                      best of my knowledge and belief and I understand that I
+                      subject myself to disciplinary action in the event that the
+                      above facts are found to be falsified which includes
+                      immediate dismissal from the accommodation facilities.
+                    </label>
+                  </div>
+                  {isChecked && (
+                    <button
+                      className="submit_details_members"
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </button>
+                  )}
+                </div>)
+              )
             )}
           </div>
         )}

@@ -1,7 +1,7 @@
 import "./landing-sponsors.css";
 import SponsorCard from "../../../components/SponsorCard/SponsorCard";
 import TechMaghi from "../../../assets/sponsors/tm.webp";
-import Adobe from "../../../assets/sponsors/adobe.webp";
+import Samsung from "../../../assets/sponsors/samsung.webp";
 import Remarkskill from "../../../assets/sponsors/remarkskill.webp";
 import RobocapLeague from "../../../assets/sponsors/robocap.webp";
 import EdutechLife from "../../../assets/sponsors/edutech.webp";
@@ -15,30 +15,30 @@ import SilliconIndia from "../../../assets/sponsors/siliconindia.webp";
 import { useEffect } from "react";
 
 const sponsorsUp1 = [
-  {
-    index: 1,
-    name: "Adobe",
-    image: Adobe,
-    // header: "WORKSHOP PARTNER",
-  },
-  {
-    index: 2,
-    name: "TechMaghi",
-    image: TechMaghi,
-    // header: "WORKSHOP PARTNER",
-  },
-  {
-    index: 3,
-    name: "Remarkskill",
-    image: Remarkskill,
-    // header: "ROBOWARS PARTNER",
-  },
-  {
-    index: 4,
-    name: "Robocap League",
-    image: RobocapLeague,
-  },
-];
+    {
+        index: 1,
+        name: "Samsung",
+        image: Samsung,
+        // header: "WORKSHOP PARTNER",
+    },
+    {
+        index: 2,
+        name: "TechMaghi",
+        image: TechMaghi,
+        // header: "WORKSHOP PARTNER",
+    },
+    {
+        index: 3,
+        name: "Remarkskill",
+        image: Remarkskill,
+        // header: "ROBOWARS PARTNER",
+    },
+    {
+        index: 4,
+        name: "Robocap League",
+        image: RobocapLeague,
+    },
+]
 
 const sponsorsUp2 = [
   {

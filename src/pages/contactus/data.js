@@ -30,12 +30,12 @@ const data = {
   ],
   ctms: [
     {
-      name: "Sarthak Chauhan",
+      name: "Rohit Shaw",
       por: "Marketing",
       image: marketing,
-      email: "sarthak.chauhan@tryst-iitd.org",
-      linkedin: "https://www.linkedin.com/in/sarthak-singh-chauhan-a1942b209/",
-      number: "6266138056",
+      email: "rohit@tryst-iitd.org",
+      linkedin: "https://www.linkedin.com/in/rohit-shaww/",
+      number: "9330433653",
     },
     {
       name: "Rahul Ranveer Shah",
