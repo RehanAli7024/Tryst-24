@@ -143,7 +143,7 @@ function Navbar() {
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
             style={{
-              transform: isHovered || isClicked ? "scale(1.1)" : "scale(1)",
+              transform: isHovered || isClicked ? "scale(1)" : "scale(1)",
               transformStyle:
                 isHovered || isClicked ? "preserve-3d" : "preserve-3d",
               transition:
