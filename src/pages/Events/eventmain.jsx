@@ -84,6 +84,12 @@ const EventMain = () => {
         ? prevState.filter((item) => item !== index)
         : [...prevState, index]
     );
+    if (typeSelected.length + clubSelected.length >= 0) {
+      setBgColor("rgba(3, 10, 23, 0.9)");
+    }
+    else{
+      setBgColor("rgba(3, 10, 23, 0.8)");
+    }
   };
 
   const handleClubSelect = (index) => {
@@ -93,19 +99,38 @@ const EventMain = () => {
         ? prevState.filter((item) => item !== index)
         : [...prevState, index]
     );
+    if (typeSelected.length + clubSelected.length >= 0) {
+      setBgColor("rgba(3, 10, 23, 0.9)");
+    }
+    else{
+      setBgColor("rgba(3, 10, 23, 0.8)");
+    }
   };
 
   const handleTypeDeselect = (index) => {
     setTypeSelected((prevState) => prevState.filter((item) => item !== index));
+    if (typeSelected.length + clubSelected.length < 2) {
+      setBgColor("rgba(3, 10, 23, 0.8)");
+    }
+    else{
+      setBgColor("rgba(3, 10, 23, 0.9)");
+    }
   };
 
   const handleClubDeselect = (index) => {
     setClubSelected((prevState) => prevState.filter((item) => item !== index));
+    if (typeSelected.length + clubSelected.length < 2) {
+      setBgColor("rgba(3, 10, 23, 0.8)");
+    }
+    else{
+      setBgColor("rgba(3, 10, 23, 0.9)");
+    }
   };
 
   const clearAll = () => {
     setTypeSelected([]);
     setClubSelected([]);
+    setBgColor("rgba(3, 10, 23, 0.8)");
   };
 
   const [overlay, setOverlay] = useState(true);
@@ -120,7 +145,7 @@ const EventMain = () => {
       setOverlay(!overlay);
     }
   };
-
+  const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
   return (
     <>
       <div className="event_body">
@@ -204,7 +229,7 @@ const EventMain = () => {
         <div className="filter_search">
           <div className="filter_search_left">
             <div className="fil_con">
-              <div className="filter_btn" onClick={handleOverlay}>
+              <div className="filter_btn" onClick={handleOverlay} style={{background : bgColor}}>
                 <img src={tune} alt="" />
                 Filters
                 {" (" + (typeSelected.length + clubSelected.length) + ")"}
