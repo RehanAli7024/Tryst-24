@@ -284,10 +284,23 @@
   height: fit-content;
   margin-bottom: 1rem;
 }
-.No_Events{
-  background-color: #e086d3;
+.no_events{
+  /* background-color: #e086d3; */
+  margin-left: 30%;
+  margin-top: 10rem;
+  font-size: 3rem;
+  font-family: Audiowide;
 }
 @media (max-width: 768px) {
+  .no_events{
+    /* background-color: #e086d3; */
+    width: 90vw;
+    text-align: center;
+    margin-left: 5vw;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-family: Audiowide;
+  }
   .event_sidebar {
     display: none;
   }
