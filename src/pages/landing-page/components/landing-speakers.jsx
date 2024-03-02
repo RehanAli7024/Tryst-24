@@ -7,7 +7,7 @@ import SamarSingla from "../../../assets/speakers/SamarSingla.webp";
 import NityaSharma from "../../../assets/speakers/NityaSharma.webp";
 import DrTanuJain from "../../../assets/speakers/DrTanuJain.webp";
 import AbhiNiyu from "../../../assets/speakers/AbhiAndNiyu.webp";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const speakers = [
   {
@@ -55,6 +55,57 @@ const speakers = [
 ];
 
 const Speakers = () => {
+  const [animationInterval, setAnimationInterval] = useState(null);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const target = entries[0];
+        if (target.isIntersecting) {
+          // Start animation when the target is in the viewport
+          handleMouseOver();
+        }
+      },
+      { threshold: 0.5 } // Adjust the threshold as needed
+    );
+
+    // Observe the target element
+    observer.observe(textRef.current);
+
+    // Cleanup the observer when component unmounts
+    return () => {
+      observer.disconnect();
+    };
+  }, [textRef]);
+
+  const handleMouseOver = () => {
+    let iteration = 0;
+
+    clearInterval(animationInterval);
+
+    setAnimationInterval(
+      setInterval(() => {
+        textRef.current.innerText = textRef.current.innerText
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return textRef.current.dataset.value[index];
+            }
+
+            return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+          })
+          .join("");
+
+        if (iteration >= textRef.current.dataset.value.length) {
+          clearInterval(animationInterval);
+        }
+
+        iteration += 1 / 3;
+      }, 30)
+    );
+  };
+
   // useEffect(() => {
   //   addAnimation();
   // }, []);
@@ -87,7 +138,14 @@ const Speakers = () => {
 
   return (
     <div className="landing-comp">
-      <div className="landing-heading">SPEAKERS</div>
+      <div
+        className="landing-heading text-animation"
+        data-value="SPEAKERS"
+        onMouseOver={handleMouseOver}
+        ref={textRef}
+      >
+        SPEAKERS
+      </div>
       <div className="landing-speakers-container scroller" data-speed="slow">
         <div className="landing-speakers-cards scroller__inner">
           {speakers.map((speaker) => (

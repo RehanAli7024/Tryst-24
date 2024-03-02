@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from "react";
 import "./landing-sponsors.css";
 import SponsorCard from "../../../components/SponsorCard/SponsorCard";
 import TechMaghi from "../../../assets/sponsors/tm.webp";
@@ -12,52 +13,45 @@ import Orkes from "../../../assets/sponsors/orkes.webp";
 import JagranJosh from "../../../assets/sponsors/jagran.webp";
 import UnStop from "../../../assets/sponsors/unstop.webp";
 import SilliconIndia from "../../../assets/sponsors/siliconindia.webp";
-import { useEffect } from "react";
 
 const sponsorsUp1 = [
-    {
-        index: 1,
-        name: "Samsung",
-        image: Samsung,
-        // header: "WORKSHOP PARTNER",
-    },
-    {
-        index: 2,
-        name: "TechMaghi",
-        image: TechMaghi,
-        // header: "WORKSHOP PARTNER",
-    },
-    {
-        index: 3,
-        name: "Remarkskill",
-        image: Remarkskill,
-        // header: "ROBOWARS PARTNER",
-    },
-    {
-        index: 4,
-        name: "Robocap League",
-        image: RobocapLeague,
-    },
-]
+  {
+    index: 1,
+    name: "Samsung",
+    image: Samsung,
+  },
+  {
+    index: 2,
+    name: "TechMaghi",
+    image: TechMaghi,
+  },
+  {
+    index: 3,
+    name: "Remarkskill",
+    image: Remarkskill,
+  },
+  {
+    index: 4,
+    name: "Robocap League",
+    image: RobocapLeague,
+  },
+];
 
 const sponsorsUp2 = [
   {
     index: 1,
     name: "Edutech Life",
     image: EdutechLife,
-    // header: "WORKSHOP PARTNER",
   },
   {
     index: 2,
     name: "Techobyte",
     image: Techobyte,
-    // header: "WORKSHOP PARTNER",
   },
   {
     index: 3,
     name: "Robosapiens",
     image: Robosapiens,
-    // header: "ROBOWARS PARTNER",
   },
   {
     index: 4,
@@ -66,31 +60,35 @@ const sponsorsUp2 = [
   },
 ];
 
-const sponsorsUp3 = [
-  {
-    index: 1,
-    name: "Orkes",
-    image: Orkes,
-  },
-  {
-    index: 2,
-    name: "Jagran Josh",
-    image: JagranJosh,
-  },
-  {
-    index: 3,
-    name: "UnStop",
-    image: UnStop,
-  },
-  {
-    index: 4,
-    name: "SilliconIndia",
-    image: SilliconIndia,
-  },
-];
+// const sponsorsUp3 = [
+//   {
+//     index: 1,
+//     name: "Orkes",
+//     image: Orkes,
+//   },
+//   {
+//     index: 2,
+//     name: "Jagran Josh",
+//     image: JagranJosh,
+//   },
+//   {
+//     index: 3,
+//     name: "UnStop",
+//     image: UnStop,
+//   },
+//   {
+//     index: 4,
+//     name: "SilliconIndia",
+//     image: SilliconIndia,
+//   },
+// ];
 
 const Sponsors = () => {
+  const [animationInterval, setAnimationInterval] = useState(null);
+  const textRef = useRef(null);
+
   useEffect(() => {
+    // ---------------------------------- Scroller Animation ----------------------------------
     const scrollers = document.querySelectorAll(".scroller-sponser");
     if (window.innerWidth > 768) {
       addAnimation();
@@ -98,10 +96,8 @@ const Sponsors = () => {
 
     function addAnimation() {
       scrollers.forEach((scroller) => {
-        // add data-animated="true" to every `.scroller` on the page
         scroller.setAttribute("data-animated", true);
 
-        // Make an array from the elements within `.scroller-inner`
         const scrollerInner = scroller.querySelector(
           ".scroller__inner-sponser"
         );
@@ -118,13 +114,76 @@ const Sponsors = () => {
           duplicatedItem.setAttribute("aria-hidden", true);
           scrollerInner.appendChild(duplicatedItem);
         });
+
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
       });
     }
-  }, []);
+    // --------------------------------------------------------- Scroller Animation --------------------------------------------------------
+    // Intersection Observer setup
+
+    // --------------------------------------------------- Font animation--------------------------------------------------------------------
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const target = entries[0];
+        if (target.isIntersecting) {
+          // Start animation when the target is in the viewport
+          handleMouseOver();
+        }
+      },
+      { threshold: 0.5 } // Adjust the threshold as needed
+    );
+
+    // Observe the target element
+    observer.observe(textRef.current);
+
+    // Cleanup the observer when component unmounts
+    return () => {
+      observer.disconnect();
+    };
+  }, [textRef]);
+
+  const handleMouseOver = () => {
+    let iteration = 0;
+
+    clearInterval(animationInterval);
+
+    setAnimationInterval(
+      setInterval(() => {
+        textRef.current.innerText = textRef.current.innerText
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return textRef.current.dataset.value[index];
+            }
+
+            return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+          })
+          .join("");
+
+        if (iteration >= textRef.current.dataset.value.length) {
+          clearInterval(animationInterval);
+        }
+
+        iteration += 1 / 3;
+      }, 30)
+      //   -----------------------------------------------------------------------Font ANimation--------------------------------------------------
+    );
+  };
 
   return (
     <div className="landing-comp">
-      <div className="landing-heading">SPONSORS</div>
+      <div
+        className="landing-heading text-animation"
+        data-value="SPONSORS"
+        onMouseOver={handleMouseOver}
+        ref={textRef} // Add ref to the text element
+      >
+        SPONSORS
+      </div>
       <div className="landing-sponsors-container">
         <div
           className={
@@ -172,15 +231,9 @@ const Sponsors = () => {
             ))}
           </div>
         </div>
-        {/* <div className="landing-sponsors-container-top">
-                    {sponsorsUp3.map(sponsor => (
-                        <div className="landing-sponsor-card">
-                            <SponsorCard sponsor={sponsor} />
-                        </div>
-                    ))}
-                </div> */}
       </div>
     </div>
   );
 };
+
 export default Sponsors;
