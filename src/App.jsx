@@ -21,15 +21,19 @@ import EventMain from "./pages/Events/eventmain.jsx";
 import Login from "./pages/login/login.jsx";
 import UserProfile from "./components/UserProfile/UserProfile.jsx";
 import UserCard from "./components/userCard/UserCard.jsx";
-import Pronites from "./pages/pronites/pronites.jsx";
 import Signup from "./pages/signup/signup.jsx";
 import Dashboard from "./pages/dashboard/dashboard.jsx";
 import EventCard from "./components/EventCard/EventCard.jsx";
+import Speakers from "./pages/speakers/Speakers.jsx";
+import SponsorCard from "./components/SpeakerCard/SpeakerCard.jsx";
 import AdminLogin from "./pages/admin-login/admin-login.jsx";
+import LandingPage from "./pages/landing-page/landing-page.jsx";
 import { useEffect } from "react";
 import axios from "axios";
 import { DOMAIN } from "./domain.js";
 import Accomodation from "./pages/accomodation/accomodation.jsx";
+
+
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
   useEffect(() => {
@@ -49,7 +53,8 @@ const App = () => {
         {/* {window.location.pathname !== "/mainpage" ? <Navbar /> : null}   */}
         <Routes>
           <Route path="/GuestLectureEvent" element={<GuestLectureEvent />} />
-          <Route path="/" element={<ComingSoon />} />
+          {/*           <Route path="/" element={<LandingPage />} /> */}
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact us" element={<ContactUs />} />
           <Route path="/admin/events" element={<MainPage />} />
@@ -64,11 +69,10 @@ const App = () => {
           <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
-          <Route path="/accomodation" element={<Accomodation/>} />
+          <Route path="/accomodation" element={<Accomodation />} />
           {eventarray.competitions && eventarray.competitions.map((event, index) => {
             return <Route path={`/events/${event.title}`} key={index} element={<EventPage event={event} />} />
           })}
-          {/* <Route path="/event12" element={<EventPage />} /> */}
         </Routes>
         <Footer />
       </Router>

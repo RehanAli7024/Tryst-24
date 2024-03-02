@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ReactSession } from "react-client-session";
-// import "./CompetitionEvent.css";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
 

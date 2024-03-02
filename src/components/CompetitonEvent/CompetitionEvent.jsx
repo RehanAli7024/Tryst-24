@@ -4,7 +4,6 @@ import "./CompetitionEvent.css";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
 
-
 export default function CompetitionEvent({
   handleClose,
   setIsOpen,
@@ -44,11 +43,15 @@ export default function CompetitionEvent({
     setFormData({ ...formData, contactPersons: constactPersonDetails });
     e.preventDefault();
     const token = localStorage.getItem("admin_access_token");
-    console.log(token);
     setFormIsSubmitted(true);
-    axios.post(`${DOMAIN}create_event/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
+    axios
+      .post(`${DOMAIN}create_event/`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
-        console.log(res);
         alert("Event submitted successfully");
         localStorage.setItem("id", res.data.event_id);
         if (formData.has_form && formData.registration_link) {
@@ -74,8 +77,8 @@ export default function CompetitionEvent({
     file: null,
     contactPersons: [],
     has_form: false,
-    registration_link: '',
-    ruleBook: '',
+    registration_link: "",
+    ruleBook: "",
   });
   const [isChecked, setIsChecked] = useState(false);
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
@@ -88,14 +91,13 @@ export default function CompetitionEvent({
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-
   const handleInputChange = (index, type, value) => {
     setcontactPerosnDetails((prevDetails) => {
       const updatedDetails = [...prevDetails];
       if (!updatedDetails[index]) {
-        updatedDetails[index] = { name: '', phone: '' };
+        updatedDetails[index] = { name: "", phone: "" };
       }
-      if (type === 'name') {
+      if (type === "name") {
         updatedDetails[index].name = value;
       } else {
         updatedDetails[index].phone = value;
@@ -119,15 +121,18 @@ export default function CompetitionEvent({
     >
       {formisSubmitted ? (
         <div className="loader-container">
-          <div className="loader"> Submitting the form and creating a spreadsheet for it</div>
+          <div className="loader">
+            {" "}
+            Submitting the form and creating a spreadsheet for it
+          </div>
         </div>
       ) : (
         <form>
           <div className="upload-picture">
+            <label htmlFor="uploadInput" className="custom-upload-btn">
+              Upload
+            </label>
             <div className="custom-upload-container">
-              <label htmlFor="uploadInput" className="custom-upload-btn">
-                Upload
-              </label>
               <input
                 id="uploadInput"
                 className="upload-pic-btn"
@@ -259,7 +264,9 @@ export default function CompetitionEvent({
                   id={`contactPersonName_${index}`}
                   className="input"
                   type="text"
-                  onChange={(e) => handleInputChange(index, 'name', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(index, "name", e.target.value)
+                  }
                   placeholder="Name of Contact Person"
                 />
               </div>
@@ -268,7 +275,9 @@ export default function CompetitionEvent({
                   id={`contactPersonNumber_${index}`}
                   className="input"
                   type="tel"
-                  onChange={(e) => handleInputChange(index, 'phone', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(index, "phone", e.target.value)
+                  }
                   placeholder="Contact Number"
                   pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 />
@@ -285,7 +294,8 @@ export default function CompetitionEvent({
                 className="input"
                 type="text"
                 onChange={handleChange}
-                value={formData.ruleBook} />
+                value={formData.ruleBook}
+              />
             </div>
           </div>
           <div>
@@ -307,7 +317,7 @@ export default function CompetitionEvent({
                   Registration Link
                   <input
                     type="text"
-                    name='registration_link'
+                    name="registration_link"
                     value={formData.registration_link}
                     onChange={handleChange}
                   />
@@ -318,7 +328,8 @@ export default function CompetitionEvent({
           <button onClick={handleSubmit} className="submit-button">
             submit
           </button>
-        </form>)}
+        </form>
+      )}
     </div>
   );
 }

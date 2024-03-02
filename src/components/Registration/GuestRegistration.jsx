@@ -6,15 +6,15 @@ import EditField from '../../overlays/overlays/add-new-field/editfield';
 import axios from 'axios';
 import AddedField from '../../overlays/overlays/add-new-field/field-types/AddedFieldRadio';
 
-export default function GuestRegisteration({ setRegistrationOpen, guestid }) {
+export default function GuestRegisteration({ setRegistrationOpen }) {
   const [payload, setPayload] = useState({});
   const [editpayload, setEditPayload] = useState({});
   const [formData, setFormData] = useState({
     acceptingResponses: true,
-    event_id: guestid,
+    event_id: localStorage.getItem('id'),
+    event_type: 'guestlecture',
     formFields: [],
   });
-  console.log(guestid);
 
   const [showNewField, setShowNewField] = useState(false);
   const [showEditField, setShowEditField] = useState([false, null, null]);
@@ -56,10 +56,9 @@ export default function GuestRegisteration({ setRegistrationOpen, guestid }) {
   };
 
 
-
   const handleSave = () => {
 
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('admin_access_token');
     console.log(formData);
     axios
       .post(

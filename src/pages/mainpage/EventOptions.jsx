@@ -13,7 +13,7 @@ export default function EventOptions() {
   const [PopupIsOpen, setPopupIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState();
   const [eventDetails, setEventDetails] = useState({});
-  const [editPopupIsOpen, setEditPopupIsOpen] = useState(false);
+  const [editingEventId, setEditingEventId] = useState(null);
 
   const handleEventTypeClick = (eventType) => {
     setSelectedEventType(eventType);
@@ -99,7 +99,8 @@ export default function EventOptions() {
                 <div className="event-card-editing">
                   <button
                     onClick={() => {
-                      setEditPopupIsOpen(true);
+                      setEditingEventId(prop.event_id || prop.workshop_id || prop.guest_id);
+                      localStorage.setItem("id", prop.event_id || prop.workshop_id || prop.guest_id);
                     }}
                     className="edit-btn"
                   >
@@ -113,12 +114,14 @@ export default function EventOptions() {
                 </div>
               </div>
             </div>
-            {editPopupIsOpen && (
+            {editingEventId === (prop.event_id || prop.workshop_id || prop.guest_id) && (
               <PopupContainertoedit
-                editPopupIsOpen={editPopupIsOpen}
-                setEditPopupIsOpen={setEditPopupIsOpen}
+                editingEventId={editingEventId}
+                setEditPopupIsOpen={() => setEditingEventId(null)} // Pass a function to reset the editing ID
                 eventDetails={prop}
                 selectedEventType={selectedEventType}
+                setEventDetails={setEventDetails}
+                setSubmitted={setSubmitted}
               />
             )}
           </div>

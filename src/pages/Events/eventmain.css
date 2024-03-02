@@ -49,7 +49,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 2.6rem;
+  height: 3.8rem;
   width: 10.1rem;
   background-color: #00e0ff;
   border-radius: 5px;
@@ -60,7 +60,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 2.5rem;
+  height: 3.7rem;
   width: 10rem;
   clip-path: polygon(0 0, 30% 0, 33% 10%, 100% 10%, 100% 100%, 5% 100%, 0 85%);
   background-color: rgba(0, 224, 255, 0.3);
@@ -92,7 +92,7 @@
   display: flex;
   width: 75%;
   /* margin-left: 31%; */
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   padding: 0.5rem 1rem 0.5rem 2rem;
   justify-content: flex-end;
   align-items: center;
@@ -128,18 +128,22 @@
   flex-direction: row;
   margin-bottom: 1rem;
   flex-wrap: wrap;
+  align-items: center;
+  height: auto;
+  margin-top: 1rem;
 }
 
 .sel_fil_container {
   height: 2rem;
-  background-color: #e086d3;
+  background-color: rgba(224, 134, 211, 0.7);
+  
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
   clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 5% 100%, 0 80%);
-  border-radius: 5px;
+  border-radius: 3px;
   margin-bottom: 0.7rem;
 }
 
@@ -152,9 +156,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 98%;
+  width: 98.5%;
   height: 87%;
-  background-color: #023545;
+  background-color: rgba(3, 10, 23, 0.9);
   clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 5% 100%, 0 80%);
   font-family: Rajdhani;
   font-size: 1.125rem;
@@ -170,7 +174,7 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .event_sidebar {
@@ -189,14 +193,14 @@
   /* margin-right: 0%; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   width: 75%;
   height: -moz-fit-content;
   height: fit-content;
 }
 
 .events_card {
-  width: 30.8vw;
+  width: 20vw;
   height: -moz-fit-content;
   height: fit-content;
   margin: 0 0.3rem 5vh 1.3rem;
@@ -240,7 +244,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  margin-bottom: 1rem;
   img {
     margin-right: 1.3rem;
   }
@@ -275,10 +279,20 @@
   line-height: normal;
   letter-spacing: 0.05rem;
 }
-
+#event_link{
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 1rem;
+}
+.No_Events{
+  background-color: #e086d3;
+}
 @media (max-width: 768px) {
   .event_sidebar {
     display: none;
+  }
+  #event_link{
+    height: 30vh;
   }
 
   .filter_search {
@@ -303,7 +317,7 @@
   }
 
   .search_box {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     margin-left: 0vw;
     width: 100%;
     padding-left: 4%;
@@ -311,6 +325,7 @@
 
   .clear_option {
     margin-bottom: -27%;
+    display: none;
   }
 
   .searchbtn {
@@ -322,17 +337,27 @@
   }
 
   .events {
-    width: 90vw;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    height: fit-content;
+    margin-left: 0;
+    margin-right: 0;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
+    min-height: 45vh;
   }
 
   .events_card {
     width: 40.8vw;
     height: -moz-fit-content;
     height: fit-content;
-    margin: 0 0.3rem 1.6rem 1.3rem;
+    width: 50vw;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5vw;
   }
 
   .event_sidebar_overlay {
@@ -350,6 +375,10 @@
     width: 2rem;
   }
 
+  .event_sidebar_bottom {
+    height: 50vw;
+  }
+
   .sidebar_body {
     margin-left: auto;
     margin-right: auto;
@@ -357,17 +386,33 @@
     padding-left: 6vw;
     position: relative;
     overflow-y: auto;
-    max-height: 34vh;
+    max-height: 55vh;
+    height: auto;
+    width: 90vw;
   }
 
   .sidebar_option {
     width: 100%;
-    margin-bottom: calc(0.5vh + 0.5vw);
+    margin-bottom: 0.1rem;
   }
 
   .filters {
     margin-top: 1rem;
-    margin-left: 10vw;
+    margin-left: 5vw;
+    width: 90vw;
+    margin-right: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0vw;
+  }
+
+  .fil_con {
+    width: 35.5vw;
+  }
+
+  .filter_btn {
+    width: 35vw;
   }
 
   .checkboxed_filter {
@@ -383,11 +428,18 @@
 
 @media (max-width: 500px) {
   .events {
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 10vw;
+    width: 100vw;
   }
 
   .events_card {
-    width: 90.8vw
+    width: 50vw;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

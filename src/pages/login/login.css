@@ -58,3 +58,21 @@
 .margin{
   height: 5vw;
 }
+
+@media (min-height:884px) and (max-width:500px) {
+  .login-boss-container{
+    height: 50vh;
+  }
+}
+
+@media (min-height:884px) {
+  .login-boss-container{
+   height: 66.8vh;;
+  }
+}
+
+@media (min-height:1200px) {
+  .login-boss-container{
+   height: 71vh;;
+  }
+}

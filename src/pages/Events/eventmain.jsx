@@ -46,7 +46,7 @@ const EventMain = () => {
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     axios
-      
+
       .get(`${DOMAIN}allevents/`)
       .then((response) => {
         setEventarray(response.data);
@@ -55,18 +55,6 @@ const EventMain = () => {
         console.log(error);
       });
   }, []);
-
-  // useEffect(() => {
-  //   console.log(eventarray.competitions);
-  //   console.log(eventarray.guestlectures);
-  //   console.log(eventarray.workshops);
-  // }, [eventarray]);
-
-  // const handleSearch = () => {
-  //   const searchInput = document.getElementsByName("search_input")[0].value;
-  //   setSearchTerm(searchInput);
-  //   console.log(searchTerm);
-  // };
 
   const handleTypeChange = () => {
     setType(!type);
@@ -96,6 +84,12 @@ const EventMain = () => {
         ? prevState.filter((item) => item !== index)
         : [...prevState, index]
     );
+    if (typeSelected.length + clubSelected.length >= 0) {
+      setBgColor("rgba(3, 10, 23, 0.9)");
+    }
+    else{
+      setBgColor("rgba(3, 10, 23, 0.8)");
+    }
   };
 
   const handleClubSelect = (index) => {
@@ -105,19 +99,38 @@ const EventMain = () => {
         ? prevState.filter((item) => item !== index)
         : [...prevState, index]
     );
+    if (typeSelected.length + clubSelected.length >= 0) {
+      setBgColor("rgba(3, 10, 23, 0.9)");
+    }
+    else{
+      setBgColor("rgba(3, 10, 23, 0.8)");
+    }
   };
 
   const handleTypeDeselect = (index) => {
     setTypeSelected((prevState) => prevState.filter((item) => item !== index));
+    if (typeSelected.length + clubSelected.length < 2) {
+      setBgColor("rgba(3, 10, 23, 0.8)");
+    }
+    else{
+      setBgColor("rgba(3, 10, 23, 0.9)");
+    }
   };
 
   const handleClubDeselect = (index) => {
     setClubSelected((prevState) => prevState.filter((item) => item !== index));
+    if (typeSelected.length + clubSelected.length < 2) {
+      setBgColor("rgba(3, 10, 23, 0.8)");
+    }
+    else{
+      setBgColor("rgba(3, 10, 23, 0.9)");
+    }
   };
 
   const clearAll = () => {
     setTypeSelected([]);
     setClubSelected([]);
+    setBgColor("rgba(3, 10, 23, 0.8)");
   };
 
   const [overlay, setOverlay] = useState(true);
@@ -132,7 +145,7 @@ const EventMain = () => {
       setOverlay(!overlay);
     }
   };
-
+  const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
   return (
     <>
       <div className="event_body">
@@ -206,6 +219,8 @@ const EventMain = () => {
                 ))}
               </div>
             </div>
+            <div className="event_sidebar_bottom" onClick={handleOverlay}>
+            </div>
           </div>
         ) : (
           <> </>
@@ -214,7 +229,7 @@ const EventMain = () => {
         <div className="filter_search">
           <div className="filter_search_left">
             <div className="fil_con">
-              <div className="filter_btn" onClick={handleOverlay}>
+              <div className="filter_btn" onClick={handleOverlay} style={{background : bgColor}}>
                 <img src={tune} alt="" />
                 Filters
                 {" (" + (typeSelected.length + clubSelected.length) + ")"}
@@ -339,7 +354,7 @@ const EventMain = () => {
           </div>
 
           <div className="events">
-          {eventarray.competitions &&
+            {eventarray.competitions &&
               eventarray.competitions.map((event, index) => {
                 if (
                   !searchTerm ||
@@ -347,15 +362,15 @@ const EventMain = () => {
                 ) {
                   if (typeSelected.length === 0) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
-                       <div className="events_card"><EventCard image={event.event_image} /></div> 
+                      <Link to={`/events/${event.title}`} key={index} id="event_link">
+                        <div className="events_card"><EventCard image={event.event_image} /></div>
                       </Link>
                     );
                   } else {
                     if (typeSelected.includes(1)) {
                       return (
                         <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card"><EventCard image={event.event_image} /></div> 
+                          <div className="events_card"><EventCard image={event.event_image} /></div>
                         </Link>
                       );
                     }
@@ -371,14 +386,14 @@ const EventMain = () => {
                   if (typeSelected.length === 0) {
                     return (
                       <Link to={`/events/${event.title}`} key={index}>
-                        <div className="events_card"><EventCard image={event.event_image} /></div> 
+                        <div className="events_card"><EventCard image={event.event_image} /></div>
                       </Link>
                     );
                   } else {
                     if (typeSelected.includes(2)) {
                       return (
                         <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card"><EventCard image={event.event_image} /></div> 
+                          <div className="events_card"><EventCard image={event.event_image} /></div>
                         </Link>
                       );
                     }
@@ -394,14 +409,14 @@ const EventMain = () => {
                   if (typeSelected.length === 0) {
                     return (
                       <Link to={`/events/${event.title}`} key={index}>
-                        <div className="events_card"><EventCard image={event.event_image} /></div> 
+                        <div className="events_card"><EventCard image={event.event_image} /></div>
                       </Link>
                     );
                   } else {
                     if (typeSelected.includes(3)) {
                       return (
                         <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card"><EventCard image={event.event_image} /></div> 
+                          <div className="events_card"><EventCard image={event.event_image} /></div>
                         </Link>
                       );
                     }

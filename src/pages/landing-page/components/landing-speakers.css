@@ -1,0 +1,40 @@
+.landing-speakers-container {
+    width: 100%;
+    margin-bottom: 8rem;
+    overflow: auto;
+}
+
+.landing-speakers-container::-webkit-scrollbar {
+    display: none;
+}
+
+.landing-speakers-cards {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.landing-speaker-card {
+    width: 17.5rem;
+    height: 25rem;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+@media screen and (max-width: 768px) {
+    .landing-speakers-container {
+        margin-bottom: 2rem;
+    }
+
+    .landing-speaker-card {
+        width: 70vw;
+        height: 45vh;
+        margin-left: 7vw;
+        margin-right: 7vw;
+    }
+}

@@ -22,7 +22,7 @@ const PopupNavbar = ({ activeButton, setActiveButton, isEventSubmitted, task }) 
       </NavItem>
       <NavItem
         onClick={handleRegistrationFormClick}
-        className={activeButton === "editregistrationForm" ? "active" : ""}
+        className={(activeButton === "editregistrationForm" || activeButton === "registrationForm") ? "active" : ""}
       >
         Registration Form
       </NavItem>
