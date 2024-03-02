@@ -1,13 +1,12 @@
+import  { useEffect, useState, useRef } from "react";
 import "./landing-speakers.css";
 import SpeakerCard from "../../../components/SpeakerCard/SpeakerCard.jsx";
-import TestImage from "../../../assets/event_cards/ashneer.png";
 import BillGates from "../../../assets/speakers/BillGates.webp";
 import CarlPei from "../../../assets/speakers/CarlPei.webp";
 import SamarSingla from "../../../assets/speakers/SamarSingla.webp";
 import NityaSharma from "../../../assets/speakers/NityaSharma.webp";
 import DrTanuJain from "../../../assets/speakers/DrTanuJain.webp";
 import AbhiNiyu from "../../../assets/speakers/AbhiAndNiyu.webp";
-import { useEffect, useState, useRef } from "react";
 
 const speakers = [
   {
@@ -73,7 +72,7 @@ const Speakers = () => {
     // Observe the target element
     observer.observe(textRef.current);
 
-    // Cleanup the observer when component unmounts
+    // Cleanup the observer when the component unmounts
     return () => {
       observer.disconnect();
     };
@@ -106,35 +105,42 @@ const Speakers = () => {
     );
   };
 
-  // useEffect(() => {
-  //   addAnimation();
-  // }, []);
+  useEffect(() => {
+    const container = document.querySelector('.landing-speakers-container');
+    if (container) {
+      container.scrollLeft = container.scrollWidth * 0.4;
+    }
 
-  // const addAnimation = () => {
-  //   const scrollers = document.querySelectorAll(".scroller");
+    if (window.innerWidth > 768) {
+      addAnimation();
+    }
+  }, []);
 
-  //   scrollers.forEach((scroller) => {
-  //     scroller.setAttribute("data-animated", true);
+  const addAnimation = () => {
+    const scrollers = document.querySelectorAll(".scroller");
 
-  //     const scrollerInner = scroller.querySelector(".scroller__inner");
-  //     const scrollerContent = Array.from(scrollerInner.children);
+    scrollers.forEach((scroller) => {
+      scroller.setAttribute("data-animated", true);
 
-  //     scrollerContent.forEach((item) => {
-  //       const duplicatedItem = item.cloneNode(true);
-  //       duplicatedItem.setAttribute("aria-hidden", true);
-  //       scrollerInner.appendChild(duplicatedItem);
-  //     });
+      const scrollerInner = scroller.querySelector(".scroller__inner");
+      const scrollerContent = Array.from(scrollerInner.children);
 
-  //     // Add event listeners for hover
-  //     scroller.addEventListener("mouseover", () => {
-  //       scrollerInner.style.animationPlayState = "paused";
-  //     });
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        duplicatedItem.setAttribute("aria-hidden", true);
+        scrollerInner.appendChild(duplicatedItem);
+      });
 
-  //     scroller.addEventListener("mouseout", () => {
-  //       scrollerInner.style.animationPlayState = "running";
-  //     });
-  //   });
-  // };
+      // Add event listeners for hover
+      scroller.addEventListener("mouseover", () => {
+        scrollerInner.style.animationPlayState = "paused";
+      });
+
+      scroller.addEventListener("mouseout", () => {
+        scrollerInner.style.animationPlayState = "running";
+      });
+    });
+  };
 
   return (
     <div className="landing-comp">
@@ -147,7 +153,7 @@ const Speakers = () => {
         SPEAKERS
       </div>
       <div className="landing-speakers-container scroller" data-speed="slow">
-        <div className="landing-speakers-cards scroller__inner">
+        <div className="landing-speakers-cards scroller__inner" id="landing-speakers-cards">
           {speakers.map((speaker) => (
             <div className="landing-speaker-card" key={speaker.index}>
               <SpeakerCard speaker={speaker} />

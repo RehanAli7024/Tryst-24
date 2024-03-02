@@ -17,6 +17,7 @@
     overflow: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    /* margin-left: -140vw; */
 }
 
 .landing-speaker-card {
@@ -29,6 +30,7 @@
 /*----------------------------------- scroller animation------------------------ */
 .scroller {
     max-width: 100vw;
+    overflow-x: scroll;
 }
 
 .scroller__inner {
@@ -39,7 +41,7 @@
 }
 
 .scroller[data-animated="true"] {
-    overflow: hidden;
+    /* overflow: hidden; */
     -webkit-mask: linear-gradient(90deg,
             transparent,
             white 20%,
@@ -52,10 +54,10 @@
 .scroller[data-animated="true"] .scroller__inner {
     width: max-content;
     flex-wrap: nowrap;
-    animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+    animation: scroll var(--_animation-duration, 150s) var(--_animation-direction, forwards) linear infinite;
 }
 
-.scroller[data-direction="right"] {
+/* .scroller[data-direction="right"] {
     --_animation-direction: reverse;
 }
 
@@ -64,12 +66,12 @@
 }
 
 .scroller[data-speed="fast"] {
-    --_animation-duration: 20s;
+    --_animation-duration: 100s;
 }
 
 .scroller[data-speed="slow"] {
-    --_animation-duration: 30s;
-}
+    --_animation-duration: 120s;
+} */
 
 @keyframes scroll {
     to {

@@ -1,6 +1,10 @@
 body {
   color: white;
 }
+#contact_us_heading{
+  font-size: 4rem;
+  font-weight: 400;
+}
 .about {
   background-repeat: no-repeat;
   background-size: contain;

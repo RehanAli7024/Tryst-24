@@ -15,7 +15,7 @@ function SpeakerCard({ speaker }) {
                                 <div className="speaker-card-position-bottom">{speaker.company}</div>
                             </div>
                         </div>
-                        <img src={speaker.image} alt="Ashneer Grover" className="speaker-card-img" />
+                        <img src={speaker.image} alt="Speaker" className="speaker-card-img" />
                     </div>
                 </div>
             </div>

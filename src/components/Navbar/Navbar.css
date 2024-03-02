@@ -25,11 +25,20 @@
   align-items: center;
   z-index: 100;
   overflow: hidden;
+  background: rgba(3, 10, 23, 1);
 }
 
-.navbarheader:hover {
+/* .navbarheader:hover {
   border: 2px solid rgba(0, 224, 255, 0.5);
-  /* cursor: pointer; */
+  cursor: pointer;
+} */
+
+
+.navbarheader:hover {
+  background: linear-gradient(#030A17, #030A17) padding-box,
+              linear-gradient(to right, rgb(189, 115, 226), #030A17,#030A17,#030A17, rgb(109, 231, 239)) border-box;
+  border-radius: 50em;
+  border: 2px solid transparent;
 }
 
 .navbaricons,
@@ -49,6 +58,7 @@
   justify-content: flex-end;
   align-items: center;
   margin-right: 2%;
+  width: 70%;
 }
 
 .navbaricons {
@@ -59,7 +69,7 @@
   color: white;
   gap: 10%;
   font-weight: 600;
-    margin-right: 140px;
+    margin-right: 180px;
 }
 
 .navbaroption {
@@ -68,6 +78,8 @@
   position: relative;
   transition: all 0.2s ease-in-out;
   font-family: rajdhani;
+  font-size: 120%;
+  font-weight: 1000;
 }
 .navbartrystlogo {
   padding-left: 4%;

@@ -2,6 +2,8 @@ import  { useEffect, useState, useRef } from "react";
 import "./landing-events.css";
 import EventCard from "../../../components/EventCard/EventCard";
 import TestImage from "../../../assets/event_cards/demo.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Events = () => {
   const [animationInterval, setAnimationInterval] = useState(null);
@@ -27,6 +29,10 @@ const Events = () => {
       observer.disconnect();
     };
   }, [textRef]);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const handleMouseOver = () => {
     let iteration = 0;
@@ -65,7 +71,7 @@ const Events = () => {
       >
         EVENTS
       </div>
-      <div className="landing-events-container">
+      <div className="landing-events-container" data-aos="zoom-in-up" data-aos-duration="800">
         <div className="landing-event-card landing-event-card1">
           <EventCard image={TestImage} />
         </div>

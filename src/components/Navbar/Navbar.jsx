@@ -12,15 +12,22 @@ import profilehov from "../../assets/Navbar/profilehov.svg";
 import profileclicked from "../../assets/Navbar/profileClick.svg";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+
 function Navbar() {
   const navigate = useNavigate();
   const [showNavOptions, setShowNavOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState(undefined); // Default selected option
-  const [selectedMobileOption, setSelectedMobileOption] =
-    useState(selectedOption); // Mobile view selected option
+  const [selectedMobileOption, setSelectedMobileOption] = useState(
+    selectedOption
+  ); // Mobile view selected option
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+
+  // Assuming userProfile is available
+  const userProfile = {
+    category: "general" // 
+  };
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -70,7 +77,6 @@ function Navbar() {
     } else {
       document.body.classList.remove("no-scroll"); // Remove class to enable scrolling
     }
-
     return () => {
       document.body.classList.remove("no-scroll"); // Clean up by removing the class when component unmounts
     };
@@ -115,17 +121,21 @@ function Navbar() {
               "Events",
               "Sponsors",
               "Contact Us",
-            ].map((option) => (
-              <div
-                key={option}
-                className={`navbaroption ${
-                  selectedOption === option ? "navbaroption-selected" : ""
-                }`}
-                onClick={() => handleNavbarOptionClick(option)}
-              >
-                {option}
-              </div>
-            ))}
+            ].map(
+              (option) =>
+                // Render "Pronites" tab only if userProfile's category is "general"
+                !(option === "Pronites" && userProfile.category !== "general") && (
+                  <div
+                    key={option}
+                    className={`navbaroption ${
+                      selectedOption === option ? "navbaroption-selected" : ""
+                    }`}
+                    onClick={() => handleNavbarOptionClick(option)}
+                  >
+                    {option}
+                  </div>
+                )
+            )}
           </div>
           <div
             className="navbarprofile"
@@ -133,7 +143,7 @@ function Navbar() {
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
             style={{
-              transform: isHovered || isClicked ? "scale(1.1)" : "scale(1)",
+              transform: isHovered || isClicked ? "scale(1)" : "scale(1)",
               transformStyle:
                 isHovered || isClicked ? "preserve-3d" : "preserve-3d",
               transition:
@@ -167,31 +177,35 @@ function Navbar() {
           "Events",
           "Sponsors",
           "Contact Us",
-        ].map((option) => (
-          <div
-            key={option}
-            className={`navbaroption ${
-              selectedMobileOption === option
-                ? "navbaroption-selected-mobile"
-                : ""
-            }`}
-            onClick={() => handleNavbarOptionClick(option)}
-          >
-            {selectedMobileOption === option && (
-              <img src={NavSelector} alt="" className="nav-effect-front" />
-            )}{" "}
-            {/* Render NavEffect only if the option is selected */}
-            {option}
-            {selectedMobileOption === option && (
-              <img src={NavEffect} alt="" />
-            )}{" "}
-            {/* Render NavEffect only if the option is selected */}
-          </div>
-        ))}
+        ].map(
+          (option) =>
+            !(option === "Pronites" && userProfile.category !== "general") && (
+              <div
+                key={option}
+                className={`navbaroption ${
+                  selectedMobileOption === option
+                    ? "navbaroption-selected-mobile"
+                    : ""
+                }`}
+                onClick={() => handleNavbarOptionClick(option)}
+              >
+                {selectedMobileOption === option && (
+                  <img src={NavSelector} alt="" className="nav-effect-front" />
+                )}{" "}
+                {/* Render NavEffect only if the option is selected */}
+                {option}
+                {selectedMobileOption === option && (
+                  <img src={NavEffect} alt="" />
+                )}{" "}
+                {/* Render NavEffect only if the option is selected */}
+              </div>
+            )
+        )}
       </div>
     </Container>
   );
 }
+
 export default Navbar;
 
 const Container = styled.div`
