@@ -381,7 +381,11 @@
   #ev_page_fil_con_3 {
     margin-left: 0;
   }
-
+  /* .ev_register{
+    justify-content: flex-start;
+    width: 80vw;
+    margin-left: 10vw;
+  } */
   .POC_box {
     display: flex;
     flex-direction: column;
