@@ -8,9 +8,13 @@
 .landing-sponsors-container-bottom {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 100%;
     height: 15rem;
-    margin-left: 2%;
+}
+
+.landing-sponsors-top {
+    display: flex;
+    flex-direction: row;
 }
 
 .landing-sponsors-container-bottom {
@@ -22,8 +26,61 @@
 .landing-sponsor-card {
     width: 26%;
     height: 80%;
-    margin: 1.5%;
 }
+
+/* -------------------------------------------Scrolling animation-------------------------------------------- */
+@media screen and (min-width: 768px) {
+    .scroller-sponser {
+        min-width: 100vw;
+    }
+
+    .scroller__inner-sponser {
+        padding-block: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .scroller-sponser[data-animated="true"] {
+        overflow: hidden;
+        -webkit-mask: linear-gradient(90deg,
+                transparent,
+                white 20%,
+                white 80%,
+                transparent);
+        mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    }
+
+    .scroller-sponser[data-animated="true"] .scroller__inner-sponser {
+        width: max-content;
+        flex-wrap: nowrap;
+        animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+    }
+
+    .scroller-sponser[data-direction="right"] {
+        --_animation-direction: reverse;
+    }
+
+    .scroller-sponser[data-direction="left"] {
+        --_animation-direction: forwards;
+    }
+
+    .scroller-sponser[data-speed="fast"] {
+        --_animation-duration: 20s;
+    }
+
+    .scroller-sponser[data-speed="slow"] {
+        --_animation-duration: 30s;
+    }
+
+    @keyframes scroll {
+        to {
+            transform: translate(calc(-50% - 0.5rem));
+        }
+    }
+}
+
+/*-------------------------------------------Scrolling animation-------------------------------------------- */
 
 @media screen and (max-width: 768px) {
     .landing-sponsors-container {
@@ -42,7 +99,7 @@
 
     .landing-sponsor-card {
         width: 45%;
-        height: 13vh;
+        height: 14vh;
         margin: 4% 2.5%;
     }
 }
