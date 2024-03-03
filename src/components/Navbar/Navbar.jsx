@@ -12,22 +12,19 @@ import profilehov from "../../assets/Navbar/profilehov.svg";
 import profileclicked from "../../assets/Navbar/profileClick.svg";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { DOMAIN } from "../../domain";
 
 function Navbar() {
   const navigate = useNavigate();
   const [showNavOptions, setShowNavOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState(undefined); // Default selected option
-  const [selectedMobileOption, setSelectedMobileOption] = useState(
-    selectedOption
-  ); // Mobile view selected option
+  const [selectedMobileOption, setSelectedMobileOption] =
+    useState(selectedOption); // Mobile view selected option
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-
-  // Assuming userProfile is available
-  const userProfile = {
-    category: "general" // 
-  };
+  const [userProfile, setUserProfile] = useState(null);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -80,7 +77,25 @@ function Navbar() {
     return () => {
       document.body.classList.remove("no-scroll"); // Clean up by removing the class when component unmounts
     };
-  }, [showNavOptions]);
+  }, [showNavOptions, userProfile]);
+
+  useEffect(() => {
+    const fetchProfileCategory = async () => {
+      try {
+        const response = await axios.get(`${DOMAIN}profile/category`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        });
+        setUserProfile(response.data);
+        console.log("Profile category:", userProfile);
+      } catch (error) {
+        console.error("Error fetching profile category:", error.message);
+      }
+    };
+
+    fetchProfileCategory();
+  }, []);
 
   return (
     <Container
@@ -117,24 +132,22 @@ function Navbar() {
             {[
               "About",
               "Guests",
-              "Pronites",
+              userProfile?.category !== "general" && "Pronite", 
               "Events",
               "Sponsors",
               "Contact Us",
-            ].map(
-              (option) =>
-                // Render "Pronites" tab only if userProfile's category is "general"
-                !(option === "Pronites" && userProfile.category !== "general") && (
-                  <div
-                    key={option}
-                    className={`navbaroption ${
-                      selectedOption === option ? "navbaroption-selected" : ""
-                    }`}
-                    onClick={() => handleNavbarOptionClick(option)}
-                  >
-                    {option}
-                  </div>
-                )
+            ].map((option) =>
+              option ? (
+                <div
+                  key={option}
+                  className={`navbaroption ${
+                    selectedOption === option ? "navbaroption-selected" : ""
+                  }`}
+                  onClick={() => handleNavbarOptionClick(option)}
+                >
+                  {option}
+                </div>
+              ) : null
             )}
           </div>
           <div
