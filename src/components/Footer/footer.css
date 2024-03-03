@@ -59,6 +59,7 @@
   margin-bottom: 5%;
   font-family: Rajdhani;
   font-size: 1.25rem;
+  font-weight: 500;
 }
 .footer-mail {
   width: 100%;
@@ -90,6 +91,7 @@
   font-family: Rajdhani;
   font-size: 1.25rem;
   letter-spacing: 0.1rem;
+  font-weight: 500;
 }
 .logo-section {
   display: flex;
@@ -104,6 +106,8 @@
   color: #fff;
   text-decoration: none;
   font-family: Rajdhani;
+  font-weight: 100;
+  opacity: 0.8;
 }
 .handles {
   margin-top: 1rem;

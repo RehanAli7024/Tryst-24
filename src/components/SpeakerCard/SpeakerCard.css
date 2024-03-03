@@ -1,141 +1,183 @@
 .speaker-shape {
-    clip-path: polygon(0% 4%, 6% 0%, 97.5% 0%, 97.5% 10%, 100% 12%, 100% 88%, 85% 100%, 15% 100%, 0% 88%);
+  clip-path: polygon(
+    0% 4%,
+    6% 0%,
+    97.5% 0%,
+    97.5% 10%,
+    100% 12%,
+    100% 88%,
+    85% 100%,
+    15% 100%,
+    0% 88%
+  );
 }
 
 .speaker-shape-2 {
-    clip-path: polygon(0% 3%, 41% 3%, 44% 0%, 56% 0%, 59% 3%, 100% 3%, 100% 100%, 0% 100%);
+  clip-path: polygon(
+    0% 3%,
+    41% 3%,
+    44% 0%,
+    56% 0%,
+    59% 3%,
+    100% 3%,
+    100% 100%,
+    0% 100%
+  );
 }
 
 .speaker-shape-3 {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 87% 100%, 13% 100%, 0% 45%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 87% 100%, 13% 100%, 0% 45%);
 }
 
 .speaker-card-container {
-    width: 100%;
-    height: 100%;
-    /* margin-bottom: 8rem; */
-    overflow: auto;
-    background-color: #F0B537;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
+  width: 100%;
+  height: 100%;
+  /* margin-bottom: 8rem; */
+  overflow: auto;
+  background-color: #f0b537;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 .speaker-card-container:hover {
-    box-shadow: 10px 10px 10px 10px #ffb413 inset;
+  box-shadow: 10px 10px 10px 10px #ffb413 inset;
 }
 
 .speaker-card {
-    --bg-color: #35261B;
-    background-color: var(--bg-color);
-    width: calc(100% - 4px);
-    height: calc(100% - 4px);
-    border-radius: 3px;
-    transition: all 0.3s ease-in-out;
+  --bg-color: #35261b;
+  background-color: var(--bg-color);
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
 }
 
 .speaker-card:hover {
-    --bg-color: #4D331E;
-    background-color: var(--bg-color);
-    box-shadow: 0.5px 0.2px 1px 1px #ffb413 inset;
+  --bg-color: #4d331e;
+  background-color: var(--bg-color);
+  box-shadow: 0.5px 0.2px 1px 1px #ffb413 inset;
 }
 
 .speaker-card-name {
-    color: var(--Color-Base-Gold-Yellow, #F0B537);
-    font-family: Bender;
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 0.15rem;
-    height: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: var(--Color-Base-Gold-Yellow, #f0b537);
+  font-family: Bender;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .speaker-card-image-container {
-    height: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F0B537;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0b537;
 }
 
 .speaker-card-image {
-    width: 100%;
-    height: calc(100% - 4px);
-    position: relative;
-    transition: all 0.3s ease-in-out;
+  width: 100%;
+  height: calc(100% - 4px);
+  position: relative;
+  transition: all 0.3s ease-in-out;
 }
 
 .speaker-card:hover .speaker-card-image {
-    box-shadow: 0.5px 0.2px 1px 1px #ffb413 outset;
+  box-shadow: 0.5px 0.2px 1px 1px #ffb413 outset;
 }
 
 .speaker-card-img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  object-fit: cover;
 }
 
 .speaker-card-border {
-    width: 90%;
-    height: 70%;
-    position: absolute;
-    top: 7%;
-    left: 5%;
-    z-index: 2;
-    transition: all 0.3s ease-in-out;
+  width: 90%;
+  height: 70%;
+  position: absolute;
+  top: 7%;
+  left: 5%;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
 }
 
 .speaker-card:hover .speaker-card-border {
-    width: 85%;
-    height: 65%;
-    top: 9%;
-    left: 7.5%;
+  width: 85%;
+  height: 65%;
+  top: 9%;
+  left: 7.5%;
 }
 
-
 .speaker-card-position-container {
-    width: 90%;
-    height: 18%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F0B537;
-    position: absolute;
-    bottom: 3%;
-    left: 5%;
-    z-index: 2;
+  width: 90%;
+  height: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0b537;
+  position: absolute;
+  bottom: 3%;
+  left: 5%;
+  z-index: 2;
 }
 
 .speaker-card-position {
-    width: calc(100% - 4px);
-    height: calc(100% - 4px);
-    color: #FFF;
-    text-align: center;
-    font-family: Bender;
-    background-color: var(--bg-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease-in-out;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  color: #fff;
+  text-align: center;
+  font-family: Bender;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .speaker-card-position-top {
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.08rem;
-    margin-bottom: -0.3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  margin-bottom: -0.3rem;
 }
 
 .speaker-card-position-bottom {
-    font-size: 1.15rem;
-    font-weight: 400;
-    letter-spacing: 0.08rem;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.08rem;
+}
+
+@media screen and (max-width: 768px) {
+  .speaker-card-name {
+    font-size: 1.2rem;
+  }
+  .speaker-card-position-top {
+    font-size: 0.8rem;
+  }
+  .speaker-card-position-bottom {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .speaker-card-name {
+    font-size: 0.9rem;
+  }
+  .speaker-card-position-top {
+    font-size: 0.6rem;
+  }
+  .speaker-card-position-bottom {
+    font-size: 0.7rem;
+  }
 }
