@@ -20,12 +20,16 @@ const Types = [
 ];
 
 const Clubs = [
-  { index: 1, name: "ACES-ACM" },
-  { index: 2, name: "Chemical Engineering Society (CHES)" },
-  { index: 3, name: "Mathematics Society (MathSoc)" },
-  { index: 4, name: "Civil Engineering Forum (CEF)" },
-  { index: 5, name: "Textile Engineering Society (TES)" },
-  { index: 6, name: "Material Engineering Society (MES)" },
+  { index: 1, name: "ACES-ACM", abbr: "ACES-ACM" },
+  { index: 2, name: "Chemical Engineering Society (CHES)", abbr: "CHES"},
+  { index: 3, name: "Mathematics Society (MathSoc)", abbr: "MathSoc"},
+  { index: 4, name: "Civil Engineering Forum (CEF)", abbr: "CEF"},
+  { index: 5, name: "Textile Engineering Society (TES)", abbr: "TES"},
+  { index: 6, name: "Material Engineering Society (MES)", abbr: "MES"},
+  {index: 7, name: "Physics and astronomy club (PAC)", abbr: "PAC"},
+  {index: 8, name: "Axlr8r", abbr: "Axlr8r"},
+  {index: 9,name: "Aeromodelling Club",abbr: "AERO"},
+  {index: 10,name: "DEVCLUB",abbr: "DEVCLUB"}, 
 ];
 
 const EventMain = () => {
@@ -153,6 +157,7 @@ const EventMain = () => {
       setChildren(divElement.childElementCount); // Output the number of children
     }
   }, []);
+  console.log("children",children);
   return (
     <>
       <div className="event_body">
@@ -285,7 +290,7 @@ const EventMain = () => {
             return (
               <div className="sel_fil_container" key={index}>
                 <div className="checkboxed_filter">
-                  {club.name}
+                  {club.abbr}
                   <button onClick={() => handleClubDeselect(index)}>
                     <img src={close} alt="" className="sel_fil_close_btn" />
                   </button>
