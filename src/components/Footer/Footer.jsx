@@ -3,6 +3,7 @@ import logo from "../../assets/Footer/logo.png";
 import ParallaxStars from "./ParallaxStars";
 import BgImage from "../../assets/Footer/bg1.png";
 import BgImageMobile from "../../assets/Footer/bg-mobile.png";
+import mailimg from  "../../assets/Footer/mail.svg";
 
 function Footer() {
   return (
@@ -18,7 +19,7 @@ function Footer() {
           </div>
           <div className="mail">
             <div className="footer-mail">
-              <i className="fa-regular fa-envelope"></i>
+              <img className="fa-regular fa-envelope" src={mailimg}></img>
               <a href="mailto:admin@tryst-iitd.org"> admin@tryst-iitd.org</a>
             </div>
           </div>

@@ -11,7 +11,7 @@ import data from "./data";
 const ContactUs = () => {
   return (
     <div className="contact-parent">
-      <div className="text-3xl md:text-5xl flex justify-center items-center pb-12 pt-8">
+      <div className="text-3xl md:text-5xl flex justify-center items-center pb-12 pt-8" id="contact_us_heading">
         Contact US
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 m-auto mb-10 overall">

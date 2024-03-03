@@ -146,6 +146,13 @@ const EventMain = () => {
     }
   };
   const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
+  const [children, setChildren] = useState(0);
+  useEffect(() => {
+    const divElement = document.querySelector('.events'); // Select the div by class name
+    if (divElement) {
+      setChildren(divElement.childElementCount); // Output the number of children
+    }
+  }, []);
   return (
     <>
       <div className="event_body">
@@ -423,6 +430,7 @@ const EventMain = () => {
                   }
                 }
               })}
+              {children===0&&<div className="no_events">No Events Found</div>}
           </div>
         </div>
       </div>
