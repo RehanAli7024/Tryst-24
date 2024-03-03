@@ -1,47 +1,61 @@
-.landing-sponsors-container {
+.sponser-landing-comp {
     width: 100%;
     margin-bottom: 6rem;
     margin-top: -3rem;
 }
 
-.landing-sponsors-container-top,
-.landing-sponsors-container-bottom {
+.sponser-landing-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.sponser-landing-sponsors-container {
+    width: 100%;
+    margin-bottom: 6rem;
+    margin-top: -3rem;
+}
+
+.sponser-landing-sponsors-container-top,
+.sponser-landing-sponsors-container-bottom {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 15rem;
 }
 
-.landing-sponsors-top {
+.sponser-landing-sponsors-container-top {
     display: flex;
     flex-direction: row;
 }
 
-.landing-sponsors-container-bottom {
+.sponser-landing-sponsors-container-bottom {
     margin-left: auto;
     margin-right: 2%;
 }
 
-
-.landing-sponsor-card {
+.sponser-landing-sponsor-card {
     width: 26%;
     height: 80%;
 }
 
 /* -------------------------------------------Scrolling animation-------------------------------------------- */
 @media screen and (min-width: 768px) {
-    .scroller-sponser {
+    .sponser-scroller {
         min-width: 100vw;
     }
 
-    .scroller__inner-sponser {
+    .sponser-scroller__inner {
         padding-block: 1rem;
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
     }
 
-    .scroller-sponser[data-animated="true"] {
+    .sponser-scroller[data-animated="true"] {
         overflow: hidden;
         -webkit-mask: linear-gradient(90deg,
                 transparent,
@@ -51,25 +65,25 @@
         mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
     }
 
-    .scroller-sponser[data-animated="true"] .scroller__inner-sponser {
+    .sponser-scroller[data-animated="true"] .sponser-scroller__inner {
         width: max-content;
         flex-wrap: nowrap;
         animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
     }
 
-    .scroller-sponser[data-direction="right"] {
+    .sponser-scroller[data-direction="right"] {
         --_animation-direction: reverse;
     }
 
-    .scroller-sponser[data-direction="left"] {
+    .sponser-scroller[data-direction="left"] {
         --_animation-direction: forwards;
     }
 
-    .scroller-sponser[data-speed="fast"] {
+    .sponser-scroller[data-speed="fast"] {
         --_animation-duration: 20s;
     }
 
-    .scroller-sponser[data-speed="slow"] {
+    .sponser-scroller[data-speed="slow"] {
         --_animation-duration: 30s;
     }
 
@@ -83,13 +97,13 @@
 /*-------------------------------------------Scrolling animation-------------------------------------------- */
 
 @media screen and (max-width: 768px) {
-    .landing-sponsors-container {
+    .sponser-landing-sponsors-container {
         margin-bottom: 2rem;
         margin-top: -1.5rem;
     }
 
-    .landing-sponsors-container-top,
-    .landing-sponsors-container-bottom {
+    .sponser-landing-sponsors-container-top,
+    .sponser-landing-sponsors-container-bottom {
         flex-wrap: wrap;
         margin-left: 5%;
         margin-right: 5%;
@@ -97,7 +111,7 @@
         height: max-content;
     }
 
-    .landing-sponsor-card {
+    .sponser-landing-sponsor-card {
         width: 45%;
         height: 14vh;
         margin: 4% 2.5%;

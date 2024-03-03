@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import "./landing-sponsors.css";
+import "./landing-sponsors.css";  // Updated CSS file
 import SponsorCard from "../../../components/SponsorCard/SponsorCard";
 import TechMaghi from "../../../assets/sponsors/tm.webp";
 import Samsung from "../../../assets/sponsors/samsung.webp";
@@ -60,36 +60,13 @@ const sponsorsUp2 = [
   },
 ];
 
-// const sponsorsUp3 = [
-//   {
-//     index: 1,
-//     name: "Orkes",
-//     image: Orkes,
-//   },
-//   {
-//     index: 2,
-//     name: "Jagran Josh",
-//     image: JagranJosh,
-//   },
-//   {
-//     index: 3,
-//     name: "UnStop",
-//     image: UnStop,
-//   },
-//   {
-//     index: 4,
-//     name: "SilliconIndia",
-//     image: SilliconIndia,
-//   },
-// ];
-
 const Sponsors = () => {
   const [animationInterval, setAnimationInterval] = useState(null);
   const textRef = useRef(null);
 
   useEffect(() => {
     // ---------------------------------- Scroller Animation ----------------------------------
-    const scrollers = document.querySelectorAll(".scroller-sponser");
+    const scrollers = document.querySelectorAll(".sponser-scroller"); // Updated class name
     if (window.innerWidth > 768) {
       addAnimation();
     }
@@ -99,8 +76,8 @@ const Sponsors = () => {
         scroller.setAttribute("data-animated", true);
 
         const scrollerInner = scroller.querySelector(
-          ".scroller__inner-sponser"
-        );
+          ".sponser-scroller__inner"
+        ); // Updated class name
         const scrollerContent = Array.from(scrollerInner.children);
 
         scrollerContent.forEach((item) => {
@@ -175,21 +152,21 @@ const Sponsors = () => {
   };
 
   return (
-    <div className="landing-comp">
+    <div className="sponser-landing-comp">  {/* Updated class name */}
       <div
-        className="landing-heading text-animation"
+        className="sponser-landing-heading text-animation"  // Updated class name
         data-value="SPONSORS"
         onMouseOver={handleMouseOver}
         ref={textRef} // Add ref to the text element
       >
         SPONSORS
       </div>
-      <div className="landing-sponsors-container">
+      <div className="sponser-landing-sponsors-container">  {/* Updated class name */}
         <div
           className={
             window.innerWidth < 768
-              ? "landing-sponsors-container-top-boss "
-              : "landing-sponsors-container-top-boss scroller-sponser"
+              ? "sponser-landing-sponsors-container-top-boss "
+              : "sponser-landing-sponsors-container-top-boss sponser-scroller"  // Updated class name
           }
           data-direction="right"
           data-speed="slow"
@@ -197,12 +174,12 @@ const Sponsors = () => {
           <div
             className={
               window.innerWidth < 768
-                ? "landing-sponsors-container-top "
-                : "landing-sponsors-container-top scroller__inner-sponser"
+                ? "sponser-landing-sponsors-container-top "
+                : "sponser-landing-sponsors-container-top sponser-scroller__inner"  // Updated class name
             }
           >
             {sponsorsUp1.map((sponsor) => (
-              <div className="landing-sponsor-card" key={sponsor.index}>
+              <div className="sponser-landing-sponsor-card" key={sponsor.index}>  {/* Updated class name */}
                 <SponsorCard sponsor={sponsor} />
               </div>
             ))}
@@ -211,8 +188,8 @@ const Sponsors = () => {
         <div
           className={
             window.innerWidth < 768
-              ? "landing-sponsors-container-bottom-boss "
-              : "landing-sponsors-container-bottom-boss scroller-sponser"
+              ? "sponser-landing-sponsors-container-bottom-boss "
+              : "sponser-landing-sponsors-container-bottom-boss sponser-scroller"  // Updated class name
           }
           data-direction="left"
           data-speed="slow"
@@ -220,12 +197,12 @@ const Sponsors = () => {
           <div
             className={
               window.innerWidth < 768
-                ? "landing-sponsors-container-bottom "
-                : "landing-sponsors-container-bottom scroller__inner-sponser"
+                ? "sponser-landing-sponsors-container-bottom "
+                : "sponser-landing-sponsors-container-bottom sponser-scroller__inner"  // Updated class name
             }
           >
             {sponsorsUp2.map((sponsor) => (
-              <div className="landing-sponsor-card" key={sponsor.index}>
+              <div className="sponser-landing-sponsor-card" key={sponsor.index}>  {/* Updated class name */}
                 <SponsorCard sponsor={sponsor} />
               </div>
             ))}
@@ -237,3 +214,30 @@ const Sponsors = () => {
 };
 
 export default Sponsors;
+
+
+
+
+
+// const sponsorsUp3 = [
+//   {
+//     index: 1,
+//     name: "Orkes",
+//     image: Orkes,
+//   },
+//   {
+//     index: 2,
+//     name: "Jagran Josh",
+//     image: JagranJosh,
+//   },
+//   {
+//     index: 3,
+//     name: "UnStop",
+//     image: UnStop,
+//   },
+//   {
+//     index: 4,
+//     name: "SilliconIndia",
+//     image: SilliconIndia,
+//   },
+// ];

@@ -56,7 +56,7 @@ const Events = () => {
           clearInterval(animationInterval);
         }
 
-        iteration += 1 / 3;
+        iteration += 1 / 6;
       }, 30)
     );
   };
