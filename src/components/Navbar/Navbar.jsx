@@ -88,7 +88,7 @@ function Navbar() {
           },
         });
         setUserProfile(response.data);
-        console.log("Profile category:", userProfile);
+        console.log("Profile category:", response.data);
       } catch (error) {
         console.error("Error fetching profile category:", error.message);
       }
@@ -186,13 +186,13 @@ function Navbar() {
         {[
           "About",
           "Guests",
-          "Pronites",
+          userProfile?.category !== "general" && "Pronite", 
           "Events",
           "Sponsors",
           "Contact Us",
         ].map(
           (option) =>
-            !(option === "Pronites" && userProfile.category !== "general") && (
+             option &&(
               <div
                 key={option}
                 className={`navbaroption ${
