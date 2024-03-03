@@ -1,5 +1,5 @@
 import "./eventmain.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import search_icon from "./search.svg";
 import arrowRight from "./arrow_right.svg";
 import close from "./close.svg";
@@ -46,7 +46,8 @@ const EventMain = () => {
   };
   const [rotate1, setRotate1] = useState(false);
   const [rotate2, setRotate2] = useState(false);
-
+  const [dplay, setDplay] = useState("none");
+  const divRef = useRef(null);
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     axios
@@ -150,14 +151,14 @@ const EventMain = () => {
     }
   };
   const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
-  const [children, setChildren] = useState(0);
   useEffect(() => {
-    const divElement = document.querySelector('.events'); // Select the div by class name
-    if (divElement) {
-      setChildren(divElement.childElementCount); // Output the number of children
+    console.log(divRef.current.childNodes.length);
+    if(divRef.current.childNodes.length>1){
+      setDplay("none");}
+    else{
+      setDplay("block");
     }
-  }, []);
-  console.log("children",children);
+  }, [divRef,typeSelected,clubSelected,searchTerm]);
   return (
     <>
       <div className="event_body">
@@ -365,7 +366,7 @@ const EventMain = () => {
             </div>
           </div>
 
-          <div className="events">
+          <div className="events" ref={divRef}>
             {eventarray.competitions &&
               eventarray.competitions.map((event, index) => {
                 if (
@@ -435,7 +436,7 @@ const EventMain = () => {
                   }
                 }
               })}
-              {children===0&&<div className="no_events">No Events Found</div>}
+              {<div className="no_events" style={{display: dplay}}>No Events Found</div>}
           </div>
         </div>
       </div>
