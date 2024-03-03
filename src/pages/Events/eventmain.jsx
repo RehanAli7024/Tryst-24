@@ -151,12 +151,19 @@ const EventMain = () => {
     }
   };
   const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
+  const [firsttime, setFirsttime] = useState(true);
   useEffect(() => {
     console.log(divRef.current.childNodes.length);
+    
     if(divRef.current.childNodes.length>1){
-      setDplay("none");}
-    else{
+      setDplay("none");
+    }
+    else if(divRef.current.childNodes.length==1){
       setDplay("block");
+    }
+    if(firsttime){
+      setDplay("none");
+      setFirsttime(false);
     }
   }, [divRef,typeSelected,clubSelected,searchTerm]);
   return (
