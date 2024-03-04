@@ -82,18 +82,20 @@
   font-weight: 1000;
 }
 .navbartrystlogo {
-  padding-left: 4%;
+  padding-left: 1%;
   display: flex;
   align-items: center;
   width: auto;
+  margin-bottom: 0.5%;
+  cursor: pointer;
 }
 
 .navbartrystlogo img {
-  height: 2rem;
-  width: auto;
-  @media screen and (max-width: 600px) {
-    height: 1.3rem;
-    width: auto;
+  height: 4rem;
+  width: 100%;
+  @media screen and (max-width: 820px) {
+    height: 50px;
+    width: 65px;
   }
 }
 
