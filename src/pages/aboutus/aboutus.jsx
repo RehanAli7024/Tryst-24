@@ -1,7 +1,7 @@
 import React from "react";
 import "./about.css";
 import { useState } from "react";
-import trystlogo from "../../assets/white (1) 2.svg";
+import trystlogo from "../../assets/about/aboutlogo.png";
 import { useEffect } from "react";
 const About = () => {
   // const [hovered, setHovered] = useState(false);
