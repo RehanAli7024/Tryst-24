@@ -2,7 +2,7 @@
   color: var(--Color-Base-Snow, #fffbff);
   text-align: center;
   font-family: Audiowide;
-  font-size: 3rem;
+  font-size: 4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -18,6 +18,13 @@
   align-items: center;
   margin-bottom: 5rem;
 }
+.login-iit{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 .login-iit-body {
   margin-top: 1.5rem;
   width: 20vw;
@@ -27,7 +34,7 @@
   justify-content: left;
   align-items: center;
   flex-direction: row;
-  background: url("../../assets/bg.svg") no-repeat center center;
+  background: url("../../assets/login/kerberos.png") no-repeat center center;
   background-size: contain;
   background-position-y: top;
 }
