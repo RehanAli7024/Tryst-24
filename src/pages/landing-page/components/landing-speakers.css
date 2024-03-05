@@ -20,6 +20,11 @@
     /* margin-left: -140vw; */
 }
 
+.landing-speakers-cards-group {
+    display: flex;
+    flex-direction: row;
+}
+
 .landing-speaker-card {
     width: 17.5rem;
     height: 25rem;

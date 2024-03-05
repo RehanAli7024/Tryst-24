@@ -1,4 +1,4 @@
-import  { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./landing-speakers.css";
 import SpeakerCard from "../../../components/SpeakerCard/SpeakerCard.jsx";
 import BillGates from "../../../assets/speakers/BillGates.webp";
@@ -9,160 +9,195 @@ import DrTanuJain from "../../../assets/speakers/DrTanuJain.webp";
 import AbhiNiyu from "../../../assets/speakers/AbhiAndNiyu.webp";
 
 const speakers = [
-  {
-    index: 1,
-    name: "Bill Gates",
-    position: "Founder",
-    company: "Microsoft",
-    image: BillGates,
-  },
-  {
-    index: 2,
-    name: "Carl Pei",
-    position: "Co-Founder",
-    company: "OnePlus and Nothing",
-    image: CarlPei,
-  },
-  {
-    index: 3,
-    name: "Samar Singla",
-    position: "Co-Founder",
-    company: "Jugnoo",
-    image: SamarSingla,
-  },
-  {
-    index: 4,
-    name: "Nitya Sharma",
-    position: "Founder",
-    company: "Simpl",
-    image: NityaSharma,
-  },
-  {
-    index: 5,
-    name: "Dr. Tanu Jain",
-    position: "Former",
-    company: "IAS Officer",
-    image: DrTanuJain,
-  },
-  {
-    index: 6,
-    name: "Abhi and Niyu",
-    position: "Content",
-    company: "Creators",
-    image: AbhiNiyu,
-  },
+    {
+        index: 1,
+        name: "Bill Gates",
+        position: "Founder",
+        company: "Microsoft",
+        image: BillGates,
+    },
+    {
+        index: 2,
+        name: "Carl Pei",
+        position: "Co-Founder",
+        company: "OnePlus and Nothing",
+        image: CarlPei,
+    },
+    {
+        index: 3,
+        name: "Samar Singla",
+        position: "Co-Founder",
+        company: "Jugnoo",
+        image: SamarSingla,
+    },
+    {
+        index: 4,
+        name: "Nitya Sharma",
+        position: "Founder",
+        company: "Simpl",
+        image: NityaSharma,
+    },
+    {
+        index: 5,
+        name: "Dr. Tanu Jain",
+        position: "Former",
+        company: "IAS Officer",
+        image: DrTanuJain,
+    },
+    {
+        index: 6,
+        name: "Abhi and Niyu",
+        position: "Content",
+        company: "Creators",
+        image: AbhiNiyu,
+    },
 ];
 
 const Speakers = () => {
-  const [animationInterval, setAnimationInterval] = useState(null);
-  const textRef = useRef(null);
+    // Text animation
+    const [animationInterval, setAnimationInterval] = useState(null);
+    const textRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const target = entries[0];
-        if (target.isIntersecting) {
-          // Start animation when the target is in the viewport
-          handleMouseOver();
-        }
-      },
-      { threshold: 0.5 } // Adjust the threshold as needed
-    );
+    const [animationDone, setAnimationDone] = useState(false);
 
-    // Observe the target element
-    observer.observe(textRef.current);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const target = entries[0];
+                if (target.isIntersecting) {
+                    // Start animation when the target is in the viewport
+                    if (!animationDone) {
+                        handleMouseOver();
+                        setAnimationDone(true);
+                    }
+                }
+            },
+            { threshold: 0.5 } // Adjust the threshold as needed
+        );
 
-    // Cleanup the observer when the component unmounts
-    return () => {
-      observer.disconnect();
+        // Observe the target element
+        observer.observe(textRef.current);
+
+        // Cleanup the observer when the component unmounts
+        return () => {
+            observer.disconnect();
+        };
+    }, [textRef]);
+
+    const handleMouseOver = () => {
+        let iteration = 0;
+
+        clearInterval(animationInterval);
+
+        setAnimationInterval(
+            setInterval(() => {
+                textRef.current.innerText = textRef.current.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return textRef.current.dataset.value[index];
+                        }
+
+                        return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+                    })
+                    .join("");
+
+                if (iteration >= textRef.current.dataset.value.length) {
+                    clearInterval(animationInterval);
+                }
+
+                iteration += 1 / 3;
+            }, 30)
+        );
     };
-  }, [textRef]);
 
-  const handleMouseOver = () => {
-    let iteration = 0;
+    //Slider animation
 
-    clearInterval(animationInterval);
+    // const [hovered, setHovered] = useState(false);
 
-    setAnimationInterval(
-      setInterval(() => {
-        textRef.current.innerText = textRef.current.innerText
-          .split("")
-          .map((letter, index) => {
-            if (index < iteration) {
-              return textRef.current.dataset.value[index];
-            }
+    // const setHover = (value) => {
+    //     setHovered(value);
+    // };
 
-            return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-          })
-          .join("");
+    useEffect(() => {
+        const container = document.querySelector('.landing-speakers-container');
 
-        if (iteration >= textRef.current.dataset.value.length) {
-          clearInterval(animationInterval);
+        if (container) {
+            container.scrollLeft = container.scrollWidth * 0.4;
         }
 
-        iteration += 1 / 3;
-      }, 30)
-    );
-  };
+        if (window.innerWidth > 768) {
+            addAnimation();
+        }
+    }, []);
 
-  useEffect(() => {
-    const container = document.querySelector('.landing-speakers-container');
-    if (container) {
-      container.scrollLeft = container.scrollWidth * 0.4;
-    }
+    const addAnimation = () => {
+        const scrollers = document.querySelectorAll(".scroller");
 
-    if (window.innerWidth > 768) {
-      addAnimation();
-    }
-  }, []);
+        scrollers.forEach((scroller) => {
+            scroller.setAttribute("data-animated", true);
 
-  const addAnimation = () => {
-    const scrollers = document.querySelectorAll(".scroller");
+            const scrollerInner = scroller.querySelector(".scroller__inner");
+            const scrollerContent = Array.from(scrollerInner.children);
 
-    scrollers.forEach((scroller) => {
-      scroller.setAttribute("data-animated", true);
+            scrollerContent.forEach((item) => {
+                const duplicatedItem = item.cloneNode(true);
+                duplicatedItem.setAttribute("aria-hidden", true);
+                scrollerInner.appendChild(duplicatedItem);
+            });
 
-      const scrollerInner = scroller.querySelector(".scroller__inner");
-      const scrollerContent = Array.from(scrollerInner.children);
+            scroller.addEventListener("mouseout", () => {
+                scrollerInner.style.animationPlayState = "running";
+            });
 
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        duplicatedItem.setAttribute("aria-hidden", true);
-        scrollerInner.appendChild(duplicatedItem);
-      });
+            // Add event listeners for hover
+            scroller.addEventListener("mouseover", () => {
+                scrollerInner.style.animationPlayState = "paused";
+            });
+        });
+    };
 
-      // Add event listeners for hover
-      scroller.addEventListener("mouseover", () => {
-        scrollerInner.style.animationPlayState = "paused";
-      });
-
-      scroller.addEventListener("mouseout", () => {
-        scrollerInner.style.animationPlayState = "running";
-      });
-    });
-  };
-
-  return (
-    <div className="landing-comp">
-      <div
-        className="landing-heading text-animation"
-        data-value="SPEAKERS"
-        onMouseOver={handleMouseOver}
-        ref={textRef}
-      >
-        SPEAKERS
-      </div>
-      <div className="landing-speakers-container scroller" data-speed="slow">
-        <div className="landing-speakers-cards scroller__inner" id="landing-speakers-cards">
-          {speakers.map((speaker) => (
-            <div className="landing-speaker-card" key={speaker.index}>
-              <SpeakerCard speaker={speaker} />
+    return (
+        <div className="landing-comp">
+            <div
+                className="landing-heading text-animation"
+                data-value="SPEAKERS"
+                onMouseOver={handleMouseOver}
+                ref={textRef}
+            >
+                SPEAKERS
             </div>
-          ))}
+            <div className="landing-speakers-container scroller">
+                <div className="landing-speakers-cards scroller__inner" id="landing-speakers-cards">
+                    {speakers.map((speaker) => (
+                        <div className="landing-speaker-card" key={speaker.index}>
+                            <SpeakerCard speaker={speaker} />
+                        </div>
+                    ))}
+                    {speakers.map((speaker) => (
+                        <div className="landing-speaker-card" key={speaker.index}>
+                            <SpeakerCard speaker={speaker} />
+                        </div>
+                    ))}
+                    {speakers.map((speaker) => (
+                        <div className="landing-speaker-card" key={speaker.index}>
+                            <SpeakerCard speaker={speaker} />
+                        </div>
+                    ))}
+                    {speakers.map((speaker) => (
+                        <div className="landing-speaker-card" key={speaker.index}>
+                            <SpeakerCard speaker={speaker} />
+                        </div>
+                    ))}
+                    {speakers.map((speaker) => (
+                        <div className="landing-speaker-card" key={speaker.index}>
+                            <SpeakerCard speaker={speaker} />
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Speakers;
