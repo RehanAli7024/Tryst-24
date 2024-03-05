@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { DOMAIN } from '../../domain';
 
 const PaymentComponent = ({ options }) => {
+    useEffect(() => {
+        loadRazorpay();
+        // This empty dependency array ensures this effect runs only once when the component mounts.
+    }, []);
+
     const loadRazorpay = () => {
         const script = document.createElement('script');
         script.src = 'https://checkout.razorpay.com/v1/checkout.js';
@@ -25,14 +30,11 @@ const PaymentComponent = ({ options }) => {
             image: options.image,
             order_id: options.order_id,
             handler: async function (response) {
-                // Construct the payload
                 const payload = {
                     razorpay_order_id: response.razorpay_order_id,
                     razorpay_payment_id: response.razorpay_payment_id,
                     razorpay_signature: response.razorpay_signature,
                 };
-
-                // Use Axios to call your backend verification endpoint
                 try {
                     const verificationResponse = await axios.post(`${DOMAIN}verification/`, payload, {
                         headers: {
@@ -52,7 +54,7 @@ const PaymentComponent = ({ options }) => {
             prefill: {
                 name: options.notes['Tryst_ID'],
                 email: options.notes['email'],
-                contact: '9999999999',
+                contact: '7828281796',
             },
             notes: {
                 address: 'Razorpay Corporate Office',
@@ -66,11 +68,8 @@ const PaymentComponent = ({ options }) => {
         paymentObject.open();
     };
 
-    return (
-        <button onClick={loadRazorpay} className="pay-button">
-            Pay with Razorpay
-        </button>
-    );
+    // Removed the button that manually opens Razorpay
+    return null;
 };
 
 export default PaymentComponent;

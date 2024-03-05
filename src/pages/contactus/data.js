@@ -8,6 +8,7 @@ import club from "../../assets/contact/club.webp";
 import events from "../../assets/contact/events.webp";
 import harshit from "../../assets/contact/harshit.webp";
 import shwinder from "../../assets/contact/shwinder.webp";
+import aarya from "../../assets/contact/aarya.jpg";
 
 const data = {
   ocs: [
@@ -26,6 +27,14 @@ const data = {
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/harshit-mawandia/",
       number: "9031193301",
+    },
+    {
+      name: 'Aarya Oganja',
+      por: 'Co-Overall Coordinator',
+      image: aarya,
+      email: "aarya@tryst-iitd.org",
+      linkedin: "https://www.linkedin.com/in/aaryaoganja/",
+      number: "9913328090",
     }
   ],
   ctms: [
