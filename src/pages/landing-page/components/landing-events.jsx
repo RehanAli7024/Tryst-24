@@ -1,77 +1,83 @@
-import  { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./landing-events.css";
 import EventCard from "../../../components/EventCard/EventCard";
 import TestImage from "../../../assets/event_cards/demo.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useInView } from "react-intersection-observer";
 
 const Events = () => {
-  const [animationInterval, setAnimationInterval] = useState(null);
-  const textRef = useRef(null);
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const [intervalId, setIntervalId] = useState(null);
+  const [ref, inView] = useInView({ triggerOnce: true });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const target = entries[0];
-        if (target.isIntersecting) {
-          // Start animation when the target is in the viewport
-          handleMouseOver();
+    const handleMouseOver = (event) => {
+      let iteration = 0;
+
+      clearInterval(intervalId);
+
+      const newIntervalId = setInterval(() => {
+        event.target.innerText = event.target.innerText
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return event.target.dataset.value[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+
+        if (iteration >= event.target.dataset.value.length) {
+          clearInterval(newIntervalId);
         }
-      },
-      { threshold: 0.5 } // Adjust the threshold as needed
-    );
 
-    // Observe the target element
-    observer.observe(textRef.current);
+        iteration += 1 / 3;
+      }, 50);
 
-    // Cleanup the observer when component unmounts
-    return () => {
-      observer.disconnect();
+      setIntervalId(newIntervalId);
     };
-  }, [textRef]);
+
+    const h1Elements = document.querySelectorAll(".landing-heading-events");
+
+    h1Elements.forEach((element) => {
+      element.addEventListener("mouseover", handleMouseOver);
+    });
+
+    return () => {
+      h1Elements.forEach((element) => {
+        element.removeEventListener("mouseover", handleMouseOver);
+      });
+      clearInterval(intervalId);
+    };
+  }, [intervalId]);
+
+  useEffect(() => {
+    if (inView) {
+      // Start the animation when in view
+      const h1Element = document.querySelector(".landing-heading-events");
+      h1Element.dispatchEvent(new Event("mouseover"));
+    }
+  }, [inView]);
 
   useEffect(() => {
     AOS.init();
   }, []);
-
-  const handleMouseOver = () => {
-    let iteration = 0;
-
-    clearInterval(animationInterval);
-
-    setAnimationInterval(
-      setInterval(() => {
-        textRef.current.innerText = textRef.current.innerText
-          .split("")
-          .map((letter, index) => {
-            if (index < iteration) {
-              return textRef.current.dataset.value[index];
-            }
-
-            return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-          })
-          .join("");
-
-        if (iteration >= textRef.current.dataset.value.length) {
-          clearInterval(animationInterval);
-        }
-
-        iteration += 1 / 6;
-      }, 30)
-    );
-  };
 
   return (
     <div className="landing-comp">
       <div
         className="landing-heading landing-heading-events text-animation"
         data-value="EVENTS"
-        onMouseOver={handleMouseOver}
-        ref={textRef}
+        ref={ref}
       >
         EVENTS
       </div>
-      <div className="landing-events-container" data-aos="zoom-in-up" data-aos-duration="800">
+      <div
+        className="landing-events-container"
+        data-aos="zoom-in-up"
+        data-aos-duration="800"
+      >
         <div className="landing-event-card landing-event-card1">
           <EventCard image={TestImage} />
         </div>
