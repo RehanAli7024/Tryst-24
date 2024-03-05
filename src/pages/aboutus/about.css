@@ -178,52 +178,67 @@
     margin-bottom: 2rem;
   }
   .about-us-tryst-logo{
-    width:7rem;
-    height: 4rem;
+    width:5rem;
+    height: 3rem;
     /* margin-bottom: 10rem; */
   }
   .about-us-tryst-logo-hovered{
-    width:7rem;
-    height: 4rem;
+    width:5rem;
+    height: 3rem;
     /* margin-bottom: 10rem; */
   }
   .about-us-vector-container{
-    width: 25vw;
+    width: 24vw;
   }
   .about-us-animation2-svg1{
-    width:25vw;
+    width:24vw;
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: end;
   }
   .svg1 {
-    width: 25vw;
+    width: 24vw;
     height: max-content;
   }
   .svg1-hovered {
-    width: 25vw;
+    width: 24vw;
     height: max-content;
   }
   .about-us-animation2-h1{
-    font-size: 61%;
-    margin-top: 1rem;
+    font-size: 50%;
+    /* margin-top: 0.7rem; */
+    top: 1rem;
     /* background-color: #e086d3; */
   }
   .about-us-animation2-h2{
-    font-size: 80%;
+    font-size: 55%;
+    top: 2.5rem;
   }
   .sub-svg{
-    display: none;
-    width: 40%;
+    /* display: none; */
+    position: relative;
+    width: 30%;
+    top: -3.25rem;
+    left: 0.9rem;
   }
   #an1{
-    margin-bottom:3rem ;
+    /* margin-bottom:3rem ; */
+    top: -1.5rem;
+  }
+  #an2{
+    /* margin-bottom:3rem ; */
+    top: 1.5rem;
+    right: -2rem;
+  }
+  #an3{
+    top:1.5rem;
+    left:-2rem;
+  }
+  #an4,#an5{
+    top:1.7rem;
   }
   .about-us-animation2-container2{
     margin-top: 2rem;
-  }
-  #spec-text{
-    font-size: 40%;
   }
 }
