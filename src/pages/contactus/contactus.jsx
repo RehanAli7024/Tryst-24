@@ -21,7 +21,7 @@ const ContactUs = () => {
           <Placeholder data={data.ocs[2]} />
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 w-11/12 m-auto mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 w-11/12 m-auto mb-10 ctms">
         {data.ctms.map((item, key) => (
           <div className="overflow-hidden p-2" key={key}>
             <Placeholder data={item} />

@@ -5,7 +5,6 @@ import { DOMAIN } from '../../domain';
 const PaymentComponent = ({ options }) => {
     useEffect(() => {
         loadRazorpay();
-        // This empty dependency array ensures this effect runs only once when the component mounts.
     }, []);
 
     const loadRazorpay = () => {

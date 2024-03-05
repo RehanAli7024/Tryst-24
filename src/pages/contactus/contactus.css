@@ -62,7 +62,7 @@ body {
   .about-us-container3 {
     height: fit-content;
     position: absolute !important;
-    right: 1.5% !important;
+    right: -2% !important;
   }
   .about-us-container3 img {
     width: 75%;
@@ -75,6 +75,9 @@ body {
   }
   .about-us-container4 {
     bottom: 17% !important;
+  }
+  .ctms {
+    width: 100% !important;
   }
 }
 .hovered-svg {
