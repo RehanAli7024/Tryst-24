@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
+import  { useEffect, useState } from "react";
 import "./landing-speakers.css";
 import SpeakerCard from "../../../components/SpeakerCard/SpeakerCard.jsx";
 import BillGates from "../../../assets/speakers/BillGates.webp";
@@ -8,7 +7,7 @@ import SamarSingla from "../../../assets/speakers/SamarSingla.webp";
 import NityaSharma from "../../../assets/speakers/NityaSharma.webp";
 import DrTanuJain from "../../../assets/speakers/DrTanuJain.webp";
 import AbhiNiyu from "../../../assets/speakers/AbhiAndNiyu.webp";
-
+import { useInView } from "react-intersection-observer";
 
 const speakers = [
   {
@@ -60,33 +59,33 @@ const Speakers = () => {
   const [intervalId, setIntervalId] = useState(null);
   const [ref, inView] = useInView({ triggerOnce: true });
 
-  const handleMouseOver = (event) => {
-    let iteration = 0;
-
-    clearInterval(intervalId);
-
-    const newIntervalId = setInterval(() => {
-      event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-          if (index < iteration) {
-            return event.target.dataset.value[index];
-          }
-          return letters[Math.floor(Math.random() * 26)];
-        })
-        .join("");
-
-      if (iteration >= event.target.dataset.value.length) {
-        clearInterval(newIntervalId);
-      }
-
-      iteration += 1 / 3;
-    }, 50);
-
-    setIntervalId(newIntervalId);
-  };
-
   useEffect(() => {
+    const handleMouseOver = (event) => {
+      let iteration = 0;
+
+      clearInterval(intervalId);
+
+      const newIntervalId = setInterval(() => {
+        event.target.innerText = event.target.innerText
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return event.target.dataset.value[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+
+        if (iteration >= event.target.dataset.value.length) {
+          clearInterval(newIntervalId);
+        }
+
+        iteration += 1 / 3;
+      }, 50);
+
+      setIntervalId(newIntervalId);
+    };
+
     const h1Elements = document.querySelectorAll(".landing-heading-Speakers");
 
     h1Elements.forEach((element) => {
@@ -103,10 +102,12 @@ const Speakers = () => {
 
   useEffect(() => {
     if (inView) {
+      // Start the animation when in view
       const h1Element = document.querySelector(".landing-heading-Speakers");
       h1Element.dispatchEvent(new Event("mouseover"));
     }
   }, [inView]);
+
 
   useEffect(() => {
     const container = document.querySelector('.landing-speakers-container');
@@ -120,31 +121,38 @@ const Speakers = () => {
   }, []);
 
   const addAnimation = () => {
-    const scroller = document.querySelector(".landing-speakers-container.scroller");
-    if (!scroller) return;
+    const scrollers = document.querySelectorAll(".scroller");
 
-    const scrollerInner = scroller.querySelector(".scroller__inner");
-    const scrollerContent = [...scrollerInner.children];
+    scrollers.forEach((scroller) => {
+      scroller.setAttribute("data-animated", true);
 
-    scrollerContent.forEach((item) => {
-      const duplicatedItem = item.cloneNode(true);
-      duplicatedItem.setAttribute("aria-hidden", true);
-      scrollerInner.appendChild(duplicatedItem);
-    });
+      const scrollerInner = scroller.querySelector(".scroller__inner");
+      const scrollerContent = Array.from(scrollerInner.children);
 
-    // Add event listeners for hover
-    scroller.addEventListener("mouseover", () => {
-      scrollerInner.style.animationPlayState = "paused";
-    });
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        duplicatedItem.setAttribute("aria-hidden", true);
+        scrollerInner.appendChild(duplicatedItem);
+      });
 
-    scroller.addEventListener("mouseout", () => {
-      scrollerInner.style.animationPlayState = "running";
+      // Add event listeners for hover
+      scroller.addEventListener("mouseover", () => {
+        scrollerInner.style.animationPlayState = "paused";
+      });
+
+      scroller.addEventListener("mouseout", () => {
+        scrollerInner.style.animationPlayState = "running";
+      });
     });
   };
 
   return (
     <div className="landing-comp">
-      <div className="landing-heading text-animation landing-heading-Speakers" data-value="SPEAKERS" ref={ref}>
+      <div
+        className="landing-heading text-animation landing-heading-Speakers"
+        data-value="SPEAKERS"
+        ref={ref}
+      >
         SPEAKERS
       </div>
       <div className="landing-speakers-container scroller" data-speed="slow">
