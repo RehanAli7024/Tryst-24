@@ -166,7 +166,7 @@ const Dashboard = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 style={{
-                  transform: isHovered ? "scale(1.1)" : "scale(1)",
+                  transform: isHovered ? "scale(1)" : "scale(1)",
                   transformStyle: isHovered ? "preserve-3d" : "preserve-3d",
                   transition: isHovered ? "all 0.3s ease" : "all 0.3s ease",
                 }}
@@ -248,6 +248,12 @@ const Dashboard = () => {
 
 
 
+      </div>
+      <div className="dashboard-content">
+      {activeButton === "REGISTERED EVENTS" && <p>No Events Registered Yet !</p>}
+        {activeButton === "PRONITES" && <p>No Pronites yet !</p>}
+        {activeButton === "YOUR ORDERS" && <p>No Orders placed yet !</p>}
+        {activeButton === "ACCOMODATION" && <p>No Accomodation request yet !</p>}
       </div>
     </>
   );
