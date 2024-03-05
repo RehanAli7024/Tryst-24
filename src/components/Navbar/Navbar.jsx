@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import trystlogo from "../../assets/Navbar/TrystLogo.png";
+import trystlogo from "../../assets/Navbar/Navlogo.png";
 import Tryst24 from "../../assets/Navbar/TRYST.png";
 import profileicon from "../../assets/Navbar/IconButton.png";
 import navbarmenu from "../../assets/Navbar/navbarmenu.png";
@@ -115,7 +115,6 @@ function Navbar() {
           onClick={() => handleNavbarOptionClick("")}
         >
           <img className="trystlogoimg" src={trystlogo}></img>
-          <img className="tryst2024img" src={Tryst24}></img>
         </div>
         <div className="navbaroptions-container">
           <div className="navbaricons">
@@ -132,7 +131,7 @@ function Navbar() {
             {[
               "About",
               "Guests",
-              userProfile?.category !== "general" && "Pronite", 
+              userProfile?.category !== "general" && "Pronites", 
               "Events",
               "Sponsors",
               "Contact Us",
@@ -186,7 +185,7 @@ function Navbar() {
         {[
           "About",
           "Guests",
-          userProfile?.category !== "general" && "Pronite", 
+          userProfile?.category !== "general" && "Pronites", 
           "Events",
           "Sponsors",
           "Contact Us",

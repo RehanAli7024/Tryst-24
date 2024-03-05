@@ -16,18 +16,18 @@ export default function SpeakersCard() {
         <img src={speakerImg} alt="" />
       </div>
 
-        <div className="focus-elements">
-            <img src={focusElements} alt="" />
-        </div>
+      <div className="focus-elements">
+        <img src={focusElements} alt="" />
+      </div>
 
-        <div className="name-container">
-            <img src={nameContainer} alt="" />
-        </div>
+      <div className="name-container">
+        <img src={nameContainer} alt="" />
+      </div>
 
-        <div className="postion-container">
-            <h4>Founder</h4>
-            <p>BharatPe</p>
-        </div>
+      <div className="postion-container">
+        <h4>Founder</h4>
+        <p>BharatPe</p>
+      </div>
 
     </div>
   );

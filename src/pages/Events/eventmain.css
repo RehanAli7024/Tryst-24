@@ -129,7 +129,7 @@
   margin-bottom: 1rem;
   flex-wrap: wrap;
   align-items: center;
-  height: auto;
+  height: 1rem;
   margin-top: 1rem;
 }
 
@@ -220,6 +220,7 @@
   align-items: left;
   padding: 3vh 2vw;
   gap: 1vh;
+  width: 80%;
 }
 
 .sidebar_btn {
@@ -417,7 +418,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0vw;
+    /* margin-bottom: 1vw; */
+    height: auto;
+
   }
 
   .fil_con {

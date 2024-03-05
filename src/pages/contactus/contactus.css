@@ -1,7 +1,7 @@
 body {
   color: white;
 }
-#contact_us_heading{
+#contact_us_heading {
   font-size: 4rem;
   font-weight: 400;
 }
@@ -39,11 +39,45 @@ body {
   writing-mode: vertical-rl;
 }
 .overall {
-  width: 50%;
+  width: 75%;
 }
 @media screen and (max-width: 768px) {
   .overall {
     width: 100%;
+  }
+  .about-us-img-container {
+    width: auto !important;
+    height: auto !important;
+  }
+  .about-us-container {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.2rem;
+  }
+  .about-us-container2 {
+    font-size: 0.85rem !important;
+  }
+  .about-us-container4 {
+    font-size: 0.9rem !important;
+  }
+  .about-us-container3 {
+    height: fit-content;
+    position: absolute !important;
+    right: -2% !important;
+  }
+  .about-us-container3 img {
+    width: 75%;
+    height: auto;
+  }
+  .about-us-svg3 svg {
+    height: 70% !important;
+    width: 135% !important;
+    bottom: 0.25vh;
+  }
+  .about-us-container4 {
+    bottom: 17% !important;
+  }
+  .ctms {
+    width: 100% !important;
   }
 }
 .hovered-svg {
@@ -166,7 +200,7 @@ body {
 .about-us-svg4 img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   object-position: center;
   z-index: -1;
 }

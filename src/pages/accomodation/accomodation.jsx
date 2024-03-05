@@ -398,6 +398,7 @@ const Accomodation = () => {
                     <button
                       className="next_btn_accomodation"
                       onClick={handleFormSubmit}
+                      disabled={!checkInDate || !checkOutDate || checkInDate > checkOutDate || (womenCount + menCount == 0)}
                     >
                       Next
                     </button>
@@ -429,6 +430,7 @@ const Accomodation = () => {
                             name="trystUID"
                             value={formData.trystUID}
                             onChange={(e) => handleChange(e, index)}
+                            required
                           />
                         </div>
                         <div className="members_details_field">
@@ -440,6 +442,7 @@ const Accomodation = () => {
                             id={`name-${index}`}
                             name="name"
                             value={formData.name}
+                            required
                             onChange={(e) => handleChange(e, index)}
                           />
                         </div>
@@ -448,10 +451,13 @@ const Accomodation = () => {
                             Aadhar Card No :
                           </label>
                           <input
-                            type="text"
+                            type="number"
+                            minLength={12}
+                            maxLength={12}
                             id={`aadhar-${index}`}
                             name="aadhar"
                             value={formData.aadhar}
+                            required
                             onChange={(e) => handleChange(e, index)}
                           />
                         </div>

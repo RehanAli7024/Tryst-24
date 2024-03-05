@@ -1,5 +1,5 @@
 import "./eventmain.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import search_icon from "./search.svg";
 import arrowRight from "./arrow_right.svg";
 import close from "./close.svg";
@@ -20,12 +20,16 @@ const Types = [
 ];
 
 const Clubs = [
-  { index: 1, name: "ACES-ACM" },
-  { index: 2, name: "Chemical Engineering Society (CHES)" },
-  { index: 3, name: "Mathematics Society (MathSoc)" },
-  { index: 4, name: "Civil Engineering Forum (CEF)" },
-  { index: 5, name: "Textile Engineering Society (TES)" },
-  { index: 6, name: "Material Engineering Society (MES)" },
+  { index: 1, name: "ACES-ACM", abbr: "ACES-ACM" },
+  { index: 2, name: "Chemical Engineering Society (CHES)", abbr: "CHES"},
+  { index: 3, name: "Mathematics Society (MathSoc)", abbr: "MathSoc"},
+  { index: 4, name: "Civil Engineering Forum (CEF)", abbr: "CEF"},
+  { index: 5, name: "Textile Engineering Society (TES)", abbr: "TES"},
+  { index: 6, name: "Material Engineering Society (MES)", abbr: "MES"},
+  {index: 7, name: "Physics and astronomy club (PAC)", abbr: "PAC"},
+  {index: 8, name: "Axlr8r", abbr: "Axlr8r"},
+  {index: 9,name: "Aeromodelling Club",abbr: "AERO"},
+  {index: 10,name: "DEVCLUB",abbr: "DEVCLUB"}, 
 ];
 
 const EventMain = () => {
@@ -42,7 +46,8 @@ const EventMain = () => {
   };
   const [rotate1, setRotate1] = useState(false);
   const [rotate2, setRotate2] = useState(false);
-
+  const [dplay, setDplay] = useState("none");
+  const divRef = useRef(null);
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     axios
@@ -146,13 +151,21 @@ const EventMain = () => {
     }
   };
   const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
-  const [children, setChildren] = useState(0);
+  const [firsttime, setFirsttime] = useState(true);
   useEffect(() => {
-    const divElement = document.querySelector('.events'); // Select the div by class name
-    if (divElement) {
-      setChildren(divElement.childElementCount); // Output the number of children
+    console.log(divRef.current.childNodes.length);
+    
+    if(divRef.current.childNodes.length>1){
+      setDplay("none");
     }
-  }, []);
+    else if(divRef.current.childNodes.length==1){
+      setDplay("block");
+    }
+    if(firsttime){
+      setDplay("none");
+      setFirsttime(false);
+    }
+  }, [divRef,typeSelected,clubSelected,searchTerm]);
   return (
     <>
       <div className="event_body">
@@ -285,7 +298,7 @@ const EventMain = () => {
             return (
               <div className="sel_fil_container" key={index}>
                 <div className="checkboxed_filter">
-                  {club.name}
+                  {club.abbr}
                   <button onClick={() => handleClubDeselect(index)}>
                     <img src={close} alt="" className="sel_fil_close_btn" />
                   </button>
@@ -360,7 +373,7 @@ const EventMain = () => {
             </div>
           </div>
 
-          <div className="events">
+          <div className="events" ref={divRef}>
             {eventarray.competitions &&
               eventarray.competitions.map((event, index) => {
                 if (
@@ -430,7 +443,7 @@ const EventMain = () => {
                   }
                 }
               })}
-              {children===0&&<div className="no_events">No Events Found</div>}
+              {<div className="no_events" style={{display: dplay}}>No Events Found</div>}
           </div>
         </div>
       </div>
