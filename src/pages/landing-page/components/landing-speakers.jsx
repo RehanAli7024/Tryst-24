@@ -1,4 +1,5 @@
-import  { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import "./landing-speakers.css";
 import SpeakerCard from "../../../components/SpeakerCard/SpeakerCard.jsx";
 import BillGates from "../../../assets/speakers/BillGates.webp";
@@ -7,6 +8,7 @@ import SamarSingla from "../../../assets/speakers/SamarSingla.webp";
 import NityaSharma from "../../../assets/speakers/NityaSharma.webp";
 import DrTanuJain from "../../../assets/speakers/DrTanuJain.webp";
 import AbhiNiyu from "../../../assets/speakers/AbhiAndNiyu.webp";
+
 
 const speakers = [
   {
@@ -54,56 +56,57 @@ const speakers = [
 ];
 
 const Speakers = () => {
-  const [animationInterval, setAnimationInterval] = useState(null);
-  const textRef = useRef(null);
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const [intervalId, setIntervalId] = useState(null);
+  const [ref, inView] = useInView({ triggerOnce: true });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const target = entries[0];
-        if (target.isIntersecting) {
-          // Start animation when the target is in the viewport
-          handleMouseOver();
-        }
-      },
-      { threshold: 0.5 } // Adjust the threshold as needed
-    );
-
-    // Observe the target element
-    observer.observe(textRef.current);
-
-    // Cleanup the observer when the component unmounts
-    return () => {
-      observer.disconnect();
-    };
-  }, [textRef]);
-
-  const handleMouseOver = () => {
+  const handleMouseOver = (event) => {
     let iteration = 0;
 
-    clearInterval(animationInterval);
+    clearInterval(intervalId);
 
-    setAnimationInterval(
-      setInterval(() => {
-        textRef.current.innerText = textRef.current.innerText
-          .split("")
-          .map((letter, index) => {
-            if (index < iteration) {
-              return textRef.current.dataset.value[index];
-            }
+    const newIntervalId = setInterval(() => {
+      event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration) {
+            return event.target.dataset.value[index];
+          }
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
 
-            return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-          })
-          .join("");
+      if (iteration >= event.target.dataset.value.length) {
+        clearInterval(newIntervalId);
+      }
 
-        if (iteration >= textRef.current.dataset.value.length) {
-          clearInterval(animationInterval);
-        }
+      iteration += 1 / 3;
+    }, 50);
 
-        iteration += 1 / 3;
-      }, 30)
-    );
+    setIntervalId(newIntervalId);
   };
+
+  useEffect(() => {
+    const h1Elements = document.querySelectorAll(".landing-heading-Speakers");
+
+    h1Elements.forEach((element) => {
+      element.addEventListener("mouseover", handleMouseOver);
+    });
+
+    return () => {
+      h1Elements.forEach((element) => {
+        element.removeEventListener("mouseover", handleMouseOver);
+      });
+      clearInterval(intervalId);
+    };
+  }, [intervalId]);
+
+  useEffect(() => {
+    if (inView) {
+      const h1Element = document.querySelector(".landing-heading-Speakers");
+      h1Element.dispatchEvent(new Event("mouseover"));
+    }
+  }, [inView]);
 
   useEffect(() => {
     const container = document.querySelector('.landing-speakers-container');
@@ -117,39 +120,31 @@ const Speakers = () => {
   }, []);
 
   const addAnimation = () => {
-    const scrollers = document.querySelectorAll(".scroller");
+    const scroller = document.querySelector(".landing-speakers-container.scroller");
+    if (!scroller) return;
 
-    scrollers.forEach((scroller) => {
-      scroller.setAttribute("data-animated", true);
+    const scrollerInner = scroller.querySelector(".scroller__inner");
+    const scrollerContent = [...scrollerInner.children];
 
-      const scrollerInner = scroller.querySelector(".scroller__inner");
-      const scrollerContent = Array.from(scrollerInner.children);
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
+    });
 
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        duplicatedItem.setAttribute("aria-hidden", true);
-        scrollerInner.appendChild(duplicatedItem);
-      });
+    // Add event listeners for hover
+    scroller.addEventListener("mouseover", () => {
+      scrollerInner.style.animationPlayState = "paused";
+    });
 
-      // Add event listeners for hover
-      scroller.addEventListener("mouseover", () => {
-        scrollerInner.style.animationPlayState = "paused";
-      });
-
-      scroller.addEventListener("mouseout", () => {
-        scrollerInner.style.animationPlayState = "running";
-      });
+    scroller.addEventListener("mouseout", () => {
+      scrollerInner.style.animationPlayState = "running";
     });
   };
 
   return (
     <div className="landing-comp">
-      <div
-        className="landing-heading text-animation"
-        data-value="SPEAKERS"
-        onMouseOver={handleMouseOver}
-        ref={textRef}
-      >
+      <div className="landing-heading text-animation landing-heading-Speakers" data-value="SPEAKERS" ref={ref}>
         SPEAKERS
       </div>
       <div className="landing-speakers-container scroller" data-speed="slow">
