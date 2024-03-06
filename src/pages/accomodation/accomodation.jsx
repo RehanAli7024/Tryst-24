@@ -100,15 +100,18 @@ const Accomodation = () => {
     axios.post(`${DOMAIN}accomodation/`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
-
       }
     }).then((res) => {
-      console.log(res.data.options);
       setPaymentDetails(res.data.options);
       setShowPayment(true);
     })
       .catch((err) => {
-        console.log(err);
+        if (err.response) {
+          alert(err.response.data.error);
+        }
+        else {
+          alert('Some error occured. Please try again!');
+        }
       });
   };
 

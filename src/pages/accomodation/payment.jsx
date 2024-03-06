@@ -41,7 +41,7 @@ const PaymentComponent = ({ options }) => {
                         },
                     });
 
-                    if (verificationResponse.data.status === 'success') {
+                    if (verificationResponse.status === 200) {
                         console.log("Payment verified successfully");
                     } else {
                         console.error("Payment verification failed");
@@ -51,23 +51,20 @@ const PaymentComponent = ({ options }) => {
                 }
             },
             prefill: {
-                name: options.notes['Tryst_ID'],
+                name: options.notes['Name'],
                 email: options.notes['email'],
-                contact: '7828281796',
             },
             notes: {
                 address: 'Razorpay Corporate Office',
             },
             theme: {
-                color: '#3399cc',
+                color: options.theme,
             },
         };
 
         var paymentObject = new window.Razorpay(option);
         paymentObject.open();
     };
-
-    // Removed the button that manually opens Razorpay
     return null;
 };
 
