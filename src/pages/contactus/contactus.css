@@ -4,6 +4,9 @@ body {
 #contact_us_heading {
   font-size: 4rem;
   font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .about {
   background-repeat: no-repeat;
@@ -43,7 +46,7 @@ body {
 }
 @media screen and (max-width: 768px) {
   #contact_us_heading {
-    font-size: 2.5rem;
+    font-size: 5vh;
   }
   .overall {
     width: 100%;

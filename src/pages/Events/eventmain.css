@@ -307,7 +307,7 @@
     font-family: Audiowide;
   }
   .event_title {
-    font-size: 2.5rem;
+    font-size: 5vh;
   }
   .event_sidebar {
     display: none;
