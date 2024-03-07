@@ -8,7 +8,7 @@ const faqs = [
     index: "01",
   },
   {
-    ques: "What does it mean to be Tryst Campus Ambassador? lamba kheech sakta hai",
+    ques: "What does it mean to be Tryst Campus Ambassador?",
     ans: "The Tryst Campus Ambassador Program is a volunteer opportunity for students passionate about technology and innovation to help promote and enhance the Tryst Tech Fest experience. Ambassadors will play a crucial role in spreading excitement and engaging the college community with the festival.",
     index: "02",
   },
