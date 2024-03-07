@@ -224,7 +224,6 @@ const Dashboard = () => {
           </button>
         </div>
 
-
       </div>
       <div className="dashboard-content">
         {activeButton === "REGISTERED EVENTS" && <p>No Events Registered Yet !</p>}
