@@ -10,14 +10,14 @@ const ContactUs = () => {
       <div className="text-3xl md:text-5xl flex justify-center items-center pb-12 pt-8" id="contact_us_heading">
         Contact US
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 m-auto mb-10 overall">
-        <div className="overflow-hidden p-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 m-auto mb-10 overall" id="oc-cards-contact-us">
+        <div className="overflow-hidden p-2" id="oc-card-about-us">
           <Placeholder data={data.ocs[0]} />
         </div>
-        <div className="overflow-hidden p-2">
+        <div className="overflow-hidden p-2" id="oc-card-about-us">
           <Placeholder data={data.ocs[1]} />
         </div>
-        <div className="overflow-hidden p-2">
+        <div className="overflow-hidden p-2" id="oc-card-about-us">
           <Placeholder data={data.ocs[2]} />
         </div>
       </div>
