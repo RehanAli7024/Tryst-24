@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./GuestLectureEvent.css";
-import '../../components/common/UploadEvent.css';
+import "../common/UploadEvent.css";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
 
-
-const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEventFormTitle }) => {
+const GuestLectureEvent = ({
+  handleClose,
+  setIsOpen,
+  setIsEventSubmitted,
+  setEventFormTitle,
+}) => {
   const [contactPersons, setcontactPerosns] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
@@ -31,16 +35,21 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
   };
 
   const handleSubmit = (e) => {
-    setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
+    setFormData({
+      ...formData,
+      contactPersons: constactPersonDetails,
+      speakers: speakerDetails,
+    });
     console.log(formData);
     e.preventDefault();
     setFormIsSubmitted(true);
-    axios.post(`${DOMAIN}create_guest/`, formData, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("admin_access_token")}`,
-        'Content-Type': 'multipart/form-data'
-      }
-    })
+    axios
+      .post(`${DOMAIN}create_guest/`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("admin_access_token")}`,
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.log(res);
         alert("Event submitted successfully");
@@ -71,26 +80,33 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
   const [speakerimg, setSpeakerImg] = useState(null);
   const [Speakers, setSpeakers] = useState(1);
-  const [speakerDetails, setSpeakerDetails] = useState([{ name: '', description: '', file: null }]);
-
+  const [speakerDetails, setSpeakerDetails] = useState([
+    { name: "", description: "", file: null },
+  ]);
 
   const handleChange = (e) => {
     if (e.target.name === "file") {
-      setImage(URL.createObjectURL(e.target.files[0]));
-      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
-      return;
+      const file_data = e.target.files[0];
+      console.log(file_data);
+      setFormData((prevState) => ({
+        ...prevState,
+        file: file_data,
+      }));
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+      }));
     }
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
 
   const handleInputChange = (index, type, value) => {
     setcontactPerosnDetails((prevDetails) => {
       const updatedDetails = [...prevDetails];
       if (!updatedDetails[index]) {
-        updatedDetails[index] = { name: '', phone: '' };
+        updatedDetails[index] = { name: "", phone: "" };
       }
-      if (type === 'name') {
+      if (type === "name") {
         updatedDetails[index].name = value;
       } else {
         updatedDetails[index].phone = value;
@@ -100,26 +116,29 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
   };
 
   useEffect(() => {
-    setFormData({ ...formData, contactPersons: constactPersonDetails, speakers: speakerDetails });
+    setFormData({
+      ...formData,
+      contactPersons: constactPersonDetails,
+      speakers: speakerDetails,
+    });
   }, [constactPersonDetails, speakerDetails]);
 
   const handleSpeakersChange = (e) => {
     const numberOfSpeakers = parseInt(e.target.value, 10);
     setSpeakers(numberOfSpeakers);
-    setSpeakerDetails(currentDetails => {
+    setSpeakerDetails((currentDetails) => {
       const newDetails = currentDetails.slice(0, numberOfSpeakers);
       while (newDetails.length < numberOfSpeakers) {
-        newDetails.push({ name: '', description: '', file: null });
+        newDetails.push({ name: "", description: "", file: null });
       }
       return newDetails;
     });
   };
 
-
   const handleSpeakerDetailsChange = (index, type, e) => {
-    setSpeakerDetails(currentDetails => {
+    setSpeakerDetails((currentDetails) => {
       const updatedDetails = [...currentDetails];
-      if (type === 'file') {
+      if (type === "file") {
         const file = e.target.files[0];
         setSpeakerImg(URL.createObjectURL(file));
         updatedDetails[index].file = file ? URL.createObjectURL(file) : null;
@@ -150,7 +169,17 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
             />
           </div>
           <div className="image-shown">
-            {image && <img src={image} alt="Event" />}
+          {formData.file && (
+              <img
+                src={
+                  typeof formData.file === "string"
+                    ? formData.file
+                    : URL.createObjectURL(formData.file)
+                }
+                alt="event"
+                className="image-preview"
+              />
+            )}
           </div>
           <div className="image-guidelines">
             <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
@@ -270,7 +299,9 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
                   id={`contactPersonName_${index}`}
                   className="input"
                   type="text"
-                  onChange={(e) => handleInputChange(index, 'name', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(index, "name", e.target.value)
+                  }
                   placeholder="Name of Contact Person"
                 />
               </div>
@@ -279,7 +310,9 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
                   id={`contactPersonNumber_${index}`}
                   className="input"
                   type="tel"
-                  onChange={(e) => handleInputChange(index, 'phone', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange(index, "phone", e.target.value)
+                  }
                   placeholder="Contact Number"
                   pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 />
@@ -287,7 +320,6 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
             </div>
           </>
         ))}
-
 
         <div className="No-of-contact-person-container">
           <div className="contact-person-details">
@@ -311,22 +343,25 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
             <div className="upload-picture">
               <h3>ADD SPEAKER PHOTO HERE</h3>
               <div className="custom-upload-container">
-                <label htmlFor={`speakerImage-${index}`} className="custom-upload-btn">
+                <label
+                  htmlFor={`speakerImage-${index}`}
+                  className="custom-upload-btn"
+                >
                   Upload
                 </label>
                 <input
                   id={`speakerImage-${index}`}
                   className="upload-pic-btn"
                   type="file"
-                  onChange={(e) => handleSpeakerDetailsChange(index, 'file', e)}
+                  onChange={(e) => handleSpeakerDetailsChange(index, "file", e)}
                 />
               </div>
-              {speaker.file && (
-                <img src={speaker.file} alt="Speaker" />
-              )}
+              {speaker.file && <img src={speaker.file} alt="Speaker" />}
               <div className="image-guidelines">
                 <p className="image-guidelines-text">Preferably in 3:4 ratio</p>
-                <p className="image-guidelines-text">Format: .jpg/ .jpeg/ .png</p>
+                <p className="image-guidelines-text">
+                  Format: .jpg/ .jpeg/ .png
+                </p>
                 <p className="image-guidelines-text">Size Limit: &lt;10MB</p>
               </div>
             </div>
@@ -335,7 +370,7 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
               <br />
               <input
                 id={`speakerName_${index}`}
-                onChange={(e) => handleSpeakerDetailsChange(index, 'name', e)}
+                onChange={(e) => handleSpeakerDetailsChange(index, "name", e)}
                 className="input event-title"
                 value={speaker.name}
                 type="text"
@@ -347,7 +382,9 @@ const GuestLectureEvent = ({ handleClose, setIsOpen, setIsEventSubmitted, setEve
               <br />
               <textarea
                 id={`speakerDescription_${index}`}
-                onChange={(e) => handleSpeakerDetailsChange(index, 'description', e)}
+                onChange={(e) =>
+                  handleSpeakerDetailsChange(index, "description", e)
+                }
                 className="textarea event-description"
                 value={speaker.description}
                 type="text"

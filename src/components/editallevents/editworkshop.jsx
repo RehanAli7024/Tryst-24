@@ -34,12 +34,25 @@ export default function EditWorkshopEvent({
   let eventsRef = useRef();
 
   const handleSubmit = (e) => {
-    console.log(formData);
-    setFormData({ ...formData, contactPersons: constactPersonDetails });
+    // console.log(formData);
+    const updatedFormData = {
+      ...formData,
+      contactPersons: constactPersonDetails,
+    };
     e.preventDefault();
     const token = localStorage.getItem("admin_access_token");
+
+    const formDataToSend = new FormData();
+    for (const key in updatedFormData) {
+      if (key === "file") {
+        continue;
+      }
+      formDataToSend.append(key, updatedFormData[key]);
+    }
+    formDataToSend.append("file", updatedFormData.file);
+
     axios
-      .post(`${DOMAIN}create_event/`, formData, {
+      .post(`${DOMAIN}create_event/`, formDataToSend, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -77,10 +90,18 @@ export default function EditWorkshopEvent({
   );
   const handleChange = (e) => {
     if (e.target.name === "file") {
-      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
-      return;
+      const file_data = e.target.files[0];
+      console.log(file_data);
+      setFormData((prevState) => ({
+        ...prevState,
+        file: file_data,
+      }));
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+      }));
     }
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleInputChange = (index, type, value) => {
@@ -129,7 +150,17 @@ export default function EditWorkshopEvent({
             />
           </div>
           <div className="image-shown">
-            <img src={formData.file} alt="event" className="image-preview" />
+          {formData.file && (
+              <img
+                src={
+                  typeof formData.file === "string"
+                    ? formData.file
+                    : URL.createObjectURL(formData.file)
+                }
+                alt="event"
+                className="image-preview"
+              />
+            )}
           </div>
           <div className="image-guidelines">
             <p className="image-guidelines-text">Preferably in 3:4 ratio</p>

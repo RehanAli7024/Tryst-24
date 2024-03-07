@@ -85,10 +85,18 @@ export default function CompetitionEvent({
 
   const handleChange = (e) => {
     if (e.target.name === "file") {
-      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
-      return;
+      const file_data = e.target.files[0];
+      console.log(file_data);
+      setFormData((prevState) => ({
+        ...prevState,
+        file: file_data,
+      }));
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+      }));
     }
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleInputChange = (index, type, value) => {
@@ -142,10 +150,17 @@ export default function CompetitionEvent({
               />
             </div>
             <div className="image-shown">
-              <img
-                src={formData.file ? URL.createObjectURL(formData.file) : ""}
-                className="image"
-              />
+              {formData.file && (
+                <img
+                  src={
+                    typeof formData.file === "string"
+                      ? formData.file
+                      : URL.createObjectURL(formData.file)
+                  }
+                  alt="event"
+                  className="image-preview"
+                />
+              )}
             </div>
             <div className="image-guidelines">
               <p className="image-guidelines-text">Preferably in 3:4 ratio</p>

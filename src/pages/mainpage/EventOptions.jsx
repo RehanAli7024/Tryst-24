@@ -34,8 +34,6 @@ export default function EventOptions() {
       })
       .then((response) => {
         setEventDetails(response.data);
-        console.log(response.data);
-        console.log(eventDetails);
       })
       .catch((error) => {
         console.log(error);
