@@ -40,7 +40,7 @@ const App = () => {
     axios.get(`${DOMAIN}allevents/`)
       .then((response) => {
         setEventarray(response.data);
-        console.log(response.data.competitions);
+        // console.log(response.data.competitions);
       })
       .catch((error) => {
         console.log(error);

@@ -131,7 +131,7 @@ function Navbar() {
             {[
               "About",
               "Guests",
-              userProfile?.category !== "general" && "Pronite", 
+              userProfile?.category !== "general" && "Pronite",
               "Events",
               "Sponsors",
               "Contact Us",
@@ -185,13 +185,13 @@ function Navbar() {
         {[
           "About",
           "Guests",
-          userProfile?.category !== "general" && "Pronite", 
+          userProfile?.category !== "general" && "Pronite",
           "Events",
           "Sponsors",
           "Contact Us",
         ].map(
           (option) =>
-             option &&(
+            option && (
               <div
                 key={option}
                 className={`navbaroption ${

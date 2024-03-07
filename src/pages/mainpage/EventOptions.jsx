@@ -7,7 +7,6 @@ import axios from "axios";
 import { DOMAIN } from "../../domain";
 import PopupContainertoedit from "../../components/editcontainer/editcontainer";
 
-
 export default function EventOptions() {
   const [selectedEventType, setSelectedEventType] = useState("competitions");
   const [PopupIsOpen, setPopupIsOpen] = useState(false);
@@ -26,22 +25,22 @@ export default function EventOptions() {
 
   const selectedEventDetails = eventDetails[selectedEventType] || [];
   useEffect(() => {
-    const token = localStorage.getItem("admin_access_token");
-    console.log(token);
-    axios.get(`${DOMAIN}allevents/`, { headers: { Authorization: `Bearer ${token}` } })
+    // const token = localStorage.getItem("admin_access_token");
+    axios
+      .get(`${DOMAIN}allevents/`, {
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+      })
       .then((response) => {
         setEventDetails(response.data);
+        console.log(response.data);
         console.log(eventDetails);
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
-      }
-      )
+      });
   }, [submitted]);
-
-  useEffect(() => {
-    console.log(eventDetails);
-  }
-    , [eventDetails]);
 
   return (
     <Container>
@@ -81,7 +80,6 @@ export default function EventOptions() {
         )}
       </div>
 
-
       <div className="published-container">
         <div className="published">
           <h5>Published</h5>
@@ -99,22 +97,33 @@ export default function EventOptions() {
                 <div className="event-card-editing">
                   <button
                     onClick={() => {
-                      setEditingEventId(prop.event_id || prop.workshop_id || prop.guest_id);
-                      localStorage.setItem("id", prop.event_id || prop.workshop_id || prop.guest_id);
+                      setEditingEventId(
+                        prop.event_id || prop.workshop_id || prop.guest_id
+                      );
+                      localStorage.setItem(
+                        "id",
+                        prop.event_id || prop.workshop_id || prop.guest_id
+                      );
                     }}
                     className="edit-btn"
                   >
                     Edit
                   </button>
                   {prop.spreadsheet_id && (
-                    <a href={`https://docs.google.com/spreadsheets/d/${prop.spreadsheet_id}/`} target="_blank" className='spreadsheet-link' rel="noreferrer">
-                      <button className='spreadsheet'>Spreadsheet</button>
+                    <a
+                      href={`https://docs.google.com/spreadsheets/d/${prop.spreadsheet_id}/`}
+                      target="_blank"
+                      className="spreadsheet-link"
+                      rel="noreferrer"
+                    >
+                      <button className="spreadsheet">Spreadsheet</button>
                     </a>
                   )}
                 </div>
               </div>
             </div>
-            {editingEventId === (prop.event_id || prop.workshop_id || prop.guest_id) && (
+            {editingEventId ===
+              (prop.event_id || prop.workshop_id || prop.guest_id) && (
               <PopupContainertoedit
                 editingEventId={editingEventId}
                 setEditPopupIsOpen={() => setEditingEventId(null)} // Pass a function to reset the editing ID
@@ -212,36 +221,36 @@ const Container = styled.div`
     gap: 2rem;
     height: 100%;
     justify-content: space-between;
-    margin:  1rem 4rem;
+    margin: 1rem 4rem;
     img {
       width: 70%;
       margin: 2rem 0 1rem 0;
     }
   }
-  .event-card-image{
+  .event-card-image {
     width: 100%;
-    img{
+    img {
       width: 100%;
     }
   }
-  .event-card-image img{
-    height: 10rem
+  .event-card-image img {
+    height: 10rem;
   }
-  .event-card{
+  .event-card {
     height: max-content;
   }
-  .spreadsheet{
+  .spreadsheet {
     display: flex;
     text-align: right;
   }
-  .edit-btn{
+  .edit-btn {
     display: flex;
   }
-  .spreadsheet-link{
+  .spreadsheet-link {
     display: flex;
     width: max-content;
   }
-  .event-card-editing{
+  .event-card-editing {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
