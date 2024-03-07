@@ -62,15 +62,15 @@ body {
   border-bottom: 0;
   color: white;
   margin: 2vh 0 0 0;
-  height: 6vh;
+  height: 70px;
+  font-weight: 100;
 }
-
 .signup-input-head {
   color: #fff;
   font-family: Rajdhani;
   font-size: calc(0.25rem + 1vw);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 800;
   line-height: normal;
 }
 

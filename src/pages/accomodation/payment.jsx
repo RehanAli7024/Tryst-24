@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { DOMAIN } from '../../domain';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentComponent = ({ options }) => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        loadRazorpay();
+    }, []);
+
     const loadRazorpay = () => {
         const script = document.createElement('script');
         script.src = 'https://checkout.razorpay.com/v1/checkout.js';
@@ -25,14 +31,11 @@ const PaymentComponent = ({ options }) => {
             image: options.image,
             order_id: options.order_id,
             handler: async function (response) {
-                // Construct the payload
                 const payload = {
                     razorpay_order_id: response.razorpay_order_id,
                     razorpay_payment_id: response.razorpay_payment_id,
                     razorpay_signature: response.razorpay_signature,
                 };
-
-                // Use Axios to call your backend verification endpoint
                 try {
                     const verificationResponse = await axios.post(`${DOMAIN}verification/`, payload, {
                         headers: {
@@ -40,25 +43,32 @@ const PaymentComponent = ({ options }) => {
                         },
                     });
 
-                    if (verificationResponse.data.status === 'success') {
-                        console.log("Payment verified successfully");
+                    if (verificationResponse.status === 200) {
+                        alert('Payment successful');
+                        navigate('/dashboard');
                     } else {
-                        console.error("Payment verification failed");
+                        alert('Payment verification failed, Please contact the team.');
+                        window.location.reload();
                     }
                 } catch (error) {
-                    console.error("Error verifying payment:", error);
+                    alert("Error verifying payment:", error);
+                    window.location.reload();
                 }
             },
             prefill: {
-                name: options.notes['Tryst_ID'],
+                name: options.notes['Name'],
                 email: options.notes['email'],
-                contact: '9999999999',
             },
             notes: {
                 address: 'Razorpay Corporate Office',
             },
             theme: {
-                color: '#3399cc',
+                color: options.theme,
+            },
+            modal: {
+                ondismiss: function () {
+                    window.location.reload();
+                }
             },
         };
 
@@ -66,11 +76,7 @@ const PaymentComponent = ({ options }) => {
         paymentObject.open();
     };
 
-    return (
-        <button onClick={loadRazorpay} className="pay-button">
-            Pay with Razorpay
-        </button>
-    );
+    return null;
 };
 
 export default PaymentComponent;

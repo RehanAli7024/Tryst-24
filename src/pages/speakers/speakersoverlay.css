@@ -1,0 +1,74 @@
+.speakers-overlay-border-box {
+    /* justify-content: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
+    height: 40vh;
+    margin-left: 20vw;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    background-color: #F0B537;
+    clip-path: polygon(0 0, 10% 0, 11% 2%, 100% 2%, 100% 92%, 97% 100%, 0 100%, 0 94%, 0.5% 93%, 0.5% 87%, 0 86%);
+}
+
+.speakers-overlay-inner-box {
+    width: 99.4%;
+    height: 98.6%;
+    background-color: rgba(0, 0, 0, 0.85);
+    clip-path: polygon(0 0, 9.6% 0, 10.6% 2%, 100% 2%, 100% 92.4%, 97.15% 100%, 0 100%, 0 95%, 0.5% 94%, 0.5% 87.1%, 0 86.1%);
+}
+
+.speaker-name-close-overlay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 7%;
+    margin-top: 4%;
+}
+
+.speaker-name-overlay {
+    font-size: 2rem;
+    color: #F0B537;
+    font-weight: 700;
+    font-family: Bender;
+}
+
+.speaker-close-overlay {
+    width: 7%;
+}
+
+.speaker-details-overlay {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    font-family: Rajdhani;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .speakers-overlay-border-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70vw;
+        height: 30vh;
+        margin-left: 15vw;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+    .speaker-name-close-overlay {
+        margin-top: 10%;
+    }
+    .speaker-name-overlay {
+        font-size: 1.5rem;
+    }
+    .speaker-close-overlay {
+        width: 15%;
+        
+    }
+    .speaker-details-overlay {
+        font-size: 1rem;
+    }
+}

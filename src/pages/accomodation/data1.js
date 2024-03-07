@@ -1,32 +1,32 @@
 import harshit from "../../assets/contact/harshit.webp";
+import shwinder from "../../assets/contact/shwinder.webp";
+import hospi from "../../assets/contact/ctm-hospi.jpg";
 
 const data1 = {
   ctms: [
     {
       name: "Harshit Mawandia",
-      por: "CTM - Hospitality",
+      por: "OVERALL COORDINATOR",
       image: harshit,
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/harshit-mawandia/",
       number: "9031193301",
-    }
-  ],
-  coordi: [
-    {
-      name: "ABC",
-      por: "Coordinator",
-      image: harshit,
-      email: "sarthak.chauhan@tryst-iitd.org",
-      linkedin: "https://www.linkedin.com/in/sarthak-singh-chauhan-a1942b209/",
-      number: "9999999999",
     },
     {
-      name: "ABC",
-      por: "Coordinator",
-      image: harshit,
-      email: "rahul@tryst-iitd.org",
-      linkedin: "https://www.linkedin.com/in/rahul-ranveer-shah-212075201/",
-      number: "9999999999",
+      name: "Shwinder Singh",
+      por: "OVERALL COORDINATOR",
+      image: shwinder,
+      email: "admin@tryst-iitd.org",
+      linkedin: "https://www.linkedin.com/in/shwinder-singh-0581b71b9",
+      number: "9711780406",
+    },
+    {
+      name: "Keshav Aggarwal",
+      por: "CTM - Hospitality",
+      image: hospi,
+      email: "admin@tryst-iitd.org",
+      linkedin: "https://www.linkedin.com/in/keshav-aggarwal-88bb90166/",
+      number: "9654962500",
     }
   ],
 };

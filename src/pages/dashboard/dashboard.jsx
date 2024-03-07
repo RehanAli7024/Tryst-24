@@ -58,23 +58,6 @@ const Dashboard = () => {
       });
   }, []);
 
-  // const handlephotochange = () => {
-  //   axios.post(`${DOMAIN}profile/`, {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-  //     },
-  //     data: {
-  //       photo: photo,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       console.log(response);
-  //       alert("Photo changed");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
   const [photo, setPhoto] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const fileInputRef = useRef(null);
@@ -166,7 +149,7 @@ const Dashboard = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 style={{
-                  transform: isHovered ? "scale(1.1)" : "scale(1)",
+                  transform: isHovered ? "scale(1)" : "scale(1)",
                   transformStyle: isHovered ? "preserve-3d" : "preserve-3d",
                   transition: isHovered ? "all 0.3s ease" : "all 0.3s ease",
                 }}
@@ -212,42 +195,41 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "REGISTERED EVENTS" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "PRONITES" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("PRONITES")}
           >
             PRONITES
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "YOUR ORDERS" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "ACCOMODATION" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
           </button>
         </div>
 
-
-
-
+      </div>
+      <div className="dashboard-content">
+        {activeButton === "REGISTERED EVENTS" && <p>No Events Registered Yet !</p>}
+        {activeButton === "PRONITES" && <p>No Pronites yet !</p>}
+        {activeButton === "YOUR ORDERS" && <p>No Orders placed yet !</p>}
+        {activeButton === "ACCOMODATION" && <p>No Accomodation request yet !</p>}
       </div>
     </>
   );

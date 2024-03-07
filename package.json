@@ -31,6 +31,8 @@
     "react-dropzone": "^14.2.3",
     "react-helmet": "^6.1.0",
     "react-icons": "^5.0.1",
+    "react-intersection-observer": "^9.8.1",
+    "react-jsx-runtime": "^1.0.0-alpha.1",
     "react-router-dom": "^6.21.3",
     "react-select": "^5.8.0",
     "react-spinners": "^0.13.8",

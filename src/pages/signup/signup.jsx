@@ -360,7 +360,7 @@ const Signup = () => {
                                                 label: state,
                                             }))}
                                         >
-                                            <option value="">Choose City </option>
+                                            <option  value="">Choose City </option>
                                             {cities.length !== 0 ? (
                                                 cities.map((city, inx) => {
                                                     return (

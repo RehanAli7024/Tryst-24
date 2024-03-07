@@ -2,12 +2,13 @@ import marketing from "../../assets/contact/marketing.webp";
 import tech from "../../assets/contact/tech.webp";
 import publi from "../../assets/contact/publi.webp";
 import finance from "../../assets/contact/finance.webp";
-import guest from "../../assets/contact/guest.webp";
 import media from "../../assets/contact/media.webp";
 import club from "../../assets/contact/club.webp";
 import events from "../../assets/contact/events.webp";
 import harshit from "../../assets/contact/harshit.webp";
 import shwinder from "../../assets/contact/shwinder.webp";
+import aarya from "../../assets/contact/aarya.jpg";
+import mishi from "../../assets/contact/mishi.jpg"
 
 const data = {
   ocs: [
@@ -21,11 +22,19 @@ const data = {
     },
     {
       name: "Harshit Mawandia",
-      por: "Co-Overall Coordinator",
+      por: "Overall Coordinator",
       image: harshit,
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/harshit-mawandia/",
       number: "9031193301",
+    },
+    {
+      name: 'Aarya Oganja',
+      por: 'Co-Overall Coordinator',
+      image: aarya,
+      email: "aarya@tryst-iitd.org",
+      linkedin: "https://www.linkedin.com/in/aaryaoganja/",
+      number: "9913328090",
     }
   ],
   ctms: [
@@ -54,11 +63,11 @@ const data = {
       number: "9769410227",
     },
     {
-      name: "Rishika Verma",
+      name: "Mishi Bansal",
       por: "Guest Lectures",
-      image: guest,
-      email: "rishika@tryst-iitd.org",
-      linkedin: "https://www.linkedin.com/in/rishika-iitd",
+      image: mishi,
+      email: "mishi@tryst-iitd.org",
+      linkedin: "https://www.linkedin.com/in/mishi-bansal-b693b3215/",
       number: "9693087393",
     },
     {
