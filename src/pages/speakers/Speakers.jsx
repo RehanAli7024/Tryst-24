@@ -67,13 +67,13 @@ function Speakers() {
   return (
     <div>
       {showOverlay && <div className="speakers-overlay-state"><SpeakersOverlay setShowOverlay={setShowOverlay} name={name} details={details} /></div>}
-      <div className="speakers" 
-      style={showOverlay ? {filter:"blur(5px)"} : {filter:"blur(0px)"}}
+      <div className="speakers"
+        style={showOverlay ? { filter: "blur(5px)" } : { filter: "blur(0px)" }}
       >
         <div className="speakers-head">SPEAKERS</div>
         <div className="speakers-body">
-          {speakers.map((speaker) => (
-            <div className="guest-card" onClick={()=>{setShowOverlay(true);setName(speaker.name);setDetails(speaker.details)}}>
+          {speakers.map((speaker, index) => (
+            <div className="guest-card" key={index} onClick={() => { setShowOverlay(true); setName(speaker.name); setDetails(speaker.details) }}>
               <SpeakersCard speaker={speaker} />
             </div>
           ))}
