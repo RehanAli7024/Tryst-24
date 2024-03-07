@@ -264,4 +264,15 @@ body {
     font-size: 1rem !important;
     text-align: center;
   }
+  #oc-cards-contact-us{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #oc-card-about-us{
+    width:48%;
+  }
 }
+
