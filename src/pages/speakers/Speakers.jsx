@@ -6,6 +6,8 @@ import SamarSingla from "../../assets/speakers/SamarSingla.webp";
 import NityaSharma from "../../assets/speakers/NityaSharma.webp";
 import DrTanuJain from "../../assets/speakers/DrTanuJain.webp";
 import AbhiNiyu from "../../assets/speakers/AbhiAndNiyu.webp";
+import { useState } from "react";
+import SpeakersOverlay from "./speakersoverlay";
 
 const speakers = [
   {
@@ -14,6 +16,7 @@ const speakers = [
     position: "Founder",
     company: "Microsoft",
     image: BillGates,
+    details: "dfssf",
   },
   {
     index: 2,
@@ -21,6 +24,7 @@ const speakers = [
     position: "Co-Founder",
     company: "OnePlus and Nothing",
     image: CarlPei,
+    details: "",
   },
   {
     index: 3,
@@ -28,6 +32,7 @@ const speakers = [
     position: "Co-Founder",
     company: "Jugnoo",
     image: SamarSingla,
+    details: "",
   },
   {
     index: 4,
@@ -35,6 +40,7 @@ const speakers = [
     position: "Founder",
     company: "Simpl",
     image: NityaSharma,
+    details: "",
   },
   {
     index: 5,
@@ -42,6 +48,7 @@ const speakers = [
     position: "Former",
     company: "IAS Officer",
     image: DrTanuJain,
+    details: "",
   },
   {
     index: 6,
@@ -49,23 +56,30 @@ const speakers = [
     position: "Content",
     company: "Creators",
     image: AbhiNiyu,
+    details: "",
   },
 ];
 
 function Speakers() {
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [name, setName] = useState("");
+  const [details, setDetails] = useState("");
   return (
-    <>
-      <div className="speakers">
+    <div>
+      {showOverlay && <div className="speakers-overlay-state"><SpeakersOverlay setShowOverlay={setShowOverlay} name={name} details={details} /></div>}
+      <div className="speakers" 
+      style={showOverlay ? {filter:"blur(5px)"} : {filter:"blur(0px)"}}
+      >
         <div className="speakers-head">SPEAKERS</div>
         <div className="speakers-body">
           {speakers.map((speaker) => (
-            <div className="guest-card">
+            <div className="guest-card" onClick={()=>{setShowOverlay(true);setName(speaker.name);setDetails(speaker.details)}}>
               <SpeakersCard speaker={speaker} />
             </div>
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

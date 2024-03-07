@@ -34,6 +34,18 @@
   gap: 6vw;
 }
 
+.speakers-overlay-state {
+  position: fixed;
+  /* top: 25%; */
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  /* filter: blur(5px); */
+  background {
+    filter: blur(5px);
+  }
+}
+
 @media screen and (max-width: 500px) {
   .speakers-head {
     font-size: 2.5rem;
