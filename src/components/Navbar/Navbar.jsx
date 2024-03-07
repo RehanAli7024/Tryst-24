@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import trystlogo from "../../assets/Navbar/Navlogo.png";
-import Tryst24 from "../../assets/Navbar/TRYST.png";
 import profileicon from "../../assets/Navbar/IconButton.png";
 import navbarmenu from "../../assets/Navbar/navbarmenu.png";
 import crossmenu from "../../assets/Navbar/crossmenu.png";
@@ -53,7 +52,6 @@ function Navbar() {
       setSelectedMobileOption(option);
       handleShowNavbar();
     }
-    // You can add any other logic here if needed
   };
 
   const handleScroll = () => {
@@ -99,9 +97,8 @@ function Navbar() {
 
   return (
     <Container
-      className={`navbar ${
-        isNavbarVisible ? "navbar-visible" : "navbar-hidden"
-      }`}
+      className={`navbar ${isNavbarVisible ? "navbar-visible" : "navbar-hidden"
+        }`}
     >
       <div
         className={showNavOptions ? "nav-mobile-bg" : "hidden-nav-mobile-bg"}
@@ -119,9 +116,8 @@ function Navbar() {
         <div className="navbaroptions-container">
           <div className="navbaricons">
             <a
-              className={`navbaroption ${
-                selectedOption === "CAP" ? "navbaroption-selected" : ""
-              }`}
+              className={`navbaroption ${selectedOption === "CAP" ? "navbaroption-selected" : ""
+                }`}
               href="https://cap.tryst-iitd.org/"
               target="_blank"
               rel="noreferrer"
@@ -131,7 +127,8 @@ function Navbar() {
             {[
               "About",
               "Guests",
-              userProfile?.category !== "general" && "Pronites", 
+              "Accomodation",
+              userProfile?.category !== "general" && "Pronites",
               "Events",
               "Sponsors",
               "Contact Us",
@@ -139,9 +136,8 @@ function Navbar() {
               option ? (
                 <div
                   key={option}
-                  className={`navbaroption ${
-                    selectedOption === option ? "navbaroption-selected" : ""
-                  }`}
+                  className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""
+                    }`}
                   onClick={() => handleNavbarOptionClick(option)}
                 >
                   {option}
@@ -168,8 +164,8 @@ function Navbar() {
                   isHovered
                     ? profilehov
                     : isClicked
-                    ? profileclicked
-                    : profileicon
+                      ? profileclicked
+                      : profileicon
                 }
               ></img>
             </Link>
@@ -185,20 +181,19 @@ function Navbar() {
         {[
           "About",
           "Guests",
-          userProfile?.category !== "general" && "Pronites", 
+          userProfile?.category !== "general" && "Pronites",
           "Events",
           "Sponsors",
           "Contact Us",
         ].map(
           (option) =>
-             option &&(
+            option && (
               <div
                 key={option}
-                className={`navbaroption ${
-                  selectedMobileOption === option
-                    ? "navbaroption-selected-mobile"
-                    : ""
-                }`}
+                className={`navbaroption ${selectedMobileOption === option
+                  ? "navbaroption-selected-mobile"
+                  : ""
+                  }`}
                 onClick={() => handleNavbarOptionClick(option)}
               >
                 {selectedMobileOption === option && (

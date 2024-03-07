@@ -135,13 +135,13 @@ const Accomodation = () => {
         >
           FAQs
         </button>
-        <button
+        {/* <button
           className={`dashboard-nav-button ${activeButton === "Reaching IITD" ? "active" : ""
             }`}
           onClick={() => handleButtonClick("Reaching IITD")}
         >
           Reaching IITD
-        </button>
+        </button> */}
         <button
           className={`dashboard-nav-button ${activeButton === "Contact Us" ? "active" : ""
             }`}
@@ -154,8 +154,8 @@ const Accomodation = () => {
         {activeButton === "Contact Us" && (
           <div className="ac_contact grid grid-cols-1 md:grid-cols-3 gap-20 m-auto mb-10 overall">
             <Placeholder data={data1.ctms[0]} id="ac_place" />
-            <Placeholder1 data={data1.coordi[0]} id="ac_place" />
-            <Placeholder1 data={data1.coordi[1]} id="ac_place" />
+            <Placeholder data={data1.ctms[1]} id="ac_place" />
+            <Placeholder data={data1.ctms[2]} id="ac_place" />
           </div>
         )}
         {activeButton === "FAQs" && (

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { DOMAIN } from '../../domain';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentComponent = ({ options }) => {
+    const navigate = useNavigate();
     useEffect(() => {
         loadRazorpay();
     }, []);
@@ -42,12 +44,15 @@ const PaymentComponent = ({ options }) => {
                     });
 
                     if (verificationResponse.status === 200) {
-                        console.log("Payment verified successfully");
+                        alert('Payment successful');
+                        navigate('/dashboard');
                     } else {
-                        console.error("Payment verification failed");
+                        alert('Payment verification failed, Please contact the team.');
+                        window.location.reload();
                     }
                 } catch (error) {
-                    console.error("Error verifying payment:", error);
+                    alert("Error verifying payment:", error);
+                    window.location.reload();
                 }
             },
             prefill: {
@@ -60,11 +65,17 @@ const PaymentComponent = ({ options }) => {
             theme: {
                 color: options.theme,
             },
+            modal: {
+                ondismiss: function () {
+                    window.location.reload();
+                }
+            },
         };
 
         var paymentObject = new window.Razorpay(option);
         paymentObject.open();
     };
+
     return null;
 };
 
