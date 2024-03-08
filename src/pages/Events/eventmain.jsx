@@ -30,6 +30,7 @@ const Clubs = [
   { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
   { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
   { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
+  { index: 11, name: "Robotics Club", abbr: "ROBO" },
 ];
 
 const EventMain = () => {
@@ -55,6 +56,7 @@ const EventMain = () => {
       .get(`${DOMAIN}allevents/`)
       .then((response) => {
         setEventarray(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -97,6 +99,7 @@ const EventMain = () => {
   };
 
   const handleClubSelect = (index) => {
+    console.log(index);
     const indexExists = clubSelected.includes(index);
     setClubSelected((prevState) =>
       indexExists
@@ -108,6 +111,7 @@ const EventMain = () => {
     } else {
       setBgColor("rgba(3, 10, 23, 0.8)");
     }
+    console.log(clubSelected);
   };
 
   const handleTypeDeselect = (index) => {
@@ -379,26 +383,62 @@ const EventMain = () => {
                   event.title.toLowerCase().includes(searchTerm)
                 ) {
                   if (typeSelected.length === 0) {
-                    return (
-                      <Link
-                        to={`/events/${event.title}`}
-                        key={index}
-                        id="event_link"
-                      >
-                        <div className="events_card">
-                          <EventCard image={event.event_image} />
-                        </div>
-                      </Link>
-                    );
-                  } else {
-                    if (typeSelected.includes(1)) {
+                    if (clubSelected.length === 0) {
                       return (
-                        <Link to={`/events/${event.title}`} key={index}>
+                        <Link
+                          to={`/events/${event.title}`}
+                          key={index}
+                          id="event_link"
+                        >
                           <div className="events_card">
                             <EventCard image={event.event_image} />
                           </div>
                         </Link>
                       );
+                    } else {
+                      if (clubSelected.includes(event.clubs)) {
+                        return (
+                          <Link
+                            to={`/events/${event.title}`}
+                            key={index}
+                            id="event_link"
+                          >
+                            <div className="events_card">
+                              <EventCard image={event.event_image} />
+                            </div>
+                          </Link>
+                        );
+                      }
+                    }
+                  } else {
+                    if (typeSelected.includes(1)) {
+                      if (clubSelected.length === 0) {
+                        return (
+                          <Link
+                            to={`/events/${event.title}`}
+                            key={index}
+                            id="event_link"
+                          >
+                            <div className="events_card">
+                              <EventCard image={event.event_image} />
+                            </div>
+                          </Link>
+                        );
+                      } else {
+                        if (clubSelected.includes(event.club)) {
+                          return (
+                            <Link
+                              to={`/events/${event.title}`}
+                              key={index}
+                              id="event_link"
+                            >
+                              <div className="events_card">
+                                <EventCard image={event.event_image} />
+                              </div>
+                            </Link>
+                          );
+                        }
+                      }
                     }
                   }
                 }
@@ -410,15 +450,7 @@ const EventMain = () => {
                   event.title.toLowerCase().includes(searchTerm)
                 ) {
                   if (typeSelected.length === 0) {
-                    return (
-                      <Link to={`/events/${event.title}`} key={index}>
-                        <div className="events_card">
-                          <EventCard image={event.event_image} />
-                        </div>
-                      </Link>
-                    );
-                  } else {
-                    if (typeSelected.includes(2)) {
+                    if (clubSelected.length === 0) {
                       return (
                         <Link to={`/events/${event.title}`} key={index}>
                           <div className="events_card">
@@ -426,6 +458,38 @@ const EventMain = () => {
                           </div>
                         </Link>
                       );
+                    } else {
+                      if (clubSelected.includes(event.club)) {
+                        return (
+                          <Link to={`/events/${event.title}`} key={index}>
+                            <div className="events_card">
+                              <EventCard image={event.event_image} />
+                            </div>
+                          </Link>
+                        );
+                      }
+                    }
+                  } else {
+                    if (typeSelected.includes(2)) {
+                      if (clubSelected.length === 0) {
+                        return (
+                          <Link to={`/events/${event.title}`} key={index}>
+                            <div className="events_card">
+                              <EventCard image={event.event_image} />
+                            </div>
+                          </Link>
+                        );
+                      } else {
+                        if (clubSelected.includes(event.club)) {
+                          return (
+                            <Link to={`/events/${event.title}`} key={index}>
+                              <div className="events_card">
+                                <EventCard image={event.event_image} />
+                              </div>
+                            </Link>
+                          );
+                        }
+                      }
                     }
                   }
                 }
@@ -437,15 +501,7 @@ const EventMain = () => {
                   event.title.toLowerCase().includes(searchTerm)
                 ) {
                   if (typeSelected.length === 0) {
-                    return (
-                      <Link to={`/events/${event.title}`} key={index}>
-                        <div className="events_card">
-                          <EventCard image={event.event_image} />
-                        </div>
-                      </Link>
-                    );
-                  } else {
-                    if (typeSelected.includes(3)) {
+                    if (clubSelected.length === 0) {
                       return (
                         <Link to={`/events/${event.title}`} key={index}>
                           <div className="events_card">
@@ -453,6 +509,38 @@ const EventMain = () => {
                           </div>
                         </Link>
                       );
+                    } else {
+                      if (clubSelected.includes(event.club)) {
+                        return (
+                          <Link to={`/events/${event.title}`} key={index}>
+                            <div className="events_card">
+                              <EventCard image={event.event_image} />
+                            </div>
+                          </Link>
+                        );
+                      }
+                    }
+                  } else {
+                    if (typeSelected.includes(3)) {
+                      if (clubSelected.length === 0) {
+                        return (
+                          <Link to={`/events/${event.title}`} key={index}>
+                            <div className="events_card">
+                              <EventCard image={event.event_image} />
+                            </div>
+                          </Link>
+                        );
+                      } else {
+                        if (clubSelected.includes(event.club)) {
+                          return (
+                            <Link to={`/events/${event.title}`} key={index}>
+                              <div className="events_card">
+                                <EventCard image={event.event_image} />
+                              </div>
+                            </Link>
+                          );
+                        }
+                      }
                     }
                   }
                 }
