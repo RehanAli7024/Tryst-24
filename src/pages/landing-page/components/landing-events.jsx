@@ -2,6 +2,9 @@ import { useEffect, useState, useRef } from "react";
 import "./landing-events.css";
 import EventCard from "../../../components/EventCard/EventCard";
 import TestImage from "../../../assets/event_cards/demo.png";
+import ChessImage from "../../../assets/Events/chess.webp";
+import RobowarsImage from "../../../assets/Events/robowars.webp";
+import StartupAuctionImage from "../../../assets/Events/startup_auction.webp"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useInView } from "react-intersection-observer";
@@ -79,13 +82,19 @@ const Events = () => {
         data-aos-duration="800"
       >
         <div className="landing-event-card landing-event-card1">
-          <EventCard image={TestImage} />
+          <a href="https://www.tryst-iitd.org/events/Tryst%20Chess%20Championship">
+            <EventCard image={ChessImage} />
+          </a>
         </div>
         <div className="landing-event-card landing-event-card2">
-          <EventCard image={TestImage} />
+          <a href="https://www.tryst-iitd.org/events/ROBOWARS">
+            <EventCard image={RobowarsImage} />
+          </a>
         </div>
         <div className="landing-event-card landing-event-card1">
-          <EventCard image={TestImage} />
+          <a href="https://www.tryst-iitd.org/events/Startup%20Auction">
+            <EventCard image={StartupAuctionImage} />
+          </a>
         </div>
       </div>
     </div>

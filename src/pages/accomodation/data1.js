@@ -1,6 +1,6 @@
 import harshit from "../../assets/contact/harshit.webp";
 import shwinder from "../../assets/contact/shwinder.webp";
-import hospi from "../../assets/contact/ctm-hospi.jpg";
+import ctmhospi from "../../assets/contact/ctm-hospi.jpg";
 
 const data1 = {
   ctms: [
@@ -23,7 +23,7 @@ const data1 = {
     {
       name: "Keshav Aggarwal",
       por: "CTM - Hospitality",
-      image: hospi,
+      image: ctmhospi,
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/keshav-aggarwal-88bb90166/",
       number: "9654962500",
