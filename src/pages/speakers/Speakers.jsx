@@ -16,7 +16,7 @@ const speakers = [
     position: "Founder",
     company: "Microsoft",
     image: BillGates,
-    details: "dfssf",
+    details: "",
   },
   {
     index: 2,
