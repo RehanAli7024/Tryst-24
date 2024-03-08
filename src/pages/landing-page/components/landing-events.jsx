@@ -81,21 +81,21 @@ const Events = () => {
         data-aos="zoom-in-up"
         data-aos-duration="800"
       >
-    <div className="landing-events-container">
-      <div className="landing-event-card landing-event-card1">
-        <a href="https://www.tryst-iitd.org/events/Tryst%20Chess%20Championship">
-          <EventCard image={ChessImage} />
-        </a>
-      </div>
-      <div className="landing-event-card landing-event-card2">
-        <a href="https://www.tryst-iitd.org/events/ROBOWARS">
-          <EventCard image={RobowarsImage} />
-        </a>
-      </div>
-      <div className="landing-event-card landing-event-card1">
-        <a href="https://www.tryst-iitd.org/events/Startup%20Auction">
-          <EventCard image={StartupAuctionImage} />
-        </a>
+        <div className="landing-event-card landing-event-card1">
+          <a href="https://www.tryst-iitd.org/events/Tryst%20Chess%20Championship">
+            <EventCard image={ChessImage} />
+          </a>
+        </div>
+        <div className="landing-event-card landing-event-card2">
+          <a href="https://www.tryst-iitd.org/events/ROBOWARS">
+            <EventCard image={RobowarsImage} />
+          </a>
+        </div>
+        <div className="landing-event-card landing-event-card1">
+          <a href="https://www.tryst-iitd.org/events/Startup%20Auction">
+            <EventCard image={StartupAuctionImage} />
+          </a>
+        </div>
       </div>
     </div>
   );
