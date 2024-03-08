@@ -98,7 +98,6 @@ const Events = () => {
         </a>
       </div>
     </div>
-    </div>
   );
 };
 
