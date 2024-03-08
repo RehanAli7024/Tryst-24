@@ -301,12 +301,13 @@ export default function EditCompetitionEvent({
         ))}
         <div className="add-contact-person">
           <button
-            onClick={() =>
+            type="button"
+            onClick={() => {
               setcontactPerosnDetails((prevDetails) => [
                 ...prevDetails,
                 { name: "", phone: "" },
-              ])
-            }
+              ]);
+            }}
           >
             Add Contact Person
           </button>

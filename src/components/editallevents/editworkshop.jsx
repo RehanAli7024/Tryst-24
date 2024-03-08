@@ -150,7 +150,7 @@ export default function EditWorkshopEvent({
             />
           </div>
           <div className="image-shown">
-          {formData.file && (
+            {formData.file && (
               <img
                 src={
                   typeof formData.file === "string"
@@ -301,12 +301,13 @@ export default function EditWorkshopEvent({
         ))}
         <div className="add-contact-person">
           <button
-            onClick={() =>
+            type="button"
+            onClick={() => {
               setcontactPerosnDetails((prevDetails) => [
                 ...prevDetails,
                 { name: "", phone: "" },
-              ])
-            }
+              ]);
+            }}
           >
             Add Contact Person
           </button>
