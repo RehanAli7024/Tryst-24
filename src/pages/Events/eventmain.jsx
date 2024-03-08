@@ -1,5 +1,5 @@
 import "./eventmain.css";
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import search_icon from "./search.svg";
 import arrowRight from "./arrow_right.svg";
 import close from "./close.svg";
@@ -21,15 +21,15 @@ const Types = [
 
 const Clubs = [
   { index: 1, name: "ACES-ACM", abbr: "ACES-ACM" },
-  { index: 2, name: "Chemical Engineering Society (CHES)", abbr: "CHES"},
-  { index: 3, name: "Mathematics Society (MathSoc)", abbr: "MathSoc"},
-  { index: 4, name: "Civil Engineering Forum (CEF)", abbr: "CEF"},
-  { index: 5, name: "Textile Engineering Society (TES)", abbr: "TES"},
-  { index: 6, name: "Material Engineering Society (MES)", abbr: "MES"},
-  {index: 7, name: "Physics and astronomy club (PAC)", abbr: "PAC"},
-  {index: 8, name: "Axlr8r", abbr: "Axlr8r"},
-  {index: 9,name: "Aeromodelling Club",abbr: "AERO"},
-  {index: 10,name: "DEVCLUB",abbr: "DEVCLUB"}, 
+  { index: 2, name: "Chemical Engineering Society (CHES)", abbr: "CHES" },
+  { index: 3, name: "Mathematics Society (MathSoc)", abbr: "MathSoc" },
+  { index: 4, name: "Civil Engineering Forum (CEF)", abbr: "CEF" },
+  { index: 5, name: "Textile Engineering Society (TES)", abbr: "TES" },
+  { index: 6, name: "Material Engineering Society (MES)", abbr: "MES" },
+  { index: 7, name: "Physics and astronomy club (PAC)", abbr: "PAC" },
+  { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
+  { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
+  { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
 ];
 
 const EventMain = () => {
@@ -91,8 +91,7 @@ const EventMain = () => {
     );
     if (typeSelected.length + clubSelected.length >= 0) {
       setBgColor("rgba(3, 10, 23, 0.9)");
-    }
-    else{
+    } else {
       setBgColor("rgba(3, 10, 23, 0.8)");
     }
   };
@@ -106,8 +105,7 @@ const EventMain = () => {
     );
     if (typeSelected.length + clubSelected.length >= 0) {
       setBgColor("rgba(3, 10, 23, 0.9)");
-    }
-    else{
+    } else {
       setBgColor("rgba(3, 10, 23, 0.8)");
     }
   };
@@ -116,8 +114,7 @@ const EventMain = () => {
     setTypeSelected((prevState) => prevState.filter((item) => item !== index));
     if (typeSelected.length + clubSelected.length < 2) {
       setBgColor("rgba(3, 10, 23, 0.8)");
-    }
-    else{
+    } else {
       setBgColor("rgba(3, 10, 23, 0.9)");
     }
   };
@@ -126,8 +123,7 @@ const EventMain = () => {
     setClubSelected((prevState) => prevState.filter((item) => item !== index));
     if (typeSelected.length + clubSelected.length < 2) {
       setBgColor("rgba(3, 10, 23, 0.8)");
-    }
-    else{
+    } else {
       setBgColor("rgba(3, 10, 23, 0.9)");
     }
   };
@@ -153,19 +149,18 @@ const EventMain = () => {
   const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
   const [firsttime, setFirsttime] = useState(true);
   useEffect(() => {
-    console.log(divRef.current.childNodes.length);
-    
-    if(divRef.current.childNodes.length>1){
+    // console.log(divRef.current.childNodes.length);
+
+    if (divRef.current.childNodes.length > 1) {
       setDplay("none");
-    }
-    else if(divRef.current.childNodes.length==1){
+    } else if (divRef.current.childNodes.length == 1) {
       setDplay("block");
     }
-    if(firsttime){
+    if (firsttime) {
       setDplay("none");
       setFirsttime(false);
     }
-  }, [divRef,typeSelected,clubSelected,searchTerm]);
+  }, [divRef, typeSelected, clubSelected, searchTerm]);
   return (
     <>
       <div className="event_body">
@@ -239,8 +234,7 @@ const EventMain = () => {
                 ))}
               </div>
             </div>
-            <div className="event_sidebar_bottom" onClick={handleOverlay}>
-            </div>
+            <div className="event_sidebar_bottom" onClick={handleOverlay}></div>
           </div>
         ) : (
           <> </>
@@ -249,7 +243,11 @@ const EventMain = () => {
         <div className="filter_search">
           <div className="filter_search_left">
             <div className="fil_con">
-              <div className="filter_btn" onClick={handleOverlay} style={{background : bgColor}}>
+              <div
+                className="filter_btn"
+                onClick={handleOverlay}
+                style={{ background: bgColor }}
+              >
                 <img src={tune} alt="" />
                 Filters
                 {" (" + (typeSelected.length + clubSelected.length) + ")"}
@@ -382,15 +380,23 @@ const EventMain = () => {
                 ) {
                   if (typeSelected.length === 0) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index} id="event_link">
-                        <div className="events_card"><EventCard image={event.event_image} /></div>
+                      <Link
+                        to={`/events/${event.title}`}
+                        key={index}
+                        id="event_link"
+                      >
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
                       </Link>
                     );
                   } else {
                     if (typeSelected.includes(1)) {
                       return (
                         <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card"><EventCard image={event.event_image} /></div>
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
                         </Link>
                       );
                     }
@@ -406,14 +412,18 @@ const EventMain = () => {
                   if (typeSelected.length === 0) {
                     return (
                       <Link to={`/events/${event.title}`} key={index}>
-                        <div className="events_card"><EventCard image={event.event_image} /></div>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
                       </Link>
                     );
                   } else {
                     if (typeSelected.includes(2)) {
                       return (
                         <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card"><EventCard image={event.event_image} /></div>
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
                         </Link>
                       );
                     }
@@ -429,21 +439,29 @@ const EventMain = () => {
                   if (typeSelected.length === 0) {
                     return (
                       <Link to={`/events/${event.title}`} key={index}>
-                        <div className="events_card"><EventCard image={event.event_image} /></div>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
                       </Link>
                     );
                   } else {
                     if (typeSelected.includes(3)) {
                       return (
                         <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card"><EventCard image={event.event_image} /></div>
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
                         </Link>
                       );
                     }
                   }
                 }
               })}
-              {<div className="no_events" style={{display: dplay}}>No Events Found</div>}
+            {
+              <div className="no_events" style={{ display: dplay }}>
+                No Events Found
+              </div>
+            }
           </div>
         </div>
       </div>

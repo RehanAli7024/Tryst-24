@@ -78,27 +78,26 @@ function Navbar() {
   }, [showNavOptions, userProfile]);
 
   useEffect(() => {
-    const fetchProfileCategory = async () => {
-      try {
-        const response = await axios.get(`${DOMAIN}profile/category`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        });
-        setUserProfile(response.data);
-        console.log("Profile category:", response.data);
-      } catch (error) {
-        console.error("Error fetching profile category:", error.message);
-      }
-    };
-
-    fetchProfileCategory();
+    const token = localStorage.getItem("access_token");
+    axios
+      .get(`http://localhost:8000/api/profile/category/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setUserProfile(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
     <Container
-      className={`navbar ${isNavbarVisible ? "navbar-visible" : "navbar-hidden"
-        }`}
+      className={`navbar ${
+        isNavbarVisible ? "navbar-visible" : "navbar-hidden"
+      }`}
     >
       <div
         className={showNavOptions ? "nav-mobile-bg" : "hidden-nav-mobile-bg"}
@@ -116,8 +115,9 @@ function Navbar() {
         <div className="navbaroptions-container">
           <div className="navbaricons">
             <a
-              className={`navbaroption ${selectedOption === "CAP" ? "navbaroption-selected" : ""
-                }`}
+              className={`navbaroption ${
+                selectedOption === "CAP" ? "navbaroption-selected" : ""
+              }`}
               href="https://cap.tryst-iitd.org/"
               target="_blank"
               rel="noreferrer"
@@ -136,8 +136,9 @@ function Navbar() {
               option ? (
                 <div
                   key={option}
-                  className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""
-                    }`}
+                  className={`navbaroption ${
+                    selectedOption === option ? "navbaroption-selected" : ""
+                  }`}
                   onClick={() => handleNavbarOptionClick(option)}
                 >
                   {option}
@@ -164,8 +165,8 @@ function Navbar() {
                   isHovered
                     ? profilehov
                     : isClicked
-                      ? profileclicked
-                      : profileicon
+                    ? profileclicked
+                    : profileicon
                 }
               ></img>
             </Link>
@@ -190,10 +191,11 @@ function Navbar() {
             option && (
               <div
                 key={option}
-                className={`navbaroption ${selectedMobileOption === option
-                  ? "navbaroption-selected-mobile"
-                  : ""
-                  }`}
+                className={`navbaroption ${
+                  selectedMobileOption === option
+                    ? "navbaroption-selected-mobile"
+                    : ""
+                }`}
                 onClick={() => handleNavbarOptionClick(option)}
               >
                 {selectedMobileOption === option && (
