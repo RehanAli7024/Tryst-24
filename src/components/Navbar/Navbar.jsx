@@ -80,7 +80,7 @@ function Navbar() {
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     axios
-      .get(`http://localhost:8000/api/profile/category/`, {
+      .get(`${DOMAIN}profile/category/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

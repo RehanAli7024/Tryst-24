@@ -33,8 +33,25 @@ export default function EditCompetitionEvent({
 
   let eventsRef = useRef();
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const Clubs = [
+    { index: 1, name: "ACES-ACM", abbr: "ACES-ACM" },
+    { index: 2, name: "Chemical Engineering Society (CHES)", abbr: "CHES" },
+    { index: 3, name: "Mathematics Society (MathSoc)", abbr: "MathSoc" },
+    { index: 4, name: "Civil Engineering Forum (CEF)", abbr: "CEF" },
+    { index: 5, name: "Textile Engineering Society (TES)", abbr: "TES" },
+    { index: 6, name: "Material Engineering Society (MES)", abbr: "MES" },
+    { index: 7, name: "Physics and astronomy club (PAC)", abbr: "PAC" },
+    { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
+    { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
+    { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
+    { index: 11, name: "Robotics Club", abbr: "ROBO" },
+  ];
+
   const handleSubmit = (e) => {
     // console.log(formData);
+    setIsSubmitting(true);
     const updatedFormData = {
       ...formData,
       contactPersons: constactPersonDetails,
@@ -64,6 +81,7 @@ export default function EditCompetitionEvent({
         setEventFormTitle("editregistrationForm");
         setIsEventSubmitted(true);
         setIsSubmitted(true);
+        setIsSubmitting(false);
       })
       .catch((err) => {
         console.log(err);
@@ -83,6 +101,7 @@ export default function EditCompetitionEvent({
     reg_date: eventDetails.deadline_date,
     reg_time: eventDetails.deadline_time,
     has_form: eventDetails.has_form,
+    event_club: eventDetails.club,
   });
 
   const [constactPersonDetails, setcontactPerosnDetails] = useState(
@@ -139,8 +158,8 @@ export default function EditCompetitionEvent({
         <label htmlFor="uploadInput" className="custom-upload-btn">
           Upload
         </label>
-        <div className="upload-picture">
-          <div className="custom-upload-container">
+        <div className="upload-picture" style={{ height: "100%" }}>
+          <div className="custom-upload-container" style={{ height: "100%" }}>
             <input
               id="uploadInput"
               className="upload-pic-btn"
@@ -149,7 +168,7 @@ export default function EditCompetitionEvent({
               name="file"
             />
           </div>
-          <div className="image-shown">
+          <div className="image-shown" style={{ height: "100%" }}>
             {formData.file && (
               <img
                 src={
@@ -159,6 +178,12 @@ export default function EditCompetitionEvent({
                 }
                 alt="event"
                 className="image-preview"
+                style={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
+                  margin: "0",
+                }}
               />
             )}
           </div>
@@ -192,6 +217,29 @@ export default function EditCompetitionEvent({
             name="description"
             rows={7}
           />
+        </div>
+        <div className="event-club-container">
+          <label className="label">EVENT CLUB*</label>
+          <br />
+          <select
+            className="input text-[#000]"
+            name="event_club"
+            onChange={handleChange}
+            value={formData.club}
+          >
+            <option value="" disabled selected>
+              Select Club
+            </option>
+            {Clubs.map((club) => (
+              <option
+                key={club.index}
+                value={club.index}
+                selected={formData.event_club === club.index}
+              >
+                {club.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="date-time-venue-container">
           <div className="events-flex-column">
@@ -329,8 +377,12 @@ export default function EditCompetitionEvent({
             />
           </div>
         </div>
-        <button onClick={handleSubmit} className="submit-button">
-          submit
+        <button
+          onClick={handleSubmit}
+          className="submit-button"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>
