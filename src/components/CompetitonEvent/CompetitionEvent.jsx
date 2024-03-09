@@ -49,7 +49,8 @@ export default function CompetitionEvent({
     { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
     { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
     { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
-    { index: 11, name: "Robotics Club", abbr: "ROBO" },
+    { index: 11, name: "Robotics Club", abbr: "ROBO CLUB" },
+    { index: 12, name: "Economics Club", abbr: "ECO CLUB" },
   ];
 
   const clubOptions = Clubs.map((club) => {
@@ -123,7 +124,6 @@ export default function CompetitionEvent({
     ruleBook: "",
     event_club: "",
   });
-
 
   const [isChecked, setIsChecked] = useState(false);
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);

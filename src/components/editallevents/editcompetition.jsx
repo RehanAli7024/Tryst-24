@@ -47,7 +47,8 @@ export default function EditCompetitionEvent({
     { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
     { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
     { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
-    { index: 11, name: "Robotics Club", abbr: "ROBO" },
+    { index: 11, name: "Robotics Club", abbr: "ROBO CLUB" },
+    { index: 12, name: "Economics Club", abbr: "ECO CLUB" },
   ];
 
   const clubOptions = Clubs.map((club) => {
@@ -79,8 +80,14 @@ export default function EditCompetitionEvent({
       ...formData,
       contactPersons: constactPersonDetails,
     };
-    if (updatedFormData.contactPersons && updatedFormData.contactPersons !== "undefined" && updatedFormData.contactPersons.length > 0) {
-      updatedFormData.contactPersons = JSON.stringify(updatedFormData.contactPersons);
+    if (
+      updatedFormData.contactPersons &&
+      updatedFormData.contactPersons !== "undefined" &&
+      updatedFormData.contactPersons.length > 0
+    ) {
+      updatedFormData.contactPersons = JSON.stringify(
+        updatedFormData.contactPersons
+      );
     }
     e.preventDefault();
     const token = localStorage.getItem("admin_access_token");

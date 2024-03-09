@@ -30,7 +30,8 @@ const Clubs = [
   { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
   { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
   { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
-  { index: 11, name: "Robotics Club", abbr: "ROBO" },
+  { index: 11, name: "Robotics Club", abbr: "ROBO CLUB" },
+  { index: 12, name: "Economics Club", abbr: "ECO CLUB" },
 ];
 
 const EventMain = () => {
@@ -69,7 +70,7 @@ const EventMain = () => {
     if (!eventClubs || eventClubs === "undefined") {
       return false;
     } else {
-      // console.log(eventClubs);
+      console.log(eventClubs);
       eventClubs = JSON.parse(eventClubs);
       for (let i = 0; i < selectedClubs.length; i++) {
         for (let j = 0; j < eventClubs.length; j++) {
