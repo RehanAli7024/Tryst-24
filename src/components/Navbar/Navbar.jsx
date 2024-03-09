@@ -68,12 +68,12 @@ function Navbar() {
 
   useEffect(() => {
     if (showNavOptions) {
-      document.body.classList.add("no-scroll"); // Add class to disable scrolling
+      document.body.classList.add("no-scroll");
     } else {
-      document.body.classList.remove("no-scroll"); // Remove class to enable scrolling
+      document.body.classList.remove("no-scroll");
     }
     return () => {
-      document.body.classList.remove("no-scroll"); // Clean up by removing the class when component unmounts
+      document.body.classList.remove("no-scroll");
     };
   }, [showNavOptions, userProfile]);
 
@@ -95,9 +95,8 @@ function Navbar() {
 
   return (
     <Container
-      className={`navbar ${
-        isNavbarVisible ? "navbar-visible" : "navbar-hidden"
-      }`}
+      className={`navbar ${isNavbarVisible ? "navbar-visible" : "navbar-hidden"
+        }`}
     >
       <div
         className={showNavOptions ? "nav-mobile-bg" : "hidden-nav-mobile-bg"}
@@ -115,9 +114,8 @@ function Navbar() {
         <div className="navbaroptions-container">
           <div className="navbaricons">
             <a
-              className={`navbaroption ${
-                selectedOption === "CAP" ? "navbaroption-selected" : ""
-              }`}
+              className={`navbaroption ${selectedOption === "CAP" ? "navbaroption-selected" : ""
+                }`}
               href="https://cap.tryst-iitd.org/"
               target="_blank"
               rel="noreferrer"
@@ -136,9 +134,8 @@ function Navbar() {
               option ? (
                 <div
                   key={option}
-                  className={`navbaroption ${
-                    selectedOption === option ? "navbaroption-selected" : ""
-                  }`}
+                  className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""
+                    }`}
                   onClick={() => handleNavbarOptionClick(option)}
                 >
                   {option}
@@ -165,8 +162,8 @@ function Navbar() {
                   isHovered
                     ? profilehov
                     : isClicked
-                    ? profileclicked
-                    : profileicon
+                      ? profileclicked
+                      : profileicon
                 }
               ></img>
             </Link>
@@ -191,11 +188,10 @@ function Navbar() {
             option && (
               <div
                 key={option}
-                className={`navbaroption ${
-                  selectedMobileOption === option
-                    ? "navbaroption-selected-mobile"
-                    : ""
-                }`}
+                className={`navbaroption ${selectedMobileOption === option
+                  ? "navbaroption-selected-mobile"
+                  : ""
+                  }`}
                 onClick={() => handleNavbarOptionClick(option)}
               >
                 {selectedMobileOption === option && (
