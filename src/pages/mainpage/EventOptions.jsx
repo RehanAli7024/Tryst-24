@@ -27,7 +27,7 @@ export default function EventOptions() {
   useEffect(() => {
     // const token = localStorage.getItem("admin_access_token");
     axios
-      .get(`${DOMAIN}allevents/`, {
+    .get(`${DOMAIN}allevents/`, {
         // headers: {
         //   Authorization: `Bearer ${token}`,
         // },

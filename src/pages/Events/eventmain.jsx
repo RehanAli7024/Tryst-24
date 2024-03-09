@@ -56,12 +56,31 @@ const EventMain = () => {
       .get(`${DOMAIN}allevents/`)
       .then((response) => {
         setEventarray(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  const checkForSelectedClub = (selectedClubs, eventClubs) => {
+    // console.log(eventClubs)
+    // eventClubs = JSON.parse(eventClubs);
+    if (!eventClubs || eventClubs === "undefined") {
+      return false;
+    } else {
+      // console.log(eventClubs);
+      eventClubs = JSON.parse(eventClubs);
+      for (let i = 0; i < selectedClubs.length; i++) {
+        for (let j = 0; j < eventClubs.length; j++) {
+          if (selectedClubs[i] == eventClubs[j].id) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+  };
 
   const handleTypeChange = () => {
     setType(!type);
@@ -111,7 +130,7 @@ const EventMain = () => {
     } else {
       setBgColor("rgba(3, 10, 23, 0.8)");
     }
-    console.log(clubSelected);
+    // console.log(clubSelected);
   };
 
   const handleTypeDeselect = (index) => {
@@ -380,7 +399,7 @@ const EventMain = () => {
               eventarray.competitions.map((event, index) => {
                 if (
                   !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm)
+                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
                 ) {
                   if (typeSelected.length === 0) {
                     if (clubSelected.length === 0) {
@@ -396,7 +415,7 @@ const EventMain = () => {
                         </Link>
                       );
                     } else {
-                      if (clubSelected.includes(event.clubs)) {
+                      if (checkForSelectedClub(clubSelected, event.clubs)) {
                         return (
                           <Link
                             to={`/events/${event.title}`}
@@ -425,7 +444,7 @@ const EventMain = () => {
                           </Link>
                         );
                       } else {
-                        if (clubSelected.includes(event.club)) {
+                        if (checkForSelectedClub(clubSelected, event.clubs)) {
                           return (
                             <Link
                               to={`/events/${event.title}`}
@@ -447,7 +466,7 @@ const EventMain = () => {
               eventarray.guestlectures.map((event, index) => {
                 if (
                   !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm)
+                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
                 ) {
                   if (typeSelected.length === 0) {
                     if (clubSelected.length === 0) {
@@ -459,7 +478,7 @@ const EventMain = () => {
                         </Link>
                       );
                     } else {
-                      if (clubSelected.includes(event.club)) {
+                      if (checkForSelectedClub(clubSelected, event.clubs)) {
                         return (
                           <Link to={`/events/${event.title}`} key={index}>
                             <div className="events_card">
@@ -498,7 +517,7 @@ const EventMain = () => {
               eventarray.workshops.map((event, index) => {
                 if (
                   !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm)
+                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
                 ) {
                   if (typeSelected.length === 0) {
                     if (clubSelected.length === 0) {

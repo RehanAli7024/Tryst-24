@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import './fonts.css';
+import "./fonts.css";
 import { useState } from "react";
 import MainPage from "./pages/mainpage/MainPage.jsx";
 import GuestLectureEvent from "./components/GuestLectureEvent/GuestLectureEvent.jsx";
@@ -24,11 +24,11 @@ import axios from "axios";
 import { DOMAIN } from "./domain.js";
 import Accomodation from "./pages/accomodation/accomodation.jsx";
 
-
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
   useEffect(() => {
-    axios.get(`${DOMAIN}allevents/`)
+    axios
+      .get(`${DOMAIN}allevents/`)
       .then((response) => {
         setEventarray(response.data);
         // console.log(response.data.competitions);
@@ -57,13 +57,20 @@ const App = () => {
           <Route path="/guests" element={<Speakers />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/usercard" element={<UserCard />} />
-          <Route path="/pronites" element={<ComingSoon/>} />
+          <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/accomodation" element={<Accomodation />} />
-          {eventarray.competitions && eventarray.competitions.map((event, index) => {
-            return <Route path={`/events/${event.title}`} key={index} element={<EventPage event={event} />} />
-          })}
+          {eventarray.competitions &&
+            eventarray.competitions.map((event, index) => {
+              return (
+                <Route
+                  path={`/events/${event.title}`}
+                  key={index}
+                  element={<EventPage event={event} />}
+                />
+              );
+            })}
         </Routes>
         <Footer />
       </Router>

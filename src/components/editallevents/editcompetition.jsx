@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactSession } from "react-client-session";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
+import Select from "react-select";
 
 export default function EditCompetitionEvent({
   handleClose,
@@ -49,6 +50,28 @@ export default function EditCompetitionEvent({
     { index: 11, name: "Robotics Club", abbr: "ROBO" },
   ];
 
+  const clubOptions = Clubs.map((club) => {
+    return {
+      value: club.index,
+      label: club.name,
+    };
+  });
+
+  // handle club change
+  const handleClubChange = (selectedClubs) => {
+    // console.log("selected clubs: ", selectedClubs);
+    const selectedClubData = selectedClubs.map((club) => ({
+      id: club.value,
+      name: club.label,
+    }));
+
+    setFormData((prevState) => ({
+      ...prevState,
+      event_club: JSON.stringify(selectedClubData),
+    }));
+    // console.log(formData.event_club);
+  };
+
   const handleSubmit = (e) => {
     // console.log(formData);
     setIsSubmitting(true);
@@ -56,9 +79,12 @@ export default function EditCompetitionEvent({
       ...formData,
       contactPersons: constactPersonDetails,
     };
+    if (updatedFormData.contactPersons && updatedFormData.contactPersons !== "undefined" && updatedFormData.contactPersons.length > 0) {
+      updatedFormData.contactPersons = JSON.stringify(updatedFormData.contactPersons);
+    }
     e.preventDefault();
     const token = localStorage.getItem("admin_access_token");
-
+    // console.log(token)
     const formDataToSend = new FormData();
     for (const key in updatedFormData) {
       if (key === "file") {
@@ -76,7 +102,7 @@ export default function EditCompetitionEvent({
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         alert("Event edited successfully");
         setEventFormTitle("editregistrationForm");
         setIsEventSubmitted(true);
@@ -85,6 +111,7 @@ export default function EditCompetitionEvent({
       })
       .catch((err) => {
         console.log(err);
+        setIsSubmitting(false);
       });
   };
   const [formData, setFormData] = useState({
@@ -101,8 +128,26 @@ export default function EditCompetitionEvent({
     reg_date: eventDetails.deadline_date,
     reg_time: eventDetails.deadline_time,
     has_form: eventDetails.has_form,
-    event_club: eventDetails.club,
+    event_club: eventDetails.clubs,
   });
+
+  // const eventClubsData = JSON.parse(eventDetails.clubs);
+  // const eventClubs = eventClubsData.map((club) => ({
+  //   value: club.id,
+  //   label: club.name,
+  // }));
+  let eventClubs = [];
+  if (
+    eventDetails.clubs &&
+    eventDetails.clubs !== "undefined" &&
+    eventDetails.clubs !== "null"
+  ) {
+    const eventClubsData = JSON.parse(eventDetails.clubs);
+    eventClubs = eventClubsData.map((club) => ({
+      value: club.id,
+      label: club.name,
+    }));
+  }
 
   const [constactPersonDetails, setcontactPerosnDetails] = useState(
     eventDetails.contact
@@ -110,7 +155,7 @@ export default function EditCompetitionEvent({
   const handleChange = (e) => {
     if (e.target.name === "file") {
       const file_data = e.target.files[0];
-      console.log(file_data);
+      // console.log(file_data);
       setFormData((prevState) => ({
         ...prevState,
         file: file_data,
@@ -218,28 +263,17 @@ export default function EditCompetitionEvent({
             rows={7}
           />
         </div>
-        <div className="event-club-container">
+        <div className="event-club-container" style={{ color: "grey" }}>
           <label className="label">EVENT CLUB*</label>
           <br />
-          <select
-            className="input text-[#000]"
+          {/* select multiple clubs */}
+          <Select
+            options={clubOptions}
+            isMulti
             name="event_club"
-            onChange={handleChange}
-            value={formData.club}
-          >
-            <option value="" disabled selected>
-              Select Club
-            </option>
-            {Clubs.map((club) => (
-              <option
-                key={club.index}
-                value={club.index}
-                selected={formData.event_club === club.index}
-              >
-                {club.name}
-              </option>
-            ))}
-          </select>
+            onChange={handleClubChange}
+            value={eventClubs}
+          />
         </div>
         <div className="date-time-venue-container">
           <div className="events-flex-column">

@@ -3,6 +3,7 @@ import { ReactSession } from "react-client-session";
 import "./CompetitionEvent.css";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
+import Select from "react-select";
 
 export default function CompetitionEvent({
   handleClose,
@@ -35,7 +36,46 @@ export default function CompetitionEvent({
     setcontactPerosns(Number(e.target.value));
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const Clubs = [
+    { index: 1, name: "ACES-ACM", abbr: "ACES-ACM" },
+    { index: 2, name: "Chemical Engineering Society (CHES)", abbr: "CHES" },
+    { index: 3, name: "Mathematics Society (MathSoc)", abbr: "MathSoc" },
+    { index: 4, name: "Civil Engineering Forum (CEF)", abbr: "CEF" },
+    { index: 5, name: "Textile Engineering Society (TES)", abbr: "TES" },
+    { index: 6, name: "Material Engineering Society (MES)", abbr: "MES" },
+    { index: 7, name: "Physics and astronomy club (PAC)", abbr: "PAC" },
+    { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
+    { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
+    { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
+    { index: 11, name: "Robotics Club", abbr: "ROBO" },
+  ];
+
+  const clubOptions = Clubs.map((club) => {
+    return {
+      value: club.index,
+      label: club.name,
+    };
+  });
+
+  // handle club change
+  const handleClubChange = (selectedClubs) => {
+    // console.log("selected clubs: ", selectedClubs);
+    const selectedClubData = selectedClubs.map((club) => ({
+      id: club.value,
+      name: club.label,
+    }));
+
+    setFormData((prevState) => ({
+      ...prevState,
+      event_club: JSON.stringify(selectedClubData),
+    }));
+    // console.log(formData.event_club);
+  };
+
   const handleSubmit = (e) => {
+    setIsSubmitting(true);
     if (formData.has_form && !formData.registration_link) {
       alert("Please provide registration link for the form.");
       return;
@@ -60,10 +100,12 @@ export default function CompetitionEvent({
         setEventFormTitle("registrationForm");
         setIsEventSubmitted(true);
         setIsSubmitted(true);
+        setIsSubmitting(false);
       })
       .catch((err) => {
         console.log(err);
         setFormIsSubmitted(false);
+        setIsSubmitting(false);
       });
   };
   const [formData, setFormData] = useState({
@@ -79,14 +121,17 @@ export default function CompetitionEvent({
     has_form: false,
     registration_link: "",
     ruleBook: "",
+    event_club: "",
   });
+
+
   const [isChecked, setIsChecked] = useState(false);
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
 
   const handleChange = (e) => {
     if (e.target.name === "file") {
       const file_data = e.target.files[0];
-      console.log(file_data);
+      // console.log(file_data);
       setFormData((prevState) => ({
         ...prevState,
         file: file_data,
@@ -119,7 +164,7 @@ export default function CompetitionEvent({
   }, [constactPersonDetails]);
 
   useEffect(() => {
-    console.log(formData.has_form, formData.registration_link);
+    // console.log(formData.has_form, formData.registration_link);
   }, [formData.has_form, formData.registration_link]);
 
   return (
@@ -191,6 +236,18 @@ export default function CompetitionEvent({
               type="text"
               name="description"
               rows={7}
+            />
+          </div>
+          <div className="event-club-container" style={{ color: "grey" }}>
+            <label className="label">EVENT CLUB*</label>
+            <br />
+            {/* select multiple clubs */}
+            <Select
+              options={clubOptions}
+              isMulti
+              name="event_club"
+              onChange={handleClubChange}
+              // value={eventClubs}
             />
           </div>
           <div className="date-time-venue-container">
