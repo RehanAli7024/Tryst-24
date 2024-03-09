@@ -67,7 +67,8 @@ const EventMain = () => {
   const checkForSelectedClub = (selectedClubs, eventClubs) => {
     // console.log(eventClubs)
     // eventClubs = JSON.parse(eventClubs);
-    if (!eventClubs || eventClubs === "undefined") {
+    // check if eventClubs is {} (empty object) or "undefined"
+    if (!eventClubs || eventClubs === "undefined" || (typeof eventClubs === 'object' && !Object.keys(eventClubs).length)) {
       return false;
     } else {
       console.log(eventClubs);

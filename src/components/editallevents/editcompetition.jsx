@@ -138,11 +138,7 @@ export default function EditCompetitionEvent({
     event_club: eventDetails.clubs,
   });
 
-  // const eventClubsData = JSON.parse(eventDetails.clubs);
-  // const eventClubs = eventClubsData.map((club) => ({
-  //   value: club.id,
-  //   label: club.name,
-  // }));
+
   let eventClubs = [];
   if (
     eventDetails.clubs &&
