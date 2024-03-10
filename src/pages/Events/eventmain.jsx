@@ -54,17 +54,23 @@ const EventMain = () => {
   const [dplay, setDplay] = useState("none");
   const divRef = useRef(null);
   useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    axios
-
-      .get(`${DOMAIN}allevents/`)
-      .then((response) => {
-        setEventarray(response.data);
-        // console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (sessionStorage.getItem("all_events_data")) {
+      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+    } else {
+      axios
+        .get(`${DOMAIN}allevents/`)
+        .then((response) => {
+          setEventarray(response.data);
+          // console.log(response.data);
+          sessionStorage.setItem(
+            "all_events_data",
+            JSON.stringify(response.data)
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
 
   const checkForSelectedClub = (selectedClubs, eventClubs) => {
