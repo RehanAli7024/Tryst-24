@@ -179,6 +179,7 @@ function Navbar() {
         {[
           "About",
           "Guests",
+          "Accomodation",
           userProfile?.category !== "general" && "Pronites",
           "Events",
           "Sponsors",
