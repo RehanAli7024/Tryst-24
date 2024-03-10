@@ -9,7 +9,6 @@ import { DOMAIN } from "../../domain";
 import userLoggedInNavigator from "../../pages/routes/userLoggedInNavigator";
 import defaultdp from "./Assets_dashboard/defaultimage.jpg";
 import logouthov from "../../assets/Dashboard/logouthover.svg";
-import UserCard_Registration from "../../components/userCard/UserCard_Registration";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -64,7 +63,6 @@ const Dashboard = () => {
   const fileInputRef = useRef(null);
   const editButtonRef = useRef(null);
   const photoexists = photo !== "";
-  const [registeredEvents, setRegisteredEvents] = useState([]);
 
   // Function to handle photo change
   const handlePhotoChange = (e) => {
@@ -82,25 +80,10 @@ const Dashboard = () => {
 
   // Function to open the file input dialog
   const openFileInput = () => {
-    fileInputRef.current.clicFk();
+    fileInputRef.current.click();
   };
 
-  useEffect(() => {
-    axios.get(`${DOMAIN}registered/`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-      }
-    })
-      .then((response) => {
-        setRegisteredEvents(response.data.registered_events);
-        console.log(registeredEvents);
-      }).catch((error) => {
-        console.log(error);
-      })
-  }, [])
-  useEffect(() => {
-    console.log(registeredEvents);
-  }, [registeredEvents])
+  // Close the popup if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -212,29 +195,29 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard- nav - button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
+            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
               }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard - nav - button ${activeButton === "PRONITES" ? "active" : ""
+            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
               }`}
             onClick={() => handleButtonClick("PRONITES")}
           >
             PRONITES
           </button>
           <button
-            className={`dashboard - nav - button ${activeButton === "YOUR ORDERS" ? "active" : ""
-              } `}
+            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard - nav - button ${activeButton === "ACCOMODATION" ? "active" : ""
-              } `}
+            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
@@ -243,15 +226,7 @@ const Dashboard = () => {
 
       </div>
       <div className="dashboard-content">
-        {activeButton === "REGISTERED EVENTS" && (<>
-          <div className="registered-events">
-            {registeredEvents.map((event, index) => {
-              return (
-                <UserCard_Registration key={index} props={event} />
-              );
-            })}
-          </div>
-        </>)}
+        {activeButton === "REGISTERED EVENTS" && <p>No Events Registered Yet !</p>}
         {activeButton === "PRONITES" && <p>No Pronites yet !</p>}
         {activeButton === "YOUR ORDERS" && <p>No Orders placed yet !</p>}
         {activeButton === "ACCOMODATION" && <p>No Accomodation request yet !</p>}
