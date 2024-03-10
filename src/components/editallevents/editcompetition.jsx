@@ -49,6 +49,9 @@ export default function EditCompetitionEvent({
     { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
     { index: 11, name: "Robotics Club", abbr: "ROBO CLUB" },
     { index: 12, name: "Economics Club", abbr: "ECO CLUB" },
+    { index: 13, name: "Algorithms and Coding Club (ANCC)", abbr: "ANCC" },
+    { index: 14, name: "DEBSOC", abbr: "DEBSOC" },
+    { index: 15, name: "Literary Club", abbr: "LIT CLUB" },
   ];
 
   const clubOptions = Clubs.map((club) => {
