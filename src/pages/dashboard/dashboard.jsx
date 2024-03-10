@@ -9,6 +9,7 @@ import { DOMAIN } from "../../domain";
 import userLoggedInNavigator from "../../pages/routes/userLoggedInNavigator";
 import defaultdp from "./Assets_dashboard/defaultimage.jpg";
 import logouthov from "../../assets/Dashboard/logouthover.svg";
+import UserCard_Registration from "../../components/userCard/UserCard_Registration";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ const Dashboard = () => {
   const fileInputRef = useRef(null);
   const editButtonRef = useRef(null);
   const photoexists = photo !== "";
+  const [registeredEvents, setRegisteredEvents] = useState([]);
 
   // Function to handle photo change
   const handlePhotoChange = (e) => {
@@ -90,13 +92,15 @@ const Dashboard = () => {
       }
     })
       .then((response) => {
-        setUser(response.data);
-        setPhoto(response.data.photo);
+        setRegisteredEvents(response.data.registered_events);
+        console.log(registeredEvents);
       }).catch((error) => {
         console.log(error);
       })
   }, [])
-  // Close the popup if clicked outside
+  useEffect(() => {
+    console.log(registeredEvents);
+  }, [registeredEvents])
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -240,9 +244,12 @@ const Dashboard = () => {
       </div>
       <div className="dashboard-content">
         {activeButton === "REGISTERED EVENTS" && (<>
-          {/* <p>No Events Registered Yet !</p> */}
-          <div>
-
+          <div className="registered-events">
+            {registeredEvents.map((event, index) => {
+              return (
+                <UserCard_Registration key={index} props={event} />
+              );
+            })}
           </div>
         </>)}
         {activeButton === "PRONITES" && <p>No Pronites yet !</p>}
