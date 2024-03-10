@@ -1,0 +1,85 @@
+.error404-page {
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.error404-container {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.error404-container h1 {
+    font-family: "Audiowide";
+    font-size: 8rem;
+    color: #00e0ff;
+}
+
+.error404-container h3 {
+    font-family: "Rajdhani";
+    font-size: 4rem;
+    color: #fff;
+    text-align: center;
+}
+
+.error404-container p {
+    font-family: rajdhani;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+}
+
+.error404-container a {
+    font-family: rajdhani;
+    color: #00e0ff;
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 426px) and (max-width: 1023px) {
+    .error404-container {
+        width: 60%;
+    }
+
+    .error404-container h1 {
+        font-size: 5rem;
+    }
+
+    .error404-container h3 {
+        font-size: 3rem;
+    }
+
+    .error404-container p {
+        font-size: 1rem;
+    }
+}
+
+
+
+@media only screen and (max-width: 426px) {
+    .error404-container {
+        width: 80%;
+    }
+
+    .error404-container h1 {
+        font-size: 5rem;
+    }
+
+    .error404-container h3 {
+        font-size: 3rem;
+    }
+
+    .error404-container p {
+        font-size: 1rem;
+    }
+  }
+
+
+
+

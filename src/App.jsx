@@ -23,6 +23,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { DOMAIN } from "./domain.js";
 import Accomodation from "./pages/accomodation/accomodation.jsx";
+import Error404 from "./pages/error404/Error404.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
@@ -71,6 +72,11 @@ const App = () => {
                 />
               );
             })}
+
+            <Route
+                    path="*"
+                    element={<Error404 />}
+                />
         </Routes>
         <Footer />
       </Router>
