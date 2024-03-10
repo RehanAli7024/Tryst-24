@@ -136,7 +136,7 @@ const EventPage = ({ event }) => {
 
           </div>
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
-            <div className="event_title"> <h1>{event.title}</h1></div>
+            <div className="event_title_1">{event.title}</div>
             <div className="event_para_1">{event.description}</div>
             <div className="event_details">
               <div className="event_date">
@@ -165,7 +165,7 @@ const EventPage = ({ event }) => {
                     />
                   </g>
                 </svg>
-                <p>Date: {event.event_date}</p>
+                <p>{event.event_date}</p>
               </div>
               <div className="event_time">
                 <svg
@@ -193,7 +193,7 @@ const EventPage = ({ event }) => {
                     />
                   </g>
                 </svg>
-                <p>Time: {convertTimeToAMPM(event.event_time.slice(0, 5))}</p>
+                <p>{convertTimeToAMPM(event.event_time.slice(0, 5))}</p>
               </div>
               <div className="event_location">
                 <svg
@@ -208,7 +208,7 @@ const EventPage = ({ event }) => {
                     fill="#E086D3"
                   />
                 </svg>
-                <p>Venue: {event.venue}</p>
+                <p>{event.venue}</p>
               </div>
             </div>
             <div className="event_deadline">
@@ -255,6 +255,12 @@ const EventPage = ({ event }) => {
               </div>
               <div className="POC_box">
                 <div className="ev_contact_text">CONTACT</div>
+                {event.contact.map((poc, index) => (
+                  <div className="ev_POC" key={index}>
+                    <div className="ev_poc_name">{poc.name}</div>
+                    <div className="ev_poc_contact">{poc.phone}</div>
+                  </div>
+                ))}
                 {event.contact.map((poc, index) => (
                   <div className="ev_POC" key={index}>
                     <div className="ev_poc_name">{poc.name}</div>

@@ -26,7 +26,7 @@ export default function EventCard({ image }) {
     setIsHovered(false);
   };
 
-  
+
 
   return (
     <div
@@ -44,8 +44,8 @@ export default function EventCard({ image }) {
           isHovered
             ? EventcardbgHover
             : isClicked
-            ? EventcardbgClicked
-            : Eventcardbg
+              ? EventcardbgClicked
+              : Eventcardbg
         }
         alt="event card background"
         className="event-card-bg"
@@ -57,12 +57,14 @@ export default function EventCard({ image }) {
         <img
           src={isHovered || isClicked ? topvectorHover : topvector}
           alt="event card background"
+          className="event-card-bg"
         />
       </div>
       <div className="event-card-bottom-vector">
         <img
           src={isHovered || isClicked ? bottomvectorHover : bottomvector}
           alt="event card background"
+          className="event-card-bg"
         />
       </div>
     </div>
