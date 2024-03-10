@@ -37,7 +37,7 @@ const EventPage = ({ event }) => {
     var time12 = hours + ':' + minutes + ' ' + period;
 
     return time12;
-}
+  }
   useEffect(() => {
     if (localStorage.getItem("access_token") === null) {
       setDisplaytext("Login to Register");
@@ -216,14 +216,14 @@ const EventPage = ({ event }) => {
                 Registration Deadline :
               </div>
               <div className="ev_deadline_main">
-              {convertTimeToAMPM(event.deadline_time.slice(0, 5))}, {event.deadline_date}
+                {convertTimeToAMPM(event.deadline_time.slice(0, 5))}, {event.deadline_date}
               </div>
             </div>
             <div className="ev_contact_information grid grid-cols-2">
               <div className="col-span-2 md:col-span-1 ev_register ">
                 <div className="fil_con" id="ev_page_fil_con_2" >
                   <div className="filter_btn" id="ev_btn_1">
-                    {event.registration_link !== "" ? (
+                    {event.registration_link !== null ? (
                       <a href={event.registration_link} target="_blank" rel="noreferrer" className="filter_btn" id="ev_btn_1">
                         Register <img
                           src={arrow_forward}
