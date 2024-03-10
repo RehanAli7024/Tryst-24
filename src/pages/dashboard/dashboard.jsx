@@ -80,9 +80,22 @@ const Dashboard = () => {
 
   // Function to open the file input dialog
   const openFileInput = () => {
-    fileInputRef.current.click();
+    fileInputRef.current.clicFk();
   };
 
+  useEffect(() => {
+    axios.get(`${DOMAIN}registered/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      }
+    })
+      .then((response) => {
+        setUser(response.data);
+        setPhoto(response.data.photo);
+      }).catch((error) => {
+        console.log(error);
+      })
+  }, [])
   // Close the popup if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -195,29 +208,29 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
+            className={`dashboard- nav - button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
               }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
+            className={`dashboard - nav - button ${activeButton === "PRONITES" ? "active" : ""
               }`}
             onClick={() => handleButtonClick("PRONITES")}
           >
             PRONITES
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
-              }`}
+            className={`dashboard - nav - button ${activeButton === "YOUR ORDERS" ? "active" : ""
+              } `}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
-              }`}
+            className={`dashboard - nav - button ${activeButton === "ACCOMODATION" ? "active" : ""
+              } `}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
@@ -226,7 +239,12 @@ const Dashboard = () => {
 
       </div>
       <div className="dashboard-content">
-        {activeButton === "REGISTERED EVENTS" && <p>No Events Registered Yet !</p>}
+        {activeButton === "REGISTERED EVENTS" && (<>
+          {/* <p>No Events Registered Yet !</p> */}
+          <div>
+
+          </div>
+        </>)}
         {activeButton === "PRONITES" && <p>No Pronites yet !</p>}
         {activeButton === "YOUR ORDERS" && <p>No Orders placed yet !</p>}
         {activeButton === "ACCOMODATION" && <p>No Accomodation request yet !</p>}
