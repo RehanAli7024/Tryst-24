@@ -36,17 +36,32 @@
   align-items: center;
   width: 22%;
 }
-
-.user-card-text h2 {
-  font-size: 1.5rem;
+.user-card-title {
+  font-size: 2vw;
+  font-weight: 600;
+  font-family: Bender;
+  letter-spacing: 0.25rem;
 }
-
+.user-card-label {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: max-content;
+}
+.user-card-label p {
+  margin-left: 1rem;
+  font-family: Bender;
+  letter-spacing: 0.15rem;
+}
 @media screen and (max-width: 768px) {
   .user-card-text {
     font-size: 1.5vw;
     gap: 2%;
-}
-
+  }
+  .user-card-label {
+    margin: 0.25rem 0;
+  }
   .user-card-text h2 {
     font-size: 1rem;
   }
@@ -65,5 +80,5 @@
   .user-card-text {
     font-size: 3vw;
     gap: 2%;
-}
+  }
 }

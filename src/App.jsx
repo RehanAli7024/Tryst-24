@@ -27,17 +27,27 @@ import Error404 from "./pages/error404/Error404.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
+
   useEffect(() => {
-    axios
-      .get(`${DOMAIN}allevents/`)
-      .then((response) => {
-        setEventarray(response.data);
-        // console.log(response.data.competitions);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (sessionStorage.getItem("all_events_data")) {
+      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+    } else {
+      axios
+        .get(`${DOMAIN}allevents/`)
+        .then((response) => {
+          setEventarray(response.data);
+          // console.log(response.data.competitions);
+          sessionStorage.setItem(
+            "all_events_data",
+            JSON.stringify(response.data)
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
+
   return (
     <main className="main-bg">
       <Router>
