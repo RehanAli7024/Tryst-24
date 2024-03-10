@@ -261,12 +261,6 @@ const EventPage = ({ event }) => {
                     <div className="ev_poc_contact">{poc.phone}</div>
                   </div>
                 ))}
-                {event.contact.map((poc, index) => (
-                  <div className="ev_POC" key={index}>
-                    <div className="ev_poc_name">{poc.name}</div>
-                    <div className="ev_poc_contact">{poc.phone}</div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
