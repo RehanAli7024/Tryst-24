@@ -135,13 +135,13 @@ const Accomodation = () => {
         >
           FAQs
         </button>
-        {/* <button
+        <button
           className={`dashboard-nav-button ${activeButton === "Reaching IITD" ? "active" : ""
             }`}
           onClick={() => handleButtonClick("Reaching IITD")}
         >
           Reaching IITD
-        </button> */}
+        </button>
         <button
           className={`dashboard-nav-button ${activeButton === "Contact Us" ? "active" : ""
             }`}
@@ -168,50 +168,31 @@ const Accomodation = () => {
             <div className="ac_reaching_points">
               <div className="ac_reaching_points_num">1. </div>
               <div className="ac_reaching_points_text">
-                Travelling in Mumbai is very easy and systematic. The modes of
-                travelling in Mumbai are taxis, auto rickshaws, local train and
-                BEST Buses. IIT Bombay is located at Powai, which is an eastern
-                suburb in the North-Eastern part (Central Railway Line) of
-                Mumbai. The following link may provide you a rough estimate of
-                the auto fares between two stations Taxi Auto fare Mumbai is in
-                the form of a long narrow island, almost a peninsula, thrusting
-                southwards into the Arabian Sea. In Mumbai, local trains run
-                through the following routes. Western Railway: Church gate to
-                Borivali/Virar and return. Central Railway: Mumbai CST to
-                Karjat/Kasara and return. Harbour Route: Mumbai CST to Andheri
-                and return New Bombay Route: Mumbai CST to Vashi/ Panvel and
-                return. Kanjur Marg, a Local Train Station is the closest local
-                train stop to IIT Bombay. It is located on Central Railway line.
-                Kanjur Marg Local Train Station is the closest local train stop
-                to IIT Bombay.
+              By Air: If you're coming from another city or country, the nearest airport is the Indira Gandhi International Airport (DEL) in Delhi. From there, you can take a taxi, a pre-paid taxi service, or use ride-hailing services like Uber or Ola to reach IIT Delhi. The distance from the airport to IIT Delhi is approximately 15-20 kilometers, and it usually takes around 30-45 minutes depending on traffic conditions.
               </div>
             </div>
             <div className="ac_reaching_points">
               <div className="ac_reaching_points_num">2. </div>
               <div className="ac_reaching_points_text">
-                Every team has to register online on the official Techfest
-                website for the competition.
+              By Train: Delhi is well-connected by train to major cities across India. The nearest railway station to IIT Delhi is the New Delhi Railway Station (NDLS) or Hazrat Nizamuddin Railway Station (NZM). From there, you can take a taxi, auto-rickshaw, or the Delhi Metro to reach IIT Delhi. The Hauz Khas Metro Station is the nearest metro station to IIT Delhi.
               </div>
             </div>
             <div className="ac_reaching_points">
               <div className="ac_reaching_points_num">3. </div>
               <div className="ac_reaching_points_text">
-                A Team ID will be allocated to the team on registration which
-                shall be used for future references.
+              By Road: Delhi has an extensive network of roads and is well-connected to nearby cities and states by buses and private vehicles. You can reach Delhi via national highways or state highways and then use local transportation to reach IIT Delhi.
               </div>
             </div>
             <div className="ac_reaching_points">
               <div className="ac_reaching_points_num">4. </div>
               <div className="ac_reaching_points_text">
-                The decision of the organizers or judges shall be treated as
-                final and binding on all.
+              By Metro: Delhi Metro is one of the most convenient and efficient modes of transportation in the city. IIT Delhi is located near IIT Metro Station on the Magenta Line. You can take the metro and then either walk or take an auto-rickshaw or a cycle rickshaw to reach IIT Delhi campus.
               </div>
             </div>
             <div className="ac_reaching_points">
               <div className="ac_reaching_points_num">5. </div>
               <div className="ac_reaching_points_text">
-                No responsibility will be held by Techfest, IIT Bombay for any
-                late, lost or misdirected entries.
+              By Bus: Delhi has both state-run and private bus services connecting it to various parts of the country. You can reach Delhi by bus and then use local transportation to reach IIT Delhi.
               </div>
             </div>
             <div className="ac_reaching_points">
@@ -225,7 +206,7 @@ const Accomodation = () => {
             <div className="ac_reaching_points">
               <div className="ac_reaching_points_num">7. </div>
               <div className="ac_reaching_points_text">
-                All modes of official communication will be through the Techfest
+                All modes of official communication will be through the Tryst's
                 e-mail. Participants are advised to keep track of all folders in
                 their e-mail accounts.
               </div>
