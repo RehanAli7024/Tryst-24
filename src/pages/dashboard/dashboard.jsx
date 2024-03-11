@@ -194,7 +194,7 @@ const Dashboard = () => {
               <div className="dashboard_details">
                 <div className="dashboard_detail">
                   <div className="user_label">Name:</div>
-                  <div className="user_detail">{user.college}</div>
+                  <div className="user_detail" id="college-name">{user.college}</div>
                 </div>
                 <div className="dashboard_detail">
                   <div className="user_label">State:</div>
