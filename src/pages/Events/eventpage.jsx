@@ -9,6 +9,7 @@ import EventCard from "../../components/EventCard/EventCard";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
 import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 
 const EventPage = ({ event }) => {
   console.log(event);
@@ -216,7 +217,7 @@ const EventPage = ({ event }) => {
                 Registration Deadline :
               </div>
               <div className="ev_deadline_main">
-                {convertTimeToAMPM(event.deadline_time.slice(0, 5))}, {event.deadline_date}
+                {convertTimeToAMPM(event.deadline_time.slice(0, 5))}, {format(new Date(event.deadline_date), 'dd-MMM-yyyy')}
               </div>
             </div>
             <div className="ev_contact_information grid grid-cols-2">

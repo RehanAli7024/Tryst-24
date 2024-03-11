@@ -18,7 +18,7 @@ export default function UserCard_Registration({ props }) {
           <div className="user-card-details">
             <div className="user-card-label">
               <img src={calender} alt="calender" />
-              <p>{format(new Date(props.date), 'dd-MMM-yy')}</p>
+              <p>{format(new Date(props.date), 'dd-MMM-yyyy')}</p>
             </div>
             <div className="user-card-label">
               <img src={schedule} alt="schedule" />
