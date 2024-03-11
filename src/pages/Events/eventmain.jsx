@@ -10,8 +10,6 @@ import EventCard from "../../components/EventCard/EventCard";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
 import { Link, useNavigate } from "react-router-dom";
-import { set } from "immutable";
-import demo from "../../assets/event_cards/demo.png";
 
 const Types = [
   { index: 1, name: "Competitions" },
@@ -199,6 +197,7 @@ const EventMain = () => {
       setFirsttime(false);
     }
   }, [divRef, typeSelected, clubSelected, searchTerm]);
+  const currentDate = new Date();
   return (
     <>
       <div className="event_body">
@@ -416,21 +415,14 @@ const EventMain = () => {
                   !searchTerm ||
                   event.title.toLowerCase().includes(searchTerm.toLowerCase())
                 ) {
-                  if (typeSelected.length === 0) {
-                    if (clubSelected.length === 0) {
-                      return (
-                        <Link
-                          to={`/events/${event.title}`}
-                          key={index}
-                          id="event_link"
-                        >
-                          <div className="events_card">
-                            <EventCard image={event.event_image} />
-                          </div>
-                        </Link>
-                      );
-                    } else {
-                      if (checkForSelectedClub(clubSelected, event.clubs)) {
+                  const eventDate = new Date(event.event_date); // Convert event date string to Date object
+                  if (!event.event_date || eventDate > currentDate) {
+                    // Check if event date is not provided or if it's in the future
+                    if (typeSelected.length === 0 || typeSelected.includes(1)) {
+                      if (
+                        clubSelected.length === 0 ||
+                        checkForSelectedClub(clubSelected, event.clubs)
+                      ) {
                         return (
                           <Link
                             to={`/events/${event.title}`}
@@ -445,35 +437,16 @@ const EventMain = () => {
                       }
                     }
                   } else {
-                    if (typeSelected.includes(1)) {
-                      if (clubSelected.length === 0) {
-                        return (
-                          <Link
-                            to={`/events/${event.title}`}
-                            key={index}
-                            id="event_link"
-                          >
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      } else {
-                        if (checkForSelectedClub(clubSelected, event.clubs)) {
-                          return (
-                            <Link
-                              to={`/events/${event.title}`}
-                              key={index}
-                              id="event_link"
-                            >
-                              <div className="events_card">
-                                <EventCard image={event.event_image} />
-                              </div>
-                            </Link>
-                          );
-                        }
-                      }
-                    }
+                    // Event date has passed, render with gray filter
+                    return (
+                      <div className="events_card" key={index}>
+                        <img
+                          src={event.event_image}
+                          alt="Event"
+                          style={{ filter: "grayscale(100%)" }}
+                        />
+                      </div>
+                    );
                   }
                 }
               })}
