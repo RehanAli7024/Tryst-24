@@ -1,7 +1,8 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import "./landing-sponsors.css";
-import SponsorCard from "../../../components/SponsorCard/SponsorCard";
+import "../../../components/SponsorCard/SponsorCard.css"
+// import SponsorCard from "../../../components/SponsorCard/SponsorCard";
 import TechMaghi from "../../../assets/sponsors/tm.webp";
 import Samsung from "../../../assets/sponsors/samsung.webp";
 import Remarkskill from "../../../assets/sponsors/remarkskill.webp";
@@ -115,24 +116,33 @@ const Sponsors = () => {
         {Object.values(SPONSORS).map((sponsorsList, i) => (
           <div
             key={`sponsorsUp${i + 1}`}
-            className={`${
-              window.innerWidth < 768
-                ? "sponser-landing-sponsors-container-top-boss "
-                : "sponser-landing-sponsors-container-top-boss sponser-scroller"
-            }`}
+            className={`${window.innerWidth < 768
+              ? "sponser-landing-sponsors-container-top-boss "
+              : "sponser-landing-sponsors-container-top-boss sponser-scroller"
+              }`}
             data-direction={i === 0 ? "right" : "left"}
             data-speed="slow"
           >
             <div
-              className={`${
-                window.innerWidth < 768
-                  ? "sponser-landing-sponsors-container-top "
-                  : "sponser-landing-sponsors-container-top sponser-scroller__inner"
-              }`}
+              className={`${window.innerWidth < 768
+                ? "sponser-landing-sponsors-container-top "
+                : "sponser-landing-sponsors-container-top sponser-scroller__inner"
+                }`}
             >
               {sponsorsList.map((sponsor) => (
                 <div key={sponsor.index} className="sponser-landing-sponsor-card">
-                  <SponsorCard sponsor={sponsor} />
+                  {/* <SponsorCard sponsor={sponsor} /> */}
+                  <div key={sponsor.index} className="sponsor-container" id={`sponsor${sponsor.index}`}>
+                    <div className="sponsor-heading">{sponsor.header}</div>
+                    <div className="sponsor-box-container sponsor-shape">
+                      <div className="sponsor-box sponsor-shape">
+                        <div className="sponsor-box-img-div">
+                          <img src={sponsor.image} alt={sponsor.name} className="sponsor-box-img" />
+                        </div>
+                        <div className="sponsor-box-text">{sponsor.name}</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
