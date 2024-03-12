@@ -37,21 +37,19 @@ export default function EditCompetitionEvent({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const Clubs = [
-    { index: 1, name: "ACES-ACM", abbr: "ACES-ACM" },
-    { index: 2, name: "Chemical Engineering Society (CHES)", abbr: "CHES" },
-    { index: 3, name: "Mathematics Society (MathSoc)", abbr: "MathSoc" },
-    { index: 4, name: "Civil Engineering Forum (CEF)", abbr: "CEF" },
-    { index: 5, name: "Textile Engineering Society (TES)", abbr: "TES" },
-    { index: 6, name: "Material Engineering Society (MES)", abbr: "MES" },
-    { index: 7, name: "Physics and astronomy club (PAC)", abbr: "PAC" },
-    { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
-    { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
-    { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
-    { index: 11, name: "Robotics Club", abbr: "ROBO CLUB" },
-    { index: 12, name: "Economics Club", abbr: "ECO CLUB" },
-    { index: 13, name: "Algorithms and Coding Club (ANCC)", abbr: "ANCC" },
-    { index: 14, name: "DEBSOC", abbr: "DEBSOC" },
-    { index: 15, name: "Literary Club", abbr: "LIT CLUB" },
+    { index: 1, name: "Economics and Finance Club", abbr: "E&F" },
+    { index: 2, name: "Business and Consulting Club", abbr: "B&C" },
+    { index: 3, name: "Blockchain and Crypto Club", abbr: "BC&C" },
+    { index: 4, name: "Automotive Club", abbr: "AUTO" },
+    { index: 5, name: "Aviation Club", abbr: "AVI" },
+    { index: 6, name: "Coding and Hackathon Club", abbr: "CODING" },
+    { index: 7, name: "Bio-Tech Club", abbr: "BIO-TECH" },
+    { index: 8, name: "Mechanical and Civil Engineering Club", abbr: "MECH&CIVIL" },
+    { index: 9, name: "Physics and Astronomy Club", abbr: "PAC" },
+    { index: 10, name: "Mathematics Club", abbr: "MATH CLUB" },
+    { index: 11, name: "Literary and Quizzing Club", abbr: "L&Q CLUB" },
+    { index: 12, name: "Debating Club", abbr: "DESOC" },
+    { index: 13, name: "Robotics Club", abbr: "ROBO" },
   ];
 
   const clubOptions = Clubs.map((club) => {

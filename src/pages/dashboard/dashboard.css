@@ -289,6 +289,9 @@
   gap: 18%;
 }
 
+#college-name{
+  width: 40%;
+}
 @media screen and (max-width: 1200px) {
   .profile_box {
     display: flex;
