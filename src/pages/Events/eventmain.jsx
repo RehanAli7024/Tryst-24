@@ -20,21 +20,20 @@ const Types = [
 ];
 
 const Clubs = [
-  { index: 1, name: "ACES-ACM", abbr: "ACES-ACM" },
-  { index: 2, name: "Chemical Engineering Society (CHES)", abbr: "CHES" },
-  { index: 3, name: "Mathematics Society (MathSoc)", abbr: "MathSoc" },
-  { index: 4, name: "Civil Engineering Forum (CEF)", abbr: "CEF" },
-  { index: 5, name: "Textile Engineering Society (TES)", abbr: "TES" },
-  { index: 6, name: "Material Engineering Society (MES)", abbr: "MES" },
-  { index: 7, name: "Physics and astronomy club (PAC)", abbr: "PAC" },
-  { index: 8, name: "Axlr8r", abbr: "Axlr8r" },
-  { index: 9, name: "Aeromodelling Club", abbr: "AERO" },
-  { index: 10, name: "DEVCLUB", abbr: "DEVCLUB" },
-  { index: 11, name: "Robotics Club", abbr: "ROBO CLUB" },
-  { index: 12, name: "Economics Club", abbr: "ECO CLUB" },
-  { index: 13, name: "Algorithms and Coding Club (ANCC)", abbr: "ANCC" },
-  { index: 14, name: "DEBSOC", abbr: "DEBSOC" },
-  { index: 15, name: "Literary Club", abbr: "LIT CLUB" },
+  { index: 1, name: "Economics and Finance Club", abbr: "E&F" },
+    { index: 2, name: "Business and Consulting Club", abbr: "B&C" },
+    { index: 3, name: "Blockchain and Crypto Club", abbr: "BC&C" },
+    { index: 4, name: "Automotive Club", abbr: "AUTO" },
+    { index: 5, name: "Aviation Club", abbr: "AVI" },
+    { index: 6, name: "Coding and Hackathon Club", abbr: "CODING" },
+    { index: 7, name: "Bio-Tech Club", abbr: "BIO-TECH" },
+    { index: 8, name: "Mechanical and Civil Engineering Club", abbr: "MECH&CIVIL" },
+    { index: 9, name: "Physics and Astronomy Club", abbr: "PAC" },
+    { index: 10, name: "Mathematics Club", abbr: "MATH CLUB" },
+    { index: 11, name: "Literary and Quizzing Club", abbr: "L&Q CLUB" },
+    { index: 12, name: "Debating Club", abbr: "DESOC" },
+    { index: 13, name: "Robotics Club", abbr: "ROBO" },
+    { index: 14, name: "Electrical and Energy Club", abbr: "E&E CLUB" },
 ];
 
 const EventMain = () => {
@@ -45,6 +44,16 @@ const EventMain = () => {
   const [typeSelected, setTypeSelected] = useState([]);
   const [clubSelected, setClubSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
+  const eventsPerPage = 12;
+
+  const indexOfLastEvent = page * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = Array.isArray(eventarray) ? eventarray.slice(indexOfFirstEvent, indexOfLastEvent) : [];
+
+  const paginate = (pageNumber) => {
+    setPage(pageNumber);
+  };
 
   const myStyle = {
     "mask-type": "alpha",
@@ -56,6 +65,7 @@ const EventMain = () => {
   useEffect(() => {
     if (sessionStorage.getItem("all_events_data")) {
       setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+      console.log(JSON.parse(sessionStorage.getItem("all_events_data")));
     } else {
       axios
         .get(`${DOMAIN}allevents/`)
@@ -187,8 +197,6 @@ const EventMain = () => {
   const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
   const [firsttime, setFirsttime] = useState(true);
   useEffect(() => {
-    // console.log(divRef.current.childNodes.length);
-
     if (divRef.current.childNodes.length > 1) {
       setDplay("none");
     } else if (divRef.current.childNodes.length == 1) {
@@ -198,7 +206,196 @@ const EventMain = () => {
       setDplay("none");
       setFirsttime(false);
     }
+    setShownEventsLength(React.Children.toArray(eventsDiv().props.children).length);
+    setLastIndex(12);
+    setFirstIndex(0);
   }, [divRef, typeSelected, clubSelected, searchTerm]);
+
+
+  const eventsDiv = () => {
+    return (
+      <div>
+
+        {eventarray.competitions &&
+          eventarray.competitions.map((event, index) => {
+            if (
+              !searchTerm ||
+              event.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              if (typeSelected.length === 0) {
+                if (clubSelected.length === 0) {
+                  return (
+                    <Link
+                      to={`/events/${event.title}`}
+                      key={index}
+                      id="event_link"
+                    // style={{ display: "none" }}
+                    >
+                      <div className="events_card">
+                        <EventCard image={event.event_image} />
+                      </div>
+                    </Link>
+                  );
+                } else {
+                  if (checkForSelectedClub(clubSelected, event.clubs)) {
+                    return (
+                      <Link
+                        to={`/events/${event.title}`}
+                        key={index}
+                        id="event_link"
+                      >
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  }
+                }
+              } else {
+                if (typeSelected.includes(1)) {
+                  if (clubSelected.length === 0) {
+                    return (
+                      <Link
+                        to={`/events/${event.title}`}
+                        key={index}
+                        id="event_link"
+                      >
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  } else {
+                    if (checkForSelectedClub(clubSelected, event.clubs)) {
+                      return (
+                        <Link
+                          to={`/events/${event.title}`}
+                          key={index}
+                          id="event_link"
+                        >
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
+                        </Link>
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          })}
+        {eventarray.guestlectures &&
+          eventarray.guestlectures.map((event, index) => {
+            if (
+              !searchTerm ||
+              event.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              if (typeSelected.length === 0) {
+                if (clubSelected.length === 0) {
+                  return (
+                    <Link to={`/events/${event.title}`} key={index}>
+                      <div className="events_card">
+                        <EventCard image={event.event_image} />
+                      </div>
+                    </Link>
+                  );
+                } else {
+                  if (checkForSelectedClub(clubSelected, event.clubs)) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  }
+                }
+              } else {
+                if (typeSelected.includes(2)) {
+                  if (clubSelected.length === 0) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  } else {
+                    if (clubSelected.includes(event.club)) {
+                      return (
+                        <Link to={`/events/${event.title}`} key={index}>
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
+                        </Link>
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          })}
+        {eventarray.workshops &&
+          eventarray.workshops.map((event, index) => {
+            if (
+              !searchTerm ||
+              event.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              if (typeSelected.length === 0) {
+                if (clubSelected.length === 0) {
+                  return (
+                    <Link to={`/events/${event.title}`} key={index}>
+                      <div className="events_card">
+                        <EventCard image={event.event_image} />
+                      </div>
+                    </Link>
+                  );
+                } else {
+                  if (clubSelected.includes(event.club)) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  }
+                }
+              } else {
+                if (typeSelected.includes(3)) {
+                  if (clubSelected.length === 0) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  } else {
+                    if (clubSelected.includes(event.club)) {
+                      return (
+                        <Link to={`/events/${event.title}`} key={index}>
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
+                        </Link>
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          })}
+      </div>
+    )
+  }
+
+  const [lastIndex, setLastIndex] = useState(12);
+  const [firstIndex, setFirstIndex] = useState(0);
+  const [shownEventsLength, setShownEventsLength] = useState(React.Children.toArray(eventsDiv().props.children).length);
+  const shownEvents = React.Children.toArray(eventsDiv().props.children);
+
+
   return (
     <>
       <div className="event_body">
@@ -409,181 +606,44 @@ const EventMain = () => {
             </div>
           </div>
 
-          <div className="events" ref={divRef}>
-            {eventarray.competitions &&
-              eventarray.competitions.map((event, index) => {
-                if (
-                  !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
-                ) {
-                  if (typeSelected.length === 0) {
-                    if (clubSelected.length === 0) {
-                      return (
-                        <Link
-                          to={`/events/${event.title}`}
-                          key={index}
-                          id="event_link"
-                        >
-                          <div className="events_card">
-                            <EventCard image={event.event_image} />
-                          </div>
-                        </Link>
-                      );
-                    } else {
-                      if (checkForSelectedClub(clubSelected, event.clubs)) {
-                        return (
-                          <Link
-                            to={`/events/${event.title}`}
-                            key={index}
-                            id="event_link"
-                          >
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      }
-                    }
-                  } else {
-                    if (typeSelected.includes(1)) {
-                      if (clubSelected.length === 0) {
-                        return (
-                          <Link
-                            to={`/events/${event.title}`}
-                            key={index}
-                            id="event_link"
-                          >
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      } else {
-                        if (checkForSelectedClub(clubSelected, event.clubs)) {
-                          return (
-                            <Link
-                              to={`/events/${event.title}`}
-                              key={index}
-                              id="event_link"
-                            >
-                              <div className="events_card">
-                                <EventCard image={event.event_image} />
-                              </div>
-                            </Link>
-                          );
-                        }
-                      }
-                    }
+          <div className="events-container">
+            <div className="events" ref={divRef}>
+              {shownEvents.slice(firstIndex, lastIndex).map((child, index) => (
+                <React.Fragment key={index}>{child}</React.Fragment>
+              ))}
+              {
+                <div className="no_events" style={{ display: dplay }}>
+                  No Events Found
+                </div>
+              }
+            </div>
+            <div className="pagination">
+              <button
+                onClick={() => {
+                  if (firstIndex > 0) {
+                    setFirstIndex(firstIndex - 12);
+                    setLastIndex(lastIndex - 12);
                   }
-                }
-              })}
-            {eventarray.guestlectures &&
-              eventarray.guestlectures.map((event, index) => {
-                if (
-                  !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
-                ) {
-                  if (typeSelected.length === 0) {
-                    if (clubSelected.length === 0) {
-                      return (
-                        <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card">
-                            <EventCard image={event.event_image} />
-                          </div>
-                        </Link>
-                      );
-                    } else {
-                      if (checkForSelectedClub(clubSelected, event.clubs)) {
-                        return (
-                          <Link to={`/events/${event.title}`} key={index}>
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      }
-                    }
-                  } else {
-                    if (typeSelected.includes(2)) {
-                      if (clubSelected.length === 0) {
-                        return (
-                          <Link to={`/events/${event.title}`} key={index}>
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      } else {
-                        if (clubSelected.includes(event.club)) {
-                          return (
-                            <Link to={`/events/${event.title}`} key={index}>
-                              <div className="events_card">
-                                <EventCard image={event.event_image} />
-                              </div>
-                            </Link>
-                          );
-                        }
-                      }
-                    }
+                }}
+                className="pagination_button"
+              >
+                {"< "}Previous
+              </button>
+              <button
+                onClick={() => {
+                  if (lastIndex < shownEvents.length) {
+                    setFirstIndex(firstIndex + 12);
+                    setLastIndex(lastIndex + 12);
                   }
-                }
-              })}
-            {eventarray.workshops &&
-              eventarray.workshops.map((event, index) => {
-                if (
-                  !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
-                ) {
-                  if (typeSelected.length === 0) {
-                    if (clubSelected.length === 0) {
-                      return (
-                        <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card">
-                            <EventCard image={event.event_image} />
-                          </div>
-                        </Link>
-                      );
-                    } else {
-                      if (clubSelected.includes(event.club)) {
-                        return (
-                          <Link to={`/events/${event.title}`} key={index}>
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      }
-                    }
-                  } else {
-                    if (typeSelected.includes(3)) {
-                      if (clubSelected.length === 0) {
-                        return (
-                          <Link to={`/events/${event.title}`} key={index}>
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      } else {
-                        if (clubSelected.includes(event.club)) {
-                          return (
-                            <Link to={`/events/${event.title}`} key={index}>
-                              <div className="events_card">
-                                <EventCard image={event.event_image} />
-                              </div>
-                            </Link>
-                          );
-                        }
-                      }
-                    }
+                  else {
+                    console.log(lastIndex, shownEvents.length, firstIndex)
                   }
-                }
-              })}
-            {
-              <div className="no_events" style={{ display: dplay }}>
-                No Events Found
-              </div>
-            }
+                }}
+                className="pagination_button"
+              >
+                Next{" >"}
+              </button>
+            </div>
           </div>
         </div>
       </div>
