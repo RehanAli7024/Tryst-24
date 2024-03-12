@@ -220,14 +220,15 @@ const EventMain = () => {
               !searchTerm ||
               event.title.toLowerCase().includes(searchTerm.toLowerCase())
             ) {
-              const eventDate = new Date(event.event_date); // Convert event date string to Date object
-              if (!event.event_date || eventDate > currentDate) {
-                // Check if event date is not provided or if it's in the future
-                if (typeSelected.length === 0 || typeSelected.includes(1)) {
-                  if (
-                    clubSelected.length === 0 ||
-                    checkForSelectedClub(clubSelected, event.clubs)
-                  ) {
+              if (typeSelected.length === 0 || typeSelected.includes(1)) {
+                if (
+                  clubSelected.length === 0 ||
+                  checkForSelectedClub(clubSelected, event.clubs)
+                ) {
+                  const eventDate = new Date(event.event_date); // Convert event date string to Date object
+                  if (!event.event_date || eventDate > currentDate) {
+                    // Check if event date is not provided or if it's in the future
+
                     return (
                       <Link
                         to={`/events/${event.title}`}
@@ -239,19 +240,18 @@ const EventMain = () => {
                         </div>
                       </Link>
                     );
+                  } else {
+                    return (
+                      <div className="events_card" key={index}>
+                        <img
+                          src={event.event_image}
+                          alt="Event"
+                          style={{ filter: "grayscale(100%)" }}
+                        />
+                      </div>
+                    );
                   }
                 }
-              } else {
-                // Event date has passed, render with gray filter
-                return (
-                  <div className="events_card" key={index}>
-                    <img
-                      src={event.event_image}
-                      alt="Event"
-                      style={{ filter: "grayscale(100%)" }}
-                    />
-                  </div>
-                );
               }
             }
           })}
