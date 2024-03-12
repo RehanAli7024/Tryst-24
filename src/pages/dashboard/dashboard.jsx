@@ -9,6 +9,7 @@ import { DOMAIN } from "../../domain";
 import userLoggedInNavigator from "../../pages/routes/userLoggedInNavigator";
 import defaultdp from "./Assets_dashboard/defaultimage.jpg";
 import logouthov from "../../assets/Dashboard/logouthover.svg";
+import UserCard_Registration from "../../components/userCard/UserCard_Registration";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -63,6 +64,8 @@ const Dashboard = () => {
   const fileInputRef = useRef(null);
   const editButtonRef = useRef(null);
   const photoexists = photo !== "";
+  const [registeredEvents, setRegisteredEvents] = useState([]);
+
 
   // Function to handle photo change
   const handlePhotoChange = (e) => {
@@ -100,6 +103,19 @@ const Dashboard = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [fileInputRef, editButtonRef]);
+  useEffect(() => {
+    axios.get(`${DOMAIN}registered/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      }
+    })
+      .then((response) => {
+        setRegisteredEvents(response.data.registered_events);
+        console.log(registeredEvents);
+      }).catch((error) => {
+        console.log(error);
+      })
+  }, [])
 
   return (
     <>
@@ -178,7 +194,7 @@ const Dashboard = () => {
               <div className="dashboard_details">
                 <div className="dashboard_detail">
                   <div className="user_label">Name:</div>
-                  <div className="user_detail">{user.college}</div>
+                  <div className="user_detail" id="college-name">{user.college}</div>
                 </div>
                 <div className="dashboard_detail">
                   <div className="user_label">State:</div>
@@ -226,7 +242,13 @@ const Dashboard = () => {
 
       </div>
       <div className="dashboard-content">
-        {activeButton === "REGISTERED EVENTS" && <p>No Events Registered Yet !</p>}
+        {activeButton === "REGISTERED EVENTS" && <div><div className="registered-events">
+          {registeredEvents.map((event, index) => {
+            return (
+              <UserCard_Registration key={index} props={event} />
+            );
+          })}
+        </div> </div>}
         {activeButton === "PRONITES" && <p>No Pronites yet !</p>}
         {activeButton === "YOUR ORDERS" && <p>No Orders placed yet !</p>}
         {activeButton === "ACCOMODATION" && <p>No Accomodation request yet !</p>}

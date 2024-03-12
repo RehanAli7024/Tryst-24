@@ -17,15 +17,15 @@ export default function UserCard_Registration({ props }) {
           <h2 className="user-card-title"> {props.name}</h2>
           <div className="user-card-details">
             <div className="user-card-label">
-              <img src={calender} alt="calender" />
-              <p>{format(new Date(props.date), 'dd-MMM-yy')}</p>
+              <img src={calender} alt="calender" className="ucardsvg" />
+              <p>{format(new Date(props.date), 'dd-MMM-yyyy')}</p>
             </div>
             <div className="user-card-label">
-              <img src={schedule} alt="schedule" />
+              <img src={schedule} alt="schedule" className="ucardsvg" />
               <p>{new Date(`1970-01-01T${props.time}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
             </div>
             <div className="user-card-label">
-              <img src={location} alt="location" />
+              <img src={location} alt="location" className="ucardsvg"/>
               <p> {props.venue}</p>
             </div>
           </div>

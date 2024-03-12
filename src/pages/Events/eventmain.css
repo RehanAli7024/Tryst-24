@@ -484,6 +484,9 @@
     width: 1.5rem;
   }
 }
+.pagination_control{
+  background-color: #00e0ff;
+}
 
 @media (max-width: 500px) {
   .events {

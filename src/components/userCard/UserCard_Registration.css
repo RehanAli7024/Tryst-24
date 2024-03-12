@@ -69,6 +69,15 @@
   .book-pass-btn {
     height: 40%;
   }
+  .user-card-title{
+    font-size: 30%;
+  }
+  .ucardsvg{
+    width:1rem;
+  }
+  .comps-pic-img{
+    height:98%;
+  }
 }
 
 @media screen and (max-width: 500px) {
