@@ -3,27 +3,59 @@ import { useInView } from "react-intersection-observer";
 import "./landing-sponsors.css";
 import "../../../components/SponsorCard/SponsorCard.css"
 // import SponsorCard from "../../../components/SponsorCard/SponsorCard";
-import TechMaghi from "../../../assets/sponsors/tm.webp";
 import Samsung from "../../../assets/sponsors/samsung.webp";
+import TechMaghi from "../../../assets/sponsors/tm.webp";
 import Remarkskill from "../../../assets/sponsors/remarkskill.webp";
-import RobocapLeague from "../../../assets/sponsors/robocap.webp";
-import EdutechLife from "../../../assets/sponsors/edutech.webp";
+import Robocap from "../../../assets/sponsors/robocap.webp";
+import Edutech from "../../../assets/sponsors/edutech.webp";
 import Techobyte from "../../../assets/sponsors/techobyte.webp";
 import Robosapiens from "../../../assets/sponsors/robosapiens.webp";
 import Wingfotech from "../../../assets/sponsors/wingfotech.webp";
+import Orkes from "../../../assets/sponsors/orkes.webp";
+import Jagran from "../../../assets/sponsors/jagran.webp";
+import UnStop from "../../../assets/sponsors/unstop.webp";
+import SiliconIndia from "../../../assets/sponsors/siliconindia.webp";
+import Nucleus from "../../../assets/sponsors/nucleus.webp";
+import Aviakul from "../../../assets/sponsors/aviakul.webp";
+import Creya from "../../../assets/sponsors/creya.webp";
+import Fetchai from "../../../assets/sponsors/fetchai.webp";
+import Intel from "../../../assets/sponsors/intel.webp";
+import JungleeGames from "../../../assets/sponsors/jungleegames.webp";
+import Kredent from "../../../assets/sponsors/kredent.webp";
+import Logiqids from "../../../assets/sponsors/logiqids.webp";
+import Medulance from "../../../assets/sponsors/medulance.webp";
+import PieMatrix from "../../../assets/sponsors/piematrix.webp";
+import Twoss from "../../../assets/sponsors/twoss.webp";
+import VirtualNess from "../../../assets/sponsors/virtualness.webp";
 
 const SPONSORS = {
   sponsorsUp1: [
     { index: 1, name: "Samsung", image: Samsung },
     { index: 2, name: "TechMaghi", image: TechMaghi },
     { index: 3, name: "Remarkskill", image: Remarkskill },
-    { index: 4, name: "Robocap League", image: RobocapLeague },
+    { index: 4, name: "Robocap League", image: Robocap },
+    { index: 5, name: "Orkes", image: Orkes },
+    { index: 6, name: "Jagran Josh", image: Jagran },
+    { index: 7, name: "UnStop", image: UnStop },
+    { index: 8, name: "SilliconIndia", image: SiliconIndia },
+    { index: 9, name: "Nucleus Software", image: Nucleus },
+    { index: 10, name: "Aviakul", image: Aviakul },
+    { index: 11, name: "Creya", image: Creya },
+    { index: 12, name: "Fetchai", image: Fetchai },
   ],
   sponsorsUp2: [
-    { index: 1, name: "Edutech Life", image: EdutechLife },
+    { index: 1, name: "Edutech Life", image: Edutech },
     { index: 2, name: "Techobyte", image: Techobyte },
     { index: 3, name: "Robosapiens", image: Robosapiens },
     { index: 4, name: "Wingfotech", image: Wingfotech },
+    { index: 5, name: "Intel", image: Intel },
+    { index: 6, name: "Junglee Games", image: JungleeGames },
+    { index: 7, name: "Kredent Academy", image: Kredent },
+    { index: 8, name: "Logiqids", image: Logiqids },
+    { index: 9, name: "Medulance", image: Medulance },
+    { index: 10, name: "PieMatrix", image: PieMatrix },
+    { index: 11, name: "Twoss", image: Twoss },
+    { index: 12, name: "VirtualNess", image: VirtualNess },
   ],
 };
 
