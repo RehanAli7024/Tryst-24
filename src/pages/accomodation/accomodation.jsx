@@ -506,6 +506,7 @@ const Accomodation = () => {
                           className="submit_details_members"
                           onClick={handleSubmit}
                         >
+                          
                           Submit
                         </button>
                       )}
