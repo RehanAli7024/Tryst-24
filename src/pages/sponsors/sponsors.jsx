@@ -22,6 +22,7 @@ import Logiqids from "../../assets/sponsors/logiqids.webp";
 import Medulance from "../../assets/sponsors/medulance.webp";
 import PieMatrix from "../../assets/sponsors/piematrix.webp";
 import Twoss from "../../assets/sponsors/twoss.webp";
+import VirtualNess from "../../assets/sponsors/virtualness.webp";
 
 import SponsorCard from '../../components/SponsorCard/SponsorCard';
 
@@ -162,6 +163,12 @@ const sponsors = [
         image: Twoss,
         website: "https://www.twoss.in/"
     },
+    {
+        index: 23,
+        name: "Virtualness",
+        image: VirtualNess,
+        website: "https://www.virtualness.io/"
+    }
 ]
 
 
