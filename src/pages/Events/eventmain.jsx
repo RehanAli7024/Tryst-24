@@ -420,7 +420,7 @@ const EventMain = () => {
                     }}
                   />
                 </div>
-                <div className="sidebar_text">By Clubs/Society</div>
+                <div className="sidebar_text">By Event Type</div>
               </button>
               <div className="sidebar_options" id="sidebar_options_club">
                 {Clubs.map((club) => (
@@ -555,7 +555,7 @@ const EventMain = () => {
                     }}
                   />
                 </div>
-                <div className="sidebar_text">By Clubs/Society</div>
+                <div className="sidebar_text">By Event Type</div>
               </button>
               <div className="sidebar_options" id="sidebar_options_club">
                 {Clubs.map((club) => (
