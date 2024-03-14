@@ -387,7 +387,7 @@ const EventMain = () => {
                     transform: rotate1 ? "rotate(-90deg)" : "rotate(0deg)",
                   }}
                 />
-                <div className="sidebar_text">By Type</div>
+                <div className="sidebar_text">By Event Genre</div>
               </button>
               <div
                 className="sidebar_options sidebar_options_hr"
@@ -522,7 +522,7 @@ const EventMain = () => {
                     transform: rotate1 ? "rotate(-90deg)" : "rotate(0deg)",
                   }}
                 />
-                <div className="sidebar_text">By Type</div>
+                <div className="sidebar_text">By Event Genre</div>
               </button>
               <div
                 className="sidebar_options sidebar_options_hr"
