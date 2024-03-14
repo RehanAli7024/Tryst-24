@@ -24,6 +24,7 @@ import axios from "axios";
 import { DOMAIN } from "./domain.js";
 import Accomodation from "./pages/accomodation/accomodation.jsx";
 import Error404 from "./pages/error404/Error404.jsx";
+import Imagenai from "./pages/Events/imagenai.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
@@ -71,6 +72,7 @@ const App = () => {
           <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/bupubupu_github" element={<Imagenai />} />
           <Route path="/accomodation" element={<Accomodation />} />
           {eventarray.competitions &&
             eventarray.competitions.map((event, index) => {
