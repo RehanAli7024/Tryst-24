@@ -163,7 +163,16 @@ const EventPage = ({ event }) => {
           </div>
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
             <div className="event_title_1">{event.title}</div>
-            <div className="event_para_1">{event.description}</div>
+            <div className="event_para_1">
+              {event.description.split("\n").map((paragraph, index) => (
+                <React.Fragment key={index}>
+                  {index > 0 && <br />}
+                  {index > 0 && <br />}
+                  {paragraph}
+                </React.Fragment>
+              ))}
+            </div>
+
             <div className="event_details">
               <div className="event_date">
                 <svg
@@ -293,22 +302,28 @@ const EventPage = ({ event }) => {
                   </div>
                 </div>
               </div>
-              <div className="POC_box">
-                <div className="ev_contact_text">CONTACT</div>
-                {event.contact.map((poc, index) => (
-                  <div className="ev_POC" key={index}>
-                    <div className="ev_poc_name">{poc.name}</div>
-                    <div className="ev_poc_contact">{poc.phone}</div>
-                  </div>
-                ))}
-              </div>
+              {event.contact.length > 0 && (
+                <div className="POC_box">
+                  <div className="ev_contact_text">CONTACT</div>
+                  {event.contact.map((poc, index) => (
+                    <div className="ev_POC" key={index}>
+                      <div className="ev_poc_name">{poc.name}</div>
+                      <div className="ev_poc_contact">{poc.phone}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
         {event.title === "ImaGen AI" && isEventTime && (
           <div className="fil_con" id="imagenaibtn">
             <div className="filter_btn">
-              <Link to="/imagenai_prompteng" className="filter_btn" id="ev_btn_1">
+              <Link
+                to="/imagenai_prompteng"
+                className="filter_btn"
+                id="ev_btn_1"
+              >
                 Go To Event{" "}
                 <img src={arrow_forward} className="rotating_button" alt="" />
               </Link>

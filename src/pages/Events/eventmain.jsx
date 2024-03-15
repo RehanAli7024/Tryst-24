@@ -26,7 +26,11 @@ const Clubs = [
   { index: 5, name: "Aviation Club", abbr: "AVI" },
   { index: 6, name: "Coding and Hackathon Club", abbr: "CODING" },
   { index: 7, name: "Bio-Tech Club", abbr: "BIO-TECH" },
-  { index: 8, name: "Mechanical and Civil Engineering Club", abbr: "MECH&CIVIL" },
+  {
+    index: 8,
+    name: "Mechanical and Civil Engineering Club",
+    abbr: "MECH&CIVIL",
+  },
   { index: 9, name: "Physics and Astronomy Club", abbr: "PAC" },
   { index: 10, name: "Mathematics Club", abbr: "MATH CLUB" },
   { index: 11, name: "Literary and Quizzing Club", abbr: "L&Q CLUB" },
@@ -48,7 +52,9 @@ const EventMain = () => {
 
   const indexOfLastEvent = page * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = Array.isArray(eventarray) ? eventarray.slice(indexOfFirstEvent, indexOfLastEvent) : [];
+  const currentEvents = Array.isArray(eventarray)
+    ? eventarray.slice(indexOfFirstEvent, indexOfLastEvent)
+    : [];
 
   const paginate = (pageNumber) => {
     setPage(pageNumber);
@@ -67,7 +73,10 @@ const EventMain = () => {
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
-          if (JSON.stringify(response.data) !== sessionStorage.getItem("all_events_data")) {
+          if (
+            JSON.stringify(response.data) !==
+            sessionStorage.getItem("all_events_data")
+          ) {
             setEventarray(response.data);
             sessionStorage.setItem(
               "all_events_data",
@@ -219,12 +228,13 @@ const EventMain = () => {
       setDplay("none");
       setFirsttime(false);
     }
-    setShownEventsLength(React.Children.toArray(eventsDiv().props.children).length);
+    setShownEventsLength(
+      React.Children.toArray(eventsDiv().props.children).length
+    );
     setLastIndex(12);
     setFirstIndex(0);
   }, [divRef, typeSelected, clubSelected, searchTerm]);
   const currentDate = new Date();
-
 
   const eventsDiv = () => {
     return (
@@ -373,14 +383,15 @@ const EventMain = () => {
             }
           })}
       </div>
-    )
-  }
+    );
+  };
 
   const [lastIndex, setLastIndex] = useState(12);
   const [firstIndex, setFirstIndex] = useState(0);
-  const [shownEventsLength, setShownEventsLength] = useState(React.Children.toArray(eventsDiv().props.children).length);
+  const [shownEventsLength, setShownEventsLength] = useState(
+    React.Children.toArray(eventsDiv().props.children).length
+  );
   const shownEvents = React.Children.toArray(eventsDiv().props.children);
-
 
   return (
     <>
@@ -620,9 +631,8 @@ const EventMain = () => {
                   if (lastIndex < shownEvents.length) {
                     setFirstIndex(firstIndex + 12);
                     setLastIndex(lastIndex + 12);
-                  }
-                  else {
-                    console.log(lastIndex, shownEvents.length, firstIndex)
+                  } else {
+                    console.log(lastIndex, shownEvents.length, firstIndex);
                   }
                 }}
                 className="pagination_button"
