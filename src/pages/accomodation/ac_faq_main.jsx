@@ -19,13 +19,13 @@ const faqs = [
     index: "03",
 	},
 	{
-		"ques": "Will we get accommodation if we arrive before 4th march?",
-		"ans": "No accommodation will be provided before 4th march",
+		"ques": "Will we get accommodation if we arrive before 28th march?",
+		"ans": "No accommodation will be provided before 28th march",
     index: "04",
 	},
 	{
 		"ques": "Type of meals (veg or non veg) provided?",
-		"ans": "Only veg food is served to the guest. Non-veg food can be purchased from the outlets or restaurants in IIT Delhi",
+		"ans": "No food is provided with the booking. You need to purchase your own food on arrival",
     index: "05",
 	},
 	{

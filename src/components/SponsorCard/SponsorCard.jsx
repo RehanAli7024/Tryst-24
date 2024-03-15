@@ -1,6 +1,7 @@
+import React from "react";
 import "./SponsorCard.css"
 
-function SponsorCard({sponsor}){
+function SponsorCard({ sponsor }) {
     return (
         <div key={sponsor.index} className="sponsor-container" id={`sponsor${sponsor.index}`}>
             <div className="sponsor-heading">{sponsor.header}</div>

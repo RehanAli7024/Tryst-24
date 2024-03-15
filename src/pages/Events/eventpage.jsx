@@ -290,6 +290,22 @@ const EventPage = ({ event }) => {
             </div>
           </div>
         </div>
+        {/* {event.title === "ImaGen AI" && (
+          <div className="fil_con" id="imagenaibtn">
+            <div className="filter_btn">
+              <a
+                href="./../bupubupu_github"
+                target="_blank"
+                rel="noreferrer"
+                className="filter_btn"
+                id="ev_btn_1"
+              >
+                Go To Event{" "}
+                <img src={arrow_forward} className="rotating_button" alt="" />
+              </a>
+            </div>
+          </div>
+        )} */}
         {isVisible && (
           <div className="ev_formbox">
             <div className="ev_reg_form_heading">Registration Form</div>

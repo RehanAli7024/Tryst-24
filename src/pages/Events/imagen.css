@@ -1,0 +1,100 @@
+.imagen_box{
+    display: flex;
+    flex-direction: column;
+}
+.imagen_title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Color-Base-Gold-Yellow, #f0b537);
+    text-align: center;
+    font-family: "Audiowide" !important;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.6rem;
+}
+.how_to_use{
+    margin-top: 0.5rem;
+    display: flex;
+    color: aliceblue;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "rajdhani" !important;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.6rem;
+    margin-bottom: 2rem;
+}
+.bullet_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bullet{
+    display: flex;
+    color: aliceblue;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "bender" !important;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    /* letter-spacing: 0.6rem; */
+    margin-bottom: 2rem;
+}
+
+.imagen_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 100%; */
+}
+.image_topic{
+    font-family: "bender" !important;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    color: var(--Color-Base-Gold-Yellow, #f0b537);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imagebox_main{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+.imagebox_main img{
+    width: 30%
+}
+.image_desc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap: wrap;
+    text-align: center;
+}
+#imagenaibtn{
+    margin-left: 45vw;
+    margin-bottom: 2rem;
+}
+@media (max-width: 768px) {
+    #imagenaibtn{
+        margin-left: 32vw;
+    }
+}

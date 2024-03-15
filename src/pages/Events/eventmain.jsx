@@ -32,6 +32,7 @@ const Clubs = [
   { index: 11, name: "Literary and Quizzing Club", abbr: "L&Q CLUB" },
   { index: 12, name: "Debating Club", abbr: "DESOC" },
   { index: 13, name: "Robotics Club", abbr: "ROBO" },
+  { index: 14, name: "Electrical and Energy Club", abbr: "E&E CLUB" },
 ];
 
 const EventMain = () => {
@@ -42,6 +43,16 @@ const EventMain = () => {
   const [typeSelected, setTypeSelected] = useState([]);
   const [clubSelected, setClubSelected] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
+  const eventsPerPage = 12;
+
+  const indexOfLastEvent = page * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = Array.isArray(eventarray) ? eventarray.slice(indexOfFirstEvent, indexOfLastEvent) : [];
+
+  const paginate = (pageNumber) => {
+    setPage(pageNumber);
+  };
 
   const myStyle = {
     "mask-type": "alpha",
@@ -199,8 +210,6 @@ const EventMain = () => {
   const [bgColor, setBgColor] = useState("rgba(3, 10, 23, 0.8)");
   const [firsttime, setFirsttime] = useState(true);
   useEffect(() => {
-    // console.log(divRef.current.childNodes.length);
-
     if (divRef.current.childNodes.length > 1) {
       setDplay("none");
     } else if (divRef.current.childNodes.length == 1) {
@@ -210,8 +219,169 @@ const EventMain = () => {
       setDplay("none");
       setFirsttime(false);
     }
+    setShownEventsLength(React.Children.toArray(eventsDiv().props.children).length);
+    setLastIndex(12);
+    setFirstIndex(0);
   }, [divRef, typeSelected, clubSelected, searchTerm]);
   const currentDate = new Date();
+
+
+  const eventsDiv = () => {
+    return (
+      <div>
+        {eventarray.competitions &&
+          eventarray.competitions.map((event, index) => {
+            if (
+              !searchTerm ||
+              event.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              if (typeSelected.length === 0 || typeSelected.includes(1)) {
+                if (
+                  clubSelected.length === 0 ||
+                  checkForSelectedClub(clubSelected, event.clubs)
+                ) {
+                  const eventDate = new Date(event.event_date); // Convert event date string to Date object
+                  if (!event.event_date || eventDate > currentDate) {
+                    // Check if event date is not provided or if it's in the future
+
+                    return (
+                      <Link
+                        to={`/events/${event.title}`}
+                        key={index}
+                        id="event_link"
+                      >
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  } else {
+                    return (
+                      <div className="events_card" key={index}>
+                        <img
+                          src={event.event_image}
+                          alt="Event"
+                          style={{ filter: "grayscale(100%)" }}
+                        />
+                      </div>
+                    );
+                  }
+                }
+              }
+            }
+          })}
+        {eventarray.guestlectures &&
+          eventarray.guestlectures.map((event, index) => {
+            if (
+              !searchTerm ||
+              event.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              if (typeSelected.length === 0) {
+                if (clubSelected.length === 0) {
+                  return (
+                    <Link to={`/events/${event.title}`} key={index}>
+                      <div className="events_card">
+                        <EventCard image={event.event_image} />
+                      </div>
+                    </Link>
+                  );
+                } else {
+                  if (checkForSelectedClub(clubSelected, event.clubs)) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  }
+                }
+              } else {
+                if (typeSelected.includes(2)) {
+                  if (clubSelected.length === 0) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  } else {
+                    if (clubSelected.includes(event.club)) {
+                      return (
+                        <Link to={`/events/${event.title}`} key={index}>
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
+                        </Link>
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          })}
+        {eventarray.workshops &&
+          eventarray.workshops.map((event, index) => {
+            if (
+              !searchTerm ||
+              event.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              if (typeSelected.length === 0) {
+                if (clubSelected.length === 0) {
+                  return (
+                    <Link to={`/events/${event.title}`} key={index}>
+                      <div className="events_card">
+                        <EventCard image={event.event_image} />
+                      </div>
+                    </Link>
+                  );
+                } else {
+                  if (clubSelected.includes(event.club)) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  }
+                }
+              } else {
+                if (typeSelected.includes(3)) {
+                  if (clubSelected.length === 0) {
+                    return (
+                      <Link to={`/events/${event.title}`} key={index}>
+                        <div className="events_card">
+                          <EventCard image={event.event_image} />
+                        </div>
+                      </Link>
+                    );
+                  } else {
+                    if (clubSelected.includes(event.club)) {
+                      return (
+                        <Link to={`/events/${event.title}`} key={index}>
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
+                        </Link>
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          })}
+      </div>
+    )
+  }
+
+  const [lastIndex, setLastIndex] = useState(12);
+  const [firstIndex, setFirstIndex] = useState(0);
+  const [shownEventsLength, setShownEventsLength] = useState(React.Children.toArray(eventsDiv().props.children).length);
+  const shownEvents = React.Children.toArray(eventsDiv().props.children);
+
+
   return (
     <>
       <div className="event_body">
@@ -232,7 +402,7 @@ const EventMain = () => {
                     transform: rotate1 ? "rotate(-90deg)" : "rotate(0deg)",
                   }}
                 />
-                <div className="sidebar_text">By Type</div>
+                <div className="sidebar_text">By Event Genre</div>
               </button>
               <div
                 className="sidebar_options sidebar_options_hr"
@@ -265,7 +435,7 @@ const EventMain = () => {
                     }}
                   />
                 </div>
-                <div className="sidebar_text">By Clubs/Society</div>
+                <div className="sidebar_text">By Event Type</div>
               </button>
               <div className="sidebar_options" id="sidebar_options_club">
                 {Clubs.map((club) => (
@@ -367,7 +537,7 @@ const EventMain = () => {
                     transform: rotate1 ? "rotate(-90deg)" : "rotate(0deg)",
                   }}
                 />
-                <div className="sidebar_text">By Type</div>
+                <div className="sidebar_text">By Event Genre</div>
               </button>
               <div
                 className="sidebar_options sidebar_options_hr"
@@ -400,7 +570,7 @@ const EventMain = () => {
                     }}
                   />
                 </div>
-                <div className="sidebar_text">By Clubs/Society</div>
+                <div className="sidebar_text">By Event Type</div>
               </button>
               <div className="sidebar_options" id="sidebar_options_club">
                 {Clubs.map((club) => (
@@ -422,155 +592,44 @@ const EventMain = () => {
             </div>
           </div>
 
-          <div className="events" ref={divRef}>
-            {eventarray.competitions &&
-              eventarray.competitions.map((event, index) => {
-                if (
-                  !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
-                ) {
-                  const eventDate = new Date(event.event_date); // Convert event date string to Date object
-                  if (!event.event_date || eventDate > currentDate) {
-                    // Check if event date is not provided or if it's in the future
-                    if (typeSelected.length === 0 || typeSelected.includes(1)) {
-                      if (
-                        clubSelected.length === 0 ||
-                        checkForSelectedClub(clubSelected, event.clubs)
-                      ) {
-                        return (
-                          <Link
-                            to={`/events/${event.title}`}
-                            key={index}
-                            id="event_link"
-                          >
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      }
-                    }
-                  } else {
-                    // Event date has passed, render with gray filter
-                    return (
-                      <div className="events_card" key={index}>
-                        <img
-                          src={event.event_image}
-                          alt="Event"
-                          style={{ filter: "grayscale(100%)" }}
-                        />
-                      </div>
-                    );
+          <div className="events-container">
+            <div className="events" ref={divRef}>
+              {shownEvents.slice(firstIndex, lastIndex).map((child, index) => (
+                <React.Fragment key={index}>{child}</React.Fragment>
+              ))}
+              {
+                <div className="no_events" style={{ display: dplay }}>
+                  No Events Found
+                </div>
+              }
+            </div>
+            <div className="pagination">
+              <button
+                onClick={() => {
+                  if (firstIndex > 0) {
+                    setFirstIndex(firstIndex - 12);
+                    setLastIndex(lastIndex - 12);
                   }
-                }
-              })}
-            {eventarray.guestlectures &&
-              eventarray.guestlectures.map((event, index) => {
-                if (
-                  !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
-                ) {
-                  if (typeSelected.length === 0) {
-                    if (clubSelected.length === 0) {
-                      return (
-                        <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card">
-                            <EventCard image={event.event_image} />
-                          </div>
-                        </Link>
-                      );
-                    } else {
-                      if (checkForSelectedClub(clubSelected, event.clubs)) {
-                        return (
-                          <Link to={`/events/${event.title}`} key={index}>
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      }
-                    }
-                  } else {
-                    if (typeSelected.includes(2)) {
-                      if (clubSelected.length === 0) {
-                        return (
-                          <Link to={`/events/${event.title}`} key={index}>
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      } else {
-                        if (clubSelected.includes(event.club)) {
-                          return (
-                            <Link to={`/events/${event.title}`} key={index}>
-                              <div className="events_card">
-                                <EventCard image={event.event_image} />
-                              </div>
-                            </Link>
-                          );
-                        }
-                      }
-                    }
+                }}
+                className="pagination_button"
+              >
+                {"< "}Previous
+              </button>
+              <button
+                onClick={() => {
+                  if (lastIndex < shownEvents.length) {
+                    setFirstIndex(firstIndex + 12);
+                    setLastIndex(lastIndex + 12);
                   }
-                }
-              })}
-            {eventarray.workshops &&
-              eventarray.workshops.map((event, index) => {
-                if (
-                  !searchTerm ||
-                  event.title.toLowerCase().includes(searchTerm.toLowerCase())
-                ) {
-                  if (typeSelected.length === 0) {
-                    if (clubSelected.length === 0) {
-                      return (
-                        <Link to={`/events/${event.title}`} key={index}>
-                          <div className="events_card">
-                            <EventCard image={event.event_image} />
-                          </div>
-                        </Link>
-                      );
-                    } else {
-                      if (clubSelected.includes(event.club)) {
-                        return (
-                          <Link to={`/events/${event.title}`} key={index}>
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      }
-                    }
-                  } else {
-                    if (typeSelected.includes(3)) {
-                      if (clubSelected.length === 0) {
-                        return (
-                          <Link to={`/events/${event.title}`} key={index}>
-                            <div className="events_card">
-                              <EventCard image={event.event_image} />
-                            </div>
-                          </Link>
-                        );
-                      } else {
-                        if (clubSelected.includes(event.club)) {
-                          return (
-                            <Link to={`/events/${event.title}`} key={index}>
-                              <div className="events_card">
-                                <EventCard image={event.event_image} />
-                              </div>
-                            </Link>
-                          );
-                        }
-                      }
-                    }
+                  else {
+                    console.log(lastIndex, shownEvents.length, firstIndex)
                   }
-                }
-              })}
-            {
-              <div className="no_events" style={{ display: dplay }}>
-                No Events Found
-              </div>
-            }
+                }}
+                className="pagination_button"
+              >
+                Next{" >"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

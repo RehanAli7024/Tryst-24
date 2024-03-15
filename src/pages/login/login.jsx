@@ -50,7 +50,7 @@ const Login = () => {
         <div className="login-head">User Login</div>
         <div className="login-container">
           <div className="login-iit">
-            <div className="login-iit-head mb-2">For IITD Students</div>
+            <div className="login-iit-head mb-2">For IITD Community</div>
             <a
               className="action-btn flex items-center justify-center"
               href="https://oauth2.iitd.ac.in/authorize.php?response_type=code&client_id=j9McPoLgRB0kOA2W8TOsQjwePLYMdhpP&state=xyz"
@@ -61,7 +61,7 @@ const Login = () => {
           </div>
           <div className="margin"></div>
           <div className="login-iit">
-            <div className="login-iit-head mb-2">For Non-IITD Students</div>
+            <div className="login-iit-head mb-2">For Non-IITD Community</div>
             <button
               className="action-btn flex items-center justify-center"
               onClick={() => login()}
