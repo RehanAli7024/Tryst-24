@@ -98,8 +98,8 @@ const Accomodation = () => {
     setFormData((prevData) => ({
       ...prevData,
       memberDetails: formDataArray,
-      checkin: '2024-' + '03-' + checkInDate,
-      checkout: '2024-' + '03-' + checkOutDate,
+      checkin: "2024-" + "03-" + checkInDate,
+      checkout: "2024-" + "03-" + checkOutDate,
       men: menCount,
       women: womenCount,
     }));
@@ -107,22 +107,23 @@ const Accomodation = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("access_token");
-    axios.post(`${DOMAIN}accomodation/`, formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    }).then((res) => {
-      console.log(res.data);
-      setMemberDetails(res.data.members);
-      setPaymentDetails(res.data.options);
-      setShowPayment(true);
-    })
+    axios
+      .post(`${DOMAIN}accomodation/`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setMemberDetails(res.data.members);
+        setPaymentDetails(res.data.options);
+        setShowPayment(true);
+      })
       .catch((err) => {
         if (err.response) {
           alert(err.response.data.error);
-        }
-        else {
-          alert('Some error occured. Please try again!');
+        } else {
+          alert("Some error occured. Please try again!");
         }
       });
   };
@@ -133,7 +134,15 @@ const Accomodation = () => {
   return (
     <>
       {!isLoggedIn ? (
-        <div>Please login to book any accommodation.</div>
+        <div
+          style={{
+            fontFamily: "AudioWide",
+            fontSize: "2rem",
+            textAlign: "center",
+          }}
+        >
+          Please login to book any accommodation.
+        </div>
       ) : (
         <>
           <div className="acc_main">
@@ -141,15 +150,17 @@ const Accomodation = () => {
           </div>
           <div className="dashboard-nav" id="ac_nav">
             <button
-              className={`dashboard-nav-button ${activeButton === "Registration Form" ? "active" : ""
-                }`}
+              className={`dashboard-nav-button ${
+                activeButton === "Registration Form" ? "active" : ""
+              }`}
               onClick={() => handleButtonClick("Registration Form")}
             >
               Registration Form
             </button>
             <button
-              className={`dashboard-nav-button ${activeButton === "FAQs" ? "active" : ""
-                }`}
+              className={`dashboard-nav-button ${
+                activeButton === "FAQs" ? "active" : ""
+              }`}
               onClick={() => handleButtonClick("FAQs")}
             >
               FAQs
@@ -162,8 +173,9 @@ const Accomodation = () => {
           Reaching IITD
         </button> */}
             <button
-              className={`dashboard-nav-button ${activeButton === "Contact Us" ? "active" : ""
-                }`}
+              className={`dashboard-nav-button ${
+                activeButton === "Contact Us" ? "active" : ""
+              }`}
               onClick={() => handleButtonClick("Contact Us")}
             >
               Contact Us
@@ -187,22 +199,23 @@ const Accomodation = () => {
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">1. </div>
                   <div className="ac_reaching_points_text">
-                    Travelling in Mumbai is very easy and systematic. The modes of
-                    travelling in Mumbai are taxis, auto rickshaws, local train and
-                    BEST Buses. IIT Bombay is located at Powai, which is an eastern
-                    suburb in the North-Eastern part (Central Railway Line) of
-                    Mumbai. The following link may provide you a rough estimate of
-                    the auto fares between two stations Taxi Auto fare Mumbai is in
-                    the form of a long narrow island, almost a peninsula, thrusting
-                    southwards into the Arabian Sea. In Mumbai, local trains run
-                    through the following routes. Western Railway: Church gate to
-                    Borivali/Virar and return. Central Railway: Mumbai CST to
-                    Karjat/Kasara and return. Harbour Route: Mumbai CST to Andheri
-                    and return New Bombay Route: Mumbai CST to Vashi/ Panvel and
-                    return. Kanjur Marg, a Local Train Station is the closest local
-                    train stop to IIT Bombay. It is located on Central Railway line.
-                    Kanjur Marg Local Train Station is the closest local train stop
-                    to IIT Bombay.
+                    Travelling in Mumbai is very easy and systematic. The modes
+                    of travelling in Mumbai are taxis, auto rickshaws, local
+                    train and BEST Buses. IIT Bombay is located at Powai, which
+                    is an eastern suburb in the North-Eastern part (Central
+                    Railway Line) of Mumbai. The following link may provide you
+                    a rough estimate of the auto fares between two stations Taxi
+                    Auto fare Mumbai is in the form of a long narrow island,
+                    almost a peninsula, thrusting southwards into the Arabian
+                    Sea. In Mumbai, local trains run through the following
+                    routes. Western Railway: Church gate to Borivali/Virar and
+                    return. Central Railway: Mumbai CST to Karjat/Kasara and
+                    return. Harbour Route: Mumbai CST to Andheri and return New
+                    Bombay Route: Mumbai CST to Vashi/ Panvel and return. Kanjur
+                    Marg, a Local Train Station is the closest local train stop
+                    to IIT Bombay. It is located on Central Railway line. Kanjur
+                    Marg Local Train Station is the closest local train stop to
+                    IIT Bombay.
                   </div>
                 </div>
                 <div className="ac_reaching_points">
@@ -215,8 +228,8 @@ const Accomodation = () => {
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">3. </div>
                   <div className="ac_reaching_points_text">
-                    A Team ID will be allocated to the team on registration which
-                    shall be used for future references.
+                    A Team ID will be allocated to the team on registration
+                    which shall be used for future references.
                   </div>
                 </div>
                 <div className="ac_reaching_points">
@@ -229,24 +242,25 @@ const Accomodation = () => {
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">5. </div>
                   <div className="ac_reaching_points_text">
-                    No responsibility will be held by Techfest, IIT Bombay for any
-                    late, lost or misdirected entries.
+                    No responsibility will be held by Techfest, IIT Bombay for
+                    any late, lost or misdirected entries.
                   </div>
                 </div>
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">6. </div>
                   <div className="ac_reaching_points_text">
-                    Note that at any point of time the latest information will be
-                    that which is on the website. However, registered participants
-                    will be informed through mail about any changes.
+                    Note that at any point of time the latest information will
+                    be that which is on the website. However, registered
+                    participants will be informed through mail about any
+                    changes.
                   </div>
                 </div>
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">7. </div>
                   <div className="ac_reaching_points_text">
-                    All modes of official communication will be through the Techfest
-                    e-mail. Participants are advised to keep track of all folders in
-                    their e-mail accounts.
+                    All modes of official communication will be through the
+                    Techfest e-mail. Participants are advised to keep track of
+                    all folders in their e-mail accounts.
                   </div>
                 </div>
               </div>
@@ -258,24 +272,28 @@ const Accomodation = () => {
                     <div className="initial_details">
                       <p className="Form_details_accomodation">
                         At TRYST, we are committed to providing unparalleled
-                        satisfaction to all our participants. Our utmost priority is
-                        to ensure that you have a secure and comfortable home away
-                        from home. We go above and beyond to meet all your
-                        accommodation needs, providing exceptional service every step
-                        of the way. In addition to top-notch accommodation facilities,
-                        we take pride in offering a diverse range of cuisine options
-                        at our food outlets, catering to every palate. Our team is
-                        dedicated to making your experience with us truly memorable.
-                        We place a strong emphasis on hospitality management and take
-                        great care in ensuring that your stay is nothing short of
-                        exceptional. At TRYST, we are passionate about providing
-                        exceptional service and hospitality to all of our guests, and
-                        we look forward to welcoming you to our community.
+                        satisfaction to all our participants. Our utmost
+                        priority is to ensure that you have a secure and
+                        comfortable home away from home. We go above and beyond
+                        to meet all your accommodation needs, providing
+                        exceptional service every step of the way. In addition
+                        to top-notch accommodation facilities, we take pride in
+                        offering a diverse range of cuisine options at our food
+                        outlets, catering to every palate. Our team is dedicated
+                        to making your experience with us truly memorable. We
+                        place a strong emphasis on hospitality management and
+                        take great care in ensuring that your stay is nothing
+                        short of exceptional. At TRYST, we are passionate about
+                        providing exceptional service and hospitality to all of
+                        our guests, and we look forward to welcoming you to our
+                        community.
                       </p>
 
                       <div className="dates_accomodation">
                         <div className="checkin_accomodation">
-                          <div className="label_date_accomodation">Check-In</div>
+                          <div className="label_date_accomodation">
+                            Check-In
+                          </div>
                           <div className="date_options">
                             <button
                               className={
@@ -330,7 +348,9 @@ const Accomodation = () => {
                           </div>
                         </div>
                         <div className="checkout_accomodation">
-                          <div className="label_date_accomodation">Check-Out</div>
+                          <div className="label_date_accomodation">
+                            Check-Out
+                          </div>
                           <div className="date_options">
                             <button
                               className={
@@ -386,7 +406,9 @@ const Accomodation = () => {
                         </div>
                       </div>
                       <div className="members_details_accomodation">
-                        <div className="title_members_details">No. of People</div>
+                        <div className="title_members_details">
+                          No. of People
+                        </div>
                         <div className="selection_members">
                           <div className="selector_men_number">
                             <div className="men_accomodation">Men</div>
@@ -420,7 +442,12 @@ const Accomodation = () => {
                         <button
                           className="next_btn_accomodation"
                           onClick={handleFormSubmit}
-                          disabled={!checkInDate || !checkOutDate || checkInDate > checkOutDate || (womenCount + menCount == 0)}
+                          disabled={
+                            !checkInDate ||
+                            !checkOutDate ||
+                            checkInDate > checkOutDate ||
+                            womenCount + menCount == 0
+                          }
                         >
                           Next
                         </button>
@@ -428,13 +455,16 @@ const Accomodation = () => {
                     </div>
                   </>
                 )}
-                {isClicked && (
-                  (showPayment ?
+                {isClicked &&
+                  (showPayment ? (
                     <div className="members_details">
-                      <PaymentComponent options={paymentDetails} members={memberDetails} />
+                      <PaymentComponent
+                        options={paymentDetails}
+                        members={memberDetails}
+                      />
                     </div>
-                    :
-                    (<div className="members_details">
+                  ) : (
+                    <div className="members_details">
                       {formDataArray.map((formData, index) => (
                         <div key={index} className="members_personal_data">
                           <h2 className="members_headings">
@@ -445,7 +475,9 @@ const Accomodation = () => {
                             onSubmit={handleSubmit}
                           >
                             <div className="members_details_field">
-                              <label htmlFor={`trystUID-${index}`}>Tryst UID :</label>
+                              <label htmlFor={`trystUID-${index}`}>
+                                Tryst UID :
+                              </label>
                               <input
                                 type="text"
                                 id={`trystUID-${index}`}
@@ -494,11 +526,12 @@ const Accomodation = () => {
                             checked={isChecked}
                             onChange={handleCheckboxChange}
                           />
-                          I certify that the above entered information is true to the
-                          best of my knowledge and belief and I understand that I
-                          subject myself to disciplinary action in the event that the
-                          above facts are found to be falsified which includes
-                          immediate dismissal from the accommodation facilities.
+                          I certify that the above entered information is true
+                          to the best of my knowledge and belief and I
+                          understand that I subject myself to disciplinary
+                          action in the event that the above facts are found to
+                          be falsified which includes immediate dismissal from
+                          the accommodation facilities.
                         </label>
                       </div>
                       {isChecked && (
@@ -506,13 +539,11 @@ const Accomodation = () => {
                           className="submit_details_members"
                           onClick={handleSubmit}
                         >
-                          
                           Submit
                         </button>
                       )}
-                    </div>)
-                  )
-                )}
+                    </div>
+                  ))}
               </div>
             )}
           </div>
