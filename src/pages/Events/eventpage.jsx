@@ -46,7 +46,7 @@ const EventPage = ({ event }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       const currentTime = new Date();
-      if (currentTime.getHours() >= 18) {
+      if (currentTime.getHours() >= 18 && currentTime.getDate() >= 16) {
         setIsEventTime(true);
       }
     }, 1000);
