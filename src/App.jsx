@@ -98,12 +98,35 @@ const App = () => {
                   element={<EventPage event={event} />}
                 />
               );
-            })}
-
-            <Route
-                    path="*"
-                    element={<Error404 />}
+            })
+          }
+          {eventarray.workshops &&
+            eventarray.workshops.map((event, index) => {
+              return (
+                <Route
+                  path={`/events/${event.title}`}
+                  key={index}
+                  element={<EventPage event={event} />}
                 />
+              );
+            })
+          }
+          {eventarray.guest_lectures &&
+            eventarray.guest_lectures.map((event, index) => {
+              return (
+                <Route
+                  path={`/events/${event.title}`}
+                  key={index}
+                  element={<EventPage event={event} />}
+                />
+              );
+            })
+          }
+
+          <Route
+            path="*"
+            element={<Error404 />}
+          />
         </Routes>
         <Footer />
       </Router>
