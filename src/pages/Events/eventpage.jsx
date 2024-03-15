@@ -10,6 +10,7 @@ import axios from "axios";
 import { DOMAIN } from "../../domain";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 const EventPage = ({ event }) => {
   console.log(event);
@@ -39,6 +40,20 @@ const EventPage = ({ event }) => {
 
     return time12;
   }
+
+  const [isEventTime, setIsEventTime] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const currentTime = new Date();
+      if (currentTime.getHours() >= 18) {
+        setIsEventTime(true);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   useEffect(() => {
     if (localStorage.getItem("access_token") === null) {
       setDisplaytext("Login to Register");
@@ -290,22 +305,16 @@ const EventPage = ({ event }) => {
             </div>
           </div>
         </div>
-        {/* {event.title === "ImaGen AI" && (
+        {event.title === "ImaGen AI" && isEventTime && (
           <div className="fil_con" id="imagenaibtn">
             <div className="filter_btn">
-              <a
-                href="./../bupubupu_github"
-                target="_blank"
-                rel="noreferrer"
-                className="filter_btn"
-                id="ev_btn_1"
-              >
+              <Link to="/imagenai_prompteng" className="filter_btn" id="ev_btn_1">
                 Go To Event{" "}
                 <img src={arrow_forward} className="rotating_button" alt="" />
-              </a>
+              </Link>
             </div>
           </div>
-        )} */}
+        )}
         {isVisible && (
           <div className="ev_formbox">
             <div className="ev_reg_form_heading">Registration Form</div>
