@@ -31,6 +31,21 @@ const App = () => {
   useEffect(() => {
     if (sessionStorage.getItem("all_events_data")) {
       setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+      axios
+        .get(`${DOMAIN}allevents/`)
+        .then((response) => {
+          if (JSON.stringify(response.data) !== sessionStorage.getItem("all_events_data")) {
+            setEventarray(response.data);
+            sessionStorage.setItem(
+              "all_events_data",
+              JSON.stringify(response.data)
+            );
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
     } else {
       axios
         .get(`${DOMAIN}allevents/`)
