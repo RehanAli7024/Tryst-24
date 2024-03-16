@@ -47,7 +47,7 @@ const imagenai = () => {
   return (
     <>
       <div className="imagen_box">
-        <div className="imagen_title">Imagen Ai (Prelims)</div>
+        <div className="imagen_title">ImaGen AI (Prelims)</div>
         <div className="how_to_use">INSTRUCTIONS</div>
         <div className="bullet_box">
           <ul>
