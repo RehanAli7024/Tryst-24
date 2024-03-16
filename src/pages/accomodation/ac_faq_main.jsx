@@ -29,8 +29,8 @@ const faqs = [
     index: "05",
 	},
 	{
-		"ques": "Do we get any food facilities at outside accommodation places, is Pronite included?",
-		"ans": "No, Pronites are not included with accomodation but you can enjoy the food outlets and restaurants that are available in the IIT Delhi campus both Veg and Non- veg :)",
+		"ques": "Is Pronite included?",
+		"ans": "No, Pronites are not included with accomodation, they are only for IITD community. ",
     index: "06",
 	},
 	{
