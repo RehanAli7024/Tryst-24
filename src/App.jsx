@@ -24,12 +24,28 @@ import axios from "axios";
 import { DOMAIN } from "./domain.js";
 import Accomodation from "./pages/accomodation/accomodation.jsx";
 import Error404 from "./pages/error404/Error404.jsx";
+import Imagenai from "./pages/Events/imagenai.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
 
   useEffect(() => {
     if (sessionStorage.getItem("all_events_data")) {
+      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+      axios
+        .get(`${DOMAIN}allevents/`)
+        .then((response) => {
+          if (JSON.stringify(response.data) !== sessionStorage.getItem("all_events_data")) {
+            setEventarray(response.data);
+            sessionStorage.setItem(
+              "all_events_data",
+              JSON.stringify(response.data)
+            );
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
     } else {
       axios
@@ -71,6 +87,7 @@ const App = () => {
           <Route path="/pronites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/imagenai_prelims_comp" element={<Imagenai />} />
           <Route path="/accomodation" element={<Accomodation />} />
           {eventarray.competitions &&
             eventarray.competitions.map((event, index) => {
@@ -81,12 +98,35 @@ const App = () => {
                   element={<EventPage event={event} />}
                 />
               );
-            })}
-
-            <Route
-                    path="*"
-                    element={<Error404 />}
+            })
+          }
+          {eventarray.workshops &&
+            eventarray.workshops.map((event, index) => {
+              return (
+                <Route
+                  path={`/events/${event.title}`}
+                  key={index}
+                  element={<EventPage event={event} />}
                 />
+              );
+            })
+          }
+          {eventarray.guest_lectures &&
+            eventarray.guest_lectures.map((event, index) => {
+              return (
+                <Route
+                  path={`/events/${event.title}`}
+                  key={index}
+                  element={<EventPage event={event} />}
+                />
+              );
+            })
+          }
+
+          <Route
+            path="*"
+            element={<Error404 />}
+          />
         </Routes>
         <Footer />
       </Router>

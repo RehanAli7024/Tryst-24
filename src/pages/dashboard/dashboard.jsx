@@ -66,7 +66,6 @@ const Dashboard = () => {
   const photoexists = photo !== "";
   const [registeredEvents, setRegisteredEvents] = useState([]);
 
-
   // Function to handle photo change
   const handlePhotoChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -104,18 +103,20 @@ const Dashboard = () => {
     };
   }, [fileInputRef, editButtonRef]);
   useEffect(() => {
-    axios.get(`${DOMAIN}registered/`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-      }
-    })
+    axios
+      .get(`${DOMAIN}registered/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
       .then((response) => {
         setRegisteredEvents(response.data.registered_events);
         console.log(registeredEvents);
-      }).catch((error) => {
-        console.log(error);
       })
-  }, [])
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -190,11 +191,15 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="dashboard_college_details">
-              <div className="dashboard_college_details_heading">COLLEGE DETAILS :</div>
+              <div className="dashboard_college_details_heading">
+                COLLEGE DETAILS :
+              </div>
               <div className="dashboard_details">
                 <div className="dashboard_detail">
                   <div className="user_label">Name:</div>
-                  <div className="user_detail" id="college-name">{user.college}</div>
+                  <div className="user_detail" id="college-name">
+                    {user.college}
+                  </div>
                 </div>
                 <div className="dashboard_detail">
                   <div className="user_label">State:</div>
@@ -211,47 +216,88 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "REGISTERED EVENTS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "PRONITES" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("PRONITES")}
           >
             PRONITES
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "YOUR ORDERS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "ACCOMODATION" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
           </button>
         </div>
-
       </div>
       <div className="dashboard-content">
-        {activeButton === "REGISTERED EVENTS" && <div><div className="registered-events">
-          {registeredEvents.map((event, index) => {
-            return (
-              <UserCard_Registration key={index} props={event} />
-            );
-          })}
-        </div> </div>}
-        {activeButton === "PRONITES" && <p>No Pronites yet !</p>}
-        {activeButton === "YOUR ORDERS" && <p>No Orders placed yet !</p>}
-        {activeButton === "ACCOMODATION" && <p>No Accomodation request yet !</p>}
+        {activeButton === "REGISTERED EVENTS" && (
+          <div>
+            <div className="registered-events">
+              {registeredEvents.map((event, index) => {
+                return <UserCard_Registration key={index} props={event} />;
+              })}
+            </div>{" "}
+          </div>
+        )}
+        {activeButton === "PRONITES" && (
+          <p
+            style={{
+              fontFamily: "Bender",
+              fontSize: "1.5rem",
+              textAlign: "center",
+              color: "white",
+              marginBottom: "2rem",
+            }}
+          >
+            No Pronites yet !
+          </p>
+        )}
+        {activeButton === "YOUR ORDERS" && (
+          <p
+            style={{
+              fontFamily: "Bender",
+              fontSize: "1.5rem",
+              textAlign: "center",
+              color: "white",
+              marginBottom: "2rem",
+            }}
+          >
+            No Orders placed yet !
+          </p>
+        )}
+        {activeButton === "ACCOMODATION" && (
+          <p
+            style={{
+              fontFamily: "Bender",
+              fontSize: "1.5rem",
+              textAlign: "center",
+              color: "white",
+              marginBottom: "2rem",
+            }}
+          >
+            No Accomodation request yet !
+          </p>
+        )}
       </div>
     </>
   );

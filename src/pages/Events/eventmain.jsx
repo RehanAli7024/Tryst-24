@@ -10,6 +10,7 @@ import EventCard from "../../components/EventCard/EventCard";
 import axios from "axios";
 import { DOMAIN } from "../../domain";
 import { Link, useNavigate } from "react-router-dom";
+import { set } from "date-fns";
 
 const Types = [
   { index: 1, name: "Competitions" },
@@ -25,7 +26,11 @@ const Clubs = [
   { index: 5, name: "Aviation Club", abbr: "AVI" },
   { index: 6, name: "Coding and Hackathon Club", abbr: "CODING" },
   { index: 7, name: "Bio-Tech Club", abbr: "BIO-TECH" },
-  { index: 8, name: "Mechanical and Civil Engineering Club", abbr: "MECH&CIVIL" },
+  {
+    index: 8,
+    name: "Mechanical and Civil Engineering Club",
+    abbr: "MECH&CIVIL",
+  },
   { index: 9, name: "Physics and Astronomy Club", abbr: "PAC" },
   { index: 10, name: "Mathematics Club", abbr: "MATH CLUB" },
   { index: 11, name: "Literary and Quizzing Club", abbr: "L&Q CLUB" },
@@ -47,7 +52,9 @@ const EventMain = () => {
 
   const indexOfLastEvent = page * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = Array.isArray(eventarray) ? eventarray.slice(indexOfFirstEvent, indexOfLastEvent) : [];
+  const currentEvents = Array.isArray(eventarray)
+    ? eventarray.slice(indexOfFirstEvent, indexOfLastEvent)
+    : [];
 
   const paginate = (pageNumber) => {
     setPage(pageNumber);
@@ -63,7 +70,24 @@ const EventMain = () => {
   useEffect(() => {
     if (sessionStorage.getItem("all_events_data")) {
       setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
-      console.log(JSON.parse(sessionStorage.getItem("all_events_data")));
+      axios
+        .get(`${DOMAIN}allevents/`)
+        .then((response) => {
+          if (
+            JSON.stringify(response.data) !==
+            sessionStorage.getItem("all_events_data")
+          ) {
+            setEventarray(response.data);
+            sessionStorage.setItem(
+              "all_events_data",
+              JSON.stringify(response.data)
+            );
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
     } else {
       axios
         .get(`${DOMAIN}allevents/`)
@@ -204,12 +228,13 @@ const EventMain = () => {
       setDplay("none");
       setFirsttime(false);
     }
-    setShownEventsLength(React.Children.toArray(eventsDiv().props.children).length);
+    setShownEventsLength(
+      React.Children.toArray(eventsDiv().props.children).length
+    );
     setLastIndex(12);
     setFirstIndex(0);
   }, [divRef, typeSelected, clubSelected, searchTerm]);
   const currentDate = new Date();
-
 
   const eventsDiv = () => {
     return (
@@ -226,7 +251,7 @@ const EventMain = () => {
                   checkForSelectedClub(clubSelected, event.clubs)
                 ) {
                   const eventDate = new Date(event.event_date); // Convert event date string to Date object
-                  if (!event.event_date || eventDate > currentDate) {
+                  if (!event.event_date || eventDate.getDate() >= currentDate.getDate()) {
                     // Check if event date is not provided or if it's in the future
 
                     return (
@@ -358,14 +383,15 @@ const EventMain = () => {
             }
           })}
       </div>
-    )
-  }
+    );
+  };
 
   const [lastIndex, setLastIndex] = useState(12);
   const [firstIndex, setFirstIndex] = useState(0);
-  const [shownEventsLength, setShownEventsLength] = useState(React.Children.toArray(eventsDiv().props.children).length);
+  const [shownEventsLength, setShownEventsLength] = useState(
+    React.Children.toArray(eventsDiv().props.children).length
+  );
   const shownEvents = React.Children.toArray(eventsDiv().props.children);
-
 
   return (
     <>
@@ -387,7 +413,7 @@ const EventMain = () => {
                     transform: rotate1 ? "rotate(-90deg)" : "rotate(0deg)",
                   }}
                 />
-                <div className="sidebar_text">By Type</div>
+                <div className="sidebar_text">By Event Genre</div>
               </button>
               <div
                 className="sidebar_options sidebar_options_hr"
@@ -420,7 +446,7 @@ const EventMain = () => {
                     }}
                   />
                 </div>
-                <div className="sidebar_text">By Clubs/Society</div>
+                <div className="sidebar_text">By Event Type</div>
               </button>
               <div className="sidebar_options" id="sidebar_options_club">
                 {Clubs.map((club) => (
@@ -522,7 +548,7 @@ const EventMain = () => {
                     transform: rotate1 ? "rotate(-90deg)" : "rotate(0deg)",
                   }}
                 />
-                <div className="sidebar_text">By Type</div>
+                <div className="sidebar_text">By Event Genre</div>
               </button>
               <div
                 className="sidebar_options sidebar_options_hr"
@@ -555,7 +581,7 @@ const EventMain = () => {
                     }}
                   />
                 </div>
-                <div className="sidebar_text">By Clubs/Society</div>
+                <div className="sidebar_text">By Event Type</div>
               </button>
               <div className="sidebar_options" id="sidebar_options_club">
                 {Clubs.map((club) => (
@@ -605,9 +631,8 @@ const EventMain = () => {
                   if (lastIndex < shownEvents.length) {
                     setFirstIndex(firstIndex + 12);
                     setLastIndex(lastIndex + 12);
-                  }
-                  else {
-                    console.log(lastIndex, shownEvents.length, firstIndex)
+                  } else {
+                    console.log(lastIndex, shownEvents.length, firstIndex);
                   }
                 }}
                 className="pagination_button"

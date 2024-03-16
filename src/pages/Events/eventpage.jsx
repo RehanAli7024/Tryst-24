@@ -10,6 +10,7 @@ import axios from "axios";
 import { DOMAIN } from "../../domain";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 const EventPage = ({ event }) => {
   console.log(event);
@@ -39,6 +40,20 @@ const EventPage = ({ event }) => {
 
     return time12;
   }
+
+  const [isEventTime, setIsEventTime] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const currentTime = new Date();
+      if (currentTime.getHours() >= 18 && currentTime.getDate() >= 16) {
+        setIsEventTime(true);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   useEffect(() => {
     if (localStorage.getItem("access_token") === null) {
       setDisplaytext("Login to Register");
@@ -148,7 +163,16 @@ const EventPage = ({ event }) => {
           </div>
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
             <div className="event_title_1">{event.title}</div>
-            <div className="event_para_1">{event.description}</div>
+            <div className="event_para_1">
+              {event.description.split("\n").map((paragraph, index) => (
+                <React.Fragment key={index}>
+                  {index > 0 && <br />}
+                  {index > 0 && <br />}
+                  {paragraph}
+                </React.Fragment>
+              ))}
+            </div>
+
             <div className="event_details">
               <div className="event_date">
                 <svg
@@ -278,18 +302,34 @@ const EventPage = ({ event }) => {
                   </div>
                 </div>
               </div>
-              <div className="POC_box">
-                <div className="ev_contact_text">CONTACT</div>
-                {event.contact.map((poc, index) => (
-                  <div className="ev_POC" key={index}>
-                    <div className="ev_poc_name">{poc.name}</div>
-                    <div className="ev_poc_contact">{poc.phone}</div>
-                  </div>
-                ))}
-              </div>
+              {event.contact.length > 0 && (
+                <div className="POC_box">
+                  <div className="ev_contact_text">CONTACT</div>
+                  {event.contact.map((poc, index) => (
+                    <div className="ev_POC" key={index}>
+                      <div className="ev_poc_name">{poc.name}</div>
+                      <div className="ev_poc_contact">{poc.phone}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
+        {event.title === "ImaGen AI" && isEventTime && (
+          <div className="fil_con" id="imagenaibtn">
+            <div className="filter_btn">
+              <Link
+                to="/imagenai_prelims_comp"
+                className="filter_btn"
+                id="ev_btn_1"
+              >
+                Go To Event{" "}
+                <img src={arrow_forward} className="rotating_button" alt="" />
+              </Link>
+            </div>
+          </div>
+        )}
         {isVisible && (
           <div className="ev_formbox">
             <div className="ev_reg_form_heading">Registration Form</div>

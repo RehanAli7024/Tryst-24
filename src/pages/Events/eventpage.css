@@ -13,6 +13,10 @@
   letter-spacing: 0.6rem;
 }
 
+.event_body {
+  margin-bottom: 4rem;
+}
+
 .submitted {
   background: grey;
 }
@@ -65,9 +69,11 @@
   background-color: rgba(0, 224, 255, 0.3);
   margin-bottom: 1rem;
   border-radius: 5px;
-  fill: linear-gradient(0deg,
+  fill: linear-gradient(
+      0deg,
       rgba(0, 224, 255, 0.3) 0%,
-      rgba(0, 224, 255, 0.3) 100%),
+      rgba(0, 224, 255, 0.3) 100%
+    ),
     rgba(3, 10, 23, 0.8);
   stroke-width: 2px;
   /* stroke: var(--Color-Base-Vivid-Sky-Blue, #00E0FF);    */
@@ -288,9 +294,11 @@
   padding-left: 0.8rem;
   align-items: center;
   border-left: 3px solid var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
-  background: linear-gradient(0deg,
+  background: linear-gradient(
+      0deg,
       rgba(0, 224, 255, 0.1) 0%,
-      rgba(0, 224, 255, 0.1) 100%),
+      rgba(0, 224, 255, 0.1) 100%
+    ),
     rgba(3, 10, 23, 0.8);
   color: var(--Color-Base-Snow, #fffbff);
   font-family: Rajdhani;
