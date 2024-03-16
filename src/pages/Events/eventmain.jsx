@@ -251,7 +251,7 @@ const EventMain = () => {
                   checkForSelectedClub(clubSelected, event.clubs)
                 ) {
                   const eventDate = new Date(event.event_date); // Convert event date string to Date object
-                  if (!event.event_date || eventDate > currentDate) {
+                  if (!event.event_date || eventDate >= currentDate) {
                     // Check if event date is not provided or if it's in the future
 
                     return (

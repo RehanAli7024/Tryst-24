@@ -320,7 +320,7 @@ const EventPage = ({ event }) => {
           <div className="fil_con" id="imagenaibtn">
             <div className="filter_btn">
               <Link
-                to="/imagenai_prompteng"
+                to="/imagenai_prelims_comp"
                 className="filter_btn"
                 id="ev_btn_1"
               >
