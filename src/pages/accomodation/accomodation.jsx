@@ -19,6 +19,8 @@ const Accomodation = () => {
   const [showPayment, setShowPayment] = useState(false);
   const [paymentDetails, setPaymentDetails] = useState({});
   const [memberDetails, setMemberDetails] = useState([]);
+  const [men, setMen] = useState(0);
+  const [women, setWomen] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem("access_token");
@@ -114,6 +116,8 @@ const Accomodation = () => {
     }).then((res) => {
       console.log(res.data);
       setMemberDetails(res.data.members);
+      setMen(res.data.men);
+      setWomen(res.data.women);
       setPaymentDetails(res.data.options);
       setShowPayment(true);
     })
@@ -126,10 +130,6 @@ const Accomodation = () => {
         }
       });
   };
-  useEffect(() => {
-    console.log(memberDetails);
-  }, [memberDetails]);
-
   return (
     <>
       {!isLoggedIn ? (
@@ -431,7 +431,7 @@ const Accomodation = () => {
                 {isClicked && (
                   (showPayment ?
                     <div className="members_details">
-                      <PaymentComponent options={paymentDetails} members={memberDetails} />
+                      <PaymentComponent options={paymentDetails} members={memberDetails} men={men} women={women} />
                     </div>
                     :
                     (<div className="members_details">
@@ -506,7 +506,7 @@ const Accomodation = () => {
                           className="submit_details_members"
                           onClick={handleSubmit}
                         >
-                          
+
                           Submit
                         </button>
                       )}

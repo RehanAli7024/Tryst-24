@@ -3,7 +3,7 @@ import axios from 'axios';
 import { DOMAIN } from '../../domain';
 import { useNavigate } from 'react-router-dom';
 
-const PaymentComponent = ({ options, members }) => {
+const PaymentComponent = ({ options, members, men, women }) => {
     const navigate = useNavigate();
     useEffect(() => {
         loadRazorpay();
@@ -36,6 +36,8 @@ const PaymentComponent = ({ options, members }) => {
                     razorpay_payment_id: response.razorpay_payment_id,
                     razorpay_signature: response.razorpay_signature,
                     members: members,
+                    men: men,
+                    women: women,
                 };
                 try {
                     const token = localStorage.getItem('access_token');
