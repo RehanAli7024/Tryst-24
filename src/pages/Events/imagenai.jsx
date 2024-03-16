@@ -11,6 +11,7 @@ import HumanGrid from "../../assets/imagenai/Human x Culture Grid.png";
 import CartoonBlur from "../../assets/imagenai/Cartoon x Nature Blur.png";
 import CartoonGrid from "../../assets/imagenai/Cartoon x Nature Grid.png";
 
+
 const imagenai = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
