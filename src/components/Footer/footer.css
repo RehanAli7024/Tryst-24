@@ -30,7 +30,17 @@
   z-index: -200;
   filter: blur(5px); /* Adjust the blur value as needed */
 }
-
+.policy-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5px;
+  font-size: 0.8rem;
+  font-family: Rajdhani !important;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
 .bg-color-footer-gradient-laptop {
   position: absolute;
   bottom: 0;
