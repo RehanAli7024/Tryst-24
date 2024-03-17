@@ -64,6 +64,10 @@ const Events = () => {
   }, [inView]);
 
   useEffect(() => {
+    const container = document.querySelector(".landing-events-container-slider");
+    if (container) {
+      container.scrollLeft = container.scrollWidth * 0.26;
+    }
     AOS.init();
   }, []);
 
@@ -76,25 +80,27 @@ const Events = () => {
       >
         EVENTS
       </div>
-      <div
-        className="landing-events-container"
-        data-aos="zoom-in-up"
-        data-aos-duration="800"
-      >
-        <div className="landing-event-card landing-event-card1">
-          <a href="https://www.tryst-iitd.org/events/Tryst%20Chess%20Championship">
-            <EventCard image={ChessImage} />
-          </a>
-        </div>
-        <div className="landing-event-card landing-event-card2">
-          <a href="https://www.tryst-iitd.org/events/ROBOWARS">
-            <EventCard image={RobowarsImage} />
-          </a>
-        </div>
-        <div className="landing-event-card landing-event-card1">
-          <a href="https://www.tryst-iitd.org/events/Startup%20Auction">
-            <EventCard image={StartupAuctionImage} />
-          </a>
+      <div className="landing-events-container-slider">
+        <div
+          className="landing-events-container"
+          data-aos={window.innerWidth >= 768 && "zoom-in-up"}
+          data-aos-duration="800"
+        >
+          <div className="landing-event-card landing-event-card1">
+            <a href="https://www.tryst-iitd.org/events/Tryst%20Chess%20Championship">
+              <EventCard image={ChessImage} />
+            </a>
+          </div>
+          <div className="landing-event-card landing-event-card2">
+            <a href="https://www.tryst-iitd.org/events/ROBOWARS">
+              <EventCard image={RobowarsImage} />
+            </a>
+          </div>
+          <div className="landing-event-card landing-event-card1">
+            <a href="https://www.tryst-iitd.org/events/Startup%20Auction">
+              <EventCard image={StartupAuctionImage} />
+            </a>
+          </div>
         </div>
       </div>
     </div>

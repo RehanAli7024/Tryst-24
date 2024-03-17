@@ -19,16 +19,28 @@
 }
 
 @media screen and (max-width: 768px) {
+    .landing-events-container-slider {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .landing-events-container-slider {
+        scrollbar-width: none;
+        margin-bottom: 3rem;
+    }
+
     .landing-events-container {
-        flex-direction: column;
+        width: max-content;
+        flex-direction: row;
         margin-bottom: 2rem;
+        padding-left: 4vw;
+        padding-right: 4vw;
     }
 
     .landing-event-card {
-        width: 80%;
-        margin-left: 14%;
+        width: 70vw;
         margin-right: auto;
-        margin-bottom: 15%;
     }
 
     .landing-event-card1 {
