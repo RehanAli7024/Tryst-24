@@ -25,12 +25,8 @@ export default function EventOptions() {
 
   const selectedEventDetails = eventDetails[selectedEventType] || [];
   useEffect(() => {
-    // const token = localStorage.getItem("admin_access_token");
     axios
-    .get(`${DOMAIN}allevents/`, {
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
+      .get(`${DOMAIN}allevents/`, {
       })
       .then((response) => {
         setEventDetails(response.data);
@@ -122,15 +118,15 @@ export default function EventOptions() {
             </div>
             {editingEventId ===
               (prop.event_id || prop.workshop_id || prop.guest_id) && (
-              <PopupContainertoedit
-                editingEventId={editingEventId}
-                setEditPopupIsOpen={() => setEditingEventId(null)} // Pass a function to reset the editing ID
-                eventDetails={prop}
-                selectedEventType={selectedEventType}
-                setEventDetails={setEventDetails}
-                setSubmitted={setSubmitted}
-              />
-            )}
+                <PopupContainertoedit
+                  editingEventId={editingEventId}
+                  setEditPopupIsOpen={() => setEditingEventId(null)} // Pass a function to reset the editing ID
+                  eventDetails={prop}
+                  selectedEventType={selectedEventType}
+                  setEventDetails={setEventDetails}
+                  setSubmitted={setSubmitted}
+                />
+              )}
           </div>
         ))}
       </div>

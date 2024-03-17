@@ -23,24 +23,18 @@
   justify-content: center;
   text-align: center;
   font-family: "rajdhani" !important;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
-  letter-spacing: 0.6rem;
+  letter-spacing: 0.3rem;
   margin-bottom: 2rem;
+  margin-top: 2.5rem;
 }
-.bullet_box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 .bullet {
-  display: flex;
   color: aliceblue;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  list-style-type: disc;
   font-family: "bender" !important;
   font-size: 1.5rem;
   font-style: normal;
@@ -49,26 +43,37 @@
   /* letter-spacing: 0.6rem; */
   margin-bottom: 2rem;
 }
+
+.bullet_box,
+.how_to_use {
+  width: 80%;
+}
+
+.them-bul {
+  margin-bottom: 0;
+  line-height: 1.5;
+  list-style-type: decimal;
+  margin-left: 2.5rem;
+}
 .event-timer {
   text-align: center;
 }
 .event-timer h1 {
-  font-family: "Audiowide" !important;
+  font-family: "Rajdhani" !important;
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 700;
+  margin-top: 2rem;
+  line-height: normal;
+  letter-spacing: 0.3rem;
+  margin-bottom: 1rem;
+}
+.time-left {
   font-size: 2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  letter-spacing: 0.6rem;
-  color: var(--Color-Base-Gold-Yellow, #f0b537);
-  margin-bottom: 1rem;
-}
-.time-left {
-  font-size: 1.8rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   color: aliceblue;
-  margin-bottom: 2rem;
 }
 .imagen_box {
   display: flex;
@@ -80,7 +85,7 @@
 }
 .image_topic {
   font-family: "bender" !important;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -90,7 +95,7 @@
   justify-content: center;
 }
 .imagebox_main {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -98,7 +103,7 @@
   justify-content: center;
   width: 100vw;
   gap: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 .imagebox_main img {
   width: 30%;
@@ -109,6 +114,10 @@
   justify-content: center;
   text-wrap: wrap;
   text-align: center;
+}
+
+.imagenai-brf-desc {
+  list-style-type: square;
 }
 #imagenaibtn {
   margin-left: 45vw;

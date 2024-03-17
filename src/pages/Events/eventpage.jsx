@@ -6,7 +6,7 @@ import description from "./description.svg";
 import arrow_forward from "./arrow_forward.svg";
 import arrow_downward from "./arrow_downward.svg";
 import EventCard from "../../components/EventCard/EventCard";
-import axios from "axios";
+import axios from "../../axios";
 import { DOMAIN } from "../../domain";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
@@ -320,7 +320,7 @@ const EventPage = ({ event }) => {
           <div className="fil_con" id="imagenaibtn">
             <div className="filter_btn">
               <Link
-                to="/imagenai_prompteng"
+                to="/imagenai_prelims_comp"
                 className="filter_btn"
                 id="ev_btn_1"
               >

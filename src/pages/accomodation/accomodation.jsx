@@ -4,7 +4,7 @@ import Placeholder from "../contactus/placeholder";
 import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
-import axios from "axios";
+import axios from "../../axios";
 import { DOMAIN } from "../../domain";
 import PaymentComponent from "./payment";
 
@@ -107,30 +107,26 @@ const Accomodation = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("access_token");
-    axios
-      .post(`${DOMAIN}accomodation/`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setMemberDetails(res.data.members);
-        setPaymentDetails(res.data.options);
-        setShowPayment(true);
-      })
+    axios.post(`${DOMAIN}accomodation/`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    }).then((res) => {
+      console.log(res.data);
+      setMemberDetails(res.data.members);
+      setPaymentDetails(res.data.options);
+      setShowPayment(true);
+    })
       .catch((err) => {
-        if (err.response) {
+        if (err.response && err.response.status === 401) {
+          alert("Your session has expired. Please login again.");
+        } else if (err.response) {
           alert(err.response.data.error);
         } else {
-          alert("Some error occured. Please try again!");
+          alert("Some error occurred. Please try again!");
         }
       });
   };
-  useEffect(() => {
-    console.log(memberDetails);
-  }, [memberDetails]);
-
   return (
     <>
       {!isLoggedIn ? (
@@ -150,32 +146,29 @@ const Accomodation = () => {
           </div>
           <div className="dashboard-nav" id="ac_nav">
             <button
-              className={`dashboard-nav-button ${
-                activeButton === "Registration Form" ? "active" : ""
-              }`}
+              className={`dashboard-nav-button ${activeButton === "Registration Form" ? "active" : ""
+                }`}
               onClick={() => handleButtonClick("Registration Form")}
             >
               Registration Form
             </button>
             <button
-              className={`dashboard-nav-button ${
-                activeButton === "FAQs" ? "active" : ""
-              }`}
+              className={`dashboard-nav-button ${activeButton === "FAQs" ? "active" : ""
+                }`}
               onClick={() => handleButtonClick("FAQs")}
             >
               FAQs
             </button>
-            {/* <button
-          className={`dashboard-nav-button ${activeButton === "Reaching IITD" ? "active" : ""
-            }`}
-          onClick={() => handleButtonClick("Reaching IITD")}
-        >
-          Reaching IITD
-        </button> */}
             <button
-              className={`dashboard-nav-button ${
-                activeButton === "Contact Us" ? "active" : ""
-              }`}
+              className={`dashboard-nav-button ${activeButton === "Reaching IITD" ? "active" : ""
+                }`}
+              onClick={() => handleButtonClick("Reaching IITD")}
+            >
+              Reaching IITD
+            </button>
+            <button
+              className={`dashboard-nav-button ${activeButton === "Contact Us" ? "active" : ""
+                }`}
               onClick={() => handleButtonClick("Contact Us")}
             >
               Contact Us
@@ -458,10 +451,7 @@ const Accomodation = () => {
                 {isClicked &&
                   (showPayment ? (
                     <div className="members_details">
-                      <PaymentComponent
-                        options={paymentDetails}
-                        members={memberDetails}
-                      />
+                      <PaymentComponent options={paymentDetails} members={memberDetails} />
                     </div>
                   ) : (
                     <div className="members_details">
@@ -539,6 +529,7 @@ const Accomodation = () => {
                           className="submit_details_members"
                           onClick={handleSubmit}
                         >
+
                           Submit
                         </button>
                       )}

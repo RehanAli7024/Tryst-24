@@ -3,7 +3,7 @@ import logo from "../../assets/Footer/logo.png";
 import ParallaxStars from "./ParallaxStars";
 import BgImage from "../../assets/Footer/bg1.png";
 import BgImageMobile from "../../assets/Footer/bg-mobile.png";
-import mailimg from  "../../assets/Footer/mail.svg";
+import mailimg from "../../assets/Footer/mail.svg";
 
 function Footer() {
   return (
@@ -20,7 +20,7 @@ function Footer() {
           <div className="mail">
             <div className="footer-mail">
               <img className="fa-regular fa-envelope" src={mailimg}></img>
-              <a href="mailto:admin@tryst-iitd.org"> admin@tryst-iitd.org</a>
+              <a href="mailto:admin@tryst-iitd.org">admin@tryst-iitd.org</a>
             </div>
           </div>
         </div>
@@ -52,6 +52,11 @@ function Footer() {
                 </a>
               </div>
             </div>
+          </div>
+          <div className="policy-section">
+            <a href="https://fitt-iitd.in/web/privacy">Privacy Policy</a>
+            <a href="https://fitt-iitd.in/web/paymentpolicy">Payment Cancellation Policy</a>
+            <a href="https://fitt-iitd.in/web/terms-conditions">Terms & Conditions</a>
           </div>
         </div>
       </footer>

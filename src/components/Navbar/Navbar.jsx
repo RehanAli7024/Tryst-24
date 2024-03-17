@@ -11,7 +11,7 @@ import profilehov from "../../assets/Navbar/profilehov.svg";
 import profileclicked from "../../assets/Navbar/profileClick.svg";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import axios from "../../axios";
 import { DOMAIN } from "../../domain";
 
 function Navbar() {
@@ -34,11 +34,11 @@ function Navbar() {
   };
 
   const handleClick = () => {
-    setIsClicked(true); // Apply styles immediately on click
-    setIsHovered(false); // Remove hover styles on click
+    setIsClicked(true);
+    setIsHovered(false);
     setTimeout(() => {
-      setIsClicked(false); // Remove styles after 10 seconds
-    }, 1000); // Use 10000 for 10 seconds
+      setIsClicked(false);
+    }, 1000);
   };
 
   const handleShowNavbar = () => {
@@ -79,19 +79,34 @@ function Navbar() {
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-    axios
-      .get(`${DOMAIN}profile/category/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setUserProfile(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (token) {
+      axios
+        .get(`${DOMAIN}profile/category/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setUserProfile(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
+
+  const options = [
+    "About",
+    "Guests",
+    "Accomodation",
+    "Events",
+    "Sponsors",
+    "Contact Us",
+  ];
+
+  if (userProfile && userProfile !== "general") {
+    options.splice(3, 0, "Pronites");
+  }
 
   return (
     <Container
@@ -122,16 +137,8 @@ function Navbar() {
             >
               CAP
             </a>
-            {[
-              "About",
-              "Guests",
-              "Accomodation",
-              userProfile?.category !== "general" && "Pronites",
-              "Events",
-              "Sponsors",
-              "Contact Us",
-            ].map((option) =>
-              option ? (
+            {
+              options.map((option) => (
                 <div
                   key={option}
                   className={`navbaroption ${selectedOption === option ? "navbaroption-selected" : ""
@@ -140,8 +147,8 @@ function Navbar() {
                 >
                   {option}
                 </div>
-              ) : null
-            )}
+              ))
+            }
           </div>
           <div
             className="navbarprofile"
@@ -176,15 +183,7 @@ function Navbar() {
       <div
         className={showNavOptions ? "navbariconsmobile" : "hiddenmobiletoggle"}
       >
-        {[
-          "About",
-          "Guests",
-          "Accomodation",
-          userProfile?.category !== "general" && "Pronites",
-          "Events",
-          "Sponsors",
-          "Contact Us",
-        ].map(
+        {options.map(
           (option) =>
             option && (
               <div

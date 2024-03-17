@@ -1,28 +1,24 @@
 .speaker-shape {
-  clip-path: polygon(
-    0% 4%,
-    6% 0%,
-    97.5% 0%,
-    97.5% 10%,
-    100% 12%,
-    100% 88%,
-    85% 100%,
-    15% 100%,
-    0% 88%
-  );
+  clip-path: polygon(0% 4%,
+      6% 0%,
+      97.5% 0%,
+      97.5% 10%,
+      100% 12%,
+      100% 88%,
+      85% 100%,
+      15% 100%,
+      0% 88%);
 }
 
 .speaker-shape-2 {
-  clip-path: polygon(
-    0% 3%,
-    41% 3%,
-    44% 0%,
-    56% 0%,
-    59% 3%,
-    100% 3%,
-    100% 100%,
-    0% 100%
-  );
+  clip-path: polygon(0% 3%,
+      41% 3%,
+      44% 0%,
+      56% 0%,
+      59% 3%,
+      100% 3%,
+      100% 100%,
+      0% 100%);
 }
 
 .speaker-shape-3 {
@@ -162,22 +158,26 @@
   .speaker-card-name {
     font-size: 1.2rem;
   }
+
   .speaker-card-position-top {
     font-size: 0.8rem;
   }
+
   .speaker-card-position-bottom {
     font-size: 0.9rem;
   }
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .speaker-card-name {
+    font-size: 1.2rem;
+  }
+
+  .speaker-card-position-top {
+    font-size: 0.8rem;
+  }
+
+  .speaker-card-position-bottom {
     font-size: 0.9rem;
   }
-  .speaker-card-position-top {
-    font-size: 0.6rem;
-  }
-  .speaker-card-position-bottom {
-    font-size: 0.7rem;
-  }
-}
+} */

@@ -115,7 +115,7 @@ const Sponsors = () => {
   useEffect(() => {
     const scrollers = document.querySelectorAll(".sponser-scroller");
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 0) {
       addAnimation();
     }
 
@@ -148,7 +148,7 @@ const Sponsors = () => {
         {Object.values(SPONSORS).map((sponsorsList, i) => (
           <div
             key={`sponsorsUp${i + 1}`}
-            className={`${window.innerWidth < 768
+            className={`${window.innerWidth < 0
               ? "sponser-landing-sponsors-container-top-boss "
               : "sponser-landing-sponsors-container-top-boss sponser-scroller"
               }`}
@@ -156,7 +156,7 @@ const Sponsors = () => {
             data-speed="slow"
           >
             <div
-              className={`${window.innerWidth < 768
+              className={`${window.innerWidth < 0
                 ? "sponser-landing-sponsors-container-top "
                 : "sponser-landing-sponsors-container-top sponser-scroller__inner"
                 }`}
@@ -186,31 +186,3 @@ const Sponsors = () => {
 };
 
 export default Sponsors;
-
-
-
-
-
-
-// const sponsorsUp3 = [
-//   {
-//     index: 1,
-//     name: "Orkes",
-//     image: Orkes,
-//   },
-//   {
-//     index: 2,
-//     name: "Jagran Josh",
-//     image: JagranJosh,
-//   },
-//   {
-//     index: 3,
-//     name: "UnStop",
-//     image: UnStop,
-//   },
-//   {
-//     index: 4,
-//     name: "SilliconIndia",
-//     image: SilliconIndia,
-//   },
-// ];
