@@ -116,7 +116,7 @@ const Speakers = () => {
             container.scrollLeft = container.scrollWidth * 0.4;
         }
 
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 0) {
             addAnimation();
         }
     }, []);
