@@ -50,7 +50,7 @@
 }
 
 /* -------------------------------------------Scrolling animation-------------------------------------------- */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 0px) {
     .sponser-scroller {
         min-width: 100vw;
     }
@@ -109,25 +109,29 @@
         margin-top: -1.5rem;
     }
 
-    .sponser-landing-sponsors-container-top,
+    /* .sponser-landing-sponsors-container-top,
     .sponser-landing-sponsors-container-bottom {
         flex-wrap: wrap;
         margin-left: 5%;
         margin-right: 5%;
         width: 90%;
         height: max-content;
-    }
+    } */
 
-    .sponser-landing-sponsor-card {
+    /* .sponser-landing-sponsor-card {
         width: 45%;
         height: 14vh;
         margin: 4% 2.5%;
-    }
+    } */
 
     .sponser-landing-heading {
         font-size: 2.5rem;
         letter-spacing: 0.4rem;
         margin-bottom: 1rem;
         margin-top: 3rem;
+    }
+
+    .sponser-scroller[data-speed="slow"] {
+        --_animation-duration: 50s;
     }
 }
