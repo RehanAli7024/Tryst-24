@@ -4,7 +4,7 @@ import Placeholder from "../contactus/placeholder";
 import Placeholder1 from "../contactus/placeholder1";
 import data1 from "./data1";
 import FAQ_main from "./ac_faq_main";
-import axios from "axios";
+import axios from "../../axios";
 import { DOMAIN } from "../../domain";
 import PaymentComponent from "./payment";
 

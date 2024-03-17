@@ -4,7 +4,7 @@ import edit_button from "./btn.png";
 import logoutbutton from "./Button.png";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../axios";
 import { DOMAIN } from "../../domain";
 import userLoggedInNavigator from "../../pages/routes/userLoggedInNavigator";
 import defaultdp from "./Assets_dashboard/defaultimage.jpg";

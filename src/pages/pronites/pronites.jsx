@@ -2,7 +2,7 @@ import "./pronites.css";
 import Meetup1 from "../../assets/meetup1.webp";
 import { useState } from "react";
 import { DOMAIN } from "../../domain";
-import axios from "axios";
+import axios from "../../axios";
 
 const Pronites = () => {
     const [available, setAvailable] = useState(false);
