@@ -105,7 +105,7 @@ function Navbar() {
   ];
 
   if (userProfile && userProfile !== "general") {
-    options.splice(3, 0, "Pronites");
+    options.splice(3, 0, "Technites");
   }
 
   return (

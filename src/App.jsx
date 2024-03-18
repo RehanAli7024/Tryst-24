@@ -85,7 +85,7 @@ const App = () => {
           <Route path="/guests" element={<Speakers />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/usercard" element={<UserCard />} />
-          <Route path="/pronites" element={<ComingSoon />} />
+          <Route path="/technites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/imagenai_prelims_comp" element={<Imagenai />} />
