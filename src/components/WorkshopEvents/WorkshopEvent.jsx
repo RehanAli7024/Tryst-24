@@ -76,6 +76,7 @@ export default function CompetitionEvent({
     has_form: false,
     registration_link: '',
     ruleBook: '',
+    event_club:'',
   });
   const [isChecked, setIsChecked] = useState(false);
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
@@ -83,7 +84,7 @@ export default function CompetitionEvent({
   const handleChange = (e) => {
     if (e.target.name === "file") {
       const file_data = e.target.files[0];
-      console.log(file_data);
+      // console.log(file_data);
       setFormData((prevState) => ({
         ...prevState,
         file: file_data,
