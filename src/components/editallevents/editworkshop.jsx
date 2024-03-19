@@ -79,7 +79,7 @@ export default function EditWorkshopEvent({
     ruleBook: eventDetails.rulebook,
     file: eventDetails.event_image,
     editedform: true,
-    event_id: eventDetails.event_id,
+    event_id: eventDetails.workshop_id,
     reg_date: eventDetails.deadline_date,
     reg_time: eventDetails.deadline_time,
     has_form: eventDetails.has_form,
