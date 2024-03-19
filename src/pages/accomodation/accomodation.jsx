@@ -192,36 +192,35 @@ const Accomodation = () => {
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">1. </div>
                   <div className="ac_reaching_points_text">
-                    Travelling in Mumbai is very easy and systematic. The modes
-                    of travelling in Mumbai are taxis, auto rickshaws, local
-                    train and BEST Buses. IIT Bombay is located at Powai, which
-                    is an eastern suburb in the North-Eastern part (Central
-                    Railway Line) of Mumbai. The following link may provide you
-                    a rough estimate of the auto fares between two stations Taxi
-                    Auto fare Mumbai is in the form of a long narrow island,
-                    almost a peninsula, thrusting southwards into the Arabian
-                    Sea. In Mumbai, local trains run through the following
-                    routes. Western Railway: Church gate to Borivali/Virar and
-                    return. Central Railway: Mumbai CST to Karjat/Kasara and
-                    return. Harbour Route: Mumbai CST to Andheri and return New
-                    Bombay Route: Mumbai CST to Vashi/ Panvel and return. Kanjur
-                    Marg, a Local Train Station is the closest local train stop
-                    to IIT Bombay. It is located on Central Railway line. Kanjur
-                    Marg Local Train Station is the closest local train stop to
-                    IIT Bombay.
+Once you arrive in Delhi, follow these steps to reach the Indian Institute of Technology Delhi (IITD) campus:
+
+Arriving at the Airport/Railway Station: Depending on your mode of transportation, arrive at either the Indira Gandhi International Airport or the New Delhi Railway Station.
+
+Selecting Transportation Option:
+
+Taxi/Cab: Opt for prepaid taxi services available at the airport or railway station. Ensure to negotiate a fare or use ride-hailing apps like Uber or Ola for convenience.
+Metro: Delhi Metro is a convenient and cost-effective option. Board the Airport Express Line if you're at the airport, or take Line 2 (Yellow Line) from the railway station to reach the nearest metro station to IITD.
+Traveling by Metro:
+
+If coming from the airport, take the Airport Express Line and get down at the 'New Delhi' metro station. From there, switch to Line 2 (Yellow Line) towards HUDA City Centre and alight at 'Hauz Khas' metro station.
+If arriving at New Delhi Railway Station, board Line 2 (Yellow Line) directly towards HUDA City Centre and get off at 'Hauz Khas' metro station.
+Final Leg to IITD:
+
+From 'Hauz Khas' metro station, take an auto-rickshaw or a cycle rickshaw to reach IITD campus, which is about 4-5 kilometers away.
+Alternatively, you can book a cab from the metro station or use a local bus service that goes towards IITD..
                   </div>
                 </div>
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">2. </div>
                   <div className="ac_reaching_points_text">
-                    Every team has to register online on the official Techfest
+                    Every team has to register online on the official Tryst
                     website for the competition.
                   </div>
                 </div>
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">3. </div>
                   <div className="ac_reaching_points_text">
-                    A Team ID will be allocated to the team on registration
+                    A Team ID will be allocated to the team individuals on registration
                     which shall be used for future references.
                   </div>
                 </div>
@@ -235,7 +234,7 @@ const Accomodation = () => {
                 <div className="ac_reaching_points">
                   <div className="ac_reaching_points_num">5. </div>
                   <div className="ac_reaching_points_text">
-                    No responsibility will be held by Techfest, IIT Bombay for
+                    No responsibility will be held by Tryst, IIT Delhi for
                     any late, lost or misdirected entries.
                   </div>
                 </div>
@@ -252,7 +251,7 @@ const Accomodation = () => {
                   <div className="ac_reaching_points_num">7. </div>
                   <div className="ac_reaching_points_text">
                     All modes of official communication will be through the
-                    Techfest e-mail. Participants are advised to keep track of
+                    Tryst e-mail. Participants are advised to keep track of
                     all folders in their e-mail accounts.
                   </div>
                 </div>

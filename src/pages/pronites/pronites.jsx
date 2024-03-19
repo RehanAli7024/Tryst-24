@@ -68,7 +68,7 @@ const Pronites = () => {
     return (
         <div>
             <div className="pronites-heading">
-                PRONITES
+                Technites
             </div>
         </div>
     );
