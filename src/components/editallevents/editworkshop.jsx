@@ -83,6 +83,7 @@ export default function EditWorkshopEvent({
     reg_date: eventDetails.deadline_date,
     reg_time: eventDetails.deadline_time,
     has_form: eventDetails.has_form,
+    event_club: eventDetails.event_club,
   });
 
   const [constactPersonDetails, setcontactPerosnDetails] = useState(
