@@ -296,7 +296,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckInSelect("27")}
                             >
-                              27
+                              28
                             </button>
                             <button
                               className={
@@ -306,7 +306,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckInSelect("28")}
                             >
-                              28
+                              29
                             </button>
                             <button
                               className={
@@ -316,7 +316,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckInSelect("29")}
                             >
-                              29
+                              30
                             </button>
                             <button
                               className={
@@ -326,7 +326,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckInSelect("30")}
                             >
-                              30
+                              31
                             </button>
                             <button
                               className={
@@ -336,7 +336,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckInSelect("31")}
                             >
-                              31
+                              1
                             </button>
                           </div>
                         </div>
@@ -353,7 +353,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckOutSelect("27")}
                             >
-                              27
+                              28
                             </button>
                             <button
                               className={
@@ -363,7 +363,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckOutSelect("28")}
                             >
-                              28
+                              29
                             </button>
                             <button
                               className={
@@ -373,7 +373,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckOutSelect("29")}
                             >
-                              29
+                              30
                             </button>
                             <button
                               className={
@@ -383,7 +383,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckOutSelect("30")}
                             >
-                              30
+                              31
                             </button>
                             <button
                               className={
@@ -393,7 +393,7 @@ const Accomodation = () => {
                               }
                               onClick={() => handleCheckOutSelect("31")}
                             >
-                              31
+                              1
                             </button>
                           </div>
                         </div>

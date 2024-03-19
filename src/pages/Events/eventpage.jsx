@@ -37,7 +37,6 @@ const EventPage = ({ event }) => {
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     var time12 = hours + ":" + minutes + " " + period;
-
     return time12;
   }
 
@@ -258,7 +257,7 @@ const EventPage = ({ event }) => {
                 <div className="fil_con" id="ev_page_fil_con_2">
                   <div className="filter_btn" id="ev_btn_1">
                     {!event.registration_link ||
-                    event.registration_link === "" ? (
+                      event.registration_link === "" ? (
                       registered ? (
                         <>{displaytext}</>
                       ) : (
@@ -340,7 +339,6 @@ const EventPage = ({ event }) => {
                     <div key={index} className="ev_input_field">
                       {field.type === "text" ? (
                         <>
-                          {/* adjust the display of the fields and render it accordingly  */}
                           <label className="ev_form_heading">
                             {field.title}
                           </label>
@@ -365,7 +363,6 @@ const EventPage = ({ event }) => {
                           <label className="ev_form_heading">
                             {field.title}
                           </label>
-                          {/* the changes in the option should be updated in the formData state */}
                           {field.options.map((option, index) => {
                             return (
                               <div key={index}>
