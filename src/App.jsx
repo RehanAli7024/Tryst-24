@@ -97,7 +97,7 @@ const App = () => {
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} />}
+                  element={<EventPage event={event} eventType="competition"/>}
                 />
               );
             })
@@ -108,7 +108,7 @@ const App = () => {
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} />}
+                  element={<EventPage event={event} eventType="workshop" />}
                 />
               );
             })
@@ -119,7 +119,7 @@ const App = () => {
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} />}
+                  element={<EventPage event={event} eventType="guest_lecture"/>}
                 />
               );
             })
