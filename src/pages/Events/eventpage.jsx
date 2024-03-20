@@ -25,7 +25,7 @@ const EventPage = ({ event, eventType }) => {
   } else if (eventType === "guest_lecture") {
     eventId = event.guest_id;
   }
-  // const eventType = "competition";
+  // const eventType = "competition"; 
   const [formFields, setFormFields] = useState([]);
   const [formData, setFormData] = useState({
     event_id: eventId,
