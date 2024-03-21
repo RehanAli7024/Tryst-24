@@ -1,50 +1,97 @@
-.brickBreaker-container{
+.brickBreaker-container {
     display: flex;
     flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   gap:  20px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 #board {
-    background-image: url('../../assets/brick-breaker/background.png');
+    background-image: url('../../assets/brick-breaker/background1.webp');
     border-top: 5px solid skyblue;
     border-left: 5px solid skyblue;
     border-right: 5px solid skyblue;
-    width:80%;
+    width: 80%;
     height: 80vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     width: 80vw;
-   
+    position: relative;
 }
-.game-over{
+
+.game-sound-icon {
+    margin-left: 20px;
+    width: max-content;
+}
+
+.game-sound-icon {
+    width: 2.5rem;
+}
+
+.game-over {
     color: skyblue;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-.gameScore{
+
+.gameScore {
     color: skyblue;
     margin-bottom: 20px;
 }
-.canvas-containor{
+
+.canvas-containor {
     display: flex;
-    flex-direction:  row;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.leftArrowIcon{
+
+.canvas-containor-box {
+    position: relative;
+}
+
+.jumping-luma {
+    position: absolute;
+    top: 72vh;
+    left: 22vw;
+    width: 4rem;
+    z-index: 0.5;
+    transition: all 0.1s ease-in-out;
+}
+
+.leftArrowIcon {
     display: none;
 }
+
 @media screen and (max-width: 1024px) {
-    .leftArrowIcon{
+    .leftArrowIcon {
         display: flex;
         font-size: 3rem;
     }
-    .canvas-containor{
+
+    .canvas-containor {
         gap: 10px;
-       
     }
-    #board{
+
+    #board {
         height: 50vh;
+    }
+
+    .jumping-luma {
+        top: 45vh;
+        width: 4rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .game-over {
+        flex-direction: column;
+    }
+
+    .jumping-luma {
+        top: 55vh;
+        width: 3rem;
     }
 }

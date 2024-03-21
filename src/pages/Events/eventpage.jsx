@@ -12,13 +12,12 @@ import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 
-const EventPage = ({ event }) => {
+const EventPage = ({ event, eventType }) => {
   console.log(event);
   const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
   const token = localStorage.getItem("access_token");
   const eventId = event.event_id;
-  const eventType = "competition";
   const [formFields, setFormFields] = useState([]);
   const [formData, setFormData] = useState({
     event_id: eventId,
@@ -258,7 +257,7 @@ const EventPage = ({ event }) => {
                 <div className="fil_con" id="ev_page_fil_con_2">
                   <div className="filter_btn" id="ev_btn_1">
                     {!event.registration_link ||
-                    event.registration_link === "" ? (
+                      event.registration_link === "" ? (
                       registered ? (
                         <>{displaytext}</>
                       ) : (
