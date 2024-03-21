@@ -17,7 +17,15 @@ const EventPage = ({ event, eventType }) => {
   const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
   const token = localStorage.getItem("access_token");
-  const eventId = event.event_id;
+  let eventId;
+  if (eventType === "competition") {
+    eventId = event.event_id;
+  } else if (eventType === "workshop") {
+    eventId = event.workshop_id;
+  } else if (eventType === "guest_lecture") {
+    eventId = event.guest_id;
+  }
+  // const eventType = "competition"; 
   const [formFields, setFormFields] = useState([]);
   const [formData, setFormData] = useState({
     event_id: eventId,
@@ -36,7 +44,6 @@ const EventPage = ({ event, eventType }) => {
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     var time12 = hours + ":" + minutes + " " + period;
-
     return time12;
   }
 
@@ -339,7 +346,6 @@ const EventPage = ({ event, eventType }) => {
                     <div key={index} className="ev_input_field">
                       {field.type === "text" ? (
                         <>
-                          {/* adjust the display of the fields and render it accordingly  */}
                           <label className="ev_form_heading">
                             {field.title}
                           </label>
@@ -364,7 +370,6 @@ const EventPage = ({ event, eventType }) => {
                           <label className="ev_form_heading">
                             {field.title}
                           </label>
-                          {/* the changes in the option should be updated in the formData state */}
                           {field.options.map((option, index) => {
                             return (
                               <div key={index}>

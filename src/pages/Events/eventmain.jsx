@@ -240,46 +240,48 @@ const EventMain = () => {
     return (
       <div>
         {eventarray.competitions &&
-          eventarray.competitions.map((event, index) => {
-            if (
-              !searchTerm ||
-              event.title.toLowerCase().includes(searchTerm.toLowerCase())
-            ) {
-              if (typeSelected.length === 0 || typeSelected.includes(1)) {
-                if (
-                  clubSelected.length === 0 ||
-                  checkForSelectedClub(clubSelected, event.clubs)
-                ) {
-                  const eventDate = new Date(event.event_date); // Convert event date string to Date object
-                  if (!event.event_date || eventDate.getDate() >= currentDate.getDate()) {
-                    // Check if event date is not provided or if it's in the future
-
-                    return (
-                      <Link
-                        to={`/events/${event.title}`}
-                        key={index}
-                        id="event_link"
-                      >
-                        <div className="events_card">
-                          <EventCard image={event.event_image} />
+          eventarray.competitions
+            .sort((a, b) => new Date(b.deadline_date) - new Date(a.deadline_date))
+            .map((event, index) => {
+              if (
+                !searchTerm ||
+                event.title.toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                if (typeSelected.length === 0 || typeSelected.includes(1)) {
+                  if (
+                    clubSelected.length === 0 ||
+                    checkForSelectedClub(clubSelected, event.clubs)
+                  ) {
+                    const eventDate = new Date(event.event_date);
+                    // Check if event_date exists and is on or after current date
+                    if (!event.event_date || eventDate.getDate() >= currentDate.getDate()) {
+                      return (
+                        <Link
+                          to={`/events/${event.title}`}
+                          key={index}
+                          id="event_link"
+                        >
+                          <div className="events_card">
+                            <EventCard image={event.event_image} />
+                          </div>
+                        </Link>
+                      );
+                    } else {
+                      return (
+                        <div className="events_card" key={index}>
+                          <img
+                            src={event.event_image}
+                            alt="Event"
+                            style={{ filter: "grayscale(100%)", width: "18.5vw", height: "fit-content" }}
+                          />
                         </div>
-                      </Link>
-                    );
-                  } else {
-                    return (
-                      <div className="events_card" key={index}>
-                        <img
-                          src={event.event_image}
-                          alt="Event"
-                          style={{ filter: "grayscale(100%)" }}
-                        />
-                      </div>
-                    );
+                      );
+                    }
                   }
                 }
               }
-            }
-          })}
+              return null;
+            })}
         {eventarray.guestlectures &&
           eventarray.guestlectures.map((event, index) => {
             if (

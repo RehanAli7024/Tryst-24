@@ -295,7 +295,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckInSelect("27")}
                             >
-                              27
+                              28
                             </button>
                             <button
                               className={
@@ -305,7 +305,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckInSelect("28")}
                             >
-                              28
+                              29
                             </button>
                             <button
                               className={
@@ -315,7 +315,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckInSelect("29")}
                             >
-                              29
+                              30
                             </button>
                             <button
                               className={
@@ -325,7 +325,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckInSelect("30")}
                             >
-                              30
+                              31
                             </button>
                             <button
                               className={
@@ -335,7 +335,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckInSelect("31")}
                             >
-                              31
+                              1
                             </button>
                           </div>
                         </div>
@@ -352,7 +352,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckOutSelect("27")}
                             >
-                              27
+                              28
                             </button>
                             <button
                               className={
@@ -362,7 +362,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckOutSelect("28")}
                             >
-                              28
+                              29
                             </button>
                             <button
                               className={
@@ -372,7 +372,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckOutSelect("29")}
                             >
-                              29
+                              30
                             </button>
                             <button
                               className={
@@ -382,7 +382,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckOutSelect("30")}
                             >
-                              30
+                              31
                             </button>
                             <button
                               className={
@@ -392,7 +392,7 @@ Alternatively, you can book a cab from the metro station or use a local bus serv
                               }
                               onClick={() => handleCheckOutSelect("31")}
                             >
-                              31
+                              1
                             </button>
                           </div>
                         </div>
