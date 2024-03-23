@@ -73,7 +73,6 @@ export default function CompetitionEvent({
       id: club.value,
       name: club.label,
     }));
-
     setFormData((prevState) => ({
       ...prevState,
       event_club: JSON.stringify(selectedClubData),
