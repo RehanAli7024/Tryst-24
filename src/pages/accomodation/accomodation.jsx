@@ -136,6 +136,7 @@ const Accomodation = () => {
             fontSize: "2rem",
             textAlign: "center",
           }}
+          className="login-to-book"
         >
           Please login to book any accommodation.
         </div>

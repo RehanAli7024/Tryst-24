@@ -2,6 +2,14 @@
   display: flex;
   flex-direction: column;
 }
+
+.login-to-book {
+  height: 53vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .acc_heading {
   display: flex;
   justify-content: center;
@@ -22,12 +30,14 @@
   display: flex;
   flex-direction: column;
 }
+
 .ac_contact {
   /* margin-top: 3rem; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 #ac_nav {
   margin-bottom: 3.5rem;
 }
@@ -48,6 +58,7 @@
   align-items: center;
   gap: 50px;
 }
+
 .label_date_accomodation {
   color: var(--Color-Base-Snow, #fffbff);
   text-align: center;
@@ -69,29 +80,38 @@
 
 .datepicker_btn {
   background-image: url("./assets/plusbtn.svg");
-  background-size: cover; /* or contain, depending on how you want the image to fit */
-  background-position: center; /* or any other desired position */
+  background-size: cover;
+  /* or contain, depending on how you want the image to fit */
+  background-position: center;
+  /* or any other desired position */
 
-  padding: 6px 12px; /* Adjust padding as needed */
+  padding: 6px 12px;
+  /* Adjust padding as needed */
 
-  border: none; /* Remove border if needed */
-  cursor: pointer; /* Add pointer cursor */
+  border: none;
+  /* Remove border if needed */
+  cursor: pointer;
+  /* Add pointer cursor */
 }
+
 .datepicker_btn.selecteddate {
   background-image: url("./assets/plusbtnselected.svg");
 }
+
 .checkin_accomodation {
   display: flex;
   flex-direction: column;
   gap: 2vh;
   width: 30%;
 }
+
 .checkout_accomodation {
   display: flex;
   flex-direction: column;
   gap: 2vh;
   width: 30%;
 }
+
 .title_members_details {
   color: var(--Color-Base-Violet, #e086d3);
   text-align: center;
@@ -113,15 +133,21 @@
   font-size: 24px;
 
   background-image: url("./assets/decreasetest.jpg");
-  background-size: cover; /* or contain, depending on how you want the image to fit */
-  background-position: center; /* or any other desired position */
+  background-size: cover;
+  /* or contain, depending on how you want the image to fit */
+  background-position: center;
+  /* or any other desired position */
 
-  padding: 6px 8px; /* Adjust padding as needed */
+  padding: 6px 8px;
+  /* Adjust padding as needed */
 
-  border: none; /* Remove border if needed */
-  cursor: pointer; /* Add pointer cursor */
+  border: none;
+  /* Remove border if needed */
+  cursor: pointer;
+  /* Add pointer cursor */
   height: 40px;
 }
+
 .no_of_people {
   width: 45%;
   height: 40px;
@@ -130,6 +156,7 @@
   align-items: center;
   border: 2px solid rgba(0, 224, 255, 0.3);
 }
+
 .plus_btn_members {
   display: flex;
   align-items: center;
@@ -138,13 +165,18 @@
   font-size: 24px;
 
   background-image: url("./assets/increase.png");
-  background-size: cover; /* or contain, depending on how you want the image to fit */
-  background-position: center; /* or any other desired position */
+  background-size: cover;
+  /* or contain, depending on how you want the image to fit */
+  background-position: center;
+  /* or any other desired position */
 
-  padding: 6px 8px; /* Adjust padding as needed */
+  padding: 6px 8px;
+  /* Adjust padding as needed */
 
-  border: none; /* Remove border if needed */
-  cursor: pointer; /* Add pointer cursor */
+  border: none;
+  /* Remove border if needed */
+  cursor: pointer;
+  /* Add pointer cursor */
   height: 40px;
 }
 
@@ -166,11 +198,13 @@
   align-items: center;
   gap: 20%;
 }
+
 .label_date_accomodation {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .members_details_accomodation {
   display: flex;
   align-items: center;
@@ -180,6 +214,7 @@
   margin-bottom: 2vh;
   width: 100%;
 }
+
 .men_accomodation {
   color: var(--Color-Base-Snow, #fffbff);
   text-align: center;
@@ -216,13 +251,18 @@
   margin-top: 30px;
   margin-bottom: 20px;
   background-image: url("./assets/nextbtn.svg");
-  background-size: cover; /* or contain, depending on how you want the image to fit */
-  background-position: center; /* or any other desired position */
+  background-size: cover;
+  /* or contain, depending on how you want the image to fit */
+  background-position: center;
+  /* or any other desired position */
 
-  padding: 12px 8px; /* Adjust padding as needed */
+  padding: 12px 8px;
+  /* Adjust padding as needed */
 
-  border: none; /* Remove border if needed */
-  cursor: pointer; /* Add pointer cursor */
+  border: none;
+  /* Remove border if needed */
+  cursor: pointer;
+  /* Add pointer cursor */
 }
 
 .members_details {
@@ -266,10 +306,12 @@
   flex-direction: column;
   gap: 2vh;
 }
+
 .members_details_field {
   display: flex;
   flex-direction: column;
 }
+
 .members_details_field label {
   color: #fff;
   font-family: Rajdhani;
@@ -278,13 +320,12 @@
   font-weight: 600;
   line-height: normal;
 }
+
 .members_details_field input {
   border-left: 2px solid var(--Color-Base-Vivid-Sky-Blue, #00e0ff);
-  background: linear-gradient(
-      0deg,
+  background: linear-gradient(0deg,
       rgba(0, 224, 255, 0.1) 0%,
-      rgba(0, 224, 255, 0.1) 100%
-    ),
+      rgba(0, 224, 255, 0.1) 100%),
     rgba(3, 10, 23, 0.8);
   padding-left: 5%;
   height: 50px;
@@ -298,6 +339,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .terms_and_conditions_accomodation label {
   color: #fff;
   font-family: Rajdhani;
@@ -326,13 +368,18 @@
   margin-top: 30px;
   margin-bottom: 20px;
   background-image: url("./assets/nextbtn.svg");
-  background-size: cover; /* or contain, depending on how you want the image to fit */
-  background-position: center; /* or any other desired position */
+  background-size: cover;
+  /* or contain, depending on how you want the image to fit */
+  background-position: center;
+  /* or any other desired position */
 
-  padding: 12px 8px; /* Adjust padding as needed */
+  padding: 12px 8px;
+  /* Adjust padding as needed */
 
-  border: none; /* Remove border if needed */
-  cursor: pointer; /* Add pointer cursor */
+  border: none;
+  /* Remove border if needed */
+  cursor: pointer;
+  /* Add pointer cursor */
 }
 
 .ac_reaching {
@@ -364,20 +411,25 @@
   font-weight: 400;
   font-size: 1.2rem;
 }
+
 .ac_faq {
   margin-bottom: 15%;
 }
+
 @media (max-width: 768px) {
   .acc_heading {
     font-size: 1.5rem;
   }
-  .Form_details_accomodation{
+
+  .Form_details_accomodation {
     font-size: 1rem;
     text-align: center;
   }
+
   .ac_reaching_points_num {
     font-size: 1rem;
   }
+
   .ac_reaching_points_text {
     font-size: 1rem;
   }
@@ -389,16 +441,19 @@
     justify-content: center;
     gap: 2vh;
   }
+
   .members_personal_data {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .members_details_field input {
     width: 100%;
   }
 }
+
 @media (max-width: 1024px) {
   .selection_members {
     flex-direction: column;
@@ -417,6 +472,7 @@
     flex-direction: column;
     gap: 2vh;
   }
+
   .selector_men_number {
     width: 50%;
   }
