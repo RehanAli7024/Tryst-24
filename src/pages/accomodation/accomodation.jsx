@@ -8,6 +8,7 @@ import axios from "../../axios";
 import { DOMAIN } from "../../domain";
 import PaymentComponent from "./payment";
 
+
 const Accomodation = () => {
   const [activeButton, setActiveButton] = useState("Registration Form");
   const [isClicked, setIsClicked] = useState(false);
