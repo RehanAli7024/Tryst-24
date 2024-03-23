@@ -87,7 +87,7 @@ function EditGuestRegistration({ setRegistrationOpen }) {
   const handleSave = () => {
     const token = localStorage.getItem('admin_access_token');
     console.log(formData);
-    console.log(token);
+    // console.log(token);
     axios
       .post(
         `${DOMAIN}registration/`, formData, {

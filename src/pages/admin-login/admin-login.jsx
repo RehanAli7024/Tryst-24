@@ -16,8 +16,7 @@ function AdminLogin() {
   React.useEffect(adminLoggedOutNavigator(useNavigate()));
 
   const loginSchema = Yup.object().shape({
-    username: Yup.string()
-      .required("username is a required field"),
+    username: Yup.string().required("username is a required field"),
     password: Yup.string()
       .required("Password is a required field")
       .min(8, "Password must be at least 8 characters"),
@@ -32,9 +31,15 @@ function AdminLogin() {
         axios
           .post(`${DOMAIN}adminlogin/`, values)
           .then((response) => {
-            console.log(response.data);
-            localStorage.setItem("admin_access_token", response.data.tokens.access);
-            localStorage.setItem("admin_refresh_token", response.data.tokens.refresh);
+            // console.log(response.data);
+            localStorage.setItem(
+              "admin_access_token",
+              response.data.tokens.access
+            );
+            localStorage.setItem(
+              "admin_refresh_token",
+              response.data.tokens.refresh
+            );
             navigate("/admin/events", { replace: true });
           })
           .catch((err) => {
@@ -94,9 +99,7 @@ function AdminLogin() {
               </div>
             </div>
             <div className="ad-log-img">
-              <div>
-                {/* <img src={doodle} alt="doodle"></img> */}
-              </div>
+              <div>{/* <img src={doodle} alt="doodle"></img> */}</div>
             </div>
           </div>
         </form>

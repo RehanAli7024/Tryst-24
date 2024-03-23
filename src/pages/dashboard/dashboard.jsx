@@ -111,7 +111,7 @@ const Dashboard = () => {
       })
       .then((response) => {
         setRegisteredEvents(response.data.registered_events);
-        console.log(registeredEvents);
+        // console.log(registeredEvents);
       })
       .catch((error) => {
         console.log(error);
@@ -119,11 +119,16 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    axios.get(`${DOMAIN}profile/`, { headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` } })
-      .then(response => {
-        console.log(response.data);
+    axios
+      .get(`${DOMAIN}profile/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
       })
-      .catch(error => {
+      .then((response) => {
+        // console.log(response.data);
+      })
+      .catch((error) => {
         console.log(error);
       });
   }, []);
@@ -226,29 +231,33 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "REGISTERED EVENTS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "PRONITES" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("PRONITES")}
           >
             PRONITES
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "YOUR ORDERS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "ACCOMODATION" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION

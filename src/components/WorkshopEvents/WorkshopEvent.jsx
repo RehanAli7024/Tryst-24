@@ -44,7 +44,7 @@ export default function CompetitionEvent({
     setFormData({ ...formData, contactPersons: constactPersonDetails });
     e.preventDefault();
     const token = localStorage.getItem("admin_access_token");
-    console.log(token);
+    // console.log(token);
     setFormIsSubmitted(true);
     axios.post(`${DOMAIN}create_workshop/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
       .then((res) => {
