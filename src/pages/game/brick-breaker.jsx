@@ -273,6 +273,23 @@ const BrickBreaker = () => {
     };
   }, [gameOver, isMuted]);
 
+  function startKeyDown() {
+    keyDownInterval = setInterval(() => {
+      const event = new KeyboardEvent("keydown", {
+        key: "ArrowLeft",
+        keyCode: 37,
+        which: 37,
+        code: "ArrowLeft",
+      });
+      window.dispatchEvent(event);
+    }, 10); // Adjust interval as needed
+  }
+
+  // Stop continuous keydown event when arrow button is released
+  function stopKeyDown() {
+    clearInterval(keyDownInterval);
+  }
+
   return (
     <div className="brickBreaker-container">
 
@@ -285,21 +302,23 @@ const BrickBreaker = () => {
       </div>
 
       <div className="canvas-containor">
-        <div
+        <button
           className="leftArrowIcon"
-          onClick={() => {
-            const event = new KeyboardEvent("keydown", {
-              key: "ArrowLeft",
-              keyCode: 37,
-              which: 37,
-              code: "ArrowLeft",
-            });
+          // onMouseDown={() => {
+          //   const event = new KeyboardEvent("keydown", {
+          //     key: "ArrowLeft",
+          //     keyCode: 37,
+          //     which: 37,
+          //     code: "ArrowLeft",
+          //   });
 
-            window.dispatchEvent(event);
-          }}
+          //   window.dispatchEvent(event);
+          // }}
+          onMouseDown={startKeyDown}
+          onMouseUp={stopKeyDown}
         >
           {'<'}
-        </div>
+        </button>
         <div className="canvas-container-box">
           <canvas ref={canvasRef} id="board" width="500" height="500" onClick={() => {
             const event = new KeyboardEvent("keydown", {
@@ -313,7 +332,7 @@ const BrickBreaker = () => {
           }} />
           <img src={Luma} className="jumping-luma" alt="Luma" />
         </div>
-        <div
+        <button
           className="leftArrowIcon"
           onClick={() => {
             const rightArrowKeyDownEvent = new KeyboardEvent("keydown", {
@@ -329,7 +348,7 @@ const BrickBreaker = () => {
           }}
         >
           {'>'}
-        </div>
+        </button>
       </div>
       <div className="gameScore">Score : {score}</div>
     </div>

@@ -1,10 +1,8 @@
 .event_body {
-  /* display: flex; */
   flex-wrap: wrap;
   position: relative;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
 }
 
 .event_title {
@@ -330,6 +328,11 @@
 }
 
 @media (max-width: 768px) {
+  .events-container {
+    width: 100%;
+    margin-bottom: 0rem;
+  }
+
   .no_events {
     /* background-color: #e086d3; */
     width: 90vw;
@@ -483,8 +486,13 @@
     margin-right: 0;
     width: 1.5rem;
   }
+
+  .pagination {
+    margin-bottom: 0rem;
+  }
 }
-.pagination_control{
+
+.pagination_control {
   background-color: #00e0ff;
 }
 
