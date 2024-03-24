@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import "./landing-sponsors.css";
-import "../../../components/SponsorCard/SponsorCard.css"
+import "../../../components/SponsorCard/SponsorCard.css";
 // import SponsorCard from "../../../components/SponsorCard/SponsorCard";
 import Samsung from "../../../assets/sponsors/samsung.webp";
 import TechMaghi from "../../../assets/sponsors/tm.webp";
@@ -27,6 +27,7 @@ import Medulance from "../../../assets/sponsors/medulance.webp";
 import PieMatrix from "../../../assets/sponsors/piematrix.webp";
 import Twoss from "../../../assets/sponsors/twoss.webp";
 import VirtualNess from "../../../assets/sponsors/virtualness.webp";
+import Technocon from "../../../assets/sponsors/technocon.webp";
 
 const SPONSORS = {
   sponsorsUp1: [
@@ -46,7 +47,7 @@ const SPONSORS = {
   sponsorsUp2: [
     { index: 1, name: "Edutech Life", image: Edutech },
     { index: 2, name: "Techobyte", image: Techobyte },
-    { index: 3, name: "Robosapiens", image: Robosapiens },
+    { index: 3, name: "Technocon", image: Technocon },
     { index: 4, name: "Wingfotech", image: Wingfotech },
     { index: 5, name: "Intel", image: Intel },
     { index: 6, name: "Junglee Games", image: JungleeGames },
@@ -123,7 +124,9 @@ const Sponsors = () => {
       scrollers.forEach((scroller) => {
         scroller.setAttribute("data-animated", true);
 
-        const scrollerInner = scroller.querySelector(".sponser-scroller__inner");
+        const scrollerInner = scroller.querySelector(
+          ".sponser-scroller__inner"
+        );
         const scrollerContent = Array.from(scrollerInner.children);
 
         Array.from({ length: 3 }, () => {
@@ -140,7 +143,10 @@ const Sponsors = () => {
   return (
     <div className="sponser-landing-comp">
       <div className="text-animation" ref={ref}>
-        <div className="sponser-landing-heading landing-heading" data-value="SPONSORS">
+        <div
+          className="sponser-landing-heading landing-heading"
+          data-value="SPONSORS"
+        >
           SPONSORS
         </div>
       </div>
@@ -148,28 +154,41 @@ const Sponsors = () => {
         {Object.values(SPONSORS).map((sponsorsList, i) => (
           <div
             key={`sponsorsUp${i + 1}`}
-            className={`${window.innerWidth < 0
-              ? "sponser-landing-sponsors-container-top-boss "
-              : "sponser-landing-sponsors-container-top-boss sponser-scroller"
-              }`}
+            className={`${
+              window.innerWidth < 0
+                ? "sponser-landing-sponsors-container-top-boss "
+                : "sponser-landing-sponsors-container-top-boss sponser-scroller"
+            }`}
             data-direction={i === 0 ? "right" : "left"}
             data-speed="slow"
           >
             <div
-              className={`${window.innerWidth < 0
-                ? "sponser-landing-sponsors-container-top "
-                : "sponser-landing-sponsors-container-top sponser-scroller__inner"
-                }`}
+              className={`${
+                window.innerWidth < 0
+                  ? "sponser-landing-sponsors-container-top "
+                  : "sponser-landing-sponsors-container-top sponser-scroller__inner"
+              }`}
             >
               {sponsorsList.map((sponsor) => (
-                <div key={sponsor.index} className="sponser-landing-sponsor-card">
+                <div
+                  key={sponsor.index}
+                  className="sponser-landing-sponsor-card"
+                >
                   {/* <SponsorCard sponsor={sponsor} /> */}
-                  <div key={sponsor.index} className="sponsor-container" id={`sponsor${sponsor.index}`}>
+                  <div
+                    key={sponsor.index}
+                    className="sponsor-container"
+                    id={`sponsor${sponsor.index}`}
+                  >
                     <div className="sponsor-heading">{sponsor.header}</div>
                     <div className="sponsor-box-container sponsor-shape">
                       <div className="sponsor-box sponsor-shape">
                         <div className="sponsor-box-img-div">
-                          <img src={sponsor.image} alt={sponsor.name} className="sponsor-box-img" />
+                          <img
+                            src={sponsor.image}
+                            alt={sponsor.name}
+                            className="sponsor-box-img"
+                          />
                         </div>
                         <div className="sponsor-box-text">{sponsor.name}</div>
                       </div>
