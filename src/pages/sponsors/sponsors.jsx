@@ -23,6 +23,7 @@ import Medulance from "../../assets/sponsors/medulance.webp";
 import PieMatrix from "../../assets/sponsors/piematrix.webp";
 import Twoss from "../../assets/sponsors/twoss.webp";
 import VirtualNess from "../../assets/sponsors/virtualness.webp";
+import Technocon from "../../assets/sponsors/technocon.webp";
 
 import SponsorCard from '../../components/SponsorCard/SponsorCard';
 
@@ -69,9 +70,9 @@ const sponsors = [
     },
     {
         index: 7,
-        name: "Robosapiens",
-        image: Robosapiens,
-        website: "https://www.robosapi.com/"
+        name: "Technocon",
+        image: Technocon,
+        website: "https://technocon.org/"
     },
     {
         index: 8,
