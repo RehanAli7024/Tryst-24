@@ -102,6 +102,7 @@ function Navbar() {
     "Events",
     "Sponsors",
     "Contact Us",
+    "GameZone",
   ];
 
   if (userProfile && userProfile !== "general") {

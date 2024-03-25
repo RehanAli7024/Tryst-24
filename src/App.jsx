@@ -91,14 +91,14 @@ const App = () => {
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/imagenai_prelims_comp" element={<Imagenai />} />
           <Route path="/accomodation" element={<Accomodation />} />
-          <Route path="/game" element={<BrickBreaker />} />
+          <Route path="/GameZone" element={<BrickBreaker />} />
           {eventarray.competitions &&
             eventarray.competitions.map((event, index) => {
               return (
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} eventType="competition"/>}
+                  element={<EventPage event={event} eventType="competition" />}
                 />
               );
             })
@@ -120,7 +120,7 @@ const App = () => {
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} eventType="guest_lecture"/>}
+                  element={<EventPage event={event} eventType="guest_lecture" />}
                 />
               );
             })
