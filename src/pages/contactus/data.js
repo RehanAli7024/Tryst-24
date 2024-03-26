@@ -101,7 +101,31 @@ const data = {
       email: "arya.ladhani007@gmail.com",
       linkedin: "https://www.linkedin.com/in/arya-ladhani-74b621200/",
       number: "9619952579",
-    },
+    }
+    // {
+    //   name: "Keshav",
+    //   por: "Hospitality",
+    //   image: marketing,
+    //   email: "",
+    //   linkedin: "https://www.linkedin.com/in/rohit-shaww/",
+    //   number: "9330433653",
+    // },
+    // {
+    //   name: "Keshav",
+    //   por: "Production",
+    //   image: marketing,
+    //   email: "",
+    //   linkedin: "https://www.linkedin.com/in/rohit-shaww/",
+    //   number: "9330433653",
+    // },
+    // {
+    //   name: "Rohit Shaw",
+    //   por: "Infrastructure",
+    //   image: marketing,
+    //   email: "",
+    //   linkedin: "https://www.linkedin.com/in/rohit-shaww/",
+    //   number: "9330433653",
+    // }
   ],
 };
 export default data;
