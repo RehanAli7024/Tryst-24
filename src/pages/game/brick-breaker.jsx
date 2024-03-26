@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./brick-breaker.css";
-import ChipiChapa from "../../assets/brick-breaker/chipi_chapa.mp3"
-import Luma from "../../assets/brick-breaker/LumaSide.webp"
-import GameMute from "../../assets/brick-breaker/GameMute.webp"
-import GameSound from "../../assets/brick-breaker/GameSound.webp"
+import ChipiChapa from "../../assets/brick-breaker/chipi_chapa.mp3";
+import Luma from "../../assets/brick-breaker/LumaSide.webp";
+import GameMute from "../../assets/brick-breaker/GameMute.webp";
+import GameSound from "../../assets/brick-breaker/GameSound.webp";
 import { parse } from "date-fns";
-
+import LeftArrowButton from "./leftArrowbutton";
+import RightArrowButton from "./rightArrowbutton";
 const BrickBreaker = () => {
   const canvasRef = useRef(null);
   const [gameOver, setGameOver] = useState(true);
@@ -108,11 +109,9 @@ const BrickBreaker = () => {
       // Handle collisions with walls
       if (ball.y <= 0) {
         ball.velocityY *= -1;
-      }
-      else if (ball.x <= 0 || ball.x + ball.width >= canvas.width) {
+      } else if (ball.x <= 0 || ball.x + ball.width >= canvas.width) {
         ball.velocityX *= -1;
-      }
-      else if (ball.y + ball.height >= canvas.height) {
+      } else if (ball.y + ball.height >= canvas.height) {
         setGameOver(true);
 
         // delete the ball
@@ -177,7 +176,6 @@ const BrickBreaker = () => {
 
     // Handle player movement
     function movePlayer(e) {
-      // console.log(e);
       e.preventDefault();
       if (gameOver) {
         if (e.code === "Space") {
@@ -210,8 +208,6 @@ const BrickBreaker = () => {
       blockRows = 3;
       createBlocks();
       window.removeEventListener("keydown", movePlayer);
-      // Remove event listener
-      // startGame(); // Re-add event listener
 
       // Clear animation frame
       cancelAnimationFrame(animationId);
@@ -229,14 +225,13 @@ const BrickBreaker = () => {
   const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
-
     // Audio element for background music
     const audioRef = new Audio(ChipiChapa);
     audioRef.loop = true;
 
-    const jumpingLuma = document.querySelector('.jumping-luma');
+    const jumpingLuma = document.querySelector(".jumping-luma");
     const jumpingLumaStyle = window.getComputedStyle(jumpingLuma);
-    const topPosition = jumpingLumaStyle.getPropertyValue('top');
+    const topPosition = jumpingLumaStyle.getPropertyValue("top");
     const handleJumping = () => {
       // if (movingUp === true) {
       //   setMovingUp(false);
@@ -250,9 +245,13 @@ const BrickBreaker = () => {
       // }
 
       //increase the top by 10px and then wait for 1 sec and then decrease the top by 10px
-      jumpingLuma.style.top = `${parseInt(jumpingLumaStyle.getPropertyValue('top')) - 30}px`;
+      jumpingLuma.style.top = `${
+        parseInt(jumpingLumaStyle.getPropertyValue("top")) - 30
+      }px`;
       setTimeout(() => {
-        jumpingLuma.style.top = `${parseInt(jumpingLumaStyle.getPropertyValue('top')) + 30}px`;
+        jumpingLuma.style.top = `${
+          parseInt(jumpingLumaStyle.getPropertyValue("top")) + 30
+        }px`;
       }, 30000 / 148);
     };
 
@@ -261,7 +260,6 @@ const BrickBreaker = () => {
     if (isMuted || gameOver) {
       audioRef.pause();
       clearInterval(jumpingInterval);
-
     } else {
       audioRef.play();
       jumpingInterval = setInterval(handleJumping, 30000 / 72);
@@ -273,82 +271,43 @@ const BrickBreaker = () => {
     };
   }, [gameOver, isMuted]);
 
-  function startKeyDown() {
-    keyDownInterval = setInterval(() => {
-      const event = new KeyboardEvent("keydown", {
-        key: "ArrowLeft",
-        keyCode: 37,
-        which: 37,
-        code: "ArrowLeft",
-      });
-      window.dispatchEvent(event);
-    }, 10); // Adjust interval as needed
-  }
-
-  // Stop continuous keydown event when arrow button is released
-  function stopKeyDown() {
-    clearInterval(keyDownInterval);
-  }
-
   return (
     <div className="brickBreaker-container">
-
-
       <div className="game-over">
         Press on the window to a Start New-game
-        <button onClick={() => setIsMuted(!isMuted)} className="game-sound-button">
-          <img src={isMuted ? GameMute : GameSound} className="game-sound-icon" />
+        <button
+          onClick={() => setIsMuted(!isMuted)}
+          className="game-sound-button"
+        >
+          <img
+            src={isMuted ? GameMute : GameSound}
+            className="game-sound-icon"
+          />
         </button>
       </div>
 
       <div className="canvas-containor">
-        <button
-          className="leftArrowIcon"
-          // onMouseDown={() => {
-          //   const event = new KeyboardEvent("keydown", {
-          //     key: "ArrowLeft",
-          //     keyCode: 37,
-          //     which: 37,
-          //     code: "ArrowLeft",
-          //   });
-
-          //   window.dispatchEvent(event);
-          // }}
-          onMouseDown={startKeyDown}
-          onMouseUp={stopKeyDown}
-        >
-          {'<'}
-        </button>
+        <LeftArrowButton />
         <div className="canvas-container-box">
-          <canvas ref={canvasRef} id="board" width="500" height="500" onClick={() => {
-            const event = new KeyboardEvent("keydown", {
-              key: " ",
-              keyCode: 32, // Key code for space key
-              which: 32, // Another representation of space key code
-              code: "Space", // Code for space key
-            });
+          <canvas
+            ref={canvasRef}
+            id="board"
+            width="500"
+            height="500"
+            onClick={() => {
+              const event = new KeyboardEvent("keydown", {
+                key: " ",
+                keyCode: 32, // Key code for space key
+                which: 32, // Another representation of space key code
+                code: "Space", // Code for space key
+              });
 
-            window.dispatchEvent(event);
-          }} />
+              window.dispatchEvent(event);
+            }}
+          />
           <img src={Luma} className="jumping-luma" alt="Luma" />
         </div>
-        <button
-          className="leftArrowIcon"
-          onClick={() => {
-            const rightArrowKeyDownEvent = new KeyboardEvent("keydown", {
-              bubbles: true,
-              cancelable: true,
-              key: "ArrowRight",
-              code: "ArrowRight",
-              keyCode: 39,
-              which: 39,
-            });
-
-            document.dispatchEvent(rightArrowKeyDownEvent);
-          }}
-        >
-          {'>'}
-        </button>
+        <RightArrowButton />
       </div>
       <div className="gameScore">Score : {score}</div>
     </div>
