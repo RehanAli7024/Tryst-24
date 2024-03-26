@@ -37,6 +37,12 @@ const Clubs = [
   { index: 12, name: "Debating Club", abbr: "DESOC" },
   { index: 13, name: "Robotics Club", abbr: "ROBO" },
   { index: 14, name: "Electrical and Energy Club", abbr: "E&E CLUB" },
+  { index: 15, name: "Chemical Society", abbr: "CH SOC"},
+    {
+      index: 16,
+      name: "Textile Society",
+      abbr:"TEX SOC"
+    }
 ];
 
 const EventMain = () => {
