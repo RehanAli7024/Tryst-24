@@ -25,7 +25,7 @@ const EventPage = ({ event, eventType }) => {
   } else if (eventType === "guest_lecture") {
     eventId = event.guest_id;
   }
-  // const eventType = "competition"; 
+  // const eventType = "competition";
   const [formFields, setFormFields] = useState([]);
   const [formData, setFormData] = useState({
     event_id: eventId,
@@ -135,6 +135,7 @@ const EventPage = ({ event, eventType }) => {
       .then((res) => {
         console.log(res.data);
         alert("Registered Successfully");
+        // setSubmitted(false);
         navigate("/events");
       })
       .catch((err) => {
@@ -264,9 +265,21 @@ const EventPage = ({ event, eventType }) => {
                 <div className="fil_con" id="ev_page_fil_con_2">
                   <div className="filter_btn" id="ev_btn_1">
                     {!event.registration_link ||
-                      event.registration_link === "" ? (
+                    event.registration_link === "" ? (
                       registered ? (
-                        <>{displaytext}</>
+                        <>
+                          {displaytext === "Login to Register" ? (
+                            <Link
+                              to="/login"
+                              className="filter_btn"
+                              id="ev_btn_1"
+                            >
+                              {displaytext}
+                            </Link>
+                          ) : (
+                            displaytext
+                          )}
+                        </>
                       ) : (
                         <button
                           onClick={toggleDiv}
