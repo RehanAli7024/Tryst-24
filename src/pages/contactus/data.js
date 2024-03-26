@@ -9,6 +9,9 @@ import harshit from "../../assets/contact/harshit.webp";
 import shwinder from "../../assets/contact/shwinder.webp";
 import aarya from "../../assets/contact/aarya.jpg";
 import mishi from "../../assets/contact/mishi.jpg"
+import hospi from "../../assets/contact/hospi.webp"
+import production from "../../assets/contact/production.webp"
+import infra from "../../assets/contact/infra.webp"
 
 const data = {
   ocs: [
@@ -101,31 +104,31 @@ const data = {
       email: "arya.ladhani007@gmail.com",
       linkedin: "https://www.linkedin.com/in/arya-ladhani-74b621200/",
       number: "9619952579",
+    },
+    {
+      name: "Keshav Aggarwal",
+      por: "Hospitality",
+      image: hospi,
+      email: "",
+      linkedin: "https://www.linkedin.com/in/keshav-aggarwal22",
+      number: "9654962500",
+    },
+    {
+      name: "Harshit Rastogi",
+      por: "Production",
+      image: production,
+      email: "",
+      linkedin: "https://www.linkedin.com/in/harshit-rastogi-aa6780179?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      number: "9654994478",
+    },
+    {
+      name: "Aryan",
+      por: "Infrastructure",
+      image: infra,
+      email: "",
+      linkedin: "https://www.linkedin.com/in/aryan-3978761ba",
+      number: "6209558069",
     }
-    // {
-    //   name: "Keshav",
-    //   por: "Hospitality",
-    //   image: marketing,
-    //   email: "",
-    //   linkedin: "https://www.linkedin.com/in/rohit-shaww/",
-    //   number: "9330433653",
-    // },
-    // {
-    //   name: "Keshav",
-    //   por: "Production",
-    //   image: marketing,
-    //   email: "",
-    //   linkedin: "https://www.linkedin.com/in/rohit-shaww/",
-    //   number: "9330433653",
-    // },
-    // {
-    //   name: "Rohit Shaw",
-    //   por: "Infrastructure",
-    //   image: marketing,
-    //   email: "",
-    //   linkedin: "https://www.linkedin.com/in/rohit-shaww/",
-    //   number: "9330433653",
-    // }
   ],
 };
 export default data;
