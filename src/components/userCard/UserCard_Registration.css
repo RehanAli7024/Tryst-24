@@ -37,7 +37,7 @@
   width: 22%;
 }
 .user-card-title {
-  font-size: 2vw;
+  font-size: 1.2rem;
   font-weight: 600;
   font-family: Bender;
   letter-spacing: 0.25rem;
@@ -50,9 +50,13 @@
   width: max-content;
 }
 .user-card-label p {
-  margin-left: 1rem;
+  margin-left: 0.8rem;
   font-family: Bender;
   letter-spacing: 0.15rem;
+}
+.ucardsvg{
+  width:1.5rem;
+
 }
 @media screen and (max-width: 768px) {
   .user-card-text {
