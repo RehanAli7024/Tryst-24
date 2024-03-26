@@ -266,6 +266,7 @@ const EventMain = () => {
                           to={`/events/${event.title}`}
                           key={index}
                           id="event_link"
+                          target="_blank"
                         >
                           <div className="events_card">
                             <EventCard image={event.event_image} />
@@ -297,7 +298,7 @@ const EventMain = () => {
               if (typeSelected.length === 0) {
                 if (clubSelected.length === 0) {
                   return (
-                    <Link to={`/events/${event.title}`} key={index}>
+                    <Link to={`/events/${event.title}`} key={index} target="_blank">
                       <div className="events_card">
                         <EventCard image={event.event_image} />
                       </div>
@@ -306,7 +307,7 @@ const EventMain = () => {
                 } else {
                   if (checkForSelectedClub(clubSelected, event.clubs)) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} target="_blank">
                         <div className="events_card">
                           <EventCard image={event.event_image} />
                         </div>
@@ -318,7 +319,7 @@ const EventMain = () => {
                 if (typeSelected.includes(2)) {
                   if (clubSelected.length === 0) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} target="_blank">
                         <div className="events_card">
                           <EventCard image={event.event_image} />
                         </div>
@@ -327,7 +328,7 @@ const EventMain = () => {
                   } else {
                     if (clubSelected.includes(event.club)) {
                       return (
-                        <Link to={`/events/${event.title}`} key={index}>
+                        <Link to={`/events/${event.title}`} key={index} target="_blank">
                           <div className="events_card">
                             <EventCard image={event.event_image} />
                           </div>
@@ -348,7 +349,7 @@ const EventMain = () => {
               if (typeSelected.length === 0) {
                 if (clubSelected.length === 0) {
                   return (
-                    <Link to={`/events/${event.title}`} key={index}>
+                    <Link to={`/events/${event.title}`} key={index} target="_blank">
                       <div className="events_card">
                         <EventCard image={event.event_image} />
                       </div>
@@ -357,7 +358,7 @@ const EventMain = () => {
                 } else {
                   if (clubSelected.includes(event.club)) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} target="_blank">
                         <div className="events_card">
                           <EventCard image={event.event_image} />
                         </div>
@@ -369,7 +370,7 @@ const EventMain = () => {
                 if (typeSelected.includes(3)) {
                   if (clubSelected.length === 0) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} target="_blank">
                         <div className="events_card">
                           <EventCard image={event.event_image} />
                         </div>
@@ -378,7 +379,7 @@ const EventMain = () => {
                   } else {
                     if (clubSelected.includes(event.club)) {
                       return (
-                        <Link to={`/events/${event.title}`} key={index}>
+                        <Link to={`/events/${event.title}`} key={index} target="_blank">
                           <div className="events_card">
                             <EventCard image={event.event_image} />
                           </div>
