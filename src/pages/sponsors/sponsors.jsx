@@ -168,7 +168,205 @@ const sponsors = [
         name: "Virtualness",
         image: VirtualNess,
         website: "https://www.virtualness.io/"
-    }
+    },
+    {
+        index: 24,
+        name: "Robosapiens",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 25,
+        name: "OnePlus",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 26,
+        name: "DKMS BMST",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 27,
+        name: "TechGlaz",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 28,
+        name: "Heartz",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 29,
+        name: "Eightfold",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 30,
+        name: "IES Master",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 31,
+        name: "Career Launcher",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 32,
+        name: "Vecros",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 33,
+        name: "InstaAstro",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 34,
+        name: "Kotak",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 35,
+        name: "Orion Nutritionals",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 36,
+        name: "Riliance Digital",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 37,
+        name: "Soonami",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 38,
+        name: "Amul",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 39,
+        name: "TET(Microsoft)",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 40,
+        name: "Hack4Purpose",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 41,
+        name: "Electrix Hyper Charge",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 42,
+        name: "Astroverse",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 43,
+        name: "Sewa Nyaya",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 44,
+        name: "Youth Beat",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 45,
+        name: "Tessaract Technologies",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 46,
+        name: "Slick",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 47,
+        name: "Farmely",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 48,
+        name: "ICICI",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 49,
+        name: "Alumni Association",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 50,
+        name: "Avni Fusion",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 51,
+        name: "Pizza Works",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 52,
+        name: "Momo Buzz",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 53,
+        name: "Skippi",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 54,
+        name: "Startup Expo",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 55,
+        name: "Krafton",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
+    {
+        index: 56,
+        name: "Times Prime",
+        image: Robosapiens,
+        website: "https://www.robosapiensindia.com/"
+    },
 ]
 
 
