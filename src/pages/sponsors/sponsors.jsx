@@ -161,7 +161,7 @@ const sponsors = [
         index: 22,
         name: "Twoss",
         image: Twoss,
-        website: "https://www.twoss.in/"
+        website: "https://www.twoss.co.in/"
     },
     {
         index: 23,
