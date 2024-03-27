@@ -32,14 +32,14 @@ const App = () => {
   const [eventarray, setEventarray] = useState([]);
 
   useEffect(() => {
-    if (sessionStorage.getItem("all_events_data")) {
-      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+    if (localStorage.getItem("all_events_data")) {
+      setEventarray(JSON.parse(localStorage.getItem("all_events_data")));
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
-          if (JSON.stringify(response.data) !== sessionStorage.getItem("all_events_data")) {
+          if (JSON.stringify(response.data) !== localStorage.getItem("all_events_data")) {
             setEventarray(response.data);
-            sessionStorage.setItem(
+            localStorage.setItem(
               "all_events_data",
               JSON.stringify(response.data)
             );
@@ -48,14 +48,14 @@ const App = () => {
         .catch((error) => {
           console.log(error);
         });
-      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+      setEventarray(JSON.parse(localStorage.getItem("all_events_data")));
     } else {
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
           setEventarray(response.data);
           // console.log(response.data.competitions);
-          sessionStorage.setItem(
+          localStorage.setItem(
             "all_events_data",
             JSON.stringify(response.data)
           );
