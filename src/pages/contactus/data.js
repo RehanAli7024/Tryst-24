@@ -21,7 +21,7 @@ const data = {
       image: shwinder,
       email: "caicgsec@iitd.ac.in",
       linkedin: "https://www.linkedin.com/in/shwinder-singh-0581b71b9/",
-      number: "9711780406",
+      number: "N/A",
     },
     {
       name: "Harshit Mawandia",
@@ -29,7 +29,7 @@ const data = {
       image: harshit,
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/harshit-mawandia/",
-      number: "9031193301",
+      number: "N/A",
     },
     {
       name: 'Aarya Oganja',
