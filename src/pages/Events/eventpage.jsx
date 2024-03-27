@@ -143,6 +143,7 @@ const EventPage = ({ event, eventType }) => {
 
   const URL_REGEX =
     /(?:https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+  const MAIL_REGEX = /[\w\.-]+@[\w\.-]+\.\w+/;
 
   const renderTextWithLinks = (text) =>
     text.split("\n").map((paragraph, index) => (
@@ -153,17 +154,31 @@ const EventPage = ({ event, eventType }) => {
     ));
 
   const renderText = (txt) =>
-    txt
-      .split(/(\s+|\n)/)
-      .map((part) =>
-        URL_REGEX.test(part) ? (
-          <a href={part} target="_blank" rel="noreferrer" className="event-desc-links">
-            {part}{" "}
-          </a>
-        ) : (
-          part + " "
-        )
-      );
+    txt.split(/(\s+|\n)/).map((part) =>
+      MAIL_REGEX.test(part) ? (
+        <a
+          key={part}
+          href={"mailto:" + part}
+          target="_blank"
+          rel="noreferrer"
+          className="event-desc-links"
+        >
+          {part}{" "}
+        </a>
+      ) : URL_REGEX.test(part) ? (
+        <a
+          key={part}
+          href={part}
+          target="_blank"
+          rel="noreferrer"
+          className="event-desc-links"
+        >
+          ↗️ {/* emoji */}
+        </a>
+      ) : (
+        part + " "
+      )
+    );
 
   return (
     <>
