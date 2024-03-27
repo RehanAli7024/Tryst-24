@@ -103,7 +103,7 @@ const data = {
       image: finance,
       email: "arya.ladhani007@gmail.com",
       linkedin: "https://www.linkedin.com/in/arya-ladhani-74b621200/",
-      number: "9619952579",
+      number: "N/A",
     },
     {
       name: "Keshav Aggarwal",
