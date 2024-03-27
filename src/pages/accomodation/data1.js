@@ -1,4 +1,5 @@
 import ctmhospi from "../../assets/contact/ctm-hospi.jpg";
+import Mohit from "./assets/Mohit_raj.webp";
 import Aryan from "./assets/Aryan.webp";
 import Rutuja from "./assets/Rutuja.webp";
 
@@ -7,7 +8,7 @@ const data1 = {
     {
       name: "Mohit Raj",
       por: "Coordinator",
-      image: ctmhospi,
+      image: Mohit,
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/keshav-aggarwal-88bb90166/",
       number: "7357675439",
