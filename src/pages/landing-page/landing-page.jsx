@@ -14,7 +14,7 @@ const LandingPage = () => {
             <Events />
             <Speakers />
             <Sponsors />
-            {/* <iframe src="https://sketchfab.com/models/b04fc215a7fb441a98bc6271caa144eb/embed" className="iframe_box" frameborder="0"/> */}
+            <iframe src="https://tryst-iitd-twin.web.app/" className="iframe_box" frameborder="0"/>
         </>
     )
 };
