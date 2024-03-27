@@ -114,8 +114,9 @@ const App = () => {
                 />
               );
             })}
-          {eventarray.guest_lectures &&
-            eventarray.guest_lectures.map((event, index) => {
+          {eventarray.guestlectures &&
+            eventarray.guestlectures.map((event, index) => {
+              console.log(event);
               return (
                 <Route
                   path={`/events/${event.title}`}
