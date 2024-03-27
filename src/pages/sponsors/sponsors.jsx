@@ -24,7 +24,6 @@ import PieMatrix from "../../assets/sponsors/piematrix.webp";
 import Twoss from "../../assets/sponsors/twoss.webp";
 import VirtualNess from "../../assets/sponsors/virtualness.webp";
 import Technocon from "../../assets/sponsors/technocon.webp";
-
 import SponsorCard from '../../components/SponsorCard/SponsorCard';
 
 const sponsors = [
