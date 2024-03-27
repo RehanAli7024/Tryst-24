@@ -24,6 +24,38 @@ import PieMatrix from "../../assets/sponsors/piematrix.webp";
 import Twoss from "../../assets/sponsors/twoss.webp";
 import VirtualNess from "../../assets/sponsors/virtualness.webp";
 import Technocon from "../../assets/sponsors/technocon.webp";
+import OnePlus from "../../assets/sponsors/oneplus.webp";
+import DKMS from "../../assets/sponsors/dkmsbmst.webp";
+import TechGlaz from "../../assets/sponsors/techglaz.webp";
+import Heartz from "../../assets/sponsors/heartz.webp";
+import Eightfold from "../../assets/sponsors/eightfold.webp";
+import IESMaster from "../../assets/sponsors/iesmaster.webp";
+import CareerLauncher from "../../assets/sponsors/careerlauncher.webp";
+import Vecros from "../../assets/sponsors/vecros.webp";
+import InstaAstro from "../../assets/sponsors/instaastro.webp";
+import Kotak from "../../assets/sponsors/kotak.webp";
+import OrionNutritionals from "../../assets/sponsors/orion.webp";
+import RelianceDigital from "../../assets/sponsors/reliance.webp";
+import Soonami from "../../assets/sponsors/soonami.webp";
+import Amul from "../../assets/sponsors/amul.webp";
+import TET from "../../assets/sponsors/tet.webp";
+import Hack4Purpose from "../../assets/sponsors/hack4purpose.webp";
+import ElectrixHyperCharge from "../../assets/sponsors/hypercharge.webp";
+import Astroverse from "../../assets/sponsors/astroverse.webp";
+import SewaNyaya from "../../assets/sponsors/sewanyaya.webp";
+import YouthBeat from "../../assets/sponsors/youthbeat.webp";
+import TessaractTechnologies from "../../assets/sponsors/tessaract.webp";
+// import Slick from "../../assets/sponsors/slick.webp";
+import Farmely from "../../assets/sponsors/farmely.webp";
+import ICICI from "../../assets/sponsors/icici.webp";
+import AlumniAssociation from "../../assets/sponsors/alumnirelations.webp";
+import AvniFusion from "../../assets/sponsors/avni.webp";
+import PizzaWorks from "../../assets/sponsors/pizzaworks.webp";
+// import MomoBuzz from "../../assets/sponsors/momobuzz.webp";
+import Skippi from "../../assets/sponsors/skippi.webp";
+import StartupExpo from "../../assets/sponsors/startupexpo.webp";
+import Krafton from "../../assets/sponsors/krafton.webp";
+import TimesPrime from "../../assets/sponsors/timesprime.webp";
 import SponsorCard from '../../components/SponsorCard/SponsorCard';
 
 
@@ -178,194 +210,194 @@ const sponsors = [
     {
         index: 25,
         name: "OnePlus",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: OnePlus,
+        website: ""
     },
     {
         index: 26,
         name: "DKMS BMST",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: DKMS,
+        website: ""
     },
     {
         index: 27,
         name: "TechGlaz",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: TechGlaz,
+        website: ""
     },
     {
         index: 28,
         name: "Heartz",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Heartz,
+        website: ""
     },
     {
         index: 29,
         name: "Eightfold",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Eightfold,
+        website: ""
     },
     {
         index: 30,
         name: "IES Master",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: IESMaster,
+        website: ""
     },
     {
         index: 31,
         name: "Career Launcher",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: CareerLauncher,
+        website: ""
     },
     {
         index: 32,
         name: "Vecros",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Vecros,
+        website: ""
     },
     {
         index: 33,
         name: "InstaAstro",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: InstaAstro,
+        website: ""
     },
     {
         index: 34,
         name: "Kotak",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Kotak,
+        website: ""
     },
     {
         index: 35,
         name: "Orion Nutritionals",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: OrionNutritionals,
+        website: ""
     },
     {
         index: 36,
-        name: "Riliance Digital",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        name: "Reliance Digital",
+        image: RelianceDigital,
+        website: ""
     },
     {
         index: 37,
         name: "Soonami",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Soonami,
+        website: ""
     },
     {
         index: 38,
         name: "Amul",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Amul,
+        website: ""
     },
     {
         index: 39,
         name: "TET(Microsoft)",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: TET,
+        website: ""
     },
     {
         index: 40,
         name: "Hack4Purpose",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Hack4Purpose,
+        website: ""
     },
     {
         index: 41,
         name: "Electrix Hyper Charge",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: ElectrixHyperCharge,
+        website: ""
     },
     {
         index: 42,
         name: "Astroverse",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Astroverse,
+        website: ""
     },
     {
         index: 43,
         name: "Sewa Nyaya",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: SewaNyaya,
+        website: ""
     },
     {
         index: 44,
         name: "Youth Beat",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: YouthBeat,
+        website: ""
     },
     {
         index: 45,
         name: "Tessaract Technologies",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: TessaractTechnologies,
+        website: ""
     },
-    {
-        index: 46,
-        name: "Slick",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
-    },
+    // {
+    //     index: 46,
+    //     name: "Slick",
+    //     image: Slick,
+    //     website: "https://www.robosapiensindia.com/"
+    // },
     {
         index: 47,
         name: "Farmely",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Farmely,
+        website: ""
     },
     {
         index: 48,
         name: "ICICI",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: ICICI,
+        website: ""
     },
     {
         index: 49,
         name: "Alumni Association",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: AlumniAssociation,
+        website: ""
     },
     {
         index: 50,
         name: "Avni Fusion",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: AvniFusion,
+        website: ""
     },
     {
         index: 51,
         name: "Pizza Works",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: PizzaWorks,
+        website: ""
     },
-    {
-        index: 52,
-        name: "Momo Buzz",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
-    },
+    // {
+    //     index: 52,
+    //     name: "Momo Buzz",
+    //     image: MomoBuzz,
+    //     website: "https://www.robosapiensindia.com/"
+    // },
     {
         index: 53,
         name: "Skippi",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Skippi,
+        website: ""
     },
     {
         index: 54,
         name: "Startup Expo",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: StartupExpo,
+        website: ""
     },
     {
         index: 55,
         name: "Krafton",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: Krafton,
+        website: ""
     },
     {
         index: 56,
         name: "Times Prime",
-        image: Robosapiens,
-        website: "https://www.robosapiensindia.com/"
+        image: TimesPrime,
+        website: ""
     },
 ]
 
