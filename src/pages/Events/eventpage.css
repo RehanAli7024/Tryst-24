@@ -43,6 +43,15 @@
   color: black;
 }
 
+.event-desc-links {
+  font-weight: 500;
+  color: #00e0ff;
+}
+
+.event-desc-links:hover {
+  color: #7bf0ff;
+}
+
 .ev_poster {
   /* background-color: #FFFBFF; */
   /* height: 20rem;

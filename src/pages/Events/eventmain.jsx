@@ -76,6 +76,7 @@ const EventMain = () => {
   useEffect(() => {
     if (localStorage.getItem("all_events_data")) {
       setEventarray(JSON.parse(localStorage.getItem("all_events_data")));
+      // console.log("Data fetched from local storage");
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {

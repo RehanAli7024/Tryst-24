@@ -13,7 +13,7 @@ import { format } from "date-fns";
 import { Link } from "react-router-dom";
 
 const EventPage = ({ event, eventType }) => {
-  console.log(event);
+  // console.log(event);
   const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
   const token = localStorage.getItem("access_token");
@@ -117,9 +117,6 @@ const EventPage = ({ event, eventType }) => {
     setIsVisible(!isVisible);
   };
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -143,6 +140,30 @@ const EventPage = ({ event, eventType }) => {
         setSubmitted(false);
       });
   };
+
+  const URL_REGEX =
+    /(?:https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+
+  const renderTextWithLinks = (text) =>
+    text.split("\n").map((paragraph, index) => (
+      <React.Fragment key={index}>
+        {index > 0 && <br />}
+        {renderText(paragraph)}
+      </React.Fragment>
+    ));
+
+  const renderText = (txt) =>
+    txt
+      .split(/(\s+|\n)/)
+      .map((part) =>
+        URL_REGEX.test(part) ? (
+          <a href={part} target="_blank" rel="noreferrer" className="event-desc-links">
+            {part}{" "}
+          </a>
+        ) : (
+          part + " "
+        )
+      );
 
   return (
     <>
@@ -171,13 +192,7 @@ const EventPage = ({ event, eventType }) => {
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
             <div className="event_title_1">{event.title}</div>
             <div className="event_para_1">
-              {event.description.split("\n").map((paragraph, index) => (
-                <React.Fragment key={index}>
-                  {index > 0 && <br />}
-                  {index > 0 && <br />}
-                  {paragraph}
-                </React.Fragment>
-              ))}
+              {renderTextWithLinks(event.description)}
             </div>
 
             <div className="event_details">

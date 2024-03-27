@@ -27,7 +27,6 @@ import Error404 from "./pages/error404/Error404.jsx";
 import Imagenai from "./pages/Events/imagenai.jsx";
 import BrickBreaker from "./pages/game/brick-breaker.jsx";
 
-
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
 
@@ -37,7 +36,10 @@ const App = () => {
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
-          if (JSON.stringify(response.data) !== localStorage.getItem("all_events_data")) {
+          if (
+            JSON.stringify(response.data) !==
+            localStorage.getItem("all_events_data")
+          ) {
             setEventarray(response.data);
             localStorage.setItem(
               "all_events_data",
@@ -101,8 +103,7 @@ const App = () => {
                   element={<EventPage event={event} eventType="competition" />}
                 />
               );
-            })
-          }
+            })}
           {eventarray.workshops &&
             eventarray.workshops.map((event, index) => {
               return (
@@ -112,24 +113,21 @@ const App = () => {
                   element={<EventPage event={event} eventType="workshop" />}
                 />
               );
-            })
-          }
+            })}
           {eventarray.guest_lectures &&
             eventarray.guest_lectures.map((event, index) => {
               return (
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} eventType="guest_lecture" />}
+                  element={
+                    <EventPage event={event} eventType="guest_lecture" />
+                  }
                 />
               );
-            })
-          }
+            })}
 
-          <Route
-            path="*"
-            element={<Error404 />}
-          />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </Router>
