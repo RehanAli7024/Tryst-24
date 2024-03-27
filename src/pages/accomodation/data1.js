@@ -5,12 +5,12 @@ import Rutuja from "./assets/Rutuja.webp";
 const data1 = {
   ctms: [
     {
-      name: "Keshav Aggarwal",
-      por: "CTM - Hospitality",
+      name: "Mohit Raj",
+      por: "Coordinator",
       image: ctmhospi,
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/keshav-aggarwal-88bb90166/",
-      number: "9654962500",
+      number: "7357675439",
     },
     {
       name: "Aryan Bhardwaj",
