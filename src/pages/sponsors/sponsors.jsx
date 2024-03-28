@@ -59,7 +59,7 @@ import TimesPrime from "../../assets/sponsors/timesprime.webp";
 import TheLegacyCloset from "../../assets/sponsors/thelegacycloset.webp";
 import Wayspire from "../../assets/sponsors/wayspire.webp";
 import SponsorCard from '../../components/SponsorCard/SponsorCard';
-import Elixer from "../../assets/sponsors/Elixir_Logo_white.png";
+import Elixer from "../../assets/sponsors/Elixir_Logo_Dark.png";
 
 
 const sponsors = [
