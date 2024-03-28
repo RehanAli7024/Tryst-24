@@ -98,7 +98,6 @@ function Navbar() {
   const options = [
     "About",
     "Guests",
-    "Accomodation",
     "Events",
     "Sponsors",
     "Contact Us",
