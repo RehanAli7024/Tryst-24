@@ -7,6 +7,20 @@ import calender from '../../assets/Dashboard/calender.svg';
 import "./UserCard_Registration.css";
 
 export default function UserCard_Registration({ props }) {
+  function string_modifier(str){
+    if(str == "IIT DELHI"){
+      str =  "IIT-DELHI";
+    }
+    else{
+      str = str.replace(", IIT-Delhi","")
+    }
+    if (str.length>=15){
+      const str1 = str.slice(0,15)+"...";
+      return str1;
+    }
+    return str;
+  }
+
   return (
     <div className="user-card-container ">
       <img src={userCardSvg} alt="comps-pic" className="usercard-img" />
@@ -26,7 +40,7 @@ export default function UserCard_Registration({ props }) {
             </div>
             <div className="user-card-label">
               <img src={location} alt="location" className="ucardsvg"/>
-              <p> {props.venue}</p>
+              <p> {string_modifier(props.venue)}</p>
             </div>
           </div>
         </div>

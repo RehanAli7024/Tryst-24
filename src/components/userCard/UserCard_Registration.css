@@ -30,6 +30,10 @@
   font-size: 1.2vw;
 }
 
+.user-card-text h2 {
+  font-size: 0.9rem;
+}
+
 .user-card-btn {
   display: flex;
   justify-content: flex-start;
@@ -67,7 +71,7 @@
     margin: 0.25rem 0;
   }
   .user-card-text h2 {
-    font-size: 1rem;
+    font-size: 3vw;
   }
 
   .book-pass-btn {
