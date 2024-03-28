@@ -59,6 +59,7 @@ import TimesPrime from "../../assets/sponsors/timesprime.webp";
 import TheLegacyCloset from "../../assets/sponsors/thelegacycloset.webp";
 import Wayspire from "../../assets/sponsors/wayspire.webp";
 import SponsorCard from '../../components/SponsorCard/SponsorCard';
+import Elixer from "../../assets/sponsors/Elixir_Logo_white.png";
 
 
 const sponsors = [
@@ -412,6 +413,12 @@ const sponsors = [
         name: "Wayspire",
         image: Wayspire,
         website: ""
+    },
+    {
+        index: 59,
+        name: "Elixir",
+        image: Elixer,
+        website: "https://drinkelixir.in/"
     },
 ]
 
