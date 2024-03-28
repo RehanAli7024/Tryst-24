@@ -69,6 +69,28 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            console.log("Coordinates are", position.coords);
+            localStorage.setItem("latitude", latitude);
+            localStorage.setItem("longitude", longitude);
+          },
+          (error) => {
+            console.log("Error getting location", error);
+          }
+        );
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    };
+
+    getLocation();
+  }, []);
+
   return (
     <main className="main-bg">
       <Router>
