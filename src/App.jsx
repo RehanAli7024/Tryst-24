@@ -93,7 +93,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/imagenai_prelims_comp" element={<Imagenai />} />
-          <Route path="/accomodation" element={<Accomodation />} />
+          <Route path="/accomodation" element={<ComingSoon />} />
           <Route path="/GameZone" element={<BrickBreaker />} />
           {eventarray.competitions &&
             eventarray.competitions.map((event, index) => {
