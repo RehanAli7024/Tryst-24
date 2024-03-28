@@ -56,6 +56,8 @@ import Skippi from "../../assets/sponsors/skippi.webp";
 import StartupExpo from "../../assets/sponsors/startupexpo.webp";
 import Krafton from "../../assets/sponsors/krafton.webp";
 import TimesPrime from "../../assets/sponsors/timesprime.webp";
+import TheLegacyCloset from "../../assets/sponsors/thelegacycloset.webp";
+import Wayspire from "../../assets/sponsors/wayspire.webp";
 import SponsorCard from '../../components/SponsorCard/SponsorCard';
 
 
@@ -207,12 +209,12 @@ const sponsors = [
         image: Robosapiens,
         website: "https://www.robosapiensindia.com/"
     },
-    {
-        index: 25,
-        name: "OnePlus",
-        image: OnePlus,
-        website: ""
-    },
+    // {
+    //     index: 25,
+    //     name: "OnePlus",
+    //     image: OnePlus,
+    //     website: ""
+    // },
     {
         index: 26,
         name: "DKMS BMST",
@@ -399,6 +401,18 @@ const sponsors = [
         image: TimesPrime,
         website: ""
     },
+    {
+        index: 57,
+        name: "The Legacy Closet",
+        image: TheLegacyCloset,
+        website: ""
+    },
+    {
+        index: 58,
+        name: "Wayspire",
+        image: Wayspire,
+        website: ""
+    },
 ]
 
 
@@ -408,13 +422,13 @@ function Sponsors() {
             <div className="sponsors">
                 <div className="sponsors-head">SPONSORS</div>
                 <div className="sponsors-body">
-                    <a href="https://www.samsung.com/in/">
+                    <a href="https://www.oneplus.in/">
                         <div className="sponsors-title-sponsor sponsors-shape-title">
                             <div className="sponsors-title-sponsor-subcontainer sponsors-shape-title">
                                 <div className="sponsors-title-sponsor-img-div">
-                                    <img src={Samsung} alt="Samsung" className='sponsors-title-sponsor-img' />
+                                    <img src={OnePlus} alt="OnePlus" className='sponsors-title-sponsor-img' />
                                 </div>
-                                <div className="sponsors-title-sponsor-text">Samsung</div>
+                                <div className="sponsors-title-sponsor-text">OnePlus</div>
                             </div>
                         </div>
                     </a>
