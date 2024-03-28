@@ -48,7 +48,7 @@ import TessaractTechnologies from "../../assets/sponsors/tessaract.webp";
 // import Slick from "../../assets/sponsors/slick.webp";
 import Farmely from "../../assets/sponsors/farmely.webp";
 import ICICI from "../../assets/sponsors/icici.webp";
-import AlumniAssociation from "../../assets/sponsors/alumnirelations.webp";
+import AlumniAssociation from "../../assets/sponsors/alumni.webp";
 import AvniFusion from "../../assets/sponsors/avni.webp";
 import PizzaWorks from "../../assets/sponsors/pizzaworks.webp";
 // import MomoBuzz from "../../assets/sponsors/momobuzz.webp";
