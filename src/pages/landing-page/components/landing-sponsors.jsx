@@ -34,7 +34,7 @@ import Krafton from "../../../assets/sponsors/krafton.webp";
 
 const SPONSORS = {
   sponsorsUp1: [
-    { index: 1, name: "Samsung", image: Samsung },
+    { index: 1, name: "Krafton", image: Krafton },
     { index: 2, name: "TechMaghi", image: TechMaghi },
     { index: 3, name: "Remarkskill", image: Remarkskill },
     { index: 4, name: "Robocap League", image: Robocap },
@@ -46,7 +46,6 @@ const SPONSORS = {
     { index: 10, name: "Aviakul", image: Aviakul },
     { index: 11, name: "Creya", image: Creya },
     { index: 12, name: "Fetchai", image: Fetchai },
-    { index: 13, name: "Krafton", image: Krafton },
   ],
   sponsorsUp2: [
     { index: 1, name: "OnePlus", image: OnePlus},

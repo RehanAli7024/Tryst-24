@@ -209,12 +209,12 @@ const sponsors = [
         image: Robosapiens,
         website: "https://www.robosapiensindia.com/"
     },
-    {
-        index: 25,
-        name: "OnePlus",
-        image: OnePlus,
-        website: ""
-    },
+    // {
+    //     index: 25,
+    //     name: "OnePlus",
+    //     image: OnePlus,
+    //     website: ""
+    // },
     {
         index: 26,
         name: "DKMS BMST",
@@ -422,13 +422,13 @@ function Sponsors() {
             <div className="sponsors">
                 <div className="sponsors-head">SPONSORS</div>
                 <div className="sponsors-body">
-                    <a href="https://www.samsung.com/in/">
+                    <a href="https://www.oneplus.in/">
                         <div className="sponsors-title-sponsor sponsors-shape-title">
                             <div className="sponsors-title-sponsor-subcontainer sponsors-shape-title">
                                 <div className="sponsors-title-sponsor-img-div">
-                                    <img src={Samsung} alt="Samsung" className='sponsors-title-sponsor-img' />
+                                    <img src={OnePlus} alt="OnePlus" className='sponsors-title-sponsor-img' />
                                 </div>
-                                <div className="sponsors-title-sponsor-text">Samsung</div>
+                                <div className="sponsors-title-sponsor-text">OnePlus</div>
                             </div>
                         </div>
                     </a>
