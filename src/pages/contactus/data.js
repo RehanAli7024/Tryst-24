@@ -111,7 +111,7 @@ const data = {
       image: hospi,
       email: "",
       linkedin: "https://www.linkedin.com/in/keshav-aggarwal22",
-      number: "9654962500",
+      number: "75053 92289",
     },
     {
       name: "Harshit Rastogi",
