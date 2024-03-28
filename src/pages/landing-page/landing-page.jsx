@@ -14,7 +14,7 @@ const LandingPage = () => {
             <Events />
             <Speakers />
             <Sponsors />
-            <iframe src="https://tryst-iitd-twin.web.app/" className="iframe_box" frameborder="0"/>
+            <iframe src="https://vecros-tryst-3d.vecros.com/" className="iframe_box" frameborder="0" allowfullscreen/>
         </>
     )
 };
