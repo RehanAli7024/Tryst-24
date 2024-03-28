@@ -28,6 +28,9 @@ import PieMatrix from "../../../assets/sponsors/piematrix.webp";
 import Twoss from "../../../assets/sponsors/twoss.webp";
 import VirtualNess from "../../../assets/sponsors/virtualness.webp";
 import Technocon from "../../../assets/sponsors/technocon.webp";
+import OnePlus from "../../../assets/sponsors/oneplus.webp";
+import Krafton from "../../../assets/sponsors/krafton.webp";
+
 
 const SPONSORS = {
   sponsorsUp1: [
@@ -43,9 +46,10 @@ const SPONSORS = {
     { index: 10, name: "Aviakul", image: Aviakul },
     { index: 11, name: "Creya", image: Creya },
     { index: 12, name: "Fetchai", image: Fetchai },
+    { index: 13, name: "Krafton", image: Krafton },
   ],
   sponsorsUp2: [
-    { index: 1, name: "Edutech Life", image: Edutech },
+    { index: 1, name: "OnePlus", image: OnePlus},
     { index: 2, name: "Techobyte", image: Techobyte },
     { index: 3, name: "Technocon", image: Technocon },
     { index: 4, name: "Wingfotech", image: Wingfotech },
@@ -57,6 +61,7 @@ const SPONSORS = {
     { index: 10, name: "PieMatrix", image: PieMatrix },
     { index: 11, name: "Twoss", image: Twoss },
     { index: 12, name: "VirtualNess", image: VirtualNess },
+    { index: 13, name: "Edutech Life", image: Edutech },
   ],
 };
 

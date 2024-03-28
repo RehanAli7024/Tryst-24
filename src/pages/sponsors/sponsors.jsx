@@ -56,6 +56,8 @@ import Skippi from "../../assets/sponsors/skippi.webp";
 import StartupExpo from "../../assets/sponsors/startupexpo.webp";
 import Krafton from "../../assets/sponsors/krafton.webp";
 import TimesPrime from "../../assets/sponsors/timesprime.webp";
+import TheLegacyCloset from "../../assets/sponsors/thelegacycloset.webp";
+import Wayspire from "../../assets/sponsors/wayspire.webp";
 import SponsorCard from '../../components/SponsorCard/SponsorCard';
 
 
@@ -397,6 +399,18 @@ const sponsors = [
         index: 56,
         name: "Times Prime",
         image: TimesPrime,
+        website: ""
+    },
+    {
+        index: 57,
+        name: "The Legacy Closet",
+        image: TheLegacyCloset,
+        website: ""
+    },
+    {
+        index: 58,
+        name: "Wayspire",
+        image: Wayspire,
         website: ""
     },
 ]
