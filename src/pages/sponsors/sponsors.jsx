@@ -47,7 +47,7 @@ import YouthBeat from "../../assets/sponsors/youthbeat.webp";
 import TessaractTechnologies from "../../assets/sponsors/tessaract.webp";
 // import Slick from "../../assets/sponsors/slick.webp";
 import Farmely from "../../assets/sponsors/farmely.webp";
-import ICICI from "../../assets/sponsors/icici.webp";
+import ICICI from "../../assets/sponsors/IMG-20240330-WA0008.jpg";
 import AlumniAssociation from "../../assets/sponsors/alumni.webp";
 import AvniFusion from "../../assets/sponsors/avni.webp";
 import PizzaWorks from "../../assets/sponsors/pizzaworks.webp";
