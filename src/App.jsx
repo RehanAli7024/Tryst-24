@@ -27,6 +27,7 @@ import Error404 from "./pages/error404/Error404.jsx";
 import Imagenai from "./pages/Events/imagenai.jsx";
 import BrickBreaker from "./pages/game/brick-breaker.jsx";
 import Pronites from "./pages/pronites/pronites.jsx";
+import Steps from "./pages/pronites/steps.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
@@ -111,13 +112,13 @@ const App = () => {
           <Route path="/guests" element={<Speakers />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/usercard" element={<UserCard />} />
-          <Route path="/technites" element={<ComingSoon />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/imagenai_prelims_comp" element={<Imagenai />} />
           <Route path="/accomodation" element={<ComingSoon />} />
           <Route path="/GameZone" element={<BrickBreaker />} />
-          <Route path="/pronites" element={<Pronites />} />
+          <Route path="/technites" element={<Pronites />} />
+          <Route path="/steps" element={<Steps />} />
           {eventarray.competitions &&
             eventarray.competitions.map((event, index) => {
               return (

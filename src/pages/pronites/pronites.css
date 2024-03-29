@@ -58,7 +58,7 @@ body {
 }
 
 .pronite-card {
-  width: 30%;
+  width: 25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,6 +113,10 @@ body {
 
 .pronite-register-button {
   margin-top: 1.5rem;
+}
+
+.register-button-icon {
+  color: white;
 }
 
 @media screen and (max-width: 768px) {
