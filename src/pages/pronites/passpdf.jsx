@@ -1,5 +1,5 @@
 import React from "react";
-import {Page, Text, Image, Document, StyleSheet} from "@react-pdf/renderer";    
+import {Page, Text, Image, Document, StyleSheet, View} from "@react-pdf/renderer";    
 
 const styles = StyleSheet.create({
     page: {
@@ -147,3 +147,4 @@ const PassPDF = (data) => {
 	</Document>
     );
 };
+export default PassPDF;
