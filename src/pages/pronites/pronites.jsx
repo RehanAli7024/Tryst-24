@@ -44,7 +44,7 @@ const Pronites = () => {
         //     alert("Slot booked successfully");
         // } else {
         //     alert("Slot booking failed, try again later!");
-        // <div className="pronite-container">
+        //     <div className="pronite-container">
         //         <div className="pronite-card">
         //             <img className="pronite1-image" src={Meetup1} alt="pronite card" />
         //             <div className="pronite-name">
@@ -70,7 +70,65 @@ const Pronites = () => {
     return (
         <div>
             <div className="pronites-heading">
-                Technites
+                PRONITES
+            </div>
+            <div className="pronites">
+                <div className="pronite-container">
+                    <div className="pronite-card">
+                        <div className="pronite-card-inner">
+                            <div className="pronite-card-top">CINETECH</div>
+                            <img className="pronite1-image" src={Meetup1} alt="pronite card" />
+                            <div className="pronite-card-bottom">
+                                SHAHID KAPOOR <br />
+                                AND KRITI SANON
+                            </div>
+                        </div>
+                    </div>
+                    <div className="pronite-details">
+                        <div className="pronite-number">
+                            Pronite 1
+                        </div>
+                        <div className="pronite-date">
+                            30th March 2024
+                        </div>
+                        <div className="pronite-event-details">
+                            Are you ready for a night of endless laughter and entertainment? Tryst has in store renowned comedians Mr. Manik Mahna and Mr. Aashish Solanki, who are all set to take the stage and leave you in splits with their hilarious jokes and quick wit. <br />
+                            To make this night unforgettable we have the ultimate star of ‘Tu Jhoothi, Main Makkaar’, Ms. Shraddha Kapoor! This night of glamour, entertainment, and excitement promises to be a once-in-a-lifetime experience that you don't want to miss.<br />
+                            Get your passes now and immerse yourself in the excitement of seeing your favourite star up close and personal. It's the perfect chance to soak up the energy of the crowd and create indelible memories. See you there!
+                        </div>
+                        <div className="pronite-register-button">
+                            <button className="action-btn" onClick={() => bookSlot(1)}><i className="fas fa-download mr-2 fa-xs"></i>Register</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="pronite-container">
+                    <div className="pronite-card">
+                        <div className="pronite-card-inner">
+                            <div className="pronite-card-top">CINETECH</div>
+                            <img className="pronite1-image" src={Meetup1} alt="pronite card" />
+                            <div className="pronite-card-bottom">
+                                SHAHID KAPOOR <br />
+                                AND KRITI SANON
+                            </div>
+                        </div>
+                    </div>
+                    <div className="pronite-details">
+                        <div className="pronite-number">
+                            Pronite 2
+                        </div>
+                        <div className="pronite-date">
+                            31st March 2024
+                        </div>
+                        <div className="pronite-event-details">
+                            Are you ready for a night of endless laughter and entertainment? Tryst has in store renowned comedians Mr. Manik Mahna and Mr. Aashish Solanki, who are all set to take the stage and leave you in splits with their hilarious jokes and quick wit. <br />
+                            To make this night unforgettable we have the ultimate star of ‘Tu Jhoothi, Main Makkaar’, Ms. Shraddha Kapoor! This night of glamour, entertainment, and excitement promises to be a once-in-a-lifetime experience that you don't want to miss.<br />
+                            Get your passes now and immerse yourself in the excitement of seeing your favourite star up close and personal. It's the perfect chance to soak up the energy of the crowd and create indelible memories. See you there!
+                        </div>
+                        <div className="pronite-register-button">
+                            <button className="action-btn" onClick={() => bookSlot(1)}><i className="fas fa-download mr-2 fa-xs"></i>Register</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
