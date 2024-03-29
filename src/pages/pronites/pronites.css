@@ -4,208 +4,160 @@ body {
 
 .pronites-heading {
   color: white;
-
   font-family: Audiowide;
-
   text-align: center;
-
-  font-size: 3rem;
-
+  font-size: 3.8rem;
   font-weight: 400;
-
   letter-spacing: 4px;
+}
+
+.pronites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pronite-container {
   display: flex;
-
-  /* flex-direction: column; */
-
-  /* flex-direction: row; */
-
   margin-top: 10vh;
-
   margin-bottom: 3rem;
+  width: 80%;
+  height: 35rem;
+}
+
+.pronite-card-top {
+  height: 21.8%;
+  border-bottom: 2px solid #844B87;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #ACEBF6;
+  font-family: Audiowide;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+}
+
+.pronite1-image {
+  height: 56.5%;
+}
+
+.pronite-card-bottom {
+  height: 21.8%;
+  border-top: 2px solid #844B87;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #ACEBF6;
+  font-family: Audiowide;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
 }
 
 .pronite-card {
-  /* float: left; */
-
-  width: 35%;
-
-  margin-left: 10vw;
-
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 5vh;
+  clip-path: polygon(0 5%, 7% 0, 100% 0, 100% 18%, 94% 22%, 94% 78%, 100% 82%, 100% 100%, 0 100%);
+  background-color: #844B87;
+}
+
+.pronite-card-inner {
+  width: calc(100% - 3px);
+  height: calc(100% - 3px);
+  clip-path: polygon(0 5%, 7% 0, 100% 0, 100% 17.5%, 94% 21.5%, 94% 78.5%, 100% 82.5%, 100% 100%, 0 100%);
+  background-color: #28113C;
+  transition: all 0.4s ease-in-out;
+}
+
+.pronite-card:hover .pronite-card-inner {
+  background-color: #4e2d6a;
 }
 
 .pronite-name {
   font-family: Audiowide;
-
   font-weight: 400;
-
   font-size: 3rem;
-
   margin-left: 20%;
-
   margin-top: 1rem;
 }
 
 .pronite-details {
   width: 60%;
+  margin-left: 10%;
+  color: #ACEBF6;
 }
 
 .pronite-number {
   font-family: Audiowide;
-
   font-size: 2rem;
-
   font-weight: 400;
 }
 
 .pronite-date {
   font-family: Audiowide;
-
   font-size: 3.5rem;
-
   font-weight: 400;
+  margin-bottom: 1rem;
 }
 
 .pronite-event-details {
   font-family: Rajdhani;
-
-  font-size: 1.05rem;
-
-  width: 65%;
+  font-size: 1.2rem;
 }
 
 .pronite-register-button {
   margin-top: 1.5rem;
 }
 
-/* @media screen {
-
-  .pronite-container {
-
-      display: flex;
-
-      flex-direction: column;
-
-  }
-
-} */
-
-@media screen and (max-width: 1024px) {
-  .pronite-date {
-    font-size: 2rem;
-  }
-
-  .pronite-number {
-    font-size: 1.5rem;
-  }
-
-  .pronite-name {
-    font-size: 2rem;
-  }
-
-  .pronite-details {
-    width: 80%;
-
-    margin-left: 4rem;
-  }
-
-  .pronite-event-details {
-    font-size: 1rem;
-
-    width: 80%;
-  }
-
-  /* .pronite-register-button {
-    width: 12rem;
-  } */
-}
-
-@media screen and (max-width: 900px) {
-  .pronite-event-details {
-    font-size: 0.9rem;
-  }
-}
-
 @media screen and (max-width: 768px) {
-  .pronite-date {
-    font-size: 1.5rem;
+  .pronites-heading {
+    font-size: 3.3rem;
   }
 
-  .pronite-number {
-    font-size: 1.2rem;
-  }
-
-  .pronite-name {
-    font-size: 1.5rem;
-  }
-
-  .pronite-details {
-    width: 80%;
-
-    margin-left: 4rem;
-  }
-
-  .pronite-event-details {
-    font-size: 0.8rem;
-
-    width: 80%;
-  }
-
-  .pronite-register-button {
-    /* width: 9rem; */
-  }
-}
-
-@media screen and (max-width: 480px) {
   .pronite-container {
     display: flex;
-
     flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+    margin-bottom: 3rem;
+    width: 90%;
+    height: max-content;
   }
 
   .pronite-card {
-    width: 80%;
-
-    margin-left: auto;
+    width: 90%;
+    height: 30rem;
+    margin-bottom: 5vh;
   }
 
-  .pronite1-image {
-    width: 15rem;
-  }
-
-  .pronite-date {
-    font-size: 1.2rem;
-
-    margin-bottom: 0.8rem;
-  }
-
-  .pronite-number {
-    font-size: 1rem;
-  }
-
-  .pronite-name {
-    font-size: 1.2rem;
+  .pronite-card-bottom {
+    font-size: 1.5rem;
   }
 
   .pronite-details {
-    width: 80%;
+    width: 100%;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    margin-left: 4rem;
+  .pronite-number {
+    font-size: 1.8rem;
+  }
+
+  .pronite-date {
+    font-size: 2.1rem;
   }
 
   .pronite-event-details {
-    font-size: 0.7rem;
-
     width: 90%;
-  }
-
-  .pronite-register-button {
-    margin-left: 22vw;
-
-    width: 8rem;
+    text-align: center;
   }
 }
