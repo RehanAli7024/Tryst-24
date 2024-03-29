@@ -320,7 +320,7 @@ const sponsors = [
     },
     {
         index: 43,
-        name: "Sewa Nyaya",
+        name: "Sewa Nyaya Utthan",
         image: SewaNyaya,
         website: ""
     },
