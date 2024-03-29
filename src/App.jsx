@@ -26,7 +26,7 @@ import Accomodation from "./pages/accomodation/accomodation.jsx";
 import Error404 from "./pages/error404/Error404.jsx";
 import Imagenai from "./pages/Events/imagenai.jsx";
 import BrickBreaker from "./pages/game/brick-breaker.jsx";
-
+import Pronites from "./pages/pronites/pronites.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
