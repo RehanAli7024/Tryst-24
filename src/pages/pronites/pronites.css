@@ -1,6 +1,7 @@
 body {
   background-color: black;
 }
+
 .parent {
   width: 100%;
   margin: auto;
@@ -8,6 +9,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .pronites-heading {
   color: white;
   font-family: Audiowide;
@@ -69,22 +71,30 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 5vh;
+  clip-path: polygon(0 5%,
+      7% 0,
+      100% 0,
+      100% 18%,
+      94% 22%,
+      94% 78%,
+      100% 82%,
+      100% 100%,
+      0 100%);
+  background-color: #844b87;
 }
 
 .pronite-card-inner {
   width: calc(100% - 3px);
   height: calc(100% - 3px);
-  clip-path: polygon(
-    0 5%,
-    7% 0,
-    100% 0,
-    100% 17.5%,
-    94% 21.5%,
-    94% 78.5%,
-    100% 82.5%,
-    100% 100%,
-    0 100%
-  );
+  clip-path: polygon(0 5%,
+      7% 0,
+      100% 0,
+      100% 17.5%,
+      94% 21.5%,
+      94% 78.5%,
+      100% 82.5%,
+      100% 100%,
+      0 100%);
   background-color: #28113c;
   transition: all 0.4s ease-in-out;
 }
