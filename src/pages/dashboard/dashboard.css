@@ -289,9 +289,20 @@
   gap: 18%;
 }
 
-#college-name{
+#college-name {
   width: 40%;
 }
+
+.pass-download-button {
+  background-color: purple;
+  color: white;
+  font-family: Bender;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
 @media screen and (max-width: 1200px) {
   .profile_box {
     display: flex;
@@ -370,7 +381,7 @@
     align-items: center;
     justify-content: center;
   }
-  .profile_photo{
+  .profile_photo {
     margin: 0;
   }
   .profile_heading {
