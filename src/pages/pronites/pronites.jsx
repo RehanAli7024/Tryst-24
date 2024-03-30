@@ -1,5 +1,5 @@
 import "./pronites.css";
-import Meetup1 from "../../assets/meetup1.webp";
+import Meetup1 from "./pronite.jpg";
 import { useEffect, useState } from "react";
 import { DOMAIN } from "../../domain";
 import axios from "../../axios";
