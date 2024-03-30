@@ -100,7 +100,6 @@ function Navbar() {
     "Guests",
     "Events",
     "Sponsors",
-    "Technites",
     "Contact Us",
     "GameZone",
   ];
