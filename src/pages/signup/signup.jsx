@@ -82,6 +82,7 @@ const Signup = () => {
                 }
             )
                 .then((response) => {
+                    console.log(response);
                     const data = response.data.userdetails;
                     if (data) {
                         setCategory(data['category']);
@@ -360,7 +361,7 @@ const Signup = () => {
                                                 label: state,
                                             }))}
                                         >
-                                            <option  value="">Choose City </option>
+                                            <option value="">Choose City </option>
                                             {cities.length !== 0 ? (
                                                 cities.map((city, inx) => {
                                                     return (
