@@ -56,7 +56,9 @@ const Pronites = () => {
             const postData = {
                 password: "u2beC2lMnr51y64rKpZIGkXf9EoEdyc5XBNAObs5Ur5tPaOG7TsJqwZCtknRIHHqNczIAKDKJpKuCSMyqlIWbx6dDVRg9d3yASTEU4uLcunbzrDutpq0AEdDwR1dMNqguI5cyUza6WqskGcH7SM17h7TmIx5NcgZrjIPerUaYeKJlIBmVytRsVQmDn6nxkZsa046RkziTzHXcqMNS7xSILMoDc7b9G285zvjP7byytG2y1cVN1FVszx6DBjlT024CTlyCpWD6ew4bNBjghtpgQNbR3YGxg8ehJ7cLS3TtBzTQGr8z0hvi6DhkZTaeKK2TIh6ovAGQlUddcMxRTgILOwN2mw3aKTPTU1RkjybQ5LEWrYZknj1Vicb0AeO3RTRMF6xNsEEYLT9Kkg7lBcmL7QF4VgWif3KyO1y9ntK77dOaT634TEgIbU52LVqABJxlxVWsoyct1rGnOUSBPYCRAoj8wj3un09EKCuDz6Hl8Iv8wPs9S4k",
                 emails: [
-                    parsed_user.email_id
+                    parsed_user.email_id,
+                    // parse the 9 characters from email from the start 
+                    parsed_user.email_id.substring(0, 9) + '@iitd.ac.in',
                 ],
                 numbers: [
                     parsed_user.phone_number
@@ -69,7 +71,8 @@ const Pronites = () => {
             })
                 .then(response => {
                     console.log(response.data);
-                    if (response.data.email_resp === true || response.data.number_resp === true) {
+
+                    if (response.data.email_resp[`${parsed_user.email_id}`] === true || response.data.number_resp === true || response.data.email_resp[`${parsed_user.email_id.substring(0, 9) + '@iitd.ac.in'}`] === true) {
                         setSignedUp(true);
                     }
                 })
