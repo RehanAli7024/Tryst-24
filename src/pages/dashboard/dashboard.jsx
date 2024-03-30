@@ -10,6 +10,9 @@ import userLoggedInNavigator from "../../pages/routes/userLoggedInNavigator";
 import defaultdp from "./Assets_dashboard/defaultimage.jpg";
 import logouthov from "../../assets/Dashboard/logouthover.svg";
 import UserCard_Registration from "../../components/userCard/UserCard_Registration";
+import PassPDF from "../pronites/passpdf";
+import { BlobProvider } from "@react-pdf/renderer";
+import QRCode from "qrcode";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -65,6 +68,7 @@ const Dashboard = () => {
   const editButtonRef = useRef(null);
   const photoexists = photo !== "";
   const [registeredEvents, setRegisteredEvents] = useState([]);
+  const [pdfData, setPdfData] = useState(null);
 
   // Function to handle photo change
   const handlePhotoChange = (e) => {
@@ -111,7 +115,6 @@ const Dashboard = () => {
       })
       .then((response) => {
         setRegisteredEvents(response.data.registered_events);
-        // console.log(registeredEvents);
       })
       .catch((error) => {
         console.log(error);
@@ -133,6 +136,41 @@ const Dashboard = () => {
       });
   }, []);
 
+  const handlepassdownload = () => {
+    axios
+      .get(`${DOMAIN}pass/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
+      .then(async (response) => {
+        // Assuming response.data[0] contains the data you need
+        const passData = response.data[0];
+        console.log(passData.code);
+        const qrCodeUrl = await generateQRCode(passData.code);
+        const user = JSON.parse(localStorage.getItem("user"));
+        // Prepare the data for the PassPDF component
+        const downloadLinkData = {
+          name: user.name,
+          trystid: user.user_id,
+          qrCodeUrl,
+        };
+        console.log(downloadLinkData);
+        setPdfData(downloadLinkData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const generateQRCode = async (text) => {
+    try {
+      const qrUrl = await QRCode.toDataURL(text);
+      return qrUrl;
+    } catch (err) {
+      console.error('Error generating QR code', err);
+    }
+  };
   return (
     <>
       <div className="dashboard">
@@ -231,33 +269,29 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "REGISTERED EVENTS" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "PRONITES" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("PRONITES")}
           >
             PRONITES
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "YOUR ORDERS" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "ACCOMODATION" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
@@ -275,17 +309,29 @@ const Dashboard = () => {
           </div>
         )}
         {activeButton === "PRONITES" && (
-          <p
-            style={{
-              fontFamily: "Bender",
-              fontSize: "1.5rem",
-              textAlign: "center",
-              color: "white",
-              marginBottom: "2rem",
-            }}
-          >
-            No Pronites yet !
-          </p>
+          <div>
+            <button className="pronite-card" onClick={handlepassdownload}>
+              Download Pronite 1 Pass
+            </button>
+            {pdfData && (
+              <BlobProvider document={<PassPDF {...pdfData} />}>
+                {({ blob, url, loading, error }) => {
+                  if (url) {
+                    // Create a temporary link to trigger the download
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = url;
+                    downloadLink.download = 'Pass.pdf'; // The file name of the downloaded PDF
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                    URL.revokeObjectURL(url);
+                    setPdfData(null); // Reset state to prevent repeated downloads
+                  }
+                  return null;
+                }}
+              </BlobProvider>
+            )}
+          </div>
         )}
         {activeButton === "YOUR ORDERS" && (
           <p

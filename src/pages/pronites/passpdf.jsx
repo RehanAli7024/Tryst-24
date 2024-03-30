@@ -28,6 +28,13 @@ const styles = StyleSheet.create({
     fontSize: "38px",
     fontFamily: "militech",
   },
+  section: { margin: 10, padding: 10, flexGrow: 1 },
+  qrCode: {
+    position: "absolute",
+    left: "10%",
+    top: "54%",
+    width: "35%",
+  },
   text1: {
     position: "absolute",
     right: "11.5%",
@@ -77,7 +84,7 @@ const PassPDF = ({ name, trystid, qrCodeUrl }) => {
     <Document>
       <Page size={{ width: 600, height: 900 }} style={styles.page}>
         <Image src={pass1} style={styles.imagei} />
-        <Image src={qrCodeUrl} style={styles.qr} />
+        {qrCodeUrl && <Image src={qrCodeUrl} style={styles.qrCode} />}
         <Text style={styles.text}>
           {name.split(" ")[0]}
         </Text>

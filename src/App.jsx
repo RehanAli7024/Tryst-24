@@ -27,6 +27,7 @@ import Imagenai from "./pages/Events/imagenai.jsx";
 import BrickBreaker from "./pages/game/brick-breaker.jsx";
 import Pronites from "./pages/pronites/pronites.jsx";
 import Steps from "./pages/pronites/steps.jsx";
+import AdminLoginPage from "./pages/admin_new/admin.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
@@ -119,6 +120,7 @@ const App = () => {
           <Route path="/GameZone" element={<BrickBreaker />} />
           <Route path="/technites" element={<Pronites />} />
           <Route path="/steps" element={<Steps />} />
+          <Route path="/divyansh/ctm" element={<AdminLoginPage />} />
           {eventarray.competitions &&
             eventarray.competitions.map((event, index) => {
               return (

@@ -27,6 +27,7 @@
     "formik": "^2.4.5",
     "framer-motion": "^11.0.3",
     "js-cookie": "^3.0.5",
+    "pdfkit": "^0.15.0",
     "qrcode": "^1.5.3",
     "reacct": "^0.0.1-security",
     "react": "^18.2.0",
