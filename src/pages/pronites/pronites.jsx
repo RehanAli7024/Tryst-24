@@ -141,7 +141,7 @@ const Pronites = () => {
                     <div className="pronite-container">
                         <div className="pronite-card">
                             <div className="pronite-card-inner">
-                                <div className="pronite-card-top">SPECTRAL</div>
+                                <div className="pronite-card-top">SPECTAL</div>
                                 <img className="pronite1-image" src={Meetup1} alt="pronite card" />
                                 <div className="pronite-card-bottom">
                                     SAMAY RAINA
