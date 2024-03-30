@@ -26,6 +26,7 @@ import Accomodation from "./pages/accomodation/accomodation.jsx";
 import Error404 from "./pages/error404/Error404.jsx";
 import Imagenai from "./pages/Events/imagenai.jsx";
 import BrickBreaker from "./pages/game/brick-breaker.jsx";
+import Pronites from "./pages/pronites/pronites.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
@@ -53,7 +54,6 @@ const App = () => {
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
           setEventarray(response.data);
-          // console.log(response.data.competitions);
           sessionStorage.setItem(
             "all_events_data",
             JSON.stringify(response.data)
@@ -85,7 +85,7 @@ const App = () => {
           <Route path="/guests" element={<Speakers />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/usercard" element={<UserCard />} />
-          <Route path="/technites" element={<ComingSoon />} />
+          <Route path="/technites" element={<Pronites />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/imagenai_prelims_comp" element={<Imagenai />} />
