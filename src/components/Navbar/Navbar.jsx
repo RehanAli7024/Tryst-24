@@ -99,7 +99,6 @@ function Navbar() {
     "About",
     "Guests",
     "Events",
-    'Technites',
     "Sponsors",
     "Contact Us",
     "GameZone",
