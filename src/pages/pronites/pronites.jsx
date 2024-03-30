@@ -1,5 +1,5 @@
 import "./pronites.css";
-import Meetup1 from "../../assets/meetup1.webp";
+import Meetup1 from "./pronite.jpg";
 import { useEffect, useState } from "react";
 import { DOMAIN } from "../../domain";
 import axios from "../../axios";
@@ -18,10 +18,9 @@ const generateQRCode = async (text) => {
     }
 };
 
-
 const Pronites = () => {
     const [slots, setSlots] = useState([]);
-    const [signedUp, setSignedUp] = useState(true);
+    const [signedUp, setSignedUp] = useState(false);
     const [downloadLinkData, setDownloadLinkData] = useState(null);
     const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
     const [available, setAvailable] = useState(false);
@@ -101,7 +100,6 @@ const Pronites = () => {
             console.log(res.data);
             alert("Pass booked successfully");
 
-            // Generate QR code with booking details (adjust as necessary)
             const qrUrl = await generateQRCode(res.data.passCode);
             const user = JSON.parse(localStorage.getItem("user"));
 
@@ -116,7 +114,7 @@ const Pronites = () => {
             if (err.response && err.response.status === 403) {
                 alert(err.response.data.error);
             } else {
-                alert("Slot booking failed, please try again later");
+                alert("Pass booking failed, please try again later");
             }
         }
     };
