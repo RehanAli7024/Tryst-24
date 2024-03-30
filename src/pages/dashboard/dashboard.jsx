@@ -149,7 +149,16 @@ const Dashboard = () => {
       .then(async (response) => {
         // Assuming response.data[0] contains the data you need
         const passData = response.data[0];
-        console.log(passData.code);
+        // let pass_data;
+        // for (let i = 0; i < response.data.length; i++) 
+        // {
+        //   if (response.data[i].SlotId > 15) 
+        //   {
+        //     pass_data = response.data[i];
+        //     break;
+        //   }
+        // }
+        // console.log(passData.code);
         const qrCodeUrl = await generateQRCode(passData.code);
         const user = JSON.parse(localStorage.getItem("user"));
         // Prepare the data for the PassPDF component
