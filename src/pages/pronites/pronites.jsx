@@ -3,15 +3,49 @@ import Meetup1 from "../../assets/meetup1.webp";
 import { useEffect, useState } from "react";
 import { DOMAIN } from "../../domain";
 import axios from "../../axios";
-import { PDFDownloadLink } from "@react-pdf/renderer";
 import PassPDF from "./passpdf";
+import QRCode from 'qrcode';
+import { pdf, BlobProvider } from '@react-pdf/renderer';
+import Steps from "./steps";
+
+const generateQRCode = async (text) => {
+    try {
+        const qrUrl = await QRCode.toDataURL(text);
+        return qrUrl;
+    } catch (err) {
+        console.error(err);
+        return '';
+    }
+};
+
 
 const Pronites = () => {
-    const [available, setAvailable] = useState(false);
     const [slots, setSlots] = useState([]);
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [inSlot, setInSlot] = useState(false);
     const [signedUp, setSignedUp] = useState(true);
+    const [downloadLinkData, setDownloadLinkData] = useState(null);
+    const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
+    const [available, setAvailable] = useState(false);
+
+
+    useEffect(() => {
+        if (downloadLinkData) {
+            const documentElement = <PassPDF {...downloadLinkData} />;
+
+            pdf(documentElement).toBlob().then((blob) => {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Pronite_day1.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }).catch(err => {
+                console.error("Error generating PDF", err);
+            });
+        }
+    }, [downloadLinkData]);
+
     const headers = {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("access_token"),
@@ -51,52 +85,58 @@ const Pronites = () => {
             const response = await axios.get(url, { headers });
             console.log(response.data);
             setSlots(response.data);
-            setAvailable(true);
+            if (response.data.length > 0) {
+                setAvailable(true);
+            } else {
+                setAvailable(false);
+            }
         } catch (err) {
             console.error(err);
         }
     };
 
     const bookSlot = async (slot) => {
-        checkSlots(DOMAIN, slot, headers);
-        if (!available) {
-            alert("No Slot is available currently!");
-            return;
-        }
-        axios.post(`${DOMAIN}pass/${slot}/`, { slot }, { headers })
-            .then((res) => {
-                console.log(res.data);
-                alert("Pass booked successfully");
-                window.location.reload();
-            })
-            .catch((err) => {
-                console.log(err);
-                if (err.response.status === 403) {
-                    alert(err.response.data.error);
-                } else {
-                    alert("Slot booking failed!, please try again later");
-                }
-                window.location.reload();
-            });
-    };
+        try {
+            const res = await axios.post(`${DOMAIN}pass/${slot}/`, { slot }, { headers });
+            console.log(res.data);
+            alert("Pass booked successfully");
 
+            // Generate QR code with booking details (adjust as necessary)
+            const qrUrl = await generateQRCode(res.data.passCode);
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            setDownloadLinkData({
+                name: user.name,
+                trystid: user.user_id,
+                qrCodeUrl: qrUrl,
+            });
+
+        } catch (err) {
+            console.log(err);
+            if (err.response && err.response.status === 403) {
+                alert(err.response.data.error);
+            } else {
+                alert("Slot booking failed, please try again later");
+            }
+        }
+    };
     useEffect(() => {
         checkSlots(DOMAIN, 2, headers);
     }, []);
-
-    useEffect(() => {
-        console.log(slots);
-        if (slots[0]) {
-            console.log(slots[0].id);
-        }
-    }, [slots]);
-    useEffect(() => {
-        console.log(signedUp);
-    }, [signedUp]);
     return (
-        <div>
+        <>
             {signedUp ? (
-                <div>
+                <div className="parent">
+                    {downloadLinkData && (
+                        <BlobProvider document={<PassPDF {...downloadLinkData} />}>
+                            {({ blob, url, loading, error }) => {
+                                if (url && !pdfBlobUrl) {
+                                    setPdfBlobUrl(url); // This will trigger the effect to download the PDF
+                                }
+                                return null; // BlobProvider expects a render, return null since we don't need to render anything
+                            }}
+                        </BlobProvider>
+                    )}
                     <div className="pronite-container">
                         <div className="pronite-card">
                             <img className="pronite1-image" src={Meetup1} alt="pronite card" />
@@ -105,25 +145,27 @@ const Pronites = () => {
                         </div>
                         <div className="pronite-details">
                             <div className="pronite-number">
-                                Pronite 1
+                                Technite 1
                             </div>
                             <div className="pronite-date">
-                                1st February 2024
+                                30th March 2024
                             </div>
                             <div className="pronite-event-details">
-                                Get ready for an unforgettable evening as Bollywood stars Shahid Kapoor and Kriti Sanon grace the stage at Tryst'24, IIT Delhi! This is your chance to witness the magic of their performances and make memories that will last a lifetime. Don't miss out on this star-studded event – register for passes now and secure your spot for a fun-filled night of entertainment and glamour at IIT Delhi's Tryst!</div>
+                                Get ready for a night of non-stop laughs and entertainment! Tryst presents the hilarious Mr. Samay Raina, geared up to crack you up with his witty jokes and lightning-fast humor. Don't miss out on this fantastic opportunity for an unforgettable evening packed with fun and excitement. Secure your passes now and join in the lively atmosphere for a night of laughter and memories that you won't soon forget!</div>
                             <div className="pronite-register-button">
-                                <button className="action-btn" onClick={() => bookSlot(slots[0].id)}><i className="fas fa-download mr-2 fa-xs"></i>Register</button>
+                                <button className="action-btn" onClick={() => bookSlot(slots[0].id)}
+                                    disabled={!available}
+                                >
+                                    {available ? <><i className="fas fa-download mr-2 fa-xs"></i>Register</> : <>No slots available</>}
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             ) : (
-                <div>
-                    Hello everyone
-                </div>
+                <Steps />
             )}
-        </div>
+        </>
     );
 };
 

@@ -21,6 +21,9 @@ const Steps = () => {
             <div className="steps-heading">
                 Steps to Book Passes
             </div>
+            <div className="steps-heading2">
+                Make sure to login with the same mail on both Slick app and Tryst'24 website.
+            </div>
             <div className="steps-card">
                 <div className="step-head">
                     <span className="step-number">Step 1</span> : Download and install Slick app.

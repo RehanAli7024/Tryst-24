@@ -1,93 +1,100 @@
 .steps-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
+.steps-heading2 {
+  font-size: 2rem;
+  font-family: Audiowide, sans-serif;
+  font-weight: 400;
+  width: 80%;
+  margin: 1rem 0 0.5rem 0;
+  text-align: center;
+}
 .steps-heading {
-    font-size: 3.8rem;
-    font-family: Audiowide, sans-serif;
-    font-weight: 400;
-    letter-spacing: 4px;
-    margin-bottom: 1rem;
+  font-size: 3.8rem;
+  font-family: Audiowide, sans-serif;
+  font-weight: 400;
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
 }
 
 .steps-card {
-    width: 90%;
-    margin-bottom: 4rem;
+  width: 90%;
+  margin-bottom: 4rem;
 }
 
 .step-number {
-    font-size: 2.5rem;
-    font-family: Audiowide, sans-serif;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    margin-left: 8rem;
+  font-size: 2.5rem;
+  font-family: Audiowide, sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-left: 8rem;
 }
 
 .step-head {
-    font-size: 2.3rem;
-    font-family: Audiowide, sans-serif;
-    font-weight: 700;
-    margin-bottom: 2rem;
+  font-size: 2.3rem;
+  font-family: Audiowide, sans-serif;
+  font-weight: 700;
+  margin-bottom: 2rem;
 }
 
 .step-images-outer {
-    width: 100%;
-    overflow-x: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .step-images-outer::-webkit-scrollbar {
-    width: 9px;
+  width: 9px;
 }
 
 .step-images-outer::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    border: 0;
+  border-radius: 10px;
+  border: 0;
 }
 
 .step-images-outer::-webkit-scrollbar-track {
-    background-color: #030817;
+  background-color: #030817;
 }
 
 .step-images {
-    display: flex;
-    margin-bottom: 1rem;
+  display: flex;
+  margin-bottom: 1rem;
 }
 
 .step-image {
-    width: 20rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+  width: 20rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .steps-underline {
-    font-family: Audiowide, sans-serif;
-    text-decoration: underline;
+  font-family: Audiowide, sans-serif;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
-    .steps-heading {
-        font-size: 2.8rem;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
+  .steps-heading {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
 
-    .step-head {
-        font-size: 1.6rem;
-    }
+  .step-head {
+    font-size: 1.6rem;
+  }
 
-    .step-number {
-        margin-left: 0;
-        font-size: 1.7rem;
-    }
+  .step-number {
+    margin-left: 0;
+    font-size: 1.7rem;
+  }
 
-    .step-image {
-        width: 15rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
+  .step-image {
+    width: 15rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 }

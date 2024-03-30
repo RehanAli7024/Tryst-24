@@ -22,7 +22,7 @@ import LandingPage from "./pages/landing-page/landing-page.jsx";
 import { useEffect } from "react";
 import axios from "axios";
 import { DOMAIN } from "./domain.js";
-import Accomodation from "./pages/accomodation/accomodation.jsx";
+// import Accomodation from "./pages/accomodation/accomodation.jsx";
 import Error404 from "./pages/error404/Error404.jsx";
 import Imagenai from "./pages/Events/imagenai.jsx";
 import BrickBreaker from "./pages/game/brick-breaker.jsx";
@@ -142,7 +142,6 @@ const App = () => {
             })}
           {eventarray.guestlectures &&
             eventarray.guestlectures.map((event, index) => {
-              console.log(event);
               return (
                 <Route
                   path={`/events/${event.title}`}
