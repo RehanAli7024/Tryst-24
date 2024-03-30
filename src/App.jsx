@@ -28,7 +28,6 @@ import BrickBreaker from "./pages/game/brick-breaker.jsx";
 import Pronites from "./pages/pronites/pronites.jsx";
 import Steps from "./pages/pronites/steps.jsx";
 
-
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
 
