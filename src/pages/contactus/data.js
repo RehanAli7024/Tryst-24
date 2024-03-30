@@ -63,7 +63,7 @@ const data = {
       image: club,
       email: "parth@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/parth-singhal-484568217/",
-      number: "N/A",
+      number: "9769410227",
     },
     {
       name: "Mishi Bansal",
