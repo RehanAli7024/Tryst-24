@@ -98,10 +98,10 @@ function Navbar() {
   const options = [
     "About",
     "Guests",
-    "Accomodation",
     "Events",
     "Sponsors",
     "Contact Us",
+    "GameZone",
   ];
 
   if (userProfile && userProfile !== "general") {

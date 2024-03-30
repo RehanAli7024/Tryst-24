@@ -44,7 +44,7 @@ export default function CompetitionEvent({
     setFormData({ ...formData, contactPersons: constactPersonDetails });
     e.preventDefault();
     const token = localStorage.getItem("admin_access_token");
-    console.log(token);
+    // console.log(token);
     setFormIsSubmitted(true);
     axios.post(`${DOMAIN}create_workshop/`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data', } })
       .then((res) => {
@@ -76,6 +76,7 @@ export default function CompetitionEvent({
     has_form: false,
     registration_link: '',
     ruleBook: '',
+    event_club:'',
   });
   const [isChecked, setIsChecked] = useState(false);
   const [constactPersonDetails, setcontactPerosnDetails] = useState([]);
@@ -83,7 +84,7 @@ export default function CompetitionEvent({
   const handleChange = (e) => {
     if (e.target.name === "file") {
       const file_data = e.target.files[0];
-      console.log(file_data);
+      // console.log(file_data);
       setFormData((prevState) => ({
         ...prevState,
         file: file_data,

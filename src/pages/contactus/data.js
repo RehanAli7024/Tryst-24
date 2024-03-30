@@ -9,6 +9,9 @@ import harshit from "../../assets/contact/harshit.webp";
 import shwinder from "../../assets/contact/shwinder.webp";
 import aarya from "../../assets/contact/aarya.jpg";
 import mishi from "../../assets/contact/mishi.jpg"
+import hospi from "../../assets/contact/hospi.webp"
+import production from "../../assets/contact/production.webp"
+import infra from "../../assets/contact/infra.webp"
 
 const data = {
   ocs: [
@@ -18,7 +21,7 @@ const data = {
       image: shwinder,
       email: "caicgsec@iitd.ac.in",
       linkedin: "https://www.linkedin.com/in/shwinder-singh-0581b71b9/",
-      number: "9711780406",
+      number: "N/A",
     },
     {
       name: "Harshit Mawandia",
@@ -26,7 +29,7 @@ const data = {
       image: harshit,
       email: "admin@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/harshit-mawandia/",
-      number: "9031193301",
+      number: "N/A",
     },
     {
       name: 'Aarya Oganja',
@@ -100,8 +103,32 @@ const data = {
       image: finance,
       email: "arya.ladhani007@gmail.com",
       linkedin: "https://www.linkedin.com/in/arya-ladhani-74b621200/",
-      number: "9619952579",
+      number: "N/A",
     },
+    {
+      name: "Keshav Aggarwal",
+      por: "Hospitality",
+      image: hospi,
+      email: "",
+      linkedin: "https://www.linkedin.com/in/keshav-aggarwal22",
+      number: "75053 92289",
+    },
+    {
+      name: "Harshit Rastogi",
+      por: "Production",
+      image: production,
+      email: "",
+      linkedin: "https://www.linkedin.com/in/harshit-rastogi-aa6780179?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      number: "9654994478",
+    },
+    {
+      name: "Aryan",
+      por: "Infrastructure",
+      image: infra,
+      email: "",
+      linkedin: "https://www.linkedin.com/in/aryan-3978761ba",
+      number: "6209558069",
+    }
   ],
 };
 export default data;

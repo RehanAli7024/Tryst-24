@@ -37,6 +37,12 @@ const Clubs = [
   { index: 12, name: "Debating Club", abbr: "DESOC" },
   { index: 13, name: "Robotics Club", abbr: "ROBO" },
   { index: 14, name: "Electrical and Energy Club", abbr: "E&E CLUB" },
+  { index: 15, name: "Chemical Society", abbr: "CH SOC"},
+    {
+      index: 16,
+      name: "Textile Society",
+      abbr:"TEX SOC"
+    }
 ];
 
 const EventMain = () => {
@@ -68,17 +74,18 @@ const EventMain = () => {
   const [dplay, setDplay] = useState("none");
   const divRef = useRef(null);
   useEffect(() => {
-    if (sessionStorage.getItem("all_events_data")) {
-      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+    if (localStorage.getItem("all_events_data")) {
+      setEventarray(JSON.parse(localStorage.getItem("all_events_data")));
+      // console.log("Data fetched from local storage");
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
           if (
             JSON.stringify(response.data) !==
-            sessionStorage.getItem("all_events_data")
+            localStorage.getItem("all_events_data")
           ) {
             setEventarray(response.data);
-            sessionStorage.setItem(
+            localStorage.setItem(
               "all_events_data",
               JSON.stringify(response.data)
             );
@@ -87,14 +94,14 @@ const EventMain = () => {
         .catch((error) => {
           console.log(error);
         });
-      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+      setEventarray(JSON.parse(localStorage.getItem("all_events_data")));
     } else {
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
           setEventarray(response.data);
           // console.log(response.data);
-          sessionStorage.setItem(
+          localStorage.setItem(
             "all_events_data",
             JSON.stringify(response.data)
           );
@@ -260,6 +267,7 @@ const EventMain = () => {
                           to={`/events/${event.title}`}
                           key={index}
                           id="event_link"
+                          target="_blank"
                         >
                           <div className="events_card">
                             <EventCard image={event.event_image} />
@@ -291,7 +299,7 @@ const EventMain = () => {
               if (typeSelected.length === 0) {
                 if (clubSelected.length === 0) {
                   return (
-                    <Link to={`/events/${event.title}`} key={index}>
+                    <Link to={`/events/${event.title}`} key={index} target="_blank">
                       <div className="events_card">
                         <EventCard image={event.event_image} />
                       </div>
@@ -300,7 +308,7 @@ const EventMain = () => {
                 } else {
                   if (checkForSelectedClub(clubSelected, event.clubs)) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} target="_blank">
                         <div className="events_card">
                           <EventCard image={event.event_image} />
                         </div>
@@ -312,7 +320,7 @@ const EventMain = () => {
                 if (typeSelected.includes(2)) {
                   if (clubSelected.length === 0) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} target="_blank">
                         <div className="events_card">
                           <EventCard image={event.event_image} />
                         </div>
@@ -321,7 +329,7 @@ const EventMain = () => {
                   } else {
                     if (clubSelected.includes(event.club)) {
                       return (
-                        <Link to={`/events/${event.title}`} key={index}>
+                        <Link to={`/events/${event.title}`} key={index} target="_blank">
                           <div className="events_card">
                             <EventCard image={event.event_image} />
                           </div>
@@ -342,7 +350,7 @@ const EventMain = () => {
               if (typeSelected.length === 0) {
                 if (clubSelected.length === 0) {
                   return (
-                    <Link to={`/events/${event.title}`} key={index}>
+                    <Link to={`/events/${event.title}`} key={index} target="_blank">
                       <div className="events_card">
                         <EventCard image={event.event_image} />
                       </div>
@@ -351,7 +359,7 @@ const EventMain = () => {
                 } else {
                   if (clubSelected.includes(event.club)) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} target="_blank">
                         <div className="events_card">
                           <EventCard image={event.event_image} />
                         </div>
@@ -363,7 +371,7 @@ const EventMain = () => {
                 if (typeSelected.includes(3)) {
                   if (clubSelected.length === 0) {
                     return (
-                      <Link to={`/events/${event.title}`} key={index}>
+                      <Link to={`/events/${event.title}`} key={index} target="_blank">
                         <div className="events_card">
                           <EventCard image={event.event_image} />
                         </div>
@@ -372,7 +380,7 @@ const EventMain = () => {
                   } else {
                     if (clubSelected.includes(event.club)) {
                       return (
-                        <Link to={`/events/${event.title}`} key={index}>
+                        <Link to={`/events/${event.title}`} key={index} target="_blank">
                           <div className="events_card">
                             <EventCard image={event.event_image} />
                           </div>

@@ -80,7 +80,7 @@ const faqs = [
 	},
 	{
 		"ques": "Will Pronites passes be provided ?",
-		"ans": "On successful confirmation of accommodation, pronites passes will be provided.",
+		"ans": "No.",
     index: "16",
 	},
 ];

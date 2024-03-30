@@ -12,13 +12,20 @@ import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 
-const EventPage = ({ event }) => {
-  console.log(event);
+const EventPage = ({ event, eventType }) => {
+  // console.log(event);
   const myStyle = {};
   const [isVisible, setIsVisible] = useState(false);
   const token = localStorage.getItem("access_token");
-  const eventId = event.event_id;
-  const eventType = "competition";
+  let eventId;
+  if (eventType === "competition") {
+    eventId = event.event_id;
+  } else if (eventType === "workshop") {
+    eventId = event.workshop_id;
+  } else if (eventType === "guest_lecture") {
+    eventId = event.guest_id;
+  }
+  // const eventType = "competition";
   const [formFields, setFormFields] = useState([]);
   const [formData, setFormData] = useState({
     event_id: eventId,
@@ -110,9 +117,6 @@ const EventPage = ({ event }) => {
     setIsVisible(!isVisible);
   };
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -128,6 +132,7 @@ const EventPage = ({ event }) => {
       .then((res) => {
         console.log(res.data);
         alert("Registered Successfully");
+        // setSubmitted(false);
         navigate("/events");
       })
       .catch((err) => {
@@ -135,6 +140,45 @@ const EventPage = ({ event }) => {
         setSubmitted(false);
       });
   };
+
+  const URL_REGEX =
+    /(?:https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+  const MAIL_REGEX = /[\w\.-]+@[\w\.-]+\.\w+/;
+
+  const renderTextWithLinks = (text) =>
+    text.split("\n").map((paragraph, index) => (
+      <React.Fragment key={index}>
+        {index > 0 && <br />}
+        {renderText(paragraph)}
+      </React.Fragment>
+    ));
+
+  const renderText = (txt) =>
+    txt.split(/(\s+|\n)/).map((part) =>
+      MAIL_REGEX.test(part) ? (
+        <a
+          key={part}
+          href={"mailto:" + part}
+          target="_blank"
+          rel="noreferrer"
+          className="event-desc-links"
+        >
+          {part}{" "}
+        </a>
+      ) : URL_REGEX.test(part) ? (
+        <a
+          key={part}
+          href={part}
+          target="_blank"
+          rel="noreferrer"
+          className="event-desc-links"
+        >
+          ↗️ {/* emoji */}
+        </a>
+      ) : (
+        part + " "
+      )
+    );
 
   return (
     <>
@@ -163,13 +207,7 @@ const EventPage = ({ event }) => {
           <div className="col-span-2 md:col-span-1 event_description px-5 md:px-0">
             <div className="event_title_1">{event.title}</div>
             <div className="event_para_1">
-              {event.description.split("\n").map((paragraph, index) => (
-                <React.Fragment key={index}>
-                  {index > 0 && <br />}
-                  {index > 0 && <br />}
-                  {paragraph}
-                </React.Fragment>
-              ))}
+              {renderTextWithLinks(event.description)}
             </div>
 
             <div className="event_details">
@@ -257,9 +295,21 @@ const EventPage = ({ event }) => {
                 <div className="fil_con" id="ev_page_fil_con_2">
                   <div className="filter_btn" id="ev_btn_1">
                     {!event.registration_link ||
-                      event.registration_link === "" ? (
+                    event.registration_link === "" ? (
                       registered ? (
-                        <>{displaytext}</>
+                        <>
+                          {displaytext === "Login to Register" ? (
+                            <Link
+                              to="/login"
+                              className="filter_btn"
+                              id="ev_btn_1"
+                            >
+                              {displaytext}
+                            </Link>
+                          ) : (
+                            displaytext
+                          )}
+                        </>
                       ) : (
                         <button
                           onClick={toggleDiv}

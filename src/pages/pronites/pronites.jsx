@@ -3,6 +3,8 @@ import Meetup1 from "../../assets/meetup1.webp";
 import { useEffect, useState } from "react";
 import { DOMAIN } from "../../domain";
 import axios from "../../axios";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PassPDF from "./passpdf";
 
 const Pronites = () => {
     const [available, setAvailable] = useState(false);

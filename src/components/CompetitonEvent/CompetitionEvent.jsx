@@ -46,13 +46,23 @@ export default function CompetitionEvent({
     { index: 5, name: "Aviation Club", abbr: "AVI" },
     { index: 6, name: "Coding and Hackathon Club", abbr: "CODING" },
     { index: 7, name: "Bio-Tech Club", abbr: "BIO-TECH" },
-    { index: 8, name: "Mechanical and Civil Engineering Club", abbr: "MECH&CIVIL" },
+    {
+      index: 8,
+      name: "Mechanical and Civil Engineering Club",
+      abbr: "MECH&CIVIL",
+    },
     { index: 9, name: "Physics and Astronomy Club", abbr: "PAC" },
     { index: 10, name: "Mathematics Club", abbr: "MATH CLUB" },
     { index: 11, name: "Literary and Quizzing Club", abbr: "L&Q CLUB" },
     { index: 12, name: "Debating Club", abbr: "DESOC" },
     { index: 13, name: "Robotics Club", abbr: "ROBO" },
     { index: 14, name: "Electrical and Energy Club", abbr: "E&E CLUB" },
+    { index: 15, name: "Chemical Society", abbr: "CH SOC"},
+    {
+      index: 16,
+      name: "Textile Society",
+      abbr:"TEX SOC"
+    }
   ];
 
   const clubOptions = Clubs.map((club) => {
@@ -69,7 +79,6 @@ export default function CompetitionEvent({
       id: club.value,
       name: club.label,
     }));
-
     setFormData((prevState) => ({
       ...prevState,
       event_club: JSON.stringify(selectedClubData),
@@ -107,6 +116,9 @@ export default function CompetitionEvent({
       })
       .catch((err) => {
         console.log(err);
+        if (err.response.status === 502 || err.response.status === 401) {
+          alert("Please login again to continue.");
+        }
         setFormIsSubmitted(false);
         setIsSubmitting(false);
       });
@@ -183,11 +195,11 @@ export default function CompetitionEvent({
         </div>
       ) : (
         <form>
-          <div className="upload-picture">
-            <label htmlFor="uploadInput" className="custom-upload-btn">
-              Upload
-            </label>
-            <div className="custom-upload-container">
+          <label htmlFor="uploadInput" className="custom-upload-btn">
+            Upload
+          </label>
+          <div className="upload-picture" style={{ height: "100%" }}>
+            <div className="custom-upload-container" style={{ height: "100%" }}>
               <input
                 id="uploadInput"
                 className="upload-pic-btn"
@@ -196,7 +208,7 @@ export default function CompetitionEvent({
                 name="file"
               />
             </div>
-            <div className="image-shown">
+            <div className="image-shown" style={{ height: "100%" }}>
               {formData.file && (
                 <img
                   src={
@@ -205,6 +217,12 @@ export default function CompetitionEvent({
                       : URL.createObjectURL(formData.file)
                   }
                   alt="event"
+                  style={{
+                    objectFit: "cover",
+                    width: "100%",
+                    height: "100%",
+                    margin: "0",
+                  }}
                   className="image-preview"
                 />
               )}
@@ -249,7 +267,7 @@ export default function CompetitionEvent({
               isMulti
               name="event_club"
               onChange={handleClubChange}
-            // value={eventClubs}
+              // value={eventClubs}
             />
           </div>
           <div className="date-time-venue-container">

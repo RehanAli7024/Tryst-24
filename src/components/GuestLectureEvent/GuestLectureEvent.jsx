@@ -60,6 +60,12 @@ const GuestLectureEvent = ({
       })
       .catch((err) => {
         console.log(err);
+        if (err.response.status === 401)
+        {
+          alert("Session Expired. Please login again");
+          localStorage.clear();
+          window.location.reload();
+        }
         setFormIsSubmitted(false);
       });
   };
@@ -393,9 +399,11 @@ const GuestLectureEvent = ({
             </div>
           </React.Fragment>
         ))}
-
-        <button onClick={handleSubmit} className="submit-button">
-          submit
+        {/* disable the button on the basis of state */}
+        <button onClick={handleSubmit} className="submit-button" disabled={formisSubmitted}>
+          {
+            formisSubmitted ? "Submitting..." : "Submit"
+          }
         </button>
       </form>
     </div>

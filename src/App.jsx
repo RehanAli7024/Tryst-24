@@ -27,19 +27,23 @@ import Error404 from "./pages/error404/Error404.jsx";
 import Imagenai from "./pages/Events/imagenai.jsx";
 import BrickBreaker from "./pages/game/brick-breaker.jsx";
 import Pronites from "./pages/pronites/pronites.jsx";
+import Steps from "./pages/pronites/steps.jsx";
 
 const App = () => {
   const [eventarray, setEventarray] = useState([]);
 
   useEffect(() => {
-    if (sessionStorage.getItem("all_events_data")) {
-      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+    if (localStorage.getItem("all_events_data")) {
+      setEventarray(JSON.parse(localStorage.getItem("all_events_data")));
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
-          if (JSON.stringify(response.data) !== sessionStorage.getItem("all_events_data")) {
+          if (
+            JSON.stringify(response.data) !==
+            localStorage.getItem("all_events_data")
+          ) {
             setEventarray(response.data);
-            sessionStorage.setItem(
+            localStorage.setItem(
               "all_events_data",
               JSON.stringify(response.data)
             );
@@ -48,13 +52,14 @@ const App = () => {
         .catch((error) => {
           console.log(error);
         });
-      setEventarray(JSON.parse(sessionStorage.getItem("all_events_data")));
+      setEventarray(JSON.parse(localStorage.getItem("all_events_data")));
     } else {
       axios
         .get(`${DOMAIN}allevents/`)
         .then((response) => {
           setEventarray(response.data);
-          sessionStorage.setItem(
+          // console.log(response.data.competitions);
+          localStorage.setItem(
             "all_events_data",
             JSON.stringify(response.data)
           );
@@ -63,6 +68,28 @@ const App = () => {
           console.log(error);
         });
     }
+  }, []);
+
+  useEffect(() => {
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            console.log("Coordinates are", position.coords);
+            localStorage.setItem("latitude", latitude);
+            localStorage.setItem("longitude", longitude);
+          },
+          (error) => {
+            console.log("Error getting location", error);
+          }
+        );
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    };
+
+    getLocation();
   }, []);
 
   return (
@@ -89,46 +116,45 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/imagenai_prelims_comp" element={<Imagenai />} />
-          <Route path="/accomodation" element={<Accomodation />} />
-          <Route path="/game" element={<BrickBreaker />} />
+          <Route path="/accomodation" element={<ComingSoon />} />
+          <Route path="/GameZone" element={<BrickBreaker />} />
+          <Route path="/technites" element={<Pronites />} />
+          <Route path="/steps" element={<Steps />} />
           {eventarray.competitions &&
             eventarray.competitions.map((event, index) => {
               return (
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} />}
+                  element={<EventPage event={event} eventType="competition" />}
                 />
               );
-            })
-          }
+            })}
           {eventarray.workshops &&
             eventarray.workshops.map((event, index) => {
               return (
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} />}
+                  element={<EventPage event={event} eventType="workshop" />}
                 />
               );
-            })
-          }
-          {eventarray.guest_lectures &&
-            eventarray.guest_lectures.map((event, index) => {
+            })}
+          {eventarray.guestlectures &&
+            eventarray.guestlectures.map((event, index) => {
+              console.log(event);
               return (
                 <Route
                   path={`/events/${event.title}`}
                   key={index}
-                  element={<EventPage event={event} />}
+                  element={
+                    <EventPage event={event} eventType="guest_lecture" />
+                  }
                 />
               );
-            })
-          }
+            })}
 
-          <Route
-            path="*"
-            element={<Error404 />}
-          />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </Router>
