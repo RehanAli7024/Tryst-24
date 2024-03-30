@@ -136,7 +136,10 @@ const Dashboard = () => {
       });
   }, []);
 
+  const [passDownloadStatus, setPassDownloadStatus] = useState(false);
+
   const handlepassdownload = () => {
+    setPassDownloadStatus(true);
     axios
       .get(`${DOMAIN}pass/`, {
         headers: {
@@ -157,9 +160,12 @@ const Dashboard = () => {
         };
         console.log(downloadLinkData);
         setPdfData(downloadLinkData);
+        setPassDownloadStatus(false);
       })
       .catch((error) => {
         console.log(error);
+        alert("You have not registered for Technite 1")
+        setPassDownloadStatus(false);
       });
   };
 
@@ -276,11 +282,11 @@ const Dashboard = () => {
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "PRONITES" ? "active" : ""
+            className={`dashboard-nav-button ${activeButton === "TECHNITES" ? "active" : ""
               }`}
-            onClick={() => handleButtonClick("PRONITES")}
+            onClick={() => handleButtonClick("TECHNITES")}
           >
-            PRONITES
+            TECHNITES
           </button>
           <button
             className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
@@ -308,10 +314,10 @@ const Dashboard = () => {
             </div>{" "}
           </div>
         )}
-        {activeButton === "PRONITES" && (
+        {activeButton === "TECHNITES" && (
           <div>
-            <button className="pronite-card" onClick={handlepassdownload}>
-              Download Pronite 1 Pass
+            <button className="pronite-card" onClick={handlepassdownload} disabled={passDownloadStatus}>
+              Download Technite 1 Pass
             </button>
             {pdfData && (
               <BlobProvider document={<PassPDF {...pdfData} />}>
