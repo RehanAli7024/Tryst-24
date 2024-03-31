@@ -14,7 +14,6 @@ import PassPDF from "../pronites/passpdf2";
 import { BlobProvider } from "@react-pdf/renderer";
 import QRCode from "qrcode";
 
-
 const Dashboard = () => {
   const navigate = useNavigate();
   React.useEffect(userLoggedInNavigator(useNavigate()));
@@ -150,19 +149,18 @@ const Dashboard = () => {
       .then(async (response) => {
         // Assuming response.data[0] contains the data you need
         // const passData = response.data[0];
+        // how to convert string to int in js
+
         let pass_data;
         let pass_exists = false;
-        for (let i = 0; i < response.data.length; i++) 
-        {
-          if (response.data[i].slotId > 15) 
-          {
+        for (let i = 0; i < response.data.length; i++) {
+          if (parseInt(response.data[i].slotId) > 15) {
             pass_data = response.data[i];
             pass_exists = true;
             break;
           }
         }
-        if (!pass_exists)
-        {
+        if (!pass_exists) {
           alert("You have not registered for Technite 2");
           return;
         }
@@ -291,29 +289,33 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "REGISTERED EVENTS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "TECHNITES" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "TECHNITES" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("TECHNITES")}
           >
             TECHNITES
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "YOUR ORDERS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "ACCOMODATION" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
