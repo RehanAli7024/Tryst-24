@@ -9,6 +9,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useInView } from "react-intersection-observer";
 
+
 const Events = () => {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const [intervalId, setIntervalId] = useState(null);
