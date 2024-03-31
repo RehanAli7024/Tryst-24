@@ -203,7 +203,7 @@ const Pronites = () => {
                                     src={Meetup2}
                                     alt="pronite card"
                                 />
-                                <div className="pronite-card-bottom">Karan Kanchan</div>
+                                <div className="pronite-card-bottom">Divine</div>
                             </div>
                         </div>
                         <div className="pronite-details">
