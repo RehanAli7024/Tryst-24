@@ -10,9 +10,10 @@ import userLoggedInNavigator from "../../pages/routes/userLoggedInNavigator";
 import defaultdp from "./Assets_dashboard/defaultimage.jpg";
 import logouthov from "../../assets/Dashboard/logouthover.svg";
 import UserCard_Registration from "../../components/userCard/UserCard_Registration";
-import PassPDF from "../pronites/passpdf";
+import PassPDF from "../pronites/passpdf2";
 import { BlobProvider } from "@react-pdf/renderer";
 import QRCode from "qrcode";
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -173,7 +174,7 @@ const Dashboard = () => {
       })
       .catch((error) => {
         console.log(error);
-        alert("You have not registered for Technite 1");
+        alert("You have not registered for Technite 2");
         setPassDownloadStatus(false);
       });
   };

@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import "./signup.css";
-// import Navbar from "../../components/navbar/navbar";
 import axios, { formToJSON } from "axios";
 import { BeatLoader } from "react-spinners";
 import Select from "react-select";
-// import Footer from "../../components/footer/ca-footer";
 import { DOMAIN } from "../../domain";
 import { useNavigate } from "react-router-dom";
-// import userLoggedOutNavigator from "../../routes/userLoggedOutNavigator";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import userLoggedOutNavigator from "../../pages/routes/userLoggedOutNavigator";
@@ -145,7 +142,7 @@ const Signup = () => {
             })
             .catch((err) => {
                 setFormissubmitted(false);
-                alert(err);
+                alert(err.response.data.error);
             });
         e.preventDefault();
     };
