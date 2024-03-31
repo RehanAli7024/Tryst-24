@@ -21,7 +21,7 @@ const generateQRCode = async (text) => {
 
 const Pronites = () => {
     const [slots, setSlots] = useState([]);
-    const [signedUp, setSignedUp] = useState(false);
+    const [signedUp, setSignedUp] = useState(true);
     const [downloadLinkData, setDownloadLinkData] = useState(null);
     const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
     const [available, setAvailable] = useState(false);
