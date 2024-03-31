@@ -149,7 +149,16 @@ const Dashboard = () => {
       .then(async (response) => {
         // Assuming response.data[0] contains the data you need
         const passData = response.data[0];
-        console.log(passData.code);
+        // let pass_data;
+        // for (let i = 0; i < response.data.length; i++) 
+        // {
+        //   if (response.data[i].SlotId > 15) 
+        //   {
+        //     pass_data = response.data[i];
+        //     break;
+        //   }
+        // }
+        // console.log(passData.code);
         const qrCodeUrl = await generateQRCode(passData.code);
         const user = JSON.parse(localStorage.getItem("user"));
         // Prepare the data for the PassPDF component
@@ -164,7 +173,7 @@ const Dashboard = () => {
       })
       .catch((error) => {
         console.log(error);
-        alert("You have not registered for Technite 1")
+        alert("You have not registered for Technite 1");
         setPassDownloadStatus(false);
       });
   };
@@ -174,7 +183,7 @@ const Dashboard = () => {
       const qrUrl = await QRCode.toDataURL(text);
       return qrUrl;
     } catch (err) {
-      console.error('Error generating QR code', err);
+      console.error("Error generating QR code", err);
     }
   };
   return (
@@ -275,29 +284,33 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "REGISTERED EVENTS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "TECHNITES" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "TECHNITES" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("TECHNITES")}
           >
             TECHNITES
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "YOUR ORDERS" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
-              }`}
+            className={`dashboard-nav-button ${
+              activeButton === "ACCOMODATION" ? "active" : ""
+            }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
@@ -316,7 +329,11 @@ const Dashboard = () => {
         )}
         {activeButton === "TECHNITES" && (
           <div>
-            <button className="pronite-card" onClick={handlepassdownload} disabled={passDownloadStatus}>
+            <button
+              className="pass-download-button"
+              onClick={handlepassdownload}
+              disabled={passDownloadStatus}
+            >
               Download Technite 1 Pass
             </button>
             {pdfData && (
@@ -324,9 +341,9 @@ const Dashboard = () => {
                 {({ blob, url, loading, error }) => {
                   if (url) {
                     // Create a temporary link to trigger the download
-                    const downloadLink = document.createElement('a');
+                    const downloadLink = document.createElement("a");
                     downloadLink.href = url;
-                    downloadLink.download = 'Pass.pdf'; // The file name of the downloaded PDF
+                    downloadLink.download = "Pass.pdf"; // The file name of the downloaded PDF
                     document.body.appendChild(downloadLink);
                     downloadLink.click();
                     document.body.removeChild(downloadLink);

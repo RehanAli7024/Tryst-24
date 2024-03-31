@@ -37,7 +37,7 @@ const data = {
       image: aarya,
       email: "aarya@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/aaryaoganja/",
-      number: "9913328090",
+      number: "N/A",
     }
   ],
   ctms: [
@@ -47,7 +47,7 @@ const data = {
       image: marketing,
       email: "rohit@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/rohit-shaww/",
-      number: "9330433653",
+      number: "N/A",
     },
     {
       name: "Rahul Ranveer Shah",
@@ -55,7 +55,7 @@ const data = {
       image: events,
       email: "rahul@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/rahul-ranveer-shah-212075201/",
-      number: "9717326180",
+      number: "N/A",
     },
     {
       name: "Parth Singhal",
@@ -71,7 +71,7 @@ const data = {
       image: mishi,
       email: "mishi@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/mishi-bansal-b693b3215/",
-      number: "9693087393",
+      number: "N/A",
     },
     {
       name: "Arshia Dhiman",
@@ -79,7 +79,7 @@ const data = {
       image: publi,
       email: "arshia@tryst-iitd.org",
       linkedin: "https://www.linkedin.com/in/arshia-dhiman/",
-      number: "984848667",
+      number: "N/A",
     },
     {
       name: "Priyansh Shrivastava",
@@ -87,7 +87,7 @@ const data = {
       image: tech,
       email: "priyanshrivastav08@gmail.com",
       linkedin: "https://www.linkedin.com/in/priyansh-shrivastava-95a89821b/",
-      number: "6264263440",
+      number: "N/A",
     },
     {
       name: "Udit Batish",
@@ -95,7 +95,7 @@ const data = {
       image: media,
       email: "uditbatish@gmail.com",
       linkedin: "https://www.linkedin.com/in/udit-batish-2753591ba/",
-      number: "9517838866",
+      number: "N/A",
     },
     {
       name: "Arya Ladhani",
@@ -111,7 +111,7 @@ const data = {
       image: hospi,
       email: "",
       linkedin: "https://www.linkedin.com/in/keshav-aggarwal22",
-      number: "75053 92289",
+      number: "N/A",
     },
     {
       name: "Harshit Rastogi",
@@ -119,7 +119,7 @@ const data = {
       image: production,
       email: "",
       linkedin: "https://www.linkedin.com/in/harshit-rastogi-aa6780179?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-      number: "9654994478",
+      number: "N/A",
     },
     {
       name: "Aryan",
@@ -127,7 +127,7 @@ const data = {
       image: infra,
       email: "",
       linkedin: "https://www.linkedin.com/in/aryan-3978761ba",
-      number: "6209558069",
+      number: "N/A",
     }
   ],
 };
