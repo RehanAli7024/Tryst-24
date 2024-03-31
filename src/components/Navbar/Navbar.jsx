@@ -11,8 +11,6 @@ import profilehov from "../../assets/Navbar/profilehov.svg";
 import profileclicked from "../../assets/Navbar/profileClick.svg";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "../../axios";
-import { DOMAIN } from "../../domain";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -77,36 +75,17 @@ function Navbar() {
     };
   }, [showNavOptions, userProfile]);
 
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    if (token) {
-      axios
-        .get(`${DOMAIN}profile/category/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setUserProfile(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, []);
 
   const options = [
     "About",
     "Guests",
     "Events",
+    "Technites",
     "Sponsors",
     "Contact Us",
     "GameZone",
   ];
 
-  if (userProfile && userProfile !== "general") {
-    options.splice(3, 0, "Technites");
-  }
 
   return (
     <Container

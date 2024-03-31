@@ -1,6 +1,6 @@
 import "./pronites.css";
 import Meetup1 from "./pronite.jpg";
-import Meetup2 from "./meetup2.png";
+import Meetup2 from "./Divine.webp";
 import { useEffect, useState } from "react";
 import { DOMAIN } from "../../domain";
 import axios from "../../axios";
@@ -21,7 +21,7 @@ const generateQRCode = async (text) => {
 
 const Pronites = () => {
     const [slots, setSlots] = useState([]);
-    const [signedUp, setSignedUp] = useState(true);
+    const [signedUp, setSignedUp] = useState(false);
     const [downloadLinkData, setDownloadLinkData] = useState(null);
     const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
     const [available, setAvailable] = useState(false);
@@ -210,16 +210,7 @@ const Pronites = () => {
                             <div className="pronite-number">Technite 2</div>
                             <div className="pronite-date">31st March 2024</div>
                             <div className="pronite-event-details">
-                                Get ready to immerse yourself in an electrifying experience as
-                                the stage comes alive with the unparalleled energy of India's
-                                hip-hop sensation, Divine! Join us for an exhilarating concert
-                                where Divine will ignite the crowd with his infectious beats and
-                                electrifying performances. Hosted by Tryst, this event promises
-                                an unforgettable evening filled with pulsating rhythms and raw
-                                talent. Grab your tickets now and be part of a night that
-                                celebrates the essence of Indian music and culture. Don't miss
-                                out on this incredible opportunity to witness Divine in action
-                                and create memories that will last a lifetime!
+                                Get ready to immerse yourself in an electrifying experience as the stage comes alive with the unparalleled energy of India's hip-hop sensation, Divine! Join us for an exhilarating concert where Divine will ignite the crowd with his infectious beats and electrifying performances. Hosted by Tryst, this event promises an unforgettable evening filled with pulsating rhythms and raw talent. Grab your tickets now and be part of a night that celebrates the essence of Indian music and culture. Don't miss out on this incredible opportunity to witness Divine in action and create memories that will last a lifetime!
                             </div>
                             <div className="pronite-register-button">
                                 <button
