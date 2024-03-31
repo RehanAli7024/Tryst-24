@@ -155,6 +155,7 @@ const Dashboard = () => {
         let pass_exists = false;
         for (let i = 0; i < response.data.length; i++) {
           console.log(response.data[i]);
+          console.log(parseInt(response.data[i].slotId));
           if (parseInt(response.data[i].slotId) > 15) {
             pass_data = response.data[i];
             pass_exists = true;
