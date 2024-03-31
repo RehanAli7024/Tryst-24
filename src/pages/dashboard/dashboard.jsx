@@ -151,13 +151,11 @@ const Dashboard = () => {
         // const passData = response.data[0];
         // how to convert string to int in js
 
-        let pass_data;
+        let passData;
         let pass_exists = false;
         for (let i = 0; i < response.data.length; i++) {
-          console.log(response.data[i]);
-          console.log(parseInt(response.data[i].slotId));
           if (parseInt(response.data[i].slotId) > 15) {
-            pass_data = response.data[i];
+            passData = response.data[i];
             pass_exists = true;
             break;
           }
