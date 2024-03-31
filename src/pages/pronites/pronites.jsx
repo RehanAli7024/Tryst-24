@@ -3,7 +3,7 @@ import Meetup1 from "./pronite.jpg";
 import { useEffect, useState } from "react";
 import { DOMAIN } from "../../domain";
 import axios from "../../axios";
-import PassPDF from "./passpdf";
+import PassPDF from "./passpdf2";
 import QRCode from 'qrcode';
 import { pdf, BlobProvider } from '@react-pdf/renderer';
 import Steps from "./steps";
