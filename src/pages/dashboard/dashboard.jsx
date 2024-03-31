@@ -149,17 +149,23 @@ const Dashboard = () => {
       })
       .then(async (response) => {
         // Assuming response.data[0] contains the data you need
-        const passData = response.data[0];
-        // let pass_data;
-        // for (let i = 0; i < response.data.length; i++) 
-        // {
-        //   if (response.data[i].SlotId > 15) 
-        //   {
-        //     pass_data = response.data[i];
-        //     break;
-        //   }
-        // }
-        // console.log(passData.code);
+        // const passData = response.data[0];
+        let pass_data;
+        let pass_exists = false;
+        for (let i = 0; i < response.data.length; i++) 
+        {
+          if (response.data[i].slotId > 15) 
+          {
+            pass_data = response.data[i];
+            pass_exists = true;
+            break;
+          }
+        }
+        if (!pass_exists)
+        {
+          alert("You have not registered for Technite 2");
+          return;
+        }
         const qrCodeUrl = await generateQRCode(passData.code);
         const user = JSON.parse(localStorage.getItem("user"));
         // Prepare the data for the PassPDF component
