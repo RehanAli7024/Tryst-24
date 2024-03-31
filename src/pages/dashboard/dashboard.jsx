@@ -284,33 +284,29 @@ const Dashboard = () => {
 
         <div className="dashboard-nav">
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "REGISTERED EVENTS" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "REGISTERED EVENTS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("REGISTERED EVENTS")}
           >
             REGISTERED EVENTS
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "TECHNITES" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "TECHNITES" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("TECHNITES")}
           >
             TECHNITES
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "YOUR ORDERS" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "YOUR ORDERS" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("YOUR ORDERS")}
           >
             YOUR ORDERS
           </button>
           <button
-            className={`dashboard-nav-button ${
-              activeButton === "ACCOMODATION" ? "active" : ""
-            }`}
+            className={`dashboard-nav-button ${activeButton === "ACCOMODATION" ? "active" : ""
+              }`}
             onClick={() => handleButtonClick("ACCOMODATION")}
           >
             ACCOMODATION
@@ -334,7 +330,7 @@ const Dashboard = () => {
               onClick={handlepassdownload}
               disabled={passDownloadStatus}
             >
-              Download Technite 1 Pass
+              Download Technite 2 Pass
             </button>
             {pdfData && (
               <BlobProvider document={<PassPDF {...pdfData} />}>
